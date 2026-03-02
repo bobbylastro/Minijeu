@@ -1,5 +1,5 @@
 "use client";
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
 import type { User } from "@supabase/supabase-js";
 import { createClient, supabaseConfigured } from "@/lib/supabase/client";
 
@@ -13,7 +13,8 @@ export interface Profile {
 export interface AuthContextValue {
   user: User | null;
   profile: Profile | null;
-  loading: boolean;
+  loading: boolean;          // auth session loading
+  profileLoading: boolean;   // profile fetch in progress
   signIn: (email: string, password: string) => Promise<string | null>;
   signUp: (email: string, password: string) => Promise<string | null>;
   signInWithGoogle: () => Promise<string | null>;
@@ -30,19 +31,28 @@ export function useAuth(): AuthContextValue {
 }
 
 export function useAuthProvider(): AuthContextValue {
-  const [user, setUser]       = useState<User | null>(null);
-  const [profile, setProfile] = useState<Profile | null>(null);
-  const [loading, setLoading] = useState(supabaseConfigured);
+  const [user, setUser]                 = useState<User | null>(null);
+  const [profile, setProfile]           = useState<Profile | null>(null);
+  const [loading, setLoading]           = useState(supabaseConfigured);
+  const [profileLoading, setProfileLoading] = useState(false);
+
+  // Prevent stale fetch from overwriting a newer sign-out
+  const fetchCounterRef = useRef(0);
 
   const supabase = createClient();
 
   const fetchProfile = useCallback(async () => {
+    const id = ++fetchCounterRef.current;
+    setProfileLoading(true);
     try {
       const res = await fetch("/api/profile");
       const { profile: p } = await res.json();
-      setProfile(p ?? null);
+      // Only apply if this is still the latest fetch
+      if (id === fetchCounterRef.current) setProfile(p ?? null);
     } catch {
-      setProfile(null);
+      if (id === fetchCounterRef.current) setProfile(null);
+    } finally {
+      if (id === fetchCounterRef.current) setProfileLoading(false);
     }
   }, []);
 
@@ -57,8 +67,13 @@ export function useAuthProvider(): AuthContextValue {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null);
-      if (session?.user) fetchProfile();
-      else setProfile(null);
+      if (session?.user) {
+        fetchProfile();
+      } else {
+        fetchCounterRef.current++; // invalidate any in-flight fetch
+        setProfile(null);
+        setProfileLoading(false);
+      }
     });
 
     return () => subscription.unsubscribe();
@@ -87,9 +102,11 @@ export function useAuthProvider(): AuthContextValue {
 
   const signOut = useCallback(async () => {
     await supabase.auth.signOut();
+    fetchCounterRef.current++;
     setUser(null);
     setProfile(null);
+    setProfileLoading(false);
   }, [supabase]);
 
-  return { user, profile, loading, signIn, signUp, signInWithGoogle, signOut, refreshProfile: fetchProfile };
+  return { user, profile, loading, profileLoading, signIn, signUp, signInWithGoogle, signOut, refreshProfile: fetchProfile };
 }

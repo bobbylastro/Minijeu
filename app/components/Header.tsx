@@ -11,7 +11,7 @@ const UserBadge     = dynamic(() => import("@/components/UserBadge"),     { ssr:
 
 export default function Header() {
   const pathname = usePathname();
-  const { user, profile } = useAuth();
+  const { user, profile, loading, profileLoading } = useAuth();
   const [sportsOpen, setSportsOpen]   = useState(false);
   const [geoOpen, setGeoOpen]         = useState(false);
   const [cultureOpen, setCultureOpen] = useState(false);
@@ -173,7 +173,7 @@ export default function Header() {
       </header>
 
       {authOpen     && <AuthModal     onClose={() => setAuthOpen(false)} />}
-      {user && !profile && <UsernameModal onClose={() => {}} />}
+      {!loading && !profileLoading && user && !profile && <UsernameModal onClose={() => {}} />}
 
       {/* ── Mobile menu ──────────────────────────────────────────────────── */}
       {menuOpen && (
