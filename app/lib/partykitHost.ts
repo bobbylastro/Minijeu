@@ -17,3 +17,14 @@ export function getPartykitHost(): string {
   // resolves "localhost" to ::1 (IPv6) while PartyKit only listens on 0.0.0.0 (IPv4).
   return process.env.NEXT_PUBLIC_PARTYKIT_HOST ?? "127.0.0.1:1999";
 }
+
+/**
+ * Returns true if multiplayer is available in the current environment:
+ * - Development (Codespaces / local): always enabled
+ * - Production: only if NEXT_PUBLIC_PARTYKIT_HOST is explicitly set
+ */
+export function isMultiplayerEnabled(): boolean {
+  if (process.env.NEXT_PUBLIC_PARTYKIT_HOST) return true;
+  if (process.env.NODE_ENV === "development") return true;
+  return false;
+}

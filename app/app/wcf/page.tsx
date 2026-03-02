@@ -2,7 +2,7 @@
 import { memo, useState, useCallback, useEffect, useRef } from "react";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { seededShuffle } from "@/lib/seededRandom";
-import { getPartykitHost } from "@/lib/partykitHost";
+import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
 import { recordMatch, getRecord } from "@/lib/matchHistory";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
@@ -724,7 +724,7 @@ export default function WhatCameFirst() {
             </div>
             <div className="home-buttons">
               <button onClick={startSolo}  className="btn-primary btn-hover">Play Solo</button>
-              <button onClick={startMulti} className="btn-outline btn-hover">⚡ Multiplayer</button>
+              {isMultiplayerEnabled() && <button onClick={startMulti} className="btn-outline btn-hover">⚡ Multiplayer</button>}
             </div>
           </div>
         )}
@@ -891,7 +891,7 @@ export default function WhatCameFirst() {
             ) : (
               <div className="result-buttons--pop">
                 <button onClick={startSolo}  className="btn-result-primary btn-hover-sm">Play Again</button>
-                <button onClick={startMulti} className="btn-result-outline btn-hover-sm">⚡ Multiplayer</button>
+                {isMultiplayerEnabled() && <button onClick={startMulti} className="btn-result-outline btn-hover-sm">⚡ Multiplayer</button>}
               </div>
             )}
           </div>
