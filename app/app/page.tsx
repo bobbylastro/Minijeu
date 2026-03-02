@@ -1,5 +1,10 @@
-"use client";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Ultimate Playground – Play free online quiz & mini games",
+  description: "Play addictive online quiz games and mini games for free. Guess populations, compare stats, test your knowledge in sports, culture and more on Ultimate Playground.",
+};
 
 // ─── Game definitions ──────────────────────────────────────────────────────────
 interface GameDef {
@@ -125,9 +130,13 @@ export default function HomePage() {
     <div className="home-page">
       <div className="home-page__content">
         <div className="home-page__hero">
-          <h1 className="home-page__title">Ultimate Playground</h1>
+          <h1 className="home-page__title">Ultimate Playground – Play fun and addictive online quiz games</h1>
           <p className="home-page__tagline">Compete &middot; Explore &middot; Learn</p>
         </div>
+
+        <p className="home-page__intro">
+          Ultimate Playground is your go-to platform for quick, fun and challenging online games. Test your knowledge, compare stats, and challenge yourself with a variety of interactive quiz games you can play instantly in your browser.
+        </p>
 
         <main className="categories">
           <CategorySection icon="🌍" name="World"   games={WORLD_GAMES} />
@@ -136,7 +145,23 @@ export default function HomePage() {
         </main>
 
         <section className="seo-section">
-          {/* SEO content — to be added */}
+          <p>From guessing city populations in CityMix to comparing country statistics in Higher or Lower, each game is designed to be simple, competitive and highly addictive. Whether you&apos;re into sports, geography or general knowledge, there&apos;s always a new challenge waiting for you.</p>
+          <p>Play solo or compete with others in multiplayer modes and track your performance across games.</p>
+
+          <h2>Featured Games</h2>
+          <ul>
+            <li><strong>CityMix</strong> – Guess which city is bigger and estimate its population</li>
+            <li><strong>Higher or Lower</strong> – Compare countries based on population, GDP and more</li>
+            <li><strong>FootballQuiz</strong> – Test your football knowledge with transfers, salaries and stadiums</li>
+            <li><strong>NBAQuiz</strong> – Challenge yourself on contracts, arenas and basketball trivia</li>
+            <li><strong>CareerOrder</strong> – Rebuild a player&apos;s career in the correct order</li>
+            <li><strong>WhatCameFirst</strong> – Choose which event happened first across multiple topics</li>
+          </ul>
+
+          <h2>Free Online Mini Games for Every Player</h2>
+          <p>Ultimate Playground offers a wide range of free online mini games designed for quick sessions and endless replayability. Our games combine trivia, logic, and estimation challenges to create engaging experiences for all players.</p>
+          <p>Whether you enjoy guess games, higher or lower challenges, sports quizzes or general knowledge tests, you&apos;ll find something to play anytime.</p>
+          <p>New games are added regularly, making Ultimate Playground a growing hub for browser-based games you can enjoy without downloading anything.</p>
         </section>
       </div>
     </div>

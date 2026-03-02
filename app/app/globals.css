@@ -2362,9 +2362,9 @@
 
 .home-page__title {
   font-family: 'Bebas Neue', cursive;
-  font-size: clamp(38px, 6.5vw, 64px);
+  font-size: clamp(22px, 3.5vw, 36px);
   letter-spacing: 3px;
-  line-height: 0.95;
+  line-height: 1.1;
   color: #18103a;
   margin-bottom: 14px;
 }
@@ -2375,6 +2375,15 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   color: #94a3b8;
+}
+
+.home-page__intro {
+  font-size: 10px;
+  color: #d1d5db;
+  line-height: 1.4;
+  max-width: 560px;
+  margin: -8px auto 24px;
+  text-align: center;
 }
 
 /* ── Category sections ────────────────────────────────────────────────────── */
@@ -2531,10 +2540,47 @@
   margin-top: 80px;
   padding-top: 40px;
   border-top: 1px solid rgba(0,0,0,0.07);
-  min-height: 120px;
-  color: #94a3b8;
+  color: #4b5563;
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.75;
+}
+
+.seo-section p {
+  margin-bottom: 10px;
+}
+
+.seo-section h2 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #374151;
+  margin: 28px 0 10px;
+  letter-spacing: 0.3px;
+}
+
+.seo-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.seo-section li {
+  padding-left: 16px;
+  position: relative;
+}
+
+.seo-section li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: #7c3aed;
+}
+
+.seo-section strong {
+  color: #374151;
+  font-weight: 600;
 }
 
 /* ── Site footer ──────────────────────────────────────────────────────────── */

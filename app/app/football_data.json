@@ -158,10 +158,8 @@
     { "question": "How many players are on a football pitch per team?",                    "options": ["10", "11", "12", "9"],                                                    "correct": 1 },
     { "question": "In which city is the Maracanã stadium located?",                        "options": ["São Paulo", "Buenos Aires", "Montevideo", "Rio de Janeiro"],               "correct": 3 },
     { "question": "In which year did Pelé win his first FIFA World Cup?",                  "options": ["1954", "1958", "1962", "1966"],                                            "correct": 1 },
-    { "question": "Which country has won the most FIFA World Cups?",                        "options": ["Argentina", "Germany", "Italy", "Brazil"],                                 "correct": 3 },
     { "question": "Who is the all-time top scorer in Premier League history?",              "options": ["Wayne Rooney", "Andrew Cole", "Frank Lampard", "Alan Shearer"],            "correct": 3 },
     { "question": "How many times has Lionel Messi won the Ballon d'Or?",                  "options": ["6", "7", "5", "8"],                                                        "correct": 3 },
-    { "question": "Which club has won the most UEFA Champions League titles?",              "options": ["FC Barcelona", "Bayern Munich", "AC Milan", "Real Madrid"],                "correct": 3 },
     { "question": "Who scored the winning penalty in the 2006 World Cup final?",           "options": ["Fabio Grosso", "Francesco Totti", "Andrea Pirlo", "Alessandro Del Piero"], "correct": 0 },
     { "question": "Which nation hosted the 2022 FIFA World Cup?",                          "options": ["UAE", "Saudi Arabia", "Qatar", "Bahrain"],                                 "correct": 2 },
     { "question": "Who was the first goalkeeper to win the Ballon d'Or?",                  "options": ["Gianluigi Buffon", "Oliver Kahn", "Lev Yashin", "Dino Zoff"],             "correct": 2 },
@@ -171,7 +169,6 @@
     { "question": "What squad number does Neymar traditionally wear?",                     "options": ["7", "9", "10", "11"],                                                      "correct": 3 },
     { "question": "In which city is Camp Nou stadium located?",                            "options": ["Madrid", "Valencia", "Seville", "Barcelona"],                              "correct": 3 },
     { "question": "Who captained Spain to their 2010 World Cup victory?",                  "options": ["Xavi", "Andrés Iniesta", "Iker Casillas", "David Villa"],                  "correct": 2 },
-    { "question": "How many players are in a football team on the pitch?",                 "options": ["10", "12", "9", "11"],                                                     "correct": 3 },
     { "question": "Which Premier League club plays at Anfield?",                           "options": ["Everton", "Manchester City", "Arsenal", "Liverpool"],                      "correct": 3 }
   ],
 
