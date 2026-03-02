@@ -14,37 +14,33 @@ import { ensureCustomImages, getCustomImage, GameKey } from "@/lib/customImages"
 interface TriviaItem   { question: string; options: string[]; correct: number; flagOptions?: boolean; }
 interface StadiumItem  { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; }
 interface TransferItem { player: string; from: string; to: string; year: number; fee_m: number; flag: string; wiki?: string; flagCode?: string; }
-interface SalaryItem   { player: string; team: string; annual_m: number; flag: string; wiki?: string; flagCode?: string; }
 interface PeakItem     { player: string; club: string; season: number; goals: number; flag: string; wiki?: string; flagCode?: string; }
 
 const TRIVIA:    TriviaItem[]   = footballData.trivia    as TriviaItem[];
 const STADIUMS:  StadiumItem[]  = footballData.stadiums  as StadiumItem[];
 const TRANSFERS: TransferItem[] = footballData.transfers as TransferItem[];
-const SALARIES:  SalaryItem[]   = footballData.salaries  as SalaryItem[];
 const PEAKS:     PeakItem[]     = (footballData as unknown as { peaks: PeakItem[] }).peaks;
 
 // ─── Round types ────────────────────────────────────────────────────────────────
-type RoundType = "trivia" | "stadium" | "transfer" | "salary" | "peak";
+type RoundType = "trivia" | "stadium" | "transfer" | "peak";
 type Screen    = "home" | "game" | "result";
 type Mode      = "solo" | "multi";
 
 interface TriviaRound   { type: "trivia";   question: string; options: string[]; correct: number; flagOptions?: boolean; }
 interface StadiumRound  { type: "stadium";  name: string; city: string; capacity: number; options: string[]; correct: number; wiki?: string; }
 interface TransferRound { type: "transfer"; player: string; from: string; to: string; year: number; flag: string; fee_m: number; wiki?: string; flagCode?: string; }
-interface SalaryRound   { type: "salary";   playerA: SalaryItem; playerB: SalaryItem; correct: 0 | 1; }
 interface PeakRound     { type: "peak";     player: string; club: string; season: number; goals: number; flag: string; wiki?: string; flagCode?: string; }
 
-type Round = TriviaRound | StadiumRound | TransferRound | SalaryRound | PeakRound;
+type Round = TriviaRound | StadiumRound | TransferRound | PeakRound;
 
 type RoundEntry =
   | { type: "trivia";   round: number; question: string; options: string[]; chosen: number; correct: number; points: number; }
   | { type: "stadium";  round: number; name: string;     options: string[]; chosen: number; correct: number; points: number; }
   | { type: "transfer"; round: number; player: string; guess_m: number; fee_m: number; points: number; accuracy: number; }
-  | { type: "salary";   round: number; playerA: SalaryItem; playerB: SalaryItem; chosen: 0 | 1; correct: 0 | 1; points: number; }
   | { type: "peak";     round: number; player: string; guess: number; season: number; goals: number; points: number; diff: number; };
 
 // ─── Constants ──────────────────────────────────────────────────────────────────
-const TOTAL       = 10;
+const TOTAL       = 8;
 const MAX_PTS     = 100;
 const MAX_TOTAL   = TOTAL * MAX_PTS; // 1000
 const ANSWER_TIME = 12;
@@ -53,11 +49,11 @@ const FEE_MAX     = 250;
 const PEAK_MIN    = 1990;
 const PEAK_MAX    = 2024;
 
-// trivia×2, transfer×2, salary×2, stadium×2, peak×2
+// trivia×2, transfer×2, stadium×2, peak×2
 const ROUND_TYPES: RoundType[] = [
-  "trivia",   "transfer", "salary",
-  "peak",     "stadium",  "transfer",
-  "trivia",   "salary",   "peak",     "stadium",
+  "trivia",   "transfer", "peak",
+  "stadium",  "transfer", "trivia",
+  "peak",     "stadium",
 ];
 
 // ─── Helpers ────────────────────────────────────────────────────────────────────
@@ -124,14 +120,13 @@ function generateRounds(seed?: number): Round[] {
   const doShuffle = <T,>(arr: T[], offset: number): T[] =>
     seed !== undefined ? seededShuffle(arr, seed + offset) : shuffle(arr);
 
-  const rng      = seed !== undefined ? mulberry32(seed + 999) : Math.random.bind(Math);
-  const trivia   = doShuffle([...TRIVIA],    0).slice(0, 2);
-  const stadiums = doShuffle([...STADIUMS],  1).slice(0, 2);
+  const rng       = seed !== undefined ? mulberry32(seed + 999) : Math.random.bind(Math);
+  const trivia    = doShuffle([...TRIVIA],    0).slice(0, 2);
+  const stadiums  = doShuffle([...STADIUMS],  1).slice(0, 2);
   const transfers = doShuffle([...TRANSFERS], 2).slice(0, 2);
-  const salaries  = doShuffle([...SALARIES],  3);
-  const peaks     = doShuffle([...PEAKS],     4).slice(0, 2);
+  const peaks     = doShuffle([...PEAKS],     3).slice(0, 2);
 
-  let ti = 0, sti = 0, tri_i = 0, sai = 0, pi = 0;
+  let ti = 0, sti = 0, tri_i = 0, pi = 0;
 
   return ROUND_TYPES.map(type => {
     if (type === "trivia") {
@@ -149,16 +144,9 @@ function generateRounds(seed?: number): Round[] {
       const t = transfers[tri_i++];
       return { type: "transfer", player: t.player, from: t.from, to: t.to, year: t.year, flag: t.flag, fee_m: t.fee_m, wiki: t.wiki, flagCode: t.flagCode };
     }
-    if (type === "peak") {
-      const p = peaks[pi++];
-      return { type: "peak", player: p.player, club: p.club, season: p.season, goals: p.goals, flag: p.flag, wiki: p.wiki, flagCode: p.flagCode };
-    }
-    // salary
-    const pA = salaries[sai * 2];
-    const pB = salaries[sai * 2 + 1];
-    sai++;
-    const correct: 0 | 1 = pA.annual_m >= pB.annual_m ? 0 : 1;
-    return { type: "salary", playerA: pA, playerB: pB, correct };
+    // peak
+    const p = peaks[pi++];
+    return { type: "peak", player: p.player, club: p.club, season: p.season, goals: p.goals, flag: p.flag, wiki: p.wiki, flagCode: p.flagCode };
   });
 }
 
@@ -167,7 +155,6 @@ const ROUND_THEMES = {
   trivia:   { emoji: "🧠", label: "Football Trivia", rgb: [100, 160, 255] as [number, number, number] },
   stadium:  { emoji: "🏟️", label: "Stadium",          rgb: [100, 210, 130] as [number, number, number] },
   transfer: { emoji: "💸", label: "Transfer Fee",     rgb: [255, 165, 50]  as [number, number, number] },
-  salary:   { emoji: "💰", label: "Who earns more?",  rgb: [240, 192, 64]  as [number, number, number] },
   peak:     { emoji: "📈", label: "Peak Season",      rgb: [180, 100, 255] as [number, number, number] },
 } as const;
 
@@ -565,29 +552,7 @@ function FtResultCard({ entry }: { entry: RoundEntry }) {
     );
   }
 
-  // salary
-  const correct = entry.chosen === entry.correct;
-  const color   = correct ? "#00ffa0" : "#ff6b6b";
-  const winner  = entry.correct === 0 ? entry.playerA : entry.playerB;
-  return (
-    <div className="result-card">
-      <div className="result-card__body" style={{ flex: 1 }}>
-        <div className="result-card__title-row">
-          <span className="ft-result-badge ft-result-badge--salary">Salary</span>
-          <span className="result-card__city-name" style={{ fontSize: 13 }}>
-            {entry.playerA.player} vs {entry.playerB.player}
-          </span>
-        </div>
-        <div className="result-card__stats">
-          {correct ? "✓ " : "✗ "}{winner.player} earns €{winner.annual_m}M/yr
-        </div>
-      </div>
-      <div className="result-card__score">
-        <div className="result-card__points" style={{ color }}>{entry.points}</div>
-        <div className="result-card__pts-label">pts</div>
-      </div>
-    </div>
-  );
+  return null;
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────────
@@ -596,7 +561,7 @@ export default function Football() {
   const [mode, setMode]                 = useState<Mode>("solo");
   const [rounds, setRounds]             = useState<Round[]>([]);
   const [qNum, setQNum]                 = useState(1);
-  const [chosen, setChosen]             = useState<number | null>(null);   // MCQ/salary choice
+  const [chosen, setChosen]             = useState<number | null>(null);   // MCQ choice
   const [revealed, setRevealed]         = useState(false);                  // transfer/peak submitted
   const [feeGuess, setFeeGuess]         = useState(100);
   const [peakGuess, setPeakGuess]       = useState(2010);
@@ -744,16 +709,13 @@ export default function Football() {
         mp.submitAnswer(peakGuessRef.current, 0);
       } else {
         if (chosenRef.current !== null) return;
-        const wrongChoice = round.type === "salary" ? (round.correct === 0 ? 1 : 0) : (round.correct === 0 ? 1 : 0);
+        const wrongChoice = round.correct === 0 ? 1 : 0;
         chosenRef.current = wrongChoice;
         setChosen(wrongChoice);
         if (round.type === "trivia") {
           setRoundResults(prev => [...prev, { type: "trivia", round: qNumRef.current, question: round.question, options: round.options, chosen: wrongChoice, correct: round.correct, points: 0 }]);
         } else if (round.type === "stadium") {
           setRoundResults(prev => [...prev, { type: "stadium", round: qNumRef.current, name: round.name, options: round.options, chosen: wrongChoice, correct: round.correct, points: 0 }]);
-        } else if (round.type === "salary") {
-          const sal = round as SalaryRound;
-          setRoundResults(prev => [...prev, { type: "salary", round: qNumRef.current, playerA: sal.playerA, playerB: sal.playerB, chosen: wrongChoice as 0|1, correct: sal.correct, points: 0 }]);
         }
         mp.submitAnswer(-1, 0);
       }
@@ -825,17 +787,6 @@ export default function Football() {
     if (mode === "multi") mp.submitAnswer(i, pts);
   };
 
-  const handleSalaryChoice = (i: 0 | 1) => {
-    if (chosen !== null || !currentRound || currentRound.type !== "salary") return;
-    const cr = currentRound;
-    clearTimers();
-    const correct = i === cr.correct;
-    const pts     = correct ? MAX_PTS : 0;
-    setChosen(i); chosenRef.current = i;
-    if (correct) setTotalScore(s => s + MAX_PTS);
-    setRoundResults(prev => [...prev, { type: "salary", round: qNum, playerA: cr.playerA, playerB: cr.playerB, chosen: i, correct: cr.correct, points: pts }]);
-    if (mode === "multi") mp.submitAnswer(i, pts);
-  };
 
   const handleTransferSubmit = () => {
     if (revealed || !currentRound || currentRound.type !== "transfer") return;
@@ -897,10 +848,8 @@ export default function Football() {
 
   // Feedback row state
   const feedbackCorrect =
-    currentRound?.type === "trivia"  || currentRound?.type === "stadium"
+    currentRound?.type === "trivia" || currentRound?.type === "stadium"
       ? chosen === (currentRound as { correct: number }).correct
-      : currentRound?.type === "salary"
-      ? (chosen as 0 | 1) === currentRound.correct
       : false; // transfer and peak use inline reveal, not FeedbackRow
   const feedbackIsWaiting = mode === "multi" && answered && (!roundOver || multiWaiting);
 
@@ -931,7 +880,7 @@ export default function Football() {
             <h1 className="home-title">
               Football<span className="accent">Quiz</span>
             </h1>
-            <p className="home-subtitle">Trivia, stadiums, transfers, salaries & peak seasons</p>
+            <p className="home-subtitle">Trivia, stadiums, transfers & peak seasons</p>
 
             <div className="how-it-works">
               <div className="how-it-works__title">How it works</div>
@@ -939,7 +888,6 @@ export default function Football() {
                 ["🧠", "Trivia: 4-choice football culture questions"],
                 ["🏟️", "Stadium: which club plays here?"],
                 ["💸", "Transfer: guess the transfer fee (slider)"],
-                ["💰", "Salary: which player earns more?"],
                 ["📈", "Peak Season: guess a player's best scoring season"],
               ].map(([icon, text]) => (
                 <div key={text as string} className="how-it-works__item">
@@ -1078,36 +1026,6 @@ export default function Football() {
               </div>
             )}
 
-            {/* ── Salary ───────────────────────────────────────────────────── */}
-            {currentRound.type === "salary" && (
-              <div className="ft-question-card">
-                <TypeBanner type="salary" />
-                <div className="ft-salary-row">
-                  {([currentRound.playerA, currentRound.playerB] as const).map((player, i) => {
-                    let cls = "ft-salary-card";
-                    if (chosen !== null) {
-                      if (i === currentRound.correct)         cls += " ft-salary-card--winner";
-                      else if (i === chosen)                  cls += " ft-salary-card--loser";
-                      else                                    cls += " ft-salary-card--disabled";
-                    } else {
-                      cls += " ft-salary-card--active";
-                    }
-                    return (
-                      <div key={i} className={cls} onClick={() => chosen === null && handleSalaryChoice(i as 0 | 1)}>
-                        <WikiImg title={player.wiki} alt={player.player} className="ft-salary-photo" gameKey="football_players" />
-                        <FlagImg code={player.flagCode} alt={player.player} />
-                        <div className="ft-salary-player">{player.player}</div>
-                        <div className="ft-salary-team">{player.team}</div>
-                        {chosen !== null && (
-                          <div className="ft-salary-amount">€{player.annual_m}M/yr</div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              </div>
-            )}
-
             {/* ── Peak Season ──────────────────────────────────────────────── */}
             {currentRound.type === "peak" && (
               <div className="ft-transfer-card">
@@ -1163,7 +1081,7 @@ export default function Football() {
               </div>
             )}
 
-            {/* FeedbackRow for MCQ rounds (trivia / stadium / salary) */}
+            {/* FeedbackRow for MCQ rounds (trivia / stadium) */}
             {answered && currentRound.type !== "transfer" && currentRound.type !== "peak" && (
               <FeedbackRow
                 correct={feedbackCorrect}
