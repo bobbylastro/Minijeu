@@ -24,7 +24,5 @@ export function getPartykitHost(): string {
  * - Production: only if NEXT_PUBLIC_PARTYKIT_HOST is explicitly set
  */
 export function isMultiplayerEnabled(): boolean {
-  if (process.env.NEXT_PUBLIC_PARTYKIT_HOST) return true;
-  if (process.env.NODE_ENV === "development") return true;
-  return false;
+  return !!process.env.NEXT_PUBLIC_PARTYKIT_HOST;
 }
