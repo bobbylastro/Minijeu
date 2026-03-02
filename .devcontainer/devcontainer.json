@@ -1,0 +1,13 @@
+{
+  "name": "Minijeu",
+  "portsAttributes": {
+    "1999": {
+      "label": "PartyKit",
+      "visibility": "public"
+    },
+    "3000": {
+      "label": "Next.js",
+      "visibility": "private"
+    }
+  }
+}

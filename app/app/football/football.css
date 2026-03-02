@@ -1,0 +1,316 @@
+/* ── Football Quiz ────────────────────────────────────────────────────────── */
+
+.ft-container {
+  width: 100%;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Type banner */
+.ft-type-banner {
+  position: relative;
+  overflow: hidden;
+  margin: -22px -20px 12px;
+  padding: 9px 20px 7px;
+  text-align: center;
+  border-radius: 18px 18px 0 0;
+}
+.ft-type-banner__top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  position: relative;
+  z-index: 1;
+  margin-bottom: 3px;
+}
+.ft-type-banner__emoji {
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+  line-height: 1;
+}
+.ft-type-banner__label {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+.ft-type-banner__question {
+  font-size: 17.5px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.35;
+  position: relative;
+  z-index: 1;
+}
+
+.ft-question-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 18px;
+  padding: 24px 22px 20px;
+  overflow: hidden;
+}
+
+.ft-question-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.45;
+  margin-bottom: 18px;
+}
+
+/* MCQ options */
+.ft-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 11px;
+}
+
+.ft-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 14px 15px;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s, border-color 0.15s;
+  color: #fff;
+}
+.ft-option:hover:not(:disabled) {
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(255,255,255,0.25);
+}
+.ft-option--correct {
+  background: rgba(0,255,160,0.12);
+  border-color: #00ffa0;
+}
+.ft-option--wrong {
+  background: rgba(255,107,107,0.12);
+  border-color: #ff6b6b;
+}
+.ft-option--disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.ft-option__letter {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
+  flex-shrink: 0;
+  width: 16px;
+}
+.ft-option__flag {
+  height: 15px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.ft-option__text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+/* Stadium */
+.ft-stadium-header {
+  margin-bottom: 14px;
+}
+.ft-stadium-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+.ft-stadium-details {
+  display: flex;
+  gap: 14px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+}
+
+/* Image placeholder */
+.ft-img-placeholder {
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Flag image */
+.ft-flag-img {
+  height: 14px;
+  border-radius: 2px;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Player hero (transfer) */
+.ft-player-hero {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  margin-bottom: 16px;
+}
+.ft-player-hero__info {
+  flex: 1;
+  min-width: 0;
+}
+.ft-player-img {
+  width: 88px;
+  height: 88px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* Stadium image */
+.ft-stadium-img-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 14px;
+  height: 130px;
+  background: rgba(255,255,255,0.04);
+}
+.ft-stadium-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Salary photo */
+.ft-salary-photo {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Transfer */
+.ft-transfer-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 18px;
+  padding: 22px 20px 18px;
+  overflow: hidden;
+}
+.ft-transfer-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.ft-transfer-flag  { font-size: 22px; }
+.ft-transfer-name  { font-size: 20px; font-weight: 700; color: #fff; }
+.ft-transfer-year  { font-size: 13px; color: rgba(255,255,255,0.4); }
+.ft-transfer-move  { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+.ft-transfer-club  {
+  font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.75);
+  background: rgba(255,255,255,0.07); border-radius: 8px; padding: 4px 10px;
+}
+.ft-transfer-arrow { color: rgba(255,255,255,0.35); font-size: 16px; }
+.ft-fee-display {
+  font-size: 32px; font-weight: 800; color: #f0c040;
+  text-align: center; margin: 10px 0 6px; letter-spacing: -0.5px;
+}
+
+/* Salary */
+.ft-salary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 4px;
+}
+.ft-salary-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 20px 14px;
+  text-align: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+.ft-salary-card--active          { cursor: pointer; }
+.ft-salary-card--active:hover    { background: rgba(255,255,255,0.11); border-color: rgba(255,255,255,0.25); }
+.ft-salary-card--winner          { background: rgba(0,255,160,0.10); border-color: #00ffa0; }
+.ft-salary-card--loser           { background: rgba(255,107,107,0.10); border-color: #ff6b6b; }
+.ft-salary-card--disabled        { opacity: 0.45; cursor: default; }
+.ft-salary-flag   { font-size: 26px; }
+.ft-salary-player { font-size: 15px; font-weight: 700; color: #fff; line-height: 1.2; }
+.ft-salary-team   { font-size: 12px; color: rgba(255,255,255,0.45); }
+.ft-salary-amount { font-size: 16px; font-weight: 700; color: #f0c040; margin-top: 4px; }
+
+/* Result badges */
+.ft-result-badge {
+  display: inline-block;
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  border-radius: 6px; padding: 2px 7px; flex-shrink: 0;
+}
+.ft-result-badge--trivia   { background: rgba(100,160,255,0.18); color: #64a0ff; }
+.ft-result-badge--stadium  { background: rgba(160,100,255,0.18); color: #a064ff; }
+.ft-result-badge--arena    { background: rgba(100,210,130,0.18); color: #64d282; }
+.ft-result-badge--transfer { background: rgba(255,192,40,0.18);  color: #f0c040; }
+.ft-result-badge--salary   { background: rgba(0,255,160,0.15);   color: #00ffa0; }
+.ft-result-badge--peak     { background: rgba(180,100,255,0.18); color: #b464ff; }
+
+/* Feedback row (inline, below question card) */
+.ft-feedback-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 12px;
+}
+.ft-feedback-row--correct  { background: rgba(0,255,160,0.12);   border: 1px solid rgba(0,255,160,0.3); }
+.ft-feedback-row--wrong    { background: rgba(255,107,107,0.12); border: 1px solid rgba(255,107,107,0.3); }
+.ft-feedback-row--transfer { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); justify-content: flex-end; }
+.ft-feedback-row__text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex: 1;
+}
+.ft-feedback-row__waiting {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+}
+.ft-feedback-row__btn {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 14px;
+  padding: 11px 24px;
+  color: #fff;
+  font-size: 19px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.ft-feedback-row__btn:hover { background: rgba(255,255,255,0.25); }
+
+@media (max-width: 480px) {
+  .ft-options-grid       { grid-template-columns: 1fr; }
+  .ft-question-text      { font-size: 15px; }
+  .ft-stadium-name       { font-size: 17px; }
+  .ft-transfer-name      { font-size: 17px; }
+  .ft-fee-display        { font-size: 26px; }
+}

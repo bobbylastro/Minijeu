@@ -1,0 +1,2401 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;600&family=Sora:wght@400;600;800&display=swap');
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Shared keyframes ─────────────────────────────────────────────────────── */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.7; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+@keyframes popInCenter {
+  0%   { opacity: 0; transform: scale(0.7); }
+  70%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes winnerPulse {
+  0%, 100% { opacity: 0; }
+  50%       { opacity: 1; }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes feedbackIn {
+  0%   { opacity: 0; transform: scale(0.6); }
+  60%  { transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes scoreGrow {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes growBar {
+  from { width: 0; }
+}
+@keyframes revealSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes actualPop {
+  0%   { opacity: 0; transform: scale(0.5); }
+  60%  { transform: scale(1.15); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ── Button hover utilities ───────────────────────────────────────────────── */
+.btn-hover {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-hover:hover {
+  transform: scale(1.06) !important;
+  box-shadow: 0 0 60px rgba(240,192,64,0.6), 0 12px 32px rgba(0,0,0,0.5) !important;
+}
+.btn-hover-sm:hover {
+  transform: scale(1.03) !important;
+  box-shadow: 0 0 48px rgba(240,192,64,0.6), 0 8px 24px rgba(0,0,0,0.5) !important;
+}
+
+/* ── Scrollbar ────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+
+/* ── Layout ───────────────────────────────────────────────────────────────── */
+.game-wrapper {
+  min-height: 100vh;
+  background: radial-gradient(ellipse at 20% 50%, #0d1b2a 0%, #050510 60%, #0a0518 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Sora', sans-serif;
+  padding: 80px 16px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── Site header ──────────────────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  background: rgba(5,5,20,0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.site-header__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+.site-header__logo {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: white;
+  text-decoration: none;
+  flex-shrink: 0;
+  margin-right: 32px;
+}
+
+.site-header__logo-accent {
+  background: linear-gradient(135deg, #f97316 0%, #ec4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.site-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Nav item base */
+.site-header__nav-item {
+  position: relative;
+  padding: 7px 14px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.site-header__nav-item:hover,
+.site-header__nav-item.is-open {
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.06);
+}
+
+/* Sports — coming soon */
+.site-header__nav-item--soon {
+  cursor: default;
+  opacity: 0.38;
+}
+.site-header__nav-item--soon:hover {
+  color: rgba(255,255,255,0.55);
+  background: transparent;
+}
+
+.site-header__soon-badge {
+  font-size: 9px;
+  letter-spacing: 1px;
+  padding: 2px 6px;
+  border-radius: 50px;
+  background: rgba(240,192,64,0.12);
+  color: rgba(240,192,64,0.7);
+  border: 1px solid rgba(240,192,64,0.2);
+}
+
+/* Chevron */
+.site-header__chevron {
+  flex-shrink: 0;
+  transition: transform 0.2s, opacity 0.2s;
+  opacity: 0.45;
+}
+.site-header__nav-item.is-open .site-header__chevron {
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+/* Dropdown panel */
+.site-header__dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 232px;
+  background: rgba(6,6,22,0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.03);
+  padding: 6px;
+  animation: fadeInUp 0.14s ease-out both;
+  /* Bridge invisible pour éviter le gap au survol */
+  margin-top: -2px;
+}
+.site-header__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.site-header__dropdown-section { padding: 2px 0; }
+
+.site-header__dropdown-label {
+  padding: 6px 10px 5px;
+  font-size: 9px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.22);
+}
+
+.site-header__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.72);
+  transition: background 0.13s, color 0.13s;
+}
+
+.site-header__dropdown-item:hover {
+  background: rgba(255,255,255,0.05);
+  color: white;
+}
+
+.site-header__dropdown-item.is-active {
+  background: rgba(240,192,64,0.07);
+}
+.site-header__dropdown-item.is-active .site-header__dropdown-name {
+  color: #f0c040;
+}
+
+.site-header__dropdown-icon {
+  font-size: 18px;
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 9px;
+}
+
+.site-header__dropdown-name {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: 'Sora', sans-serif;
+  color: white;
+  letter-spacing: 0.2px;
+  margin-bottom: 2px;
+}
+
+.site-header__dropdown-desc {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.32);
+  letter-spacing: 0.3px;
+}
+
+.stars-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: white;
+}
+
+.glow-orb {
+  position: fixed;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+}
+
+.glow-orb--purple {
+  top: 10%;
+  left: 5%;
+  width: 400px;
+  height: 400px;
+  background: rgba(100,50,200,0.08);
+}
+
+.glow-orb--orange {
+  bottom: 10%;
+  right: 5%;
+  width: 350px;
+  height: 350px;
+  background: rgba(240,100,50,0.07);
+}
+
+/* Homepage / Sports orbes — city-lights palette */
+.glow-orb--cyan {
+  top: 10%;
+  left: 5%;
+  width: 500px;
+  height: 500px;
+  background: rgba(0,180,255,0.10);
+}
+
+.glow-orb--amber {
+  bottom: 8%;
+  right: 4%;
+  width: 440px;
+  height: 440px;
+  background: rgba(240,150,30,0.10);
+}
+
+/* ── Home screen ──────────────────────────────────────────────────────────── */
+.home-screen {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.6s ease-out both;
+}
+
+.home-emoji {
+  font-size: 64px;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.home-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(56px, 12vw, 100px);
+  letter-spacing: 6px;
+  color: white;
+  line-height: 1;
+  text-shadow: 0 0 60px rgba(240,192,64,0.3);
+}
+
+.home-title--pop {
+  font-size: clamp(50px, 11vw, 96px);
+  letter-spacing: 5px;
+}
+
+.accent { color: #f0c040; }
+
+.home-subtitle {
+  color: rgba(255,255,255,0.45);
+  margin-top: 12px;
+  font-size: 15px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+}
+
+.home-stats {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-top: 32px;
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.home-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.nav-link-wrap { margin-top: 28px; }
+
+.nav-link {
+  color: rgba(255,255,255,0.3);
+  font-size: 13px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-decoration: none;
+}
+
+/* ── Buttons ──────────────────────────────────────────────────────────────── */
+.btn-primary {
+  padding: 18px 52px;
+  font-size: 18px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  color: #1a0800;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 40px rgba(240,192,64,0.4), 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.btn-outline {
+  padding: 18px 40px;
+  font-size: 18px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: transparent;
+  color: #f0c040;
+  border: 2px solid rgba(240,192,64,0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(240,192,64,0.15);
+}
+
+.btn-next {
+  margin-top: 20px;
+  padding: 14px 48px;
+  font-size: 15px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 3px;
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  color: #1a0800;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(240,192,64,0.3);
+}
+
+.btn-next-wide {
+  margin-bottom: 14px;
+  width: 100%;
+  padding: 18px;
+  font-size: 20px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 5px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  color: #1a0800;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 32px rgba(240,192,64,0.5), 0 6px 20px rgba(0,0,0,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-submit {
+  margin-top: 18px;
+  width: 100%;
+  padding: 15px;
+  font-size: 16px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  color: #1a0800;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 0 24px rgba(240,192,64,0.25);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* ── Score bar (CityGuessr) ───────────────────────────────────────────────── */
+.score-bar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto 20px;
+}
+
+.score-bar__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'DM Mono', monospace;
+}
+
+.score-bar__score {
+  color: #f0c040;
+  font-weight: 700;
+}
+
+.score-bar__track {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.score-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f0c040, #ff6b6b);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 12px rgba(240,192,64,0.6);
+}
+
+/* ── City card ────────────────────────────────────────────────────────────── */
+.city-card {
+  position: relative;
+  width: 260px;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.4,0,0.2,1), box-shadow 0.25s, opacity 0.4s;
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  opacity: 1;
+  cursor: pointer;
+}
+
+.city-card--disabled {
+  cursor: default;
+}
+
+.city-card--active:hover {
+  transform: scale(1.04) translateY(-4px);
+  box-shadow: 0 0 30px rgba(240,192,64,0.3), 0 8px 40px rgba(0,0,0,0.5);
+  border-color: rgba(240,192,64,0.5);
+}
+
+.city-card--loser {
+  opacity: 0.45;
+  box-shadow: 0 0 20px rgba(255,60,60,0.3), 0 8px 32px rgba(0,0,0,0.5);
+  border-color: rgba(255,60,60,0.4);
+}
+
+.city-card--winner {
+  box-shadow: 0 0 40px rgba(0,255,160,0.5), 0 8px 32px rgba(0,0,0,0.5);
+  border-color: rgba(0,255,160,0.8);
+}
+
+.city-card__img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+
+.city-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,5,20,0.95) 0%, rgba(5,5,20,0.4) 50%, transparent 100%);
+}
+
+.city-card__winner-pulse {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,255,160,0.07);
+  animation: winnerPulse 1.5s ease-in-out infinite;
+}
+
+.city-card__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 20px;
+}
+
+.city-card__name {
+  font-size: 22px;
+  font-weight: 800;
+  color: white;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 2px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+  line-height: 1.1;
+}
+
+.city-card__country-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 5px;
+}
+
+.city-card__flag {
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.city-card__country-name {
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.city-card__population {
+  font-size: 14px;
+  font-family: 'DM Mono', monospace;
+  margin-top: 6px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+.city-card__population--winner { color: #00ffa0; }
+.city-card__population--loser  { color: rgba(255,255,255,0.6); }
+
+.city-card__choose-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(240,192,64,0.95);
+  color: #1a0a00;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18px;
+  letter-spacing: 3px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 0 24px rgba(240,192,64,0.6);
+  animation: popIn 0.15s ease-out both;
+  white-space: nowrap;
+}
+
+.city-card__result-icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 24px;
+  animation: popInCenter 0.3s ease-out both;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.8));
+}
+
+/* ── Game screen (CityGuessr) ─────────────────────────────────────────────── */
+.game-container {
+  width: 100%;
+  max-width: 660px;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.4s ease-out both;
+}
+
+.game-question {
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+.cards-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.vs-badge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) translateY(40px);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(240,192,64,0.15);
+  border: 2px solid rgba(240,192,64,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #f0c040;
+  backdrop-filter: blur(8px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ── Feedback ─────────────────────────────────────────────────────────────── */
+.feedback {
+  text-align: center;
+  margin-top: 28px;
+  animation: feedbackIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.feedback__text {
+  font-size: 28px;
+  font-weight: 800;
+  font-family: 'Sora', sans-serif;
+}
+
+.feedback__text--correct {
+  color: #00ffa0;
+  text-shadow: 0 0 20px rgba(0,255,160,0.5);
+}
+
+.feedback__text--wrong {
+  color: #ff6b6b;
+  text-shadow: 0 0 20px rgba(255,107,107,0.5);
+}
+
+.feedback__bonus { margin-left: 8px; color: #f0c040; }
+
+.waiting-indicator {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.waiting-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f0c040;
+  animation: twinkle 1s ease-in-out infinite;
+}
+
+/* ── Result screen (CityGuessr) ───────────────────────────────────────────── */
+.result-screen {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  animation: scoreGrow 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.result-emoji {
+  font-size: 56px;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.result-title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(48px, 10vw, 80px);
+  letter-spacing: 4px;
+  color: white;
+  line-height: 1;
+}
+
+.score-circles {
+  margin: 28px auto;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.score-circle {
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.score-circle--lg { width: 140px; height: 140px; }
+.score-circle--md { width: 130px; height: 130px; }
+
+.score-circle--solo {
+  background: rgba(240,192,64,0.08);
+  border: 3px solid rgba(240,192,64,0.4);
+  box-shadow: 0 0 60px rgba(240,192,64,0.2);
+  margin: 28px auto;
+}
+
+.score-circle--win {
+  background: rgba(0,255,160,0.08);
+  border: 3px solid rgba(0,255,160,0.4);
+  box-shadow: 0 0 60px rgba(0,255,160,0.2);
+}
+
+.score-circle--neutral {
+  background: rgba(240,192,64,0.08);
+  border: 3px solid rgba(240,192,64,0.4);
+  box-shadow: 0 0 60px rgba(240,192,64,0.2);
+}
+
+.score-circle--lose {
+  background: rgba(255,107,107,0.08);
+  border: 3px solid rgba(255,107,107,0.3);
+  box-shadow: 0 0 60px rgba(255,107,107,0.1);
+}
+
+.score-circle__label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.score-circle__value {
+  font-family: 'Bebas Neue', cursive;
+  line-height: 1;
+}
+
+.score-circle__value--lg { font-size: 52px; }
+.score-circle__value--md { font-size: 32px; }
+
+.score-circle__value--gold  { color: #f0c040; }
+.score-circle__value--green { color: #00ffa0; }
+.score-circle__value--red   { color: #ff6b6b; }
+
+.score-circle__total {
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+}
+
+.score-circle__total--lg { font-size: 11px; }
+.score-circle__total--md { font-size: 10px; }
+
+.result-grade {
+  font-size: 18px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.result-score-bar {
+  margin: 20px auto;
+  height: 8px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.result-score-bar--cityguessr { width: 260px; }
+.result-score-bar--popguessr  { width: 240px; margin: 14px auto; height: 6px; border-radius: 6px; }
+
+.result-score-bar__fill {
+  height: 100%;
+  border-radius: 8px;
+  transition: width 1s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 12px rgba(240,192,64,0.5);
+}
+
+.result-score-bar__fill--excellent { background: linear-gradient(90deg, #00ffa0, #00d4ff); }
+.result-score-bar__fill--good      { background: linear-gradient(90deg, #f0c040, #ff8c42); }
+.result-score-bar__fill--poor      { background: linear-gradient(90deg, #ff6b6b, #ff8c42); }
+
+.result-buttons {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+
+/* ── Progress bar (PopGuessr) ─────────────────────────────────────────────── */
+.progress-bar {
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 24px;
+}
+
+.progress-bar__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-family: 'DM Mono', monospace;
+}
+
+.progress-bar__question {
+  font-size: 13px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.progress-bar__meta {
+  display: flex;
+  gap: 14px;
+}
+
+.progress-bar__stat {
+  text-align: right;
+}
+
+.progress-bar__stat-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.progress-bar__stat-value {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.progress-bar__track {
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, #f0c040, #ff6b6b);
+  border-radius: 4px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: 0 0 12px rgba(240,192,64,0.6);
+}
+
+/* ── PopGuessr game screen ────────────────────────────────────────────────── */
+.pop-game-container {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.4s ease-out both;
+}
+
+.city-photo-card {
+  border-radius: 20px;
+  overflow: hidden;
+  border: 2px solid rgba(255,255,255,0.08);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  margin-bottom: 24px;
+}
+
+.city-photo {
+  position: relative;
+  height: 220px;
+}
+
+.city-photo__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.city-photo__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5,5,20,0.92) 0%, rgba(5,5,20,0.15) 55%, transparent 100%);
+}
+
+.city-photo__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px 22px;
+}
+
+.city-photo__name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 36px;
+  letter-spacing: 3px;
+  color: white;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.8);
+  line-height: 1;
+}
+
+.city-photo__country-row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+}
+
+.city-photo__flag {
+  border-radius: 2px;
+  object-fit: cover;
+  display: block;
+  flex-shrink: 0;
+}
+
+.city-photo__country-name {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.slider-panel {
+  padding: 20px 24px;
+  background: rgba(8,8,24,0.95);
+}
+
+.slider-panel__question {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 16px;
+  letter-spacing: 0.3px;
+}
+
+.slider-panel__question--city { color: white; }
+
+.pop-display {
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 48px;
+  letter-spacing: 3px;
+  color: #f0c040;
+  text-shadow: 0 0 30px rgba(240,192,64,0.3);
+}
+
+/* ── Custom slider ────────────────────────────────────────────────────────── */
+.pop-slider { width: 100%; user-select: none; }
+
+.pop-slider__track {
+  position: relative;
+  height: 6px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+
+.pop-slider__track--active { cursor: pointer; }
+.pop-slider__track--disabled { cursor: default; }
+
+.pop-slider__fill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #f0c040, #ff8c42);
+  border-radius: 3px;
+  box-shadow: 0 0 8px rgba(240,192,64,0.4);
+}
+
+.pop-slider__thumb {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid rgba(0,0,0,0.4);
+}
+
+.pop-slider__thumb--active {
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  box-shadow: 0 0 16px rgba(240,192,64,0.6);
+  cursor: grab;
+}
+
+.pop-slider__thumb--disabled {
+  background: rgba(255,255,255,0.3);
+  box-shadow: none;
+  cursor: default;
+}
+
+.pop-slider__ticks {
+  position: relative;
+  height: 20px;
+}
+
+.pop-slider__tick {
+  position: absolute;
+  transform: translateX(-50%);
+  font-size: 10px;
+  color: rgba(255,255,255,0.25);
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+}
+
+/* ── Reveal section ───────────────────────────────────────────────────────── */
+.reveal-section {
+  margin-top: 20px;
+  animation: revealSlide 0.4s ease-out both;
+}
+
+.actual-pop-box {
+  text-align: center;
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(0,255,160,0.12), rgba(0,255,160,0.05));
+  border: 2px solid rgba(0,255,160,0.35);
+  box-shadow: 0 0 30px rgba(0,255,160,0.12);
+  animation: actualPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.actual-pop-box__label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.45);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.actual-pop-box__value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 46px;
+  letter-spacing: 3px;
+  color: #00ffa0;
+  text-shadow: 0 0 40px rgba(0,255,160,0.5);
+  line-height: 1;
+}
+
+.guess-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(240,192,64,0.06);
+  border: 1px solid rgba(240,192,64,0.18);
+}
+
+.guess-box__label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.guess-box__value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 22px;
+  color: #f0c040;
+  letter-spacing: 1px;
+}
+
+.accuracy-points {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  opacity: 0;
+  animation: popInCenter 0.4s cubic-bezier(0.34,1.56,0.64,1) 0.2s both;
+}
+
+.accuracy-points__stat {
+  text-align: center;
+}
+
+.accuracy-points__label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.accuracy-points__value {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+
+.accuracy-points__divider {
+  width: 1px;
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── How it works box (PopGuessr home) ────────────────────────────────────── */
+.how-it-works {
+  margin: 36px auto 0;
+  padding: 20px 28px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  max-width: 340px;
+  text-align: left;
+}
+
+.how-it-works__title {
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.35);
+  font-family: 'DM Mono', monospace;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+}
+
+.how-it-works__item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.how-it-works__icon { font-size: 16px; flex-shrink: 0; }
+
+.how-it-works__text {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  font-family: 'Sora', sans-serif;
+  line-height: 1.4;
+}
+
+/* ── Result screen (PopGuessr) ────────────────────────────────────────────── */
+.pop-result-screen {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  z-index: 1;
+  animation: scoreGrow 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.result-header { text-align: center; margin-bottom: 28px; }
+
+.result-emoji--pop {
+  font-size: 48px;
+  margin-bottom: 8px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.result-title--pop {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(44px, 9vw, 76px);
+  letter-spacing: 4px;
+  color: white;
+  line-height: 1;
+}
+
+.result-grade--pop {
+  font-size: 16px;
+  color: rgba(255,255,255,0.7);
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 12px;
+}
+
+/* ── Round breakdown ──────────────────────────────────────────────────────── */
+.round-breakdown {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(8,8,24,0.8);
+  margin-bottom: 20px;
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.round-breakdown__header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+  text-transform: uppercase;
+}
+
+.round-breakdown__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px;
+}
+
+/* ── Result card ──────────────────────────────────────────────────────────── */
+.result-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.result-card__img {
+  width: 48px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.result-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.result-card__title-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.result-card__flag {
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.result-card__city-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: white;
+  font-family: 'Sora', sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.result-card__stats {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.4);
+}
+
+.result-card__actual { color: #00ffa0; font-weight: 700; }
+
+.result-card__score {
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.result-card__points {
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 1px;
+}
+
+.result-card__pts-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+}
+
+.result-buttons--pop {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.btn-result-primary {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  font-size: 18px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: linear-gradient(135deg, #f0c040, #ff8c42);
+  color: #1a0800;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 40px rgba(240,192,64,0.35);
+  transition: transform 0.2s;
+}
+
+.btn-result-outline {
+  flex: 1;
+  min-width: 140px;
+  padding: 16px;
+  font-size: 18px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: transparent;
+  color: #f0c040;
+  border: 2px solid rgba(240,192,64,0.5);
+  border-radius: 14px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(240,192,64,0.15);
+  transition: transform 0.2s;
+}
+
+.btn-result-ghost {
+  flex: 1;
+  min-width: 120px;
+  padding: 16px;
+  font-size: 17px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 3px;
+  background: transparent;
+  color: rgba(255,255,255,0.35);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.result-nav { text-align: center; }
+
+/* ── Answer timer (multi) ─────────────────────────────────────────────────── */
+.answer-timer {
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+.answer-timer__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.answer-timer__label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+}
+
+.answer-timer__count {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 16px;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+.answer-timer__count--normal { color: #f0c040; }
+.answer-timer__count--urgent { color: #ff6b6b; }
+
+.answer-timer__track {
+  height: 3px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.answer-timer__fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.85s linear;
+}
+
+.answer-timer__fill--normal {
+  background: linear-gradient(90deg, #f0c040, #00d4ff);
+  box-shadow: 0 0 8px rgba(240,192,64,0.4);
+}
+
+.answer-timer__fill--urgent {
+  background: linear-gradient(90deg, #ff6b6b, #ff8c42);
+  box-shadow: 0 0 8px rgba(255,107,107,0.5);
+}
+
+/* ── Next-round countdown ─────────────────────────────────────────────────── */
+.next-countdown {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 1.5px;
+  text-align: center;
+  margin-top: 8px;
+}
+
+.next-countdown__num {
+  color: #f0c040;
+  font-weight: 700;
+}
+
+/* ── Rematch zone (result screen, multi mode) ─────────────────────────────── */
+.rematch-zone {
+  margin: 18px 0 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.rematch-record {
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+
+.rematch-record__name { color: rgba(255,255,255,0.6); }
+.rematch-record__win  { color: #00ffa0; }
+.rematch-record__loss { color: #ff6b6b; }
+.rematch-record__tie  { color: #f0c040; }
+
+.rematch-notice {
+  font-size: 13px;
+  font-weight: 700;
+  color: #f0c040;
+  font-family: 'Sora', sans-serif;
+  padding: 8px 18px;
+  border-radius: 50px;
+  background: rgba(240,192,64,0.1);
+  border: 1px solid rgba(240,192,64,0.3);
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+.btn-rematch {
+  padding: 14px 44px;
+  font-size: 17px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 4px;
+  background: transparent;
+  color: #f0c040;
+  border: 2px solid rgba(240,192,64,0.5);
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(240,192,64,0.15);
+}
+
+/* ── Name prompt modal ────────────────────────────────────────────────────── */
+.name-prompt { min-width: 320px; }
+
+.name-prompt__field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+  text-align: left;
+}
+
+.name-prompt__label {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.name-prompt__input {
+  width: 100%;
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 12px;
+  font-size: 18px;
+  font-family: 'Sora', sans-serif;
+  font-weight: 600;
+  color: white;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.5px;
+}
+
+.name-prompt__input::placeholder { color: rgba(255,255,255,0.2); }
+
+.name-prompt__input:focus {
+  border-color: rgba(240,192,64,0.6);
+  box-shadow: 0 0 0 3px rgba(240,192,64,0.1);
+}
+
+.mp-overlay__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ── Multiplayer overlay ──────────────────────────────────────────────────── */
+.mp-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(5,5,20,0.92);
+  backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+.mp-overlay__card {
+  text-align: center;
+  padding: 40px 48px;
+  border-radius: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+}
+
+.mp-overlay__icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+  animation: float 2s ease-in-out infinite;
+}
+
+.mp-overlay__title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 28px;
+  letter-spacing: 3px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.mp-overlay__sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+.mp-overlay__dots {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.mp-overlay__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f0c040;
+}
+
+.btn-cancel {
+  padding: 12px 36px;
+  font-size: 14px;
+  font-family: 'Bebas Neue', cursive;
+  letter-spacing: 3px;
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+/* ── Opponent bar ─────────────────────────────────────────────────────────── */
+.opponent-bar {
+  width: 100%;
+  padding: 10px 16px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'DM Mono', monospace;
+}
+
+.opponent-bar__player {
+  text-align: center;
+  min-width: 48px;
+}
+
+.opponent-bar__label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.opponent-bar__label-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: center;
+}
+
+.opponent-bar__answered-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f0c040;
+  box-shadow: 0 0 6px #f0c040;
+}
+
+.opponent-bar__score {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.opponent-bar__score--leading { color: #00ffa0; }
+.opponent-bar__score--trailing { color: #f0c040; }
+.opponent-bar__score--opp-leading { color: #00ffa0; }
+.opponent-bar__score--opp-trailing { color: #ff6b6b; }
+
+.opponent-bar__bars { flex: 1; position: relative; }
+
+.opponent-bar__track {
+  height: 6px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+}
+
+.opponent-bar__track + .opponent-bar__track { margin-top: 3px; }
+
+.opponent-bar__fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.opponent-bar__fill--lead-me    { background: linear-gradient(90deg, #00ffa0, #00d4ff); }
+.opponent-bar__fill--trail-me   { background: linear-gradient(90deg, #f0c040, #ff8c42); }
+.opponent-bar__fill--lead-opp   { background: linear-gradient(90deg, #00ffa0, #00d4ff); }
+.opponent-bar__fill--trail-opp  { background: linear-gradient(90deg, #ff6b6b, #ff8c42); }
+
+/* ── CityMix game container ───────────────────────────────────────────────── */
+.citymix-container {
+  width: 100%;
+  max-width: 660px;
+  position: relative;
+  z-index: 1;
+  animation: slideDown 0.4s ease-out both;
+}
+
+.citymix-result-screen {
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  z-index: 1;
+  animation: scoreGrow 0.6s cubic-bezier(0.34,1.56,0.64,1) both;
+  text-align: center;
+}
+
+/* Pill showing current round type (binary / slider) */
+.round-type-pill {
+  text-align: center;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 18px;
+  padding: 5px 16px;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  display: inline-block;
+}
+
+/* Round-type badge inside result breakdown cards */
+.result-card__round-badge {
+  font-size: 9px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  padding: 2px 7px;
+  border-radius: 50px;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.result-card__round-badge--vs {
+  background: rgba(240,192,64,0.12);
+  color: rgba(240,192,64,0.8);
+  border: 1px solid rgba(240,192,64,0.2);
+}
+.result-card__round-badge--guess {
+  background: rgba(0,212,255,0.10);
+  color: rgba(0,212,255,0.8);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+
+.result-card__city-vs {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  font-family: 'DM Mono', monospace;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Active nav link in simplified header */
+.site-header__nav-link {
+  padding: 7px 14px;
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border-radius: 8px;
+  transition: color 0.15s, background 0.15s;
+  text-decoration: none;
+}
+.site-header__nav-link:hover,
+.site-header__nav-link.is-active {
+  color: rgba(255,255,255,0.92);
+  background: rgba(255,255,255,0.06);
+}
+
+/* ─── Higher or Lower ────────────────────────────────────────────────────────── */
+.hl-container {
+  width: 100%;
+  max-width: 760px;
+  position: relative;
+  z-index: 1;
+  padding: 0 16px;
+  animation: slideDown 0.4s ease-out both;
+}
+
+.hl-cards-row {
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.hl-metric-banner {
+  width: 100%;
+  padding: 22px 24px 18px;
+  border: 1.5px solid rgba(240,192,64,0.35);
+  border-radius: 18px;
+  text-align: center;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+  animation: popInCenter 0.35s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+.hl-metric-banner__scatter {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hl-metric-help {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  z-index: 2;
+}
+
+.hl-metric-help__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  font-size: 11px;
+  font-family: 'DM Mono', monospace;
+  color: rgba(255,255,255,0.5);
+  cursor: default;
+  transition: background 0.15s, color 0.15s;
+}
+
+.hl-metric-help:hover .hl-metric-help__icon {
+  background: rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.9);
+}
+
+.hl-metric-help__tooltip {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: rgba(16,14,30,0.96);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 10px;
+  padding: 8px 12px;
+  font-size: 12px;
+  font-family: 'Sora', sans-serif;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  z-index: 10;
+}
+
+.hl-metric-help:hover .hl-metric-help__tooltip {
+  display: block;
+}
+
+.hl-metric-banner__emoji {
+  font-size: 48px;
+  line-height: 1;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.hl-metric-banner__name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(32px, 6vw, 48px);
+  letter-spacing: 6px;
+  color: #f0c040;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 8px;
+  text-shadow: 0 0 30px rgba(240,192,64,0.5);
+}
+
+.hl-metric-banner__question {
+  font-size: 14px;
+  font-family: 'Sora', sans-serif;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.2px;
+  font-weight: 600;
+}
+
+/* Compact banner once the player has answered */
+.hl-metric-banner--answered {
+  padding: 10px 18px;
+  transition: padding 0.2s ease;
+}
+.hl-metric-banner--answered .hl-metric-banner__scatter,
+.hl-metric-banner--answered .hl-metric-help,
+.hl-metric-banner--answered .hl-metric-banner__emoji,
+.hl-metric-banner--answered .hl-metric-banner__name {
+  display: none;
+}
+.hl-metric-banner--answered .hl-metric-banner__question {
+  font-size: 13px;
+  color: rgba(255,255,255,0.42);
+  font-weight: 500;
+}
+
+.hl-vs-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: rgba(240,192,64,0.65);
+  width: 44px;
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.hl-card {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+  min-height: 210px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 28px 20px 24px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 20px;
+  transition: transform 0.15s ease, border-color 0.2s, box-shadow 0.2s;
+  user-select: none;
+}
+
+.hl-card--active {
+  cursor: pointer;
+}
+
+.hl-card--active:hover {
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255,255,255,0.28);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.35);
+}
+
+.hl-card--disabled {
+  cursor: default;
+}
+
+.hl-card--winner {
+  border-color: rgba(0,255,160,0.55);
+  box-shadow: 0 0 32px rgba(0,255,160,0.18);
+  background: linear-gradient(145deg, rgba(0,255,160,0.09), rgba(0,255,160,0.02));
+}
+
+.hl-card--loser {
+  opacity: 0.5;
+  border-color: rgba(255,80,80,0.35);
+}
+
+.hl-card__result-icon {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 20px;
+}
+
+.hl-card__flag-img {
+  width: 96px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.12);
+  display: block;
+}
+
+.hl-card__name {
+  font-size: 19px;
+  font-weight: 700;
+  color: #fff;
+  text-align: center;
+  font-family: 'Sora', sans-serif;
+  letter-spacing: 0.01em;
+  margin-top: 4px;
+}
+
+.hl-card__continent {
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.32);
+  text-align: center;
+}
+
+.hl-card__value {
+  font-size: 16px;
+  font-weight: 700;
+  font-family: 'DM Mono', monospace;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+.hl-card__value--winner { color: #00ffa0; }
+.hl-card__value--loser  { color: #ff6b6b; }
+
+.hl-card__choose {
+  margin-top: 8px;
+  padding: 6px 22px;
+  background: rgba(255,255,255,0.09);
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-family: 'Sora', sans-serif;
+}
+
+.hl-result-card__flag {
+  font-size: 26px;
+  flex-shrink: 0;
+  width: 48px;
+  text-align: center;
+}
+
+/* ─── Responsive — above-the-fold on all screens ────────────────────────────── */
+
+/* Mobile narrow (≤ 480px) : compact home + buttons side-by-side */
+@media (max-width: 480px) {
+  .home-emoji {
+    font-size: 44px;
+    margin-bottom: 4px;
+  }
+
+  .home-subtitle {
+    margin-top: 8px;
+    font-size: 13px;
+  }
+
+  .how-it-works {
+    margin-top: 18px;
+    padding: 12px 14px;
+  }
+
+  .how-it-works__title {
+    margin-bottom: 8px;
+  }
+
+  .how-it-works__item {
+    margin-bottom: 6px;
+  }
+
+  .how-it-works__text {
+    font-size: 12px;
+  }
+
+  /* Force buttons side-by-side and reduce their size */
+  .home-buttons {
+    margin-top: 20px;
+    gap: 10px;
+    flex-wrap: nowrap;
+  }
+
+  .btn-primary {
+    padding: 13px 20px;
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+
+  .btn-outline {
+    padding: 13px 14px;
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
+}
+
+/* Short screens (landscape phone, small laptops ≤ 700px height) */
+@media (max-height: 700px) {
+  .home-emoji {
+    font-size: 40px;
+    margin-bottom: 2px;
+  }
+
+  .home-subtitle {
+    margin-top: 6px;
+  }
+
+  .how-it-works {
+    margin-top: 14px;
+    padding: 10px 14px;
+  }
+
+  .how-it-works__title {
+    margin-bottom: 6px;
+  }
+
+  .how-it-works__item {
+    margin-bottom: 5px;
+  }
+
+  .home-buttons {
+    margin-top: 16px;
+  }
+}
+
+/* ─── Homepage (game catalog) ────────────────────────────────────────────────── */
+.home-page {
+  min-height: 100vh;
+  background-color: #ddd6fe;
+  background-image:
+    /* clearing blanc au centre pour lisibilité du hero */
+    radial-gradient(ellipse 70% 45% at 50% 20%, rgba(255,255,255,0.92) 0%, transparent 65%),
+    /* blob violet haut-gauche */
+    radial-gradient(ellipse 75% 60% at  6% 10%, rgba(139,92,246,0.85)  0%, transparent 52%),
+    /* blob bleu haut-droit */
+    radial-gradient(ellipse 65% 55% at 94% 14%, rgba(59,130,246,0.80)  0%, transparent 52%),
+    /* blob rose bas-centre */
+    radial-gradient(ellipse 70% 55% at 48% 96%, rgba(236,72,153,0.75)  0%, transparent 50%),
+    /* blob ambre bas-droit */
+    radial-gradient(ellipse 50% 40% at 90% 88%, rgba(245,158,11,0.65)  0%, transparent 45%),
+    /* blob cyan bas-gauche */
+    radial-gradient(ellipse 45% 38% at  8% 90%, rgba(6,182,212,0.55)   0%, transparent 45%);
+  position: relative;
+  overflow-x: hidden;
+  font-family: 'Sora', sans-serif;
+}
+
+.home-page__content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 104px 24px 80px;
+}
+
+.home-page__hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.home-page__title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(38px, 6.5vw, 64px);
+  letter-spacing: 3px;
+  line-height: 0.95;
+  color: #18103a;
+  margin-bottom: 14px;
+}
+
+.home-page__tagline {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #94a3b8;
+}
+
+/* ── Category sections ────────────────────────────────────────────────────── */
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.category__header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.category__icon { font-size: 20px; }
+
+.category__name {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: #1e1b4b;
+  line-height: 1;
+  text-shadow: 0 1px 3px rgba(255,255,255,0.6);
+}
+
+.category__soon-pill {
+  font-size: 9px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1.5px;
+  color: #94a3b8;
+  background: rgba(100,116,139,0.10);
+  border: 1px solid rgba(100,116,139,0.20);
+  border-radius: 4px;
+  padding: 2px 7px;
+  text-transform: uppercase;
+}
+
+.category__line {
+  flex: 1;
+  height: 1px;
+  background: rgba(255,255,255,0.45);
+}
+
+.category__games {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+/* ── Game card ────────────────────────────────────────────────────────────── */
+.game-card {
+  border-radius: 18px;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  text-decoration: none;
+}
+
+.game-card--available {
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.55);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.8);
+  cursor: pointer;
+}
+
+.game-card--available:hover {
+  transform: translateY(-6px);
+  background: rgba(255,255,255,0.88);
+  box-shadow: 0 24px 56px rgba(109,40,217,0.20), 0 4px 16px rgba(0,0,0,0.08);
+  border-color: rgba(255,255,255,0.80);
+}
+
+.game-card--soon {
+  background: rgba(255,255,255,0.28);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px dashed rgba(255,255,255,0.45);
+  opacity: 0.55;
+  cursor: default;
+}
+
+.game-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.game-card__emoji {
+  font-size: 26px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.game-card__title {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: #1e1b4b;
+  line-height: 1;
+}
+
+.game-card__desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.55;
+  font-family: 'Sora', sans-serif;
+  flex: 1;
+}
+
+.game-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 6px;
+}
+
+.game-card__tags {
+  display: flex;
+  gap: 6px;
+}
+
+.game-card__tag {
+  font-size: 9px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #7c3aed;
+  background: rgba(124,58,237,0.08);
+  border-radius: 4px;
+  padding: 3px 7px;
+}
+
+.game-card__cta {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #7c3aed;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.game-card--available:hover .game-card__cta {
+  opacity: 1;
+}
+
+/* ── SEO section ──────────────────────────────────────────────────────────── */
+.seo-section {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(0,0,0,0.07);
+  min-height: 120px;
+  color: #94a3b8;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Site footer ──────────────────────────────────────────────────────────── */
+.site-footer {
+  text-align: center;
+  padding: 24px 16px;
+  border-top: 1px solid rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.20);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.site-footer__links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.site-footer__link {
+  font-size: 12px;
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.site-footer__link:hover { color: #64748b; }
+
+.site-footer__sep {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.site-footer__copy {
+  font-size: 11px;
+  color: #cbd5e1;
+  font-family: 'DM Mono', monospace;
+}
+
+/* ── Homepage responsive ──────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .home-page__content {
+    padding: 88px 16px 60px;
+  }
+
+  .home-page__hero {
+    margin-bottom: 40px;
+  }
+
+  .categories {
+    gap: 36px;
+  }
+
+  .category__games {
+    grid-template-columns: 1fr;
+  }
+
+  .game-card {
+    padding: 16px 18px;
+  }
+}

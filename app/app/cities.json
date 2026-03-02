@@ -1,0 +1,801 @@
+[
+  {
+    "name": "Tokyo",
+    "country": "Japan",
+    "flag": "https://flagcdn.com/w40/jp.png",
+    "population": 13960000,
+    "image": "/images/geo/tokyo.webp",
+    "flag2x": "https://flagcdn.com/w80/jp.png"
+  },
+  {
+    "name": "Delhi",
+    "country": "India",
+    "flag": "https://flagcdn.com/w40/in.png",
+    "population": 32941000,
+    "image": "/images/geo/delhi.webp",
+    "flag2x": "https://flagcdn.com/w80/in.png"
+  },
+  {
+    "name": "Shanghai",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 24870000,
+    "image": "/images/geo/shanghai.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "São Paulo",
+    "country": "Brazil",
+    "flag": "https://flagcdn.com/w40/br.png",
+    "population": 22430000,
+    "image": "/images/geo/sao-paulo.webp",
+    "flag2x": "https://flagcdn.com/w80/br.png"
+  },
+  {
+    "name": "Mexico City",
+    "country": "Mexico",
+    "flag": "https://flagcdn.com/w40/mx.png",
+    "population": 21671000,
+    "image": "/images/geo/mexico-city.webp",
+    "flag2x": "https://flagcdn.com/w80/mx.png"
+  },
+  {
+    "name": "Cairo",
+    "country": "Egypt",
+    "flag": "https://flagcdn.com/w40/eg.png",
+    "population": 21323000,
+    "image": "/images/geo/cairo.webp",
+    "flag2x": "https://flagcdn.com/w80/eg.png"
+  },
+  {
+    "name": "Mumbai",
+    "country": "India",
+    "flag": "https://flagcdn.com/w40/in.png",
+    "population": 20667000,
+    "image": "/images/geo/mumbai.webp",
+    "flag2x": "https://flagcdn.com/w80/in.png"
+  },
+  {
+    "name": "Beijing",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 20035000,
+    "image": "/images/geo/beijing.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Dhaka",
+    "country": "Bangladesh",
+    "flag": "https://flagcdn.com/w40/bd.png",
+    "population": 18627000,
+    "image": "/images/geo/dhaka.webp",
+    "flag2x": "https://flagcdn.com/w80/bd.png"
+  },
+  {
+    "name": "Osaka",
+    "country": "Japan",
+    "flag": "https://flagcdn.com/w40/jp.png",
+    "population": 19165000,
+    "image": "/images/geo/osaka.webp",
+    "flag2x": "https://flagcdn.com/w80/jp.png"
+  },
+  {
+    "name": "New York",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 18713000,
+    "image": "/images/geo/new-york.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Karachi",
+    "country": "Pakistan",
+    "flag": "https://flagcdn.com/w40/pk.png",
+    "population": 17236000,
+    "image": "/images/geo/karachi.webp",
+    "flag2x": "https://flagcdn.com/w80/pk.png"
+  },
+  {
+    "name": "Buenos Aires",
+    "country": "Argentina",
+    "flag": "https://flagcdn.com/w40/ar.png",
+    "population": 16157000,
+    "image": "/images/geo/buenos-aires.webp",
+    "flag2x": "https://flagcdn.com/w80/ar.png"
+  },
+  {
+    "name": "Lagos",
+    "country": "Nigeria",
+    "flag": "https://flagcdn.com/w40/ng.png",
+    "population": 15946000,
+    "image": "/images/geo/lagos.webp",
+    "flag2x": "https://flagcdn.com/w80/ng.png"
+  },
+  {
+    "name": "Istanbul",
+    "country": "Turkey",
+    "flag": "https://flagcdn.com/w40/tr.png",
+    "population": 15029000,
+    "image": "/images/geo/istanbul.webp",
+    "flag2x": "https://flagcdn.com/w80/tr.png"
+  },
+  {
+    "name": "Kinshasa",
+    "country": "DR Congo",
+    "flag": "https://flagcdn.com/w40/cd.png",
+    "population": 14970000,
+    "image": "/images/geo/kinshasa.webp",
+    "flag2x": "https://flagcdn.com/w80/cd.png"
+  },
+  {
+    "name": "Manila",
+    "country": "Philippines",
+    "flag": "https://flagcdn.com/w40/ph.png",
+    "population": 14406000,
+    "image": "/images/geo/manila.webp",
+    "flag2x": "https://flagcdn.com/w80/ph.png"
+  },
+  {
+    "name": "Rio de Janeiro",
+    "country": "Brazil",
+    "flag": "https://flagcdn.com/w40/br.png",
+    "population": 13458000,
+    "image": "/images/geo/rio-de-janeiro.webp",
+    "flag2x": "https://flagcdn.com/w80/br.png"
+  },
+  {
+    "name": "Tianjin",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 13215000,
+    "image": "/images/geo/tianjin.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Guangzhou",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 13081000,
+    "image": "/images/geo/guangzhou.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Los Angeles",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 12447000,
+    "image": "/images/geo/los-angeles.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Moscow",
+    "country": "Russia",
+    "flag": "https://flagcdn.com/w40/ru.png",
+    "population": 12506000,
+    "image": "/images/geo/moscow.webp",
+    "flag2x": "https://flagcdn.com/w80/ru.png"
+  },
+  {
+    "name": "Shenzhen",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 12356000,
+    "image": "/images/geo/shenzhen.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Lahore",
+    "country": "Pakistan",
+    "flag": "https://flagcdn.com/w40/pk.png",
+    "population": 12188000,
+    "image": "/images/geo/lahore.webp",
+    "flag2x": "https://flagcdn.com/w80/pk.png"
+  },
+  {
+    "name": "Bangalore",
+    "country": "India",
+    "flag": "https://flagcdn.com/w40/in.png",
+    "population": 12327000,
+    "image": "/images/geo/bangalore.webp",
+    "flag2x": "https://flagcdn.com/w80/in.png"
+  },
+  {
+    "name": "Paris",
+    "country": "France",
+    "flag": "https://flagcdn.com/w40/fr.png",
+    "population": 11020000,
+    "image": "/images/geo/paris.webp",
+    "flag2x": "https://flagcdn.com/w80/fr.png"
+  },
+  {
+    "name": "Jakarta",
+    "country": "Indonesia",
+    "flag": "https://flagcdn.com/w40/id.png",
+    "population": 10770000,
+    "image": "/images/geo/jakarta.webp",
+    "flag2x": "https://flagcdn.com/w80/id.png"
+  },
+  {
+    "name": "London",
+    "country": "United Kingdom",
+    "flag": "https://flagcdn.com/w40/gb.png",
+    "population": 9648000,
+    "image": "/images/geo/london.webp",
+    "flag2x": "https://flagcdn.com/w80/gb.png"
+  },
+  {
+    "name": "Lima",
+    "country": "Peru",
+    "flag": "https://flagcdn.com/w40/pe.png",
+    "population": 11044000,
+    "image": "/images/geo/lima.webp",
+    "flag2x": "https://flagcdn.com/w80/pe.png"
+  },
+  {
+    "name": "Bangkok",
+    "country": "Thailand",
+    "flag": "https://flagcdn.com/w40/th.png",
+    "population": 10722000,
+    "image": "/images/geo/bangkok.webp",
+    "flag2x": "https://flagcdn.com/w80/th.png"
+  },
+  {
+    "name": "Chennai",
+    "country": "India",
+    "flag": "https://flagcdn.com/w40/in.png",
+    "population": 10971000,
+    "image": "/images/geo/chennai.webp",
+    "flag2x": "https://flagcdn.com/w80/in.png"
+  },
+  {
+    "name": "Seoul",
+    "country": "South Korea",
+    "flag": "https://flagcdn.com/w40/kr.png",
+    "population": 9963000,
+    "image": "/images/geo/seoul.webp",
+    "flag2x": "https://flagcdn.com/w80/kr.png"
+  },
+  {
+    "name": "Nagoya",
+    "country": "Japan",
+    "flag": "https://flagcdn.com/w40/jp.png",
+    "population": 9552000,
+    "image": "/images/geo/nagoya.webp",
+    "flag2x": "https://flagcdn.com/w80/jp.png"
+  },
+  {
+    "name": "Hyderabad",
+    "country": "India",
+    "flag": "https://flagcdn.com/w40/in.png",
+    "population": 10004000,
+    "image": "/images/geo/hyderabad.webp",
+    "flag2x": "https://flagcdn.com/w80/in.png"
+  },
+  {
+    "name": "Bogotá",
+    "country": "Colombia",
+    "flag": "https://flagcdn.com/w40/co.png",
+    "population": 10978000,
+    "image": "/images/geo/bogota.webp",
+    "flag2x": "https://flagcdn.com/w80/co.png"
+  },
+  {
+    "name": "Chengdu",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 9000000,
+    "image": "/images/geo/chengdu.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Wuhan",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 8820000,
+    "image": "/images/geo/wuhan.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Nanjing",
+    "country": "China",
+    "flag": "https://flagcdn.com/w40/cn.png",
+    "population": 8335000,
+    "image": "/images/geo/nanjing.webp",
+    "flag2x": "https://flagcdn.com/w80/cn.png"
+  },
+  {
+    "name": "Tehran",
+    "country": "Iran",
+    "flag": "https://flagcdn.com/w40/ir.png",
+    "population": 9381000,
+    "image": "/images/geo/tehran.webp",
+    "flag2x": "https://flagcdn.com/w80/ir.png"
+  },
+  {
+    "name": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "flag": "https://flagcdn.com/w40/vn.png",
+    "population": 8837000,
+    "image": "/images/geo/ho-chi-minh-city.webp",
+    "flag2x": "https://flagcdn.com/w80/vn.png"
+  },
+  {
+    "name": "Luanda",
+    "country": "Angola",
+    "flag": "https://flagcdn.com/w40/ao.png",
+    "population": 8952000,
+    "image": "/images/geo/luanda.webp",
+    "flag2x": "https://flagcdn.com/w80/ao.png"
+  },
+  {
+    "name": "Kuala Lumpur",
+    "flag": "https://flagcdn.com/w40/my.png",
+    "population": 8285000,
+    "image": "/images/geo/kuala-lumpur.webp",
+    "flag2x": "https://flagcdn.com/w80/my.png"
+  },
+  {
+    "name": "Chicago",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 8672000,
+    "image": "/images/geo/chicago.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Taipei",
+    "country": "Taiwan",
+    "flag": "https://flagcdn.com/w40/tw.png",
+    "population": 8338000,
+    "image": "/images/geo/taipei.webp",
+    "flag2x": "https://flagcdn.com/w80/tw.png"
+  },
+  {
+    "name": "Santiago",
+    "country": "Chile",
+    "flag": "https://flagcdn.com/w40/cl.png",
+    "population": 7007000,
+    "image": "/images/geo/santiago.webp",
+    "flag2x": "https://flagcdn.com/w80/cl.png"
+  },
+  {
+    "name": "Johannesburg",
+    "country": "South Africa",
+    "flag": "https://flagcdn.com/w40/za.png",
+    "population": 5926000,
+    "image": "/images/geo/johannesburg.webp",
+    "flag2x": "https://flagcdn.com/w80/za.png"
+  },
+  {
+    "name": "Barcelona",
+    "country": "Spain",
+    "flag": "https://flagcdn.com/w40/es.png",
+    "population": 5586000,
+    "image": "/images/geo/barcelona.webp",
+    "flag2x": "https://flagcdn.com/w80/es.png"
+  },
+  {
+    "name": "Madrid",
+    "country": "Spain",
+    "flag": "https://flagcdn.com/w40/es.png",
+    "population": 6642000,
+    "image": "/images/geo/madrid.webp",
+    "flag2x": "https://flagcdn.com/w80/es.png"
+  },
+  {
+    "name": "Dar es Salaam",
+    "country": "Tanzania",
+    "flag": "https://flagcdn.com/w40/tz.png",
+    "population": 6368000,
+    "image": "/images/geo/dar-es-salaam.webp",
+    "flag2x": "https://flagcdn.com/w80/tz.png"
+  },
+  {
+    "name": "Nairobi",
+    "country": "Kenya",
+    "flag": "https://flagcdn.com/w40/ke.png",
+    "population": 4922000,
+    "image": "/images/geo/nairobi.webp",
+    "flag2x": "https://flagcdn.com/w80/ke.png"
+  },
+  {
+    "name": "Yangon",
+    "country": "Myanmar",
+    "flag": "https://flagcdn.com/w40/mm.png",
+    "population": 5610000,
+    "image": "/images/geo/yangon.webp",
+    "flag2x": "https://flagcdn.com/w80/mm.png"
+  },
+  {
+    "name": "Casablanca",
+    "country": "Morocco",
+    "flag": "https://flagcdn.com/w40/ma.png",
+    "population": 4370000,
+    "image": "/images/geo/casablanca.webp",
+    "flag2x": "https://flagcdn.com/w80/ma.png"
+  },
+  {
+    "name": "Algiers",
+    "country": "Algeria",
+    "flag": "https://flagcdn.com/w40/dz.png",
+    "population": 3415000,
+    "image": "/images/geo/algiers.webp",
+    "flag2x": "https://flagcdn.com/w80/dz.png"
+  },
+  {
+    "name": "Accra",
+    "country": "Ghana",
+    "flag": "https://flagcdn.com/w40/gh.png",
+    "population": 3630000,
+    "image": "/images/geo/accra.webp",
+    "flag2x": "https://flagcdn.com/w80/gh.png"
+  },
+  {
+    "name": "Singapore",
+    "country": "Singapore",
+    "flag": "https://flagcdn.com/w40/sg.png",
+    "population": 5850000,
+    "image": "/images/geo/singapore.webp",
+    "flag2x": "https://flagcdn.com/w80/sg.png"
+  },
+  {
+    "name": "Hong Kong",
+    "country": "Hong Kong",
+    "flag": "https://flagcdn.com/w40/hk.png",
+    "population": 7500000,
+    "image": "/images/geo/hong-kong.webp",
+    "flag2x": "https://flagcdn.com/w80/hk.png"
+  },
+  {
+    "name": "Sydney",
+    "country": "Australia",
+    "flag": "https://flagcdn.com/w40/au.png",
+    "population": 5312000,
+    "image": "/images/geo/sydney.webp",
+    "flag2x": "https://flagcdn.com/w80/au.png"
+  },
+  {
+    "name": "Melbourne",
+    "country": "Australia",
+    "flag": "https://flagcdn.com/w40/au.png",
+    "population": 5078000,
+    "image": "/images/geo/melbourne.webp",
+    "flag2x": "https://flagcdn.com/w80/au.png"
+  },
+  {
+    "name": "Toronto",
+    "country": "Canada",
+    "flag": "https://flagcdn.com/w40/ca.png",
+    "population": 6255000,
+    "image": "/images/geo/toronto.webp",
+    "flag2x": "https://flagcdn.com/w80/ca.png"
+  },
+  {
+    "name": "Miami",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 6198000,
+    "image": "/images/geo/miami.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Houston",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 7340000,
+    "image": "/images/geo/houston.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Dallas",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 7573000,
+    "image": "/images/geo/dallas.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Washington D.C.",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 5379000,
+    "image": "/images/geo/washington.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Rome",
+    "country": "Italy",
+    "flag": "https://flagcdn.com/w40/it.png",
+    "population": 4355000,
+    "image": "/images/geo/rome.webp",
+    "flag2x": "https://flagcdn.com/w80/it.png"
+  },
+  {
+    "name": "Milan",
+    "country": "Italy",
+    "flag": "https://flagcdn.com/w40/it.png",
+    "population": 3140000,
+    "image": "/images/geo/milan.webp",
+    "flag2x": "https://flagcdn.com/w80/it.png"
+  },
+  {
+    "name": "Berlin",
+    "country": "Germany",
+    "flag": "https://flagcdn.com/w40/de.png",
+    "population": 3769000,
+    "image": "/images/geo/berlin.webp",
+    "flag2x": "https://flagcdn.com/w80/de.png"
+  },
+  {
+    "name": "Munich",
+    "country": "Germany",
+    "flag": "https://flagcdn.com/w40/de.png",
+    "population": 1553000,
+    "image": "/images/geo/munich.webp",
+    "flag2x": "https://flagcdn.com/w80/de.png"
+  },
+  {
+    "name": "Amsterdam",
+    "country": "Netherlands",
+    "flag": "https://flagcdn.com/w40/nl.png",
+    "population": 1149000,
+    "image": "/images/geo/amsterdam.webp",
+    "flag2x": "https://flagcdn.com/w80/nl.png"
+  },
+  {
+    "name": "Brussels",
+    "country": "Belgium",
+    "flag": "https://flagcdn.com/w40/be.png",
+    "population": 2110000,
+    "image": "/images/geo/brussels.webp",
+    "flag2x": "https://flagcdn.com/w80/be.png"
+  },
+  {
+    "name": "Vienna",
+    "country": "Austria",
+    "flag": "https://flagcdn.com/w40/at.png",
+    "population": 1931000,
+    "image": "/images/geo/vienna.webp",
+    "flag2x": "https://flagcdn.com/w80/at.png"
+  },
+  {
+    "name": "Warsaw",
+    "country": "Poland",
+    "flag": "https://flagcdn.com/w40/pl.png",
+    "population": 1794000,
+    "image": "/images/geo/warsaw.webp",
+    "flag2x": "https://flagcdn.com/w80/pl.png"
+  },
+  {
+    "name": "Budapest",
+    "country": "Hungary",
+    "flag": "https://flagcdn.com/w40/hu.png",
+    "population": 1752000,
+    "image": "/images/geo/budapest.webp",
+    "flag2x": "https://flagcdn.com/w80/hu.png"
+  },
+  {
+    "name": "Prague",
+    "country": "Czech Republic",
+    "flag": "https://flagcdn.com/w40/cz.png",
+    "population": 1335000,
+    "image": "/images/geo/prague.webp",
+    "flag2x": "https://flagcdn.com/w80/cz.png"
+  },
+  {
+    "name": "Bucharest",
+    "country": "Romania",
+    "flag": "https://flagcdn.com/w40/ro.png",
+    "population": 1883000,
+    "image": "/images/geo/bucharest.webp",
+    "flag2x": "https://flagcdn.com/w80/ro.png"
+  },
+  {
+    "name": "Stockholm",
+    "country": "Sweden",
+    "flag": "https://flagcdn.com/w40/se.png",
+    "population": 1657000,
+    "image": "/images/geo/stockholm.webp",
+    "flag2x": "https://flagcdn.com/w80/se.png"
+  },
+  {
+    "name": "Copenhagen",
+    "country": "Denmark",
+    "flag": "https://flagcdn.com/w40/dk.png",
+    "population": 1336000,
+    "image": "/images/geo/copenhagen.webp",
+    "flag2x": "https://flagcdn.com/w80/dk.png"
+  },
+  {
+    "name": "Helsinki",
+    "country": "Finland",
+    "flag": "https://flagcdn.com/w40/fi.png",
+    "population": 1143000,
+    "image": "/images/geo/helsinki.webp",
+    "flag2x": "https://flagcdn.com/w80/fi.png"
+  },
+  {
+    "name": "Lisbon",
+    "country": "Portugal",
+    "flag": "https://flagcdn.com/w40/pt.png",
+    "population": 2942000,
+    "image": "/images/geo/lisbon.webp",
+    "flag2x": "https://flagcdn.com/w80/pt.png"
+  },
+  {
+    "name": "Athens",
+    "country": "Greece",
+    "flag": "https://flagcdn.com/w40/gr.png",
+    "population": 3153000,
+    "image": "/images/geo/athens.webp",
+    "flag2x": "https://flagcdn.com/w80/gr.png"
+  },
+  {
+    "name": "Dubai",
+    "country": "UAE",
+    "flag": "https://flagcdn.com/w40/ae.png",
+    "population": 3331000,
+    "image": "/images/geo/dubai.webp",
+    "flag2x": "https://flagcdn.com/w80/ae.png"
+  },
+  {
+    "name": "Riyadh",
+    "country": "Saudi Arabia",
+    "flag": "https://flagcdn.com/w40/sa.png",
+    "population": 7676000,
+    "image": "/images/geo/riyadh.webp",
+    "flag2x": "https://flagcdn.com/w80/sa.png"
+  },
+  {
+    "name": "Baghdad",
+    "country": "Iraq",
+    "flag": "https://flagcdn.com/w40/iq.png",
+    "population": 7180000,
+    "image": "/images/geo/baghdad.webp",
+    "flag2x": "https://flagcdn.com/w80/iq.png"
+  },
+  {
+    "name": "Addis Ababa",
+    "country": "Ethiopia",
+    "flag": "https://flagcdn.com/w40/et.png",
+    "population": 4794000,
+    "image": "/images/geo/addis-ababa.webp",
+    "flag2x": "https://flagcdn.com/w80/et.png"
+  },
+  {
+    "name": "Dakar",
+    "country": "Senegal",
+    "flag": "https://flagcdn.com/w40/sn.png",
+    "population": 3758000,
+    "image": "/images/geo/dakar.webp",
+    "flag2x": "https://flagcdn.com/w80/sn.png"
+  },
+  {
+    "name": "Guadalajara",
+    "country": "Mexico",
+    "flag": "https://flagcdn.com/w40/mx.png",
+    "population": 5265000,
+    "image": "/images/geo/guadalajara.webp",
+    "flag2x": "https://flagcdn.com/w80/mx.png"
+  },
+  {
+    "name": "Monterrey",
+    "country": "Mexico",
+    "flag": "https://flagcdn.com/w40/mx.png",
+    "population": 5341000,
+    "image": "/images/geo/monterrey.webp",
+    "flag2x": "https://flagcdn.com/w80/mx.png"
+  },
+  {
+    "name": "Medellín",
+    "country": "Colombia",
+    "flag": "https://flagcdn.com/w40/co.png",
+    "population": 4034000,
+    "image": "/images/geo/medellin.webp",
+    "flag2x": "https://flagcdn.com/w80/co.png"
+  },
+  {
+    "name": "Havana",
+    "country": "Cuba",
+    "flag": "https://flagcdn.com/w40/cu.png",
+    "population": 2141000,
+    "image": "/images/geo/havana.webp",
+    "flag2x": "https://flagcdn.com/w80/cu.png"
+  },
+  {
+    "name": "San Francisco",
+    "country": "United States",
+    "flag": "https://flagcdn.com/w40/us.png",
+    "population": 4749000,
+    "image": "/images/geo/san-francisco.webp",
+    "flag2x": "https://flagcdn.com/w80/us.png"
+  },
+  {
+    "name": "Abidjan",
+    "country": "Ivory Coast",
+    "flag": "https://flagcdn.com/w40/ci.png",
+    "population": 5303000,
+    "image": "/images/geo/abidjan.webp",
+    "flag2x": "https://flagcdn.com/w80/ci.png"
+  },
+  {
+    "name": "Khartoum",
+    "country": "Sudan",
+    "flag": "https://flagcdn.com/w40/sd.png",
+    "population": 6160000,
+    "image": "/images/geo/khartoum.webp",
+    "flag2x": "https://flagcdn.com/w80/sd.png"
+  },
+  {
+    "name": "Colombo",
+    "country": "Sri Lanka",
+    "flag": "https://flagcdn.com/w40/lk.png",
+    "population": 752000,
+    "image": "/images/geo/colombo.webp",
+    "flag2x": "https://flagcdn.com/w80/lk.png"
+  },
+  {
+    "name": "Kathmandu",
+    "country": "Nepal",
+    "flag": "https://flagcdn.com/w40/np.png",
+    "population": 1442000,
+    "image": "/images/geo/kathmandu.webp",
+    "flag2x": "https://flagcdn.com/w80/np.png"
+  },
+  {
+    "name": "Kampala",
+    "country": "Uganda",
+    "flag": "https://flagcdn.com/w40/ug.png",
+    "population": 3652000,
+    "image": "/images/geo/kampala.webp",
+    "flag2x": "https://flagcdn.com/w80/ug.png"
+  },
+  {
+    "name": "Caracas",
+    "country": "Venezuela",
+    "flag": "https://flagcdn.com/w40/ve.png",
+    "population": 2900000,
+    "image": "/images/geo/caracas.webp",
+    "flag2x": "https://flagcdn.com/w80/ve.png"
+  },
+  {
+    "name": "Cape Town",
+    "country": "South Africa",
+    "flag": "https://flagcdn.com/w40/za.png",
+    "population": 4618000,
+    "image": "/images/geo/cape-town.webp",
+    "flag2x": "https://flagcdn.com/w80/za.png"
+  },
+  {
+    "name": "Ankara",
+    "country": "Turkey",
+    "flag": "https://flagcdn.com/w40/tr.png",
+    "population": 5503000,
+    "image": "/images/geo/ankara.webp",
+    "flag2x": "https://flagcdn.com/w80/tr.png"
+  },
+  {
+    "name": "Kabul",
+    "country": "Afghanistan",
+    "flag": "https://flagcdn.com/w40/af.png",
+    "population": 4114000,
+    "image": "/images/geo/kabul.webp",
+    "flag2x": "https://flagcdn.com/w80/af.png"
+  },
+  {
+    "name": "Hanoi",
+    "country": "Vietnam",
+    "flag": "https://flagcdn.com/w40/vn.png",
+    "population": 5253000,
+    "image": "/images/geo/hanoi.webp",
+    "flag2x": "https://flagcdn.com/w80/vn.png"
+  },
+  {
+    "name": "Phnom Penh",
+    "country": "Cambodia",
+    "flag": "https://flagcdn.com/w40/kh.png",
+    "population": 2281000,
+    "image": "/images/geo/phnom-penh.webp",
+    "flag2x": "https://flagcdn.com/w80/kh.png"
+  }
+]

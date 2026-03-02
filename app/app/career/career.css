@@ -1,0 +1,375 @@
+/* ── Career Order Game ─────────────────────────────────────────────────────── */
+
+.cr-container {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px 16px 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Player card ─────────────────────────────────────────────────────────────── */
+.cr-player-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.cr-player-img {
+  width: 62px;
+  height: 62px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 10px;
+  flex-shrink: 0;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.cr-player-info { flex: 1; min-width: 0; }
+.cr-player-name {
+  font-size: 19px;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.cr-player-flag {
+  height: 13px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.cr-club-count {
+  display: inline-block;
+  background: rgba(255,200,50,0.15);
+  color: #f0c040;
+  border-radius: 8px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* ── Instruction ─────────────────────────────────────────────────────────────── */
+.cr-instruction {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.30);
+  text-align: center;
+  margin-bottom: 2px;
+}
+
+/* ── Answer slots — HORIZONTAL grid ─────────────────────────────────────────── */
+.cr-slots {
+  display: grid;
+  /* cols set inline based on club count */
+  gap: 8px;
+}
+
+/* Each slot: vertical card */
+.cr-slot {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px dashed rgba(255,255,255,0.13);
+  border-radius: 14px;
+  padding: 6px 4px 8px;
+  min-height: 96px;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  overflow: hidden;
+}
+.cr-slot--filled {
+  background: rgba(255,255,255,0.07);
+  border-style: solid;
+  border-color: rgba(255,255,255,0.18);
+  cursor: grab;
+}
+.cr-slot--filled:active { cursor: grabbing; }
+.cr-slot--drag-over {
+  background: rgba(100,160,255,0.13);
+  border-style: solid;
+  border-color: rgba(100,160,255,0.65);
+}
+.cr-slot--correct {
+  background: rgba(0,255,160,0.10);
+  border-style: solid;
+  border-color: rgba(0,255,160,0.40);
+  cursor: default;
+}
+.cr-slot--wrong {
+  background: rgba(255,107,107,0.10);
+  border-style: solid;
+  border-color: rgba(255,107,107,0.35);
+  cursor: default;
+}
+
+/* Number badge — top-left */
+.cr-slot-num {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.09);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.32);
+  flex-shrink: 0;
+  z-index: 1;
+}
+.cr-slot--correct .cr-slot-num { background: rgba(0,255,160,0.2);  color: #00ffa0; }
+.cr-slot--wrong   .cr-slot-num { background: rgba(255,107,107,0.2); color: #ff6b6b; }
+
+/* Logo inside a slot */
+.cr-slot-logo-wrap {
+  margin-top: 18px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cr-slot-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 6px;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+.cr-slot-logo-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.3);
+}
+.cr-slot-club {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  line-height: 1.25;
+  width: 100%;
+  padding: 0 3px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.cr-slot-empty-hint {
+  margin-top: 26px;
+  font-size: 10px;
+  color: rgba(255,255,255,0.14);
+  font-style: italic;
+  text-align: center;
+  padding: 0 4px;
+}
+
+/* Correct/wrong icon overlay */
+.cr-slot-verdict {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  font-size: 12px;
+}
+/* Correct answer hint below wrong slot */
+.cr-slot-correct-hint {
+  font-size: 8.5px;
+  color: rgba(0,255,160,0.65);
+  font-weight: 600;
+  text-align: center;
+  padding: 0 3px;
+  margin-top: 2px;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ── Pool area ───────────────────────────────────────────────────────────────── */
+.cr-pool-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.26);
+  margin-bottom: 4px;
+}
+.cr-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+/* Draggable club chip — same square-card style as slot */
+.cr-chip {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 8px 4px 8px;
+  width: 88px;
+  min-height: 96px;
+  background: rgba(255,255,255,0.08);
+  border: 1.5px solid rgba(255,255,255,0.16);
+  border-radius: 14px;
+  cursor: grab;
+  transition: background 0.12s, border-color 0.12s, transform 0.1s, opacity 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+.cr-chip:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.30);
+}
+.cr-chip:active { cursor: grabbing; }
+.cr-chip--dragging {
+  opacity: 0.22;
+  transform: scale(0.94);
+  pointer-events: none;
+}
+
+.cr-chip-logo-wrap {
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cr-chip-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 7px;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+.cr-chip-logo-placeholder {
+  width: 52px;
+  height: 52px;
+  border-radius: 7px;
+  background: rgba(255,255,255,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 800;
+  color: rgba(255,255,255,0.30);
+}
+.cr-chip-label {
+  font-size: 9.5px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.72);
+  text-align: center;
+  line-height: 1.25;
+  width: 100%;
+  padding: 0 3px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* ── Drag ghost ──────────────────────────────────────────────────────────────── */
+.cr-drag-ghost {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: rotate(4deg) scale(1.1);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.75), 0 0 0 2px rgba(255,255,255,0.25);
+  border-radius: 14px;
+  opacity: 0.95;
+}
+
+/* ── Submit / feedback ───────────────────────────────────────────────────────── */
+.cr-submit-row {
+  display: flex;
+  justify-content: center;
+  padding-top: 2px;
+}
+.cr-feedback-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.11);
+}
+.cr-feedback-score  { font-size: 16px; font-weight: 700; }
+.cr-feedback-detail { font-size: 12px; color: rgba(255,255,255,0.40); margin-top: 2px; }
+.cr-feedback-btn {
+  background: rgba(255,255,255,0.15);
+  border: 1.5px solid rgba(255,255,255,0.35);
+  border-radius: 14px;
+  padding: 10px 22px;
+  color: #fff;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+  flex-shrink: 0;
+}
+.cr-feedback-btn:hover { background: rgba(255,255,255,0.25); }
+.cr-waiting-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── Result card ─────────────────────────────────────────────────────────────── */
+.cr-result-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.09);
+  border-radius: 14px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.cr-result-card__info { flex: 1; min-width: 0; }
+.cr-result-card__player { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 5px; }
+.cr-result-card__clubs  { font-size: 11px; color: rgba(255,255,255,0.38); line-height: 1.6; }
+.cr-result-card__score  { text-align: right; flex-shrink: 0; }
+.cr-result-card__pts    { font-size: 22px; font-weight: 800; }
+.cr-result-card__pts-label { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; }
+
+@media (max-width: 420px) {
+  .cr-chip { width: 74px; min-height: 84px; }
+  .cr-chip-logo { width: 44px; height: 44px; }
+  .cr-chip-logo-placeholder { width: 44px; height: 44px; font-size: 15px; }
+  .cr-slot { min-height: 84px; }
+  .cr-slot-logo { width: 40px; height: 40px; }
+  .cr-player-name { font-size: 16px; }
+}

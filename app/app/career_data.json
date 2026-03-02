@@ -1,0 +1,169 @@
+{
+  "players": [
+    {
+      "name": "Zinedine Zidane",
+      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Zinedine Zidane",
+      "clubs": ["Cannes", "Bordeaux", "Juventus", "Real Madrid"]
+    },
+    {
+      "name": "Ronaldo",
+      "flag": "🇧🇷", "flagCode": "br", "wiki": "Ronaldo (Brazilian footballer)",
+      "clubs": ["Cruzeiro", "PSV Eindhoven", "FC Barcelona", "Inter Milan", "Real Madrid"]
+    },
+    {
+      "name": "Cristiano Ronaldo",
+      "flag": "🇵🇹", "flagCode": "pt", "wiki": "Cristiano Ronaldo",
+      "clubs": ["Sporting CP", "Manchester United", "Real Madrid", "Juventus", "Al-Nassr"]
+    },
+    {
+      "name": "Thierry Henry",
+      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Thierry Henry",
+      "clubs": ["Monaco", "Juventus", "Arsenal", "FC Barcelona"]
+    },
+    {
+      "name": "David Beckham",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "David Beckham",
+      "clubs": ["Manchester United", "Real Madrid", "LA Galaxy", "Paris Saint-Germain"]
+    },
+    {
+      "name": "Luka Modrić",
+      "flag": "🇭🇷", "flagCode": "hr", "wiki": "Luka Modrić",
+      "clubs": ["Dinamo Zagreb", "Tottenham Hotspur", "Real Madrid"]
+    },
+    {
+      "name": "Zlatan Ibrahimović",
+      "flag": "🇸🇪", "flagCode": "se", "wiki": "Zlatan Ibrahimović",
+      "clubs": ["Malmö FF", "Ajax", "Juventus", "Inter Milan", "FC Barcelona", "Paris Saint-Germain"]
+    },
+    {
+      "name": "Didier Drogba",
+      "flag": "🇨🇮", "flagCode": "ci", "wiki": "Didier Drogba",
+      "clubs": ["Guingamp", "Olympique de Marseille", "Chelsea", "Galatasaray"]
+    },
+    {
+      "name": "Neymar",
+      "flag": "🇧🇷", "flagCode": "br", "wiki": "Neymar",
+      "clubs": ["Santos", "FC Barcelona", "Paris Saint-Germain", "Al-Hilal"]
+    },
+    {
+      "name": "Kaká",
+      "flag": "🇧🇷", "flagCode": "br", "wiki": "Kaká",
+      "clubs": ["São Paulo", "AC Milan", "Real Madrid", "Orlando City"]
+    },
+    {
+      "name": "Luís Figo",
+      "flag": "🇵🇹", "flagCode": "pt", "wiki": "Luís Figo",
+      "clubs": ["Sporting CP", "FC Barcelona", "Real Madrid", "Inter Milan"]
+    },
+    {
+      "name": "Ronaldinho",
+      "flag": "🇧🇷", "flagCode": "br", "wiki": "Ronaldinho",
+      "clubs": ["Grêmio", "Paris Saint-Germain", "FC Barcelona", "AC Milan"]
+    },
+    {
+      "name": "Fernando Torres",
+      "flag": "🇪🇸", "flagCode": "es", "wiki": "Fernando Torres",
+      "clubs": ["Atlético Madrid", "Liverpool", "Chelsea", "AC Milan"]
+    },
+    {
+      "name": "Xabi Alonso",
+      "flag": "🇪🇸", "flagCode": "es", "wiki": "Xabi Alonso",
+      "clubs": ["Real Sociedad", "Liverpool", "Real Madrid", "Bayern Munich"]
+    },
+    {
+      "name": "Raúl",
+      "flag": "🇪🇸", "flagCode": "es", "wiki": "Raúl González",
+      "clubs": ["Real Madrid", "Schalke 04", "Al-Sadd"]
+    },
+    {
+      "name": "Gareth Bale",
+      "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "flagCode": "gb-wls", "wiki": "Gareth Bale",
+      "clubs": ["Southampton", "Tottenham Hotspur", "Real Madrid", "LAFC"]
+    },
+    {
+      "name": "Mesut Özil",
+      "flag": "🇩🇪", "flagCode": "de", "wiki": "Mesut Özil",
+      "clubs": ["Werder Bremen", "Real Madrid", "Arsenal", "Fenerbahçe"]
+    },
+    {
+      "name": "Roberto Carlos",
+      "flag": "🇧🇷", "flagCode": "br", "wiki": "Roberto Carlos",
+      "clubs": ["Palmeiras", "Inter Milan", "Real Madrid", "Fenerbahçe"]
+    },
+    {
+      "name": "Samuel Eto'o",
+      "flag": "🇨🇲", "flagCode": "cm", "wiki": "Samuel Eto'o",
+      "clubs": ["Mallorca", "FC Barcelona", "Inter Milan", "Anzhi Makhachkala"]
+    },
+    {
+      "name": "Wayne Rooney",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Wayne Rooney",
+      "clubs": ["Everton", "Manchester United", "DC United"]
+    },
+    {
+      "name": "Lionel Messi",
+      "flag": "🇦🇷", "flagCode": "ar", "wiki": "Lionel Messi",
+      "clubs": ["FC Barcelona", "Paris Saint-Germain", "Inter Miami"]
+    },
+    {
+      "name": "Andrés Iniesta",
+      "flag": "🇪🇸", "flagCode": "es", "wiki": "Andrés Iniesta",
+      "clubs": ["FC Barcelona", "Vissel Kobe", "Emirates Club"]
+    },
+    {
+      "name": "Robert Lewandowski",
+      "flag": "🇵🇱", "flagCode": "pl", "wiki": "Robert Lewandowski",
+      "clubs": ["Lech Poznań", "Borussia Dortmund", "Bayern Munich", "FC Barcelona"]
+    },
+    {
+      "name": "Kylian Mbappé",
+      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Kylian Mbappé",
+      "clubs": ["Monaco", "Paris Saint-Germain", "Real Madrid"]
+    },
+    {
+      "name": "Erling Haaland",
+      "flag": "🇳🇴", "flagCode": "no", "wiki": "Erling Haaland",
+      "clubs": ["Molde", "Red Bull Salzburg", "Borussia Dortmund", "Manchester City"]
+    },
+    {
+      "name": "Mohamed Salah",
+      "flag": "🇪🇬", "flagCode": "eg", "wiki": "Mohamed Salah",
+      "clubs": ["Basel", "Chelsea", "Fiorentina", "AS Roma", "Liverpool"]
+    },
+    {
+      "name": "Kevin De Bruyne",
+      "flag": "🇧🇪", "flagCode": "be", "wiki": "Kevin De Bruyne",
+      "clubs": ["Genk", "Chelsea", "Werder Bremen", "VfL Wolfsburg", "Manchester City"]
+    },
+    {
+      "name": "Romelu Lukaku",
+      "flag": "🇧🇪", "flagCode": "be", "wiki": "Romelu Lukaku",
+      "clubs": ["Anderlecht", "Chelsea", "Everton", "Manchester United", "Inter Milan"]
+    },
+    {
+      "name": "Sergio Agüero",
+      "flag": "🇦🇷", "flagCode": "ar", "wiki": "Sergio Agüero",
+      "clubs": ["Independiente", "Atlético Madrid", "Manchester City", "FC Barcelona"]
+    },
+    {
+      "name": "Frank Lampard",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Frank Lampard",
+      "clubs": ["West Ham United", "Chelsea", "Manchester City", "New York City FC"]
+    },
+    {
+      "name": "Cesc Fàbregas",
+      "flag": "🇪🇸", "flagCode": "es", "wiki": "Cesc Fàbregas",
+      "clubs": ["Arsenal", "FC Barcelona", "Chelsea", "AS Monaco"]
+    },
+    {
+      "name": "Alexis Sánchez",
+      "flag": "🇨🇱", "flagCode": "cl", "wiki": "Alexis Sánchez",
+      "clubs": ["Udinese", "FC Barcelona", "Arsenal", "Manchester United", "Inter Milan"]
+    },
+    {
+      "name": "Rio Ferdinand",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Rio Ferdinand",
+      "clubs": ["West Ham United", "Leeds United", "Manchester United", "Queens Park Rangers"]
+    }
+  ]
+}
