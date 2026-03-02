@@ -120,14 +120,14 @@ export default function Header() {
               className={`site-header__nav-item${geoOpen ? " is-open" : ""}${isGeoActive ? " is-active" : ""}`}
               onClick={() => setGeoOpen(o => !o)}
             >
-              🌍 Geography
+              🌍 World
               <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               {geoOpen && (
                 <div className="site-header__dropdown">
                   <div className="site-header__dropdown-section">
-                    <div className="site-header__dropdown-label">Geography</div>
+                    <div className="site-header__dropdown-label">World</div>
                     <Link href="/citymix" className={`site-header__dropdown-item${pathname === "/citymix" ? " is-active" : ""}`} onClick={() => setGeoOpen(false)}>
                       <div className="site-header__dropdown-icon">🌍</div>
                       <div>
@@ -205,7 +205,7 @@ export default function Header() {
             <div className="mobile-menu__divider" />
 
             <div className="mobile-menu__section">
-              <div className="mobile-menu__label">🌍 Geography</div>
+              <div className="mobile-menu__label">🌍 World</div>
               <Link href="/citymix" className={`mobile-menu__item${pathname === "/citymix" ? " is-active" : ""}`} onClick={closeMenu}>
                 <span className="mobile-menu__item-icon">🌍</span>
                 <div>

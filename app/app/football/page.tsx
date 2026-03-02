@@ -868,7 +868,7 @@ export default function Football() {
         onContinueSolo={() => { mp.disconnect(); setMode("solo"); setMultiWaiting(false); }}
       />
 
-      <div className="game-wrapper">
+      <div className="game-wrapper theme-sport">
         <Stars />
         <div className="glow-orb glow-orb--purple" />
         <div className="glow-orb glow-orb--orange" />
