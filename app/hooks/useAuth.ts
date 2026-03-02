@@ -49,9 +49,9 @@ export function useAuthProvider(): AuthContextValue {
   useEffect(() => {
     if (!supabaseConfigured) return;
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
+    supabase.auth.getSession().then(async ({ data: { session } }) => {
       setUser(session?.user ?? null);
-      if (session?.user) fetchProfile();
+      if (session?.user) await fetchProfile();
       setLoading(false);
     });
 
