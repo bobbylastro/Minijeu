@@ -2,13 +2,21 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import dynamic from "next/dynamic";
+import { useAuth } from "@/hooks/useAuth";
+
+const AuthModal     = dynamic(() => import("@/components/AuthModal"),     { ssr: false });
+const UsernameModal = dynamic(() => import("@/components/UsernameModal"), { ssr: false });
+const UserBadge     = dynamic(() => import("@/components/UserBadge"),     { ssr: false });
 
 export default function Header() {
   const pathname = usePathname();
+  const { user, profile } = useAuth();
   const [sportsOpen, setSportsOpen]   = useState(false);
   const [geoOpen, setGeoOpen]         = useState(false);
   const [cultureOpen, setCultureOpen] = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
+  const [authOpen, setAuthOpen]       = useState(false);
 
   const geoRef     = useRef<HTMLDivElement>(null);
   const sportsRef  = useRef<HTMLDivElement>(null);
@@ -148,6 +156,11 @@ export default function Header() {
             </div>
           </nav>
 
+          {/* ── Auth / User badge ─────────────────────────────────────────── */}
+          <div className="site-header__auth">
+            <UserBadge onLoginClick={() => setAuthOpen(true)} />
+          </div>
+
           {/* ── Burger button (mobile only) ──────────────────────────────── */}
           <button
             className={`site-header__burger${menuOpen ? " is-open" : ""}`}
@@ -158,6 +171,9 @@ export default function Header() {
           </button>
         </div>
       </header>
+
+      {authOpen     && <AuthModal     onClose={() => setAuthOpen(false)} />}
+      {user && !profile && <UsernameModal onClose={() => {}} />}
 
       {/* ── Mobile menu ──────────────────────────────────────────────────── */}
       {menuOpen && (

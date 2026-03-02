@@ -4,6 +4,7 @@ import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { seededShuffle } from "@/lib/seededRandom";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
 import { recordMatch, getRecord } from "@/lib/matchHistory";
+import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import NamePromptModal from "@/components/NamePromptModal";
@@ -684,11 +685,14 @@ export default function NbaQuiz() {
     onGameEnd:          onMpGameEnd,
   });
 
-  // Record match outcome
+  const { submitRating, ratingResult } = useRatingSubmit("nba");
+
+  // Record match outcome + ELO rating
   useEffect(() => {
     if (screen !== "result" || mode !== "multi" || !mp.opponent) return;
     const result = totalScore > mp.opponent.score ? "win" : totalScore < mp.opponent.score ? "loss" : "tie";
     recordMatch(mp.opponent.name, result);
+    submitRating(totalScore, mp.opponent.score);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
@@ -1213,6 +1217,15 @@ export default function NbaQuiz() {
                   : "🤝 It's a tie!"
                 : gradeLabel(totalScore)}
             </div>
+
+            {mode === "multi" && ratingResult && (
+              <div className="rating-delta">
+                <span className={`rating-delta__pts ${ratingResult.won ? "rating-delta__pts--pos" : "rating-delta__pts--neg"}`}>
+                  {ratingResult.won ? "+" : ""}{ratingResult.pointsDelta} pts
+                </span>
+                <span className="rating-delta__rank">{ratingResult.rank.emoji} {ratingResult.rank.name} · {ratingResult.newPoints.toLocaleString()} pts total</span>
+              </div>
+            )}
 
             {mode === "solo" && (
               <div className="result-score-bar result-score-bar--popguessr">
