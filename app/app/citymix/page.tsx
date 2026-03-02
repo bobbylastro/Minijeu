@@ -29,8 +29,9 @@ const MAX_TOTAL   = TOTAL * MAX_POINTS;
 const CITIES_NEEDED = 15; // 10 for binary pairs + 5 for slider
 const SLIDER_MIN  = 100_000;
 const SLIDER_MAX  = 35_000_000;
-const ANSWER_TIME = 7;
-const NEXT_TIME   = 3;
+const ANSWER_TIME  = 7;
+const NEXT_TIME    = 3;
+const RESULT_TIME  = 15;
 
 // ─── Helpers ───────────────────────────────────────────────────────────────────
 function shuffle<T>(arr: T[]): T[] {
@@ -289,15 +290,18 @@ export default function CityMix() {
   const [roundOver, setRoundOver]         = useState(false);
   const [multiWaiting, setMultiWaiting]   = useState(false);
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const [answerTimeLeft, setAnswerTimeLeft] = useState<number | null>(null);
-  const [nextCountdown, setNextCountdown] = useState<number | null>(null);
+  const [answerTimeLeft, setAnswerTimeLeft]   = useState<number | null>(null);
+  const [nextCountdown, setNextCountdown]     = useState<number | null>(null);
+  const [resultCountdown, setResultCountdown] = useState<number | null>(null);
 
   // Refs
   const cityPoolRef       = useRef<City[]>([]);
   const answerIntervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const answerTimeoutRef  = useRef<ReturnType<typeof setTimeout>  | null>(null);
-  const nextIntervalRef   = useRef<ReturnType<typeof setInterval> | null>(null);
-  const nextTimeoutRef    = useRef<ReturnType<typeof setTimeout>  | null>(null);
+  const nextIntervalRef    = useRef<ReturnType<typeof setInterval> | null>(null);
+  const nextTimeoutRef     = useRef<ReturnType<typeof setTimeout>  | null>(null);
+  const resultIntervalRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resultTimeoutRef   = useRef<ReturnType<typeof setTimeout>  | null>(null);
   const winnerRef         = useRef<0 | 1>(0);
   const guessRef          = useRef(MID_POP);
   const currentCityRef    = useRef<City | null>(null);
@@ -460,6 +464,32 @@ export default function CityMix() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [roundOver]);
 
+  // ── Result screen timeout (multi) ────────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== "result" || mode !== "multi") return;
+
+    let countdown = RESULT_TIME;
+    setResultCountdown(countdown);
+    resultIntervalRef.current = setInterval(() => { countdown--; setResultCountdown(countdown); }, 1000);
+    resultTimeoutRef.current = setTimeout(() => {
+      clearInterval(resultIntervalRef.current!);
+      resultIntervalRef.current = null;
+      setResultCountdown(null);
+      mp.disconnect();
+      setMode("solo");
+      setScreen("home");
+    }, RESULT_TIME * 1000);
+
+    return () => {
+      clearInterval(resultIntervalRef.current!);
+      clearTimeout(resultTimeoutRef.current!);
+      resultIntervalRef.current = null;
+      resultTimeoutRef.current = null;
+      setResultCountdown(null);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen, mode]);
+
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = () => {
     setMode("solo");
@@ -473,11 +503,25 @@ export default function CityMix() {
 
   const startMulti = () => { mp.disconnect(); setMode("multi"); setShowNamePrompt(true); };
 
+  const clearResultCountdown = () => {
+    clearInterval(resultIntervalRef.current!);
+    clearTimeout(resultTimeoutRef.current!);
+    resultIntervalRef.current = null;
+    resultTimeoutRef.current = null;
+    setResultCountdown(null);
+  };
+
   const handleNewOpponent = () => {
+    clearResultCountdown();
     mp.disconnect();
     setMode("multi");
     setScreen("home");
     setShowNamePrompt(true);
+  };
+
+  const handleRequestRematch = () => {
+    clearResultCountdown();
+    mp.requestRematch();
   };
 
   const handleBackToMenu = () => {
@@ -777,31 +821,34 @@ export default function CityMix() {
         {/* ── RESULT ───────────────────────────────────────────────────────── */}
         {screen === "result" && (
           <div className="citymix-result-screen">
-            <div className="result-emoji--pop">
-              {pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🎯" : "🗺️"}
-            </div>
-            <h1 className="result-title--pop">
-              {mode === "multi" ? "Results" : "Final Score"}
-            </h1>
-
             {mode === "multi" && mp.opponent ? (
-              <div className="score-circles">
-                <div className={`score-circle score-circle--md ${myCircleClass}`}>
-                  <div className="score-circle__label">You</div>
-                  <div className={`score-circle__value score-circle__value--md ${myValueColor}`}>{totalScore.toLocaleString()}</div>
-                  <div className="score-circle__total score-circle__total--md">/ {MAX_TOTAL.toLocaleString()}</div>
+              <div className="result-header-multi">
+                <div className="result-score-side">
+                  <div className="result-score-side__label">You</div>
+                  <div className={`result-score-side__value ${myValueColor}`}>{totalScore.toLocaleString()}</div>
+                  <div className="result-score-side__total">/ {MAX_TOTAL.toLocaleString()}</div>
                 </div>
-                <div className={`score-circle score-circle--md ${oppCircleClass}`}>
-                  <div className="score-circle__label">Opp.</div>
-                  <div className={`score-circle__value score-circle__value--md ${oppValueColor}`}>{mp.opponent.score.toLocaleString()}</div>
-                  <div className="score-circle__total score-circle__total--md">/ {MAX_TOTAL.toLocaleString()}</div>
+                <div className="result-header-multi__center">
+                  <div className="result-emoji--pop">{pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🎯" : "🗺️"}</div>
+                  <h1 className="result-title--pop">Results</h1>
+                </div>
+                <div className="result-score-side">
+                  <div className="result-score-side__label">Opp.</div>
+                  <div className={`result-score-side__value ${oppValueColor}`}>{mp.opponent.score.toLocaleString()}</div>
+                  <div className="result-score-side__total">/ {MAX_TOTAL.toLocaleString()}</div>
                 </div>
               </div>
             ) : (
-              <div className="score-circle score-circle--md score-circle--solo" style={{ margin: "20px auto" }}>
-                <div className="score-circle__value score-circle__value--md score-circle__value--gold">{totalScore.toLocaleString()}</div>
-                <div className="score-circle__total score-circle__total--md">/ {MAX_TOTAL.toLocaleString()}</div>
-              </div>
+              <>
+                <div className="result-emoji--pop">
+                  {pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🎯" : "🗺️"}
+                </div>
+                <h1 className="result-title--pop">Final Score</h1>
+                <div className="score-circle score-circle--md score-circle--solo" style={{ margin: "20px auto" }}>
+                  <div className="score-circle__value score-circle__value--md score-circle__value--gold">{totalScore.toLocaleString()}</div>
+                  <div className="score-circle__total score-circle__total--md">/ {MAX_TOTAL.toLocaleString()}</div>
+                </div>
+              </>
             )}
 
             <div className="result-grade--pop">
@@ -850,16 +897,23 @@ export default function CityMix() {
                 {mp.myWantsRematch ? (
                   <div className="waiting-indicator"><span className="waiting-dot" />Waiting for opponent…</div>
                 ) : (
-                  <button onClick={mp.requestRematch} className="btn-rematch btn-hover">⚡ Rematch</button>
+                  <button onClick={handleRequestRematch} className="btn-rematch btn-hover">⚡ Rematch</button>
                 )}
               </div>
             )}
 
             {mode === "multi" && mp.opponent ? (
-              <div className="result-buttons--pop">
-                <button onClick={handleNewOpponent} className="btn-result-outline btn-hover-sm">🔄 New Opponent</button>
-                <button onClick={handleBackToMenu}  className="btn-result-ghost  btn-hover-sm">← Menu</button>
-              </div>
+              <>
+                <div className="result-buttons--pop">
+                  <button onClick={handleNewOpponent} className="btn-result-outline btn-hover-sm">🔄 New Opponent</button>
+                  <button onClick={handleBackToMenu}  className="btn-result-ghost  btn-hover-sm">← Menu</button>
+                </div>
+                {resultCountdown !== null && (
+                  <div className="next-countdown" style={{ marginTop: 8 }}>
+                    Returning to menu in <span className="next-countdown__num">{resultCountdown}</span>s…
+                  </div>
+                )}
+              </>
             ) : (
               <div className="result-buttons--pop">
                 <button onClick={startSolo}  className="btn-result-primary btn-hover-sm">Solo</button>
