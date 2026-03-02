@@ -38,9 +38,13 @@ export default function UserBadge({ onLoginClick }: UserBadgeProps) {
 
       {open && (
         <div className="user-badge__dropdown" onClick={e => e.stopPropagation()}>
+          <Link href="/profile" className="user-badge__dropdown-item" onClick={() => setOpen(false)}>
+            👤 My Profile
+          </Link>
           <Link href="/leaderboard" className="user-badge__dropdown-item" onClick={() => setOpen(false)}>
             🏆 Leaderboard
           </Link>
+          <div className="user-badge__dropdown-divider" />
           <button className="user-badge__dropdown-item user-badge__dropdown-item--danger" onClick={signOut}>
             Sign out
           </button>

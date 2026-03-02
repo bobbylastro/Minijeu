@@ -3069,3 +3069,217 @@
   font-size: 13px;
   color: rgba(255,255,255,0.6);
 }
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PROFILE PAGE
+══════════════════════════════════════════════════════════════════════════════ */
+
+.profile-page {
+  min-height: 100vh;
+  background: #0a0a18;
+  padding: 80px 24px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ── Card identité ───────────────────────────────────────────────────────── */
+.profile-card {
+  width: 100%;
+  max-width: 480px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 36px 28px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  margin-bottom: 4px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  flex-shrink: 0;
+}
+
+.profile-identity {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-username {
+  font-size: 24px;
+  font-weight: 900;
+  color: white;
+  text-align: center;
+}
+
+.profile-edit-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: color 0.12s, background 0.12s;
+}
+.profile-edit-btn:hover { color: rgba(255,255,255,0.8); background: rgba(255,255,255,0.06); }
+
+.profile-username-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.profile-username-input { text-align: center; width: 100%; }
+.profile-username-actions { display: flex; gap: 8px; }
+
+.profile-email {
+  font-size: 13px;
+  color: rgba(255,255,255,0.35);
+}
+
+.profile-best-rank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-top: 4px;
+}
+.profile-best-rank__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.3);
+}
+.leaderboard-tier-badge--lg {
+  font-size: 15px;
+  padding: 5px 14px;
+}
+
+/* ── Stats ───────────────────────────────────────────────────────────────── */
+.profile-stats {
+  width: 100%;
+  max-width: 480px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.profile-stat {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 16px 8px;
+  text-align: center;
+}
+.profile-stat__value {
+  font-size: 22px;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.profile-stat__value--win  { color: #4ade80; }
+.profile-stat__value--loss { color: #f87171; }
+.profile-stat__label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255,255,255,0.3);
+}
+
+/* ── Ratings par jeu ─────────────────────────────────────────────────────── */
+.profile-ratings {
+  width: 100%;
+  max-width: 480px;
+}
+.profile-section-title {
+  font-size: 14px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 12px;
+}
+
+.profile-ratings-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.profile-game-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.profile-game-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.profile-game-card__name {
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+.profile-game-card__points {
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+.profile-game-card__bar-wrap {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.profile-game-card__bar {
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  border-radius: 2px;
+  transition: width 0.6s ease;
+  min-width: 4px;
+}
+.profile-game-card__wl {
+  display: flex;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.profile-no-games {
+  color: rgba(255,255,255,0.3);
+  font-size: 14px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* dropdown divider */
+.user-badge__dropdown-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin: 3px 0;
+}
+
+@media (max-width: 640px) {
+  .profile-stats { grid-template-columns: repeat(2, 1fr); }
+}

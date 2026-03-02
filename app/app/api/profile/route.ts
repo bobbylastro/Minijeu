@@ -16,6 +16,35 @@ export async function GET() {
   return NextResponse.json({ profile: profile ?? null });
 }
 
+// PATCH /api/profile — update username
+export async function PATCH(req: NextRequest) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
+
+  const { username } = await req.json();
+  if (!username || typeof username !== "string" || username.trim().length < 2) {
+    return NextResponse.json({ error: "Username must be at least 2 characters" }, { status: 400 });
+  }
+
+  const service = createServiceClient();
+  const { data, error } = await service
+    .from("profiles")
+    .update({ username: username.trim() })
+    .eq("id", user.id)
+    .select()
+    .single();
+
+  if (error) {
+    if (error.code === "23505") {
+      return NextResponse.json({ error: "Username already taken" }, { status: 409 });
+    }
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return NextResponse.json({ profile: data });
+}
+
 // POST /api/profile — create profile with chosen username
 export async function POST(req: NextRequest) {
   const supabase = await createClient();
