@@ -25,10 +25,6 @@ export function getRank(points: number): RankTier {
   return rank;
 }
 
-export function getNextRank(points: number): RankTier | null {
-  const idx = RANKS.findIndex(r => r.minPoints > points);
-  return idx === -1 ? null : RANKS[idx];
-}
 
 export function getRankFloor(points: number): number {
   return getRank(points).floor;
