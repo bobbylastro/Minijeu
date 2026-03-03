@@ -20,7 +20,7 @@ type RoundEntry =
   | { type: "binary"; round: number; cityA: City; cityB: City; chosenIdx: 0|1; correct: boolean; points: number }
   | { type: "slider"; round: number; city: City; guess: number; points: number; accuracy: number };
 
-import citiesData from "../cities.json";
+import citiesData from "@/app/cities.json";
 const allCities: City[] = citiesData as City[];
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
