@@ -148,9 +148,9 @@ export default function HomePage() {
         <section className="seo-section">
           <p>From guessing city populations in CityMix to comparing country statistics in Higher or Lower, each game is designed to be simple, competitive and highly addictive. Whether you&apos;re into sports, geography or general knowledge, there&apos;s always a new challenge waiting for you.</p>
 
-          <SeoExpand>
-            <p>Play solo or compete with others in multiplayer modes and track your performance across games.</p>
+          <p>Play solo or compete with others in multiplayer modes and track your performance across games.</p>
 
+          <SeoExpand>
             <h2>Featured Games</h2>
             <ul>
               <li><strong>CityMix</strong> – Guess which city is bigger and estimate its population</li>
