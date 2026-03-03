@@ -2535,6 +2535,32 @@
   opacity: 1;
 }
 
+/* ── SEO expand toggle ────────────────────────────────────────────────────── */
+.seo-expand__body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.seo-expand__body--open {
+  max-height: 2000px;
+}
+
+.seo-expand__toggle {
+  margin-top: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #7c3aed;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.3px;
+  transition: color 0.15s;
+}
+
+.seo-expand__toggle:hover { color: #6d28d9; }
+
 /* ── SEO section ──────────────────────────────────────────────────────────── */
 .seo-section {
   margin-top: 80px;

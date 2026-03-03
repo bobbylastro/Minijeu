@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Cookie Policy",
   description: "How Ultimate Playground uses cookies and how to manage your preferences.",
+  robots: { index: false, follow: false },
 };
 
 export default function CookiesPage() {

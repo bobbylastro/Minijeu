@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: "How Ultimate Playground collects, uses, and protects your personal data.",
+  robots: { index: false, follow: false },
 };
 
 export default function PrivacyPage() {

@@ -4,6 +4,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Legal Notice",
   description: "Legal information about Ultimate Playground.",
+  robots: { index: false, follow: false },
 };
 
 export default function LegalPage() {
