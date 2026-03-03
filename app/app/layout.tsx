@@ -3,6 +3,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Providers from "./providers";
+import CookieBanner from "@/components/CookieBanner";
+import ConsentScripts from "@/components/ConsentScripts";
 
 export const metadata: Metadata = {
   title: { template: "%s | Ultimate Playground", default: "Ultimate Playground — Quiz & Games" },
@@ -21,6 +23,8 @@ export default function RootLayout({
           <Header />
           {children}
           <Footer />
+          <CookieBanner />
+          <ConsentScripts />
         </Providers>
       </body>
     </html>

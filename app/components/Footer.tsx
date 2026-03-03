@@ -10,9 +10,11 @@ export default function Footer() {
         <span className="site-footer__sep">·</span>
         <Link href="/cookies" className="site-footer__link">Cookies</Link>
         <span className="site-footer__sep">·</span>
+        <Link href="/legal" className="site-footer__link">Legal</Link>
+        <span className="site-footer__sep">·</span>
         <Link href="/contact" className="site-footer__link">Contact</Link>
       </nav>
-      <p className="site-footer__copy">© {new Date().getFullYear()} Minijeu</p>
+      <p className="site-footer__copy">© {new Date().getFullYear()} Ultimate Playground</p>
     </footer>
   );
 }

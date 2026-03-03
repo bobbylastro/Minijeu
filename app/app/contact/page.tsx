@@ -6,6 +6,7 @@ export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
@@ -14,10 +15,20 @@ export default function ContactPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // TODO: hook up to /api/contact with Resend or similar
-    await new Promise(r => setTimeout(r, 800)); // simulate network
-    setLoading(false);
-    setSent(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Failed to send");
+      setSent(true);
+    } catch {
+      setError("Something went wrong. Please try again or email us directly.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -101,6 +112,9 @@ export default function ContactPage() {
                 />
               </div>
 
+              {error && (
+                <p style={{ color: "#ff6b6b", fontSize: "13px", marginBottom: "8px" }}>{error}</p>
+              )}
               <button className="btn-primary contact-form__submit" type="submit" disabled={loading}>
                 {loading ? "Sending…" : "Send message"}
               </button>
