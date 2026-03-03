@@ -2583,6 +2583,78 @@
   font-weight: 600;
 }
 
+/* ── Game SEO section (dark, below game wrapper) ─────────────────────────── */
+.game-seo-section {
+  background: #050510;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 60px 24px 80px;
+}
+
+.game-seo-section__inner {
+  max-width: 780px;
+  margin: 0 auto;
+  font-family: 'Sora', sans-serif;
+}
+
+.game-seo-section__h1 {
+  font-size: clamp(20px, 3.5vw, 30px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.3;
+  margin-bottom: 48px;
+}
+
+.game-seo-section h2 {
+  font-size: 15px;
+  font-weight: 700;
+  color: white;
+  margin: 36px 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.game-seo-section h2::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 15px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.game-seo-section p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.game-seo-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.game-seo-section li {
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  padding-left: 18px;
+  position: relative;
+}
+
+.game-seo-section li::before {
+  content: '–';
+  position: absolute;
+  left: 0;
+  color: #7c3aed;
+}
+
 /* ── Site footer ──────────────────────────────────────────────────────────── */
 .site-footer {
   text-align: center;
