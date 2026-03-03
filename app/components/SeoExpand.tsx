@@ -6,14 +6,28 @@ export default function SeoExpand({ children }: { children: React.ReactNode }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="seo-expand">
-      <div className={`seo-expand__body ${expanded ? "seo-expand__body--open" : ""}`}>
+    <div>
+      <div style={{
+        maxHeight: expanded ? "2000px" : "0",
+        overflow: "hidden",
+        transition: "max-height 0.4s ease",
+      }}>
         {children}
       </div>
       <button
-        className="seo-expand__toggle"
         onClick={() => setExpanded(e => !e)}
         aria-expanded={expanded}
+        style={{
+          marginTop: "12px",
+          fontSize: "13px",
+          fontWeight: 600,
+          color: "#7c3aed",
+          background: "none",
+          border: "none",
+          cursor: "pointer",
+          padding: 0,
+          letterSpacing: "0.3px",
+        }}
       >
         {expanded ? "See less ↑" : "See more ↓"}
       </button>
