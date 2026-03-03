@@ -11,28 +11,57 @@ import NamePromptModal from "@/components/NamePromptModal";
 import careerData from "@/app/career_data.json";
 import { ensureCustomImages, getCustomImage } from "@/lib/customImages";
 
-// ─── Club → TheSportsDB search term (only when it differs from the display name) ──
-const SPORTSDB_TEAM: Record<string, string> = {
-  "FC Barcelona":           "Barcelona",
-  "Inter Milan":            "Internazionale",
-  "Olympique de Marseille": "Marseille",
-  "Grêmio":                 "Gremio",
-  "Malmö FF":               "Malmo FF",
-  "Lech Poznań":            "Lech Poznan",
-  "São Paulo":              "Sao Paulo",
-  "Atlético Madrid":        "Atletico Madrid",
-  "Fenerbahçe":             "Fenerbahce",
-  "LAFC":                   "Los Angeles FC",
-  "Al-Nassr":               "Al Nassr",
-  "Al-Hilal":               "Al Hilal",
-  "Al-Sadd":                "Al Sadd",
-  "Monaco":                 "AS Monaco",
-  "Ajax":                   "AFC Ajax",
-  "Dinamo Zagreb":          "Dinamo Zagreb",
-  "Borussia Dortmund":      "Borussia Dortmund",
-  "Red Bull Salzburg":      "FC Salzburg",
-  "Sporting CP":            "Sporting Lisbon",
-  "Anzhi Makhachkala":      "Anzhi Makhachkala",
+// ─── Club → Wikipedia page title (only when it differs from the display name) ──
+const WIKI_CLUB: Record<string, string> = {
+  "Ajax":                "AFC Ajax",
+  "Monaco":              "AS Monaco FC",
+  "AS Monaco":           "AS Monaco FC",
+  "Chelsea":             "Chelsea F.C.",
+  "Liverpool":           "Liverpool F.C.",
+  "Arsenal":             "Arsenal F.C.",
+  "Everton":             "Everton F.C.",
+  "Southampton":         "Southampton F.C.",
+  "Manchester United":   "Manchester United F.C.",
+  "Manchester City":     "Manchester City F.C.",
+  "Tottenham Hotspur":   "Tottenham Hotspur F.C.",
+  "West Ham United":     "West Ham United F.C.",
+  "Leeds United":        "Leeds United F.C.",
+  "Queens Park Rangers": "Queens Park Rangers F.C.",
+  "Fenerbahçe":          "Fenerbahçe S.K. (football)",
+  "Galatasaray":         "Galatasaray S.K. (football)",
+  "Santos":              "Santos FC",
+  "São Paulo":           "São Paulo FC",
+  "Cruzeiro":            "Cruzeiro Esporte Clube",
+  "Grêmio":              "Grêmio Foot-Ball Porto Alegrense",
+  "Palmeiras":           "Palmeiras",
+  "Independiente":       "Club Atlético Independiente",
+  "Anderlecht":          "R.S.C. Anderlecht",
+  "Genk":                "K.R.C. Genk",
+  "Basel":               "FC Basel",
+  "Fiorentina":          "ACF Fiorentina",
+  "Udinese":             "Udinese Calcio",
+  "Mallorca":            "RCD Mallorca",
+  "Guingamp":            "En Avant de Guingamp",
+  "Schalke 04":          "FC Schalke 04",
+  "Werder Bremen":       "SV Werder Bremen",
+  "Molde":               "Molde FK",
+  "Red Bull Salzburg":   "FC Red Bull Salzburg",
+  "LAFC":                "Los Angeles FC",
+  "Orlando City":        "Orlando City SC",
+  "DC United":           "D.C. United",
+  "Al-Nassr":            "Al-Nassr FC",
+  "Al-Hilal":            "Al-Hilal FC",
+  "Al-Sadd":             "Al-Sadd SC",
+  "Anzhi Makhachkala":   "FC Anzhi Makhachkala",
+  "Dinamo Zagreb":       "GNK Dinamo Zagreb",
+  "Inter Milan":         "Inter Milan",
+  "Juventus":            "Juventus FC",
+  "Real Madrid":         "Real Madrid CF",
+  "Bayern Munich":       "FC Bayern Munich",
+  "Paris Saint-Germain": "Paris Saint-Germain F.C.",
+  "Inter Miami":         "Inter Miami CF",
+  "Borussia Dortmund":   "Borussia Dortmund",
+  "Lech Poznań":         "Lech Poznań",
 };
 
 // ─── Types ──────────────────────────────────────────────────────────────────────
@@ -128,13 +157,13 @@ function useWikiImage(title: string | undefined, gameKey?: import("@/lib/customI
   return src;
 }
 
-// ─── TheSportsDB club badge hook ─────────────────────────────────────────────
-const sportsdbCache = new Map<string, string>();
+// ─── Wikipedia club badge: parse section 0 HTML, grab first img in .images ───
+const wikiClubCache = new Map<string, string>();
 
 function useClubLogo(club: string): string | null {
-  const searchTerm = SPORTSDB_TEAM[club] ?? club;
+  const wikiTitle = WIKI_CLUB[club] ?? club;
   const [src, setSrc] = useState<string | null>(
-    getCustomImage("career_clubs", club) ?? (sportsdbCache.get(searchTerm) ?? null)
+    getCustomImage("career_clubs", club) ?? (wikiClubCache.get(wikiTitle) ?? null)
   );
   useEffect(() => {
     let cancelled = false;
@@ -143,19 +172,33 @@ function useClubLogo(club: string): string | null {
       if (cancelled) return;
       const customUrl = getCustomImage("career_clubs", club);
       if (customUrl) { setSrc(customUrl); return; }
-      const cached = sportsdbCache.get(searchTerm);
+      const cached = wikiClubCache.get(wikiTitle);
       if (cached) { setSrc(cached); return; }
       try {
-        const r = await fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${encodeURIComponent(searchTerm)}`);
+        const data = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(wikiTitle)}&prop=text&format=json&origin=*&section=0`
+        )).json();
         if (cancelled) return;
-        const data = await r.json();
-        if (cancelled) return;
-        const badge: string | null = data?.teams?.[0]?.strTeamBadge ?? null;
-        if (badge) { sportsdbCache.set(searchTerm, badge); setSrc(badge); }
+        const html: string = data?.parse?.text?.["*"] ?? "";
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        // 1) Try specific infobox image cells (old & new template formats)
+        // 2) Fallback: first img > 30px wide anywhere in the infobox (skips flag icons)
+        let img = doc.querySelector("td.images img, td.infobox-image img") as HTMLImageElement | null;
+        if (!img) {
+          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
+          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
+        }
+        let imgSrc = img?.getAttribute("src") ?? "";
+        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
+        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
+        if (!imgSrc) return;
+        wikiClubCache.set(wikiTitle, imgSrc);
+        setSrc(imgSrc);
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [searchTerm, club]);
+  }, [wikiTitle, club]);
   return src;
 }
 
