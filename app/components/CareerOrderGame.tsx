@@ -184,7 +184,7 @@ function useClubLogo(club: string): string | null {
         const doc = new DOMParser().parseFromString(html, "text/html");
         // 1) Try specific infobox image cells (old & new template formats)
         // 2) Fallback: first img > 30px wide anywhere in the infobox (skips flag icons)
-        let img = doc.querySelector("td.images img, td.infobox-image img") as HTMLImageElement | null;
+        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
         if (!img) {
           const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
           img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
