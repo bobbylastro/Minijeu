@@ -231,6 +231,7 @@ function useWikiImage(title: string | undefined, gameKey?: GameKey): string | nu
       }
       if (wikiImgCache.has(title)) { setSrc(wikiImgCache.get(title)!); return; }
       try {
+        // 1) Fast path: pageimages API
         const data = await (await fetch(
           `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=400&origin=*`
         )).json();
@@ -240,7 +241,38 @@ function useWikiImage(title: string | undefined, gameKey?: GameKey): string | nu
         if (page?.thumbnail?.source) {
           wikiImgCache.set(title, page.thumbnail.source);
           setSrc(page.thumbnail.source);
+          return;
         }
+        // 2) REST summary API
+        const rest = await (await fetch(
+          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+        )).json();
+        if (cancelled) return;
+        const restUrl = rest?.originalimage?.source ?? rest?.thumbnail?.source;
+        if (restUrl) {
+          wikiImgCache.set(title, restUrl);
+          setSrc(restUrl);
+          return;
+        }
+        // 3) Fallback: parse infobox HTML
+        const data2 = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json&origin=*&section=0&redirects=1`
+        )).json();
+        if (cancelled) return;
+        const html: string = data2?.parse?.text?.["*"] ?? "";
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
+        if (!img) {
+          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
+          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
+        }
+        let imgSrc = img?.getAttribute("src") ?? "";
+        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
+        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
+        if (!imgSrc) return;
+        wikiImgCache.set(title, imgSrc);
+        setSrc(imgSrc);
       } catch {}
     })();
     return () => { cancelled = true; };
@@ -253,6 +285,65 @@ function WikiImg({ title, alt, className, gameKey }: { title?: string; alt: stri
   if (!src) return <div className={`ft-img-placeholder ${className ?? ""}`} />;
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={src} alt={alt} className={className} loading="lazy" />;
+}
+
+// ─── NBA Team logo: parse Wikipedia infobox (same approach as CareerOrderGame) ──
+const WIKI_TEAM: Record<string, string> = {
+  "Philadelphia 76ers":   "Philadelphia 76ers",
+  "Brooklyn Nets":        "Brooklyn Nets",
+  "New Orleans Jazz":     "New Orleans Jazz",
+  "Philadelphia Warriors":"Philadelphia Warriors",
+};
+
+const wikiTeamCache = new Map<string, string>();
+
+function useTeamLogo(team: string): string | null {
+  const wikiTitle = WIKI_TEAM[team] ?? team;
+  const [src, setSrc] = useState<string | null>(
+    getCustomImage("nba_teams", team) ?? (wikiTeamCache.get(wikiTitle) ?? null)
+  );
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      await ensureCustomImages();
+      if (cancelled) return;
+      const customUrl = getCustomImage("nba_teams", team);
+      if (customUrl) { setSrc(customUrl); return; }
+      const cached = wikiTeamCache.get(wikiTitle);
+      if (cached) { setSrc(cached); return; }
+      try {
+        const data = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(wikiTitle)}&prop=text&format=json&origin=*&section=0&redirects=1`
+        )).json();
+        if (cancelled) return;
+        const html: string = data?.parse?.text?.["*"] ?? "";
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
+        if (!img) {
+          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
+          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
+        }
+        let imgSrc = img?.getAttribute("src") ?? "";
+        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
+        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
+        if (!imgSrc) return;
+        wikiTeamCache.set(wikiTitle, imgSrc);
+        setSrc(imgSrc);
+      } catch {}
+    })();
+    return () => { cancelled = true; };
+  }, [wikiTitle, team]);
+  return src;
+}
+
+function TeamLogoImg({ team }: { team: string }) {
+  const logo = useTeamLogo(team);
+  if (logo) {
+    // eslint-disable-next-line @next/next/no-img-element
+    return <img src={logo} alt={team} className="ft-team-logo" draggable={false} loading="lazy" />;
+  }
+  return <div className="ft-team-logo-placeholder">{team[0]}</div>;
 }
 
 function FlagImg({ code, alt }: { code?: string; alt: string }) {
@@ -1007,6 +1098,7 @@ export default function NbaQuiz() {
                       <span className="ft-transfer-year">({currentRound.year})</span>
                     </div>
                     <div className="ft-transfer-move">
+                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} /></div>
                       <span className="ft-transfer-club">{currentRound.team}</span>
                     </div>
                   </div>
@@ -1084,7 +1176,10 @@ export default function NbaQuiz() {
                         <WikiImg title={player.wiki} alt={player.player} className="ft-salary-photo" gameKey="nba_players" />
                         <FlagImg code={player.flagCode} alt={player.player} />
                         <div className="ft-salary-player">{player.player}</div>
-                        <div className="ft-salary-team">{player.team}</div>
+                        <div className="ft-salary-team-wrap">
+                          <TeamLogoImg team={player.team} />
+                          <span className="ft-salary-team">{player.team}</span>
+                        </div>
                         {chosen !== null && (
                           <div className="ft-salary-amount">${player.annual_m}M/yr</div>
                         )}
@@ -1107,6 +1202,7 @@ export default function NbaQuiz() {
                       <span className="ft-transfer-name">{currentRound.player}</span>
                     </div>
                     <div className="ft-transfer-move">
+                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} /></div>
                       <span className="ft-transfer-club">{currentRound.team}</span>
                     </div>
                   </div>

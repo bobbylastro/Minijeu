@@ -5,7 +5,7 @@ export type GameKey =
   | "wcf"
   | "career_clubs" | "career_players"
   | "football_players" | "football_stadiums"
-  | "nba_players"  | "nba_arenas";
+  | "nba_players"  | "nba_arenas" | "nba_teams";
 
 type Cache = { loaded: boolean } & Record<GameKey, Record<string, string>>;
 
@@ -13,7 +13,7 @@ const cache: Cache = {
   loaded: false,
   wcf: {}, career_clubs: {}, career_players: {},
   football_players: {}, football_stadiums: {},
-  nba_players: {}, nba_arenas: {},
+  nba_players: {}, nba_arenas: {}, nba_teams: {},
 };
 
 let loadPromise: Promise<void> | null = null;
