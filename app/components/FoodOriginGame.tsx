@@ -3,6 +3,12 @@ import { memo, useState, useEffect, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
 import rawDishes from "@/app/food_data.json";
 import "@/app/food/food.css";
+import { useMultiplayer } from "@/hooks/useMultiplayer";
+import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
+import { seededShuffle } from "@/lib/seededRandom";
+import MultiplayerScreen from "@/components/MultiplayerScreen";
+import OpponentBar from "@/components/OpponentBar";
+import NamePromptModal from "@/components/NamePromptModal";
 
 const LeafletMap = dynamic(() => import("@/components/LeafletMap"), { ssr: false });
 
@@ -17,14 +23,17 @@ interface Dish {
 }
 
 type Phase = "home" | "playing" | "result";
+type Mode  = "solo" | "multi";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 const ALL_DISHES = rawDishes as Dish[];
 const ROUNDS_PER_GAME = 10;
-const ROUND_SECONDS = 30;
-const INTRO_SECONDS = 3;
+const ROUND_SECONDS   = 30;
+const INTRO_SECONDS   = 3;
+const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 
-function pickDishes(n: number): Dish[] {
+function pickDishes(n: number, seed?: number): Dish[] {
+  if (seed !== undefined) return seededShuffle([...ALL_DISHES], seed).slice(0, n);
   return [...ALL_DISHES].sort(() => Math.random() - 0.5).slice(0, n);
 }
 
@@ -133,8 +142,8 @@ function IntroPopup({ dish, round, total, onDismiss }: {
 }
 
 // ─── Feedback popup ───────────────────────────────────────────────────────────
-function FeedbackPopup({ dish, clickedCode, onNext, isLast }: {
-  dish: Dish; clickedCode: string | null; onNext: () => void; isLast: boolean;
+function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
+  dish: Dish; clickedCode: string | null; onNext: () => void; isLast: boolean; multiWaiting: boolean;
 }) {
   const isCorrect = clickedCode === dish.countryCode;
   const isTimeout = !clickedCode;
@@ -155,8 +164,14 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast }: {
         <div className="fd-feedback-card__pts">
           {isCorrect ? "+100 pts ⭐" : "+0 pts"}
         </div>
-        <button className="btn-next btn-hover-sm fd-feedback-card__btn" onClick={onNext}>
-          {isLast ? "See Results →" : "Next Dish →"}
+        <button
+          className="btn-next btn-hover-sm fd-feedback-card__btn"
+          onClick={onNext}
+          disabled={multiWaiting}
+        >
+          {multiWaiting
+            ? "Waiting for opponent…"
+            : isLast ? "See Results →" : "Next Dish →"}
         </button>
       </div>
     </div>
@@ -164,7 +179,7 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast }: {
 }
 
 // ─── Home screen ──────────────────────────────────────────────────────────────
-function HomeScreen({ onStart }: { onStart: () => void }) {
+function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => void }) {
   return (
     <div className="game-wrapper">
       <div className="glow-orb glow-orb--purple" style={{ top: "15%", left: "20%" }} />
@@ -180,7 +195,12 @@ function HomeScreen({ onStart }: { onStart: () => void }) {
             <span>⏱️ {ROUND_SECONDS}s per dish</span>
             <span>🌍 World map</span>
           </div>
-          <button className="btn-primary btn-hover" onClick={onStart}>Play Solo</button>
+          <div className="home-buttons">
+            <button className="btn-primary btn-hover" onClick={onSolo}>Play Solo</button>
+            {isMultiplayerEnabled() && (
+              <button className="btn-outline btn-hover" onClick={onMulti}>⚡ Multiplayer</button>
+            )}
+          </div>
         </div>
       </div>
     </div>
@@ -188,28 +208,64 @@ function HomeScreen({ onStart }: { onStart: () => void }) {
 }
 
 // ─── Result screen ────────────────────────────────────────────────────────────
-function ResultScreen({ score, onReplay }: { score: number; onReplay: () => void }) {
-  const max = ROUNDS_PER_GAME * 100;
-  const pct = (score / max) * 100;
-  const cls = pct >= 80 ? "score-circle--win" : pct >= 50 ? "score-circle--neutral" : "score-circle--lose";
+function ResultScreen({ score, oppScore, mode, onReplay }: {
+  score: number; oppScore: number | null; mode: Mode; onReplay: () => void;
+}) {
+  const pct = (score / MAX_SCORE) * 100;
+  const isMulti = mode === "multi" && oppScore !== null;
+  const iWon = isMulti && score > oppScore!;
+  const tied = isMulti && score === oppScore!;
+
+  const myClass = isMulti
+    ? (iWon ? "score-circle--win" : tied ? "score-circle--neutral" : "score-circle--lose")
+    : (pct >= 80 ? "score-circle--win" : pct >= 50 ? "score-circle--neutral" : "score-circle--lose");
+  const oppClass = isMulti
+    ? (!iWon && !tied ? "score-circle--win" : tied ? "score-circle--neutral" : "score-circle--lose")
+    : "";
+
   return (
     <div className="game-wrapper">
       <Stars />
       <div className="home-screen">
         <div className="fd-home-card">
-          <div className="fd-home-emoji">🏆</div>
-          <h2 className="home-title" style={{ fontSize: "1.6rem" }}>Game Over!</h2>
-          <div className={`score-circle score-circle--lg ${cls}`}>
-            <span className="score-circle__value">{score}</span>
-            <span className="score-circle__label">/ {max}</span>
+          <div className="fd-home-emoji">
+            {isMulti ? (iWon ? "🏆" : tied ? "🤝" : "😅") : (pct >= 80 ? "🏆" : pct >= 50 ? "🙂" : "😅")}
           </div>
-          <div className="result-score-bar" style={{ margin: "1rem 0" }}>
-            <div
-              className={`result-score-bar__fill ${pct >= 80 ? "result-score-bar__fill--excellent" : pct >= 50 ? "result-score-bar__fill--good" : "result-score-bar__fill--poor"}`}
-              style={{ width: `${pct}%` }}
-            />
-          </div>
-          <button className="btn-primary btn-hover" onClick={onReplay} style={{ marginTop: "0.5rem" }}>Play Again</button>
+          <h2 className="home-title" style={{ fontSize: "1.6rem" }}>
+            {isMulti ? (iWon ? "You win!" : tied ? "It's a tie!" : "You lose!") : "Game Over!"}
+          </h2>
+
+          {isMulti ? (
+            <div className="fd-result-scores">
+              <div className={`score-circle score-circle--md ${myClass}`}>
+                <span className="score-circle__label">You</span>
+                <span className="score-circle__value">{score}</span>
+                <span className="score-circle__label">/ {MAX_SCORE}</span>
+              </div>
+              <div className={`score-circle score-circle--md ${oppClass}`}>
+                <span className="score-circle__label">Opp.</span>
+                <span className="score-circle__value">{oppScore}</span>
+                <span className="score-circle__label">/ {MAX_SCORE}</span>
+              </div>
+            </div>
+          ) : (
+            <>
+              <div className={`score-circle score-circle--lg ${myClass}`}>
+                <span className="score-circle__value">{score}</span>
+                <span className="score-circle__label">/ {MAX_SCORE}</span>
+              </div>
+              <div className="result-score-bar" style={{ margin: "1rem 0" }}>
+                <div
+                  className={`result-score-bar__fill ${pct >= 80 ? "result-score-bar__fill--excellent" : pct >= 50 ? "result-score-bar__fill--good" : "result-score-bar__fill--poor"}`}
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+            </>
+          )}
+
+          <button className="btn-primary btn-hover" onClick={onReplay} style={{ marginTop: "0.5rem" }}>
+            Play Again
+          </button>
         </div>
       </div>
     </div>
@@ -218,20 +274,66 @@ function ResultScreen({ score, onReplay }: { score: number; onReplay: () => void
 
 // ─── Main game ────────────────────────────────────────────────────────────────
 export default function FoodOriginGame() {
-  const [phase, setPhase] = useState<Phase>("home");
-  const [dishes, setDishes] = useState<Dish[]>([]);
-  const [round, setRound] = useState(0);
-  const [score, setScore] = useState(0);
-  const [clickedCode, setClickedCode] = useState<string | null>(null);
+  const [phase, setPhase]               = useState<Phase>("home");
+  const [mode, setMode]                 = useState<Mode>("solo");
+  const [showNamePrompt, setShowNamePrompt] = useState(false);
+  const [dishes, setDishes]             = useState<Dish[]>([]);
+  const [round, setRound]               = useState(0);
+  const [score, setScore]               = useState(0);
+  const [clickedCode, setClickedCode]   = useState<string | null>(null);
   const [hoveredCountry, setHoveredCountry] = useState<{ name: string; alpha2: string } | null>(null);
   const [showDishZoom, setShowDishZoom] = useState(false);
-  const [timeLeft, setTimeLeft] = useState(ROUND_SECONDS);
-  const [showIntro, setShowIntro] = useState(false);
-  const [revealed, setRevealed] = useState(false);
-  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [timeLeft, setTimeLeft]         = useState(ROUND_SECONDS);
+  const [showIntro, setShowIntro]       = useState(false);
+  const [revealed, setRevealed]         = useState(false);
+  const [multiWaiting, setMultiWaiting] = useState(false);
+
+  const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
+  const modeRef   = useRef<Mode>("solo");
+  useEffect(() => { modeRef.current = mode; }, [mode]);
 
   const currentDish = dishes[round] ?? null;
 
+  // ── Multiplayer callbacks ──────────────────────────────────────────────────
+  const onMpGameStart = useCallback((seed: number) => {
+    setDishes(seededShuffle([...ALL_DISHES], seed).slice(0, ROUNDS_PER_GAME));
+    setRound(0);
+    setScore(0);
+    setClickedCode(null);
+    setRevealed(false);
+    setMultiWaiting(false);
+    setShowIntro(true);
+    setPhase("playing");
+  }, []);
+
+  const onMpOpponentAnswered = useCallback(() => {}, []);
+
+  const onMpRoundEnd = useCallback((_scores: Record<string, number>) => {}, []);
+
+  const onMpNextRound = useCallback((nextRound: number) => {
+    setMultiWaiting(false);
+    setRound(nextRound);
+    setClickedCode(null);
+    setRevealed(false);
+    setShowIntro(true);
+  }, []);
+
+  const onMpGameEnd = useCallback((_scores: Record<string, number>) => {
+    setMultiWaiting(false);
+    setPhase("result");
+  }, []);
+
+  const mp = useMultiplayer({
+    gameType: "food",
+    host: getPartykitHost(),
+    onGameStart:        onMpGameStart,
+    onOpponentAnswered: onMpOpponentAnswered,
+    onRoundEnd:         onMpRoundEnd,
+    onNextRound:        onMpNextRound,
+    onGameEnd:          onMpGameEnd,
+  });
+
+  // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
   }, []);
@@ -242,9 +344,9 @@ export default function FoodOriginGame() {
     setRevealed(true);
     const pts = alpha2 && currentDish && alpha2 === currentDish.countryCode ? 100 : 0;
     setScore(s => s + pts);
-  }, [currentDish, stopTimer]);
+    if (modeRef.current === "multi") mp.submitAnswer(alpha2, pts);
+  }, [currentDish, stopTimer, mp]);
 
-  // Timer — only runs when not in intro and not revealed
   useEffect(() => {
     if (phase !== "playing" || revealed || showIntro) return;
     setTimeLeft(ROUND_SECONDS);
@@ -257,21 +359,33 @@ export default function FoodOriginGame() {
     return stopTimer;
   }, [phase, round, revealed, showIntro, reveal, stopTimer]);
 
-  function startGame() {
+  // ── Game flow ──────────────────────────────────────────────────────────────
+  function startSolo() {
+    setMode("solo");
     setDishes(pickDishes(ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setClickedCode(null);
     setRevealed(false);
+    setMultiWaiting(false);
     setShowIntro(true);
     setPhase("playing");
   }
 
-  function dismissIntro() {
-    setShowIntro(false);
+  function startMulti() {
+    mp.disconnect();
+    setMode("multi");
+    setShowNamePrompt(true);
   }
 
+  function dismissIntro() { setShowIntro(false); }
+
   function nextRound() {
+    if (modeRef.current === "multi") {
+      setMultiWaiting(true);
+      mp.readyForNext();
+      return;
+    }
     if (round + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return; }
     setRound(r => r + 1);
     setClickedCode(null);
@@ -279,8 +393,35 @@ export default function FoodOriginGame() {
     setShowIntro(true);
   }
 
-  if (phase === "home") return <HomeScreen onStart={startGame} />;
-  if (phase === "result") return <ResultScreen score={score} onReplay={() => setPhase("home")} />;
+  function backToHome() {
+    mp.disconnect();
+    setMode("solo");
+    setPhase("home");
+  }
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  if (phase === "home") return (
+    <>
+      <HomeScreen onSolo={startSolo} onMulti={startMulti} />
+      {showNamePrompt && (
+        <NamePromptModal
+          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
+        />
+      )}
+      <MultiplayerScreen status={mp.status} onCancel={backToHome} />
+    </>
+  );
+
+  if (phase === "result") return (
+    <ResultScreen
+      score={score}
+      oppScore={mp.opponent?.score ?? null}
+      mode={mode}
+      onReplay={backToHome}
+    />
+  );
+
   if (!currentDish) return null;
 
   return (
@@ -292,6 +433,11 @@ export default function FoodOriginGame() {
         {!showIntro && !revealed && <TimerRing seconds={timeLeft} total={ROUND_SECONDS} />}
       </div>
 
+      {/* Opponent bar */}
+      {mode === "multi" && mp.opponent && (
+        <OpponentBar opponent={mp.opponent} myScore={score} maxScore={MAX_SCORE} />
+      )}
+
       {/* Full-screen map */}
       <div className="fd-map-full">
         <LeafletMap
@@ -300,7 +446,7 @@ export default function FoodOriginGame() {
           clickedCode={clickedCode}
           revealed={revealed}
           disabled={showIntro}
-          onCountryClick={(alpha2, name) => { if (!revealed && !showIntro) reveal(alpha2); }}
+          onCountryClick={(alpha2) => { if (!revealed && !showIntro) reveal(alpha2); }}
           onCountryHover={setHoveredCountry}
         />
 
@@ -369,8 +515,16 @@ export default function FoodOriginGame() {
           clickedCode={clickedCode}
           onNext={nextRound}
           isLast={round + 1 >= ROUNDS_PER_GAME}
+          multiWaiting={multiWaiting}
         />
       )}
+
+      {/* Multiplayer overlay (connecting / waiting / matched / opponent_left) */}
+      <MultiplayerScreen
+        status={mp.status}
+        onCancel={backToHome}
+        onContinueSolo={() => { setMode("solo"); }}
+      />
     </div>
   );
 }

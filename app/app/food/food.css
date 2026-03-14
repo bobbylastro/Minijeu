@@ -510,6 +510,15 @@
   width: 100%;
 }
 
+/* ── Result scores (multiplayer) ────────────────────────────────────────── */
+.fd-result-scores {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  margin: 0.5rem 0;
+}
+
 /* ── Home card ───────────────────────────────────────────────────────────── */
 .fd-home-card {
   background: rgba(255,255,255,0.05);
