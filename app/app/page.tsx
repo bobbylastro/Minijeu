@@ -71,10 +71,10 @@ const CULTURE_GAMES: GameDef[] = [
 const FOOD_GAMES: GameDef[] = [
   {
     slug: "/food",
-    emoji: "🗺️",
+    emoji: "🍽️",
     title: "Food Origins",
-    desc: "A dish appears — click on the world map to find the country it comes from.",
-    tags: ["Solo"],
+    desc: "A dish appears — click on the world map to find the country it comes from. 150+ dishes from every continent.",
+    tags: ["Solo", "Multiplayer"],
   },
 ];
 
@@ -146,7 +146,7 @@ export default function HomePage() {
         </div>
 
         <p className="home-page__intro">
-          Ultimate Playground is your go-to platform for quick, fun and challenging online games. Test your knowledge, compare stats, and challenge yourself with a variety of interactive quiz games you can play instantly in your browser.
+          Ultimate Playground is your go-to platform for quick, fun and challenging online games. Test your knowledge on sports, geography and food culture, compare stats, and challenge friends in real-time multiplayer — all playable instantly in your browser.
         </p>
 
         <main className="categories">
@@ -157,24 +157,25 @@ export default function HomePage() {
         </main>
 
         <section className="seo-section">
-          <p>From guessing city populations in CityMix to comparing country statistics in Higher or Lower, each game is designed to be simple, competitive and highly addictive. Whether you&apos;re into sports, geography or general knowledge, there&apos;s always a new challenge waiting for you.</p>
+          <p>From guessing city populations in CityMix to tracking a footballer&apos;s career in CareerOrder, each game is designed to be simple, competitive and highly addictive. Whether you&apos;re into sports, geography, food culture or general knowledge, there&apos;s always a new challenge waiting for you.</p>
 
-          <p>Play solo or compete with others in multiplayer modes and track your performance across games.</p>
+          <p>Play solo or compete with friends in real-time multiplayer modes across all our games.</p>
 
           <SeoExpand>
             <h2>Featured Games</h2>
             <ul>
+              <li><strong>Food Origins</strong> – Click on the world map to find the country behind 150+ dishes from every continent</li>
               <li><strong>CityMix</strong> – Guess which city is bigger and estimate its population</li>
               <li><strong>Higher or Lower</strong> – Compare countries based on population, GDP and more</li>
               <li><strong>FootballQuiz</strong> – Test your football knowledge with transfers, salaries and stadiums</li>
               <li><strong>NBAQuiz</strong> – Challenge yourself on contracts, arenas and basketball trivia</li>
-              <li><strong>CareerOrder</strong> – Rebuild a player&apos;s career in the correct order</li>
-              <li><strong>WhatCameFirst</strong> – Choose which event happened first across multiple topics</li>
+              <li><strong>CareerOrder</strong> – Rebuild a player&apos;s career in the correct chronological order</li>
+              <li><strong>WhatCameFirst</strong> – Choose which event happened first across sports, tech and history</li>
             </ul>
 
             <h2>Free Online Mini Games for Every Player</h2>
-            <p>Ultimate Playground offers a wide range of free online mini games designed for quick sessions and endless replayability. Our games combine trivia, logic, and estimation challenges to create engaging experiences for all players.</p>
-            <p>Whether you enjoy guess games, higher or lower challenges, sports quizzes or general knowledge tests, you&apos;ll find something to play anytime.</p>
+            <p>Ultimate Playground offers a wide range of free online mini games designed for quick sessions and endless replayability. Our games combine trivia, geography, estimation and logic challenges to create engaging experiences for all players.</p>
+            <p>Whether you enjoy food geography quizzes, sports trivia, higher or lower challenges or population guessing games, you&apos;ll find something to play anytime.</p>
             <p>New games are added regularly, making Ultimate Playground a growing hub for browser-based games you can enjoy without downloading anything.</p>
           </SeoExpand>
         </section>
