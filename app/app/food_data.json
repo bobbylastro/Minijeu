@@ -13,7 +13,7 @@
     "countryCode": "IT",
     "wiki": "Pizza Napoletana",
     "hint": "The original pizza — born in Naples",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg/1920px-Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg/500px-Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg"
   },
   {
     "name": "Croissant",
@@ -45,7 +45,7 @@
     "countryCode": "TH",
     "wiki": "Pad Thai",
     "hint": "Stir-fried rice noodles with tamarind and peanuts",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg/500px-Phat_Thai_kung_Chang_Khien_street_stall.jpg"
   },
   {
     "name": "Poutine",
@@ -69,7 +69,7 @@
     "countryCode": "AT",
     "wiki": "Wiener Schnitzel",
     "hint": "Breaded veal cutlet — 'Wiener' literally means Vienna",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Wiener-Schnitzel02.jpg/1280px-Wiener-Schnitzel02.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Wiener-Schnitzel02.jpg/500px-Wiener-Schnitzel02.jpg"
   },
   {
     "name": "Moussaka",
@@ -117,7 +117,7 @@
     "countryCode": "VN",
     "wiki": "Phở",
     "hint": "Aromatic broth soup with rice noodles and fresh herbs",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/3840px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/500px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
   },
   {
     "name": "Ceviche",
@@ -133,7 +133,7 @@
     "countryCode": "MA",
     "wiki": "Tajine",
     "hint": "Slow-cooked stew named after its conical clay pot",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/ZnuTjn2a.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/ZnuTjn2a.jpg/500px-ZnuTjn2a.jpg"
   },
   {
     "name": "Borscht",
@@ -189,7 +189,7 @@
     "countryCode": "MX",
     "wiki": "Mole sauce",
     "hint": "Complex chili-chocolate sauce from Puebla",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ChickRedMole.JPG/3840px-ChickRedMole.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ChickRedMole.JPG/500px-ChickRedMole.JPG"
   },
   {
     "name": "Butter Chicken",
@@ -237,7 +237,7 @@
     "countryCode": "PH",
     "wiki": "Adobo (Filipino cuisine)",
     "hint": "Braised in vinegar, soy sauce and garlic — the national dish",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Adobo_DSCF4391.jpg/3840px-Adobo_DSCF4391.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Adobo_DSCF4391.jpg/500px-Adobo_DSCF4391.jpg"
   },
   {
     "name": "Khinkali",
@@ -341,7 +341,7 @@
     "countryCode": "IL",
     "wiki": "Shakshuka",
     "hint": "Eggs nestled in a bubbling tomato-pepper sauce — a Middle Eastern breakfast staple",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Shakshuka_by_Calliopejen1.jpg/3840px-Shakshuka_by_Calliopejen1.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Shakshuka_by_Calliopejen1.jpg/500px-Shakshuka_by_Calliopejen1.jpg"
   },
   {
     "name": "Hummus",
@@ -365,7 +365,7 @@
     "countryCode": "IR",
     "wiki": "Chelo kabab",
     "hint": "Saffron-marinated grilled meat served alongside buttery saffron rice",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Kebab_Bakhtyari.jpg/1920px-Kebab_Bakhtyari.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Kebab_Bakhtyari.jpg/500px-Kebab_Bakhtyari.jpg"
   },
   {
     "name": "Plov",
@@ -373,7 +373,7 @@
     "countryCode": "UZ",
     "wiki": "Plov",
     "hint": "Slow-cooked rice pilaf with lamb and carrots in a cast-iron kazan",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Afghan_Palo.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Afghan_Palo.jpg/500px-Afghan_Palo.jpg"
   },
   {
     "name": "Mohinga",
@@ -389,7 +389,7 @@
     "countryCode": "AU",
     "wiki": "Pavlova (dessert)",
     "hint": "Crisp meringue shell with a soft marshmallowy centre, topped with cream and fruit",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Pavlova_dessert.JPG/1920px-Pavlova_dessert.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Pavlova_dessert.JPG/500px-Pavlova_dessert.JPG"
   },
   {
     "name": "Hāngī",
@@ -453,7 +453,7 @@
     "countryCode": "CZ",
     "wiki": "Svíčková na smetaně",
     "hint": "Braised beef sirloin in a creamy root-vegetable sauce with bread dumplings",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG/1920px-Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG/500px-Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.JPG"
   },
   {
     "name": "Ciorba de Burta",
@@ -461,7 +461,7 @@
     "countryCode": "RO",
     "wiki": "Ciorbă de burtă",
     "hint": "Tangy tripe soup finished with sour cream and garlic",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Tripe_soup_from_Turkey.jpg/1920px-Tripe_soup_from_Turkey.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Tripe_soup_from_Turkey.jpg/500px-Tripe_soup_from_Turkey.jpg"
   },
   {
     "name": "Banitsa",
@@ -485,7 +485,7 @@
     "countryCode": "RS",
     "wiki": "Burek",
     "hint": "Crispy coiled filo pastry stuffed with meat or cheese",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/8a/Meat_burek_%28GAK_bakery%2C_Belgrade%2C_Serbia%29.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Meat_burek_%28GAK_bakery%2C_Belgrade%2C_Serbia%29.jpg/500px-Meat_burek_%28GAK_bakery%2C_Belgrade%2C_Serbia%29.jpg"
   },
   {
     "name": "Tarator",
@@ -493,7 +493,7 @@
     "countryCode": "BG",
     "wiki": "Tarator",
     "hint": "Chilled yogurt and cucumber soup with dill and walnuts",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/23/Cacik-1.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Cacik-1.jpg/500px-Cacik-1.jpg"
   },
   {
     "name": "Fasolia",
@@ -517,7 +517,7 @@
     "countryCode": "AO",
     "wiki": "Muamba de galinha",
     "hint": "Palm oil and okra chicken stew — rich, smoky and deeply comforting",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Poulet_%C3%A0_la_moambe.JPG/1920px-Poulet_%C3%A0_la_moambe.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Poulet_%C3%A0_la_moambe.JPG/500px-Poulet_%C3%A0_la_moambe.JPG"
   },
   {
     "name": "Ugali",
@@ -541,7 +541,7 @@
     "countryCode": "ML",
     "wiki": "Maafe",
     "hint": "Rich West African peanut butter stew with meat and vegetables",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Mafe.malien.jpg/960px-Mafe.malien.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Mafe.malien.jpg/500px-Mafe.malien.jpg"
   },
   {
     "name": "Kedjenou",
@@ -573,7 +573,7 @@
     "countryCode": "LK",
     "wiki": "Hopper (food)",
     "hint": "Bowl-shaped crispy rice and coconut milk crepes — perfect with an egg in the centre",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg/960px-Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg/500px-Appam_-_%E0%AE%85%E0%AE%AA%E0%AF%8D%E0%AE%AA%E0%AE%AE%E0%AF%8D.jpg"
   },
   {
     "name": "Buuz",
@@ -621,7 +621,7 @@
     "countryCode": "GR",
     "wiki": "Koulouri",
     "hint": "Sesame-crusted bread ring sold by street vendors since dawn",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Simit-2x.JPG/1920px-Simit-2x.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Simit-2x.JPG/500px-Simit-2x.JPG"
   },
   {
     "name": "Tostones",
@@ -677,7 +677,7 @@
     "countryCode": "WS",
     "wiki": "Palusami",
     "hint": "Coconut cream packed into taro leaves and baked in an earth oven",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f8/Luaulau.png"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Luaulau.png/500px-Luaulau.png"
   },
   {
     "name": "Sinigang",
@@ -693,7 +693,7 @@
     "countryCode": "TH",
     "wiki": "Som tam",
     "hint": "Pounded green papaya salad with lime, fish sauce and chili — fiery and refreshing",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2013_Tam_Lao.jpg/1920px-2013_Tam_Lao.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/2013_Tam_Lao.jpg/500px-2013_Tam_Lao.jpg"
   },
   {
     "name": "Garudhiya",
@@ -709,7 +709,7 @@
     "countryCode": "EG",
     "wiki": "Kushari",
     "hint": "Rice, lentils and macaroni piled high with crispy onions and spiced tomato sauce",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Egyptian_food_Koshary.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Egyptian_food_Koshary.jpg/500px-Egyptian_food_Koshary.jpg"
   },
   {
     "name": "Suya",
@@ -829,7 +829,7 @@
     "countryCode": "KW",
     "wiki": "Machboos",
     "hint": "Heavily spiced rice cooked with meat and dried limes — a Gulf staple",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Machboos_%28cropped%29.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Machboos_%28cropped%29.JPG/500px-Machboos_%28cropped%29.JPG"
   },
   {
     "name": "Harees",
@@ -845,7 +845,7 @@
     "countryCode": "QA",
     "wiki": "Machboos",
     "hint": "Fragrant spiced rice with slow-cooked lamb, perfumed with rosewater and saffron",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f1/Machboos_%28cropped%29.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Machboos_%28cropped%29.JPG/500px-Machboos_%28cropped%29.JPG"
   },
   {
     "name": "Maqluba",
@@ -877,7 +877,7 @@
     "countryCode": "KG",
     "wiki": "Shorpo",
     "hint": "Clear lamb broth with vegetables — a warming nomadic staple from the high steppes",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Bean_soup_with_tomatoes_and_red_peppers.jpeg/960px-Bean_soup_with_tomatoes_and_red_peppers.jpeg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Bean_soup_with_tomatoes_and_red_peppers.jpeg/500px-Bean_soup_with_tomatoes_and_red_peppers.jpeg"
   },
   {
     "name": "Ema Datshi",
@@ -909,7 +909,7 @@
     "countryCode": "TM",
     "wiki": "Plov",
     "hint": "Celebration rice dish cooked with lamb and golden carrots in a giant cauldron",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Afghan_Palo.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Afghan_Palo.jpg/500px-Afghan_Palo.jpg"
   },
   {
     "name": "Hilsa Curry",
@@ -917,7 +917,7 @@
     "countryCode": "BD",
     "wiki": "Ilish",
     "hint": "National fish of the delta — a silvery, oil-rich shad cooked in mustard sauce",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d3/BHilsa123.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/BHilsa123.jpg/500px-BHilsa123.jpg"
   },
   {
     "name": "Irish Stew",
@@ -933,7 +933,7 @@
     "countryCode": "MT",
     "wiki": "Pastizzi",
     "hint": "Flaky diamond-shaped pastry pockets filled with ricotta or mushy peas",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Malta_Pastizzi.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Malta_Pastizzi.JPG/500px-Malta_Pastizzi.JPG"
   },
   {
     "name": "Halloumi",
@@ -989,7 +989,7 @@
     "countryCode": "BY",
     "wiki": "Draniki",
     "hint": "Thick pork and sausage gravy served with pancakes for dipping — a Belarusian classic",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/00/Latkas.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Latkas.jpg/500px-Latkas.jpg"
   },
   {
     "name": "Boil-Up",
@@ -997,7 +997,7 @@
     "countryCode": "BZ",
     "wiki": "Boil Up",
     "hint": "Roots, vegetables and fish or pig tail simmered together — a coastal one-pot",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Maori_boil_up.jpg/1920px-Maori_boil_up.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Maori_boil_up.jpg/500px-Maori_boil_up.jpg"
   },
   {
     "name": "Gallo Pinto",
@@ -1061,7 +1061,7 @@
     "countryCode": "FJ",
     "wiki": "Lovo",
     "hint": "Marinated meat and root vegetables wrapped in leaves and slow-cooked in an earth oven",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Samoa_umu.JPG/1920px-Samoa_umu.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Samoa_umu.JPG/500px-Samoa_umu.JPG"
   },
   {
     "name": "Ndolé",
@@ -1101,7 +1101,7 @@
     "countryCode": "SO",
     "wiki": "Canjeero",
     "hint": "Spongy fermented flatbread with a lacy texture, eaten with honey or spiced butter",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/44/LahohS.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/LahohS.jpg/500px-LahohS.jpg"
   },
   {
     "name": "Zigni",
@@ -1149,7 +1149,7 @@
     "countryCode": "NA",
     "wiki": "Oshifima",
     "hint": "Stiff millet porridge moulded into a ball — the staple food of northern Namibia",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Ugali_%26_Sukuma_Wiki.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ugali_%26_Sukuma_Wiki.jpg/500px-Ugali_%26_Sukuma_Wiki.jpg"
   },
   {
     "name": "Groundnut Soup",
@@ -1157,7 +1157,7 @@
     "countryCode": "SL",
     "wiki": "Groundnut soup",
     "hint": "Rich peanut broth with chicken or fish and garden greens — West Africa's warming classic",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/ff/Fufu.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fufu.jpg/500px-Fufu.jpg"
   },
   {
     "name": "Palm Butter Soup",
@@ -1181,7 +1181,7 @@
     "countryCode": "GA",
     "wiki": "Nyembwe chicken",
     "hint": "Chicken braised in rich red palm nut cream — Gabon's prized national dish",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Poulet_%C3%A0_la_moambe.JPG/1920px-Poulet_%C3%A0_la_moambe.JPG"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Poulet_%C3%A0_la_moambe.JPG/500px-Poulet_%C3%A0_la_moambe.JPG"
   },
   {
     "name": "Poulet à la Moambé",
@@ -1197,7 +1197,7 @@
     "countryCode": "MW",
     "wiki": "Nsima",
     "hint": "Thick white maize porridge formed into smooth patties — the bedrock of Malawian meals",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Ugali_%26_Sukuma_Wiki.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ugali_%26_Sukuma_Wiki.jpg/500px-Ugali_%26_Sukuma_Wiki.jpg"
   },
   {
     "name": "Nshima",
@@ -1205,7 +1205,7 @@
     "countryCode": "ZM",
     "wiki": "Nshima",
     "hint": "Stiff white maize dough shaped by hand and eaten with relish or stew",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/48/Ugali_%26_Sukuma_Wiki.jpg"
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ugali_%26_Sukuma_Wiki.jpg/500px-Ugali_%26_Sukuma_Wiki.jpg"
   },
   {
     "name": "Umngqusho",
