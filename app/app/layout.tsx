@@ -9,6 +9,7 @@ import ConsentScripts from "@/components/ConsentScripts";
 export const metadata: Metadata = {
   title: { template: "%s | Ultimate Playground", default: "Ultimate Playground — Quiz & Games" },
   description: "Play fun quiz games — sports, geography, culture and more.",
+  icons: { icon: "/images/favicon.png" },
 };
 
 export default function RootLayout({

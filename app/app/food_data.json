@@ -278,5 +278,1173 @@
     "wiki": "Brigadeiro",
     "hint": "Chocolate fudge truffle rolled in sprinkles",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Brigadeiro.jpg/500px-Brigadeiro.jpg"
+  },
+  {
+    "name": "Mansaf",
+    "country": "Jordan",
+    "countryCode": "JO",
+    "wiki": "Mansaf",
+    "hint": "Lamb slow-cooked in fermented dried yogurt, served over rice and flatbread",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Mansaf_SA.jpg/500px-Mansaf_SA.jpg"
+  },
+  {
+    "name": "Brik",
+    "country": "Tunisia",
+    "countryCode": "TN",
+    "wiki": "Brik",
+    "hint": "Crispy deep-fried pastry parcel with a runny egg and tuna inside",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Brik_%C3%A0_l%27oeuf.jpg/500px-Brik_%C3%A0_l%27oeuf.jpg"
+  },
+  {
+    "name": "Jollof Rice",
+    "country": "Nigeria",
+    "countryCode": "NG",
+    "wiki": "Jollof rice",
+    "hint": "One-pot smoky tomato rice that sparked a legendary West African rivalry",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ghanaian_jollof_rice.jpg/500px-Ghanaian_jollof_rice.jpg"
+  },
+  {
+    "name": "Bunny Chow",
+    "country": "South Africa",
+    "countryCode": "ZA",
+    "wiki": "Bunny chow",
+    "hint": "A hollowed-out half loaf of bread filled with curry — Durban street food",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Bunny_chow.jpg/500px-Bunny_chow.jpg"
+  },
+  {
+    "name": "Nasi Lemak",
+    "country": "Malaysia",
+    "countryCode": "MY",
+    "wiki": "Nasi lemak",
+    "hint": "Coconut milk rice wrapped in banana leaf, with anchovies and sambal",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/NasiLemak.jpg/500px-NasiLemak.jpg"
+  },
+  {
+    "name": "Hainanese Chicken Rice",
+    "country": "Singapore",
+    "countryCode": "SG",
+    "wiki": "Hainanese chicken rice",
+    "hint": "Poached silky chicken over fragrant rice cooked in chicken broth",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Hainanese_chicken_rice.jpg/500px-Hainanese_chicken_rice.jpg"
+  },
+  {
+    "name": "Amok Trey",
+    "country": "Cambodia",
+    "countryCode": "KH",
+    "wiki": "Amok (food)",
+    "hint": "Fish steamed in a fragrant coconut lemongrass custard inside a banana leaf",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Khmer_amok.jpg/500px-Khmer_amok.jpg"
+  },
+  {
+    "name": "Larb",
+    "country": "Laos",
+    "countryCode": "LA",
+    "wiki": "Larb",
+    "hint": "Minced meat salad with toasted rice powder, lime and fresh herbs",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Laab_Ped.jpg/500px-Laab_Ped.jpg"
+  },
+  {
+    "name": "Shakshuka",
+    "country": "Israel",
+    "countryCode": "IL",
+    "wiki": "Shakshuka",
+    "hint": "Eggs nestled in a bubbling tomato-pepper sauce — a Middle Eastern breakfast staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Shakshouka_1.jpg/500px-Shakshouka_1.jpg"
+  },
+  {
+    "name": "Hummus",
+    "country": "Lebanon",
+    "countryCode": "LB",
+    "wiki": "Hummus",
+    "hint": "Creamy chickpea and tahini dip drizzled with olive oil",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Hummus_from_The_Nile.jpg/500px-Hummus_from_The_Nile.jpg"
+  },
+  {
+    "name": "Kabsa",
+    "country": "Saudi Arabia",
+    "countryCode": "SA",
+    "wiki": "Kabsa",
+    "hint": "Fragrant rice cooked with meat, dried fruits and mixed spices — the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Al_Kabsa.jpg/500px-Al_Kabsa.jpg"
+  },
+  {
+    "name": "Chelo Kabab",
+    "country": "Iran",
+    "countryCode": "IR",
+    "wiki": "Chelo kabab",
+    "hint": "Saffron-marinated grilled meat served alongside buttery saffron rice",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Chelo_kabab.jpg/500px-Chelo_kabab.jpg"
+  },
+  {
+    "name": "Plov",
+    "country": "Uzbekistan",
+    "countryCode": "UZ",
+    "wiki": "Plov",
+    "hint": "Slow-cooked rice pilaf with lamb and carrots in a cast-iron kazan",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Plov.jpg/500px-Plov.jpg"
+  },
+  {
+    "name": "Beshbarmak",
+    "country": "Kazakhstan",
+    "countryCode": "KZ",
+    "wiki": "Beshbarmak",
+    "hint": "Boiled meat over flat noodles — its name literally means 'five fingers'",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Beshbarmak.jpg/500px-Beshbarmak.jpg"
+  },
+  {
+    "name": "Dal Bhat",
+    "country": "Nepal",
+    "countryCode": "NP",
+    "wiki": "Dal bhat",
+    "hint": "Rice with lentil soup — eaten twice daily by millions in the Himalayas",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Dal_bhat.jpg/500px-Dal_bhat.jpg"
+  },
+  {
+    "name": "Mohinga",
+    "country": "Myanmar",
+    "countryCode": "MM",
+    "wiki": "Mohinga",
+    "hint": "Catfish broth with rice vermicelli — the beloved national breakfast",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Mohinga.jpg/500px-Mohinga.jpg"
+  },
+  {
+    "name": "Pavlova",
+    "country": "Australia",
+    "countryCode": "AU",
+    "wiki": "Pavlova (dessert)",
+    "hint": "Crisp meringue shell with a soft marshmallowy centre, topped with cream and fruit",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Pavlova_dessert.jpg/500px-Pavlova_dessert.jpg"
+  },
+  {
+    "name": "Hāngī",
+    "country": "New Zealand",
+    "countryCode": "NZ",
+    "wiki": "Hāngī",
+    "hint": "Meat and vegetables cooked slowly underground using heated stones",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Hangi_1.jpg/500px-Hangi_1.jpg"
+  },
+  {
+    "name": "Bandeja Paisa",
+    "country": "Colombia",
+    "countryCode": "CO",
+    "wiki": "Bandeja paisa",
+    "hint": "A towering platter of beans, rice, chicharrón, egg and plantain",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bandeja_paisa.jpg/500px-Bandeja_paisa.jpg"
+  },
+  {
+    "name": "Asado",
+    "country": "Uruguay",
+    "countryCode": "UY",
+    "wiki": "Asado",
+    "hint": "Long, slow wood-fire grilling of beef cuts — a sacred social ritual",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Asado_en_Uruguay.jpg/500px-Asado_en_Uruguay.jpg"
+  },
+  {
+    "name": "Salteñas",
+    "country": "Bolivia",
+    "countryCode": "BO",
+    "wiki": "Salteña",
+    "hint": "Juicy baked pastries filled with a sweet-spicy stew — Bolivia's favourite morning snack",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Saltena.jpg/500px-Saltena.jpg"
+  },
+  {
+    "name": "Arepas",
+    "country": "Venezuela",
+    "countryCode": "VE",
+    "wiki": "Arepa",
+    "hint": "Grilled cornmeal cakes split open and stuffed with cheese or meat",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Arepa.jpg/500px-Arepa.jpg"
+  },
+  {
+    "name": "Locro",
+    "country": "Ecuador",
+    "countryCode": "EC",
+    "wiki": "Locro de papa",
+    "hint": "Thick potato and cheese soup garnished with avocado — an Andean staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Locro_de_papa.jpg/500px-Locro_de_papa.jpg"
+  },
+  {
+    "name": "Pastel de Choclo",
+    "country": "Chile",
+    "countryCode": "CL",
+    "wiki": "Pastel de choclo",
+    "hint": "Corn casserole layered over a savoury meat and olive filling",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Pastel_de_choclo.jpg/500px-Pastel_de_choclo.jpg"
+  },
+  {
+    "name": "Svíčková",
+    "country": "Czech Republic",
+    "countryCode": "CZ",
+    "wiki": "Svíčková na smetaně",
+    "hint": "Braised beef sirloin in a creamy root-vegetable sauce with bread dumplings",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.jpg/500px-Sv%C3%AD%C4%8Dkov%C3%A1_na_smetan%C4%9B.jpg"
+  },
+  {
+    "name": "Ciorba de Burta",
+    "country": "Romania",
+    "countryCode": "RO",
+    "wiki": "Ciorbă de burtă",
+    "hint": "Tangy tripe soup finished with sour cream and garlic",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Ciorba_de_burta.jpg/500px-Ciorba_de_burta.jpg"
+  },
+  {
+    "name": "Banitsa",
+    "country": "Bulgaria",
+    "countryCode": "BG",
+    "wiki": "Banitsa",
+    "hint": "Flaky filo pastry filled with white cheese and eggs — eaten hot on holidays",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Banitsa.jpg/500px-Banitsa.jpg"
+  },
+  {
+    "name": "Ćevapi",
+    "country": "Bosnia and Herzegovina",
+    "countryCode": "BA",
+    "wiki": "Ćevapi",
+    "hint": "Skinless grilled minced-meat sausages served in flatbread with raw onion",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/%C4%86evap%C4%8Di%C4%87i.jpg/500px-%C4%86evap%C4%8Di%C4%87i.jpg"
+  },
+  {
+    "name": "Burek",
+    "country": "Serbia",
+    "countryCode": "RS",
+    "wiki": "Burek",
+    "hint": "Crispy coiled filo pastry stuffed with meat or cheese",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Burek_%28Sarajevo%2C_2007%29.jpg/500px-Burek_%28Sarajevo%2C_2007%29.jpg"
+  },
+  {
+    "name": "Tarator",
+    "country": "Bulgaria",
+    "countryCode": "BG",
+    "wiki": "Tarator",
+    "hint": "Chilled yogurt and cucumber soup with dill and walnuts",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Tarator.jpg/500px-Tarator.jpg"
+  },
+  {
+    "name": "Fasolia",
+    "country": "Egypt",
+    "countryCode": "EG",
+    "wiki": "Ful medames",
+    "hint": "Slow-cooked fava beans mashed with lemon and cumin — fuel for millions since ancient times",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Ful_medames.jpg/500px-Ful_medames.jpg"
+  },
+  {
+    "name": "Thieboudienne",
+    "country": "Senegal",
+    "countryCode": "SN",
+    "wiki": "Thieboudienne",
+    "hint": "Stuffed fish over broken rice with vegetables — Senegal's national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Thieboudiene.jpg/500px-Thieboudiene.jpg"
+  },
+  {
+    "name": "Muamba de Galinha",
+    "country": "Angola",
+    "countryCode": "AO",
+    "wiki": "Muamba de galinha",
+    "hint": "Palm oil and okra chicken stew — rich, smoky and deeply comforting",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Muamba_de_Galinha.jpg/500px-Muamba_de_Galinha.jpg"
+  },
+  {
+    "name": "Ugali",
+    "country": "Kenya",
+    "countryCode": "KE",
+    "wiki": "Ugali",
+    "hint": "Dense white maize porridge — the cornerstone of East African cooking",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ugali_wiki.jpg/500px-Ugali_wiki.jpg"
+  },
+  {
+    "name": "Nyama Choma",
+    "country": "Tanzania",
+    "countryCode": "TZ",
+    "wiki": "Nyama choma",
+    "hint": "Open-fire roasted goat or beef — the ultimate East African celebratory meal",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Nyama_choma_goat_Kenya.jpg/500px-Nyama_choma_goat_Kenya.jpg"
+  },
+  {
+    "name": "Mafé",
+    "country": "Mali",
+    "countryCode": "ML",
+    "wiki": "Maafe",
+    "hint": "Rich West African peanut butter stew with meat and vegetables",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Mafe.jpg/500px-Mafe.jpg"
+  },
+  {
+    "name": "Kedjenou",
+    "country": "Ivory Coast",
+    "countryCode": "CI",
+    "wiki": "Kedjenou",
+    "hint": "Chicken and vegetables slow-steamed in a sealed clay pot with almost no added liquid",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Kedjenou.jpg/500px-Kedjenou.jpg"
+  },
+  {
+    "name": "Romazava",
+    "country": "Madagascar",
+    "countryCode": "MG",
+    "wiki": "Romazava",
+    "hint": "National meat and leafy greens stew from the Great Red Island",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Romazava.jpg/500px-Romazava.jpg"
+  },
+  {
+    "name": "Biryani",
+    "country": "Pakistan",
+    "countryCode": "PK",
+    "wiki": "Biryani",
+    "hint": "Layered spiced rice and marinated meat, finished with saffron and fried onions",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Biryani_at_Spice_Xing_-_Kolkata_2011-08-14_6065.JPG/500px-Biryani_at_Spice_Xing_-_Kolkata_2011-08-14_6065.JPG"
+  },
+  {
+    "name": "Mantu",
+    "country": "Afghanistan",
+    "countryCode": "AF",
+    "wiki": "Mantu (dumpling)",
+    "hint": "Steamed dumplings filled with spiced lamb, topped with yogurt and tomato sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Mantoo.jpg/500px-Mantoo.jpg"
+  },
+  {
+    "name": "Hoppers",
+    "country": "Sri Lanka",
+    "countryCode": "LK",
+    "wiki": "Hopper (food)",
+    "hint": "Bowl-shaped crispy rice and coconut milk crepes — perfect with an egg in the centre",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Egg_hopper.jpg/500px-Egg_hopper.jpg"
+  },
+  {
+    "name": "Buuz",
+    "country": "Mongolia",
+    "countryCode": "MN",
+    "wiki": "Buuz",
+    "hint": "Steamed lamb dumplings eaten by hand during Lunar New Year celebrations",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Buuz.jpg/500px-Buuz.jpg"
+  },
+  {
+    "name": "Baklava",
+    "country": "Turkey",
+    "countryCode": "TR",
+    "wiki": "Baklava",
+    "hint": "Layers of crispy filo pastry filled with nuts and drenched in honey syrup",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Baklava_-_Turkish_special%2C_80-ply.JPEG/500px-Baklava_-_Turkish_special%2C_80-ply.JPEG"
+  },
+  {
+    "name": "Khorovats",
+    "country": "Armenia",
+    "countryCode": "AM",
+    "wiki": "Khorovats",
+    "hint": "Charcoal-grilled skewered meats — the centrepiece of every Armenian feast",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Khorovats.jpg/500px-Khorovats.jpg"
+  },
+  {
+    "name": "Pilaf",
+    "country": "Azerbaijan",
+    "countryCode": "AZ",
+    "wiki": "Azerbaijani pilaf",
+    "hint": "Saffron-coloured long-grain rice with a crunchy tahdig crust, layered with dried fruits",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Azerbaijani_Plov.jpg/500px-Azerbaijani_Plov.jpg"
+  },
+  {
+    "name": "Varenyky",
+    "country": "Ukraine",
+    "countryCode": "UA",
+    "wiki": "Varenyky",
+    "hint": "Boiled dumplings stuffed with potato and cheese — comfort food of the steppes",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Ukrainian_Varenyky.jpg/500px-Ukrainian_Varenyky.jpg"
+  },
+  {
+    "name": "Koulouri",
+    "country": "Greece",
+    "countryCode": "GR",
+    "wiki": "Koulouri",
+    "hint": "Sesame-crusted bread ring sold by street vendors since dawn",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Koulouri.jpg/500px-Koulouri.jpg"
+  },
+  {
+    "name": "Tostones",
+    "country": "Cuba",
+    "countryCode": "CU",
+    "wiki": "Tostones",
+    "hint": "Twice-fried flattened green plantain slices — golden and crispy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Tostones-2.jpg/500px-Tostones-2.jpg"
+  },
+  {
+    "name": "Sancocho",
+    "country": "Dominican Republic",
+    "countryCode": "DO",
+    "wiki": "Sancocho",
+    "hint": "Hearty seven-meat stew with root vegetables — saved for Sunday gatherings",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sancocho_dominicano.jpg/500px-Sancocho_dominicano.jpg"
+  },
+  {
+    "name": "Lambi",
+    "country": "Haiti",
+    "countryCode": "HT",
+    "wiki": "Conch (food)",
+    "hint": "Tender conch meat stewed in a spicy Creole sauce — Haiti's beloved seafood dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Conch_fritters.jpg/500px-Conch_fritters.jpg"
+  },
+  {
+    "name": "Solyanka",
+    "country": "Russia",
+    "countryCode": "RU",
+    "wiki": "Solyanka",
+    "hint": "Thick, tangy mixed-meat soup with pickles, olives and lemon",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Solyanka.jpg/500px-Solyanka.jpg"
+  },
+  {
+    "name": "Manti",
+    "country": "Turkey",
+    "countryCode": "TR",
+    "wiki": "Manti",
+    "hint": "Tiny lamb-filled dumplings drowned in garlicky yogurt and paprika butter",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f4/Mant%C4%B1.jpg/500px-Mant%C4%B1.jpg"
+  },
+  {
+    "name": "Harira",
+    "country": "Morocco",
+    "countryCode": "MA",
+    "wiki": "Harira",
+    "hint": "Fragrant tomato, lentil and chickpea soup traditionally eaten to break the Ramadan fast",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Harira.jpg/500px-Harira.jpg"
+  },
+  {
+    "name": "Cou-Cou and Flying Fish",
+    "country": "Barbados",
+    "countryCode": "BB",
+    "wiki": "Cou-cou and flying fish",
+    "hint": "Cornmeal and okra polenta paired with steamed flying fish — the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Cou-cou-and-flying-fish.jpg/500px-Cou-cou-and-flying-fish.jpg"
+  },
+  {
+    "name": "Laplap",
+    "country": "Vanuatu",
+    "countryCode": "VU",
+    "wiki": "Laplap",
+    "hint": "Root vegetable paste wrapped and slow-cooked in banana leaves over hot stones",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Lap_Lap_Vanuatu.jpg/500px-Lap_Lap_Vanuatu.jpg"
+  },
+  {
+    "name": "Palusami",
+    "country": "Samoa",
+    "countryCode": "WS",
+    "wiki": "Palusami",
+    "hint": "Coconut cream packed into taro leaves and baked in an earth oven",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Palusami.jpg/500px-Palusami.jpg"
+  },
+  {
+    "name": "Sinigang",
+    "country": "Philippines",
+    "countryCode": "PH",
+    "wiki": "Sinigang",
+    "hint": "Sour tamarind broth with pork or shrimp and fresh vegetables",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Sinigang_na_baboy.jpg/500px-Sinigang_na_baboy.jpg"
+  },
+  {
+    "name": "Som Tam",
+    "country": "Thailand",
+    "countryCode": "TH",
+    "wiki": "Som tam",
+    "hint": "Pounded green papaya salad with lime, fish sauce and chili — fiery and refreshing",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Som_tam_Thai.jpg/500px-Som_tam_Thai.jpg"
+  },
+  {
+    "name": "Garudhiya",
+    "country": "Maldives",
+    "countryCode": "MV",
+    "wiki": "Garudhiya",
+    "hint": "Clear skipjack tuna broth served with rice and lime — the soul of island cooking",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Garudhiya.jpg/500px-Garudhiya.jpg"
+  },
+  {
+    "name": "Kushari",
+    "country": "Egypt",
+    "countryCode": "EG",
+    "wiki": "Kushari",
+    "hint": "Rice, lentils and macaroni piled high with crispy onions and spiced tomato sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Koshary.jpg/500px-Koshary.jpg"
+  },
+  {
+    "name": "Suya",
+    "country": "Nigeria",
+    "countryCode": "NG",
+    "wiki": "Suya",
+    "hint": "Spiced skewered beef coated in ground peanuts and grilled over open flame",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Suya.jpg/500px-Suya.jpg"
+  },
+  {
+    "name": "Matooke",
+    "country": "Uganda",
+    "countryCode": "UG",
+    "wiki": "Matoke",
+    "hint": "Steamed mashed green banana — the beloved national staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Matoke.jpg/500px-Matoke.jpg"
+  },
+  {
+    "name": "Fufu",
+    "country": "Ghana",
+    "countryCode": "GH",
+    "wiki": "Fufu",
+    "hint": "Pounded cassava and plantain dough — eaten by hand with rich soups",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Fufu.jpg/500px-Fufu.jpg"
+  },
+  {
+    "name": "Bryndzové Halušky",
+    "country": "Slovakia",
+    "countryCode": "SK",
+    "wiki": "Bryndzové halušky",
+    "hint": "Soft potato dumplings smothered in tangy sheep's cheese and crispy bacon",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Bryndzov%C3%A9_hal%C3%BA%C5%A1ky.jpg/500px-Bryndzov%C3%A9_hal%C3%BA%C5%A1ky.jpg"
+  },
+  {
+    "name": "Žganci",
+    "country": "Slovenia",
+    "countryCode": "SI",
+    "wiki": "Žganci",
+    "hint": "Buckwheat porridge crumbled with a fork and served with sour milk or crackling",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/%C5%BDganci.jpg/500px-%C5%BDganci.jpg"
+  },
+  {
+    "name": "Cepelinai",
+    "country": "Lithuania",
+    "countryCode": "LT",
+    "wiki": "Cepelinai",
+    "hint": "Giant potato-dough zeppelin dumplings stuffed with meat and topped with sour cream",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Cepelinai.jpg/500px-Cepelinai.jpg"
+  },
+  {
+    "name": "Rye Bread",
+    "country": "Latvia",
+    "countryCode": "LV",
+    "wiki": "Latvian rye bread",
+    "hint": "Dense, dark sourdough bread — the national pride of the Baltic coast",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Latvian_rye_bread.jpg/500px-Latvian_rye_bread.jpg"
+  },
+  {
+    "name": "Kama",
+    "country": "Estonia",
+    "countryCode": "EE",
+    "wiki": "Kama (food)",
+    "hint": "Roasted grain flour stirred into sour milk or yogurt — Estonia's oldest energy food",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Kama.jpg/500px-Kama.jpg"
+  },
+  {
+    "name": "Smoked Lamb",
+    "country": "Iceland",
+    "countryCode": "IS",
+    "wiki": "Hangikjöt",
+    "hint": "Birchwood-smoked lamb — Iceland's Christmas centrepiece for over a thousand years",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Hangikj%C3%B6t.jpg/500px-Hangikj%C3%B6t.jpg"
+  },
+  {
+    "name": "Rakfisk",
+    "country": "Norway",
+    "countryCode": "NO",
+    "wiki": "Rakfisk",
+    "hint": "Fermented freshwater fish with a pungent aroma — a Norwegian winter tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Rakfisk.jpg/500px-Rakfisk.jpg"
+  },
+  {
+    "name": "Köttbullar",
+    "country": "Sweden",
+    "countryCode": "SE",
+    "wiki": "Swedish meatballs",
+    "hint": "Small seasoned meatballs served with lingonberry jam and creamy gravy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Swedish_meatballs.jpg/500px-Swedish_meatballs.jpg"
+  },
+  {
+    "name": "Karjalanpiirakka",
+    "country": "Finland",
+    "countryCode": "FI",
+    "wiki": "Karelian pasty",
+    "hint": "Thin rye pastry boats filled with rice porridge — eaten with egg butter",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Karelian_pasty.jpg/500px-Karelian_pasty.jpg"
+  },
+  {
+    "name": "Waterzooi",
+    "country": "Belgium",
+    "countryCode": "BE",
+    "wiki": "Waterzooi",
+    "hint": "Creamy Flemish stew of chicken or fish with vegetables — born in Ghent",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Waterzooi.jpg/500px-Waterzooi.jpg"
+  },
+  {
+    "name": "Bacalhau à Brás",
+    "country": "Portugal",
+    "countryCode": "PT",
+    "wiki": "Bacalhau à Brás",
+    "hint": "Shredded salt cod scrambled with eggs, straw potatoes and black olives",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Bacalh%C3%A3o_%C3%A0_Br%C3%A1s.jpg/500px-Bacalh%C3%A3o_%C3%A0_Br%C3%A1s.jpg"
+  },
+  {
+    "name": "Tavë Kosi",
+    "country": "Albania",
+    "countryCode": "AL",
+    "wiki": "Tavë kosi",
+    "hint": "Lamb and rice baked under a rich, tangy yogurt and egg custard",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Tav%C3%AB_kosi.jpg/500px-Tav%C3%AB_kosi.jpg"
+  },
+  {
+    "name": "Machboos",
+    "country": "Kuwait",
+    "countryCode": "KW",
+    "wiki": "Machboos",
+    "hint": "Heavily spiced rice cooked with meat and dried limes — a Gulf staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Machboos.jpg/500px-Machboos.jpg"
+  },
+  {
+    "name": "Harees",
+    "country": "United Arab Emirates",
+    "countryCode": "AE",
+    "wiki": "Harees",
+    "hint": "Slow-cooked wheat and meat pounded to a silky porridge — a Ramadan tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Harees.jpg/500px-Harees.jpg"
+  },
+  {
+    "name": "Shuwa",
+    "country": "Oman",
+    "countryCode": "OM",
+    "wiki": "Shuwa",
+    "hint": "Spice-rubbed meat wrapped in palm leaves and buried underground to slow-cook for days",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Shuwa_Oman.jpg/500px-Shuwa_Oman.jpg"
+  },
+  {
+    "name": "Matchbous",
+    "country": "Qatar",
+    "countryCode": "QA",
+    "wiki": "Machboos",
+    "hint": "Fragrant spiced rice with slow-cooked lamb, perfumed with rosewater and saffron",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Machboos.jpg/500px-Machboos.jpg"
+  },
+  {
+    "name": "Maqluba",
+    "country": "Iraq",
+    "countryCode": "IQ",
+    "wiki": "Maqluba",
+    "hint": "A 'flipped upside-down' pot of rice, vegetables and meat — the reveal is spectacular",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Maqluba.jpg/500px-Maqluba.jpg"
+  },
+  {
+    "name": "Kibbeh",
+    "country": "Syria",
+    "countryCode": "SY",
+    "wiki": "Kibbeh",
+    "hint": "Ground lamb and bulgur wheat shaped into oval shells and filled with spiced meat",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Kibbeh.jpg/500px-Kibbeh.jpg"
+  },
+  {
+    "name": "Qurutob",
+    "country": "Tajikistan",
+    "countryCode": "TJ",
+    "wiki": "Qurutob",
+    "hint": "Torn flatbread soaked in a tangy whey broth topped with vegetables and onions",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Qurutob.jpg/500px-Qurutob.jpg"
+  },
+  {
+    "name": "Shorpo",
+    "country": "Kyrgyzstan",
+    "countryCode": "KG",
+    "wiki": "Shorpo",
+    "hint": "Clear lamb broth with vegetables — a warming nomadic staple from the high steppes",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Shorpo.jpg/500px-Shorpo.jpg"
+  },
+  {
+    "name": "Ema Datshi",
+    "country": "Bhutan",
+    "countryCode": "BT",
+    "wiki": "Ema datshi",
+    "hint": "Fiery chili peppers stewed with yak cheese — the national dish of the Thunder Dragon Kingdom",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Ema_Datshi.jpg/500px-Ema_Datshi.jpg"
+  },
+  {
+    "name": "Nasi Katok",
+    "country": "Brunei",
+    "countryCode": "BN",
+    "wiki": "Nasi katok",
+    "hint": "Simple rice with crispy fried chicken and sambal — Brunei's beloved affordable meal",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nasi_katok.jpg/500px-Nasi_katok.jpg"
+  },
+  {
+    "name": "Ikan Pepes",
+    "country": "Timor-Leste",
+    "countryCode": "TL",
+    "wiki": "Pepes ikan",
+    "hint": "Spiced fish packed in banana leaves and grilled over coals — an island favourite",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Pepes_Ikan.jpg/500px-Pepes_Ikan.jpg"
+  },
+  {
+    "name": "Plov (Turkmen)",
+    "country": "Turkmenistan",
+    "countryCode": "TM",
+    "wiki": "Plov",
+    "hint": "Celebration rice dish cooked with lamb and golden carrots in a giant cauldron",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Plov.jpg/500px-Plov.jpg"
+  },
+  {
+    "name": "Hilsa Curry",
+    "country": "Bangladesh",
+    "countryCode": "BD",
+    "wiki": "Ilish",
+    "hint": "National fish of the delta — a silvery, oil-rich shad cooked in mustard sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Ilish_Bhapa.jpg/500px-Ilish_Bhapa.jpg"
+  },
+  {
+    "name": "Irish Stew",
+    "country": "Ireland",
+    "countryCode": "IE",
+    "wiki": "Irish stew",
+    "hint": "Slow-simmered lamb, potato and onion — comfort food of the Emerald Isle",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Irish_stew.jpg/500px-Irish_stew.jpg"
+  },
+  {
+    "name": "Pastizzi",
+    "country": "Malta",
+    "countryCode": "MT",
+    "wiki": "Pastizzi",
+    "hint": "Flaky diamond-shaped pastry pockets filled with ricotta or mushy peas",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Pastizzi.jpg/500px-Pastizzi.jpg"
+  },
+  {
+    "name": "Halloumi",
+    "country": "Cyprus",
+    "countryCode": "CY",
+    "wiki": "Halloumi",
+    "hint": "Semi-hard brined cheese that squeaks when bitten and chars beautifully on the grill",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Halloumi_Cheese_-_2013.jpg/500px-Halloumi_Cheese_-_2013.jpg"
+  },
+  {
+    "name": "Judd mat Gaardebounen",
+    "country": "Luxembourg",
+    "countryCode": "LU",
+    "wiki": "Judd mat Gaardebounen",
+    "hint": "Cured smoked pork collar with broad beans — the hearty national dish of the Grand Duchy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Judd_mat_Gaardebounen.jpg/500px-Judd_mat_Gaardebounen.jpg"
+  },
+  {
+    "name": "Tavče Gravče",
+    "country": "North Macedonia",
+    "countryCode": "MK",
+    "wiki": "Tavče gravče",
+    "hint": "Slow-baked beans in a clay pot with peppers and spices — considered the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Tavce_Gravce.jpg/500px-Tavce_Gravce.jpg"
+  },
+  {
+    "name": "Mămăligă",
+    "country": "Moldova",
+    "countryCode": "MD",
+    "wiki": "Mămăligă",
+    "hint": "Golden cornmeal porridge eaten with sour cream and cheese — the Moldovan soul food",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Mamaliga.jpg/500px-Mamaliga.jpg"
+  },
+  {
+    "name": "Kacamak",
+    "country": "Montenegro",
+    "countryCode": "ME",
+    "wiki": "Kačamak",
+    "hint": "Creamy cornmeal mash stirred with potatoes and kajmak cream cheese",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Ka%C4%8Damak.jpg/500px-Ka%C4%8Damak.jpg"
+  },
+  {
+    "name": "Flija",
+    "country": "Kosovo",
+    "countryCode": "XK",
+    "wiki": "Flija",
+    "hint": "Layered crepe cake cooked under a sač lid with embers piled on top",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/Flija.jpg/500px-Flija.jpg"
+  },
+  {
+    "name": "Machanka",
+    "country": "Belarus",
+    "countryCode": "BY",
+    "wiki": "Machanka",
+    "hint": "Thick pork and sausage gravy served with pancakes for dipping — a Belarusian classic",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Machanka.jpg/500px-Machanka.jpg"
+  },
+  {
+    "name": "Peka",
+    "country": "Croatia",
+    "countryCode": "HR",
+    "wiki": "Peka (food)",
+    "hint": "Meat and vegetables slow-cooked under a cast-iron bell covered in glowing embers",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Peka.jpg/500px-Peka.jpg"
+  },
+  {
+    "name": "Roti",
+    "country": "Trinidad and Tobago",
+    "countryCode": "TT",
+    "wiki": "Roti (Trinidad and Tobago)",
+    "hint": "Soft flatbread stuffed with curried chickpeas or goat — a Caribbean-Indian fusion",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Trinidad_Roti.jpg/500px-Trinidad_Roti.jpg"
+  },
+  {
+    "name": "Pepper Pot",
+    "country": "Guyana",
+    "countryCode": "GY",
+    "wiki": "Pepper pot",
+    "hint": "Black, intensely spiced meat stew preserved with cassareep — a Christmas tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Guyanese_Pepper_Pot.jpg/500px-Guyanese_Pepper_Pot.jpg"
+  },
+  {
+    "name": "Pom",
+    "country": "Suriname",
+    "countryCode": "SR",
+    "wiki": "Pom (food)",
+    "hint": "Grated tayer root casserole baked with chicken and citrus — Suriname's festive dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Pom_Surinaams_gerecht.jpg/500px-Pom_Surinaams_gerecht.jpg"
+  },
+  {
+    "name": "Boil-Up",
+    "country": "Belize",
+    "countryCode": "BZ",
+    "wiki": "Boil Up",
+    "hint": "Roots, vegetables and fish or pig tail simmered together — a coastal one-pot",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Belize_Boil_Up.jpg/500px-Belize_Boil_Up.jpg"
+  },
+  {
+    "name": "Gallo Pinto",
+    "country": "Costa Rica",
+    "countryCode": "CR",
+    "wiki": "Gallo pinto",
+    "hint": "Speckled rice and black beans fried together — eaten morning, noon and night",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Gallo_Pinto.jpg/500px-Gallo_Pinto.jpg"
+  },
+  {
+    "name": "Baleada",
+    "country": "Honduras",
+    "countryCode": "HN",
+    "wiki": "Baleada",
+    "hint": "Thick flour tortilla filled with refried beans, cream and crumbly white cheese",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Baleada_Honduras.jpg/500px-Baleada_Honduras.jpg"
+  },
+  {
+    "name": "Vigorón",
+    "country": "Nicaragua",
+    "countryCode": "NI",
+    "wiki": "Vigorón",
+    "hint": "Boiled yuca topped with chicharrón and tangy cabbage salad, served on a banana leaf",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Vig_ron.jpg/500px-Vig_ron.jpg"
+  },
+  {
+    "name": "Sancocho Panameño",
+    "country": "Panama",
+    "countryCode": "PA",
+    "wiki": "Sancocho",
+    "hint": "Chicken soup with culantro and yam — called the national hangover cure",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Sancocho_dominicano.jpg/500px-Sancocho_dominicano.jpg"
+  },
+  {
+    "name": "Sopa Paraguaya",
+    "country": "Paraguay",
+    "countryCode": "PY",
+    "wiki": "Sopa paraguaya",
+    "hint": "Dense savoury cornbread baked with cheese and onion — despite its name, it's not a soup",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Sopa_Paraguaya.jpg/500px-Sopa_Paraguaya.jpg"
+  },
+  {
+    "name": "Pepián",
+    "country": "Guatemala",
+    "countryCode": "GT",
+    "wiki": "Pepián",
+    "hint": "Ancient Mayan spiced seed-and-chili sauce over chicken — a pre-Columbian legacy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Pepian_Guatemala.jpg/500px-Pepian_Guatemala.jpg"
+  },
+  {
+    "name": "Pupusas",
+    "country": "El Salvador",
+    "countryCode": "SV",
+    "wiki": "Pupusa",
+    "hint": "Thick handmade corn tortillas stuffed with cheese and beans — the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Pupusas_2.jpg/500px-Pupusas_2.jpg"
+  },
+  {
+    "name": "Watalappan",
+    "country": "Antigua and Barbuda",
+    "countryCode": "AG",
+    "wiki": "Ducana",
+    "hint": "Sweet coconut and plantain dumplings wrapped in banana leaves — a Caribbean treat",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Ducana_and_saltfish.jpg/500px-Ducana_and_saltfish.jpg"
+  },
+  {
+    "name": "Lovo",
+    "country": "Fiji",
+    "countryCode": "FJ",
+    "wiki": "Lovo",
+    "hint": "Marinated meat and root vegetables wrapped in leaves and slow-cooked in an earth oven",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Lovo_Fiji.jpg/500px-Lovo_Fiji.jpg"
+  },
+  {
+    "name": "Mumu",
+    "country": "Papua New Guinea",
+    "countryCode": "PG",
+    "wiki": "Mumu",
+    "hint": "Pork, sweet potatoes and greens steamed underground — a feast for celebrations",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Mumu_PNG.jpg/500px-Mumu_PNG.jpg"
+  },
+  {
+    "name": "Poi",
+    "country": "Tonga",
+    "countryCode": "TO",
+    "wiki": "Poi",
+    "hint": "Fermented taro paste — a starchy staple with a slightly sour tang",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Poi_bowl.jpg/500px-Poi_bowl.jpg"
+  },
+  {
+    "name": "Kokoda",
+    "country": "Solomon Islands",
+    "countryCode": "SB",
+    "wiki": "Kokoda (dish)",
+    "hint": "Raw fish marinated in lime juice and coconut cream — the Pacific Islands' answer to ceviche",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Kokoda_fish.jpg/500px-Kokoda_fish.jpg"
+  },
+  {
+    "name": "Ndolé",
+    "country": "Cameroon",
+    "countryCode": "CM",
+    "wiki": "Ndolé",
+    "hint": "Bitter leaf stew with ground peanuts and shrimp — Cameroon's rich national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Ndole.jpg/500px-Ndole.jpg"
+  },
+  {
+    "name": "Amiwo",
+    "country": "Benin",
+    "countryCode": "BJ",
+    "wiki": "Amiwo",
+    "hint": "Spiced tomato maize porridge with crab or shrimp — a staple from the Fon people",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Amiwo.jpg/500px-Amiwo.jpg"
+  },
+  {
+    "name": "Tô",
+    "country": "Burkina Faso",
+    "countryCode": "BF",
+    "wiki": "Tô",
+    "hint": "Smooth millet or sorghum paste served with a pungent baobab leaf sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/T%C3%B4_Burkina_Faso.jpg/500px-T%C3%B4_Burkina_Faso.jpg"
+  },
+  {
+    "name": "Isombe",
+    "country": "Rwanda",
+    "countryCode": "RW",
+    "wiki": "Isombe",
+    "hint": "Cassava leaves pounded and stewed with eggplant and peanuts — a Rwandan staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Isombe_Rwanda.jpg/500px-Isombe_Rwanda.jpg"
+  },
+  {
+    "name": "Boko Boko Harees",
+    "country": "Djibouti",
+    "countryCode": "DJ",
+    "wiki": "Harees",
+    "hint": "Slow-cooked wheat and meat porridge fragrant with spices — Horn of Africa comfort food",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Harees.jpg/500px-Harees.jpg"
+  },
+  {
+    "name": "Canjeero",
+    "country": "Somalia",
+    "countryCode": "SO",
+    "wiki": "Canjeero",
+    "hint": "Spongy fermented flatbread with a lacy texture, eaten with honey or spiced butter",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Canjeero.jpg/500px-Canjeero.jpg"
+  },
+  {
+    "name": "Zigni",
+    "country": "Eritrea",
+    "countryCode": "ER",
+    "wiki": "Zigni",
+    "hint": "Spicy minced beef stew simmered in berbere — eaten with spongy injera",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Zigni.jpg/500px-Zigni.jpg"
+  },
+  {
+    "name": "Aseeda",
+    "country": "Sudan",
+    "countryCode": "SD",
+    "wiki": "Aseeda",
+    "hint": "Thick wheat or sorghum dough ball served with meat or vegetable stew for dipping",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Asida.jpg/500px-Asida.jpg"
+  },
+  {
+    "name": "Asida",
+    "country": "Yemen",
+    "countryCode": "YE",
+    "wiki": "Asida",
+    "hint": "A sweet honeyed porridge of wheat, butter and honey — eaten at celebrations",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Asida.jpg/500px-Asida.jpg"
+  },
+  {
+    "name": "Couscous",
+    "country": "Libya",
+    "countryCode": "LY",
+    "wiki": "Couscous",
+    "hint": "Steamed semolina grains piled with lamb and spiced vegetables",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Couscous_berber.jpg/500px-Couscous_berber.jpg"
+  },
+  {
+    "name": "Thiébou Yapp",
+    "country": "Mauritania",
+    "countryCode": "MR",
+    "wiki": "Thieboudienne",
+    "hint": "Fragrant lamb cooked into spiced broken rice — the Moorish cousin of Senegal's thieboudienne",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Thieboudiene.jpg/500px-Thieboudiene.jpg"
+  },
+  {
+    "name": "Dholl Puri",
+    "country": "Mauritius",
+    "countryCode": "MU",
+    "wiki": "Dholl puri",
+    "hint": "Soft flatbread stuffed with split yellow peas, served with curry and chutney",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Dholl_puri.jpg/500px-Dholl_puri.jpg"
+  },
+  {
+    "name": "Matapa",
+    "country": "Mozambique",
+    "countryCode": "MZ",
+    "wiki": "Matapa",
+    "hint": "Cassava leaf stew slow-cooked with coconut milk, peanuts and prawn",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Matapa_Mozambique.jpg/500px-Matapa_Mozambique.jpg"
+  },
+  {
+    "name": "Oshifima",
+    "country": "Namibia",
+    "countryCode": "NA",
+    "wiki": "Oshifima",
+    "hint": "Stiff millet porridge moulded into a ball — the staple food of northern Namibia",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Oshifima.jpg/500px-Oshifima.jpg"
+  },
+  {
+    "name": "Dégué",
+    "country": "Niger",
+    "countryCode": "NE",
+    "wiki": "Dégué",
+    "hint": "Chilled millet balls in sweetened fermented milk — a Sahelian dessert drink",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Degue.jpg/500px-Degue.jpg"
+  },
+  {
+    "name": "Groundnut Soup",
+    "country": "Sierra Leone",
+    "countryCode": "SL",
+    "wiki": "Groundnut soup",
+    "hint": "Rich peanut broth with chicken or fish and garden greens — West Africa's warming classic",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Groundnut_soup.jpg/500px-Groundnut_soup.jpg"
+  },
+  {
+    "name": "Palm Butter Soup",
+    "country": "Liberia",
+    "countryCode": "LR",
+    "wiki": "Palm nut soup",
+    "hint": "Thick palm-nut cream broth with meat — fiery and earthy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Palm_nut_soup.jpg/500px-Palm_nut_soup.jpg"
+  },
+  {
+    "name": "Sauce Feuilles",
+    "country": "Guinea",
+    "countryCode": "GN",
+    "wiki": "Sauce feuilles",
+    "hint": "Cassava leaf sauce with palm oil and smoked fish — the everyday staple of the Fouta Djallon",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Sauce_feuilles.jpg/500px-Sauce_feuilles.jpg"
+  },
+  {
+    "name": "Caldo de Mancarra",
+    "country": "Guinea-Bissau",
+    "countryCode": "GW",
+    "wiki": "Caldo de mancarra",
+    "hint": "Spiced peanut and palm oil stew with fish or chicken — a West African comfort dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/31/Caldo_de_mancarra.jpg/500px-Caldo_de_mancarra.jpg"
+  },
+  {
+    "name": "Benachin",
+    "country": "Gambia",
+    "countryCode": "GM",
+    "wiki": "Jollof rice",
+    "hint": "One-pot rice cooked in tomato sauce with fish or lamb — Gambia's version of jollof",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Ghanaian_jollof_rice.jpg/500px-Ghanaian_jollof_rice.jpg"
+  },
+  {
+    "name": "Nyembwe",
+    "country": "Gabon",
+    "countryCode": "GA",
+    "wiki": "Nyembwe chicken",
+    "hint": "Chicken braised in rich red palm nut cream — Gabon's prized national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Poulet_nyembwe.jpg/500px-Poulet_nyembwe.jpg"
+  },
+  {
+    "name": "Saka-Saka",
+    "country": "Democratic Republic of the Congo",
+    "countryCode": "CD",
+    "wiki": "Pondu",
+    "hint": "Pounded cassava leaves stewed in palm oil with smoked fish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Pondu.jpg/500px-Pondu.jpg"
+  },
+  {
+    "name": "Poulet à la Moambé",
+    "country": "Republic of the Congo",
+    "countryCode": "CG",
+    "wiki": "Moambe chicken",
+    "hint": "Chicken slow-cooked in palm nut pulp — Central Africa's beloved Sunday dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Moambe_chicken.jpg/500px-Moambe_chicken.jpg"
+  },
+  {
+    "name": "Kanda Ti Nyma",
+    "country": "Central African Republic",
+    "countryCode": "CF",
+    "wiki": "Kanda ti nyma",
+    "hint": "Meatballs simmered in a rich sesame and peanut sauce — a festive dish of the savanna",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/African_stew.jpg/500px-African_stew.jpg"
+  },
+  {
+    "name": "Boule de Mil",
+    "country": "Chad",
+    "countryCode": "TD",
+    "wiki": "Aseeda",
+    "hint": "Millet flour rolled into a smooth ball and dipped into spiced vegetable or meat sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Asida.jpg/500px-Asida.jpg"
+  },
+  {
+    "name": "Nsima",
+    "country": "Malawi",
+    "countryCode": "MW",
+    "wiki": "Nsima",
+    "hint": "Thick white maize porridge formed into smooth patties — the bedrock of Malawian meals",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Nsima.jpg/500px-Nsima.jpg"
+  },
+  {
+    "name": "Karanga",
+    "country": "Zimbabwe",
+    "countryCode": "ZW",
+    "wiki": "Karanga (food)",
+    "hint": "Slow-braised beef stew in peanut butter sauce — Zimbabwe's Sunday favourite",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Karanga_beef_stew.jpg/500px-Karanga_beef_stew.jpg"
+  },
+  {
+    "name": "Nshima",
+    "country": "Zambia",
+    "countryCode": "ZM",
+    "wiki": "Nshima",
+    "hint": "Stiff white maize dough shaped by hand and eaten with relish or stew",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Nshima.jpg/500px-Nshima.jpg"
+  },
+  {
+    "name": "Umngqusho",
+    "country": "Eswatini",
+    "countryCode": "SZ",
+    "wiki": "Umngqusho",
+    "hint": "Samp and beans simmered with butter and onion — Nelson Mandela's beloved comfort dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Umngqusho.jpg/500px-Umngqusho.jpg"
+  },
+  {
+    "name": "Sesotho Bread",
+    "country": "Lesotho",
+    "countryCode": "LS",
+    "wiki": "Basotho cuisine",
+    "hint": "Steamed sorghum dumplings — highland food fuelling herders in the Mountain Kingdom",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Lesotho_food.jpg/500px-Lesotho_food.jpg"
+  },
+  {
+    "name": "Binyebwa",
+    "country": "Burundi",
+    "countryCode": "BI",
+    "wiki": "Binyebwa",
+    "hint": "Roasted peanut paste mixed with sweet potatoes and greens — a Burundian everyday staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Groundnut_paste.jpg/500px-Groundnut_paste.jpg"
+  },
+  {
+    "name": "South Sudan Kisra",
+    "country": "South Sudan",
+    "countryCode": "SS",
+    "wiki": "Kisra",
+    "hint": "Paper-thin fermented sorghum flatbread — the daily bread of the Nile valley",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Kisra.jpg/500px-Kisra.jpg"
   }
 ]
