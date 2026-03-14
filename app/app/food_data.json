@@ -140,7 +140,7 @@
     "country": "Ukraine",
     "countryCode": "UA",
     "wiki": "Borscht",
-    "hint": "Sour beetroot soup — UNESCO-recognized Ukrainian heritage",
+    "hint": "Sour beetroot soup with cabbage and root vegetables — recognized by UNESCO as intangible cultural heritage",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Borscht_served.jpg/500px-Borscht_served.jpg"
   },
   {
@@ -420,7 +420,7 @@
     "country": "Bolivia",
     "countryCode": "BO",
     "wiki": "Salteña",
-    "hint": "Juicy baked pastries filled with a sweet-spicy stew — Bolivia's favourite morning snack",
+    "hint": "Juicy baked pastries filled with a sweet-spicy stew — a beloved morning snack in the Andes mountains",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Salte%C3%B1as_de_Bolivia.jpg/500px-Salte%C3%B1as_de_Bolivia.jpg"
   },
   {
@@ -508,7 +508,7 @@
     "country": "Senegal",
     "countryCode": "SN",
     "wiki": "Thieboudienne",
-    "hint": "Stuffed fish over broken rice with vegetables — Senegal's national dish",
+    "hint": "Stuffed fish layered over broken rice with root vegetables — a UNESCO-listed West African staple",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Thieboudienne.JPG/500px-Thieboudienne.JPG"
   },
   {
@@ -596,7 +596,7 @@
     "country": "Armenia",
     "countryCode": "AM",
     "wiki": "Khorovats",
-    "hint": "Charcoal-grilled skewered meats — the centrepiece of every Armenian feast",
+    "hint": "Charcoal-grilled skewered meats — the centrepiece of traditional feasts in the South Caucasus",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Barbecue_Armenian.jpg/500px-Barbecue_Armenian.jpg"
   },
   {
@@ -764,7 +764,7 @@
     "country": "Estonia",
     "countryCode": "EE",
     "wiki": "Kama (food)",
-    "hint": "Roasted grain flour stirred into sour milk or yogurt — Estonia's oldest energy food",
+    "hint": "Roasted grain flour stirred into sour milk or yogurt — one of Northern Europe's oldest energy foods",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Kama.jpg/500px-Kama.jpg"
   },
   {
@@ -772,7 +772,7 @@
     "country": "Iceland",
     "countryCode": "IS",
     "wiki": "Hangikjöt",
-    "hint": "Birchwood-smoked lamb — Iceland's Christmas centrepiece for over a thousand years",
+    "hint": "Birchwood-smoked lamb — a Christmas centrepiece cherished for over a thousand years on a volcanic island",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Hangikj%C3%B6t.jpg/500px-Hangikj%C3%B6t.jpg"
   },
   {
@@ -780,7 +780,7 @@
     "country": "Norway",
     "countryCode": "NO",
     "wiki": "Rakfisk",
-    "hint": "Fermented freshwater fish with a pungent aroma — a Norwegian winter tradition",
+    "hint": "Fermented freshwater fish with a pungent aroma — a winter tradition in the Nordic mountains",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Rakfisk.jpg/500px-Rakfisk.jpg"
   },
   {
@@ -892,7 +892,7 @@
     "country": "Brunei",
     "countryCode": "BN",
     "wiki": "Nasi katok",
-    "hint": "Simple rice with crispy fried chicken and sambal — Brunei's beloved affordable meal",
+    "hint": "Simple rice with crispy fried chicken and sambal — an affordable staple of a tiny oil-rich sultanate in Borneo",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Nasi_Katok.jpg/500px-Nasi_Katok.jpg"
   },
   {
@@ -964,7 +964,7 @@
     "country": "Moldova",
     "countryCode": "MD",
     "wiki": "Mămăligă",
-    "hint": "Golden cornmeal porridge eaten with sour cream and cheese — the Moldovan soul food",
+    "hint": "Golden cornmeal porridge eaten with sour cream and cheese — the soul food of an Eastern European wine country",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Mamaliga.jpg/500px-Mamaliga.jpg"
   },
   {
@@ -988,7 +988,7 @@
     "country": "Belarus",
     "countryCode": "BY",
     "wiki": "Draniki",
-    "hint": "Thick pork and sausage gravy served with pancakes for dipping — a Belarusian classic",
+    "hint": "Thick pork and sausage gravy served with pancakes for dipping — a hearty Slavic winter classic",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/Latkas.jpg/500px-Latkas.jpg"
   },
   {
@@ -1068,7 +1068,7 @@
     "country": "Cameroon",
     "countryCode": "CM",
     "wiki": "Ndolé",
-    "hint": "Bitter leaf stew with ground peanuts and shrimp — Cameroon's rich national dish",
+    "hint": "Bitter leaf stew with ground peanuts and shrimp — the national dish of a Central African country where French and English are both official languages",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Ndol%C3%A8_%C3%A0_la_viande%2C_morue_et_crevettes.jpg/500px-Ndol%C3%A8_%C3%A0_la_viande%2C_morue_et_crevettes.jpg"
   },
   {
@@ -1084,7 +1084,7 @@
     "country": "Rwanda",
     "countryCode": "RW",
     "wiki": "Isombe",
-    "hint": "Cassava leaves pounded and stewed with eggplant and peanuts — a Rwandan staple",
+    "hint": "Cassava leaves pounded and stewed with eggplant and peanuts — a staple of the Land of a Thousand Hills",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/ISOMBE.jpg/500px-ISOMBE.jpg"
   },
   {
@@ -1148,7 +1148,7 @@
     "country": "Namibia",
     "countryCode": "NA",
     "wiki": "Oshifima",
-    "hint": "Stiff millet porridge moulded into a ball — the staple food of northern Namibia",
+    "hint": "Stiff millet porridge moulded into a smooth ball — a staple of the Ovambo people in southern Africa",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ugali_%26_Sukuma_Wiki.jpg/500px-Ugali_%26_Sukuma_Wiki.jpg"
   },
   {
@@ -1172,7 +1172,7 @@
     "country": "Gambia",
     "countryCode": "GM",
     "wiki": "Jollof rice",
-    "hint": "One-pot rice cooked in tomato sauce with fish or lamb — Gambia's version of jollof",
+    "hint": "One-pot rice cooked in tomato sauce with fish or lamb — a jollof variant from Africa's smallest mainland country",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Jollof_Rice_with_Stew.jpg/500px-Jollof_Rice_with_Stew.jpg"
   },
   {
@@ -1180,7 +1180,7 @@
     "country": "Gabon",
     "countryCode": "GA",
     "wiki": "Nyembwe chicken",
-    "hint": "Chicken braised in rich red palm nut cream — Gabon's prized national dish",
+    "hint": "Chicken braised in rich red palm nut cream — the national dish of an oil-rich country on the Gulf of Guinea",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Poulet_%C3%A0_la_moambe.JPG/500px-Poulet_%C3%A0_la_moambe.JPG"
   },
   {
@@ -1196,7 +1196,7 @@
     "country": "Malawi",
     "countryCode": "MW",
     "wiki": "Nsima",
-    "hint": "Thick white maize porridge formed into smooth patties — the bedrock of Malawian meals",
+    "hint": "Thick white maize porridge formed into smooth patties — the everyday staple of a landlocked southern African country",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Ugali_%26_Sukuma_Wiki.jpg/500px-Ugali_%26_Sukuma_Wiki.jpg"
   },
   {
