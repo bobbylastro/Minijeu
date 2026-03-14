@@ -15,12 +15,14 @@ export default function Header() {
   const [sportsOpen, setSportsOpen]   = useState(false);
   const [geoOpen, setGeoOpen]         = useState(false);
   const [cultureOpen, setCultureOpen] = useState(false);
+  const [foodOpen, setFoodOpen]       = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
   const [authOpen, setAuthOpen]       = useState(false);
 
   const geoRef     = useRef<HTMLDivElement>(null);
   const sportsRef  = useRef<HTMLDivElement>(null);
   const cultureRef = useRef<HTMLDivElement>(null);
+  const foodRef    = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click (desktop)
   useEffect(() => {
@@ -28,6 +30,7 @@ export default function Header() {
       if (geoRef.current     && !geoRef.current.contains(e.target as Node))     setGeoOpen(false);
       if (sportsRef.current  && !sportsRef.current.contains(e.target as Node))  setSportsOpen(false);
       if (cultureRef.current && !cultureRef.current.contains(e.target as Node)) setCultureOpen(false);
+      if (foodRef.current    && !foodRef.current.contains(e.target as Node))    setFoodOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -41,9 +44,11 @@ export default function Header() {
   const geoRoutes     = ["/citymix", "/higher-or-lower"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
   const cultureRoutes = ["/wcf"];
+  const foodRoutes    = ["/food"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
   const isCultureActive = cultureRoutes.includes(pathname);
+  const isFoodActive    = foodRoutes.includes(pathname);
 
   return (
     <>
@@ -115,6 +120,32 @@ export default function Header() {
                       <div>
                         <div className="site-header__dropdown-name">WhatCameFirst</div>
                         <div className="site-header__dropdown-desc">Pick the earlier event</div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Food dropdown */}
+            <div
+              ref={foodRef}
+              className={`site-header__nav-item${foodOpen ? " is-open" : ""}${isFoodActive ? " is-active" : ""}`}
+              onClick={() => setFoodOpen(o => !o)}
+            >
+              🍽️ Food
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {foodOpen && (
+                <div className="site-header__dropdown">
+                  <div className="site-header__dropdown-section">
+                    <div className="site-header__dropdown-label">Food</div>
+                    <Link href="/food" className={`site-header__dropdown-item${pathname === "/food" ? " is-active" : ""}`} onClick={() => setFoodOpen(false)}>
+                      <div className="site-header__dropdown-icon">🗺️</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Food Origins</div>
+                        <div className="site-header__dropdown-desc">Click the country where this dish is from</div>
                       </div>
                     </Link>
                   </div>
@@ -214,6 +245,19 @@ export default function Header() {
                 <div>
                   <div className="mobile-menu__item-name">WhatCameFirst</div>
                   <div className="mobile-menu__item-desc">Pick the earlier event</div>
+                </div>
+              </Link>
+            </div>
+
+            <div className="mobile-menu__divider" />
+
+            <div className="mobile-menu__section">
+              <div className="mobile-menu__label">🍽️ Food</div>
+              <Link href="/food" className={`mobile-menu__item${pathname === "/food" ? " is-active" : ""}`} onClick={closeMenu}>
+                <span className="mobile-menu__item-icon">🗺️</span>
+                <div>
+                  <div className="mobile-menu__item-name">Food Origins</div>
+                  <div className="mobile-menu__item-desc">Click the country where this dish is from</div>
                 </div>
               </Link>
             </div>

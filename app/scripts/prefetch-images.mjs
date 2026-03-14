@@ -292,6 +292,16 @@ async function main() {
     console.log("  ✅ Saved\n");
   }
 
+  // ── food_data.json ────────────────────────────────────────────────────────
+  {
+    const path = join(DATA_DIR, "food_data.json");
+    const data = JSON.parse(readFileSync(path, "utf8"));
+    console.log("🍽️  food_data.json");
+    totalChanged += await resolveItems(data, "dishes");
+    writeFileSync(path, JSON.stringify(data, null, 2) + "\n", "utf8");
+    console.log("  ✅ Saved\n");
+  }
+
   console.log(
     `✅ Done! ${totalChanged} image URLs added. Total Wikipedia requests: ${requestCount}`
   );

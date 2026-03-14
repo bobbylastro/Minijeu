@@ -68,6 +68,16 @@ const CULTURE_GAMES: GameDef[] = [
   },
 ];
 
+const FOOD_GAMES: GameDef[] = [
+  {
+    slug: "/food",
+    emoji: "🗺️",
+    title: "Food Origins",
+    desc: "A dish appears — click on the world map to find the country it comes from.",
+    tags: ["Solo"],
+  },
+];
+
 // ─── GameCard ──────────────────────────────────────────────────────────────────
 function GameCard({ game }: { game: GameDef }) {
   if (game.soon) {
@@ -143,6 +153,7 @@ export default function HomePage() {
           <CategorySection icon="🌍" name="World"   games={WORLD_GAMES} />
           <CategorySection icon="🏆" name="Sports"  games={SPORTS_GAMES} />
           <CategorySection icon="🧠" name="Culture" games={CULTURE_GAMES} />
+          <CategorySection icon="🍽️" name="Food"    games={FOOD_GAMES} />
         </main>
 
         <section className="seo-section">

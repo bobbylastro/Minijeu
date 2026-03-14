@@ -1,0 +1,282 @@
+[
+  {
+    "name": "Sushi",
+    "country": "Japan",
+    "countryCode": "JP",
+    "wiki": "Sushi",
+    "hint": "Seasoned rice topped with raw fish or seafood",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/500px-Sushi_platter.jpg"
+  },
+  {
+    "name": "Neapolitan Pizza",
+    "country": "Italy",
+    "countryCode": "IT",
+    "wiki": "Pizza Napoletana",
+    "hint": "The original pizza — born in Naples",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg/1920px-Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg"
+  },
+  {
+    "name": "Croissant",
+    "country": "France",
+    "countryCode": "FR",
+    "wiki": "Croissant",
+    "hint": "Buttery, flaky crescent-shaped pastry",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Croissant-Petr_Kratochvil.jpg/500px-Croissant-Petr_Kratochvil.jpg"
+  },
+  {
+    "name": "Paella",
+    "country": "Spain",
+    "countryCode": "ES",
+    "wiki": "Paella",
+    "hint": "Saffron-infused rice dish born in Valencia",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/01_Paella_Valenciana_original.jpg/500px-01_Paella_Valenciana_original.jpg"
+  },
+  {
+    "name": "Kimchi",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "wiki": "Kimchi",
+    "hint": "Fermented, spicy pickled vegetables",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Various_kimchi.jpg/500px-Various_kimchi.jpg"
+  },
+  {
+    "name": "Pad Thai",
+    "country": "Thailand",
+    "countryCode": "TH",
+    "wiki": "Pad Thai",
+    "hint": "Stir-fried rice noodles with tamarind and peanuts",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Phat_Thai_kung_Chang_Khien_street_stall.jpg"
+  },
+  {
+    "name": "Poutine",
+    "country": "Canada",
+    "countryCode": "CA",
+    "wiki": "Poutine",
+    "hint": "Fries smothered in cheese curds and gravy",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Food_at_WIkimanian_2017_02.jpg/500px-Food_at_WIkimanian_2017_02.jpg"
+  },
+  {
+    "name": "Peking Duck",
+    "country": "China",
+    "countryCode": "CN",
+    "wiki": "Peking duck",
+    "hint": "Crispy-skinned roasted duck — an imperial tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Peking_Duck%2C_2014_%2802%29.jpg/500px-Peking_Duck%2C_2014_%2802%29.jpg"
+  },
+  {
+    "name": "Wiener Schnitzel",
+    "country": "Austria",
+    "countryCode": "AT",
+    "wiki": "Wiener Schnitzel",
+    "hint": "Breaded veal cutlet — 'Wiener' literally means Vienna",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Wiener-Schnitzel02.jpg/1280px-Wiener-Schnitzel02.jpg"
+  },
+  {
+    "name": "Moussaka",
+    "country": "Greece",
+    "countryCode": "GR",
+    "wiki": "Moussaka",
+    "hint": "Layered eggplant and minced meat bake",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/MussakasMeMelitsanesKePatates01.JPG/500px-MussakasMeMelitsanesKePatates01.JPG"
+  },
+  {
+    "name": "Feijoada",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "wiki": "Feijoada",
+    "hint": "Hearty black bean and pork stew — the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Feijoada_%C3%A0_transmontada.jpg/500px-Feijoada_%C3%A0_transmontada.jpg"
+  },
+  {
+    "name": "Bobotie",
+    "country": "South Africa",
+    "countryCode": "ZA",
+    "wiki": "Bobotie",
+    "hint": "Spiced minced meat baked with an egg custard topping",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Bobotie%2C_South_African_dish.jpg/500px-Bobotie%2C_South_African_dish.jpg"
+  },
+  {
+    "name": "Injera",
+    "country": "Ethiopia",
+    "countryCode": "ET",
+    "wiki": "Injera",
+    "hint": "Spongy sourdough flatbread — serves as both plate and utensil",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Injera_with_eight_kinds_of_stew.jpg/500px-Injera_with_eight_kinds_of_stew.jpg"
+  },
+  {
+    "name": "Rendang",
+    "country": "Indonesia",
+    "countryCode": "ID",
+    "wiki": "Rendang",
+    "hint": "Slow-cooked dry beef curry from West Sumatra",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Rendang_daging_sapi_asli_Padang.JPG/500px-Rendang_daging_sapi_asli_Padang.JPG"
+  },
+  {
+    "name": "Phở",
+    "country": "Vietnam",
+    "countryCode": "VN",
+    "wiki": "Phở",
+    "hint": "Aromatic broth soup with rice noodles and fresh herbs",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg/3840px-Ph%E1%BB%9F_b%C3%B2_%2839425047901%29.jpg"
+  },
+  {
+    "name": "Ceviche",
+    "country": "Peru",
+    "countryCode": "PE",
+    "wiki": "Ceviche",
+    "hint": "Raw fish cured in citrus juice with chili",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Cebiche_de_corvina.JPG/500px-Cebiche_de_corvina.JPG"
+  },
+  {
+    "name": "Tagine",
+    "country": "Morocco",
+    "countryCode": "MA",
+    "wiki": "Tajine",
+    "hint": "Slow-cooked stew named after its conical clay pot",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/ZnuTjn2a.jpg"
+  },
+  {
+    "name": "Borscht",
+    "country": "Ukraine",
+    "countryCode": "UA",
+    "wiki": "Borscht",
+    "hint": "Sour beetroot soup — UNESCO-recognized Ukrainian heritage",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Borscht_served.jpg/500px-Borscht_served.jpg"
+  },
+  {
+    "name": "Currywurst",
+    "country": "Germany",
+    "countryCode": "DE",
+    "wiki": "Currywurst",
+    "hint": "Sliced sausage drenched in curried ketchup — Berlin's icon",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/20220430_currywurst.jpg/500px-20220430_currywurst.jpg"
+  },
+  {
+    "name": "Fish and Chips",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "wiki": "Fish and chips",
+    "hint": "Battered fried fish with thick-cut fries, wrapped in paper",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Fish_and_chips_blackpool.jpg/500px-Fish_and_chips_blackpool.jpg"
+  },
+  {
+    "name": "Hamburger",
+    "country": "United States",
+    "countryCode": "US",
+    "wiki": "Hamburger",
+    "hint": "Ground beef patty in a bun — America's fast-food icon",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/500px-RedDot_Burger.jpg"
+  },
+  {
+    "name": "Goulash",
+    "country": "Hungary",
+    "countryCode": "HU",
+    "wiki": "Goulash",
+    "hint": "Paprika-spiced beef and vegetable stew",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Gulyas080.jpg/500px-Gulyas080.jpg"
+  },
+  {
+    "name": "Pierogi",
+    "country": "Poland",
+    "countryCode": "PL",
+    "wiki": "Pierogi",
+    "hint": "Stuffed dumplings, boiled then pan-fried",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Pierogi_z_mas%C5%82em_-_2023.03.31.jpg/500px-Pierogi_z_mas%C5%82em_-_2023.03.31.jpg"
+  },
+  {
+    "name": "Mole Poblano",
+    "country": "Mexico",
+    "countryCode": "MX",
+    "wiki": "Mole sauce",
+    "hint": "Complex chili-chocolate sauce from Puebla",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ChickRedMole.JPG/3840px-ChickRedMole.JPG"
+  },
+  {
+    "name": "Butter Chicken",
+    "country": "India",
+    "countryCode": "IN",
+    "wiki": "Butter chicken",
+    "hint": "Creamy tomato-spiced chicken curry — invented in Delhi",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/500px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg"
+  },
+  {
+    "name": "Jerk Chicken",
+    "country": "Jamaica",
+    "countryCode": "JM",
+    "wiki": "Jerk (cooking)",
+    "hint": "Smoky chicken marinated in scotch bonnet spices",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/BBQJerk_Chicken.jpg/500px-BBQJerk_Chicken.jpg"
+  },
+  {
+    "name": "Empanadas",
+    "country": "Argentina",
+    "countryCode": "AR",
+    "wiki": "Empanada",
+    "hint": "Stuffed savory pastries — a South American staple",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Tapa_de_empanadillitas.JPG/500px-Tapa_de_empanadillitas.JPG"
+  },
+  {
+    "name": "Beef Stroganoff",
+    "country": "Russia",
+    "countryCode": "RU",
+    "wiki": "Beef Stroganoff",
+    "hint": "Sautéed beef in a creamy sour cream sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Moscow_%288351271825%29.jpg/500px-Moscow_%288351271825%29.jpg"
+  },
+  {
+    "name": "Fondue",
+    "country": "Switzerland",
+    "countryCode": "CH",
+    "wiki": "Fondue",
+    "hint": "Communal pot of melted cheese, for dipping bread",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Fondue_dish.jpg/500px-Fondue_dish.jpg"
+  },
+  {
+    "name": "Chicken Adobo",
+    "country": "Philippines",
+    "countryCode": "PH",
+    "wiki": "Adobo (Filipino cuisine)",
+    "hint": "Braised in vinegar, soy sauce and garlic — the national dish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Adobo_DSCF4391.jpg/3840px-Adobo_DSCF4391.jpg"
+  },
+  {
+    "name": "Khinkali",
+    "country": "Georgia",
+    "countryCode": "GE",
+    "wiki": "Khinkali",
+    "hint": "Twisted juicy dumplings filled with spiced meat",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Khinkali%2C_Restaurant_Aragvi.jpg/500px-Khinkali%2C_Restaurant_Aragvi.jpg"
+  },
+  {
+    "name": "Smørrebrød",
+    "country": "Denmark",
+    "countryCode": "DK",
+    "wiki": "Smørrebrød",
+    "hint": "Open-faced rye bread sandwich with elaborate toppings",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Ida_Davidsen_udsnit_af_glasmontren.JPG/500px-Ida_Davidsen_udsnit_af_glasmontren.JPG"
+  },
+  {
+    "name": "Stamppot",
+    "country": "Netherlands",
+    "countryCode": "NL",
+    "wiki": "Stamppot",
+    "hint": "Mashed potatoes mixed with vegetables, served with sausage",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Boerenkool_stamppot.jpg/500px-Boerenkool_stamppot.jpg"
+  },
+  {
+    "name": "Bibimbap",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "wiki": "Bibimbap",
+    "hint": "Mixed rice bowl with vegetables, egg and gochujang",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Dolsot-bibimbap.jpg/500px-Dolsot-bibimbap.jpg"
+  },
+  {
+    "name": "Brigadeiro",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "wiki": "Brigadeiro",
+    "hint": "Chocolate fudge truffle rolled in sprinkles",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Brigadeiro.jpg/500px-Brigadeiro.jpg"
+  }
+]
