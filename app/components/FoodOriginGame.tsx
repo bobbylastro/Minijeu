@@ -182,25 +182,34 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
 function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => void }) {
   return (
     <div className="game-wrapper">
-      <div className="glow-orb glow-orb--purple" style={{ top: "15%", left: "20%" }} />
-      <div className="glow-orb glow-orb--orange" style={{ bottom: "20%", right: "15%" }} />
+      <div className="glow-orb glow-orb--purple" />
+      <div className="glow-orb glow-orb--orange" />
       <Stars />
       <div className="home-screen">
-        <div className="fd-home-card">
-          <div className="fd-home-emoji">🍽️</div>
-          <h1 className="home-title">Food <span className="home-title--pop accent">Origins</span></h1>
-          <p className="home-subtitle">A dish appears — click on the map to find its country of origin.</p>
-          <div className="fd-home-meta">
-            <span>🗺️ {ROUNDS_PER_GAME} rounds</span>
-            <span>⏱️ {ROUND_SECONDS}s per dish</span>
-            <span>🌍 World map</span>
-          </div>
-          <div className="home-buttons">
-            <button className="btn-primary btn-hover" onClick={onSolo}>Play Solo</button>
-            {isMultiplayerEnabled() && (
-              <button className="btn-outline btn-hover" onClick={onMulti}>⚡ Multiplayer</button>
-            )}
-          </div>
+        <div className="home-emoji">🍽️</div>
+        <h1 className="home-title">Food <span className="accent">Origins</span></h1>
+        <p className="home-subtitle">A dish appears — click the map to find its country of origin</p>
+
+        <div className="how-it-works">
+          <div className="how-it-works__title">How it works</div>
+          {[
+            ["🍜", `${ROUNDS_PER_GAME} rounds — a new dish every round`],
+            ["🗺️", "Click the right country on the world map"],
+            ["⏱️", `${ROUND_SECONDS} seconds per dish — be quick!`],
+            ["⭐", "100 pts per correct answer — max 1000 pts"],
+          ].map(([icon, text]) => (
+            <div key={text as string} className="how-it-works__item">
+              <span className="how-it-works__icon">{icon}</span>
+              <span className="how-it-works__text">{text as string}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="home-buttons">
+          <button className="btn-primary btn-hover" onClick={onSolo}>Play Solo</button>
+          {isMultiplayerEnabled() && (
+            <button className="btn-outline btn-hover" onClick={onMulti}>⚡ Multiplayer</button>
+          )}
         </div>
       </div>
     </div>
@@ -227,46 +236,44 @@ function ResultScreen({ score, oppScore, mode, onReplay }: {
     <div className="game-wrapper">
       <Stars />
       <div className="home-screen">
-        <div className="fd-home-card">
-          <div className="fd-home-emoji">
-            {isMulti ? (iWon ? "🏆" : tied ? "🤝" : "😅") : (pct >= 80 ? "🏆" : pct >= 50 ? "🙂" : "😅")}
-          </div>
-          <h2 className="home-title" style={{ fontSize: "1.6rem" }}>
-            {isMulti ? (iWon ? "You win!" : tied ? "It's a tie!" : "You lose!") : "Game Over!"}
-          </h2>
-
-          {isMulti ? (
-            <div className="fd-result-scores">
-              <div className={`score-circle score-circle--md ${myClass}`}>
-                <span className="score-circle__label">You</span>
-                <span className="score-circle__value">{score}</span>
-                <span className="score-circle__label">/ {MAX_SCORE}</span>
-              </div>
-              <div className={`score-circle score-circle--md ${oppClass}`}>
-                <span className="score-circle__label">Opp.</span>
-                <span className="score-circle__value">{oppScore}</span>
-                <span className="score-circle__label">/ {MAX_SCORE}</span>
-              </div>
-            </div>
-          ) : (
-            <>
-              <div className={`score-circle score-circle--lg ${myClass}`}>
-                <span className="score-circle__value">{score}</span>
-                <span className="score-circle__label">/ {MAX_SCORE}</span>
-              </div>
-              <div className="result-score-bar" style={{ margin: "1rem 0" }}>
-                <div
-                  className={`result-score-bar__fill ${pct >= 80 ? "result-score-bar__fill--excellent" : pct >= 50 ? "result-score-bar__fill--good" : "result-score-bar__fill--poor"}`}
-                  style={{ width: `${pct}%` }}
-                />
-              </div>
-            </>
-          )}
-
-          <button className="btn-primary btn-hover" onClick={onReplay} style={{ marginTop: "0.5rem" }}>
-            Play Again
-          </button>
+        <div className="home-emoji">
+          {isMulti ? (iWon ? "🏆" : tied ? "🤝" : "😅") : (pct >= 80 ? "🏆" : pct >= 50 ? "🙂" : "😅")}
         </div>
+        <h2 className="home-title" style={{ fontSize: "1.6rem" }}>
+          {isMulti ? (iWon ? "You win!" : tied ? "It's a tie!" : "You lose!") : "Game Over!"}
+        </h2>
+
+        {isMulti ? (
+          <div className="fd-result-scores">
+            <div className={`score-circle score-circle--md ${myClass}`}>
+              <span className="score-circle__label">You</span>
+              <span className="score-circle__value">{score}</span>
+              <span className="score-circle__label">/ {MAX_SCORE}</span>
+            </div>
+            <div className={`score-circle score-circle--md ${oppClass}`}>
+              <span className="score-circle__label">Opp.</span>
+              <span className="score-circle__value">{oppScore}</span>
+              <span className="score-circle__label">/ {MAX_SCORE}</span>
+            </div>
+          </div>
+        ) : (
+          <>
+            <div className={`score-circle score-circle--lg ${myClass}`}>
+              <span className="score-circle__value">{score}</span>
+              <span className="score-circle__label">/ {MAX_SCORE}</span>
+            </div>
+            <div className="result-score-bar" style={{ margin: "1rem 0" }}>
+              <div
+                className={`result-score-bar__fill ${pct >= 80 ? "result-score-bar__fill--excellent" : pct >= 50 ? "result-score-bar__fill--good" : "result-score-bar__fill--poor"}`}
+                style={{ width: `${pct}%` }}
+              />
+            </div>
+          </>
+        )}
+
+        <button className="btn-primary btn-hover" onClick={onReplay} style={{ marginTop: "0.5rem" }}>
+          Play Again
+        </button>
       </div>
     </div>
   );

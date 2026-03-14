@@ -519,33 +519,6 @@
   margin: 0.5rem 0;
 }
 
-/* ── Home card ───────────────────────────────────────────────────────────── */
-.fd-home-card {
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
-  text-align: center;
-  max-width: 440px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  z-index: 1;
-}
-.fd-home-emoji {
-  font-size: 3.5rem;
-  line-height: 1;
-}
-.fd-home-meta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.5);
-}
 
 /* ── Animations ──────────────────────────────────────────────────────────── */
 @keyframes fd-slideUp {
