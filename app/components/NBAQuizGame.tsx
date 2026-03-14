@@ -13,10 +13,10 @@ import { ensureCustomImages, getCustomImage, GameKey } from "@/lib/customImages"
 
 // ─── Raw data types ─────────────────────────────────────────────────────────────
 interface TriviaItem   { question: string; options: string[]; correct: number; }
-interface ArenaItem    { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; }
-interface ContractItem { player: string; team: string; year: number; total_m: number; flag: string; wiki?: string; flagCode?: string; }
-interface SalaryItem   { player: string; team: string; annual_m: number; flag: string; wiki?: string; flagCode?: string; }
-interface PeakItem     { player: string; team: string; season: number; ppg: number; flag: string; wiki?: string; flagCode?: string; }
+interface ArenaItem    { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; image_url?: string; }
+interface ContractItem { player: string; team: string; year: number; total_m: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
+interface SalaryItem   { player: string; team: string; annual_m: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
+interface PeakItem     { player: string; team: string; season: number; ppg: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
 
 const TRIVIA:    TriviaItem[]    = nbaData.trivia    as TriviaItem[];
 const ARENAS:    ArenaItem[]     = nbaData.arenas    as ArenaItem[];
@@ -30,10 +30,10 @@ type Screen    = "home" | "game" | "result";
 type Mode      = "solo" | "multi";
 
 interface TriviaRound   { type: "trivia";   question: string; options: string[]; correct: number; }
-interface ArenaRound    { type: "arena";    name: string; city: string; capacity: number; options: string[]; correct: number; wiki?: string; }
-interface ContractRound { type: "contract"; player: string; team: string; year: number; flag: string; total_m: number; wiki?: string; flagCode?: string; }
+interface ArenaRound    { type: "arena";    name: string; city: string; capacity: number; options: string[]; correct: number; wiki?: string; image_url?: string; }
+interface ContractRound { type: "contract"; player: string; team: string; year: number; flag: string; total_m: number; wiki?: string; flagCode?: string; image_url?: string; }
 interface SalaryRound   { type: "salary";   playerA: SalaryItem; playerB: SalaryItem; correct: 0 | 1; }
-interface PeakRound     { type: "peak";     player: string; team: string; season: number; ppg: number; flag: string; wiki?: string; flagCode?: string; }
+interface PeakRound     { type: "peak";     player: string; team: string; season: number; ppg: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
 
 type Round = TriviaRound | ArenaRound | ContractRound | SalaryRound | PeakRound;
 
@@ -214,12 +214,14 @@ function TypeBanner({ type, question }: { type: RoundType; question?: string }) 
 // ─── Wikipedia image hook ────────────────────────────────────────────────────────
 const wikiImgCache = new Map<string, string>();
 
-function useWikiImage(title: string | undefined, gameKey?: GameKey): string | null {
+function useWikiImage(title: string | undefined, gameKey?: GameKey, prefetchedUrl?: string | null): string | null {
   const [src, setSrc] = useState<string | null>(
+    prefetchedUrl ??
     (gameKey && title ? getCustomImage(gameKey, title) : null) ??
     (title && wikiImgCache.has(title) ? wikiImgCache.get(title)! : null)
   );
   useEffect(() => {
+    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
     if (!title) return;
     let cancelled = false;
     (async () => {
@@ -276,12 +278,12 @@ function useWikiImage(title: string | undefined, gameKey?: GameKey): string | nu
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [title, gameKey]);
+  }, [title, gameKey, prefetchedUrl]);
   return src;
 }
 
-function WikiImg({ title, alt, className, gameKey }: { title?: string; alt: string; className?: string; gameKey?: GameKey }) {
-  const src = useWikiImage(title, gameKey);
+function WikiImg({ title, alt, className, gameKey, imageUrl }: { title?: string; alt: string; className?: string; gameKey?: GameKey; imageUrl?: string | null }) {
+  const src = useWikiImage(title, gameKey, imageUrl);
   if (!src) return <div className={`ft-img-placeholder ${className ?? ""}`} />;
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={src} alt={alt} className={className} loading="lazy" />;
@@ -299,10 +301,12 @@ const wikiTeamCache = new Map<string, string>();
 
 function useTeamLogo(team: string): string | null {
   const wikiTitle = WIKI_TEAM[team] ?? team;
+  const prefetched = (nbaData as { team_logos?: Record<string, string> }).team_logos?.[team] ?? null;
   const [src, setSrc] = useState<string | null>(
-    getCustomImage("nba_teams", team) ?? (wikiTeamCache.get(wikiTitle) ?? null)
+    prefetched ?? getCustomImage("nba_teams", team) ?? (wikiTeamCache.get(wikiTitle) ?? null)
   );
   useEffect(() => {
+    if (prefetched) { setSrc(prefetched); return; }
     let cancelled = false;
     (async () => {
       await ensureCustomImages();
@@ -1067,7 +1071,7 @@ export default function NbaQuiz() {
               <div className="ft-question-card">
                 <TypeBanner type="arena" question="Which NBA team calls this arena home?" />
                 <div className="ft-stadium-img-wrap">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.name} className="ft-stadium-img" gameKey="nba_arenas" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.name} className="ft-stadium-img" gameKey="nba_arenas" imageUrl={currentRound.image_url} />
                 </div>
                 <div className="ft-stadium-header">
                   <div className="ft-stadium-name">{currentRound.name}</div>
@@ -1090,7 +1094,7 @@ export default function NbaQuiz() {
               <div className="ft-transfer-card">
                 <TypeBanner type="contract" question="What was the total value of this contract?" />
                 <div className="ft-player-hero">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="nba_players" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="nba_players" imageUrl={currentRound.image_url} />
                   <div className="ft-player-hero__info">
                     <div className="ft-transfer-player">
                       <FlagImg code={currentRound.flagCode} alt={currentRound.player} />
@@ -1173,7 +1177,7 @@ export default function NbaQuiz() {
                     }
                     return (
                       <div key={i} className={cls} onClick={() => chosen === null && handleSalaryChoice(i as 0 | 1)}>
-                        <WikiImg title={player.wiki} alt={player.player} className="ft-salary-photo" gameKey="nba_players" />
+                        <WikiImg title={player.wiki} alt={player.player} className="ft-salary-photo" gameKey="nba_players" imageUrl={player.image_url} />
                         <FlagImg code={player.flagCode} alt={player.player} />
                         <div className="ft-salary-player">{player.player}</div>
                         <div className="ft-salary-team-wrap">
@@ -1195,7 +1199,7 @@ export default function NbaQuiz() {
               <div className="ft-transfer-card">
                 <TypeBanner type="peak" question={`In which season did ${currentRound.player} average the most points?`} />
                 <div className="ft-player-hero">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="nba_players" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="nba_players" imageUrl={currentRound.image_url} />
                   <div className="ft-player-hero__info">
                     <div className="ft-transfer-player">
                       <FlagImg code={currentRound.flagCode} alt={currentRound.player} />

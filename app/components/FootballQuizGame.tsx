@@ -28,9 +28,9 @@ type Screen    = "home" | "game" | "result";
 type Mode      = "solo" | "multi";
 
 interface TriviaRound   { type: "trivia";   question: string; options: string[]; correct: number; flagOptions?: boolean; }
-interface StadiumRound  { type: "stadium";  name: string; city: string; capacity: number; options: string[]; correct: number; wiki?: string; }
-interface TransferRound { type: "transfer"; player: string; from: string; to: string; year: number; flag: string; fee_m: number; wiki?: string; flagCode?: string; }
-interface PeakRound     { type: "peak";     player: string; club: string; season: number; goals: number; flag: string; wiki?: string; flagCode?: string; }
+interface StadiumRound  { type: "stadium";  name: string; city: string; capacity: number; options: string[]; correct: number; wiki?: string; image_url?: string; }
+interface TransferRound { type: "transfer"; player: string; from: string; to: string; year: number; flag: string; fee_m: number; wiki?: string; flagCode?: string; image_url?: string; }
+interface PeakRound     { type: "peak";     player: string; club: string; season: number; goals: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
 
 type Round = TriviaRound | StadiumRound | TransferRound | PeakRound;
 
@@ -209,12 +209,14 @@ function TypeBanner({ type, question }: { type: RoundType; question?: string }) 
 // ─── Wikipedia image hook ────────────────────────────────────────────────────────
 const wikiImgCache = new Map<string, string>();
 
-function useWikiImage(title: string | undefined, gameKey?: GameKey): string | null {
+function useWikiImage(title: string | undefined, gameKey?: GameKey, prefetchedUrl?: string | null): string | null {
   const [src, setSrc] = useState<string | null>(
+    prefetchedUrl ??
     (gameKey && title ? getCustomImage(gameKey, title) : null) ??
     (title && wikiImgCache.has(title) ? wikiImgCache.get(title)! : null)
   );
   useEffect(() => {
+    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
     if (!title) return;
     let cancelled = false;
     (async () => {
@@ -226,6 +228,7 @@ function useWikiImage(title: string | undefined, gameKey?: GameKey): string | nu
       }
       if (wikiImgCache.has(title)) { setSrc(wikiImgCache.get(title)!); return; }
       try {
+        // 1) Fast path: pageimages API
         const data = await (await fetch(
           `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=400&origin=*`
         )).json();
@@ -235,16 +238,47 @@ function useWikiImage(title: string | undefined, gameKey?: GameKey): string | nu
         if (page?.thumbnail?.source) {
           wikiImgCache.set(title, page.thumbnail.source);
           setSrc(page.thumbnail.source);
+          return;
         }
+        // 2) REST summary API
+        const rest = await (await fetch(
+          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+        )).json();
+        if (cancelled) return;
+        const restUrl = rest?.originalimage?.source ?? rest?.thumbnail?.source;
+        if (restUrl) {
+          wikiImgCache.set(title, restUrl);
+          setSrc(restUrl);
+          return;
+        }
+        // 3) Fallback: parse infobox HTML
+        const data2 = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json&origin=*&section=0&redirects=1`
+        )).json();
+        if (cancelled) return;
+        const html: string = data2?.parse?.text?.["*"] ?? "";
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
+        if (!img) {
+          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
+          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
+        }
+        let imgSrc = img?.getAttribute("src") ?? "";
+        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
+        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
+        if (!imgSrc) return;
+        wikiImgCache.set(title, imgSrc);
+        setSrc(imgSrc);
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [title, gameKey]);
+  }, [title, gameKey, prefetchedUrl]);
   return src;
 }
 
-function WikiImg({ title, alt, className, gameKey }: { title?: string; alt: string; className?: string; gameKey?: GameKey }) {
-  const src = useWikiImage(title, gameKey);
+function WikiImg({ title, alt, className, gameKey, imageUrl }: { title?: string; alt: string; className?: string; gameKey?: GameKey; imageUrl?: string | null }) {
+  const src = useWikiImage(title, gameKey, imageUrl);
   if (!src) return <div className={`ft-img-placeholder ${className ?? ""}`} />;
   // eslint-disable-next-line @next/next/no-img-element
   return <img src={src} alt={alt} className={className} loading="lazy" />;
@@ -940,7 +974,7 @@ export default function Football() {
               <div className="ft-question-card">
                 <TypeBanner type="stadium" question="Which club calls this stadium home?" />
                 <div className="ft-stadium-img-wrap">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.name} className="ft-stadium-img" gameKey="football_stadiums" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.name} className="ft-stadium-img" gameKey="football_stadiums" imageUrl={currentRound.image_url} />
                 </div>
                 <div className="ft-stadium-header">
                   <div className="ft-stadium-name">{currentRound.name}</div>
@@ -962,7 +996,7 @@ export default function Football() {
               <div className="ft-transfer-card">
                 <TypeBanner type="transfer" question="How much did this transfer cost?" />
                 <div className="ft-player-hero">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="football_players" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="football_players" imageUrl={currentRound.image_url} />
                   <div className="ft-player-hero__info">
                     <div className="ft-transfer-player">
                       <FlagImg code={currentRound.flagCode} alt={currentRound.player} />
@@ -1035,7 +1069,7 @@ export default function Football() {
               <div className="ft-transfer-card">
                 <TypeBanner type="peak" question={`In which season did ${currentRound.player} score the most goals?`} />
                 <div className="ft-player-hero">
-                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="football_players" />
+                  <WikiImg title={currentRound.wiki} alt={currentRound.player} className="ft-player-img" gameKey="football_players" imageUrl={currentRound.image_url} />
                   <div className="ft-player-hero__info">
                     <div className="ft-transfer-player">
                       <FlagImg code={currentRound.flagCode} alt={currentRound.player} />

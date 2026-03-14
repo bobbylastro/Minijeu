@@ -1079,11 +1079,14 @@
 .city-photo {
   position: relative;
   height: 160px;
+  overflow: hidden;
 }
 
 .city-photo__img {
-  width: 100%;
-  height: 100%;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  margin-left: -8px;
+  margin-top: 4px;
   object-fit: cover;
   display: block;
 }

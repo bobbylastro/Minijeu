@@ -1,112 +1,1076 @@
 {
   "trivia": [
-    { "question": "Who broke Kareem Abdul-Jabbar's all-time NBA scoring record in 2023?", "options": ["LeBron James", "Kevin Durant", "Stephen Curry", "James Harden"], "correct": 0 },
-    { "question": "Which franchise has won the most NBA Championships?", "options": ["Boston Celtics", "Los Angeles Lakers", "Chicago Bulls", "Golden State Warriors"], "correct": 0 },
-    { "question": "Who scored 100 points in a single NBA game on March 2, 1962?", "options": ["Wilt Chamberlain", "Elgin Baylor", "Jerry West", "Oscar Robertson"], "correct": 0 },
-    { "question": "What year was the NBA founded?", "options": ["1946", "1950", "1936", "1954"], "correct": 0 },
-    { "question": "Who won the 2024 NBA Finals MVP?", "options": ["Jaylen Brown", "Jayson Tatum", "Derrick White", "Jrue Holiday"], "correct": 0 },
-    { "question": "Which player is nicknamed 'The Mailman'?", "options": ["Karl Malone", "Charles Barkley", "Patrick Ewing", "Dominique Wilkins"], "correct": 0 },
-    { "question": "Who holds the NBA record for most career three-pointers made?", "options": ["Stephen Curry", "Ray Allen", "Reggie Miller", "James Harden"], "correct": 0 },
-    { "question": "Which player has won the most regular-season MVP awards (6)?", "options": ["Kareem Abdul-Jabbar", "Michael Jordan", "Bill Russell", "LeBron James"], "correct": 0 },
-    { "question": "What jersey number did Michael Jordan wear for most of his Bulls career?", "options": ["23", "33", "45", "6"], "correct": 0 },
-    { "question": "Which player scored 81 points in a single game in January 2006?", "options": ["Kobe Bryant", "Michael Jordan", "LeBron James", "Tracy McGrady"], "correct": 0 },
-    { "question": "Which team made the historic comeback from 3–1 down in the 2016 NBA Finals?", "options": ["Cleveland Cavaliers", "Golden State Warriors", "Miami Heat", "Oklahoma City Thunder"], "correct": 0 },
-    { "question": "Who is the youngest player ever to win the NBA MVP award?", "options": ["Derrick Rose", "LeBron James", "Kevin Durant", "Giannis Antetokounmpo"], "correct": 0 },
-    { "question": "Who was the first overall pick in the 2003 NBA Draft?", "options": ["LeBron James", "Carmelo Anthony", "Chris Bosh", "Dwyane Wade"], "correct": 0 },
-    { "question": "What is Giannis Antetokounmpo's famous nickname?", "options": ["The Greek Freak", "The Big Greek", "The Athens Kid", "The Alphabet"], "correct": 0 },
-    { "question": "Who holds the NBA all-time record for most career assists?", "options": ["John Stockton", "Magic Johnson", "Jason Kidd", "Chris Paul"], "correct": 0 },
-    { "question": "Which team drafted Kobe Bryant in 1996, before trading him to the Lakers?", "options": ["Charlotte Hornets", "Seattle SuperSonics", "Minnesota Timberwolves", "Portland Trail Blazers"], "correct": 0 },
-    { "question": "In which city do the Golden State Warriors currently play?", "options": ["San Francisco", "Oakland", "Los Angeles", "Sacramento"], "correct": 0 },
-    { "question": "How many NBA championships did Michael Jordan win?", "options": ["6", "5", "7", "4"], "correct": 0 },
-    { "question": "Which country does Luka Dončić represent internationally?", "options": ["Slovenia", "Croatia", "Serbia", "Bosnia"], "correct": 0 },
-    { "question": "Who won the Finals MVP when the Toronto Raptors won their first championship in 2019?", "options": ["Kawhi Leonard", "Kyle Lowry", "Pascal Siakam", "Marc Gasol"], "correct": 0 },
-    { "question": "Who invented basketball in 1891?", "options": ["James Naismith", "Michael Jordan", "Wilt Chamberlain", "Bill Russell"], "correct": 0 },
-    { "question": "Which player was nicknamed 'The Dream'?", "options": ["Hakeem Olajuwon", "Patrick Ewing", "Shaquille O'Neal", "David Robinson"], "correct": 0 },
-    { "question": "What year did the NBA introduce the three-point line?", "options": ["1979", "1975", "1984", "1968"], "correct": 0 },
-    { "question": "To which city did the Seattle SuperSonics relocate in 2008?", "options": ["Oklahoma City", "Las Vegas", "Louisville", "Kansas City"], "correct": 0 },
-    { "question": "Who holds the NBA record for most rebounds in a single game (55)?", "options": ["Wilt Chamberlain", "Bill Russell", "Dennis Rodman", "Kareem Abdul-Jabbar"], "correct": 0 },
-    { "question": "Which Canadian player was the first international to win the regular-season MVP twice?", "options": ["Steve Nash", "Vince Carter", "Andrew Wiggins", "Jamal Murray"], "correct": 0 },
-    { "question": "In which year did LeBron James win his first NBA championship?", "options": ["2012", "2011", "2013", "2016"], "correct": 0 },
-    { "question": "Which player retired with the number 33 retired by the most teams?", "options": ["Larry Bird", "Patrick Ewing", "Kareem Abdul-Jabbar", "Magic Johnson"], "correct": 2 },
-    { "question": "How many fouls does it take to foul out in an NBA game?", "options": ["6", "5", "4", "7"], "correct": 0 },
-    { "question": "Which player's signature move is called 'The Eurostep'?", "options": ["Manu Ginóbili", "Tony Parker", "Dirk Nowitzki", "Pau Gasol"], "correct": 0 }
+    {
+      "question": "Who broke Kareem Abdul-Jabbar's all-time NBA scoring record in 2023?",
+      "options": [
+        "LeBron James",
+        "Kevin Durant",
+        "Stephen Curry",
+        "James Harden"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which franchise has won the most NBA Championships?",
+      "options": [
+        "Boston Celtics",
+        "Los Angeles Lakers",
+        "Chicago Bulls",
+        "Golden State Warriors"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who scored 100 points in a single NBA game on March 2, 1962?",
+      "options": [
+        "Wilt Chamberlain",
+        "Elgin Baylor",
+        "Jerry West",
+        "Oscar Robertson"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What year was the NBA founded?",
+      "options": [
+        "1946",
+        "1950",
+        "1936",
+        "1954"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who won the 2024 NBA Finals MVP?",
+      "options": [
+        "Jaylen Brown",
+        "Jayson Tatum",
+        "Derrick White",
+        "Jrue Holiday"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player is nicknamed 'The Mailman'?",
+      "options": [
+        "Karl Malone",
+        "Charles Barkley",
+        "Patrick Ewing",
+        "Dominique Wilkins"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who holds the NBA record for most career three-pointers made?",
+      "options": [
+        "Stephen Curry",
+        "Ray Allen",
+        "Reggie Miller",
+        "James Harden"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player has won the most regular-season MVP awards (6)?",
+      "options": [
+        "Kareem Abdul-Jabbar",
+        "Michael Jordan",
+        "Bill Russell",
+        "LeBron James"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What jersey number did Michael Jordan wear for most of his Bulls career?",
+      "options": [
+        "23",
+        "33",
+        "45",
+        "6"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player scored 81 points in a single game in January 2006?",
+      "options": [
+        "Kobe Bryant",
+        "Michael Jordan",
+        "LeBron James",
+        "Tracy McGrady"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which team made the historic comeback from 3–1 down in the 2016 NBA Finals?",
+      "options": [
+        "Cleveland Cavaliers",
+        "Golden State Warriors",
+        "Miami Heat",
+        "Oklahoma City Thunder"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who is the youngest player ever to win the NBA MVP award?",
+      "options": [
+        "Derrick Rose",
+        "LeBron James",
+        "Kevin Durant",
+        "Giannis Antetokounmpo"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who was the first overall pick in the 2003 NBA Draft?",
+      "options": [
+        "LeBron James",
+        "Carmelo Anthony",
+        "Chris Bosh",
+        "Dwyane Wade"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What is Giannis Antetokounmpo's famous nickname?",
+      "options": [
+        "The Greek Freak",
+        "The Big Greek",
+        "The Athens Kid",
+        "The Alphabet"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who holds the NBA all-time record for most career assists?",
+      "options": [
+        "John Stockton",
+        "Magic Johnson",
+        "Jason Kidd",
+        "Chris Paul"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which team drafted Kobe Bryant in 1996, before trading him to the Lakers?",
+      "options": [
+        "Charlotte Hornets",
+        "Seattle SuperSonics",
+        "Minnesota Timberwolves",
+        "Portland Trail Blazers"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "In which city do the Golden State Warriors currently play?",
+      "options": [
+        "San Francisco",
+        "Oakland",
+        "Los Angeles",
+        "Sacramento"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "How many NBA championships did Michael Jordan win?",
+      "options": [
+        "6",
+        "5",
+        "7",
+        "4"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which country does Luka Dončić represent internationally?",
+      "options": [
+        "Slovenia",
+        "Croatia",
+        "Serbia",
+        "Bosnia"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who won the Finals MVP when the Toronto Raptors won their first championship in 2019?",
+      "options": [
+        "Kawhi Leonard",
+        "Kyle Lowry",
+        "Pascal Siakam",
+        "Marc Gasol"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who invented basketball in 1891?",
+      "options": [
+        "James Naismith",
+        "Michael Jordan",
+        "Wilt Chamberlain",
+        "Bill Russell"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player was nicknamed 'The Dream'?",
+      "options": [
+        "Hakeem Olajuwon",
+        "Patrick Ewing",
+        "Shaquille O'Neal",
+        "David Robinson"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "What year did the NBA introduce the three-point line?",
+      "options": [
+        "1979",
+        "1975",
+        "1984",
+        "1968"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "To which city did the Seattle SuperSonics relocate in 2008?",
+      "options": [
+        "Oklahoma City",
+        "Las Vegas",
+        "Louisville",
+        "Kansas City"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who holds the NBA record for most rebounds in a single game (55)?",
+      "options": [
+        "Wilt Chamberlain",
+        "Bill Russell",
+        "Dennis Rodman",
+        "Kareem Abdul-Jabbar"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which Canadian player was the first international to win the regular-season MVP twice?",
+      "options": [
+        "Steve Nash",
+        "Vince Carter",
+        "Andrew Wiggins",
+        "Jamal Murray"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "In which year did LeBron James win his first NBA championship?",
+      "options": [
+        "2012",
+        "2011",
+        "2013",
+        "2016"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player retired with the number 33 retired by the most teams?",
+      "options": [
+        "Larry Bird",
+        "Patrick Ewing",
+        "Kareem Abdul-Jabbar",
+        "Magic Johnson"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "How many fouls does it take to foul out in an NBA game?",
+      "options": [
+        "6",
+        "5",
+        "4",
+        "7"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player's signature move is called 'The Eurostep'?",
+      "options": [
+        "Manu Ginóbili",
+        "Tony Parker",
+        "Dirk Nowitzki",
+        "Pau Gasol"
+      ],
+      "correct": 0
+    }
   ],
   "arenas": [
-    { "name": "Madison Square Garden", "team": "New York Knicks", "city": "New York", "capacity": 19812, "options": ["Boston Celtics", "Brooklyn Nets", "Philadelphia 76ers"], "wiki": "Madison Square Garden" },
-    { "name": "Chase Center", "team": "Golden State Warriors", "city": "San Francisco", "capacity": 18064, "options": ["Sacramento Kings", "Los Angeles Lakers", "Phoenix Suns"], "wiki": "Chase Center" },
-    { "name": "Crypto.com Arena", "team": "Los Angeles Lakers", "city": "Los Angeles", "capacity": 19067, "options": ["Golden State Warriors", "Phoenix Suns", "Dallas Mavericks"], "wiki": "Crypto.com Arena" },
-    { "name": "TD Garden", "team": "Boston Celtics", "city": "Boston", "capacity": 19156, "options": ["New York Knicks", "Philadelphia 76ers", "Brooklyn Nets"], "wiki": "TD Garden" },
-    { "name": "United Center", "team": "Chicago Bulls", "city": "Chicago", "capacity": 20917, "options": ["Milwaukee Bucks", "Detroit Pistons", "Indiana Pacers"], "wiki": "United Center" },
-    { "name": "Kaseya Center", "team": "Miami Heat", "city": "Miami", "capacity": 19600, "options": ["Orlando Magic", "Charlotte Hornets", "Atlanta Hawks"], "wiki": "Kaseya Center" },
-    { "name": "Fiserv Forum", "team": "Milwaukee Bucks", "city": "Milwaukee", "capacity": 17341, "options": ["Chicago Bulls", "Indiana Pacers", "Detroit Pistons"], "wiki": "Fiserv Forum" },
-    { "name": "Ball Arena", "team": "Denver Nuggets", "city": "Denver", "capacity": 19520, "options": ["Utah Jazz", "Phoenix Suns", "Minnesota Timberwolves"], "wiki": "Ball Arena" },
-    { "name": "Footprint Center", "team": "Phoenix Suns", "city": "Phoenix", "capacity": 17229, "options": ["Denver Nuggets", "Los Angeles Clippers", "Sacramento Kings"], "wiki": "Footprint Center" },
-    { "name": "Barclays Center", "team": "Brooklyn Nets", "city": "Brooklyn", "capacity": 17732, "options": ["New York Knicks", "Philadelphia 76ers", "Toronto Raptors"], "wiki": "Barclays Center" },
-    { "name": "Toyota Center", "team": "Houston Rockets", "city": "Houston", "capacity": 18055, "options": ["Dallas Mavericks", "San Antonio Spurs", "New Orleans Pelicans"], "wiki": "Toyota Center (Houston)" },
-    { "name": "Scotiabank Arena", "team": "Toronto Raptors", "city": "Toronto", "capacity": 19800, "options": ["Brooklyn Nets", "Boston Celtics", "Chicago Bulls"], "wiki": "Scotiabank Arena" },
-    { "name": "American Airlines Center", "team": "Dallas Mavericks", "city": "Dallas", "capacity": 20001, "options": ["Houston Rockets", "San Antonio Spurs", "Memphis Grizzlies"], "wiki": "American Airlines Center" },
-    { "name": "Wells Fargo Center", "team": "Philadelphia 76ers", "city": "Philadelphia", "capacity": 20478, "options": ["Brooklyn Nets", "New York Knicks", "Boston Celtics"], "wiki": "Wells Fargo Center (Philadelphia)" },
-    { "name": "Rocket Mortgage FieldHouse", "team": "Cleveland Cavaliers", "city": "Cleveland", "capacity": 19432, "options": ["Detroit Pistons", "Indiana Pacers", "Chicago Bulls"], "wiki": "Rocket Mortgage FieldHouse" },
-    { "name": "State Farm Arena", "team": "Atlanta Hawks", "city": "Atlanta", "capacity": 18000, "options": ["Charlotte Hornets", "Miami Heat", "Orlando Magic"], "wiki": "State Farm Arena (Atlanta)" },
-    { "name": "Moda Center", "team": "Portland Trail Blazers", "city": "Portland", "capacity": 19393, "options": ["Sacramento Kings", "Utah Jazz", "Golden State Warriors"], "wiki": "Moda Center" },
-    { "name": "Delta Center", "team": "Utah Jazz", "city": "Salt Lake City", "capacity": 18306, "options": ["Denver Nuggets", "Portland Trail Blazers", "Minnesota Timberwolves"], "wiki": "Delta Center" },
-    { "name": "Gainbridge Fieldhouse", "team": "Indiana Pacers", "city": "Indianapolis", "capacity": 17923, "options": ["Chicago Bulls", "Detroit Pistons", "Milwaukee Bucks"], "wiki": "Gainbridge Fieldhouse" },
-    { "name": "Smoothie King Center", "team": "New Orleans Pelicans", "city": "New Orleans", "capacity": 17791, "options": ["Memphis Grizzlies", "Houston Rockets", "San Antonio Spurs"], "wiki": "Smoothie King Center" }
+    {
+      "name": "Madison Square Garden",
+      "team": "New York Knicks",
+      "city": "New York",
+      "capacity": 19812,
+      "options": [
+        "Boston Celtics",
+        "Brooklyn Nets",
+        "Philadelphia 76ers"
+      ],
+      "wiki": "Madison Square Garden",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Madison_Square_Garden_%28MSG%29_-_Full_%2848124330357%29.jpg/500px-Madison_Square_Garden_%28MSG%29_-_Full_%2848124330357%29.jpg"
+    },
+    {
+      "name": "Chase Center",
+      "team": "Golden State Warriors",
+      "city": "San Francisco",
+      "capacity": 18064,
+      "options": [
+        "Sacramento Kings",
+        "Los Angeles Lakers",
+        "Phoenix Suns"
+      ],
+      "wiki": "Chase Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Chase_Center.jpg/500px-Chase_Center.jpg"
+    },
+    {
+      "name": "Crypto.com Arena",
+      "team": "Los Angeles Lakers",
+      "city": "Los Angeles",
+      "capacity": 19067,
+      "options": [
+        "Golden State Warriors",
+        "Phoenix Suns",
+        "Dallas Mavericks"
+      ],
+      "wiki": "Crypto.com Arena",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Crypto.com_Arena_exterior_2023.jpg/500px-Crypto.com_Arena_exterior_2023.jpg"
+    },
+    {
+      "name": "TD Garden",
+      "team": "Boston Celtics",
+      "city": "Boston",
+      "capacity": 19156,
+      "options": [
+        "New York Knicks",
+        "Philadelphia 76ers",
+        "Brooklyn Nets"
+      ],
+      "wiki": "TD Garden",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/TD_Garden_%2854960947755%29.jpg/500px-TD_Garden_%2854960947755%29.jpg"
+    },
+    {
+      "name": "United Center",
+      "team": "Chicago Bulls",
+      "city": "Chicago",
+      "capacity": 20917,
+      "options": [
+        "Milwaukee Bucks",
+        "Detroit Pistons",
+        "Indiana Pacers"
+      ],
+      "wiki": "United Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/United_Center_1.jpg/500px-United_Center_1.jpg"
+    },
+    {
+      "name": "Kaseya Center",
+      "team": "Miami Heat",
+      "city": "Miami",
+      "capacity": 19600,
+      "options": [
+        "Orlando Magic",
+        "Charlotte Hornets",
+        "Atlanta Hawks"
+      ],
+      "wiki": "Kaseya Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Kaseya_Center_Downtown_Miami_FL%2C_5_April_2024.jpg/500px-Kaseya_Center_Downtown_Miami_FL%2C_5_April_2024.jpg"
+    },
+    {
+      "name": "Fiserv Forum",
+      "team": "Milwaukee Bucks",
+      "city": "Milwaukee",
+      "capacity": 17341,
+      "options": [
+        "Chicago Bulls",
+        "Indiana Pacers",
+        "Detroit Pistons"
+      ],
+      "wiki": "Fiserv Forum",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Milwaukee_Fiserv_Forum.jpg/500px-Milwaukee_Fiserv_Forum.jpg"
+    },
+    {
+      "name": "Ball Arena",
+      "team": "Denver Nuggets",
+      "city": "Denver",
+      "capacity": 19520,
+      "options": [
+        "Utah Jazz",
+        "Phoenix Suns",
+        "Minnesota Timberwolves"
+      ],
+      "wiki": "Ball Arena",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Ball_Arena_exterior_2022.jpg/500px-Ball_Arena_exterior_2022.jpg"
+    },
+    {
+      "name": "Footprint Center",
+      "team": "Phoenix Suns",
+      "city": "Phoenix",
+      "capacity": 17229,
+      "options": [
+        "Denver Nuggets",
+        "Los Angeles Clippers",
+        "Sacramento Kings"
+      ],
+      "wiki": "Footprint Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/54/Footprint_Center_2022.jpg"
+    },
+    {
+      "name": "Barclays Center",
+      "team": "Brooklyn Nets",
+      "city": "Brooklyn",
+      "capacity": 17732,
+      "options": [
+        "New York Knicks",
+        "Philadelphia 76ers",
+        "Toronto Raptors"
+      ],
+      "wiki": "Barclays Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Barclays_Center_-_May_2_2025.jpg/500px-Barclays_Center_-_May_2_2025.jpg"
+    },
+    {
+      "name": "Toyota Center",
+      "team": "Houston Rockets",
+      "city": "Houston",
+      "capacity": 18055,
+      "options": [
+        "Dallas Mavericks",
+        "San Antonio Spurs",
+        "New Orleans Pelicans"
+      ],
+      "wiki": "Toyota Center (Houston)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/db/Toyota_Center_entr.jpg"
+    },
+    {
+      "name": "Scotiabank Arena",
+      "team": "Toronto Raptors",
+      "city": "Toronto",
+      "capacity": 19800,
+      "options": [
+        "Brooklyn Nets",
+        "Boston Celtics",
+        "Chicago Bulls"
+      ],
+      "wiki": "Scotiabank Arena",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Scotiabank_Arena_-_2018_%28cropped%29.jpg/500px-Scotiabank_Arena_-_2018_%28cropped%29.jpg"
+    },
+    {
+      "name": "American Airlines Center",
+      "team": "Dallas Mavericks",
+      "city": "Dallas",
+      "capacity": 20001,
+      "options": [
+        "Houston Rockets",
+        "San Antonio Spurs",
+        "Memphis Grizzlies"
+      ],
+      "wiki": "American Airlines Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/American_Airlines_Center_August_2015.jpg/500px-American_Airlines_Center_August_2015.jpg"
+    },
+    {
+      "name": "Wells Fargo Center",
+      "team": "Philadelphia 76ers",
+      "city": "Philadelphia",
+      "capacity": 20478,
+      "options": [
+        "Brooklyn Nets",
+        "New York Knicks",
+        "Boston Celtics"
+      ],
+      "wiki": "Wells Fargo Center (Philadelphia)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Wells_Fargo_Center_-_2019_OWL_Grand_Finals.jpg/1920px-Wells_Fargo_Center_-_2019_OWL_Grand_Finals.jpg"
+    },
+    {
+      "name": "Rocket Mortgage FieldHouse",
+      "team": "Cleveland Cavaliers",
+      "city": "Cleveland",
+      "capacity": 19432,
+      "options": [
+        "Detroit Pistons",
+        "Indiana Pacers",
+        "Chicago Bulls"
+      ],
+      "wiki": "Rocket Mortgage FieldHouse",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/3/35/Rocket_Mortgage_FieldHouse_2022_%28cropped%29.png"
+    },
+    {
+      "name": "State Farm Arena",
+      "team": "Atlanta Hawks",
+      "city": "Atlanta",
+      "capacity": 18000,
+      "options": [
+        "Charlotte Hornets",
+        "Miami Heat",
+        "Orlando Magic"
+      ],
+      "wiki": "State Farm Arena (Atlanta)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/State_Farm_%28Philips%29_Arena%2C_Atlanta%2C_GA_%2846558861525%29_-_2019.jpg/3840px-State_Farm_%28Philips%29_Arena%2C_Atlanta%2C_GA_%2846558861525%29_-_2019.jpg"
+    },
+    {
+      "name": "Moda Center",
+      "team": "Portland Trail Blazers",
+      "city": "Portland",
+      "capacity": 19393,
+      "options": [
+        "Sacramento Kings",
+        "Utah Jazz",
+        "Golden State Warriors"
+      ],
+      "wiki": "Moda Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Modacenter2019.jpg/500px-Modacenter2019.jpg"
+    },
+    {
+      "name": "Delta Center",
+      "team": "Utah Jazz",
+      "city": "Salt Lake City",
+      "capacity": 18306,
+      "options": [
+        "Denver Nuggets",
+        "Portland Trail Blazers",
+        "Minnesota Timberwolves"
+      ],
+      "wiki": "Delta Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Delta_Center_2023.jpg/500px-Delta_Center_2023.jpg"
+    },
+    {
+      "name": "Gainbridge Fieldhouse",
+      "team": "Indiana Pacers",
+      "city": "Indianapolis",
+      "capacity": 17923,
+      "options": [
+        "Chicago Bulls",
+        "Detroit Pistons",
+        "Milwaukee Bucks"
+      ],
+      "wiki": "Gainbridge Fieldhouse",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Bankers_Life_Fieldhouse%2C_Indian%C3%A1polis%2C_Estados_Unidos%2C_2012-10-22%2C_DD_02.jpg/500px-Bankers_Life_Fieldhouse%2C_Indian%C3%A1polis%2C_Estados_Unidos%2C_2012-10-22%2C_DD_02.jpg"
+    },
+    {
+      "name": "Smoothie King Center",
+      "team": "New Orleans Pelicans",
+      "city": "New Orleans",
+      "capacity": 17791,
+      "options": [
+        "Memphis Grizzlies",
+        "Houston Rockets",
+        "San Antonio Spurs"
+      ],
+      "wiki": "Smoothie King Center",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/New_Orleans_Arena%2C_exterior_view%2C_10_January_2022_%28cropped%29.jpg/500px-New_Orleans_Arena%2C_exterior_view%2C_10_January_2022_%28cropped%29.jpg"
+    }
   ],
   "contracts": [
-    { "player": "Jayson Tatum", "team": "Boston Celtics", "year": 2023, "total_m": 314, "flag": "🇺🇸", "wiki": "Jayson Tatum", "flagCode": "us" },
-    { "player": "Nikola Jokić", "team": "Denver Nuggets", "year": 2022, "total_m": 272, "flag": "🇷🇸", "wiki": "Nikola Jokić", "flagCode": "rs" },
-    { "player": "Giannis Antetokounmpo", "team": "Milwaukee Bucks", "year": 2020, "total_m": 228, "flag": "🇬🇷", "wiki": "Giannis Antetokounmpo", "flagCode": "gr" },
-    { "player": "James Harden", "team": "Houston Rockets", "year": 2017, "total_m": 228, "flag": "🇺🇸", "wiki": "James Harden", "flagCode": "us" },
-    { "player": "Russell Westbrook", "team": "Oklahoma City Thunder", "year": 2017, "total_m": 207, "flag": "🇺🇸", "wiki": "Russell Westbrook", "flagCode": "us" },
-    { "player": "Stephen Curry", "team": "Golden State Warriors", "year": 2021, "total_m": 215, "flag": "🇺🇸", "wiki": "Stephen Curry", "flagCode": "us" },
-    { "player": "Luka Dončić", "team": "Dallas Mavericks", "year": 2022, "total_m": 215, "flag": "🇸🇮", "wiki": "Luka Dončić", "flagCode": "si" },
-    { "player": "Joel Embiid", "team": "Philadelphia 76ers", "year": 2021, "total_m": 196, "flag": "🇨🇲", "wiki": "Joel Embiid", "flagCode": "cm" },
-    { "player": "Damian Lillard", "team": "Portland Trail Blazers", "year": 2019, "total_m": 196, "flag": "🇺🇸", "wiki": "Damian Lillard", "flagCode": "us" },
-    { "player": "Anthony Davis", "team": "Los Angeles Lakers", "year": 2020, "total_m": 190, "flag": "🇺🇸", "wiki": "Anthony Davis (basketball)", "flagCode": "us" },
-    { "player": "Kevin Durant", "team": "Brooklyn Nets", "year": 2019, "total_m": 164, "flag": "🇺🇸", "wiki": "Kevin Durant", "flagCode": "us" },
-    { "player": "LeBron James", "team": "Los Angeles Lakers", "year": 2018, "total_m": 154, "flag": "🇺🇸", "wiki": "LeBron James", "flagCode": "us" },
-    { "player": "Ja Morant", "team": "Memphis Grizzlies", "year": 2022, "total_m": 231, "flag": "🇺🇸", "wiki": "Ja Morant", "flagCode": "us" },
-    { "player": "Anthony Edwards", "team": "Minnesota Timberwolves", "year": 2023, "total_m": 260, "flag": "🇺🇸", "wiki": "Anthony Edwards (basketball)", "flagCode": "us" },
-    { "player": "Devin Booker", "team": "Phoenix Suns", "year": 2022, "total_m": 224, "flag": "🇺🇸", "wiki": "Devin Booker", "flagCode": "us" },
-    { "player": "Bam Adebayo", "team": "Miami Heat", "year": 2020, "total_m": 163, "flag": "🇺🇸", "wiki": "Bam Adebayo", "flagCode": "us" }
+    {
+      "player": "Jayson Tatum",
+      "team": "Boston Celtics",
+      "year": 2023,
+      "total_m": 314,
+      "flag": "🇺🇸",
+      "wiki": "Jayson Tatum",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Celtics_at_Wizards_2024-12-044_%28cropped_2%29.jpg/500px-Celtics_at_Wizards_2024-12-044_%28cropped_2%29.jpg"
+    },
+    {
+      "player": "Nikola Jokić",
+      "team": "Denver Nuggets",
+      "year": 2022,
+      "total_m": 272,
+      "flag": "🇷🇸",
+      "wiki": "Nikola Jokić",
+      "flagCode": "rs",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nikola_Jokic_free_throw_%28cropped%29.jpg/500px-Nikola_Jokic_free_throw_%28cropped%29.jpg"
+    },
+    {
+      "player": "Giannis Antetokounmpo",
+      "team": "Milwaukee Bucks",
+      "year": 2020,
+      "total_m": 228,
+      "flag": "🇬🇷",
+      "wiki": "Giannis Antetokounmpo",
+      "flagCode": "gr",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg/500px-Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "James Harden",
+      "team": "Houston Rockets",
+      "year": 2017,
+      "total_m": 228,
+      "flag": "🇺🇸",
+      "wiki": "James Harden",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Harden_dribbling_midcourt%2C_Cavaliers_vs_Nets_on_January_17%2C_2022_%28cropped%29.jpg/500px-Harden_dribbling_midcourt%2C_Cavaliers_vs_Nets_on_January_17%2C_2022_%28cropped%29.jpg"
+    },
+    {
+      "player": "Russell Westbrook",
+      "team": "Oklahoma City Thunder",
+      "year": 2017,
+      "total_m": 207,
+      "flag": "🇺🇸",
+      "wiki": "Russell Westbrook",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Russell_Westbrook_%28March_21%2C_2022%29_%28cropped%29.jpg/500px-Russell_Westbrook_%28March_21%2C_2022%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Stephen Curry",
+      "team": "Golden State Warriors",
+      "year": 2021,
+      "total_m": 215,
+      "flag": "🇺🇸",
+      "wiki": "Stephen Curry",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Steph_Curry_P20230117AS-1347_%28cropped%29.jpg/500px-Steph_Curry_P20230117AS-1347_%28cropped%29.jpg"
+    },
+    {
+      "player": "Luka Dončić",
+      "team": "Dallas Mavericks",
+      "year": 2022,
+      "total_m": 215,
+      "flag": "🇸🇮",
+      "wiki": "Luka Dončić",
+      "flagCode": "si",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg/500px-Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg"
+    },
+    {
+      "player": "Joel Embiid",
+      "team": "Philadelphia 76ers",
+      "year": 2021,
+      "total_m": 196,
+      "flag": "🇨🇲",
+      "wiki": "Joel Embiid",
+      "flagCode": "cm",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Joel_Embiid_2019.jpg/500px-Joel_Embiid_2019.jpg"
+    },
+    {
+      "player": "Damian Lillard",
+      "team": "Portland Trail Blazers",
+      "year": 2019,
+      "total_m": 196,
+      "flag": "🇺🇸",
+      "wiki": "Damian Lillard",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Damian_Lillard_%282021%29_%28cropped%29.jpg/500px-Damian_Lillard_%282021%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Anthony Davis",
+      "team": "Los Angeles Lakers",
+      "year": 2020,
+      "total_m": 190,
+      "flag": "🇺🇸",
+      "wiki": "Anthony Davis (basketball)",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Anthony_Davis_pre-game_%28cropped%29.jpg/1280px-Anthony_Davis_pre-game_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kevin Durant",
+      "team": "Brooklyn Nets",
+      "year": 2019,
+      "total_m": 164,
+      "flag": "🇺🇸",
+      "wiki": "Kevin Durant",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg/500px-Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg"
+    },
+    {
+      "player": "LeBron James",
+      "team": "Los Angeles Lakers",
+      "year": 2018,
+      "total_m": 154,
+      "flag": "🇺🇸",
+      "wiki": "LeBron James",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851959977144%29_%28cropped2%29.jpg/500px-LeBron_James_%2851959977144%29_%28cropped2%29.jpg"
+    },
+    {
+      "player": "Ja Morant",
+      "team": "Memphis Grizzlies",
+      "year": 2022,
+      "total_m": 231,
+      "flag": "🇺🇸",
+      "wiki": "Ja Morant",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Ja_Morant_2021.jpg/500px-Ja_Morant_2021.jpg"
+    },
+    {
+      "player": "Anthony Edwards",
+      "team": "Minnesota Timberwolves",
+      "year": 2023,
+      "total_m": 260,
+      "flag": "🇺🇸",
+      "wiki": "Anthony Edwards (basketball)",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Anthony_Edwards_Kentavious_Caldwell-Pope_%2851734745028%29_%28cropped%29_%28cropped%29.jpg/500px-Anthony_Edwards_Kentavious_Caldwell-Pope_%2851734745028%29_%28cropped%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Devin Booker",
+      "team": "Phoenix Suns",
+      "year": 2022,
+      "total_m": 224,
+      "flag": "🇺🇸",
+      "wiki": "Devin Booker",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Devin_Booker%2C_Olympic_Games_2024_%28cropped%29.jpg/500px-Devin_Booker%2C_Olympic_Games_2024_%28cropped%29.jpg"
+    },
+    {
+      "player": "Bam Adebayo",
+      "team": "Miami Heat",
+      "year": 2020,
+      "total_m": 163,
+      "flag": "🇺🇸",
+      "wiki": "Bam Adebayo",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Bam_Adebayo_%28cropped%29.jpg/500px-Bam_Adebayo_%28cropped%29.jpg"
+    }
   ],
   "salaries": [
-    { "player": "Stephen Curry", "team": "Golden State Warriors", "annual_m": 51.9, "flag": "🇺🇸", "wiki": "Stephen Curry", "flagCode": "us" },
-    { "player": "Joel Embiid", "team": "Philadelphia 76ers", "annual_m": 51.4, "flag": "🇨🇲", "wiki": "Joel Embiid", "flagCode": "cm" },
-    { "player": "Jimmy Butler", "team": "Miami Heat", "annual_m": 48.8, "flag": "🇺🇸", "wiki": "Jimmy Butler", "flagCode": "us" },
-    { "player": "Damian Lillard", "team": "Milwaukee Bucks", "annual_m": 48.8, "flag": "🇺🇸", "wiki": "Damian Lillard", "flagCode": "us" },
-    { "player": "Nikola Jokić", "team": "Denver Nuggets", "annual_m": 47.6, "flag": "🇷🇸", "wiki": "Nikola Jokić", "flagCode": "rs" },
-    { "player": "LeBron James", "team": "Los Angeles Lakers", "annual_m": 47.6, "flag": "🇺🇸", "wiki": "LeBron James", "flagCode": "us" },
-    { "player": "Kevin Durant", "team": "Phoenix Suns", "annual_m": 47.6, "flag": "🇺🇸", "wiki": "Kevin Durant", "flagCode": "us" },
-    { "player": "Bradley Beal", "team": "Phoenix Suns", "annual_m": 46.7, "flag": "🇺🇸", "wiki": "Bradley Beal", "flagCode": "us" },
-    { "player": "Giannis Antetokounmpo", "team": "Milwaukee Bucks", "annual_m": 45.6, "flag": "🇬🇷", "wiki": "Giannis Antetokounmpo", "flagCode": "gr" },
-    { "player": "Kawhi Leonard", "team": "Los Angeles Clippers", "annual_m": 45.6, "flag": "🇺🇸", "wiki": "Kawhi Leonard", "flagCode": "us" },
-    { "player": "Paul George", "team": "Los Angeles Clippers", "annual_m": 45.6, "flag": "🇺🇸", "wiki": "Paul George (basketball)", "flagCode": "us" },
-    { "player": "Anthony Davis", "team": "Los Angeles Lakers", "annual_m": 43.2, "flag": "🇺🇸", "wiki": "Anthony Davis (basketball)", "flagCode": "us" },
-    { "player": "Luka Dončić", "team": "Dallas Mavericks", "annual_m": 40.1, "flag": "🇸🇮", "wiki": "Luka Dončić", "flagCode": "si" },
-    { "player": "Zion Williamson", "team": "New Orleans Pelicans", "annual_m": 37.0, "flag": "🇺🇸", "wiki": "Zion Williamson", "flagCode": "us" },
-    { "player": "Kyrie Irving", "team": "Dallas Mavericks", "annual_m": 36.5, "flag": "🇺🇸", "wiki": "Kyrie Irving", "flagCode": "us" },
-    { "player": "Devin Booker", "team": "Phoenix Suns", "annual_m": 36.0, "flag": "🇺🇸", "wiki": "Devin Booker", "flagCode": "us" }
+    {
+      "player": "Stephen Curry",
+      "team": "Golden State Warriors",
+      "annual_m": 51.9,
+      "flag": "🇺🇸",
+      "wiki": "Stephen Curry",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Steph_Curry_P20230117AS-1347_%28cropped%29.jpg/500px-Steph_Curry_P20230117AS-1347_%28cropped%29.jpg"
+    },
+    {
+      "player": "Joel Embiid",
+      "team": "Philadelphia 76ers",
+      "annual_m": 51.4,
+      "flag": "🇨🇲",
+      "wiki": "Joel Embiid",
+      "flagCode": "cm",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Joel_Embiid_2019.jpg/500px-Joel_Embiid_2019.jpg"
+    },
+    {
+      "player": "Jimmy Butler",
+      "team": "Miami Heat",
+      "annual_m": 48.8,
+      "flag": "🇺🇸",
+      "wiki": "Jimmy Butler",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/CES_2026_-_Jimmy_Butler_01_%28cropped%29.jpg/500px-CES_2026_-_Jimmy_Butler_01_%28cropped%29.jpg"
+    },
+    {
+      "player": "Damian Lillard",
+      "team": "Milwaukee Bucks",
+      "annual_m": 48.8,
+      "flag": "🇺🇸",
+      "wiki": "Damian Lillard",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Damian_Lillard_%282021%29_%28cropped%29.jpg/500px-Damian_Lillard_%282021%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Nikola Jokić",
+      "team": "Denver Nuggets",
+      "annual_m": 47.6,
+      "flag": "🇷🇸",
+      "wiki": "Nikola Jokić",
+      "flagCode": "rs",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nikola_Jokic_free_throw_%28cropped%29.jpg/500px-Nikola_Jokic_free_throw_%28cropped%29.jpg"
+    },
+    {
+      "player": "LeBron James",
+      "team": "Los Angeles Lakers",
+      "annual_m": 47.6,
+      "flag": "🇺🇸",
+      "wiki": "LeBron James",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851959977144%29_%28cropped2%29.jpg/500px-LeBron_James_%2851959977144%29_%28cropped2%29.jpg"
+    },
+    {
+      "player": "Kevin Durant",
+      "team": "Phoenix Suns",
+      "annual_m": 47.6,
+      "flag": "🇺🇸",
+      "wiki": "Kevin Durant",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg/500px-Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg"
+    },
+    {
+      "player": "Bradley Beal",
+      "team": "Phoenix Suns",
+      "annual_m": 46.7,
+      "flag": "🇺🇸",
+      "wiki": "Bradley Beal",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Bradley_Beal_WSH_Wizards_2022_%28croppedface%29.jpg/500px-Bradley_Beal_WSH_Wizards_2022_%28croppedface%29.jpg"
+    },
+    {
+      "player": "Giannis Antetokounmpo",
+      "team": "Milwaukee Bucks",
+      "annual_m": 45.6,
+      "flag": "🇬🇷",
+      "wiki": "Giannis Antetokounmpo",
+      "flagCode": "gr",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg/500px-Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kawhi Leonard",
+      "team": "Los Angeles Clippers",
+      "annual_m": 45.6,
+      "flag": "🇺🇸",
+      "wiki": "Kawhi Leonard",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Kawhi_Leonard_%287440607%29_%28cropped%29.jpg/500px-Kawhi_Leonard_%287440607%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Paul George",
+      "team": "Los Angeles Clippers",
+      "annual_m": 45.6,
+      "flag": "🇺🇸",
+      "wiki": "Paul George (basketball)",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d6/Paul_George_Pacers.jpg/1280px-Paul_George_Pacers.jpg"
+    },
+    {
+      "player": "Anthony Davis",
+      "team": "Los Angeles Lakers",
+      "annual_m": 43.2,
+      "flag": "🇺🇸",
+      "wiki": "Anthony Davis (basketball)",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Anthony_Davis_pre-game_%28cropped%29.jpg/1280px-Anthony_Davis_pre-game_%28cropped%29.jpg"
+    },
+    {
+      "player": "Luka Dončić",
+      "team": "Dallas Mavericks",
+      "annual_m": 40.1,
+      "flag": "🇸🇮",
+      "wiki": "Luka Dončić",
+      "flagCode": "si",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg/500px-Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg"
+    },
+    {
+      "player": "Zion Williamson",
+      "team": "New Orleans Pelicans",
+      "annual_m": 37,
+      "flag": "🇺🇸",
+      "wiki": "Zion Williamson",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Zion_Williamson_2020_%28cropped%29.jpg/500px-Zion_Williamson_2020_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kyrie Irving",
+      "team": "Dallas Mavericks",
+      "annual_m": 36.5,
+      "flag": "🇺🇸",
+      "wiki": "Kyrie Irving",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Kyrie_Irving_%2851830909437%29_%28cropped%29.jpg/500px-Kyrie_Irving_%2851830909437%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Devin Booker",
+      "team": "Phoenix Suns",
+      "annual_m": 36,
+      "flag": "🇺🇸",
+      "wiki": "Devin Booker",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Devin_Booker%2C_Olympic_Games_2024_%28cropped%29.jpg/500px-Devin_Booker%2C_Olympic_Games_2024_%28cropped%29.jpg"
+    }
   ],
   "peaks": [
-    { "player": "Wilt Chamberlain", "team": "Philadelphia Warriors", "season": 1961, "ppg": 50.4, "flag": "🇺🇸", "wiki": "Wilt Chamberlain", "flagCode": "us" },
-    { "player": "Michael Jordan", "team": "Chicago Bulls", "season": 1986, "ppg": 37.1, "flag": "🇺🇸", "wiki": "Michael Jordan", "flagCode": "us" },
-    { "player": "James Harden", "team": "Houston Rockets", "season": 2018, "ppg": 36.1, "flag": "🇺🇸", "wiki": "James Harden", "flagCode": "us" },
-    { "player": "Kobe Bryant", "team": "Los Angeles Lakers", "season": 2005, "ppg": 35.4, "flag": "🇺🇸", "wiki": "Kobe Bryant", "flagCode": "us" },
-    { "player": "Luka Dončić", "team": "Dallas Mavericks", "season": 2023, "ppg": 33.9, "flag": "🇸🇮", "wiki": "Luka Dončić", "flagCode": "si" },
-    { "player": "Joel Embiid", "team": "Philadelphia 76ers", "season": 2022, "ppg": 33.1, "flag": "🇨🇲", "wiki": "Joel Embiid", "flagCode": "cm" },
-    { "player": "Tracy McGrady", "team": "Orlando Magic", "season": 2002, "ppg": 32.1, "flag": "🇺🇸", "wiki": "Tracy McGrady", "flagCode": "us" },
-    { "player": "Damian Lillard", "team": "Portland Trail Blazers", "season": 2022, "ppg": 32.2, "flag": "🇺🇸", "wiki": "Damian Lillard", "flagCode": "us" },
-    { "player": "Kevin Durant", "team": "Oklahoma City Thunder", "season": 2013, "ppg": 32.0, "flag": "🇺🇸", "wiki": "Kevin Durant", "flagCode": "us" },
-    { "player": "Allen Iverson", "team": "Philadelphia 76ers", "season": 2001, "ppg": 31.4, "flag": "🇺🇸", "wiki": "Allen Iverson", "flagCode": "us" },
-    { "player": "LeBron James", "team": "Cleveland Cavaliers", "season": 2005, "ppg": 31.4, "flag": "🇺🇸", "wiki": "LeBron James", "flagCode": "us" },
-    { "player": "Stephen Curry", "team": "Golden State Warriors", "season": 2015, "ppg": 30.1, "flag": "🇺🇸", "wiki": "Stephen Curry", "flagCode": "us" },
-    { "player": "Giannis Antetokounmpo", "team": "Milwaukee Bucks", "season": 2019, "ppg": 29.6, "flag": "🇬🇷", "wiki": "Giannis Antetokounmpo", "flagCode": "gr" },
-    { "player": "Nikola Jokić", "team": "Denver Nuggets", "season": 2021, "ppg": 27.1, "flag": "🇷🇸", "wiki": "Nikola Jokić", "flagCode": "rs" },
-    { "player": "Elgin Baylor", "team": "Los Angeles Lakers", "season": 1961, "ppg": 38.3, "flag": "🇺🇸", "wiki": "Elgin Baylor", "flagCode": "us" },
-    { "player": "Pete Maravich", "team": "New Orleans Jazz", "season": 1976, "ppg": 31.1, "flag": "🇺🇸", "wiki": "Pete Maravich", "flagCode": "us" },
-    { "player": "Shaquille O'Neal", "team": "Los Angeles Lakers", "season": 1999, "ppg": 29.7, "flag": "🇺🇸", "wiki": "Shaquille O'Neal", "flagCode": "us" },
-    { "player": "Kareem Abdul-Jabbar", "team": "Milwaukee Bucks", "season": 1971, "ppg": 31.7, "flag": "🇺🇸", "wiki": "Kareem Abdul-Jabbar", "flagCode": "us" }
-  ]
+    {
+      "player": "Wilt Chamberlain",
+      "team": "Philadelphia Warriors",
+      "season": 1961,
+      "ppg": 50.4,
+      "flag": "🇺🇸",
+      "wiki": "Wilt Chamberlain",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Wilt_Chamberlain_1960_%28cropped%29_%28cropped%29.jpg/500px-Wilt_Chamberlain_1960_%28cropped%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Michael Jordan",
+      "team": "Chicago Bulls",
+      "season": 1986,
+      "ppg": 37.1,
+      "flag": "🇺🇸",
+      "wiki": "Michael Jordan",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Michael_Jordan_in_2014.jpg/330px-Michael_Jordan_in_2014.jpg"
+    },
+    {
+      "player": "James Harden",
+      "team": "Houston Rockets",
+      "season": 2018,
+      "ppg": 36.1,
+      "flag": "🇺🇸",
+      "wiki": "James Harden",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Harden_dribbling_midcourt%2C_Cavaliers_vs_Nets_on_January_17%2C_2022_%28cropped%29.jpg/500px-Harden_dribbling_midcourt%2C_Cavaliers_vs_Nets_on_January_17%2C_2022_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kobe Bryant",
+      "team": "Los Angeles Lakers",
+      "season": 2005,
+      "ppg": 35.4,
+      "flag": "🇺🇸",
+      "wiki": "Kobe Bryant",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Kobe_Bryant_Dec_2014.jpg/500px-Kobe_Bryant_Dec_2014.jpg"
+    },
+    {
+      "player": "Luka Dončić",
+      "team": "Dallas Mavericks",
+      "season": 2023,
+      "ppg": 33.9,
+      "flag": "🇸🇮",
+      "wiki": "Luka Dončić",
+      "flagCode": "si",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg/500px-Luka_Doncic_%2851914951721%29_%28cropped1%29.jpg"
+    },
+    {
+      "player": "Joel Embiid",
+      "team": "Philadelphia 76ers",
+      "season": 2022,
+      "ppg": 33.1,
+      "flag": "🇨🇲",
+      "wiki": "Joel Embiid",
+      "flagCode": "cm",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Joel_Embiid_2019.jpg/500px-Joel_Embiid_2019.jpg"
+    },
+    {
+      "player": "Tracy McGrady",
+      "team": "Orlando Magic",
+      "season": 2002,
+      "ppg": 32.1,
+      "flag": "🇺🇸",
+      "wiki": "Tracy McGrady",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Tracy_McGrady_1.jpg/500px-Tracy_McGrady_1.jpg"
+    },
+    {
+      "player": "Damian Lillard",
+      "team": "Portland Trail Blazers",
+      "season": 2022,
+      "ppg": 32.2,
+      "flag": "🇺🇸",
+      "wiki": "Damian Lillard",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Damian_Lillard_%282021%29_%28cropped%29.jpg/500px-Damian_Lillard_%282021%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kevin Durant",
+      "team": "Oklahoma City Thunder",
+      "season": 2013,
+      "ppg": 32,
+      "flag": "🇺🇸",
+      "wiki": "Kevin Durant",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg/500px-Kevin_Durant%2C_Paris_2024_%28cropped%29.jpg"
+    },
+    {
+      "player": "Allen Iverson",
+      "team": "Philadelphia 76ers",
+      "season": 2001,
+      "ppg": 31.4,
+      "flag": "🇺🇸",
+      "wiki": "Allen Iverson",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Allen_Iverson_headshot.jpg/500px-Allen_Iverson_headshot.jpg"
+    },
+    {
+      "player": "LeBron James",
+      "team": "Cleveland Cavaliers",
+      "season": 2005,
+      "ppg": 31.4,
+      "flag": "🇺🇸",
+      "wiki": "LeBron James",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/LeBron_James_%2851959977144%29_%28cropped2%29.jpg/500px-LeBron_James_%2851959977144%29_%28cropped2%29.jpg"
+    },
+    {
+      "player": "Stephen Curry",
+      "team": "Golden State Warriors",
+      "season": 2015,
+      "ppg": 30.1,
+      "flag": "🇺🇸",
+      "wiki": "Stephen Curry",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Steph_Curry_P20230117AS-1347_%28cropped%29.jpg/500px-Steph_Curry_P20230117AS-1347_%28cropped%29.jpg"
+    },
+    {
+      "player": "Giannis Antetokounmpo",
+      "team": "Milwaukee Bucks",
+      "season": 2019,
+      "ppg": 29.6,
+      "flag": "🇬🇷",
+      "wiki": "Giannis Antetokounmpo",
+      "flagCode": "gr",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg/500px-Giannis_Antetokounmpo_%2851915153421%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Nikola Jokić",
+      "team": "Denver Nuggets",
+      "season": 2021,
+      "ppg": 27.1,
+      "flag": "🇷🇸",
+      "wiki": "Nikola Jokić",
+      "flagCode": "rs",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Nikola_Jokic_free_throw_%28cropped%29.jpg/500px-Nikola_Jokic_free_throw_%28cropped%29.jpg"
+    },
+    {
+      "player": "Elgin Baylor",
+      "team": "Los Angeles Lakers",
+      "season": 1961,
+      "ppg": 38.3,
+      "flag": "🇺🇸",
+      "wiki": "Elgin Baylor",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Elgin_Baylor_Night_program-%28cropped%29.jpg/500px-Elgin_Baylor_Night_program-%28cropped%29.jpg"
+    },
+    {
+      "player": "Pete Maravich",
+      "team": "New Orleans Jazz",
+      "season": 1976,
+      "ppg": 31.1,
+      "flag": "🇺🇸",
+      "wiki": "Pete Maravich",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Pete_Maravich_1977.jpeg/500px-Pete_Maravich_1977.jpeg"
+    },
+    {
+      "player": "Shaquille O'Neal",
+      "team": "Los Angeles Lakers",
+      "season": 1999,
+      "ppg": 29.7,
+      "flag": "🇺🇸",
+      "wiki": "Shaquille O'Neal",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/TechCrunch_Disrupt_2023_-_Day_1_%28cropped%29.jpg/500px-TechCrunch_Disrupt_2023_-_Day_1_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kareem Abdul-Jabbar",
+      "team": "Milwaukee Bucks",
+      "season": 1971,
+      "ppg": 31.7,
+      "flag": "🇺🇸",
+      "wiki": "Kareem Abdul-Jabbar",
+      "flagCode": "us",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Kareem_Abdul-Jabbar_May_2014.jpg/500px-Kareem_Abdul-Jabbar_May_2014.jpg"
+    }
+  ],
+  "team_logos": {
+    "Chicago Bulls": "https://upload.wikimedia.org/wikipedia/en/thumb/6/67/Chicago_Bulls_logo.svg/250px-Chicago_Bulls_logo.svg.png",
+    "Houston Rockets": "https://upload.wikimedia.org/wikipedia/en/thumb/2/28/Houston_Rockets.svg/250px-Houston_Rockets.svg.png",
+    "Los Angeles Lakers": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Los_Angeles_Lakers_logo.svg/500px-Los_Angeles_Lakers_logo.svg.png",
+    "Dallas Mavericks": "https://upload.wikimedia.org/wikipedia/en/thumb/9/97/Dallas_Mavericks_logo.svg/250px-Dallas_Mavericks_logo.svg.png",
+    "Philadelphia 76ers": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0e/Philadelphia_76ers_logo.svg/250px-Philadelphia_76ers_logo.svg.png",
+    "Orlando Magic": "https://upload.wikimedia.org/wikipedia/en/thumb/1/10/Orlando_Magic_logo.svg/500px-Orlando_Magic_logo.svg.png",
+    "Portland Trail Blazers": "https://upload.wikimedia.org/wikipedia/en/thumb/2/21/Portland_Trail_Blazers_logo.svg/330px-Portland_Trail_Blazers_logo.svg.png",
+    "Oklahoma City Thunder": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5d/Oklahoma_City_Thunder.svg/250px-Oklahoma_City_Thunder.svg.png",
+    "Cleveland Cavaliers": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Cleveland_Cavaliers_logo.svg/500px-Cleveland_Cavaliers_logo.svg.png",
+    "Golden State Warriors": "https://upload.wikimedia.org/wikipedia/en/thumb/0/01/Golden_State_Warriors_logo.svg/250px-Golden_State_Warriors_logo.svg.png",
+    "Milwaukee Bucks": "https://upload.wikimedia.org/wikipedia/en/thumb/4/4a/Milwaukee_Bucks_logo.svg/330px-Milwaukee_Bucks_logo.svg.png",
+    "Denver Nuggets": "https://upload.wikimedia.org/wikipedia/en/thumb/7/76/Denver_Nuggets.svg/330px-Denver_Nuggets.svg.png",
+    "Boston Celtics": "https://upload.wikimedia.org/wikipedia/en/thumb/8/8f/Boston_Celtics.svg/250px-Boston_Celtics.svg.png",
+    "Brooklyn Nets": "https://upload.wikimedia.org/wikipedia/en/thumb/4/40/Brooklyn_Nets_primary_icon_logo_2024.svg/330px-Brooklyn_Nets_primary_icon_logo_2024.svg.png",
+    "Memphis Grizzlies": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Memphis_Grizzlies.svg/250px-Memphis_Grizzlies.svg.png",
+    "Minnesota Timberwolves": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/Minnesota_Timberwolves_logo.svg/330px-Minnesota_Timberwolves_logo.svg.png",
+    "Phoenix Suns": "https://upload.wikimedia.org/wikipedia/en/thumb/d/dc/Phoenix_Suns_logo.svg/330px-Phoenix_Suns_logo.svg.png",
+    "Miami Heat": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Miami_Heat_logo.svg/250px-Miami_Heat_logo.svg.png"
+  }
 }

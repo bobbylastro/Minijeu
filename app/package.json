@@ -8,7 +8,8 @@
     "party": "partykit dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prefetch-images": "node scripts/prefetch-images.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "^0.9.0",

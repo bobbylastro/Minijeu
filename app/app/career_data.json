@@ -2,168 +2,501 @@
   "players": [
     {
       "name": "Zinedine Zidane",
-      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Zinedine Zidane",
-      "clubs": ["Cannes", "Bordeaux", "Juventus", "Real Madrid"]
+      "flag": "🇫🇷",
+      "flagCode": "fr",
+      "wiki": "Zinedine Zidane",
+      "clubs": [
+        "Cannes",
+        "Bordeaux",
+        "Juventus",
+        "Real Madrid"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Zinedine_Zidane_by_Tasnim_03.jpg/330px-Zinedine_Zidane_by_Tasnim_03.jpg"
     },
     {
       "name": "Ronaldo",
-      "flag": "🇧🇷", "flagCode": "br", "wiki": "Ronaldo (Brazilian footballer)",
-      "clubs": ["Cruzeiro", "PSV Eindhoven", "FC Barcelona", "Inter Milan", "Real Madrid"]
+      "flag": "🇧🇷",
+      "flagCode": "br",
+      "wiki": "Ronaldo (Brazilian footballer)",
+      "clubs": [
+        "Cruzeiro",
+        "PSV Eindhoven",
+        "FC Barcelona",
+        "Inter Milan",
+        "Real Madrid"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg/500px-Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg"
     },
     {
       "name": "Cristiano Ronaldo",
-      "flag": "🇵🇹", "flagCode": "pt", "wiki": "Cristiano Ronaldo",
-      "clubs": ["Sporting CP", "Manchester United", "Real Madrid", "Juventus", "Al-Nassr"]
+      "flag": "🇵🇹",
+      "flagCode": "pt",
+      "wiki": "Cristiano Ronaldo",
+      "clubs": [
+        "Sporting CP",
+        "Manchester United",
+        "Real Madrid",
+        "Juventus",
+        "Al-Nassr"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cristiano_Ronaldo_2275_%28cropped%29.jpg/500px-Cristiano_Ronaldo_2275_%28cropped%29.jpg"
     },
     {
       "name": "Thierry Henry",
-      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Thierry Henry",
-      "clubs": ["Monaco", "Juventus", "Arsenal", "FC Barcelona"]
+      "flag": "🇫🇷",
+      "flagCode": "fr",
+      "wiki": "Thierry Henry",
+      "clubs": [
+        "Monaco",
+        "Juventus",
+        "Arsenal",
+        "FC Barcelona"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Thierry_Henry_%2851649035951%29_%28cropped%29.jpg/500px-Thierry_Henry_%2851649035951%29_%28cropped%29.jpg"
     },
     {
       "name": "David Beckham",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "David Beckham",
-      "clubs": ["Manchester United", "Real Madrid", "LA Galaxy", "Paris Saint-Germain"]
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "flagCode": "gb-eng",
+      "wiki": "David Beckham",
+      "clubs": [
+        "Manchester United",
+        "Real Madrid",
+        "LA Galaxy",
+        "Paris Saint-Germain"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/David_Beckham_UNICEF_%28cropped2%29.jpg/500px-David_Beckham_UNICEF_%28cropped2%29.jpg"
     },
     {
       "name": "Luka Modrić",
-      "flag": "🇭🇷", "flagCode": "hr", "wiki": "Luka Modrić",
-      "clubs": ["Dinamo Zagreb", "Tottenham Hotspur", "Real Madrid"]
+      "flag": "🇭🇷",
+      "flagCode": "hr",
+      "wiki": "Luka Modrić",
+      "clubs": [
+        "Dinamo Zagreb",
+        "Tottenham Hotspur",
+        "Real Madrid"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Ofrenda_de_la_Liga_y_la_Champions-57-L.Mill%C3%A1n_%2852109310843%29_%28Luka_Modri%C4%87%29.jpg/500px-Ofrenda_de_la_Liga_y_la_Champions-57-L.Mill%C3%A1n_%2852109310843%29_%28Luka_Modri%C4%87%29.jpg"
     },
     {
       "name": "Zlatan Ibrahimović",
-      "flag": "🇸🇪", "flagCode": "se", "wiki": "Zlatan Ibrahimović",
-      "clubs": ["Malmö FF", "Ajax", "Juventus", "Inter Milan", "FC Barcelona", "Paris Saint-Germain"]
+      "flag": "🇸🇪",
+      "flagCode": "se",
+      "wiki": "Zlatan Ibrahimović",
+      "clubs": [
+        "Malmö FF",
+        "Ajax",
+        "Juventus",
+        "Inter Milan",
+        "FC Barcelona",
+        "Paris Saint-Germain"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg/330px-Zlatan_Ibrahimovi%C4%87_June_2018.jpg"
     },
     {
       "name": "Didier Drogba",
-      "flag": "🇨🇮", "flagCode": "ci", "wiki": "Didier Drogba",
-      "clubs": ["Guingamp", "Olympique de Marseille", "Chelsea", "Galatasaray"]
+      "flag": "🇨🇮",
+      "flagCode": "ci",
+      "wiki": "Didier Drogba",
+      "clubs": [
+        "Guingamp",
+        "Olympique de Marseille",
+        "Chelsea",
+        "Galatasaray"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Didier_Drogba_%282019%29_%28cropped2%29.jpg/500px-Didier_Drogba_%282019%29_%28cropped2%29.jpg"
     },
     {
       "name": "Neymar",
-      "flag": "🇧🇷", "flagCode": "br", "wiki": "Neymar",
-      "clubs": ["Santos", "FC Barcelona", "Paris Saint-Germain", "Al-Hilal"]
+      "flag": "🇧🇷",
+      "flagCode": "br",
+      "wiki": "Neymar",
+      "clubs": [
+        "Santos",
+        "FC Barcelona",
+        "Paris Saint-Germain",
+        "Al-Hilal"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
     },
     {
       "name": "Kaká",
-      "flag": "🇧🇷", "flagCode": "br", "wiki": "Kaká",
-      "clubs": ["São Paulo", "AC Milan", "Real Madrid", "Orlando City"]
+      "flag": "🇧🇷",
+      "flagCode": "br",
+      "wiki": "Kaká",
+      "clubs": [
+        "São Paulo",
+        "AC Milan",
+        "Real Madrid",
+        "Orlando City"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kak%C3%A1_visited_Stadium_St._Petersburg.jpg/500px-Kak%C3%A1_visited_Stadium_St._Petersburg.jpg"
     },
     {
       "name": "Luís Figo",
-      "flag": "🇵🇹", "flagCode": "pt", "wiki": "Luís Figo",
-      "clubs": ["Sporting CP", "FC Barcelona", "Real Madrid", "Inter Milan"]
+      "flag": "🇵🇹",
+      "flagCode": "pt",
+      "wiki": "Luís Figo",
+      "clubs": [
+        "Sporting CP",
+        "FC Barcelona",
+        "Real Madrid",
+        "Inter Milan"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Luis_Figo_2023.jpg/500px-Luis_Figo_2023.jpg"
     },
     {
       "name": "Ronaldinho",
-      "flag": "🇧🇷", "flagCode": "br", "wiki": "Ronaldinho",
-      "clubs": ["Grêmio", "Paris Saint-Germain", "FC Barcelona", "AC Milan"]
+      "flag": "🇧🇷",
+      "flagCode": "br",
+      "wiki": "Ronaldinho",
+      "clubs": [
+        "Grêmio",
+        "Paris Saint-Germain",
+        "FC Barcelona",
+        "AC Milan"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Ronaldinho_in_2019.jpg/500px-Ronaldinho_in_2019.jpg"
     },
     {
       "name": "Fernando Torres",
-      "flag": "🇪🇸", "flagCode": "es", "wiki": "Fernando Torres",
-      "clubs": ["Atlético Madrid", "Liverpool", "Chelsea", "AC Milan"]
+      "flag": "🇪🇸",
+      "flagCode": "es",
+      "wiki": "Fernando Torres",
+      "clubs": [
+        "Atlético Madrid",
+        "Liverpool",
+        "Chelsea",
+        "AC Milan"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fernando_Torres_2017.jpg/250px-Fernando_Torres_2017.jpg"
     },
     {
       "name": "Xabi Alonso",
-      "flag": "🇪🇸", "flagCode": "es", "wiki": "Xabi Alonso",
-      "clubs": ["Real Sociedad", "Liverpool", "Real Madrid", "Bayern Munich"]
+      "flag": "🇪🇸",
+      "flagCode": "es",
+      "wiki": "Xabi Alonso",
+      "clubs": [
+        "Real Sociedad",
+        "Liverpool",
+        "Real Madrid",
+        "Bayern Munich"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Los_Caminos_del_f%C3%BAtbol._Xabi_Alonso_%2839666778464%29_%28cropped%29.jpg/330px-Los_Caminos_del_f%C3%BAtbol._Xabi_Alonso_%2839666778464%29_%28cropped%29.jpg"
     },
     {
       "name": "Raúl",
-      "flag": "🇪🇸", "flagCode": "es", "wiki": "Raúl González",
-      "clubs": ["Real Madrid", "Schalke 04", "Al-Sadd"]
+      "flag": "🇪🇸",
+      "flagCode": "es",
+      "wiki": "Raúl González",
+      "clubs": [
+        "Real Madrid",
+        "Schalke 04",
+        "Al-Sadd"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/25th_Laureus_World_Sports_Awards_-_Ra%C3%BAl_-_240422_132916-2_%28cropped%29.jpg/500px-25th_Laureus_World_Sports_Awards_-_Ra%C3%BAl_-_240422_132916-2_%28cropped%29.jpg"
     },
     {
       "name": "Gareth Bale",
-      "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿", "flagCode": "gb-wls", "wiki": "Gareth Bale",
-      "clubs": ["Southampton", "Tottenham Hotspur", "Real Madrid", "LAFC"]
+      "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      "flagCode": "gb-wls",
+      "wiki": "Gareth Bale",
+      "clubs": [
+        "Southampton",
+        "Tottenham Hotspur",
+        "Real Madrid",
+        "LAFC"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/2022_FIFA_World_Cup_United_States_1%E2%80%931_Wales_-_%2832%29_%28cropped%29.jpg/330px-2022_FIFA_World_Cup_United_States_1%E2%80%931_Wales_-_%2832%29_%28cropped%29.jpg"
     },
     {
       "name": "Mesut Özil",
-      "flag": "🇩🇪", "flagCode": "de", "wiki": "Mesut Özil",
-      "clubs": ["Werder Bremen", "Real Madrid", "Arsenal", "Fenerbahçe"]
+      "flag": "🇩🇪",
+      "flagCode": "de",
+      "wiki": "Mesut Özil",
+      "clubs": [
+        "Werder Bremen",
+        "Real Madrid",
+        "Arsenal",
+        "Fenerbahçe"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mesut_%C3%96zil_at_Baku_before_2019_UEFA_Europe_League_Final.jpg/500px-Mesut_%C3%96zil_at_Baku_before_2019_UEFA_Europe_League_Final.jpg"
     },
     {
       "name": "Roberto Carlos",
-      "flag": "🇧🇷", "flagCode": "br", "wiki": "Roberto Carlos",
-      "clubs": ["Palmeiras", "Inter Milan", "Real Madrid", "Fenerbahçe"]
+      "flag": "🇧🇷",
+      "flagCode": "br",
+      "wiki": "Roberto Carlos",
+      "clubs": [
+        "Palmeiras",
+        "Inter Milan",
+        "Real Madrid",
+        "Fenerbahçe"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/LS3_1288_%2853332367864%29_%28cropped%29.jpg/500px-LS3_1288_%2853332367864%29_%28cropped%29.jpg"
     },
     {
       "name": "Samuel Eto'o",
-      "flag": "🇨🇲", "flagCode": "cm", "wiki": "Samuel Eto'o",
-      "clubs": ["Mallorca", "FC Barcelona", "Inter Milan", "Anzhi Makhachkala"]
+      "flag": "🇨🇲",
+      "flagCode": "cm",
+      "wiki": "Samuel Eto'o",
+      "clubs": [
+        "Mallorca",
+        "FC Barcelona",
+        "Inter Milan",
+        "Anzhi Makhachkala"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Samuel_2011.jpg/500px-Samuel_2011.jpg"
     },
     {
       "name": "Wayne Rooney",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Wayne Rooney",
-      "clubs": ["Everton", "Manchester United", "DC United"]
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "flagCode": "gb-eng",
+      "wiki": "Wayne Rooney",
+      "clubs": [
+        "Everton",
+        "Manchester United",
+        "DC United"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Wayne_Rooney_%2850121495731%29_%28cropped%29.jpg/500px-Wayne_Rooney_%2850121495731%29_%28cropped%29.jpg"
     },
     {
       "name": "Lionel Messi",
-      "flag": "🇦🇷", "flagCode": "ar", "wiki": "Lionel Messi",
-      "clubs": ["FC Barcelona", "Paris Saint-Germain", "Inter Miami"]
+      "flag": "🇦🇷",
+      "flagCode": "ar",
+      "wiki": "Lionel Messi",
+      "clubs": [
+        "FC Barcelona",
+        "Paris Saint-Germain",
+        "Inter Miami"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg/500px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg"
     },
     {
       "name": "Andrés Iniesta",
-      "flag": "🇪🇸", "flagCode": "es", "wiki": "Andrés Iniesta",
-      "clubs": ["FC Barcelona", "Vissel Kobe", "Emirates Club"]
+      "flag": "🇪🇸",
+      "flagCode": "es",
+      "wiki": "Andrés Iniesta",
+      "clubs": [
+        "FC Barcelona",
+        "Vissel Kobe",
+        "Emirates Club"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Andr%C3%A9s_Iniesta_%28cropped%29.jpg/500px-Andr%C3%A9s_Iniesta_%28cropped%29.jpg"
     },
     {
       "name": "Robert Lewandowski",
-      "flag": "🇵🇱", "flagCode": "pl", "wiki": "Robert Lewandowski",
-      "clubs": ["Lech Poznań", "Borussia Dortmund", "Bayern Munich", "FC Barcelona"]
+      "flag": "🇵🇱",
+      "flagCode": "pl",
+      "wiki": "Robert Lewandowski",
+      "clubs": [
+        "Lech Poznań",
+        "Borussia Dortmund",
+        "Bayern Munich",
+        "FC Barcelona"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg/500px-2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg"
     },
     {
       "name": "Kylian Mbappé",
-      "flag": "🇫🇷", "flagCode": "fr", "wiki": "Kylian Mbappé",
-      "clubs": ["Monaco", "Paris Saint-Germain", "Real Madrid"]
+      "flag": "🇫🇷",
+      "flagCode": "fr",
+      "wiki": "Kylian Mbappé",
+      "clubs": [
+        "Monaco",
+        "Paris Saint-Germain",
+        "Real Madrid"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg/500px-Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg"
     },
     {
       "name": "Erling Haaland",
-      "flag": "🇳🇴", "flagCode": "no", "wiki": "Erling Haaland",
-      "clubs": ["Molde", "Red Bull Salzburg", "Borussia Dortmund", "Manchester City"]
+      "flag": "🇳🇴",
+      "flagCode": "no",
+      "wiki": "Erling Haaland",
+      "clubs": [
+        "Molde",
+        "Red Bull Salzburg",
+        "Borussia Dortmund",
+        "Manchester City"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Erling_Haaland_June_2025.jpg/500px-Erling_Haaland_June_2025.jpg"
     },
     {
       "name": "Mohamed Salah",
-      "flag": "🇪🇬", "flagCode": "eg", "wiki": "Mohamed Salah",
-      "clubs": ["Basel", "Chelsea", "Fiorentina", "AS Roma", "Liverpool"]
+      "flag": "🇪🇬",
+      "flagCode": "eg",
+      "wiki": "Mohamed Salah",
+      "clubs": [
+        "Basel",
+        "Chelsea",
+        "Fiorentina",
+        "AS Roma",
+        "Liverpool"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mohamed_Salah_2018.jpg/500px-Mohamed_Salah_2018.jpg"
     },
     {
       "name": "Kevin De Bruyne",
-      "flag": "🇧🇪", "flagCode": "be", "wiki": "Kevin De Bruyne",
-      "clubs": ["Genk", "Chelsea", "Werder Bremen", "VfL Wolfsburg", "Manchester City"]
+      "flag": "🇧🇪",
+      "flagCode": "be",
+      "wiki": "Kevin De Bruyne",
+      "clubs": [
+        "Genk",
+        "Chelsea",
+        "Werder Bremen",
+        "VfL Wolfsburg",
+        "Manchester City"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kevin_De_Bruyne-December_2021.png/500px-Kevin_De_Bruyne-December_2021.png"
     },
     {
       "name": "Romelu Lukaku",
-      "flag": "🇧🇪", "flagCode": "be", "wiki": "Romelu Lukaku",
-      "clubs": ["Anderlecht", "Chelsea", "Everton", "Manchester United", "Inter Milan"]
+      "flag": "🇧🇪",
+      "flagCode": "be",
+      "wiki": "Romelu Lukaku",
+      "clubs": [
+        "Anderlecht",
+        "Chelsea",
+        "Everton",
+        "Manchester United",
+        "Inter Milan"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Romelu_Lukaku_2021.jpg/500px-Romelu_Lukaku_2021.jpg"
     },
     {
       "name": "Sergio Agüero",
-      "flag": "🇦🇷", "flagCode": "ar", "wiki": "Sergio Agüero",
-      "clubs": ["Independiente", "Atlético Madrid", "Manchester City", "FC Barcelona"]
+      "flag": "🇦🇷",
+      "flagCode": "ar",
+      "wiki": "Sergio Agüero",
+      "clubs": [
+        "Independiente",
+        "Atlético Madrid",
+        "Manchester City",
+        "FC Barcelona"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ag%C3%BCero_in_2018.jpg/500px-Ag%C3%BCero_in_2018.jpg"
     },
     {
       "name": "Frank Lampard",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Frank Lampard",
-      "clubs": ["West Ham United", "Chelsea", "Manchester City", "New York City FC"]
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "flagCode": "gb-eng",
+      "wiki": "Frank Lampard",
+      "clubs": [
+        "West Ham United",
+        "Chelsea",
+        "Manchester City",
+        "New York City FC"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Frank_Lampard_2019.jpg/330px-Frank_Lampard_2019.jpg"
     },
     {
       "name": "Cesc Fàbregas",
-      "flag": "🇪🇸", "flagCode": "es", "wiki": "Cesc Fàbregas",
-      "clubs": ["Arsenal", "FC Barcelona", "Chelsea", "AS Monaco"]
+      "flag": "🇪🇸",
+      "flagCode": "es",
+      "wiki": "Cesc Fàbregas",
+      "clubs": [
+        "Arsenal",
+        "FC Barcelona",
+        "Chelsea",
+        "AS Monaco"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/2023_-_Cesc_Fabregas_%28cropped%29.jpg/500px-2023_-_Cesc_Fabregas_%28cropped%29.jpg"
     },
     {
       "name": "Alexis Sánchez",
-      "flag": "🇨🇱", "flagCode": "cl", "wiki": "Alexis Sánchez",
-      "clubs": ["Udinese", "FC Barcelona", "Arsenal", "Manchester United", "Inter Milan"]
+      "flag": "🇨🇱",
+      "flagCode": "cl",
+      "wiki": "Alexis Sánchez",
+      "clubs": [
+        "Udinese",
+        "FC Barcelona",
+        "Arsenal",
+        "Manchester United",
+        "Inter Milan"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Alexis_S%C3%A1nchez_2017.jpg/500px-Alexis_S%C3%A1nchez_2017.jpg"
     },
     {
       "name": "Rio Ferdinand",
-      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "flagCode": "gb-eng", "wiki": "Rio Ferdinand",
-      "clubs": ["West Ham United", "Leeds United", "Manchester United", "Queens Park Rangers"]
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "flagCode": "gb-eng",
+      "wiki": "Rio Ferdinand",
+      "clubs": [
+        "West Ham United",
+        "Leeds United",
+        "Manchester United",
+        "Queens Park Rangers"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Web_Summit_2015_-_Dublin%2C_Ireland_-_22183056474_%28cropped%29.jpg/500px-Web_Summit_2015_-_Dublin%2C_Ireland_-_22183056474_%28cropped%29.jpg"
     }
-  ]
+  ],
+  "club_logos": {
+    "Cannes": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/AS_Cannes_logo.svg/330px-AS_Cannes_logo.svg.png",
+    "Bordeaux": "https://upload.wikimedia.org/wikipedia/en/thumb/1/11/FC_Girondins_de_Bordeaux_logo.svg/500px-FC_Girondins_de_Bordeaux_logo.svg.png",
+    "Juventus": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg/500px-Juventus_FC_-_logo_black_%28Italy%2C_2020%29.svg.png",
+    "Real Madrid": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/Real_Madrid_CF.svg/330px-Real_Madrid_CF.svg.png",
+    "Cruzeiro": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Cruzeiro_Esporte_Clube_%28logo%29.svg/330px-Cruzeiro_Esporte_Clube_%28logo%29.svg.png",
+    "PSV Eindhoven": "https://upload.wikimedia.org/wikipedia/en/thumb/0/05/PSV_Eindhoven.svg/500px-PSV_Eindhoven.svg.png",
+    "FC Barcelona": "https://upload.wikimedia.org/wikipedia/en/thumb/4/47/FC_Barcelona_%28crest%29.svg/500px-FC_Barcelona_%28crest%29.svg.png",
+    "Inter Milan": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/FC_Internazionale_Milano_2021.svg/500px-FC_Internazionale_Milano_2021.svg.png",
+    "Sporting CP": "https://upload.wikimedia.org/wikipedia/en/thumb/9/95/Sporting_CP_crest.svg/120px-Sporting_CP_crest.svg.png",
+    "Manchester United": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Manchester_United_FC_crest.svg/330px-Manchester_United_FC_crest.svg.png",
+    "Al-Nassr": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3f/Nassr_FC_Logo.svg/330px-Nassr_FC_Logo.svg.png",
+    "Monaco": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/LogoASMonacoFC2021.svg/250px-LogoASMonacoFC2021.svg.png",
+    "Arsenal": "https://upload.wikimedia.org/wikipedia/en/thumb/5/53/Arsenal_FC.svg/330px-Arsenal_FC.svg.png",
+    "LA Galaxy": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Los_Angeles_Galaxy_logo.svg/500px-Los_Angeles_Galaxy_logo.svg.png",
+    "Paris Saint-Germain": "https://upload.wikimedia.org/wikipedia/en/thumb/a/a7/Paris_Saint-Germain_F.C..svg/330px-Paris_Saint-Germain_F.C..svg.png",
+    "Dinamo Zagreb": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Logo_GNK_Dinamo_Zagreb_%282019%29.svg/500px-Logo_GNK_Dinamo_Zagreb_%282019%29.svg.png",
+    "Tottenham Hotspur": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Tottenham_Hotspur.svg/120px-Tottenham_Hotspur.svg.png",
+    "Malmö FF": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Malmo_FF_logo.svg/500px-Malmo_FF_logo.svg.png",
+    "Ajax": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Logo_AFC_Ajax_%281928-1991%2C_2025-%29.png/500px-Logo_AFC_Ajax_%281928-1991%2C_2025-%29.png",
+    "Guingamp": "https://upload.wikimedia.org/wikipedia/en/thumb/5/56/En_Avant_Guingamp_logo.svg/330px-En_Avant_Guingamp_logo.svg.png",
+    "Olympique de Marseille": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/Olympique_Marseille_logo.svg/500px-Olympique_Marseille_logo.svg.png",
+    "Chelsea": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cc/Chelsea_FC.svg/250px-Chelsea_FC.svg.png",
+    "Galatasaray": "https://upload.wikimedia.org/wikipedia/en/thumb/4/49/Galatasaray_SK_football_logo.png/500px-Galatasaray_SK_football_logo.png",
+    "Santos": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Santos_Logo.png/500px-Santos_Logo.png",
+    "Al-Hilal": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Al_Hilal_SFC_Logo.svg/500px-Al_Hilal_SFC_Logo.svg.png",
+    "São Paulo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Logo_of_S%C3%A3o_Paulo_Futebol_Clube_%28without_the_stars%29.svg/500px-Logo_of_S%C3%A3o_Paulo_Futebol_Clube_%28without_the_stars%29.svg.png",
+    "AC Milan": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Logo_of_AC_Milan.svg/500px-Logo_of_AC_Milan.svg.png",
+    "Orlando City": "https://upload.wikimedia.org/wikipedia/en/thumb/6/6a/Orlando_City_2014.svg/330px-Orlando_City_2014.svg.png",
+    "Grêmio": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gremio_logo.svg/500px-Gremio_logo.svg.png",
+    "Atlético Madrid": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f9/Atletico_Madrid_Logo_2024.svg/330px-Atletico_Madrid_Logo_2024.svg.png",
+    "Liverpool": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0c/Liverpool_FC.svg/250px-Liverpool_FC.svg.png",
+    "Real Sociedad": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f1/Real_Sociedad_logo.svg/250px-Real_Sociedad_logo.svg.png",
+    "Bayern Munich": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg/500px-FC_Bayern_M%C3%BCnchen_logo_%282024%29.svg.png",
+    "Schalke 04": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/FC_Schalke_04_Logo.svg/500px-FC_Schalke_04_Logo.svg.png",
+    "Al-Sadd": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/Al_Sadd_SC_logo.svg/250px-Al_Sadd_SC_logo.svg.png",
+    "Southampton": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/330px-FC_Southampton.svg.png",
+    "LAFC": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Los_Angeles_Football_Club.svg/500px-Los_Angeles_Football_Club.svg.png",
+    "Werder Bremen": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/SV-Werder-Bremen-Logo.svg/500px-SV-Werder-Bremen-Logo.svg.png",
+    "Fenerbahçe": "https://upload.wikimedia.org/wikipedia/en/thumb/3/39/Fenerbah%C3%A7e.svg/330px-Fenerbah%C3%A7e.svg.png",
+    "Palmeiras": "https://upload.wikimedia.org/wikipedia/commons/6/60/SE_Palmeiras_2025_crest.png",
+    "Mallorca": "https://upload.wikimedia.org/wikipedia/en/thumb/e/e0/Rcd_mallorca.svg/120px-Rcd_mallorca.svg.png",
+    "Anzhi Makhachkala": "https://upload.wikimedia.org/wikipedia/en/thumb/3/36/FC_Anzhi_Makhachkala_logo.svg/330px-FC_Anzhi_Makhachkala_logo.svg.png",
+    "Everton": "https://upload.wikimedia.org/wikipedia/en/thumb/7/7c/Everton_FC_logo.svg/330px-Everton_FC_logo.svg.png",
+    "DC United": "https://upload.wikimedia.org/wikipedia/en/thumb/3/32/D.C._United_logo_%282016%29.svg/250px-D.C._United_logo_%282016%29.svg.png",
+    "Inter Miami": "https://upload.wikimedia.org/wikipedia/en/thumb/5/5c/Inter_Miami_CF_logo.svg/250px-Inter_Miami_CF_logo.svg.png",
+    "Vissel Kobe": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Vissel_Kobe_logo.svg/500px-Vissel_Kobe_logo.svg.png",
+    "Emirates Club": "https://upload.wikimedia.org/wikipedia/en/c/c3/Al_Emirate.png",
+    "Lech Poznań": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b0/KKS_Lech_Pozna%C5%84.svg/250px-KKS_Lech_Pozna%C5%84.svg.png",
+    "Borussia Dortmund": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Borussia_Dortmund_logo.svg/500px-Borussia_Dortmund_logo.svg.png",
+    "Molde": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Molde_Fotball_Logo.svg/500px-Molde_Fotball_Logo.svg.png",
+    "Red Bull Salzburg": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/FC_Red_Bull_Salzburg_logo.svg/330px-FC_Red_Bull_Salzburg_logo.svg.png",
+    "Manchester City": "https://upload.wikimedia.org/wikipedia/en/thumb/e/eb/Manchester_City_FC_badge.svg/330px-Manchester_City_FC_badge.svg.png",
+    "Basel": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c1/FC_Basel_crest.svg/330px-FC_Basel_crest.svg.png",
+    "Fiorentina": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/ACF_Fiorentina_-_logo_%28Italy%2C_2022%29.svg/500px-ACF_Fiorentina_-_logo_%28Italy%2C_2022%29.svg.png",
+    "AS Roma": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f7/AS_Roma_logo_%282017%29.svg/330px-AS_Roma_logo_%282017%29.svg.png",
+    "Genk": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Logo_KRC_Genk.png/500px-Logo_KRC_Genk.png",
+    "VfL Wolfsburg": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/VfL_Wolfsburg_Logo.svg/500px-VfL_Wolfsburg_Logo.svg.png",
+    "Anderlecht": "https://upload.wikimedia.org/wikipedia/en/thumb/7/77/R.S.C._Anderlecht.svg/330px-R.S.C._Anderlecht.svg.png",
+    "Independiente": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Escudo_del_Club_Atl%C3%A9tico_Independiente.svg/500px-Escudo_del_Club_Atl%C3%A9tico_Independiente.svg.png",
+    "West Ham United": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c2/West_Ham_United_FC_logo.svg/250px-West_Ham_United_FC_logo.svg.png",
+    "New York City FC": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Logo_New_York_City_FC_2025.svg/500px-Logo_New_York_City_FC_2025.svg.png",
+    "AS Monaco": "https://upload.wikimedia.org/wikipedia/en/thumb/c/cf/LogoASMonacoFC2021.svg/250px-LogoASMonacoFC2021.svg.png",
+    "Udinese": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Udinese_through_the_ages_2023.jpg/500px-Udinese_through_the_ages_2023.jpg",
+    "Leeds United": "https://upload.wikimedia.org/wikipedia/en/thumb/5/54/Leeds_United_F.C._logo.svg/330px-Leeds_United_F.C._logo.svg.png",
+    "Queens Park Rangers": "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Queens_Park_Rangers_crest.svg/500px-Queens_Park_Rangers_crest.svg.png"
+  }
 }

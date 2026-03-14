@@ -65,7 +65,7 @@ const WIKI_CLUB: Record<string, string> = {
 };
 
 // ─── Types ──────────────────────────────────────────────────────────────────────
-interface PlayerData { name: string; flag: string; flagCode: string; wiki?: string; clubs: string[]; }
+interface PlayerData { name: string; flag: string; flagCode: string; wiki?: string; clubs: string[]; image_url?: string; }
 interface Round      { player: PlayerData; shuffledClubs: string[]; }
 interface RoundResult {
   round: number; player: string;
@@ -126,12 +126,14 @@ function generateRounds(seed?: number): Round[] {
 // ─── Wikipedia image cache + hook (player photos only) ───────────────────────
 const wikiImgCache = new Map<string, string>();
 
-function useWikiImage(title: string | undefined, gameKey?: import("@/lib/customImages").GameKey): string | null {
+function useWikiImage(title: string | undefined, gameKey?: import("@/lib/customImages").GameKey, prefetchedUrl?: string | null): string | null {
   const [src, setSrc] = useState<string | null>(
+    prefetchedUrl ??
     (gameKey && title ? getCustomImage(gameKey, title) : null) ??
     (title && wikiImgCache.has(title) ? wikiImgCache.get(title)! : null)
   );
   useEffect(() => {
+    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
     if (!title) return;
     let cancelled = false;
     (async () => {
@@ -153,7 +155,7 @@ function useWikiImage(title: string | undefined, gameKey?: import("@/lib/customI
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [title, gameKey]);
+  }, [title, gameKey, prefetchedUrl]);
   return src;
 }
 
@@ -162,10 +164,12 @@ const wikiClubCache = new Map<string, string>();
 
 function useClubLogo(club: string): string | null {
   const wikiTitle = WIKI_CLUB[club] ?? club;
+  const prefetched = (careerData as { club_logos?: Record<string, string> }).club_logos?.[club] ?? null;
   const [src, setSrc] = useState<string | null>(
-    getCustomImage("career_clubs", club) ?? (wikiClubCache.get(wikiTitle) ?? null)
+    prefetched ?? getCustomImage("career_clubs", club) ?? (wikiClubCache.get(wikiTitle) ?? null)
   );
   useEffect(() => {
+    if (prefetched) { setSrc(prefetched); return; }
     let cancelled = false;
     (async () => {
       await ensureCustomImages();
@@ -397,7 +401,7 @@ function SortingGame({
 
 // ─── PlayerCard ─────────────────────────────────────────────────────────────────
 function PlayerCard({ player }: { player: PlayerData }) {
-  const imgSrc = useWikiImage(player.wiki, "career_players");
+  const imgSrc = useWikiImage(player.wiki, "career_players", player.image_url);
   return (
     <div className="cr-player-card">
       {imgSrc

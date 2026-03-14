@@ -1,69 +1,459 @@
 {
   "events": [
-    { "text": "Sputnik 1 launched — first satellite in space",                        "year": 1957, "category": "science", "wiki": "Sputnik 1" },
-    { "text": "Neil Armstrong becomes first human to walk on the Moon",               "year": 1969, "category": "science", "wiki": "Apollo 11" },
-    { "text": "Nadia Comăneci scores gymnastics' first perfect 10",                   "year": 1976, "category": "sports",  "wiki": "Nadia Comăneci" },
-    { "text": "Star Wars: A New Hope hits cinemas",                                   "year": 1977, "category": "culture", "wiki": "Star Wars (film)" },
-    { "text": "Pac-Man released in Japanese arcades",                                 "year": 1980, "category": "tech",    "wiki": "Pac-Man" },
-    { "text": "Michael Jackson releases Thriller",                                    "year": 1982, "category": "culture", "wiki": "Thriller (Michael Jackson album)" },
-    { "text": "Apple introduces the first Macintosh",                                 "year": 1984, "category": "tech",    "wiki": "Macintosh 128K" },
-    { "text": "Chernobyl nuclear disaster",                                           "year": 1986, "category": "history", "wiki": "Chernobyl disaster" },
-    { "text": "The Simpsons premieres on Fox",                                        "year": 1989, "category": "culture", "wiki": "The Simpsons" },
-    { "text": "The Berlin Wall falls",                                                "year": 1989, "category": "history", "wiki": "Fall of the Berlin Wall" },
-    { "text": "Michael Jordan wins his first NBA championship",                       "year": 1991, "category": "sports",  "wiki": "1990–91 Chicago Bulls season" },
-    { "text": "The World Wide Web goes public",                                       "year": 1991, "category": "tech",    "wiki": "World Wide Web" },
-    { "text": "Jurassic Park released in cinemas",                                   "year": 1993, "category": "culture", "wiki": "Jurassic Park (film)" },
-    { "text": "Nelson Mandela becomes President of South Africa",                    "year": 1994, "category": "history", "wiki": "Nelson Mandela" },
-    { "text": "The Lion King released by Disney",                                     "year": 1994, "category": "culture", "wiki": "The Lion King" },
-    { "text": "Friends premieres on NBC",                                             "year": 1994, "category": "culture", "wiki": "Friends" },
-    { "text": "Windows 95 launched by Microsoft",                                    "year": 1995, "category": "tech",    "wiki": "Windows 95" },
-    { "text": "Dolly the sheep — first cloned mammal",                               "year": 1996, "category": "science", "wiki": "Dolly (sheep)" },
-    { "text": "Pokémon Red and Blue released in Japan",                              "year": 1996, "category": "culture", "wiki": "Pokémon Red and Blue" },
-    { "text": "Harry Potter and the Philosopher's Stone published",                   "year": 1997, "category": "culture", "wiki": "Harry Potter and the Philosopher's Stone" },
-    { "text": "Titanic (James Cameron) released in cinemas",                         "year": 1997, "category": "culture", "wiki": "Titanic (1997 film)" },
-    { "text": "Tiger Woods wins his first Masters golf tournament",                   "year": 1997, "category": "sports",  "wiki": "Tiger Woods" },
-    { "text": "Google founded by Page and Brin",                                     "year": 1998, "category": "tech",    "wiki": "Google" },
-    { "text": "The Matrix released in cinemas",                                      "year": 1999, "category": "culture", "wiki": "The Matrix" },
-    { "text": "SpongeBob SquarePants premieres on Nickelodeon",                      "year": 1999, "category": "culture", "wiki": "SpongeBob SquarePants" },
-    { "text": "Wikipedia goes online",                                               "year": 2001, "category": "tech",    "wiki": "Wikipedia" },
-    { "text": "September 11 attacks in New York and Washington",                     "year": 2001, "category": "history", "wiki": "September 11 attacks" },
-    { "text": "The Lord of the Rings: The Fellowship of the Ring premieres",         "year": 2001, "category": "culture", "wiki": "The Lord of the Rings: The Fellowship of the Ring" },
-    { "text": "Euro coins and banknotes introduced across Europe",                   "year": 2002, "category": "history", "wiki": "Euro" },
-    { "text": "Concorde makes its last commercial flight",                           "year": 2003, "category": "history", "wiki": "Concorde" },
-    { "text": "Roger Federer wins his first Wimbledon title",                        "year": 2003, "category": "sports",  "wiki": "Roger Federer" },
-    { "text": "Facebook launched by Zuckerberg at Harvard",                         "year": 2004, "category": "tech",    "wiki": "Facebook" },
-    { "text": "YouTube founded",                                                     "year": 2005, "category": "tech",    "wiki": "YouTube" },
-    { "text": "Pluto reclassified as a dwarf planet",                               "year": 2006, "category": "science", "wiki": "Pluto" },
-    { "text": "Twitter launches to the public",                                      "year": 2006, "category": "tech",    "wiki": "Twitter" },
-    { "text": "Kobe Bryant scores 81 points in a single NBA game",                  "year": 2006, "category": "sports",  "wiki": "Kobe Bryant's 81-point game" },
-    { "text": "First iPhone released by Apple",                                      "year": 2007, "category": "tech",    "wiki": "iPhone (1st generation)" },
-    { "text": "Netflix launches its video streaming service",                        "year": 2007, "category": "tech",    "wiki": "Netflix" },
-    { "text": "The Dark Knight released in cinemas",                                 "year": 2008, "category": "culture", "wiki": "The Dark Knight (film)" },
-    { "text": "Usain Bolt sets 100m world record at Beijing Olympics",               "year": 2008, "category": "sports",  "wiki": "Usain Bolt" },
-    { "text": "Bitcoin created by Satoshi Nakamoto",                                 "year": 2008, "category": "tech",    "wiki": "Bitcoin" },
-    { "text": "Barack Obama elected first Black President of the United States",     "year": 2008, "category": "history", "wiki": "Barack Obama" },
-    { "text": "Spotify launches in Europe",                                          "year": 2008, "category": "tech",    "wiki": "Spotify" },
-    { "text": "Breaking Bad premieres on AMC",                                       "year": 2008, "category": "culture", "wiki": "Breaking Bad" },
-    { "text": "Instagram launched",                                                  "year": 2010, "category": "tech",    "wiki": "Instagram" },
-    { "text": "Spain wins the FIFA World Cup for the first time",                    "year": 2010, "category": "sports",  "wiki": "2010 FIFA World Cup" },
-    { "text": "Game of Thrones premieres on HBO",                                    "year": 2011, "category": "culture", "wiki": "Game of Thrones" },
-    { "text": "Minecraft officially released at MineCon",                            "year": 2011, "category": "tech",    "wiki": "Minecraft" },
-    { "text": "Curiosity rover lands on Mars",                                       "year": 2012, "category": "science", "wiki": "Curiosity (rover)" },
-    { "text": "Higgs boson particle discovered at CERN",                             "year": 2012, "category": "science", "wiki": "Higgs boson" },
-    { "text": "Gangnam Style becomes first YouTube video to reach 1 billion views",  "year": 2012, "category": "culture", "wiki": "Gangnam Style" },
-    { "text": "Frozen released by Disney",                                           "year": 2013, "category": "culture", "wiki": "Frozen (2013 film)" },
-    { "text": "Ice Bucket Challenge raises over $100M for ALS research",            "year": 2014, "category": "culture", "wiki": "Ice Bucket Challenge" },
-    { "text": "Pokémon GO launches worldwide on mobile",                             "year": 2016, "category": "tech",    "wiki": "Pokémon Go" },
-    { "text": "Leicester City wins the Premier League as 5000/1 outsiders",          "year": 2016, "category": "sports",  "wiki": "2015–16 Leicester City F.C. season" },
-    { "text": "First gravitational waves detected — Einstein proved right",          "year": 2016, "category": "science", "wiki": "First observation of gravitational waves" },
-    { "text": "France wins the FIFA World Cup in Russia",                            "year": 2018, "category": "sports",  "wiki": "2018 FIFA World Cup Final" },
-    { "text": "First image of a black hole published",                               "year": 2019, "category": "science", "wiki": "Event Horizon Telescope" },
-    { "text": "Avengers: Endgame becomes highest-grossing film of all time",         "year": 2019, "category": "culture", "wiki": "Avengers: Endgame" },
-    { "text": "COVID-19 pandemic declared by WHO",                                   "year": 2020, "category": "history", "wiki": "COVID-19 pandemic" },
-    { "text": "James Webb Space Telescope launched",                                 "year": 2021, "category": "science", "wiki": "James Webb Space Telescope" },
-    { "text": "Wordle goes viral — millions play daily online",                      "year": 2021, "category": "tech",    "wiki": "Wordle" },
-    { "text": "ChatGPT released by OpenAI",                                          "year": 2022, "category": "tech",    "wiki": "ChatGPT" },
-    { "text": "Argentina wins the FIFA World Cup",                                   "year": 2022, "category": "sports",  "wiki": "2022 FIFA World Cup Final" },
-    { "text": "GPT-4 released by OpenAI",                                            "year": 2023, "category": "tech",    "wiki": "GPT-4" }
+    {
+      "text": "Sputnik 1 launched — first satellite in space",
+      "year": 1957,
+      "category": "science",
+      "wiki": "Sputnik 1",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9_%D0%B2_%D0%BC%D0%B8%D1%80%D0%B5_%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D1%81%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA_%D0%97%D0%B5%D0%BC%D0%BB%D0%B8.jpg/500px-%D0%9F%D0%B5%D1%80%D0%B2%D1%8B%D0%B9_%D0%B2_%D0%BC%D0%B8%D1%80%D0%B5_%D0%B8%D1%81%D0%BA%D1%83%D1%81%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D1%8B%D0%B9_%D1%81%D0%BF%D1%83%D1%82%D0%BD%D0%B8%D0%BA_%D0%97%D0%B5%D0%BC%D0%BB%D0%B8.jpg"
+    },
+    {
+      "text": "Neil Armstrong becomes first human to walk on the Moon",
+      "year": 1969,
+      "category": "science",
+      "wiki": "Apollo 11",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/A_Man_on_the_Moon%2C_AS11-40-5903_%28cropped%29.jpg/500px-A_Man_on_the_Moon%2C_AS11-40-5903_%28cropped%29.jpg"
+    },
+    {
+      "text": "Nadia Comăneci scores gymnastics' first perfect 10",
+      "year": 1976,
+      "category": "sports",
+      "wiki": "Nadia Comăneci",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/25th_Laureus_World_Sports_Awards_-_Comaneci_-_240421_142851-2.jpg/500px-25th_Laureus_World_Sports_Awards_-_Comaneci_-_240421_142851-2.jpg"
+    },
+    {
+      "text": "Star Wars: A New Hope hits cinemas",
+      "year": 1977,
+      "category": "culture",
+      "wiki": "Star Wars (film)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/8/87/StarWarsMoviePoster1977.jpg"
+    },
+    {
+      "text": "Pac-Man released in Japanese arcades",
+      "year": 1980,
+      "category": "tech",
+      "wiki": "Pac-Man",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/1/16/Pac_flyer.png/250px-Pac_flyer.png"
+    },
+    {
+      "text": "Michael Jackson releases Thriller",
+      "year": 1982,
+      "category": "culture",
+      "wiki": "Thriller (Michael Jackson album)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/5/55/Michael_Jackson_-_Thriller.png/250px-Michael_Jackson_-_Thriller.png"
+    },
+    {
+      "text": "Apple introduces the first Macintosh",
+      "year": 1984,
+      "category": "tech",
+      "wiki": "Macintosh 128K",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Computer_macintosh_128k%2C_1984_%28all_about_Apple_onlus%29.jpg/500px-Computer_macintosh_128k%2C_1984_%28all_about_Apple_onlus%29.jpg"
+    },
+    {
+      "text": "Chernobyl nuclear disaster",
+      "year": 1986,
+      "category": "history",
+      "wiki": "Chernobyl disaster",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/IAEA_02790015_%285613115146%29.jpg/500px-IAEA_02790015_%285613115146%29.jpg"
+    },
+    {
+      "text": "The Simpsons premieres on Fox",
+      "year": 1989,
+      "category": "culture",
+      "wiki": "The Simpsons",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/The_Simpsons_yellow_logo.svg/500px-The_Simpsons_yellow_logo.svg.png"
+    },
+    {
+      "text": "The Berlin Wall falls",
+      "year": 1989,
+      "category": "history",
+      "wiki": "Fall of the Berlin Wall",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/West_and_East_Germans_at_the_Brandenburg_Gate_in_1989.jpg/500px-West_and_East_Germans_at_the_Brandenburg_Gate_in_1989.jpg"
+    },
+    {
+      "text": "Michael Jordan wins his first NBA championship",
+      "year": 1991,
+      "category": "sports",
+      "wiki": "1990–91 Chicago Bulls season",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Scottie_Pippen%2C_Chicago_Bulls_at_the_Meadowlands_Sports_Complex%2C_NJ%2C_US.jpg/500px-Scottie_Pippen%2C_Chicago_Bulls_at_the_Meadowlands_Sports_Complex%2C_NJ%2C_US.jpg"
+    },
+    {
+      "text": "The World Wide Web goes public",
+      "year": 1991,
+      "category": "tech",
+      "wiki": "World Wide Web",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Chrome_on_Linux.png/500px-Chrome_on_Linux.png"
+    },
+    {
+      "text": "Jurassic Park released in cinemas",
+      "year": 1993,
+      "category": "culture",
+      "wiki": "Jurassic Park (film)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/e/e7/Jurassic_Park_poster.jpg"
+    },
+    {
+      "text": "Nelson Mandela becomes President of South Africa",
+      "year": 1994,
+      "category": "history",
+      "wiki": "Nelson Mandela",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Nelson_Mandela_1994.jpg/500px-Nelson_Mandela_1994.jpg"
+    },
+    {
+      "text": "The Lion King released by Disney",
+      "year": 1994,
+      "category": "culture",
+      "wiki": "The Lion King",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/3/3d/The_Lion_King_poster.jpg"
+    },
+    {
+      "text": "Friends premieres on NBC",
+      "year": 1994,
+      "category": "culture",
+      "wiki": "Friends",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Friends_logo.svg/250px-Friends_logo.svg.png"
+    },
+    {
+      "text": "Windows 95 launched by Microsoft",
+      "year": 1995,
+      "category": "tech",
+      "wiki": "Windows 95",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/e/eb/Windows_95_at_first_run.png"
+    },
+    {
+      "text": "Dolly the sheep — first cloned mammal",
+      "year": 1996,
+      "category": "science",
+      "wiki": "Dolly (sheep)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/b/b4/Dolly_the_Sheep_with_her_First_Born_Bonnie.jpg"
+    },
+    {
+      "text": "Pokémon Red and Blue released in Japan",
+      "year": 1996,
+      "category": "culture",
+      "wiki": "Pokémon Red and Blue",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/af/Pok%C3%A9mon_Red_and_Blue_cover_art.webp/500px-Pok%C3%A9mon_Red_and_Blue_cover_art.webp.png"
+    },
+    {
+      "text": "Harry Potter and the Philosopher's Stone published",
+      "year": 1997,
+      "category": "culture",
+      "wiki": "Harry Potter and the Philosopher's Stone",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/6/6b/Harry_Potter_and_the_Philosopher%27s_Stone_Book_Cover.jpg"
+    },
+    {
+      "text": "Titanic (James Cameron) released in cinemas",
+      "year": 1997,
+      "category": "culture",
+      "wiki": "Titanic (1997 film)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/1/18/Titanic_%281997_film%29_poster.png"
+    },
+    {
+      "text": "Tiger Woods wins his first Masters golf tournament",
+      "year": 1997,
+      "category": "sports",
+      "wiki": "Tiger Woods",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg/500px-President_Donald_Trump_hosts_a_reception_honoring_Black_History_Month_%2854341713089%29_%28cropped%29.jpg"
+    },
+    {
+      "text": "Google founded by Page and Brin",
+      "year": 1998,
+      "category": "tech",
+      "wiki": "Google",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/500px-Googleplex_HQ_%28cropped%29.jpg"
+    },
+    {
+      "text": "The Matrix released in cinemas",
+      "year": 1999,
+      "category": "culture",
+      "wiki": "The Matrix",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/The_Matrix.png/250px-The_Matrix.png"
+    },
+    {
+      "text": "SpongeBob SquarePants premieres on Nickelodeon",
+      "year": 1999,
+      "category": "culture",
+      "wiki": "SpongeBob SquarePants",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/2/22/SpongeBob_SquarePants_logo_by_Nickelodeon.svg/500px-SpongeBob_SquarePants_logo_by_Nickelodeon.svg.png"
+    },
+    {
+      "text": "Wikipedia goes online",
+      "year": 2001,
+      "category": "tech",
+      "wiki": "Wikipedia",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/8/80/Wikipedia-logo-v2.svg/500px-Wikipedia-logo-v2.svg.png"
+    },
+    {
+      "text": "September 11 attacks in New York and Washington",
+      "year": 2001,
+      "category": "history",
+      "wiki": "September 11 attacks",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/WTC_smoking_on_9-11.jpeg/500px-WTC_smoking_on_9-11.jpeg"
+    },
+    {
+      "text": "The Lord of the Rings: The Fellowship of the Ring premieres",
+      "year": 2001,
+      "category": "culture",
+      "wiki": "The Lord of the Rings: The Fellowship of the Ring",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fb/Lord_Rings_Fellowship_Ring.jpg/120px-Lord_Rings_Fellowship_Ring.jpg"
+    },
+    {
+      "text": "Euro coins and banknotes introduced across Europe",
+      "year": 2002,
+      "category": "history",
+      "wiki": "Euro",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/500px-Flag_of_Europe.svg.png"
+    },
+    {
+      "text": "Concorde makes its last commercial flight",
+      "year": 2003,
+      "category": "history",
+      "wiki": "Concorde",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/British_Airways_Concorde_G-BOAC_03.jpg/500px-British_Airways_Concorde_G-BOAC_03.jpg"
+    },
+    {
+      "text": "Roger Federer wins his first Wimbledon title",
+      "year": 2003,
+      "category": "sports",
+      "wiki": "Roger Federer",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Roger_Federer_2015_%28cropped%29.jpg/500px-Roger_Federer_2015_%28cropped%29.jpg"
+    },
+    {
+      "text": "Facebook launched by Zuckerberg at Harvard",
+      "year": 2004,
+      "category": "tech",
+      "wiki": "Facebook",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/6/64/Facebook_user_page.png/250px-Facebook_user_page.png"
+    },
+    {
+      "text": "YouTube founded",
+      "year": 2005,
+      "category": "tech",
+      "wiki": "YouTube",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Youtube_interface%2C_showing_search_results_of_Burger_Recipe.png/500px-Youtube_interface%2C_showing_search_results_of_Burger_Recipe.png"
+    },
+    {
+      "text": "Pluto reclassified as a dwarf planet",
+      "year": 2006,
+      "category": "science",
+      "wiki": "Pluto",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Pluto_in_True_Color_-_High-Res.png/500px-Pluto_in_True_Color_-_High-Res.png"
+    },
+    {
+      "text": "Twitter launches to the public",
+      "year": 2006,
+      "category": "tech",
+      "wiki": "Twitter",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/X_%28formerly_Twitter%29_logo_late_2025.svg/330px-X_%28formerly_Twitter%29_logo_late_2025.svg.png"
+    },
+    {
+      "text": "Kobe Bryant scores 81 points in a single NBA game",
+      "year": 2006,
+      "category": "sports",
+      "wiki": "Kobe Bryant's 81-point game",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Kobe_Bryant_81.jpg/500px-Kobe_Bryant_81.jpg"
+    },
+    {
+      "text": "First iPhone released by Apple",
+      "year": 2007,
+      "category": "tech",
+      "wiki": "iPhone (1st generation)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/IPhone_1st_Gen.svg/500px-IPhone_1st_Gen.svg.png"
+    },
+    {
+      "text": "Netflix launches its video streaming service",
+      "year": 2007,
+      "category": "tech",
+      "wiki": "Netflix",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/3/3c/Netflix_UI_for_Web.png/500px-Netflix_UI_for_Web.png"
+    },
+    {
+      "text": "The Dark Knight released in cinemas",
+      "year": 2008,
+      "category": "culture",
+      "wiki": "The Dark Knight (film)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/1/1c/The_Dark_Knight_%282008_film%29.jpg"
+    },
+    {
+      "text": "Usain Bolt sets 100m world record at Beijing Olympics",
+      "year": 2008,
+      "category": "sports",
+      "wiki": "Usain Bolt",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Usain_Bolt_-_240422_190142_%28cropped%29.jpg/500px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Usain_Bolt_-_240422_190142_%28cropped%29.jpg"
+    },
+    {
+      "text": "Bitcoin created by Satoshi Nakamoto",
+      "year": 2008,
+      "category": "tech",
+      "wiki": "Bitcoin",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/500px-Bitcoin.svg.png"
+    },
+    {
+      "text": "Barack Obama elected first Black President of the United States",
+      "year": 2008,
+      "category": "history",
+      "wiki": "Barack Obama",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/500px-President_Barack_Obama.jpg"
+    },
+    {
+      "text": "Spotify launches in Europe",
+      "year": 2008,
+      "category": "tech",
+      "wiki": "Spotify",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2024_Spotify_Logo.svg/330px-2024_Spotify_Logo.svg.png"
+    },
+    {
+      "text": "Breaking Bad premieres on AMC",
+      "year": 2008,
+      "category": "culture",
+      "wiki": "Breaking Bad",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Breaking_Bad_logo.svg/500px-Breaking_Bad_logo.svg.png"
+    },
+    {
+      "text": "Instagram launched",
+      "year": 2010,
+      "category": "tech",
+      "wiki": "Instagram",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Instagram_logo_2022.svg/500px-Instagram_logo_2022.svg.png"
+    },
+    {
+      "text": "Spain wins the FIFA World Cup for the first time",
+      "year": 2010,
+      "category": "sports",
+      "wiki": "2010 FIFA World Cup",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0d/2010_FIFA_World_Cup.svg/330px-2010_FIFA_World_Cup.svg.png"
+    },
+    {
+      "text": "Game of Thrones premieres on HBO",
+      "year": 2011,
+      "category": "culture",
+      "wiki": "Game of Thrones",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Game_of_Thrones_title_card.jpg/330px-Game_of_Thrones_title_card.jpg"
+    },
+    {
+      "text": "Minecraft officially released at MineCon",
+      "year": 2011,
+      "category": "tech",
+      "wiki": "Minecraft",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/b/b6/Minecraft_2024_cover_art.png/250px-Minecraft_2024_cover_art.png"
+    },
+    {
+      "text": "Curiosity rover lands on Mars",
+      "year": 2012,
+      "category": "science",
+      "wiki": "Curiosity (rover)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg/500px-Curiosity_Self-Portrait_at_%27Big_Sky%27_Drilling_Site.jpg"
+    },
+    {
+      "text": "Higgs boson particle discovered at CERN",
+      "year": 2012,
+      "category": "science",
+      "wiki": "Higgs boson",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/Candidate_Higgs_Events_in_ATLAS_and_CMS.png/500px-Candidate_Higgs_Events_in_ATLAS_and_CMS.png"
+    },
+    {
+      "text": "Gangnam Style becomes first YouTube video to reach 1 billion views",
+      "year": 2012,
+      "category": "culture",
+      "wiki": "Gangnam Style",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/a/ad/Gangnam_Style_Official_Cover.png/250px-Gangnam_Style_Official_Cover.png"
+    },
+    {
+      "text": "Frozen released by Disney",
+      "year": 2013,
+      "category": "culture",
+      "wiki": "Frozen (2013 film)",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/0/05/Frozen_%282013_film%29_poster.jpg"
+    },
+    {
+      "text": "Ice Bucket Challenge raises over $100M for ALS research",
+      "year": 2014,
+      "category": "culture",
+      "wiki": "Ice Bucket Challenge",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Doing_the_ALS_Ice_Bucket_Challenge_%2814927191426%29.jpg/500px-Doing_the_ALS_Ice_Bucket_Challenge_%2814927191426%29.jpg"
+    },
+    {
+      "text": "Pokémon GO launches worldwide on mobile",
+      "year": 2016,
+      "category": "tech",
+      "wiki": "Pokémon Go",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Pokemon_Go.svg/500px-Pokemon_Go.svg.png"
+    },
+    {
+      "text": "Leicester City wins the Premier League as 5000/1 outsiders",
+      "year": 2016,
+      "category": "sports",
+      "wiki": "2015–16 Leicester City F.C. season",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/LCFC_lift_the_Premier_League_Trophy_%2826943755296%29_%28cropped%29.jpg/500px-LCFC_lift_the_Premier_League_Trophy_%2826943755296%29_%28cropped%29.jpg"
+    },
+    {
+      "text": "First gravitational waves detected — Einstein proved right",
+      "year": 2016,
+      "category": "science",
+      "wiki": "First observation of gravitational waves",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/LIGO_measurement_of_gravitational_waves.svg/500px-LIGO_measurement_of_gravitational_waves.svg.png"
+    },
+    {
+      "text": "France wins the FIFA World Cup in Russia",
+      "year": 2018,
+      "category": "sports",
+      "wiki": "2018 FIFA World Cup Final",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/2018_World_Cup_Final_-_France_v_Croatia_-_1st_Half.jpg/1920px-2018_World_Cup_Final_-_France_v_Croatia_-_1st_Half.jpg"
+    },
+    {
+      "text": "First image of a black hole published",
+      "year": 2019,
+      "category": "science",
+      "wiki": "Event Horizon Telescope",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/35/Event_Horizon_Telescope.svg/250px-Event_Horizon_Telescope.svg.png"
+    },
+    {
+      "text": "Avengers: Endgame becomes highest-grossing film of all time",
+      "year": 2019,
+      "category": "culture",
+      "wiki": "Avengers: Endgame",
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/0/0d/Avengers_Endgame_poster.jpg"
+    },
+    {
+      "text": "COVID-19 pandemic declared by WHO",
+      "year": 2020,
+      "category": "history",
+      "wiki": "COVID-19 pandemic",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Covid-19_SP_-_UTI_V._Nova_Cachoeirinha.jpg/500px-Covid-19_SP_-_UTI_V._Nova_Cachoeirinha.jpg"
+    },
+    {
+      "text": "James Webb Space Telescope launched",
+      "year": 2021,
+      "category": "science",
+      "wiki": "James Webb Space Telescope",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/JWST_spacecraft_model_3.png/500px-JWST_spacecraft_model_3.png"
+    },
+    {
+      "text": "Wordle goes viral — millions play daily online",
+      "year": 2021,
+      "category": "tech",
+      "wiki": "Wordle",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Wordle_Lockup.svg/250px-Wordle_Lockup.svg.png"
+    },
+    {
+      "text": "ChatGPT released by OpenAI",
+      "year": 2022,
+      "category": "tech",
+      "wiki": "ChatGPT",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/OpenAI_logo_2025_%28symbol%29.svg/500px-OpenAI_logo_2025_%28symbol%29.svg.png"
+    },
+    {
+      "text": "Argentina wins the FIFA World Cup",
+      "year": 2022,
+      "category": "sports",
+      "wiki": "2022 FIFA World Cup Final",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/2e/Argentina_3-3_Francia_-_Copa_Mundial_2022_-_Montiel_patea_el_penal_de_la_victoria.jpg"
+    },
+    {
+      "text": "GPT-4 released by OpenAI",
+      "year": 2023,
+      "category": "tech",
+      "wiki": "GPT-4",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/OpenAI_logo_2025_%28symbol%29.svg/500px-OpenAI_logo_2025_%28symbol%29.svg.png"
+    }
   ]
 }

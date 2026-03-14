@@ -1,198 +1,1952 @@
 {
   "transfers": [
-    { "player": "Neymar Jr.",        "wiki": "Neymar",                       "flagCode": "br",     "from": "FC Barcelona",      "to": "PSG",               "year": 2017, "fee_m": 222, "flag": "🇧🇷" },
-    { "player": "Kylian Mbappé",     "wiki": "Kylian Mbappé",                "flagCode": "fr",     "from": "AS Monaco",         "to": "PSG",               "year": 2018, "fee_m": 180, "flag": "🇫🇷" },
-    { "player": "João Félix",        "wiki": "João Félix",                   "flagCode": "pt",     "from": "Benfica",           "to": "Atlético Madrid",   "year": 2019, "fee_m": 126, "flag": "🇵🇹" },
-    { "player": "Antoine Griezmann", "wiki": "Antoine Griezmann",            "flagCode": "fr",     "from": "Atlético Madrid",   "to": "FC Barcelona",      "year": 2019, "fee_m": 120, "flag": "🇫🇷" },
-    { "player": "Philippe Coutinho", "wiki": "Philippe Coutinho",            "flagCode": "br",     "from": "Liverpool",         "to": "FC Barcelona",      "year": 2018, "fee_m": 120, "flag": "🇧🇷" },
-    { "player": "Ousmane Dembélé",   "wiki": "Ousmane Dembélé",              "flagCode": "fr",     "from": "Borussia Dortmund", "to": "FC Barcelona",      "year": 2017, "fee_m": 105, "flag": "🇫🇷" },
-    { "player": "Paul Pogba",        "wiki": "Paul Pogba",                   "flagCode": "fr",     "from": "Juventus",          "to": "Manchester United", "year": 2016, "fee_m": 105, "flag": "🇫🇷" },
-    { "player": "Jack Grealish",     "wiki": "Jack Grealish",                "flagCode": "gb-eng", "from": "Aston Villa",       "to": "Manchester City",   "year": 2021, "fee_m": 117, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Romelu Lukaku",     "wiki": "Romelu Lukaku",                "flagCode": "be",     "from": "Inter Milan",       "to": "Chelsea",           "year": 2021, "fee_m": 115, "flag": "🇧🇪" },
-    { "player": "Jude Bellingham",   "wiki": "Jude Bellingham",              "flagCode": "gb-eng", "from": "Borussia Dortmund", "to": "Real Madrid",       "year": 2023, "fee_m": 103, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Harry Kane",        "wiki": "Harry Kane",                   "flagCode": "gb-eng", "from": "Tottenham Hotspur", "to": "Bayern Munich",     "year": 2023, "fee_m": 100, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Declan Rice",       "wiki": "Declan Rice",                  "flagCode": "gb-eng", "from": "West Ham United",   "to": "Arsenal",           "year": 2023, "fee_m": 116, "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Eden Hazard",       "wiki": "Eden Hazard",                  "flagCode": "be",     "from": "Chelsea",           "to": "Real Madrid",       "year": 2019, "fee_m": 100, "flag": "🇧🇪" },
-    { "player": "Erling Haaland",    "wiki": "Erling Haaland",               "flagCode": "no",     "from": "Borussia Dortmund", "to": "Manchester City",   "year": 2022, "fee_m": 60,  "flag": "🇳🇴" },
-    { "player": "Jadon Sancho",      "wiki": "Jadon Sancho",                 "flagCode": "gb-eng", "from": "Borussia Dortmund", "to": "Manchester United", "year": 2021, "fee_m": 85,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Gareth Bale",       "wiki": "Gareth Bale",                  "flagCode": "gb-wls", "from": "Tottenham Hotspur", "to": "Real Madrid",       "year": 2013, "fee_m": 100, "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿" },
-    { "player": "Cristiano Ronaldo", "wiki": "Cristiano Ronaldo",            "flagCode": "pt",     "from": "Real Madrid",       "to": "Juventus",          "year": 2018, "fee_m": 117, "flag": "🇵🇹" },
-    { "player": "Kevin De Bruyne",   "wiki": "Kevin De Bruyne",              "flagCode": "be",     "from": "VfL Wolfsburg",     "to": "Manchester City",   "year": 2015, "fee_m": 76,  "flag": "🇧🇪" },
-    { "player": "Enzo Fernández",    "wiki": "Enzo Fernández",               "flagCode": "ar",     "from": "Benfica",           "to": "Chelsea",           "year": 2023, "fee_m": 121, "flag": "🇦🇷" },
-    { "player": "Moisés Caicedo",    "wiki": "Moisés Caicedo",               "flagCode": "ec",     "from": "Brighton",          "to": "Chelsea",           "year": 2023, "fee_m": 116, "flag": "🇪🇨" },
-    { "player": "Virgil van Dijk",   "wiki": "Virgil van Dijk",              "flagCode": "nl",     "from": "Southampton",       "to": "Liverpool",         "year": 2018, "fee_m": 84,  "flag": "🇳🇱" },
-    { "player": "Kaká",              "wiki": "Kaká",                         "flagCode": "br",     "from": "AC Milan",          "to": "Real Madrid",       "year": 2009, "fee_m": 67,  "flag": "🇧🇷" },
-    { "player": "Zlatan Ibrahimović","wiki": "Zlatan Ibrahimović",           "flagCode": "se",     "from": "Inter Milan",       "to": "FC Barcelona",      "year": 2009, "fee_m": 69,  "flag": "🇸🇪" },
-    { "player": "Zinedine Zidane",   "wiki": "Zinedine Zidane",              "flagCode": "fr",     "from": "Juventus",          "to": "Real Madrid",       "year": 2001, "fee_m": 78,  "flag": "🇫🇷" },
-    { "player": "Ángel Di María",    "wiki": "Ángel Di María",               "flagCode": "ar",     "from": "Real Madrid",       "to": "Manchester United", "year": 2014, "fee_m": 75,  "flag": "🇦🇷" },
-    { "player": "Fernando Torres",   "wiki": "Fernando Torres",              "flagCode": "es",     "from": "Liverpool",         "to": "Chelsea",           "year": 2011, "fee_m": 58,  "flag": "🇪🇸" },
-    { "player": "Lucas Hernández",   "wiki": "Lucas Hernández",              "flagCode": "fr",     "from": "Atlético Madrid",   "to": "Bayern Munich",     "year": 2019, "fee_m": 80,  "flag": "🇫🇷" },
-    { "player": "Raheem Sterling",   "wiki": "Raheem Sterling",              "flagCode": "gb-eng", "from": "Liverpool",         "to": "Manchester City",   "year": 2015, "fee_m": 63,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Neymar",            "wiki": "Neymar",                       "flagCode": "br",     "from": "Santos",            "to": "FC Barcelona",      "year": 2013, "fee_m": 88,  "flag": "🇧🇷" },
-    { "player": "Luis Suárez",       "wiki": "Luis Suárez",                  "flagCode": "uy",     "from": "Liverpool",         "to": "FC Barcelona",      "year": 2014, "fee_m": 82,  "flag": "🇺🇾" },
-    { "player": "James Rodríguez",   "wiki": "James Rodríguez",              "flagCode": "co",     "from": "AS Monaco",         "to": "Real Madrid",       "year": 2014, "fee_m": 80,  "flag": "🇨🇴" },
-    { "player": "Antony",            "wiki": "Antony (footballer)",          "flagCode": "br",     "from": "Ajax",              "to": "Manchester United", "year": 2022, "fee_m": 95,  "flag": "🇧🇷" },
-    { "player": "Darwin Núñez",      "wiki": "Darwin Núñez",                 "flagCode": "uy",     "from": "Benfica",           "to": "Liverpool",         "year": 2022, "fee_m": 85,  "flag": "🇺🇾" },
-    { "player": "Rúben Dias",        "wiki": "Rúben Dias",                   "flagCode": "pt",     "from": "Benfica",           "to": "Manchester City",   "year": 2020, "fee_m": 68,  "flag": "🇵🇹" },
-    { "player": "Mesut Özil",        "wiki": "Mesut Özil",                   "flagCode": "de",     "from": "Real Madrid",       "to": "Arsenal",           "year": 2013, "fee_m": 47,  "flag": "🇩🇪" },
-    { "player": "David Luiz",        "wiki": "David Luiz",                   "flagCode": "br",     "from": "Chelsea",           "to": "PSG",               "year": 2014, "fee_m": 50,  "flag": "🇧🇷" },
-    { "player": "Robert Lewandowski","wiki": "Robert Lewandowski",           "flagCode": "pl",     "from": "Bayern Munich",     "to": "FC Barcelona",      "year": 2022, "fee_m": 45,  "flag": "🇵🇱" },
-    { "player": "Ronaldo",           "wiki": "Ronaldo (footballer)",         "flagCode": "br",     "from": "Inter Milan",       "to": "Real Madrid",       "year": 2002, "fee_m": 46,  "flag": "🇧🇷" }
+    {
+      "player": "Neymar Jr.",
+      "wiki": "Neymar",
+      "flagCode": "br",
+      "from": "FC Barcelona",
+      "to": "PSG",
+      "year": 2017,
+      "fee_m": 222,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kylian Mbappé",
+      "wiki": "Kylian Mbappé",
+      "flagCode": "fr",
+      "from": "AS Monaco",
+      "to": "PSG",
+      "year": 2018,
+      "fee_m": 180,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg/500px-Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg"
+    },
+    {
+      "player": "João Félix",
+      "wiki": "João Félix",
+      "flagCode": "pt",
+      "from": "Benfica",
+      "to": "Atlético Madrid",
+      "year": 2019,
+      "fee_m": 126,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Portugal_national_football_team_0866_%28Jo%C3%A3o_F%C3%A9lix%29.jpg/330px-Portugal_national_football_team_0866_%28Jo%C3%A3o_F%C3%A9lix%29.jpg"
+    },
+    {
+      "player": "Antoine Griezmann",
+      "wiki": "Antoine Griezmann",
+      "flagCode": "fr",
+      "from": "Atlético Madrid",
+      "to": "FC Barcelona",
+      "year": 2019,
+      "fee_m": 120,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/FRA-ARG_%2810%29_%28cropped%29.jpg/500px-FRA-ARG_%2810%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Philippe Coutinho",
+      "wiki": "Philippe Coutinho",
+      "flagCode": "br",
+      "from": "Liverpool",
+      "to": "FC Barcelona",
+      "year": 2018,
+      "fee_m": 120,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/20180610_FIFA_Friendly_Match_Austria_vs._Brazil_Philippe_Coutinho_850_1692.jpg/500px-20180610_FIFA_Friendly_Match_Austria_vs._Brazil_Philippe_Coutinho_850_1692.jpg"
+    },
+    {
+      "player": "Ousmane Dembélé",
+      "wiki": "Ousmane Dembélé",
+      "flagCode": "fr",
+      "from": "Borussia Dortmund",
+      "to": "FC Barcelona",
+      "year": 2017,
+      "fee_m": 105,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Ousmane_Demb%C3%A9l%C3%A9_2018_%28cropped%29.jpg/330px-Ousmane_Demb%C3%A9l%C3%A9_2018_%28cropped%29.jpg"
+    },
+    {
+      "player": "Paul Pogba",
+      "wiki": "Paul Pogba",
+      "flagCode": "fr",
+      "from": "Juventus",
+      "to": "Manchester United",
+      "year": 2016,
+      "fee_m": 105,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Paul_Pogba_at_the_2025_Cannes_Film_Festival_02.jpg/500px-Paul_Pogba_at_the_2025_Cannes_Film_Festival_02.jpg"
+    },
+    {
+      "player": "Jack Grealish",
+      "wiki": "Jack Grealish",
+      "flagCode": "gb-eng",
+      "from": "Aston Villa",
+      "to": "Manchester City",
+      "year": 2021,
+      "fee_m": 117,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/ManCity20240722-017_%28cropped%29.jpg/500px-ManCity20240722-017_%28cropped%29.jpg"
+    },
+    {
+      "player": "Romelu Lukaku",
+      "wiki": "Romelu Lukaku",
+      "flagCode": "be",
+      "from": "Inter Milan",
+      "to": "Chelsea",
+      "year": 2021,
+      "fee_m": 115,
+      "flag": "🇧🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/Romelu_Lukaku_2021.jpg/500px-Romelu_Lukaku_2021.jpg"
+    },
+    {
+      "player": "Jude Bellingham",
+      "wiki": "Jude Bellingham",
+      "flagCode": "gb-eng",
+      "from": "Borussia Dortmund",
+      "to": "Real Madrid",
+      "year": 2023,
+      "fee_m": 103,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190551-2_%28cropped%29.jpg/500px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190551-2_%28cropped%29.jpg"
+    },
+    {
+      "player": "Harry Kane",
+      "wiki": "Harry Kane",
+      "flagCode": "gb-eng",
+      "from": "Tottenham Hotspur",
+      "to": "Bayern Munich",
+      "year": 2023,
+      "fee_m": 100,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Harry_Kane_on_October_10%2C_2023.jpg/500px-Harry_Kane_on_October_10%2C_2023.jpg"
+    },
+    {
+      "player": "Declan Rice",
+      "wiki": "Declan Rice",
+      "flagCode": "gb-eng",
+      "from": "West Ham United",
+      "to": "Arsenal",
+      "year": 2023,
+      "fee_m": 116,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/1_declan_rice_arsenal_2025_%28cropped%29.jpg/500px-1_declan_rice_arsenal_2025_%28cropped%29.jpg"
+    },
+    {
+      "player": "Eden Hazard",
+      "wiki": "Eden Hazard",
+      "flagCode": "be",
+      "from": "Chelsea",
+      "to": "Real Madrid",
+      "year": 2019,
+      "fee_m": 100,
+      "flag": "🇧🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Eden_Hazard_at_Baku_before_2019_UEFA_Europe_League_Final.jpg/330px-Eden_Hazard_at_Baku_before_2019_UEFA_Europe_League_Final.jpg"
+    },
+    {
+      "player": "Erling Haaland",
+      "wiki": "Erling Haaland",
+      "flagCode": "no",
+      "from": "Borussia Dortmund",
+      "to": "Manchester City",
+      "year": 2022,
+      "fee_m": 60,
+      "flag": "🇳🇴",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Erling_Haaland_June_2025.jpg/500px-Erling_Haaland_June_2025.jpg"
+    },
+    {
+      "player": "Jadon Sancho",
+      "wiki": "Jadon Sancho",
+      "flagCode": "gb-eng",
+      "from": "Borussia Dortmund",
+      "to": "Manchester United",
+      "year": 2021,
+      "fee_m": 85,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Manchester_United_v_Liverpool%2C_22_August_2022_%2833%29_%28cropped%29.jpg/500px-Manchester_United_v_Liverpool%2C_22_August_2022_%2833%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Gareth Bale",
+      "wiki": "Gareth Bale",
+      "flagCode": "gb-wls",
+      "from": "Tottenham Hotspur",
+      "to": "Real Madrid",
+      "year": 2013,
+      "fee_m": 100,
+      "flag": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/2022_FIFA_World_Cup_United_States_1%E2%80%931_Wales_-_%2832%29_%28cropped%29.jpg/330px-2022_FIFA_World_Cup_United_States_1%E2%80%931_Wales_-_%2832%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Cristiano Ronaldo",
+      "wiki": "Cristiano Ronaldo",
+      "flagCode": "pt",
+      "from": "Real Madrid",
+      "to": "Juventus",
+      "year": 2018,
+      "fee_m": 117,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cristiano_Ronaldo_2275_%28cropped%29.jpg/500px-Cristiano_Ronaldo_2275_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kevin De Bruyne",
+      "wiki": "Kevin De Bruyne",
+      "flagCode": "be",
+      "from": "VfL Wolfsburg",
+      "to": "Manchester City",
+      "year": 2015,
+      "fee_m": 76,
+      "flag": "🇧🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kevin_De_Bruyne-December_2021.png/500px-Kevin_De_Bruyne-December_2021.png"
+    },
+    {
+      "player": "Enzo Fernández",
+      "wiki": "Enzo Fernández",
+      "flagCode": "ar",
+      "from": "Benfica",
+      "to": "Chelsea",
+      "year": 2023,
+      "fee_m": 121,
+      "flag": "🇦🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Enzo_Fern%C3%A1ndez_2025_FIFA_Club_World_Cup_Final.jpg/330px-Enzo_Fern%C3%A1ndez_2025_FIFA_Club_World_Cup_Final.jpg"
+    },
+    {
+      "player": "Moisés Caicedo",
+      "wiki": "Moisés Caicedo",
+      "flagCode": "ec",
+      "from": "Brighton",
+      "to": "Chelsea",
+      "year": 2023,
+      "fee_m": 116,
+      "flag": "🇪🇨",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Moises_Caicedo_2022_%28cropped%29.jpg/500px-Moises_Caicedo_2022_%28cropped%29.jpg"
+    },
+    {
+      "player": "Virgil van Dijk",
+      "wiki": "Virgil van Dijk",
+      "flagCode": "nl",
+      "from": "Southampton",
+      "to": "Liverpool",
+      "year": 2018,
+      "fee_m": 84,
+      "flag": "🇳🇱",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/20160604_AUT_NED_8876_%28cropped%29.jpg/500px-20160604_AUT_NED_8876_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kaká",
+      "wiki": "Kaká",
+      "flagCode": "br",
+      "from": "AC Milan",
+      "to": "Real Madrid",
+      "year": 2009,
+      "fee_m": 67,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Kak%C3%A1_visited_Stadium_St._Petersburg.jpg/500px-Kak%C3%A1_visited_Stadium_St._Petersburg.jpg"
+    },
+    {
+      "player": "Zlatan Ibrahimović",
+      "wiki": "Zlatan Ibrahimović",
+      "flagCode": "se",
+      "from": "Inter Milan",
+      "to": "FC Barcelona",
+      "year": 2009,
+      "fee_m": 69,
+      "flag": "🇸🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg/330px-Zlatan_Ibrahimovi%C4%87_June_2018.jpg"
+    },
+    {
+      "player": "Zinedine Zidane",
+      "wiki": "Zinedine Zidane",
+      "flagCode": "fr",
+      "from": "Juventus",
+      "to": "Real Madrid",
+      "year": 2001,
+      "fee_m": 78,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Zinedine_Zidane_by_Tasnim_03.jpg/330px-Zinedine_Zidane_by_Tasnim_03.jpg"
+    },
+    {
+      "player": "Ángel Di María",
+      "wiki": "Ángel Di María",
+      "flagCode": "ar",
+      "from": "Real Madrid",
+      "to": "Manchester United",
+      "year": 2014,
+      "fee_m": 75,
+      "flag": "🇦🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/NIG-ARG_%285%29.jpg/500px-NIG-ARG_%285%29.jpg"
+    },
+    {
+      "player": "Fernando Torres",
+      "wiki": "Fernando Torres",
+      "flagCode": "es",
+      "from": "Liverpool",
+      "to": "Chelsea",
+      "year": 2011,
+      "fee_m": 58,
+      "flag": "🇪🇸",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fernando_Torres_2017.jpg/250px-Fernando_Torres_2017.jpg"
+    },
+    {
+      "player": "Lucas Hernández",
+      "wiki": "Lucas Hernández",
+      "flagCode": "fr",
+      "from": "Atlético Madrid",
+      "to": "Bayern Munich",
+      "year": 2019,
+      "fee_m": 80,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/b5/Hernandez_asse_psg_2425.png"
+    },
+    {
+      "player": "Raheem Sterling",
+      "wiki": "Raheem Sterling",
+      "flagCode": "gb-eng",
+      "from": "Liverpool",
+      "to": "Manchester City",
+      "year": 2015,
+      "fee_m": 63,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Raheem_Sterling_2018.jpg/500px-Raheem_Sterling_2018.jpg"
+    },
+    {
+      "player": "Neymar",
+      "wiki": "Neymar",
+      "flagCode": "br",
+      "from": "Santos",
+      "to": "FC Barcelona",
+      "year": 2013,
+      "fee_m": 88,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+    },
+    {
+      "player": "Luis Suárez",
+      "wiki": "Luis Suárez",
+      "flagCode": "uy",
+      "from": "Liverpool",
+      "to": "FC Barcelona",
+      "year": 2014,
+      "fee_m": 82,
+      "flag": "🇺🇾",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Luis_Su%C3%A1rez_NE_Revolution_Inter_Miami_7.9.25-053_%28cropped%29.jpg/500px-Luis_Su%C3%A1rez_NE_Revolution_Inter_Miami_7.9.25-053_%28cropped%29.jpg"
+    },
+    {
+      "player": "James Rodríguez",
+      "wiki": "James Rodríguez",
+      "flagCode": "co",
+      "from": "AS Monaco",
+      "to": "Real Madrid",
+      "year": 2014,
+      "fee_m": 80,
+      "flag": "🇨🇴",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/79/James_Rodriguez_2018.jpg/500px-James_Rodriguez_2018.jpg"
+    },
+    {
+      "player": "Antony",
+      "wiki": "Antony (footballer, born 2000)",
+      "flagCode": "br",
+      "from": "Ajax",
+      "to": "Manchester United",
+      "year": 2022,
+      "fee_m": 95,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Antony_2022.jpg/500px-Antony_2022.jpg"
+    },
+    {
+      "player": "Darwin Núñez",
+      "wiki": "Darwin Núñez",
+      "flagCode": "uy",
+      "from": "Benfica",
+      "to": "Liverpool",
+      "year": 2022,
+      "fee_m": 85,
+      "flag": "🇺🇾",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Darwin_N%C3%BA%C3%B1ez_%28cropped%29.jpg/500px-Darwin_N%C3%BA%C3%B1ez_%28cropped%29.jpg"
+    },
+    {
+      "player": "Rúben Dias",
+      "wiki": "Rúben Dias",
+      "flagCode": "pt",
+      "from": "Benfica",
+      "to": "Manchester City",
+      "year": 2020,
+      "fee_m": 68,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Portugal_national_football_team_0866_%28R%C3%BAben_Dias%29.jpg/250px-Portugal_national_football_team_0866_%28R%C3%BAben_Dias%29.jpg"
+    },
+    {
+      "player": "Mesut Özil",
+      "wiki": "Mesut Özil",
+      "flagCode": "de",
+      "from": "Real Madrid",
+      "to": "Arsenal",
+      "year": 2013,
+      "fee_m": 47,
+      "flag": "🇩🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mesut_%C3%96zil_at_Baku_before_2019_UEFA_Europe_League_Final.jpg/500px-Mesut_%C3%96zil_at_Baku_before_2019_UEFA_Europe_League_Final.jpg"
+    },
+    {
+      "player": "David Luiz",
+      "wiki": "David Luiz",
+      "flagCode": "br",
+      "from": "Chelsea",
+      "to": "PSG",
+      "year": 2014,
+      "fee_m": 50,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/David_Luiz_at_Baku_before_2019_UEFA_Europe_League_Final.jpg/500px-David_Luiz_at_Baku_before_2019_UEFA_Europe_League_Final.jpg"
+    },
+    {
+      "player": "Robert Lewandowski",
+      "wiki": "Robert Lewandowski",
+      "flagCode": "pl",
+      "from": "Bayern Munich",
+      "to": "FC Barcelona",
+      "year": 2022,
+      "fee_m": 45,
+      "flag": "🇵🇱",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg/500px-2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg"
+    },
+    {
+      "player": "Ronaldo",
+      "wiki": "Ronaldo (Brazilian footballer)",
+      "flagCode": "br",
+      "from": "Inter Milan",
+      "to": "Real Madrid",
+      "year": 2002,
+      "fee_m": 46,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg/500px-Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg"
+    }
   ],
-
   "stadiums": [
-    { "name": "Camp Nou",                  "wiki": "Camp Nou",                    "team": "FC Barcelona",           "city": "Barcelona",      "capacity": 99354, "options": ["Real Madrid", "Atlético Madrid", "Valencia CF"] },
-    { "name": "Santiago Bernabéu",         "wiki": "Santiago Bernabéu Stadium",   "team": "Real Madrid",            "city": "Madrid",         "capacity": 81044, "options": ["FC Barcelona", "Atlético Madrid", "Sevilla FC"] },
-    { "name": "Signal Iduna Park",         "wiki": "Signal Iduna Park",           "team": "Borussia Dortmund",      "city": "Dortmund",       "capacity": 81365, "options": ["Bayern Munich", "Schalke 04", "VfB Stuttgart"] },
-    { "name": "Maracanã",                  "wiki": "Maracanã",                    "team": "Flamengo",               "city": "Rio de Janeiro",  "capacity": 78838, "options": ["Fluminense", "Santos", "Corinthians"] },
-    { "name": "San Siro",                  "wiki": "San Siro",                    "team": "AC Milan",               "city": "Milan",          "capacity": 75923, "options": ["Inter Milan", "Juventus", "AS Roma"] },
-    { "name": "Allianz Arena",             "wiki": "Allianz Arena",               "team": "Bayern Munich",          "city": "Munich",         "capacity": 75024, "options": ["Borussia Dortmund", "Borussia Mönchengladbach", "Bayer Leverkusen"] },
-    { "name": "Old Trafford",              "wiki": "Old Trafford",                "team": "Manchester United",      "city": "Manchester",     "capacity": 74310, "options": ["Manchester City", "Liverpool", "Arsenal"] },
-    { "name": "Wanda Metropolitano",       "wiki": "Wanda Metropolitano",         "team": "Atlético Madrid",        "city": "Madrid",         "capacity": 68456, "options": ["Real Madrid", "FC Barcelona", "Real Betis"] },
-    { "name": "Orange Vélodrome",          "wiki": "Orange Vélodrome",            "team": "Olympique de Marseille", "city": "Marseille",      "capacity": 67394, "options": ["Olympique Lyonnais", "Nice", "AS Monaco"] },
-    { "name": "Veltins-Arena",             "wiki": "Veltins-Arena",               "team": "Schalke 04",             "city": "Gelsenkirchen",  "capacity": 62271, "options": ["Borussia Dortmund", "Bayer Leverkusen", "VfB Stuttgart"] },
-    { "name": "Tottenham Hotspur Stadium", "wiki": "Tottenham Hotspur Stadium",   "team": "Tottenham Hotspur",      "city": "London",         "capacity": 62850, "options": ["Arsenal", "Chelsea", "Crystal Palace"] },
-    { "name": "Estadio Benito Villamarín", "wiki": "Estadio Benito Villamarín",   "team": "Real Betis",             "city": "Seville",        "capacity": 60720, "options": ["Sevilla FC", "Atlético Madrid", "Valencia CF"] },
-    { "name": "MHPArena",                  "wiki": "MHPArena",                    "team": "VfB Stuttgart",          "city": "Stuttgart",      "capacity": 60449, "options": ["Bayern Munich", "Bayer Leverkusen", "Eintracht Frankfurt"] },
-    { "name": "Anfield",                   "wiki": "Anfield",                     "team": "Liverpool",              "city": "Liverpool",      "capacity": 61276, "options": ["Everton", "Manchester United", "Arsenal"] },
-    { "name": "Celtic Park",               "wiki": "Celtic Park",                 "team": "Celtic",                 "city": "Glasgow",        "capacity": 60411, "options": ["Rangers", "Aberdeen", "Hearts"] },
-    { "name": "Groupama Stadium",          "wiki": "Groupama Stadium",            "team": "Olympique Lyonnais",     "city": "Lyon",           "capacity": 59186, "options": ["Olympique de Marseille", "Saint-Étienne", "AS Monaco"] },
-    { "name": "Stadio Diego Armando Maradona", "wiki": "Stadio Diego Armando Maradona", "team": "SSC Napoli",    "city": "Naples",         "capacity": 54726, "options": ["AS Roma", "SS Lazio", "ACF Fiorentina"] },
-    { "name": "Etihad Stadium",            "wiki": "Etihad Stadium",              "team": "Manchester City",        "city": "Manchester",     "capacity": 53400, "options": ["Manchester United", "Liverpool", "Leeds United"] },
-    { "name": "Johan Cruyff Arena",        "wiki": "Johan Cruyff Arena",          "team": "Ajax",                   "city": "Amsterdam",      "capacity": 55500, "options": ["PSV Eindhoven", "Feyenoord", "AZ Alkmaar"] },
-    { "name": "Volksparkstadion",          "wiki": "Volksparkstadion",            "team": "Hamburger SV",           "city": "Hamburg",        "capacity": 57000, "options": ["Werder Bremen", "FC St. Pauli", "Hannover 96"] },
-    { "name": "Ibrox Stadium",             "wiki": "Ibrox Stadium",               "team": "Rangers",                "city": "Glasgow",        "capacity": 50817, "options": ["Celtic", "Aberdeen", "Hearts"] },
-    { "name": "Estadio José Alvalade",     "wiki": "Estádio José Alvalade",       "team": "Sporting CP",            "city": "Lisbon",         "capacity": 50095, "options": ["Benfica", "FC Porto", "SC Braga"] },
-    { "name": "Estádio do Dragão",         "wiki": "Estádio do Dragão",           "team": "FC Porto",               "city": "Porto",          "capacity": 50033, "options": ["Benfica", "Sporting CP", "Vitória de Guimarães"] },
-    { "name": "Emirates Stadium",          "wiki": "Emirates Stadium",            "team": "Arsenal",                "city": "London",         "capacity": 60704, "options": ["Chelsea", "Tottenham Hotspur", "West Ham United"] },
-    { "name": "Mestalla",                  "wiki": "Mestalla",                    "team": "Valencia CF",            "city": "Valencia",       "capacity": 49430, "options": ["Real Madrid", "FC Barcelona", "Villarreal CF"] },
-    { "name": "De Kuip",                   "wiki": "De Kuip",                     "team": "Feyenoord",              "city": "Rotterdam",      "capacity": 47000, "options": ["Ajax", "PSV Eindhoven", "AZ Alkmaar"] },
-    { "name": "Parc des Princes",          "wiki": "Parc des Princes",            "team": "PSG",                    "city": "Paris",          "capacity": 47929, "options": ["Olympique de Marseille", "Olympique Lyonnais", "AS Monaco"] },
-    { "name": "Allianz Stadium",           "wiki": "Allianz Stadium, Turin",      "team": "Juventus",               "city": "Turin",          "capacity": 41507, "options": ["AC Milan", "Inter Milan", "AS Roma"] },
-    { "name": "Stamford Bridge",           "wiki": "Stamford Bridge",             "team": "Chelsea",                "city": "London",         "capacity": 40341, "options": ["Arsenal", "Tottenham Hotspur", "Brentford"] },
-    { "name": "Red Bull Arena",            "wiki": "Red Bull Arena (Leipzig)",    "team": "RB Leipzig",             "city": "Leipzig",        "capacity": 47069, "options": ["Bayern Munich", "Bayer Leverkusen", "Borussia Dortmund"] },
-    { "name": "Estádio da Luz",            "wiki": "Estádio da Luz",              "team": "Benfica",                "city": "Lisbon",         "capacity": 64642, "options": ["Sporting CP", "FC Porto", "SC Braga"] },
-    { "name": "BayArena",                  "wiki": "BayArena",                    "team": "Bayer Leverkusen",       "city": "Leverkusen",     "capacity": 30210, "options": ["Bayern Munich", "FC Cologne", "Borussia Dortmund"] }
+    {
+      "name": "Camp Nou",
+      "wiki": "Camp Nou",
+      "team": "FC Barcelona",
+      "city": "Barcelona",
+      "capacity": 99354,
+      "options": [
+        "Real Madrid",
+        "Atlético Madrid",
+        "Valencia CF"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Camp_Nou_aerial.jpg/500px-Camp_Nou_aerial.jpg"
+    },
+    {
+      "name": "Santiago Bernabéu",
+      "wiki": "Santiago Bernabéu Stadium",
+      "team": "Real Madrid",
+      "city": "Madrid",
+      "capacity": 81044,
+      "options": [
+        "FC Barcelona",
+        "Atlético Madrid",
+        "Sevilla FC"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0e/Estadio_Santiago_Bernab%C3%A9u_Madrid.jpg"
+    },
+    {
+      "name": "Signal Iduna Park",
+      "wiki": "Signal Iduna Park",
+      "team": "Borussia Dortmund",
+      "city": "Dortmund",
+      "capacity": 81365,
+      "options": [
+        "Bayern Munich",
+        "Schalke 04",
+        "VfB Stuttgart"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Signal_iduna_park_stadium_dortmund_4.jpg/3840px-Signal_iduna_park_stadium_dortmund_4.jpg"
+    },
+    {
+      "name": "Maracanã",
+      "wiki": "Maracanã Stadium",
+      "team": "Flamengo",
+      "city": "Rio de Janeiro",
+      "capacity": 78838,
+      "options": [
+        "Fluminense",
+        "Santos",
+        "Corinthians"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Maracana_2022.jpg/500px-Maracana_2022.jpg"
+    },
+    {
+      "name": "San Siro",
+      "wiki": "San Siro",
+      "team": "AC Milan",
+      "city": "Milan",
+      "capacity": 75923,
+      "options": [
+        "Inter Milan",
+        "Juventus",
+        "AS Roma"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Stadio_Meazza_2021_3.jpg/500px-Stadio_Meazza_2021_3.jpg"
+    },
+    {
+      "name": "Allianz Arena",
+      "wiki": "Allianz Arena",
+      "team": "Bayern Munich",
+      "city": "Munich",
+      "capacity": 75024,
+      "options": [
+        "Borussia Dortmund",
+        "Borussia Mönchengladbach",
+        "Bayer Leverkusen"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Allianz_Arena_2008-02-09.jpg/500px-Allianz_Arena_2008-02-09.jpg"
+    },
+    {
+      "name": "Old Trafford",
+      "wiki": "Old Trafford",
+      "team": "Manchester United",
+      "city": "Manchester",
+      "capacity": 74310,
+      "options": [
+        "Manchester City",
+        "Liverpool",
+        "Arsenal"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/2023_07_31_arne_mueseler_00060-Verbessert-RR_%2853106651455%29.jpg/500px-2023_07_31_arne_mueseler_00060-Verbessert-RR_%2853106651455%29.jpg"
+    },
+    {
+      "name": "Wanda Metropolitano",
+      "wiki": "Wanda Metropolitano",
+      "team": "Atlético Madrid",
+      "city": "Madrid",
+      "capacity": 68456,
+      "options": [
+        "Real Madrid",
+        "FC Barcelona",
+        "Real Betis"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Atleti_vs_Villarreal_-_September_2025.jpg/1920px-Atleti_vs_Villarreal_-_September_2025.jpg"
+    },
+    {
+      "name": "Orange Vélodrome",
+      "wiki": "Stade Vélodrome",
+      "team": "Olympique de Marseille",
+      "city": "Marseille",
+      "capacity": 67394,
+      "options": [
+        "Olympique Lyonnais",
+        "Nice",
+        "AS Monaco"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Stade_V%C3%A9lodrome.png/330px-Stade_V%C3%A9lodrome.png"
+    },
+    {
+      "name": "Veltins-Arena",
+      "wiki": "Veltins-Arena",
+      "team": "Schalke 04",
+      "city": "Gelsenkirchen",
+      "capacity": 62271,
+      "options": [
+        "Borussia Dortmund",
+        "Bayer Leverkusen",
+        "VfB Stuttgart"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/85/Veltins_Arena_by_Arne_Mueseler.jpg"
+    },
+    {
+      "name": "Tottenham Hotspur Stadium",
+      "wiki": "Tottenham Hotspur Stadium",
+      "team": "Tottenham Hotspur",
+      "city": "London",
+      "capacity": 62850,
+      "options": [
+        "Arsenal",
+        "Chelsea",
+        "Crystal Palace"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/London_Tottenham_Hotspur_Stadium.jpg/500px-London_Tottenham_Hotspur_Stadium.jpg"
+    },
+    {
+      "name": "Estadio Benito Villamarín",
+      "wiki": "Estadio Benito Villamarín",
+      "team": "Real Betis",
+      "city": "Seville",
+      "capacity": 60720,
+      "options": [
+        "Sevilla FC",
+        "Atlético Madrid",
+        "Valencia CF"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Estadio_Benito_Villamar%C3%ADn_2018001.jpg/500px-Estadio_Benito_Villamar%C3%ADn_2018001.jpg"
+    },
+    {
+      "name": "MHPArena",
+      "wiki": "MHPArena",
+      "team": "VfB Stuttgart",
+      "city": "Stuttgart",
+      "capacity": 60449,
+      "options": [
+        "Bayern Munich",
+        "Bayer Leverkusen",
+        "Eintracht Frankfurt"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Stuttgart_stadium.jpg/500px-Stuttgart_stadium.jpg"
+    },
+    {
+      "name": "Anfield",
+      "wiki": "Anfield",
+      "team": "Liverpool",
+      "city": "Liverpool",
+      "capacity": 61276,
+      "options": [
+        "Everton",
+        "Manchester United",
+        "Arsenal"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/Panorama_of_Anfield_with_new_main_stand_%2829676137824%29.jpg/500px-Panorama_of_Anfield_with_new_main_stand_%2829676137824%29.jpg"
+    },
+    {
+      "name": "Celtic Park",
+      "wiki": "Celtic Park",
+      "team": "Celtic",
+      "city": "Glasgow",
+      "capacity": 60411,
+      "options": [
+        "Rangers",
+        "Aberdeen",
+        "Hearts"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Celtic_Park_during_an_Old_Firm_derby_between_Celtic_FC_and_Rangers_FC.jpg/500px-Celtic_Park_during_an_Old_Firm_derby_between_Celtic_FC_and_Rangers_FC.jpg"
+    },
+    {
+      "name": "Groupama Stadium",
+      "wiki": "Groupama Stadium",
+      "team": "Olympique Lyonnais",
+      "city": "Lyon",
+      "capacity": 59186,
+      "options": [
+        "Olympique de Marseille",
+        "Saint-Étienne",
+        "AS Monaco"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Olympique_lyonnais_-_Stade_rennais%2C_demi-finale_de_Coupe_de_France_2019.jpg/3840px-Olympique_lyonnais_-_Stade_rennais%2C_demi-finale_de_Coupe_de_France_2019.jpg"
+    },
+    {
+      "name": "Stadio Diego Armando Maradona",
+      "wiki": "Stadio Diego Armando Maradona",
+      "team": "SSC Napoli",
+      "city": "Naples",
+      "capacity": 54726,
+      "options": [
+        "AS Roma",
+        "SS Lazio",
+        "ACF Fiorentina"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Stadio_Maradona_Serie_A.jpg/500px-Stadio_Maradona_Serie_A.jpg"
+    },
+    {
+      "name": "Etihad Stadium",
+      "wiki": "Etihad Stadium",
+      "team": "Manchester City",
+      "city": "Manchester",
+      "capacity": 53400,
+      "options": [
+        "Manchester United",
+        "Liverpool",
+        "Leeds United"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/City_of_Manchester_Stadium_2023_cropped.jpg/3840px-City_of_Manchester_Stadium_2023_cropped.jpg"
+    },
+    {
+      "name": "Johan Cruyff Arena",
+      "wiki": "Johan Cruyff Arena",
+      "team": "Ajax",
+      "city": "Amsterdam",
+      "capacity": 55500,
+      "options": [
+        "PSV Eindhoven",
+        "Feyenoord",
+        "AZ Alkmaar"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Arena%2C_Ajax_stadion%2C_Amsterdam.JPG/500px-Arena%2C_Ajax_stadion%2C_Amsterdam.JPG"
+    },
+    {
+      "name": "Volksparkstadion",
+      "wiki": "Volksparkstadion",
+      "team": "Hamburger SV",
+      "city": "Hamburg",
+      "capacity": 57000,
+      "options": [
+        "Werder Bremen",
+        "FC St. Pauli",
+        "Hannover 96"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/RK_1009_9831_Volksparkstadion.jpg/500px-RK_1009_9831_Volksparkstadion.jpg"
+    },
+    {
+      "name": "Ibrox Stadium",
+      "wiki": "Ibrox Stadium",
+      "team": "Rangers",
+      "city": "Glasgow",
+      "capacity": 50817,
+      "options": [
+        "Celtic",
+        "Aberdeen",
+        "Hearts"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Ibrox_Stadium%2C_Rangers_FC_%28cropped%29.jpg/500px-Ibrox_Stadium%2C_Rangers_FC_%28cropped%29.jpg"
+    },
+    {
+      "name": "Estadio José Alvalade",
+      "wiki": "Estádio José Alvalade",
+      "team": "Sporting CP",
+      "city": "Lisbon",
+      "capacity": 50095,
+      "options": [
+        "Benfica",
+        "FC Porto",
+        "SC Braga"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Est%C3%A1dio_Jos%C3%A9_Alvalade_antes_do_jogo_Sporting_-_Arouca.jpg/500px-Est%C3%A1dio_Jos%C3%A9_Alvalade_antes_do_jogo_Sporting_-_Arouca.jpg"
+    },
+    {
+      "name": "Estádio do Dragão",
+      "wiki": "Estádio do Dragão",
+      "team": "FC Porto",
+      "city": "Porto",
+      "capacity": 50033,
+      "options": [
+        "Benfica",
+        "Sporting CP",
+        "Vitória de Guimarães"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg/500px-Porto_Est%C3%A1dio_do_Drag%C3%A3o_2.jpg"
+    },
+    {
+      "name": "Emirates Stadium",
+      "wiki": "Emirates Stadium",
+      "team": "Arsenal",
+      "city": "London",
+      "capacity": 60704,
+      "options": [
+        "Chelsea",
+        "Tottenham Hotspur",
+        "West Ham United"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/London_Emirates_Stadium_arsenal.jpg/500px-London_Emirates_Stadium_arsenal.jpg"
+    },
+    {
+      "name": "Mestalla",
+      "wiki": "Mestalla",
+      "team": "Valencia CF",
+      "city": "Valencia",
+      "capacity": 49430,
+      "options": [
+        "Real Madrid",
+        "FC Barcelona",
+        "Villarreal CF"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/CAMP_DE_MESTALLA_GRADA_DE_LA_MAR_2014.JPG"
+    },
+    {
+      "name": "De Kuip",
+      "wiki": "De Kuip",
+      "team": "Feyenoord",
+      "city": "Rotterdam",
+      "capacity": 47000,
+      "options": [
+        "Ajax",
+        "PSV Eindhoven",
+        "AZ Alkmaar"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Feyenoord_Rotterdam%27s_De_Kuip_stadium_in_2022_before_a_match_against_FC_Emmen.jpg/500px-Feyenoord_Rotterdam%27s_De_Kuip_stadium_in_2022_before_a_match_against_FC_Emmen.jpg"
+    },
+    {
+      "name": "Parc des Princes",
+      "wiki": "Parc des Princes",
+      "team": "PSG",
+      "city": "Paris",
+      "capacity": 47929,
+      "options": [
+        "Olympique de Marseille",
+        "Olympique Lyonnais",
+        "AS Monaco"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/en/thumb/f/fd/Paris_Le_Parc_des_Princes.jpg/500px-Paris_Le_Parc_des_Princes.jpg"
+    },
+    {
+      "name": "Allianz Stadium",
+      "wiki": "Juventus Stadium",
+      "team": "Juventus",
+      "city": "Turin",
+      "capacity": 41507,
+      "options": [
+        "AC Milan",
+        "Inter Milan",
+        "AS Roma"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/2021%E2%80%9322_UEFA_Women%27s_Champions_League_Final_in_Turin%2C_Italy_1.jpg/500px-2021%E2%80%9322_UEFA_Women%27s_Champions_League_Final_in_Turin%2C_Italy_1.jpg"
+    },
+    {
+      "name": "Stamford Bridge",
+      "wiki": "Stamford Bridge (stadium)",
+      "team": "Chelsea",
+      "city": "London",
+      "capacity": 40341,
+      "options": [
+        "Arsenal",
+        "Tottenham Hotspur",
+        "Brentford"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8f/London_Stamford_Bridge.jpg/500px-London_Stamford_Bridge.jpg"
+    },
+    {
+      "name": "Red Bull Arena",
+      "wiki": "Red Bull Arena (Leipzig)",
+      "team": "RB Leipzig",
+      "city": "Leipzig",
+      "capacity": 47069,
+      "options": [
+        "Bayern Munich",
+        "Bayer Leverkusen",
+        "Borussia Dortmund"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Leipzig_stadium.jpg/500px-Leipzig_stadium.jpg"
+    },
+    {
+      "name": "Estádio da Luz",
+      "wiki": "Estádio da Luz",
+      "team": "Benfica",
+      "city": "Lisbon",
+      "capacity": 64642,
+      "options": [
+        "Sporting CP",
+        "FC Porto",
+        "SC Braga"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Estadio_da_Luz_2012.jpg/500px-Estadio_da_Luz_2012.jpg"
+    },
+    {
+      "name": "BayArena",
+      "wiki": "BayArena",
+      "team": "Bayer Leverkusen",
+      "city": "Leverkusen",
+      "capacity": 30210,
+      "options": [
+        "Bayern Munich",
+        "FC Cologne",
+        "Borussia Dortmund"
+      ],
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/Bayarena_Leverkusen_2020.jpg/500px-Bayarena_Leverkusen_2020.jpg"
+    }
   ],
-
   "salaries": [
-    { "player": "Cristiano Ronaldo",  "wiki": "Cristiano Ronaldo",        "flagCode": "pt",     "team": "Al Nassr",          "annual_m": 200, "flag": "🇵🇹" },
-    { "player": "Neymar Jr.",         "wiki": "Neymar",                   "flagCode": "br",     "team": "Al Hilal",          "annual_m": 100, "flag": "🇧🇷" },
-    { "player": "Karim Benzema",      "wiki": "Karim Benzema",            "flagCode": "fr",     "team": "Al Ittihad",        "annual_m": 100, "flag": "🇫🇷" },
-    { "player": "Sadio Mané",         "wiki": "Sadio Mané",               "flagCode": "sn",     "team": "Al Nassr",          "annual_m": 40,  "flag": "🇸🇳" },
-    { "player": "Robert Lewandowski", "wiki": "Robert Lewandowski",       "flagCode": "pl",     "team": "FC Barcelona",      "annual_m": 32,  "flag": "🇵🇱" },
-    { "player": "Kylian Mbappé",      "wiki": "Kylian Mbappé",            "flagCode": "fr",     "team": "Real Madrid",       "annual_m": 72,  "flag": "🇫🇷" },
-    { "player": "Lionel Messi",       "wiki": "Lionel Messi",             "flagCode": "ar",     "team": "Inter Miami",       "annual_m": 60,  "flag": "🇦🇷" },
-    { "player": "Erling Haaland",     "wiki": "Erling Haaland",           "flagCode": "no",     "team": "Manchester City",   "annual_m": 35,  "flag": "🇳🇴" },
-    { "player": "Marcus Rashford",    "wiki": "Marcus Rashford",          "flagCode": "gb-eng", "team": "Manchester United", "annual_m": 20,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Antoine Griezmann", "wiki": "Antoine Griezmann",        "flagCode": "fr",     "team": "Atlético Madrid",   "annual_m": 20,  "flag": "🇫🇷" },
-    { "player": "Mohamed Salah",      "wiki": "Mohamed Salah",            "flagCode": "eg",     "team": "Liverpool",         "annual_m": 22,  "flag": "🇪🇬" },
-    { "player": "Harry Kane",         "wiki": "Harry Kane",               "flagCode": "gb-eng", "team": "Bayern Munich",     "annual_m": 25,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Bukayo Saka",        "wiki": "Bukayo Saka",              "flagCode": "gb-eng", "team": "Arsenal",           "annual_m": 15,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Phil Foden",         "wiki": "Phil Foden",               "flagCode": "gb-eng", "team": "Manchester City",   "annual_m": 14,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Kevin De Bruyne",    "wiki": "Kevin De Bruyne",          "flagCode": "be",     "team": "Manchester City",   "annual_m": 21,  "flag": "🇧🇪" },
-    { "player": "Thibaut Courtois",   "wiki": "Thibaut Courtois",         "flagCode": "be",     "team": "Real Madrid",       "annual_m": 13,  "flag": "🇧🇪" },
-    { "player": "Jude Bellingham",    "wiki": "Jude Bellingham",          "flagCode": "gb-eng", "team": "Real Madrid",       "annual_m": 15,  "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿" },
-    { "player": "Vinícius Jr.",       "wiki": "Vinícius Júnior",          "flagCode": "br",     "team": "Real Madrid",       "annual_m": 12,  "flag": "🇧🇷" },
-    { "player": "Rodri",              "wiki": "Rodri (footballer)",       "flagCode": "es",     "team": "Manchester City",   "annual_m": 18,  "flag": "🇪🇸" },
-    { "player": "Pedri",              "wiki": "Pedri",                    "flagCode": "es",     "team": "FC Barcelona",      "annual_m": 12,  "flag": "🇪🇸" },
-    { "player": "Bernardo Silva",     "wiki": "Bernardo Silva",           "flagCode": "pt",     "team": "Manchester City",   "annual_m": 12,  "flag": "🇵🇹" },
-    { "player": "Bruno Fernandes",    "wiki": "Bruno Fernandes (footballer born 1994)", "flagCode": "pt", "team": "Manchester United", "annual_m": 11, "flag": "🇵🇹" },
-    { "player": "Jamal Musiala",      "wiki": "Jamal Musiala",            "flagCode": "de",     "team": "Bayern Munich",     "annual_m": 13,  "flag": "🇩🇪" },
-    { "player": "Florian Wirtz",      "wiki": "Florian Wirtz",            "flagCode": "de",     "team": "Bayer Leverkusen",  "annual_m": 8,   "flag": "🇩🇪" },
-    { "player": "Son Heung-min",      "wiki": "Son Heung-min",            "flagCode": "kr",     "team": "Tottenham Hotspur", "annual_m": 13,  "flag": "🇰🇷" },
-    { "player": "Federico Valverde",  "wiki": "Federico Valverde",        "flagCode": "uy",     "team": "Real Madrid",       "annual_m": 10,  "flag": "🇺🇾" },
-    { "player": "Rafael Leão",        "wiki": "Rafael Leão",              "flagCode": "pt",     "team": "AC Milan",          "annual_m": 7,   "flag": "🇵🇹" },
-    { "player": "Lamine Yamal",       "wiki": "Lamine Yamal",             "flagCode": "es",     "team": "FC Barcelona",      "annual_m": 10,  "flag": "🇪🇸" }
+    {
+      "player": "Cristiano Ronaldo",
+      "wiki": "Cristiano Ronaldo",
+      "flagCode": "pt",
+      "team": "Al Nassr",
+      "annual_m": 200,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cristiano_Ronaldo_2275_%28cropped%29.jpg/500px-Cristiano_Ronaldo_2275_%28cropped%29.jpg"
+    },
+    {
+      "player": "Neymar Jr.",
+      "wiki": "Neymar",
+      "flagCode": "br",
+      "team": "Al Hilal",
+      "annual_m": 100,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+    },
+    {
+      "player": "Karim Benzema",
+      "wiki": "Karim Benzema",
+      "flagCode": "fr",
+      "team": "Al Ittihad",
+      "annual_m": 100,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Karim_Benzema_Pick.jpg/500px-Karim_Benzema_Pick.jpg"
+    },
+    {
+      "player": "Sadio Mané",
+      "wiki": "Sadio Mané",
+      "flagCode": "sn",
+      "team": "Al Nassr",
+      "annual_m": 40,
+      "flag": "🇸🇳",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Esteghlal_F.C._v_Al_Nassr_FC%2C_3_March_2025%2C_Sadio_Man%C3%A9.jpg/500px-Esteghlal_F.C._v_Al_Nassr_FC%2C_3_March_2025%2C_Sadio_Man%C3%A9.jpg"
+    },
+    {
+      "player": "Robert Lewandowski",
+      "wiki": "Robert Lewandowski",
+      "flagCode": "pl",
+      "team": "FC Barcelona",
+      "annual_m": 32,
+      "flag": "🇵🇱",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg/500px-2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg"
+    },
+    {
+      "player": "Kylian Mbappé",
+      "wiki": "Kylian Mbappé",
+      "flagCode": "fr",
+      "team": "Real Madrid",
+      "annual_m": 72,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg/500px-Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg"
+    },
+    {
+      "player": "Lionel Messi",
+      "wiki": "Lionel Messi",
+      "flagCode": "ar",
+      "team": "Inter Miami",
+      "annual_m": 60,
+      "flag": "🇦🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg/500px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg"
+    },
+    {
+      "player": "Erling Haaland",
+      "wiki": "Erling Haaland",
+      "flagCode": "no",
+      "team": "Manchester City",
+      "annual_m": 35,
+      "flag": "🇳🇴",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Erling_Haaland_June_2025.jpg/500px-Erling_Haaland_June_2025.jpg"
+    },
+    {
+      "player": "Marcus Rashford",
+      "wiki": "Marcus Rashford",
+      "flagCode": "gb-eng",
+      "team": "Manchester United",
+      "annual_m": 20,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Marcus_Rashford_in_2023.jpg/500px-Marcus_Rashford_in_2023.jpg"
+    },
+    {
+      "player": "Antoine Griezmann",
+      "wiki": "Antoine Griezmann",
+      "flagCode": "fr",
+      "team": "Atlético Madrid",
+      "annual_m": 20,
+      "flag": "🇫🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/FRA-ARG_%2810%29_%28cropped%29.jpg/500px-FRA-ARG_%2810%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Mohamed Salah",
+      "wiki": "Mohamed Salah",
+      "flagCode": "eg",
+      "team": "Liverpool",
+      "annual_m": 22,
+      "flag": "🇪🇬",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mohamed_Salah_2018.jpg/500px-Mohamed_Salah_2018.jpg"
+    },
+    {
+      "player": "Harry Kane",
+      "wiki": "Harry Kane",
+      "flagCode": "gb-eng",
+      "team": "Bayern Munich",
+      "annual_m": 25,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Harry_Kane_on_October_10%2C_2023.jpg/500px-Harry_Kane_on_October_10%2C_2023.jpg"
+    },
+    {
+      "player": "Bukayo Saka",
+      "wiki": "Bukayo Saka",
+      "flagCode": "gb-eng",
+      "team": "Arsenal",
+      "annual_m": 15,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/1_bukayo_saka_arsenal_2025_%28cropped%29.jpg/500px-1_bukayo_saka_arsenal_2025_%28cropped%29.jpg"
+    },
+    {
+      "player": "Phil Foden",
+      "wiki": "Phil Foden",
+      "flagCode": "gb-eng",
+      "team": "Manchester City",
+      "annual_m": 14,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/2023-10-04_Fu%C3%9Fball%2C_M%C3%A4nner%2C_UEFA_Champions_League%2C_RB_Leipzig_-_Manchester_City_FC_1DX_2613%2C_Phil_Foden.jpg/500px-2023-10-04_Fu%C3%9Fball%2C_M%C3%A4nner%2C_UEFA_Champions_League%2C_RB_Leipzig_-_Manchester_City_FC_1DX_2613%2C_Phil_Foden.jpg"
+    },
+    {
+      "player": "Kevin De Bruyne",
+      "wiki": "Kevin De Bruyne",
+      "flagCode": "be",
+      "team": "Manchester City",
+      "annual_m": 21,
+      "flag": "🇧🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Kevin_De_Bruyne-December_2021.png/500px-Kevin_De_Bruyne-December_2021.png"
+    },
+    {
+      "player": "Thibaut Courtois",
+      "wiki": "Thibaut Courtois",
+      "flagCode": "be",
+      "team": "Real Madrid",
+      "annual_m": 13,
+      "flag": "🇧🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Courtois_2018_%28cropped%29.jpg/330px-Courtois_2018_%28cropped%29.jpg"
+    },
+    {
+      "player": "Jude Bellingham",
+      "wiki": "Jude Bellingham",
+      "flagCode": "gb-eng",
+      "team": "Real Madrid",
+      "annual_m": 15,
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190551-2_%28cropped%29.jpg/500px-25th_Laureus_World_Sports_Awards_-_Red_Carpet_-_Jude_Bellingham_-_240422_190551-2_%28cropped%29.jpg"
+    },
+    {
+      "player": "Vinícius Jr.",
+      "wiki": "Vinícius Júnior",
+      "flagCode": "br",
+      "team": "Real Madrid",
+      "annual_m": 12,
+      "flag": "🇧🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/2023_05_06_Final_de_la_Copa_del_Rey_-_52879242230_%28cropped%29.jpg/500px-2023_05_06_Final_de_la_Copa_del_Rey_-_52879242230_%28cropped%29.jpg"
+    },
+    {
+      "player": "Rodri",
+      "wiki": "Rodri (footballer, born 1996)",
+      "flagCode": "es",
+      "team": "Manchester City",
+      "annual_m": 18,
+      "flag": "🇪🇸",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/RODRI_-_SWE_vs_ESP_-_UEFA_EURO_2020_QUALIFIERS_-_2019.10.15_%28cropped%29.jpg/500px-RODRI_-_SWE_vs_ESP_-_UEFA_EURO_2020_QUALIFIERS_-_2019.10.15_%28cropped%29.jpg"
+    },
+    {
+      "player": "Pedri",
+      "wiki": "Pedri",
+      "flagCode": "es",
+      "team": "FC Barcelona",
+      "annual_m": 12,
+      "flag": "🇪🇸",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Pedri.jpg/500px-Pedri.jpg"
+    },
+    {
+      "player": "Bernardo Silva",
+      "wiki": "Bernardo Silva",
+      "flagCode": "pt",
+      "team": "Manchester City",
+      "annual_m": 12,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Bernardo_Silva_%28Isto_%C3%89_Gozar_Com_Quem_Trabalha%2C_2024%29.png/500px-Bernardo_Silva_%28Isto_%C3%89_Gozar_Com_Quem_Trabalha%2C_2024%29.png"
+    },
+    {
+      "player": "Bruno Fernandes",
+      "wiki": "Bruno Fernandes (footballer born 1994)",
+      "flagCode": "pt",
+      "team": "Manchester United",
+      "annual_m": 11,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Bruno_Fernandes_Portugal%2C_2018.jpg/500px-Bruno_Fernandes_Portugal%2C_2018.jpg"
+    },
+    {
+      "player": "Jamal Musiala",
+      "wiki": "Jamal Musiala",
+      "flagCode": "de",
+      "team": "Bayern Munich",
+      "annual_m": 13,
+      "flag": "🇩🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Jamal_Musiala_2022_%28cropped%29.jpg/330px-Jamal_Musiala_2022_%28cropped%29.jpg"
+    },
+    {
+      "player": "Florian Wirtz",
+      "wiki": "Florian Wirtz",
+      "flagCode": "de",
+      "team": "Bayer Leverkusen",
+      "annual_m": 8,
+      "flag": "🇩🇪",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Florian_Wirtz_04012026_%283%29_%28extracted%29.jpg/500px-Florian_Wirtz_04012026_%283%29_%28extracted%29.jpg"
+    },
+    {
+      "player": "Son Heung-min",
+      "wiki": "Son Heung-min",
+      "flagCode": "kr",
+      "team": "Tottenham Hotspur",
+      "annual_m": 13,
+      "flag": "🇰🇷",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/BFA_2023_-2_Heung-Min_Son_%28cropped%29.jpg/500px-BFA_2023_-2_Heung-Min_Son_%28cropped%29.jpg"
+    },
+    {
+      "player": "Federico Valverde",
+      "wiki": "Federico Valverde",
+      "flagCode": "uy",
+      "team": "Real Madrid",
+      "annual_m": 10,
+      "flag": "🇺🇾",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Federico_Valverde_2021_%28cropped%29.jpg/500px-Federico_Valverde_2021_%28cropped%29.jpg"
+    },
+    {
+      "player": "Rafael Leão",
+      "wiki": "Rafael Leão",
+      "flagCode": "pt",
+      "team": "AC Milan",
+      "annual_m": 7,
+      "flag": "🇵🇹",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/RafaelLe%C3%A3oPortugal23.jpg/330px-RafaelLe%C3%A3oPortugal23.jpg"
+    },
+    {
+      "player": "Lamine Yamal",
+      "wiki": "Lamine Yamal",
+      "flagCode": "es",
+      "team": "FC Barcelona",
+      "annual_m": 10,
+      "flag": "🇪🇸",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Lamine_Yamal_in_2025.jpg/500px-Lamine_Yamal_in_2025.jpg"
+    }
   ],
-
   "trivia": [
-    { "question": "Who won the 2022 FIFA World Cup?",                                        "options": ["France", "Croatia", "Argentina", "Morocco"],                               "correct": 2, "flagOptions": true },
-    { "question": "Who won the 2018 FIFA World Cup?",                                        "options": ["Croatia", "France", "Belgium", "England"],                                "correct": 1, "flagOptions": true },
-    { "question": "Who won the 2014 FIFA World Cup?",                                        "options": ["Argentina", "Brazil", "Netherlands", "Germany"],                          "correct": 3, "flagOptions": true },
-    { "question": "Who won the 2010 FIFA World Cup?",                                        "options": ["Brazil", "Netherlands", "Spain", "Germany"],                              "correct": 2, "flagOptions": true },
-    { "question": "Who won the 2006 FIFA World Cup?",                                        "options": ["Germany", "France", "Italy", "Portugal"],                                 "correct": 2, "flagOptions": true },
-    { "question": "Who won the 2002 FIFA World Cup?",                                        "options": ["Germany", "Brazil", "Senegal", "Turkey"],                                 "correct": 1, "flagOptions": true },
-    { "question": "Which nation hosted the 2018 FIFA World Cup?",                            "options": ["Qatar", "Russia", "UAE", "Brazil"],                                       "correct": 1 },
-    { "question": "Which nation has won the most FIFA World Cups?",                          "options": ["Germany", "Argentina", "Italy", "Brazil"],                                "correct": 3, "flagOptions": true },
-    { "question": "How many times has Brazil won the FIFA World Cup?",                       "options": ["4", "5", "6", "3"],                                                       "correct": 1 },
-    { "question": "How many times has Germany won the FIFA World Cup?",                      "options": ["3", "4", "5", "6"],                                                       "correct": 1 },
-    { "question": "Which nation won the first FIFA World Cup in 1930?",                      "options": ["Brazil", "Argentina", "Uruguay", "Italy"],                                "correct": 2, "flagOptions": true },
-    { "question": "Who won the 2024 Copa América?",                                          "options": ["Argentina", "Colombia", "Uruguay", "Brazil"],                             "correct": 0, "flagOptions": true },
-    { "question": "Which country won UEFA Euro 2020 (played in 2021)?",                     "options": ["England", "Spain", "Denmark", "Italy"],                                   "correct": 3, "flagOptions": true },
-    { "question": "Who won UEFA Euro 2016?",                                                 "options": ["France", "Germany", "Wales", "Portugal"],                                 "correct": 3, "flagOptions": true },
-    { "question": "Who won UEFA Euro 2024?",                                                 "options": ["England", "France", "Germany", "Spain"],                                  "correct": 3, "flagOptions": true },
-    { "question": "Who won UEFA Euro 2012?",                                                 "options": ["Germany", "Portugal", "Spain", "France"],                                 "correct": 2, "flagOptions": true },
-    { "question": "Who won UEFA Euro 2008?",                                                 "options": ["Portugal", "Germany", "Russia", "Spain"],                                 "correct": 3, "flagOptions": true },
-    { "question": "Which club has won the most UEFA Champions League titles?",               "options": ["FC Barcelona", "Bayern Munich", "AC Milan", "Real Madrid"],               "correct": 3 },
-    { "question": "Which club won the 2023 UEFA Champions League?",                         "options": ["Real Madrid", "Inter Milan", "Arsenal", "Manchester City"],               "correct": 3 },
-    { "question": "Which club won the 2021-22 UEFA Champions League?",                      "options": ["Chelsea", "Liverpool", "Real Madrid", "Manchester City"],                 "correct": 2 },
-    { "question": "Which club won the 2018–19 UEFA Champions League?",                      "options": ["Ajax", "Tottenham Hotspur", "Liverpool", "Manchester City"],              "correct": 2 },
-    { "question": "Which club has won the most Premier League titles?",                     "options": ["Arsenal", "Liverpool", "Chelsea", "Manchester United"],                   "correct": 3 },
-    { "question": "Who won the Premier League in the 2022-23 season?",                     "options": ["Arsenal", "Liverpool", "Chelsea", "Manchester City"],                     "correct": 3 },
-    { "question": "Which club has won the most FA Cup titles?",                             "options": ["Arsenal", "Manchester United", "Chelsea", "Liverpool"],                   "correct": 0 },
-    { "question": "In which year was the Premier League founded?",                          "options": ["1985", "1988", "1990", "1992"],                                            "correct": 3 },
-    { "question": "Which club has won the most Serie A titles?",                            "options": ["AC Milan", "Juventus", "Inter Milan", "AS Roma"],                         "correct": 1 },
-    { "question": "Which club has won the most Ligue 1 titles?",                            "options": ["Marseille", "AS Saint-Étienne", "Olympique Lyonnais", "PSG"],            "correct": 3 },
-    { "question": "Who holds the record for most Ballon d'Or awards?",                     "options": ["Cristiano Ronaldo", "Michel Platini", "Lionel Messi", "Ronaldo Nazário"], "correct": 2 },
-    { "question": "Who won the Ballon d'Or in 2023?",                                       "options": ["Erling Haaland", "Kylian Mbappé", "Lionel Messi", "Jude Bellingham"],     "correct": 2 },
-    { "question": "In which year did Cristiano Ronaldo first win the Ballon d'Or?",        "options": ["2006", "2008", "2010", "2012"],                                            "correct": 1 },
-    { "question": "Who is the all-time top scorer in UCL history?",                         "options": ["Lionel Messi", "Raúl González", "Karim Benzema", "Cristiano Ronaldo"],    "correct": 3 },
-    { "question": "Who is the all-time top scorer in Real Madrid history?",                "options": ["Raúl González", "Karim Benzema", "Cristiano Ronaldo", "Hugo Sánchez"],     "correct": 2 },
-    { "question": "Who is the all-time top scorer in FIFA World Cup history?",             "options": ["Pelé", "Miroslav Klose", "Gerd Müller", "Ronaldo Nazário"],                "correct": 1 },
-    { "question": "Who holds the record for most goals in a single Premier League season?", "options": ["Alan Shearer", "Erling Haaland", "Andy Cole", "Robin van Persie"],        "correct": 1 },
-    { "question": "Who scored the most goals in the 2022-23 UEFA Champions League?",       "options": ["Erling Haaland", "Karim Benzema", "Vinícius Jr.", "Lionel Messi"],         "correct": 0 },
-    { "question": "Who scored the fastest hat-trick in Premier League history?",           "options": ["Robbie Fowler", "Sadio Mané", "Shane Long", "Alan Shearer"],               "correct": 1 },
-    { "question": "Which player has made the most Premier League appearances?",            "options": ["Gareth Barry", "Ryan Giggs", "Frank Lampard", "James Milner"],             "correct": 0 },
-    { "question": "Which player won the FIFA World Cup Golden Boot in 2022?",              "options": ["Lionel Messi", "Kylian Mbappé", "Olivier Giroud", "Lautaro Martínez"],    "correct": 1 },
-    { "question": "Who won the Golden Boot at the 2014 FIFA World Cup?",                   "options": ["Lionel Messi", "Thomas Müller", "Neymar", "James Rodríguez"],              "correct": 3 },
-    { "question": "Who scored a hat-trick in the 2022 World Cup final?",                   "options": ["Lionel Messi", "Kylian Mbappé", "Olivier Giroud", "Lautaro Martínez"],    "correct": 1 },
-    { "question": "Who scored the winning goal in the 2014 World Cup final?",              "options": ["Thomas Müller", "Mario Götze", "Toni Kroos", "Miroslav Klose"],            "correct": 1 },
-    { "question": "Who scored the 'Hand of God' goal in 1986?",                            "options": ["Pelé", "Ronaldo Nazário", "Diego Maradona", "Zinedine Zidane"],            "correct": 2 },
-    { "question": "In which year did France win their first FIFA World Cup?",              "options": ["1994", "2002", "1998", "2006"],                                            "correct": 2 },
-    { "question": "Which club did Ronaldo leave to join Juventus in 2018?",                "options": ["Manchester United", "FC Barcelona", "Real Madrid", "PSG"],                 "correct": 2 },
-    { "question": "What was Lionel Messi's boyhood club in Argentina?",                    "options": ["River Plate", "Newell's Old Boys", "Boca Juniors", "San Lorenzo"],        "correct": 1 },
-    { "question": "Which club did Zinedine Zidane lead to three straight UCL titles?",    "options": ["Juventus", "France national team", "Real Madrid", "Al-Ittihad"],          "correct": 2 },
-    { "question": "Which goalkeeper holds the record for most Premier League clean sheets?","options": ["David de Gea", "Petr Čech", "Edwin van der Sar", "Joe Hart"],            "correct": 1 },
-    { "question": "How many substitutions can a team make in a football match?",           "options": ["3", "4", "5", "6"],                                                       "correct": 2 },
-    { "question": "How many players are on a football pitch per team?",                    "options": ["10", "11", "12", "9"],                                                    "correct": 1 },
-    { "question": "In which city is the Maracanã stadium located?",                        "options": ["São Paulo", "Buenos Aires", "Montevideo", "Rio de Janeiro"],               "correct": 3 },
-    { "question": "In which year did Pelé win his first FIFA World Cup?",                  "options": ["1954", "1958", "1962", "1966"],                                            "correct": 1 },
-    { "question": "Who is the all-time top scorer in Premier League history?",              "options": ["Wayne Rooney", "Andrew Cole", "Frank Lampard", "Alan Shearer"],            "correct": 3 },
-    { "question": "How many times has Lionel Messi won the Ballon d'Or?",                  "options": ["6", "7", "5", "8"],                                                        "correct": 3 },
-    { "question": "Who scored the winning penalty in the 2006 World Cup final?",           "options": ["Fabio Grosso", "Francesco Totti", "Andrea Pirlo", "Alessandro Del Piero"], "correct": 0 },
-    { "question": "Which nation hosted the 2022 FIFA World Cup?",                          "options": ["UAE", "Saudi Arabia", "Qatar", "Bahrain"],                                 "correct": 2 },
-    { "question": "Who was the first goalkeeper to win the Ballon d'Or?",                  "options": ["Gianluigi Buffon", "Oliver Kahn", "Lev Yashin", "Dino Zoff"],             "correct": 2 },
-    { "question": "Just Fontaine scored how many goals in the 1958 World Cup (all-time record)?", "options": ["11", "9", "13", "15"],                                              "correct": 2 },
-    { "question": "David Trezeguet scored the golden goal in Euro 2000 against which team?", "options": ["Portugal", "Spain", "England", "Italy"],                                "correct": 3 },
-    { "question": "Which club did Thierry Henry join after leaving Arsenal in 2007?",      "options": ["PSG", "Chelsea", "FC Barcelona", "Juventus"],                              "correct": 2 },
-    { "question": "What squad number does Neymar traditionally wear?",                     "options": ["7", "9", "10", "11"],                                                      "correct": 3 },
-    { "question": "In which city is Camp Nou stadium located?",                            "options": ["Madrid", "Valencia", "Seville", "Barcelona"],                              "correct": 3 },
-    { "question": "Who captained Spain to their 2010 World Cup victory?",                  "options": ["Xavi", "Andrés Iniesta", "Iker Casillas", "David Villa"],                  "correct": 2 },
-    { "question": "Which Premier League club plays at Anfield?",                           "options": ["Everton", "Manchester City", "Arsenal", "Liverpool"],                      "correct": 3 }
+    {
+      "question": "Who won the 2022 FIFA World Cup?",
+      "options": [
+        "France",
+        "Croatia",
+        "Argentina",
+        "Morocco"
+      ],
+      "correct": 2,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2018 FIFA World Cup?",
+      "options": [
+        "Croatia",
+        "France",
+        "Belgium",
+        "England"
+      ],
+      "correct": 1,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2014 FIFA World Cup?",
+      "options": [
+        "Argentina",
+        "Brazil",
+        "Netherlands",
+        "Germany"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2010 FIFA World Cup?",
+      "options": [
+        "Brazil",
+        "Netherlands",
+        "Spain",
+        "Germany"
+      ],
+      "correct": 2,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2006 FIFA World Cup?",
+      "options": [
+        "Germany",
+        "France",
+        "Italy",
+        "Portugal"
+      ],
+      "correct": 2,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2002 FIFA World Cup?",
+      "options": [
+        "Germany",
+        "Brazil",
+        "Senegal",
+        "Turkey"
+      ],
+      "correct": 1,
+      "flagOptions": true
+    },
+    {
+      "question": "Which nation hosted the 2018 FIFA World Cup?",
+      "options": [
+        "Qatar",
+        "Russia",
+        "UAE",
+        "Brazil"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which nation has won the most FIFA World Cups?",
+      "options": [
+        "Germany",
+        "Argentina",
+        "Italy",
+        "Brazil"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "How many times has Brazil won the FIFA World Cup?",
+      "options": [
+        "4",
+        "5",
+        "6",
+        "3"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How many times has Germany won the FIFA World Cup?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which nation won the first FIFA World Cup in 1930?",
+      "options": [
+        "Brazil",
+        "Argentina",
+        "Uruguay",
+        "Italy"
+      ],
+      "correct": 2,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won the 2024 Copa América?",
+      "options": [
+        "Argentina",
+        "Colombia",
+        "Uruguay",
+        "Brazil"
+      ],
+      "correct": 0,
+      "flagOptions": true
+    },
+    {
+      "question": "Which country won UEFA Euro 2020 (played in 2021)?",
+      "options": [
+        "England",
+        "Spain",
+        "Denmark",
+        "Italy"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won UEFA Euro 2016?",
+      "options": [
+        "France",
+        "Germany",
+        "Wales",
+        "Portugal"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won UEFA Euro 2024?",
+      "options": [
+        "England",
+        "France",
+        "Germany",
+        "Spain"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won UEFA Euro 2012?",
+      "options": [
+        "Germany",
+        "Portugal",
+        "Spain",
+        "France"
+      ],
+      "correct": 2,
+      "flagOptions": true
+    },
+    {
+      "question": "Who won UEFA Euro 2008?",
+      "options": [
+        "Portugal",
+        "Germany",
+        "Russia",
+        "Spain"
+      ],
+      "correct": 3,
+      "flagOptions": true
+    },
+    {
+      "question": "Which club has won the most UEFA Champions League titles?",
+      "options": [
+        "FC Barcelona",
+        "Bayern Munich",
+        "AC Milan",
+        "Real Madrid"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which club won the 2023 UEFA Champions League?",
+      "options": [
+        "Real Madrid",
+        "Inter Milan",
+        "Arsenal",
+        "Manchester City"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which club won the 2021-22 UEFA Champions League?",
+      "options": [
+        "Chelsea",
+        "Liverpool",
+        "Real Madrid",
+        "Manchester City"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which club won the 2018–19 UEFA Champions League?",
+      "options": [
+        "Ajax",
+        "Tottenham Hotspur",
+        "Liverpool",
+        "Manchester City"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which club has won the most Premier League titles?",
+      "options": [
+        "Arsenal",
+        "Liverpool",
+        "Chelsea",
+        "Manchester United"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who won the Premier League in the 2022-23 season?",
+      "options": [
+        "Arsenal",
+        "Liverpool",
+        "Chelsea",
+        "Manchester City"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which club has won the most FA Cup titles?",
+      "options": [
+        "Arsenal",
+        "Manchester United",
+        "Chelsea",
+        "Liverpool"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "In which year was the Premier League founded?",
+      "options": [
+        "1985",
+        "1988",
+        "1990",
+        "1992"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which club has won the most Serie A titles?",
+      "options": [
+        "AC Milan",
+        "Juventus",
+        "Inter Milan",
+        "AS Roma"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which club has won the most Ligue 1 titles?",
+      "options": [
+        "Marseille",
+        "AS Saint-Étienne",
+        "Olympique Lyonnais",
+        "PSG"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who holds the record for most Ballon d'Or awards?",
+      "options": [
+        "Cristiano Ronaldo",
+        "Michel Platini",
+        "Lionel Messi",
+        "Ronaldo Nazário"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Who won the Ballon d'Or in 2023?",
+      "options": [
+        "Erling Haaland",
+        "Kylian Mbappé",
+        "Lionel Messi",
+        "Jude Bellingham"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "In which year did Cristiano Ronaldo first win the Ballon d'Or?",
+      "options": [
+        "2006",
+        "2008",
+        "2010",
+        "2012"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who is the all-time top scorer in UCL history?",
+      "options": [
+        "Lionel Messi",
+        "Raúl González",
+        "Karim Benzema",
+        "Cristiano Ronaldo"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who is the all-time top scorer in Real Madrid history?",
+      "options": [
+        "Raúl González",
+        "Karim Benzema",
+        "Cristiano Ronaldo",
+        "Hugo Sánchez"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Who is the all-time top scorer in FIFA World Cup history?",
+      "options": [
+        "Pelé",
+        "Miroslav Klose",
+        "Gerd Müller",
+        "Ronaldo Nazário"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who holds the record for most goals in a single Premier League season?",
+      "options": [
+        "Alan Shearer",
+        "Erling Haaland",
+        "Andy Cole",
+        "Robin van Persie"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who scored the most goals in the 2022-23 UEFA Champions League?",
+      "options": [
+        "Erling Haaland",
+        "Karim Benzema",
+        "Vinícius Jr.",
+        "Lionel Messi"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Who scored the fastest hat-trick in Premier League history?",
+      "options": [
+        "Robbie Fowler",
+        "Sadio Mané",
+        "Shane Long",
+        "Alan Shearer"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which player has made the most Premier League appearances?",
+      "options": [
+        "Gareth Barry",
+        "Ryan Giggs",
+        "Frank Lampard",
+        "James Milner"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which player won the FIFA World Cup Golden Boot in 2022?",
+      "options": [
+        "Lionel Messi",
+        "Kylian Mbappé",
+        "Olivier Giroud",
+        "Lautaro Martínez"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who won the Golden Boot at the 2014 FIFA World Cup?",
+      "options": [
+        "Lionel Messi",
+        "Thomas Müller",
+        "Neymar",
+        "James Rodríguez"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who scored a hat-trick in the 2022 World Cup final?",
+      "options": [
+        "Lionel Messi",
+        "Kylian Mbappé",
+        "Olivier Giroud",
+        "Lautaro Martínez"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who scored the winning goal in the 2014 World Cup final?",
+      "options": [
+        "Thomas Müller",
+        "Mario Götze",
+        "Toni Kroos",
+        "Miroslav Klose"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who scored the 'Hand of God' goal in 1986?",
+      "options": [
+        "Pelé",
+        "Ronaldo Nazário",
+        "Diego Maradona",
+        "Zinedine Zidane"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "In which year did France win their first FIFA World Cup?",
+      "options": [
+        "1994",
+        "2002",
+        "1998",
+        "2006"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which club did Ronaldo leave to join Juventus in 2018?",
+      "options": [
+        "Manchester United",
+        "FC Barcelona",
+        "Real Madrid",
+        "PSG"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What was Lionel Messi's boyhood club in Argentina?",
+      "options": [
+        "River Plate",
+        "Newell's Old Boys",
+        "Boca Juniors",
+        "San Lorenzo"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Which club did Zinedine Zidane lead to three straight UCL titles?",
+      "options": [
+        "Juventus",
+        "France national team",
+        "Real Madrid",
+        "Al-Ittihad"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which goalkeeper holds the record for most Premier League clean sheets?",
+      "options": [
+        "David de Gea",
+        "Petr Čech",
+        "Edwin van der Sar",
+        "Joe Hart"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "How many substitutions can a team make in a football match?",
+      "options": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "How many players are on a football pitch per team?",
+      "options": [
+        "10",
+        "11",
+        "12",
+        "9"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "In which city is the Maracanã stadium located?",
+      "options": [
+        "São Paulo",
+        "Buenos Aires",
+        "Montevideo",
+        "Rio de Janeiro"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "In which year did Pelé win his first FIFA World Cup?",
+      "options": [
+        "1954",
+        "1958",
+        "1962",
+        "1966"
+      ],
+      "correct": 1
+    },
+    {
+      "question": "Who is the all-time top scorer in Premier League history?",
+      "options": [
+        "Wayne Rooney",
+        "Andrew Cole",
+        "Frank Lampard",
+        "Alan Shearer"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "How many times has Lionel Messi won the Ballon d'Or?",
+      "options": [
+        "6",
+        "7",
+        "5",
+        "8"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who scored the winning penalty in the 2006 World Cup final?",
+      "options": [
+        "Fabio Grosso",
+        "Francesco Totti",
+        "Andrea Pirlo",
+        "Alessandro Del Piero"
+      ],
+      "correct": 0
+    },
+    {
+      "question": "Which nation hosted the 2022 FIFA World Cup?",
+      "options": [
+        "UAE",
+        "Saudi Arabia",
+        "Qatar",
+        "Bahrain"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Who was the first goalkeeper to win the Ballon d'Or?",
+      "options": [
+        "Gianluigi Buffon",
+        "Oliver Kahn",
+        "Lev Yashin",
+        "Dino Zoff"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Just Fontaine scored how many goals in the 1958 World Cup (all-time record)?",
+      "options": [
+        "11",
+        "9",
+        "13",
+        "15"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "David Trezeguet scored the golden goal in Euro 2000 against which team?",
+      "options": [
+        "Portugal",
+        "Spain",
+        "England",
+        "Italy"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Which club did Thierry Henry join after leaving Arsenal in 2007?",
+      "options": [
+        "PSG",
+        "Chelsea",
+        "FC Barcelona",
+        "Juventus"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "What squad number does Neymar traditionally wear?",
+      "options": [
+        "7",
+        "9",
+        "10",
+        "11"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "In which city is Camp Nou stadium located?",
+      "options": [
+        "Madrid",
+        "Valencia",
+        "Seville",
+        "Barcelona"
+      ],
+      "correct": 3
+    },
+    {
+      "question": "Who captained Spain to their 2010 World Cup victory?",
+      "options": [
+        "Xavi",
+        "Andrés Iniesta",
+        "Iker Casillas",
+        "David Villa"
+      ],
+      "correct": 2
+    },
+    {
+      "question": "Which Premier League club plays at Anfield?",
+      "options": [
+        "Everton",
+        "Manchester City",
+        "Arsenal",
+        "Liverpool"
+      ],
+      "correct": 3
+    }
   ],
-
   "peaks": [
-    { "player": "Lionel Messi",       "wiki": "Lionel Messi",          "flagCode": "ar",     "flag": "🇦🇷", "club": "FC Barcelona",     "season": 2011, "goals": 73 },
-    { "player": "Cristiano Ronaldo",  "wiki": "Cristiano Ronaldo",     "flagCode": "pt",     "flag": "🇵🇹", "club": "Real Madrid",       "season": 2014, "goals": 61 },
-    { "player": "Robert Lewandowski", "wiki": "Robert Lewandowski",    "flagCode": "pl",     "flag": "🇵🇱", "club": "Bayern Munich",     "season": 2020, "goals": 48 },
-    { "player": "Erling Haaland",     "wiki": "Erling Haaland",        "flagCode": "no",     "flag": "🇳🇴", "club": "Manchester City",   "season": 2022, "goals": 52 },
-    { "player": "Kylian Mbappé",      "wiki": "Kylian Mbappé",         "flagCode": "fr",     "flag": "🇫🇷", "club": "PSG",               "season": 2022, "goals": 41 },
-    { "player": "Mohamed Salah",      "wiki": "Mohamed Salah",         "flagCode": "eg",     "flag": "🇪🇬", "club": "Liverpool",         "season": 2017, "goals": 44 },
-    { "player": "Karim Benzema",      "wiki": "Karim Benzema",         "flagCode": "fr",     "flag": "🇫🇷", "club": "Real Madrid",       "season": 2021, "goals": 44 },
-    { "player": "Zlatan Ibrahimović", "wiki": "Zlatan Ibrahimović",    "flagCode": "se",     "flag": "🇸🇪", "club": "PSG",               "season": 2012, "goals": 38 },
-    { "player": "Neymar",             "wiki": "Neymar",                "flagCode": "br",     "flag": "🇧🇷", "club": "FC Barcelona",     "season": 2014, "goals": 39 },
-    { "player": "Luis Suárez",        "wiki": "Luis Suárez",           "flagCode": "uy",     "flag": "🇺🇾", "club": "FC Barcelona",     "season": 2015, "goals": 40 },
-    { "player": "Thierry Henry",      "wiki": "Thierry Henry",         "flagCode": "fr",     "flag": "🇫🇷", "club": "Arsenal",           "season": 2003, "goals": 39 },
-    { "player": "Wayne Rooney",       "wiki": "Wayne Rooney",          "flagCode": "gb-eng", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "club": "Manchester United", "season": 2011, "goals": 34 },
-    { "player": "Harry Kane",         "wiki": "Harry Kane",            "flagCode": "gb-eng", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "club": "Tottenham Hotspur", "season": 2016, "goals": 35 },
-    { "player": "Didier Drogba",      "wiki": "Didier Drogba",         "flagCode": "ci",     "flag": "🇨🇮", "club": "Chelsea",           "season": 2009, "goals": 37 },
-    { "player": "Sergio Agüero",      "wiki": "Sergio Agüero",         "flagCode": "ar",     "flag": "🇦🇷", "club": "Manchester City",   "season": 2014, "goals": 32 },
-    { "player": "Antoine Griezmann", "wiki": "Antoine Griezmann",     "flagCode": "fr",     "flag": "🇫🇷", "club": "Atlético Madrid",   "season": 2015, "goals": 32 },
-    { "player": "Radamel Falcao",    "wiki": "Radamel Falcao",        "flagCode": "co",     "flag": "🇨🇴", "club": "Atlético Madrid",   "season": 2011, "goals": 36 },
-    { "player": "Fernando Torres",   "wiki": "Fernando Torres",       "flagCode": "es",     "flag": "🇪🇸", "club": "Liverpool",         "season": 2007, "goals": 33 },
-    { "player": "Alan Shearer",      "wiki": "Alan Shearer",          "flagCode": "gb-eng", "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿", "club": "Blackburn Rovers",  "season": 1994, "goals": 34 },
-    { "player": "Gerd Müller",       "wiki": "Gerd Müller",           "flagCode": "de",     "flag": "🇩🇪", "club": "Bayern Munich",     "season": 1971, "goals": 40 },
-    { "player": "Ronaldo Nazário",   "wiki": "Ronaldo (Brazilian footballer)", "flagCode": "br", "flag": "🇧🇷", "club": "FC Barcelona",  "season": 1996, "goals": 47 }
+    {
+      "player": "Lionel Messi",
+      "wiki": "Lionel Messi",
+      "flagCode": "ar",
+      "flag": "🇦🇷",
+      "club": "FC Barcelona",
+      "season": 2011,
+      "goals": 73,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg/500px-Lionel_Messi_NE_Revolution_Inter_Miami_7.9.25-178.jpg"
+    },
+    {
+      "player": "Cristiano Ronaldo",
+      "wiki": "Cristiano Ronaldo",
+      "flagCode": "pt",
+      "flag": "🇵🇹",
+      "club": "Real Madrid",
+      "season": 2014,
+      "goals": 61,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Cristiano_Ronaldo_2275_%28cropped%29.jpg/500px-Cristiano_Ronaldo_2275_%28cropped%29.jpg"
+    },
+    {
+      "player": "Robert Lewandowski",
+      "wiki": "Robert Lewandowski",
+      "flagCode": "pl",
+      "flag": "🇵🇱",
+      "club": "Bayern Munich",
+      "season": 2020,
+      "goals": 48,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg/500px-2019147183134_2019-05-27_Fussball_1.FC_Kaiserslautern_vs_FC_Bayern_M%C3%BCnchen_-_Sven_-_1D_X_MK_II_-_0228_-_B70I8527_%28cropped%29.jpg"
+    },
+    {
+      "player": "Erling Haaland",
+      "wiki": "Erling Haaland",
+      "flagCode": "no",
+      "flag": "🇳🇴",
+      "club": "Manchester City",
+      "season": 2022,
+      "goals": 52,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Erling_Haaland_June_2025.jpg/500px-Erling_Haaland_June_2025.jpg"
+    },
+    {
+      "player": "Kylian Mbappé",
+      "wiki": "Kylian Mbappé",
+      "flagCode": "fr",
+      "flag": "🇫🇷",
+      "club": "PSG",
+      "season": 2022,
+      "goals": 41,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg/500px-Picture_with_Mbapp%C3%A9_%28cropped_and_rotated%29.jpg"
+    },
+    {
+      "player": "Mohamed Salah",
+      "wiki": "Mohamed Salah",
+      "flagCode": "eg",
+      "flag": "🇪🇬",
+      "club": "Liverpool",
+      "season": 2017,
+      "goals": 44,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Mohamed_Salah_2018.jpg/500px-Mohamed_Salah_2018.jpg"
+    },
+    {
+      "player": "Karim Benzema",
+      "wiki": "Karim Benzema",
+      "flagCode": "fr",
+      "flag": "🇫🇷",
+      "club": "Real Madrid",
+      "season": 2021,
+      "goals": 44,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Karim_Benzema_Pick.jpg/500px-Karim_Benzema_Pick.jpg"
+    },
+    {
+      "player": "Zlatan Ibrahimović",
+      "wiki": "Zlatan Ibrahimović",
+      "flagCode": "se",
+      "flag": "🇸🇪",
+      "club": "PSG",
+      "season": 2012,
+      "goals": 38,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Zlatan_Ibrahimovi%C4%87_June_2018.jpg/330px-Zlatan_Ibrahimovi%C4%87_June_2018.jpg"
+    },
+    {
+      "player": "Neymar",
+      "wiki": "Neymar",
+      "flagCode": "br",
+      "flag": "🇧🇷",
+      "club": "FC Barcelona",
+      "season": 2014,
+      "goals": 39,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg/330px-Neymar_Jr._with_Al_Hilal%2C_3_October_2023_-_03_%28cropped%29.jpg"
+    },
+    {
+      "player": "Luis Suárez",
+      "wiki": "Luis Suárez",
+      "flagCode": "uy",
+      "flag": "🇺🇾",
+      "club": "FC Barcelona",
+      "season": 2015,
+      "goals": 40,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Luis_Su%C3%A1rez_NE_Revolution_Inter_Miami_7.9.25-053_%28cropped%29.jpg/500px-Luis_Su%C3%A1rez_NE_Revolution_Inter_Miami_7.9.25-053_%28cropped%29.jpg"
+    },
+    {
+      "player": "Thierry Henry",
+      "wiki": "Thierry Henry",
+      "flagCode": "fr",
+      "flag": "🇫🇷",
+      "club": "Arsenal",
+      "season": 2003,
+      "goals": 39,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Thierry_Henry_%2851649035951%29_%28cropped%29.jpg/500px-Thierry_Henry_%2851649035951%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Wayne Rooney",
+      "wiki": "Wayne Rooney",
+      "flagCode": "gb-eng",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "club": "Manchester United",
+      "season": 2011,
+      "goals": 34,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Wayne_Rooney_%2850121495731%29_%28cropped%29.jpg/500px-Wayne_Rooney_%2850121495731%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Harry Kane",
+      "wiki": "Harry Kane",
+      "flagCode": "gb-eng",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "club": "Tottenham Hotspur",
+      "season": 2016,
+      "goals": 35,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Harry_Kane_on_October_10%2C_2023.jpg/500px-Harry_Kane_on_October_10%2C_2023.jpg"
+    },
+    {
+      "player": "Didier Drogba",
+      "wiki": "Didier Drogba",
+      "flagCode": "ci",
+      "flag": "🇨🇮",
+      "club": "Chelsea",
+      "season": 2009,
+      "goals": 37,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Didier_Drogba_%282019%29_%28cropped2%29.jpg/500px-Didier_Drogba_%282019%29_%28cropped2%29.jpg"
+    },
+    {
+      "player": "Sergio Agüero",
+      "wiki": "Sergio Agüero",
+      "flagCode": "ar",
+      "flag": "🇦🇷",
+      "club": "Manchester City",
+      "season": 2014,
+      "goals": 32,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Ag%C3%BCero_in_2018.jpg/500px-Ag%C3%BCero_in_2018.jpg"
+    },
+    {
+      "player": "Antoine Griezmann",
+      "wiki": "Antoine Griezmann",
+      "flagCode": "fr",
+      "flag": "🇫🇷",
+      "club": "Atlético Madrid",
+      "season": 2015,
+      "goals": 32,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/FRA-ARG_%2810%29_%28cropped%29.jpg/500px-FRA-ARG_%2810%29_%28cropped%29.jpg"
+    },
+    {
+      "player": "Radamel Falcao",
+      "wiki": "Radamel Falcao",
+      "flagCode": "co",
+      "flag": "🇨🇴",
+      "club": "Atlético Madrid",
+      "season": 2011,
+      "goals": 36,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Radamel_Falcao_Garc%C3%ADa_%28cropped%29.jpg/500px-Radamel_Falcao_Garc%C3%ADa_%28cropped%29.jpg"
+    },
+    {
+      "player": "Fernando Torres",
+      "wiki": "Fernando Torres",
+      "flagCode": "es",
+      "flag": "🇪🇸",
+      "club": "Liverpool",
+      "season": 2007,
+      "goals": 33,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Fernando_Torres_2017.jpg/250px-Fernando_Torres_2017.jpg"
+    },
+    {
+      "player": "Alan Shearer",
+      "wiki": "Alan Shearer",
+      "flagCode": "gb-eng",
+      "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+      "club": "Blackburn Rovers",
+      "season": 1994,
+      "goals": 34,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Alan_Shearer_2008.jpg/250px-Alan_Shearer_2008.jpg"
+    },
+    {
+      "player": "Gerd Müller",
+      "wiki": "Gerd Müller",
+      "flagCode": "de",
+      "flag": "🇩🇪",
+      "club": "Bayern Munich",
+      "season": 1971,
+      "goals": 40,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Gerd_M%C3%BCller_c1973_%28cropped%29.jpg/330px-Gerd_M%C3%BCller_c1973_%28cropped%29.jpg"
+    },
+    {
+      "player": "Ronaldo Nazário",
+      "wiki": "Ronaldo (Brazilian footballer)",
+      "flagCode": "br",
+      "flag": "🇧🇷",
+      "club": "FC Barcelona",
+      "season": 1996,
+      "goals": 47,
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg/500px-Ronaldo_Lu%C3%ADs_Naz%C3%A1rio_de_Lima_2019_%283x4_cropped%29.jpg"
+    }
   ]
 }

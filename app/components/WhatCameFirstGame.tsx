@@ -12,7 +12,7 @@ import wcfData from "@/app/wcf_data.json";
 import { ensureCustomImages, getCustomImage } from "@/lib/customImages";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
-interface WcfEvent { text: string; year: number; category: string; wiki: string; }
+interface WcfEvent { text: string; year: number; category: string; wiki: string; image_url?: string; }
 type RoundType = "duel" | "slider" | "order";
 
 interface DuelRound   { type: "duel";   a: WcfEvent; b: WcfEvent; }
@@ -42,11 +42,12 @@ const ALL_EVENTS: WcfEvent[] = wcfData.events as WcfEvent[];
 
 // ─── Wikipedia image cache + hook ─────────────────────────────────────────────
 const wikiImgCache = new Map<string, string>();
-function useWikiImage(title: string): string | null {
+function useWikiImage(title: string, prefetchedUrl?: string | null): string | null {
   const [src, setSrc] = useState<string | null>(
-    getCustomImage("wcf", title) ?? wikiImgCache.get(title) ?? null
+    prefetchedUrl ?? getCustomImage("wcf", title) ?? wikiImgCache.get(title) ?? null
   );
   useEffect(() => {
+    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
     let cancelled = false;
     (async () => {
       await ensureCustomImages();
@@ -56,18 +57,44 @@ function useWikiImage(title: string): string | null {
       const cached = wikiImgCache.get(title);
       if (cached) { setSrc(cached); return; }
       try {
-        const r = await fetch(`https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=400&origin=*`);
-        if (cancelled) return;
-        const data = await r.json();
+        // 1) Fast path: pageimages API
+        const data = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=400&origin=*`
+        )).json();
         if (cancelled) return;
         const pages = data?.query?.pages as Record<string, { thumbnail?: { source: string } }> | undefined;
-        if (!pages) return;
-        const page = Object.values(pages)[0];
-        if (page?.thumbnail?.source) { wikiImgCache.set(title, page.thumbnail.source); setSrc(page.thumbnail.source); }
+        const page = Object.values(pages ?? {})[0];
+        if (page?.thumbnail?.source) { wikiImgCache.set(title, page.thumbnail.source); setSrc(page.thumbnail.source); return; }
+        // 2) REST summary API
+        const rest = await (await fetch(
+          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
+        )).json();
+        if (cancelled) return;
+        const restUrl = rest?.originalimage?.source ?? rest?.thumbnail?.source;
+        if (restUrl) { wikiImgCache.set(title, restUrl); setSrc(restUrl); return; }
+        // 3) Fallback: parse infobox HTML
+        const data2 = await (await fetch(
+          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json&origin=*&section=0&redirects=1`
+        )).json();
+        if (cancelled) return;
+        const html: string = data2?.parse?.text?.["*"] ?? "";
+        if (!html) return;
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
+        if (!img) {
+          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
+          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
+        }
+        let imgSrc = img?.getAttribute("src") ?? "";
+        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
+        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
+        if (!imgSrc) return;
+        wikiImgCache.set(title, imgSrc);
+        setSrc(imgSrc);
       } catch {}
     })();
     return () => { cancelled = true; };
-  }, [title]);
+  }, [title, prefetchedUrl]);
   return src;
 }
 
@@ -193,8 +220,8 @@ const BADGE_CLASS: Record<string, string> = {
 function CatBadge({ category }: { category: string }) {
   return <span className={`wcf-cat-badge ${BADGE_CLASS[category] ?? ""}`}>{category}</span>;
 }
-function EventImg({ wiki, alt, className }: { wiki: string; alt: string; className?: string }) {
-  const src = useWikiImage(wiki);
+function EventImg({ wiki, alt, className, imageUrl }: { wiki: string; alt: string; className?: string; imageUrl?: string }) {
+  const src = useWikiImage(wiki, imageUrl);
   if (src) return <img src={src} alt={alt} className={`wcf-event-img${className ? ` ${className}` : ""}`} draggable={false} />;
   return <div className="wcf-event-img-placeholder" />;
 }
@@ -209,7 +236,7 @@ function DuelCard({ event, side, earlierSide, answered, onClick }: {
   return (
     <div className={cls} onClick={answered ? undefined : onClick}>
       <CatBadge category={event.category} />
-      <EventImg wiki={event.wiki} alt={event.text} />
+      <EventImg wiki={event.wiki} alt={event.text} imageUrl={event.image_url} />
       <span className="wcf-card__text">{event.text}</span>
       {answered ? (
         <>
@@ -231,7 +258,7 @@ function SliderRoundView({ event, value, answered, sliderScore: pts, onChange }:
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
       <div className="wcf-slider-card">
-        <EventImg wiki={event.wiki} alt={event.text} />
+        <EventImg wiki={event.wiki} alt={event.text} imageUrl={event.image_url} />
         <div className="wcf-slider-card__body">
           <CatBadge category={event.category} />
           <span className="wcf-slider-card__text">{event.text}</span>
@@ -309,7 +336,7 @@ function OrderRoundView({
                   <>
                     {submitted && <span className="wcf-order-slot-verdict">{text === round.correct[i].text ? "✓" : "✗"}</span>}
                     <div className="wcf-order-slot-img-wrap">
-                      <EventImg wiki={event.wiki} alt={event.text} />
+                      <EventImg wiki={event.wiki} alt={event.text} imageUrl={event.image_url} />
                     </div>
                     <span className="wcf-order-slot-text">{event.text}</span>
                     {submitted && <span className="wcf-order-slot-year">{event.year}</span>}
@@ -340,7 +367,7 @@ function OrderRoundView({
                   onTouchStart={e => { onSlotDragStart(event.text, -1, e, e.currentTarget); }}
                 >
                   <div className="wcf-order-chip-img-wrap">
-                    <EventImg wiki={event.wiki} alt={event.text} />
+                    <EventImg wiki={event.wiki} alt={event.text} imageUrl={event.image_url} />
                   </div>
                   <span className="wcf-order-chip-text">{event.text}</span>
                 </div>
