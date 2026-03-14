@@ -191,7 +191,6 @@ export default memo(function WorldMap({
                       strokeWidth: clickable ? 0.8 : 0.4,
                       outline: "none",
                       cursor: clickable ? "pointer" : "default",
-                      filter: clickable ? "brightness(1.15)" : "none",
                     },
                     pressed: {
                       fill: clickable ? "#d97706" : fill,
@@ -226,7 +225,6 @@ export default memo(function WorldMap({
                     fill: clickable ? "#f59e0b" : fill,
                     stroke: "#fff", strokeWidth: clickable ? 0.8 : 0.4, outline: "none",
                     cursor: clickable ? "pointer" : "default",
-                    filter: clickable ? "brightness(1.15)" : "none",
                   },
                   pressed: { fill: clickable ? "#d97706" : fill, stroke: "#fff", strokeWidth: 0.8, outline: "none" },
                 }}
