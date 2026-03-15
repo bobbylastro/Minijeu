@@ -296,9 +296,13 @@ export default function FoodOriginGame() {
   const [revealed, setRevealed]         = useState(false);
   const [multiWaiting, setMultiWaiting] = useState(false);
 
-  const timerRef  = useRef<ReturnType<typeof setInterval> | null>(null);
-  const modeRef   = useRef<Mode>("solo");
+  const timerRef    = useRef<ReturnType<typeof setInterval> | null>(null);
+  const modeRef     = useRef<Mode>("solo");
+  const isTouchRef  = useRef(false);
   useEffect(() => { modeRef.current = mode; }, [mode]);
+  useEffect(() => {
+    isTouchRef.current = "ontouchstart" in window || navigator.maxTouchPoints > 0;
+  }, []);
 
   const currentDish = dishes[round] ?? null;
 
@@ -461,7 +465,9 @@ export default function FoodOriginGame() {
           disabled={showIntro}
           onCountryClick={(alpha2, name) => {
             if (!revealed && !showIntro) {
-              if (pendingCountry?.alpha2 === alpha2) {
+              if (!isTouchRef.current) {
+                reveal(alpha2);
+              } else if (pendingCountry?.alpha2 === alpha2) {
                 reveal(alpha2);
                 setPendingCountry(null);
               } else {
