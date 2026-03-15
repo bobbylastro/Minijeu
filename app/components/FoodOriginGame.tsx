@@ -28,7 +28,7 @@ type Mode  = "solo" | "multi";
 // ─── Constants ───────────────────────────────────────────────────────────────
 const ALL_DISHES = rawDishes as Dish[];
 const ROUNDS_PER_GAME = 10;
-const ROUND_SECONDS   = 30;
+const ROUND_SECONDS   = 20;
 const INTRO_SECONDS   = 3;
 const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 
@@ -139,8 +139,9 @@ function IntroPopup({ dish, round, total, onDismiss }: {
 // ─── Feedback popup ───────────────────────────────────────────────────────────
 const TIMEOUT_AUTO_ADVANCE_MS = 2000;
 
-function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
-  dish: Dish; clickedCode: string | null; onNext: () => void; isLast: boolean; multiWaiting: boolean;
+function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting, opponentTimeLeft }: {
+  dish: Dish; clickedCode: string | null; onNext: () => void; isLast: boolean;
+  multiWaiting: boolean; opponentTimeLeft?: number;
 }) {
   const isCorrect = clickedCode === dish.countryCode;
   const isTimeout = !clickedCode;
@@ -158,6 +159,10 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
     return () => { clearInterval(tick); clearTimeout(advance); };
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isTimeout]);
+
+  const waitLabel = opponentTimeLeft != null && opponentTimeLeft > 0
+    ? `Opponent has ${opponentTimeLeft}s left…`
+    : "Waiting for opponent…";
 
   return (
     <div className="fd-popup-backdrop fd-popup-backdrop--dim">
@@ -177,18 +182,18 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
         </div>
         {isTimeout ? (
           <div className="fd-feedback-card__auto">
-            {multiWaiting ? "Waiting for opponent…" : `Next in ${autoCountdown}s…`}
+            {multiWaiting ? waitLabel : `Next in ${autoCountdown}s…`}
           </div>
         ) : (
-          <button
-            className="btn-next btn-hover-sm fd-feedback-card__btn"
-            onClick={onNext}
-            disabled={multiWaiting}
-          >
-            {multiWaiting
-              ? "Waiting for opponent…"
-              : isLast ? "See Results →" : "Next Dish →"}
-          </button>
+          <>
+            <button
+              className="btn-next btn-hover-sm fd-feedback-card__btn"
+              onClick={onNext}
+              disabled={multiWaiting}
+            >
+              {multiWaiting ? waitLabel : isLast ? "See Results →" : "Next Dish →"}
+            </button>
+          </>
         )}
       </div>
     </div>
@@ -317,6 +322,7 @@ export default function FoodOriginGame() {
   const modeRef     = useRef<Mode>("solo");
   const isTouchRef  = useRef(false);
   const mpRef       = useRef<ReturnType<typeof useMultiplayer> | null>(null);
+  const revealedRef = useRef(false);
   useEffect(() => { modeRef.current = mode; }, [mode]);
   useEffect(() => {
     isTouchRef.current = "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -373,7 +379,8 @@ export default function FoodOriginGame() {
   }, []);
 
   const reveal = useCallback((alpha2: string | null) => {
-    stopTimer();
+    if (modeRef.current !== "multi") stopTimer(); // in multi, keep timer running for opponent display
+    revealedRef.current = true;
     setClickedCode(alpha2);
     setRevealed(true);
     const pts = alpha2 && currentDish && alpha2 === currentDish.countryCode ? 100 : 0;
@@ -382,16 +389,21 @@ export default function FoodOriginGame() {
   }, [currentDish, stopTimer]);
 
   useEffect(() => {
-    if (phase !== "playing" || revealed || showIntro) return;
+    if (phase !== "playing" || showIntro) return;
+    revealedRef.current = false;
     setTimeLeft(ROUND_SECONDS);
     timerRef.current = setInterval(() => {
       setTimeLeft(t => {
-        if (t <= 1) { reveal(null); return 0; }
+        if (t <= 1) {
+          if (!revealedRef.current) reveal(null); // guard: only fire if not yet answered
+          stopTimer();
+          return 0;
+        }
         return t - 1;
       });
     }, 1000);
     return stopTimer;
-  }, [phase, round, revealed, showIntro, reveal, stopTimer]);
+  }, [phase, round, showIntro, reveal, stopTimer]);
 
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
@@ -577,6 +589,7 @@ export default function FoodOriginGame() {
           onNext={nextRound}
           isLast={round + 1 >= ROUNDS_PER_GAME}
           multiWaiting={multiWaiting}
+          opponentTimeLeft={mode === "multi" ? timeLeft : undefined}
         />
       )}
 
