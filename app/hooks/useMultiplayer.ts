@@ -22,6 +22,7 @@ export interface OpponentState {
 
 export interface MultiplayerCallbacks {
   onGameStart: (seed: number) => void;
+  onGameSync?: (round: number, seed: number, myScore: number, alreadyAnswered: boolean) => void;
   onOpponentAnswered: (points: number, scores: Record<string, number>) => void;
   onRoundEnd: (scores: Record<string, number>, roundPoints: Record<string, number>) => void;
   onNextRound: (round: number) => void;
@@ -98,6 +99,16 @@ export function useMultiplayer({
         const opponentId = Object.keys(data.state.players).find(id => id !== socket.id);
         if (opponentId) setOpponent({ id: opponentId, name: opponentName, score: 0, hasAnswered: false, wantsRematch: false });
         cb.current.onGameStart(gameSeed);
+      }
+
+      if (data.type === "game_sync") {
+        setStatus("playing");
+        cb.current.onGameSync?.(data.round, data.seed, data.myScore ?? 0, data.alreadyAnswered ?? false);
+      }
+
+      if (data.type === "opponent_reconnected") {
+        setStatus("playing");
+        setOpponent(prev => prev ? { ...prev, hasAnswered: false } : prev);
       }
 
       if (data.type === "rematch_requested") {

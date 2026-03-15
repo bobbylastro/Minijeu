@@ -343,6 +343,17 @@ export default function FoodOriginGame() {
     setPhase("playing");
   }, []);
 
+  const onMpGameSync = useCallback((round: number, _seed: number, myScore: number, alreadyAnswered: boolean) => {
+    setRound(round);
+    setScore(myScore);
+    setClickedCode(null);
+    setPendingCountry(null);
+    setRevealed(alreadyAnswered);
+    setMultiWaiting(alreadyAnswered); // already answered → waiting for opponent
+    setShowIntro(!alreadyAnswered);
+    setPhase("playing");
+  }, []);
+
   const onMpOpponentAnswered = useCallback(() => {}, []);
 
   const onMpRoundEnd = useCallback((_scores: Record<string, number>) => {}, []);
@@ -365,6 +376,7 @@ export default function FoodOriginGame() {
     gameType: "food",
     host: getPartykitHost(),
     onGameStart:        onMpGameStart,
+    onGameSync:         onMpGameSync,
     onOpponentAnswered: onMpOpponentAnswered,
     onRoundEnd:         onMpRoundEnd,
     onNextRound:        onMpNextRound,
@@ -597,7 +609,7 @@ export default function FoodOriginGame() {
       <MultiplayerScreen
         status={mp.status}
         onCancel={backToHome}
-        onContinueSolo={() => { setMode("solo"); }}
+        onContinueSolo={() => { setMode("solo"); mp.disconnect(); }}
       />
     </div>
   );
