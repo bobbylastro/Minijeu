@@ -316,6 +316,7 @@ export default function FoodOriginGame() {
   const timerRef    = useRef<ReturnType<typeof setInterval> | null>(null);
   const modeRef     = useRef<Mode>("solo");
   const isTouchRef  = useRef(false);
+  const mpRef       = useRef<ReturnType<typeof useMultiplayer> | null>(null);
   useEffect(() => { modeRef.current = mode; }, [mode]);
   useEffect(() => {
     isTouchRef.current = "ontouchstart" in window || navigator.maxTouchPoints > 0;
@@ -363,6 +364,8 @@ export default function FoodOriginGame() {
     onNextRound:        onMpNextRound,
     onGameEnd:          onMpGameEnd,
   });
+  // Keep mpRef in sync so reveal/nextRound don't capture mp in their deps
+  useEffect(() => { mpRef.current = mp; });
 
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
@@ -375,8 +378,8 @@ export default function FoodOriginGame() {
     setRevealed(true);
     const pts = alpha2 && currentDish && alpha2 === currentDish.countryCode ? 100 : 0;
     setScore(s => s + pts);
-    if (modeRef.current === "multi") mp.submitAnswer(alpha2, pts);
-  }, [currentDish, stopTimer, mp]);
+    if (modeRef.current === "multi") mpRef.current?.submitAnswer(alpha2, pts);
+  }, [currentDish, stopTimer]);
 
   useEffect(() => {
     if (phase !== "playing" || revealed || showIntro) return;
@@ -415,7 +418,7 @@ export default function FoodOriginGame() {
   const nextRound = useCallback(() => {
     if (modeRef.current === "multi") {
       setMultiWaiting(true);
-      mp.readyForNext();
+      mpRef.current?.readyForNext();
       return;
     }
     setRound(r => {
@@ -426,8 +429,7 @@ export default function FoodOriginGame() {
     setPendingCountry(null);
     setRevealed(false);
     setShowIntro(true);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mp]);
+  }, []);
 
   function backToHome() {
     mp.disconnect();
