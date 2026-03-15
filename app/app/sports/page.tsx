@@ -1,0 +1,128 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Sports Games — Football & NBA Quizzes | Ultimate Playground",
+  description:
+    "Free online sports quiz games. Guess transfer fees, NBA contracts, stadium photos and player salaries. Rebuild career timelines in CareerOrder. Solo & multiplayer.",
+};
+
+const GAMES = [
+  {
+    slug: "/football",
+    emoji: "⚽",
+    title: "FootballQuiz",
+    desc: "Guess transfer fees, compare salaries, identify stadiums and test your football trivia.",
+    tags: ["Solo", "Multiplayer"],
+  },
+  {
+    slug: "/nba",
+    emoji: "🏀",
+    title: "NBAQuiz",
+    desc: "Guess contracts, compare salaries, identify arenas and test your basketball trivia.",
+    tags: ["Solo", "Multiplayer"],
+  },
+  {
+    slug: "/career",
+    emoji: "🔀",
+    title: "CareerOrder",
+    desc: "Drag and drop club badges to reconstruct a footballer's career in chronological order.",
+    tags: ["Solo", "Multiplayer"],
+  },
+];
+
+const OTHER_CATEGORIES = [
+  { href: "/world",      emoji: "🌍", label: "World"   },
+  { href: "/food-games", emoji: "🍽️", label: "Food"    },
+  { href: "/culture",    emoji: "🧠", label: "Culture"  },
+];
+
+export default function SportsPage() {
+  return (
+    <div className="home-page">
+      <div className="home-page__content">
+
+        {/* Hero */}
+        <div className="cat-page__hero">
+          <h1 className="cat-page__h1">🏆 Sports Games</h1>
+          <p className="cat-page__lead">
+            Football transfers, NBA contracts, stadium photos and career timelines — three games
+            that put your sports knowledge to the ultimate test.
+          </p>
+        </div>
+
+        {/* Game cards */}
+        <div className="category__games">
+          {GAMES.map(g => (
+            <Link key={g.slug} href={g.slug} className="game-card game-card--available">
+              <div className="game-card__header">
+                <span className="game-card__emoji">{g.emoji}</span>
+                <span className="game-card__title">{g.title}</span>
+              </div>
+              <p className="game-card__desc">{g.desc}</p>
+              <div className="game-card__footer">
+                <div className="game-card__tags">
+                  {g.tags.map(t => <span key={t} className="game-card__tag">{t}</span>)}
+                </div>
+                <span className="game-card__cta">Play →</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+
+        {/* Silo — other categories */}
+        <div className="cat-page__silo">
+          <p className="cat-page__silo-title">Explore other categories</p>
+          <div className="cat-page__silo-links">
+            {OTHER_CATEGORIES.map(c => (
+              <Link key={c.href} href={c.href} className="cat-page__silo-link">
+                {c.emoji} {c.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* SEO content */}
+        <div className="cat-page__seo">
+          <h2>Sports quizzes for football and basketball fans</h2>
+          <p>
+            Ultimate Playground&apos;s Sports category brings together three games designed for fans
+            who want to go beyond just watching. Whether you track transfer windows, follow contract
+            negotiations or can name every stadium in Europe, there is a challenge here for you.
+          </p>
+
+          <h2>FootballQuiz — transfers, salaries & stadiums</h2>
+          <p>
+            Ten rounds mixing five game types: trivia questions, transfer fee sliders, stadium
+            photo identification, salary comparisons and peak season estimation. FootballQuiz
+            covers the full spectrum of football knowledge from the Premier League to La Liga,
+            Bundesliga, Serie A and beyond.
+          </p>
+
+          <h2>NBAQuiz — contracts, arenas & basketball trivia</h2>
+          <p>
+            The same fast-paced format applied to the NBA. Guess player contracts in millions,
+            identify arenas from a single photo, compare salaries between two stars and recall
+            peak seasons. Whether you follow current rosters or NBA history, NBAQuiz will
+            challenge what you know.
+          </p>
+
+          <h2>CareerOrder — rebuild a player's career timeline</h2>
+          <p>
+            A footballer&apos;s clubs are shuffled into a random order. Your job is to drag and
+            drop the club badges back into chronological sequence. CareerOrder rewards deep
+            knowledge of transfer history and career trajectories across clubs and continents.
+          </p>
+
+          <h2>Compete in real-time multiplayer</h2>
+          <p>
+            All Sports games support live multiplayer. Both players see the same questions,
+            powered by a shared seed for fairness. Submit your answers, wait for your opponent,
+            and see who comes out on top after ten rounds.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  );
+}

@@ -97,6 +97,9 @@ export default function Header() {
                       </div>
                     </Link>
                   </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/sports" onClick={() => setSportsOpen(false)}>View all Sports games →</Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -123,6 +126,9 @@ export default function Header() {
                       </div>
                     </Link>
                   </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/culture" onClick={() => setCultureOpen(false)}>View all Culture games →</Link>
+                  </div>
                 </div>
               )}
             </div>
@@ -148,6 +154,9 @@ export default function Header() {
                         <div className="site-header__dropdown-desc">Click the country where this dish is from</div>
                       </div>
                     </Link>
+                  </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/food-games" onClick={() => setFoodOpen(false)}>View all Food games →</Link>
                   </div>
                 </div>
               )}
@@ -188,6 +197,9 @@ export default function Header() {
                         <div className="site-header__dropdown-desc">Find the country behind the city</div>
                       </div>
                     </Link>
+                  </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/world" onClick={() => setGeoOpen(false)}>View all World games →</Link>
                   </div>
                 </div>
               )}
