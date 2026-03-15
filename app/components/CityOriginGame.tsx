@@ -534,7 +534,7 @@ export default function CityOriginGame() {
               alt={pendingCountry.name}
             />
             <span className="fd-country-tag__name">{pendingCountry.name}</span>
-            <span className="fd-country-tag__confirm">✓</span>
+            <span className="fd-country-tag__confirm">Confirm ✓</span>
           </div>
         ) : (
           <div className="fd-map-tooltip">
