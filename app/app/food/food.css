@@ -522,6 +522,12 @@
   margin-top: 1.25rem;
   width: 100%;
 }
+.fd-feedback-card__auto {
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.03em;
+}
 
 /* ── Result scores (multiplayer) ────────────────────────────────────────── */
 .fd-result-scores {

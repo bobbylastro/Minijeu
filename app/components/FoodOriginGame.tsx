@@ -142,11 +142,27 @@ function IntroPopup({ dish, round, total, onDismiss }: {
 }
 
 // ─── Feedback popup ───────────────────────────────────────────────────────────
+const TIMEOUT_AUTO_ADVANCE_MS = 2000;
+
 function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
   dish: Dish; clickedCode: string | null; onNext: () => void; isLast: boolean; multiWaiting: boolean;
 }) {
   const isCorrect = clickedCode === dish.countryCode;
   const isTimeout = !clickedCode;
+  const [autoCountdown, setAutoCountdown] = useState(Math.round(TIMEOUT_AUTO_ADVANCE_MS / 1000));
+
+  // Auto-advance after timeout — no button click needed
+  useEffect(() => {
+    if (!isTimeout) return;
+    const start = Date.now();
+    const tick = setInterval(() => {
+      const remaining = Math.ceil((TIMEOUT_AUTO_ADVANCE_MS - (Date.now() - start)) / 1000);
+      setAutoCountdown(Math.max(0, remaining));
+    }, 200);
+    const advance = setTimeout(onNext, TIMEOUT_AUTO_ADVANCE_MS);
+    return () => { clearInterval(tick); clearTimeout(advance); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTimeout]);
 
   return (
     <div className="fd-popup-backdrop fd-popup-backdrop--dim">
@@ -164,15 +180,21 @@ function FeedbackPopup({ dish, clickedCode, onNext, isLast, multiWaiting }: {
         <div className="fd-feedback-card__pts">
           {isCorrect ? "+100 pts ⭐" : "+0 pts"}
         </div>
-        <button
-          className="btn-next btn-hover-sm fd-feedback-card__btn"
-          onClick={onNext}
-          disabled={multiWaiting}
-        >
-          {multiWaiting
-            ? "Waiting for opponent…"
-            : isLast ? "See Results →" : "Next Dish →"}
-        </button>
+        {isTimeout ? (
+          <div className="fd-feedback-card__auto">
+            {multiWaiting ? "Waiting for opponent…" : `Next in ${autoCountdown}s…`}
+          </div>
+        ) : (
+          <button
+            className="btn-next btn-hover-sm fd-feedback-card__btn"
+            onClick={onNext}
+            disabled={multiWaiting}
+          >
+            {multiWaiting
+              ? "Waiting for opponent…"
+              : isLast ? "See Results →" : "Next Dish →"}
+          </button>
+        )}
       </div>
     </div>
   );
@@ -395,19 +417,22 @@ export default function FoodOriginGame() {
 
   function dismissIntro() { setShowIntro(false); }
 
-  function nextRound() {
+  const nextRound = useCallback(() => {
     if (modeRef.current === "multi") {
       setMultiWaiting(true);
       mp.readyForNext();
       return;
     }
-    if (round + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return; }
-    setRound(r => r + 1);
+    setRound(r => {
+      if (r + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return r; }
+      return r + 1;
+    });
     setClickedCode(null);
     setPendingCountry(null);
     setRevealed(false);
     setShowIntro(true);
-  }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [mp]);
 
   function backToHome() {
     mp.disconnect();
