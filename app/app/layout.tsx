@@ -14,7 +14,7 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas",
 });
 const dmMono = DM_Mono({
-  weight: ["400", "600"],
+  weight: ["400", "500"],
   subsets: ["latin"],
   display: "swap",
   variable: "--font-mono",
