@@ -168,23 +168,21 @@
   width: auto;
   max-width: 340px;
   pointer-events: auto;
-}
-.fd-country-tag__confirm {
-  flex-shrink: 0;
-  padding: 0.35rem 0.75rem;
-  background: rgba(245,158,11,0.2);
-  border: 1.5px solid rgba(245,158,11,0.7);
-  border-radius: 8px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #f59e0b;
-  white-space: nowrap;
   cursor: pointer;
   transition: background 0.15s;
 }
-.fd-country-tag__confirm:hover,
-.fd-country-tag__confirm:active {
-  background: rgba(245,158,11,0.35);
+.fd-country-tag--pending:active {
+  background: rgba(245,158,11,0.15);
+}
+.fd-country-tag__confirm {
+  flex-shrink: 0;
+  padding: 0.3rem 0.6rem;
+  background: rgba(245,158,11,0.2);
+  border: 1.5px solid rgba(245,158,11,0.7);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f59e0b;
 }
 
 /* ── Dish card clickable ─────────────────────────────────────────────────── */

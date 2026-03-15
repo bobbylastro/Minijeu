@@ -523,7 +523,10 @@ export default function CityOriginGame() {
             <span className="fd-country-tag__name">{hoveredCountry.name}</span>
           </div>
         ) : pendingCountry && !revealed ? (
-          <div className="fd-country-tag fd-country-tag--pending">
+          <div
+            className="fd-country-tag fd-country-tag--pending"
+            onClick={() => { reveal(pendingCountry.alpha2); setPendingCountry(null); }}
+          >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className="fd-country-tag__flag"
@@ -531,10 +534,7 @@ export default function CityOriginGame() {
               alt={pendingCountry.name}
             />
             <span className="fd-country-tag__name">{pendingCountry.name}</span>
-            <button
-              className="fd-country-tag__confirm"
-              onClick={() => { reveal(pendingCountry.alpha2); setPendingCountry(null); }}
-            >Confirm ✓</button>
+            <span className="fd-country-tag__confirm">✓</span>
           </div>
         ) : (
           <div className="fd-map-tooltip">
