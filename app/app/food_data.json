@@ -336,14 +336,6 @@
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/LaoFood_LarbNeua.JPG/500px-LaoFood_LarbNeua.JPG"
   },
   {
-    "name": "Shakshuka",
-    "country": "Israel",
-    "countryCode": "IL",
-    "wiki": "Shakshuka",
-    "hint": "Eggs nestled in a bubbling tomato-pepper sauce — a Middle Eastern breakfast staple",
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Shakshuka_by_Calliopejen1.jpg/500px-Shakshuka_by_Calliopejen1.jpg"
-  },
-  {
     "name": "Hummus",
     "country": "Lebanon",
     "countryCode": "LB",
@@ -1222,5 +1214,245 @@
     "wiki": "Kisra",
     "hint": "Paper-thin fermented sorghum flatbread — the daily bread of the Nile valley",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Kisra_maker.jpeg/500px-Kisra_maker.jpeg"
+  },
+  {
+    "name": "Lasagna",
+    "country": "Italy",
+    "countryCode": "IT",
+    "wiki": "Lasagna",
+    "hint": "A baked pasta dish made with flat wide noodles layered with ragù, béchamel sauce, and Parmigiano-Reggiano",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Lasagna_bolognese.jpg/500px-Lasagna_bolognese.jpg"
+  },
+  {
+    "name": "Tiramisu",
+    "country": "Italy",
+    "countryCode": "IT",
+    "wiki": "Tiramisu",
+    "hint": "A no-bake Italian dessert made with espresso-soaked ladyfingers layered under a mascarpone and egg cream",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Tiramisu_-_Raffaele_Diomede.jpg/500px-Tiramisu_-_Raffaele_Diomede.jpg"
+  },
+  {
+    "name": "Ratatouille",
+    "country": "France",
+    "countryCode": "FR",
+    "wiki": "Ratatouille",
+    "hint": "A Provençal stewed vegetable dish from Nice, featuring tomatoes, zucchini, eggplant, and aromatic herbs",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Ratatouille_home_cooked.jpg/500px-Ratatouille_home_cooked.jpg"
+  },
+  {
+    "name": "Bouillabaisse",
+    "country": "France",
+    "countryCode": "FR",
+    "wiki": "Bouillabaisse",
+    "hint": "A traditional Marseillaise fish stew made with multiple types of fish, shellfish, and a saffron-scented broth",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Bullabessa.jpg/500px-Bullabessa.jpg"
+  },
+  {
+    "name": "Tacos",
+    "country": "Mexico",
+    "countryCode": "MX",
+    "wiki": "Taco",
+    "hint": "A traditional Mexican street food: a corn or wheat tortilla folded around carnitas, al pastor, or carne asada",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg/500px-001_Tacos_de_carnitas%2C_carne_asada_y_al_pastor.jpg"
+  },
+  {
+    "name": "Guacamole",
+    "country": "Mexico",
+    "countryCode": "MX",
+    "wiki": "Guacamole",
+    "hint": "An avocado-based dip of Aztec origin, seasoned with lime juice, cilantro, and chili",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Guacamole_IMGP1271.jpg/500px-Guacamole_IMGP1271.jpg"
+  },
+  {
+    "name": "Haggis",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "wiki": "Haggis",
+    "hint": "Scotland's national dish — sheep's offal mixed with oatmeal, onions, and spices, traditionally cooked in a sheep's stomach",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Scotland_Haggis.jpg/500px-Scotland_Haggis.jpg"
+  },
+  {
+    "name": "Ramen",
+    "country": "Japan",
+    "countryCode": "JP",
+    "wiki": "Ramen",
+    "hint": "Japanese noodle soup with wheat noodles in a rich broth, topped with sliced pork, nori, and a soft-boiled egg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg/500px-Shoyu_ramen%2C_at_Kasukabe_Station_%282014.05.05%29_1.jpg"
+  },
+  {
+    "name": "Tempura",
+    "country": "Japan",
+    "countryCode": "JP",
+    "wiki": "Tempura",
+    "hint": "Seafood or vegetables coated in a light, airy batter and deep-fried to a delicate crisp — a Portuguese-inspired Japanese classic",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Tempura_01.jpg/500px-Tempura_01.jpg"
+  },
+  {
+    "name": "Bulgogi",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "wiki": "Bulgogi",
+    "hint": "Thinly sliced beef marinated in soy sauce, sesame oil, garlic, and pear juice, then grilled over open flame",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Bulgogi_2.jpg/500px-Bulgogi_2.jpg"
+  },
+  {
+    "name": "Tom Yum",
+    "country": "Thailand",
+    "countryCode": "TH",
+    "wiki": "Tom_yum",
+    "hint": "A hot and sour Thai soup made with shrimp, lemongrass, kaffir lime leaves, galangal, and fish sauce",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Tom_yam_kung_maenam.jpg/500px-Tom_yam_kung_maenam.jpg"
+  },
+  {
+    "name": "Bánh Mì",
+    "country": "Vietnam",
+    "countryCode": "VN",
+    "wiki": "Bánh_mì",
+    "hint": "A Vietnamese sandwich on a crispy baguette filled with pickled vegetables, cilantro, chili, and grilled meats — a legacy of French colonialism",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png/500px-B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png"
+  },
+  {
+    "name": "Nasi Goreng",
+    "country": "Indonesia",
+    "countryCode": "ID",
+    "wiki": "Nasi_goreng",
+    "hint": "Indonesia's national dish of fried rice cooked with sweet soy sauce and shrimp paste, topped with a fried egg",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Nasi_Goreng_Kampung_%2811967588375%29.jpg/500px-Nasi_Goreng_Kampung_%2811967588375%29.jpg"
+  },
+  {
+    "name": "Satay",
+    "country": "Indonesia",
+    "countryCode": "ID",
+    "wiki": "Satay",
+    "hint": "Skewered and grilled meat served with a spicy peanut sauce — a beloved street food across Southeast Asia",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Sate_Udang.JPG/500px-Sate_Udang.JPG"
+  },
+  {
+    "name": "Laksa",
+    "country": "Malaysia",
+    "countryCode": "MY",
+    "wiki": "Laksa",
+    "hint": "A spicy noodle soup blending Chinese and Malay flavors in a rich coconut milk or tamarind broth",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Nyonya_Laksa.jpg/500px-Nyonya_Laksa.jpg"
+  },
+  {
+    "name": "Khachapuri",
+    "country": "Georgia",
+    "countryCode": "GE",
+    "wiki": "Khachapuri",
+    "hint": "Georgia's iconic cheese-filled bread — the Adjarian boat-shaped version is topped with a raw egg and butter",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/%D0%92%D0%BA%D1%83%D1%81%D0%BD%D1%8B%D0%B9_%D0%B3%D1%80%D1%83%D0%B7%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%87%D0%B0%D0%BF%D1%83%D1%80%D0%B8.jpg/500px-%D0%92%D0%BA%D1%83%D1%81%D0%BD%D1%8B%D0%B9_%D0%B3%D1%83%D0%B7%D0%B8%D0%BD%D1%81%D0%BA%D0%B8%D0%B9_%D1%85%D0%B0%D1%87%D0%B0%D0%BF%D1%83%D1%80%D0%B8.jpg"
+  },
+  {
+    "name": "Dolma",
+    "country": "Turkey",
+    "countryCode": "TR",
+    "wiki": "Dolma",
+    "hint": "Grape leaves or vegetables stuffed with seasoned rice, pine nuts, and herbs — a staple across the Middle East and Balkans",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Speca_te_mbushura_me_mish.JPG/500px-Speca_te_mbushura_me_mish.JPG"
+  },
+  {
+    "name": "Shawarma",
+    "country": "Lebanon",
+    "countryCode": "LB",
+    "wiki": "Shawarma",
+    "hint": "Meat slow-roasted on a vertical rotisserie and served wrapped in flatbread with garlic sauce and pickles",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/%D0%A8%D0%B0%D1%83%D1%80%D0%BC%D0%B0_6.jpg/500px-%D0%A8%D0%B0%D1%83%D1%80%D0%BC%D0%B0_6.jpg"
+  },
+  {
+    "name": "Dosa",
+    "country": "India",
+    "countryCode": "IN",
+    "wiki": "Dosa_(food)",
+    "hint": "A thin, crispy South Indian crepe made from fermented rice and lentil batter, served with sambar and chutney",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg/500px-Dosa_at_Sri_Ganesha_Restauran%2C_Bangkok_%2844570742744%29.jpg"
+  },
+  {
+    "name": "Pelmeni",
+    "country": "Russia",
+    "countryCode": "RU",
+    "wiki": "Pelmeni",
+    "hint": "Russian dumplings of Uralic origin filled with minced meat in thin unleavened dough, served with sour cream",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Pelmeni_Russian.jpg/500px-Pelmeni_Russian.jpg"
+  },
+  {
+    "name": "Bigos",
+    "country": "Poland",
+    "countryCode": "PL",
+    "wiki": "Bigos",
+    "hint": "Poland's hearty hunter's stew slow-cooked from sauerkraut, fresh cabbage, various meats, and dried mushrooms",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Bigos_%281%29.jpg/500px-Bigos_%281%29.jpg"
+  },
+  {
+    "name": "Belgian Waffle",
+    "country": "Belgium",
+    "countryCode": "BE",
+    "wiki": "Belgian_waffle",
+    "hint": "A light, crispy waffle with deep pockets made from yeast-leavened batter, served with whipped cream and strawberries",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Waffle_with_strawberries_and_confectioner%27s_sugar.jpg/500px-Waffle_with_strawberries_and_confectioner%27s_sugar.jpg"
+  },
+  {
+    "name": "Sachertorte",
+    "country": "Austria",
+    "countryCode": "AT",
+    "wiki": "Sachertorte",
+    "hint": "A Viennese chocolate cake with a layer of apricot jam beneath a glossy dark chocolate glaze, invented at the Hotel Sacher in 1832",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Sachertorte_DSC03027_retouched.jpg/500px-Sachertorte_DSC03027_retouched.jpg"
+  },
+  {
+    "name": "Bratwurst",
+    "country": "Germany",
+    "countryCode": "DE",
+    "wiki": "Bratwurst",
+    "hint": "A German pork sausage made from finely minced meat and spices, typically grilled and served in a bun with mustard",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/German_Bratw%C3%BCrste.jpg/500px-German_Bratw%C3%BCrste.jpg"
+  },
+  {
+    "name": "Pastel de Nata",
+    "country": "Portugal",
+    "countryCode": "PT",
+    "wiki": "Pastel_de_nata",
+    "hint": "A Portuguese custard tart with a flaky pastry shell and caramelized egg cream, originally made by monks at Jerónimos Monastery",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/Pasteis_de_Belem.jpg/500px-Pasteis_de_Belem.jpg"
+  },
+  {
+    "name": "Colcannon",
+    "country": "Ireland",
+    "countryCode": "IE",
+    "wiki": "Colcannon",
+    "hint": "A traditional Irish dish of mashed potatoes mixed with kale or cabbage and plenty of butter, associated with Halloween festivities",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Colcannon.JPG/500px-Colcannon.JPG"
+  },
+  {
+    "name": "Ropa Vieja",
+    "country": "Cuba",
+    "countryCode": "CU",
+    "wiki": "Ropa_vieja",
+    "hint": "Cuba's national dish of slow-braised shredded beef in a tomato and pepper sauce — its name means 'old clothes' in Spanish",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/Cubanfood.jpg/500px-Cubanfood.jpg"
+  },
+  {
+    "name": "Lomo Saltado",
+    "country": "Peru",
+    "countryCode": "PE",
+    "wiki": "Lomo_saltado",
+    "hint": "A Peruvian stir-fry of beef strips with tomatoes, onions, and soy sauce — a hallmark of chifa (Chinese-Peruvian) cuisine",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Lomo_Saltado_-_Lima%2C_Peru_Miraflores_%28Tiendecita_Blanca%29.jpg/500px-Lomo_Saltado_-_Lima%2C_Peru_Miraflores_%28Tiendecita_Blanca%29.jpg"
+  },
+  {
+    "name": "Gazpacho",
+    "country": "Spain",
+    "countryCode": "ES",
+    "wiki": "Gazpacho",
+    "hint": "A cold Andalusian soup blended from raw tomatoes, cucumber, bell pepper, garlic, olive oil, and vinegar",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Gazpacho_Malague%C3%B1o_con_su_%E2%80%9Cpica%C3%ADto%E2%80%9D_-_Moreno%2C_Playa_Burriana_%28cropped%29.jpg/500px-Gazpacho_Malague%C3%B1o_con_su_%E2%80%9Cpica%C3%ADto%E2%80%9D_-_Moreno%2C_Playa_Burriana_%28cropped%29.jpg"
+  },
+  {
+    "name": "Dim Sum",
+    "country": "China",
+    "countryCode": "CN",
+    "wiki": "Dim_sum",
+    "hint": "Cantonese bite-sized dishes served in steamer baskets — dumplings, rice rolls, and buns enjoyed with tea in a yum cha tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Dim_Sum_Trang.jpg/500px-Dim_Sum_Trang.jpg"
   }
 ]

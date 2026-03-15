@@ -11,6 +11,7 @@ import {
 interface Props {
   correctCode: string;
   clickedCode: string | null;
+  pendingCode?: string | null;
   revealed: boolean;
   disabled: boolean;
   onCountryClick: (alpha2: string, name: string) => void;
@@ -107,7 +108,7 @@ const FRENCH_GUIANA_GEOJSON = {
 type Position = { coordinates: [number, number]; zoom: number };
 
 export default memo(function WorldMap({
-  correctCode, clickedCode, revealed, disabled, onCountryClick, onCountryHover,
+  correctCode, clickedCode, pendingCode, revealed, disabled, onCountryClick, onCountryHover,
 }: Props) {
   const [position, setPosition] = useState<Position>({ coordinates: [10, 10], zoom: 1 });
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -130,6 +131,7 @@ export default memo(function WorldMap({
       if (alpha2 === correctCode)                return "#22c55e";
       if (clickedCode && alpha2 === clickedCode) return "#ef4444";
     }
+    if (!revealed && pendingCode && alpha2 === pendingCode) return "#f59e0b";
     return (alpha2 && CONTINENT_COLOR[alpha2]) ?? C_DEFAULT;
   }
 

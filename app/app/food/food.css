@@ -169,6 +169,19 @@
   from { opacity: 0; transform: translateX(-50%) scale(0.85) translateY(8px); }
   to   { opacity: 1; transform: translateX(-50%) scale(1) translateY(0); }
 }
+.fd-country-tag--pending {
+  border-color: rgba(245,158,11,0.6);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px rgba(245,158,11,0.25);
+  width: auto;
+  max-width: 320px;
+}
+.fd-country-tag__confirm {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #f59e0b;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
 
 /* ── Dish card clickable ─────────────────────────────────────────────────── */
 .fd-dish-card--clickable {

@@ -288,6 +288,7 @@ export default function FoodOriginGame() {
   const [round, setRound]               = useState(0);
   const [score, setScore]               = useState(0);
   const [clickedCode, setClickedCode]   = useState<string | null>(null);
+  const [pendingCountry, setPendingCountry] = useState<{ alpha2: string; name: string } | null>(null);
   const [hoveredCountry, setHoveredCountry] = useState<{ name: string; alpha2: string } | null>(null);
   const [showDishZoom, setShowDishZoom] = useState(false);
   const [timeLeft, setTimeLeft]         = useState(ROUND_SECONDS);
@@ -307,6 +308,7 @@ export default function FoodOriginGame() {
     setRound(0);
     setScore(0);
     setClickedCode(null);
+    setPendingCountry(null);
     setRevealed(false);
     setMultiWaiting(false);
     setShowIntro(true);
@@ -321,6 +323,7 @@ export default function FoodOriginGame() {
     setMultiWaiting(false);
     setRound(nextRound);
     setClickedCode(null);
+    setPendingCountry(null);
     setRevealed(false);
     setShowIntro(true);
   }, []);
@@ -373,6 +376,7 @@ export default function FoodOriginGame() {
     setRound(0);
     setScore(0);
     setClickedCode(null);
+    setPendingCountry(null);
     setRevealed(false);
     setMultiWaiting(false);
     setShowIntro(true);
@@ -396,6 +400,7 @@ export default function FoodOriginGame() {
     if (round + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return; }
     setRound(r => r + 1);
     setClickedCode(null);
+    setPendingCountry(null);
     setRevealed(false);
     setShowIntro(true);
   }
@@ -451,9 +456,19 @@ export default function FoodOriginGame() {
           key={round}
           correctCode={currentDish.countryCode}
           clickedCode={clickedCode}
+          pendingCode={pendingCountry?.alpha2 ?? null}
           revealed={revealed}
           disabled={showIntro}
-          onCountryClick={(alpha2) => { if (!revealed && !showIntro) reveal(alpha2); }}
+          onCountryClick={(alpha2, name) => {
+            if (!revealed && !showIntro) {
+              if (pendingCountry?.alpha2 === alpha2) {
+                reveal(alpha2);
+                setPendingCountry(null);
+              } else {
+                setPendingCountry({ alpha2, name });
+              }
+            }
+          }}
           onCountryHover={setHoveredCountry}
         />
 
@@ -497,6 +512,17 @@ export default function FoodOriginGame() {
               alt={hoveredCountry.name}
             />
             <span className="fd-country-tag__name">{hoveredCountry.name}</span>
+          </div>
+        ) : pendingCountry && !revealed ? (
+          <div className="fd-country-tag fd-country-tag--pending">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              className="fd-country-tag__flag"
+              src={`https://flagcdn.com/w40/${pendingCountry.alpha2.toLowerCase()}.png`}
+              alt={pendingCountry.name}
+            />
+            <span className="fd-country-tag__name">{pendingCountry.name}</span>
+            <span className="fd-country-tag__confirm">Tap again to confirm</span>
           </div>
         ) : (
           <div className="fd-map-tooltip">
