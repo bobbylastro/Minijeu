@@ -59,21 +59,16 @@ const Stars = memo(function Stars() {
 function DishPhoto({ dish, className = "" }: { dish: Dish; className?: string }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => setLoaded(false), [dish]);
-  if (!dish.image_url) {
-    return <div className={`fd-dish-photo fd-dish-photo--placeholder ${className}`} />;
-  }
+  if (!dish.image_url) return null;
   return (
-    <>
-      {!loaded && <div className={`fd-dish-photo fd-dish-photo--placeholder ${className}`} />}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={dish.image_url}
-        alt={dish.name}
-        className={`fd-dish-photo${loaded ? " fd-dish-photo--visible" : ""} ${className}`}
-        onLoad={() => setLoaded(true)}
-        draggable={false}
-      />
-    </>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={dish.image_url}
+      alt={dish.name}
+      className={`fd-dish-photo${loaded ? " fd-dish-photo--visible" : ""} ${className}`}
+      onLoad={() => setLoaded(true)}
+      draggable={false}
+    />
   );
 }
 

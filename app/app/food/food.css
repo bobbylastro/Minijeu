@@ -74,6 +74,8 @@
   position: relative;
 }
 .fd-dish-photo {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -82,15 +84,6 @@
   transition: opacity 0.4s;
 }
 .fd-dish-photo--visible { opacity: 1; }
-.fd-dish-photo--placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2.5rem;
-  background: linear-gradient(135deg, #1e2a40 0%, #2a3a55 100%);
-}
 .fd-dish-card__info {
   padding: 0.75rem 0.9rem 0.85rem;
 }
@@ -217,8 +210,7 @@
   background: #1a2535;
   position: relative;
 }
-.fd-dish-zoom-card__photo .fd-dish-photo,
-.fd-dish-zoom-card__photo .fd-dish-photo--placeholder { width: 100% !important; height: 100% !important; }
+.fd-dish-zoom-card__photo .fd-dish-photo { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
 .fd-dish-zoom-card__info {
   padding: 1rem 1.25rem 1.25rem;
 }
@@ -419,12 +411,7 @@
   object-fit: cover;
   border-radius: 14px;
 }
-.fd-dish-photo--placeholder.fd-intro-photo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 3rem;
-}
+
 .fd-intro-name {
   font-size: 1.6rem;
   font-weight: 900;
