@@ -107,12 +107,14 @@ const FRENCH_GUIANA_GEOJSON = {
 
 type Position = { coordinates: [number, number]; zoom: number };
 
+// Per-element touch-start tracking (attached directly to the SVG path element)
+type TSEl = SVGPathElement & { _ts?: { x: number; y: number } };
+
 export default memo(function WorldMap({
   correctCode, clickedCode, pendingCode, revealed, disabled, onCountryClick, onCountryHover,
 }: Props) {
   const [position, setPosition] = useState<Position>({ coordinates: [10, 10], zoom: 1 });
   const wrapRef = useRef<HTMLDivElement>(null);
-  const touchStartRef = useRef<{ x: number; y: number; t: number } | null>(null);
 
   // Prevent page scroll when wheel is used over the map
   useEffect(() => {
@@ -136,38 +138,38 @@ export default memo(function WorldMap({
     return (alpha2 && CONTINENT_COLOR[alpha2]) ?? C_DEFAULT;
   }
 
+  // Touch handlers attached directly to each Geography path.
+  // This fires on the FIRST tap, bypassing ZoomableGroup's delayed-click behaviour.
+  function makeTouchHandlers(clickable: boolean, alpha2: string, name: string) {
+    if (!clickable) return {};
+    return {
+      onTouchStart: (e: React.TouchEvent) => {
+        const t = e.touches[0];
+        (e.currentTarget as TSEl)._ts = { x: t.clientX, y: t.clientY };
+      },
+      onTouchEnd: (e: React.TouchEvent) => {
+        const el = e.currentTarget as TSEl;
+        const ts = el._ts;
+        el._ts = undefined;
+        if (!ts) return;
+        const t = e.changedTouches[0];
+        const dx = Math.abs(t.clientX - ts.x);
+        const dy = Math.abs(t.clientY - ts.y);
+        if (dx < 10 && dy < 10) {
+          // It's a tap — fire immediately and prevent browser's synthetic click
+          // (which ZoomableGroup would have processed on the *next* tap)
+          e.preventDefault();
+          onCountryClick(alpha2, name);
+        }
+      },
+    };
+  }
+
   // logical canvas size — matches the projection coordinate space
   const W = 800, H = 500;
 
-  function handleTouchStart(e: React.TouchEvent<HTMLDivElement>) {
-    if (e.touches.length === 1) {
-      touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
-    } else {
-      touchStartRef.current = null; // multi-touch = pinch zoom, ignore
-    }
-  }
-
-  function handleTouchEnd(e: React.TouchEvent<HTMLDivElement>) {
-    if (!touchStartRef.current) return;
-    const touch = e.changedTouches[0];
-    const dx = Math.abs(touch.clientX - touchStartRef.current.x);
-    const dy = Math.abs(touch.clientY - touchStartRef.current.y);
-    const dt = Date.now() - touchStartRef.current.t;
-    touchStartRef.current = null;
-    if (dx < 10 && dy < 10 && dt < 400) {
-      // It's a tap — dispatch a synthetic click so Geography's onClick fires on the first tap
-      const el = document.elementFromPoint(touch.clientX, touch.clientY);
-      if (el) el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, clientX: touch.clientX, clientY: touch.clientY }));
-    }
-  }
-
   return (
-    <div
-      ref={wrapRef}
-      style={{ width: "100%", height: "100%", position: "relative" }}
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div ref={wrapRef} style={{ width: "100%", height: "100%", position: "relative" }}>
     <ComposableMap
       width={W}
       height={H}
@@ -208,6 +210,7 @@ export default memo(function WorldMap({
                   onMouseEnter={() => { if (!isIsrael && alpha2) onCountryHover({ name, alpha2 }); }}
                   onMouseLeave={() => onCountryHover(null)}
                   onClick={() => { if (clickable) onCountryClick(alpha2!, name); }}
+                  {...makeTouchHandlers(clickable, alpha2!, name)}
                   style={{
                     default: {
                       fill,
@@ -249,6 +252,7 @@ export default memo(function WorldMap({
                 onMouseEnter={() => onCountryHover({ name, alpha2 })}
                 onMouseLeave={() => onCountryHover(null)}
                 onClick={() => { if (clickable) onCountryClick(alpha2, name); }}
+                {...makeTouchHandlers(clickable, alpha2, name)}
                 style={{
                   default: { fill, stroke: "#fff", strokeWidth: 0.4, outline: "none" },
                   hover: {

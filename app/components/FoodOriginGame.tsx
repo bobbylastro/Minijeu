@@ -551,7 +551,7 @@ export default function FoodOriginGame() {
           </div>
         )}
 
-        {/* Country tooltip */}
+        {/* Country hover tooltip (desktop only) */}
         {hoveredCountry ? (
           <div className="fd-country-tag">
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -561,20 +561,6 @@ export default function FoodOriginGame() {
               alt={hoveredCountry.name}
             />
             <span className="fd-country-tag__name">{hoveredCountry.name}</span>
-          </div>
-        ) : pendingCountry && !revealed ? (
-          <div
-            className="fd-country-tag fd-country-tag--pending"
-            onClick={() => { reveal(pendingCountry.alpha2); setPendingCountry(null); }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              className="fd-country-tag__flag"
-              src={`https://flagcdn.com/w40/${pendingCountry.alpha2.toLowerCase()}.png`}
-              alt={pendingCountry.name}
-            />
-            <span className="fd-country-tag__name">{pendingCountry.name}</span>
-            <span className="fd-country-tag__confirm">Confirm ✓</span>
           </div>
         ) : (
           <div className="fd-map-tooltip">
@@ -611,6 +597,28 @@ export default function FoodOriginGame() {
         onCancel={backToHome}
         onContinueSolo={() => { setMode("solo"); mp.disconnect(); }}
       />
+
+      {/* Confirm bar — fixed bottom banner, shows when a country is selected on touch */}
+      {pendingCountry && !revealed && !showIntro && (
+        <div className="fd-confirm-bar">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="fd-confirm-bar__flag"
+            src={`https://flagcdn.com/w40/${pendingCountry.alpha2.toLowerCase()}.png`}
+            alt={pendingCountry.name}
+          />
+          <div className="fd-confirm-bar__body">
+            <div className="fd-confirm-bar__name">{pendingCountry.name}</div>
+            <div className="fd-confirm-bar__hint">Tap to confirm your answer</div>
+          </div>
+          <button
+            className="fd-confirm-bar__btn"
+            onClick={() => { reveal(pendingCountry.alpha2); setPendingCountry(null); }}
+          >
+            Confirm ✓
+          </button>
+        </div>
+      )}
     </div>
   );
 }
