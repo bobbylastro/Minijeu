@@ -112,6 +112,7 @@ export default memo(function WorldMap({
 }: Props) {
   const [position, setPosition] = useState<Position>({ coordinates: [10, 10], zoom: 1 });
   const wrapRef = useRef<HTMLDivElement>(null);
+  const touchStartRef = useRef<{ x: number; y: number; t: number } | null>(null);
 
   // Prevent page scroll when wheel is used over the map
   useEffect(() => {
@@ -138,8 +139,35 @@ export default memo(function WorldMap({
   // logical canvas size — matches the projection coordinate space
   const W = 800, H = 500;
 
+  function handleTouchStart(e: React.TouchEvent<HTMLDivElement>) {
+    if (e.touches.length === 1) {
+      touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY, t: Date.now() };
+    } else {
+      touchStartRef.current = null; // multi-touch = pinch zoom, ignore
+    }
+  }
+
+  function handleTouchEnd(e: React.TouchEvent<HTMLDivElement>) {
+    if (!touchStartRef.current) return;
+    const touch = e.changedTouches[0];
+    const dx = Math.abs(touch.clientX - touchStartRef.current.x);
+    const dy = Math.abs(touch.clientY - touchStartRef.current.y);
+    const dt = Date.now() - touchStartRef.current.t;
+    touchStartRef.current = null;
+    if (dx < 10 && dy < 10 && dt < 400) {
+      // It's a tap — dispatch a synthetic click so Geography's onClick fires on the first tap
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (el) el.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, clientX: touch.clientX, clientY: touch.clientY }));
+    }
+  }
+
   return (
-    <div ref={wrapRef} style={{ width: "100%", height: "100%", position: "relative" }}>
+    <div
+      ref={wrapRef}
+      style={{ width: "100%", height: "100%", position: "relative" }}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
     <ComposableMap
       width={W}
       height={H}
