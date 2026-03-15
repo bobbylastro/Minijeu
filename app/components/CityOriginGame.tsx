@@ -192,7 +192,7 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
       <Stars />
       <div className="home-screen">
         <div className="home-emoji">🏙️</div>
-        <h1 className="home-title">City <span className="accent">Mapper</span></h1>
+        <p className="home-title">City <span className="accent">Mapper</span></p>
         <p className="home-subtitle">A city photo appears — click the map to find its country</p>
 
         <div className="how-it-works">

@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
+  title: "Contact Us",
+  description:
+    "Have a question, a bug to report or a suggestion? Reach out to the Ultimate Playground team — we read every message.",
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

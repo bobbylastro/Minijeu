@@ -30,6 +30,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Culture games ─────────────────────────────────────────────────────────
     { url: `${BASE}/wcf`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
+    // ── Other public pages ────────────────────────────────────────────────────
+    { url: `${BASE}/leaderboard`, lastModified: NOW, changeFrequency: "daily",  priority: 0.6 },
+    { url: `${BASE}/contact`,     lastModified: NOW, changeFrequency: "yearly", priority: 0.4 },
+
     // ── Legal pages ───────────────────────────────────────────────────────────
     { url: `${BASE}/privacy`, lastModified: NOW, changeFrequency: "yearly", priority: 0.2 },
     { url: `${BASE}/terms`,   lastModified: NOW, changeFrequency: "yearly", priority: 0.2 },

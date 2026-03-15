@@ -886,7 +886,7 @@ export default function CareerQuiz() {
         {screen === "result" && (
           <div className="citymix-result-screen">
             <div className="result-emoji--pop">{pct >= 0.75 ? "🏆" : pct >= 0.5 ? "⚽" : "😅"}</div>
-            <h1 className="result-title--pop">{mode === "multi" ? "Results" : "Final Score"}</h1>
+            <p className="result-title--pop">{mode === "multi" ? "Results" : "Final Score"}</p>
 
             {mode === "multi" && mp.opponent ? (
               <div className="score-circles">

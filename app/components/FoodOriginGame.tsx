@@ -187,7 +187,7 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
       <Stars />
       <div className="home-screen">
         <div className="home-emoji">🍽️</div>
-        <h1 className="home-title">Food <span className="accent">Origins</span></h1>
+        <p className="home-title">Food <span className="accent">Origins</span></p>
         <p className="home-subtitle">A dish appears — click the map to find its country of origin</p>
 
         <div className="how-it-works">

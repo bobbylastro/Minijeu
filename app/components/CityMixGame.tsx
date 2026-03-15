@@ -834,7 +834,7 @@ export default function CityMix() {
                 </div>
                 <div className="result-header-multi__center">
                   <div className="result-emoji--pop">{pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🎯" : "🗺️"}</div>
-                  <h1 className="result-title--pop">Results</h1>
+                  <p className="result-title--pop">Results</p>
                 </div>
                 <div className="result-score-side">
                   <div className="result-score-side__label">Opp.</div>
@@ -847,7 +847,7 @@ export default function CityMix() {
                 <div className="result-emoji--pop">
                   {pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🎯" : "🗺️"}
                 </div>
-                <h1 className="result-title--pop">Final Score</h1>
+                <p className="result-title--pop">Final Score</p>
                 <div className="score-circle score-circle--md score-circle--solo" style={{ margin: "20px auto" }}>
                   <div className="score-circle__value score-circle__value--md score-circle__value--gold">{totalScore.toLocaleString()}</div>
                   <div className="score-circle__total score-circle__total--md">/ {MAX_TOTAL.toLocaleString()}</div>

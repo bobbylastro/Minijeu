@@ -1286,9 +1286,9 @@ export default function NbaQuiz() {
             <div className="result-emoji--pop">
               {pct >= 0.75 ? "🏆" : pct >= 0.5 ? "🏀" : "😅"}
             </div>
-            <h1 className="result-title--pop">
+            <p className="result-title--pop">
               {mode === "multi" ? "Results" : "Final Score"}
-            </h1>
+            </p>
 
             {mode === "multi" && mp.opponent ? (
               <div className="score-circles">

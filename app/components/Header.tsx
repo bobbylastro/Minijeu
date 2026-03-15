@@ -66,9 +66,10 @@ export default function Header() {
               ref={sportsRef}
               className={`site-header__nav-item${sportsOpen ? " is-open" : ""}${isSportsActive ? " is-active" : ""}`}
               onClick={() => setSportsOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={sportsOpen}
             >
               ⚽ Sports
-              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               {sportsOpen && (
@@ -109,9 +110,10 @@ export default function Header() {
               ref={cultureRef}
               className={`site-header__nav-item${cultureOpen ? " is-open" : ""}${isCultureActive ? " is-active" : ""}`}
               onClick={() => setCultureOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={cultureOpen}
             >
               🧠 Culture
-              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               {cultureOpen && (
@@ -138,9 +140,10 @@ export default function Header() {
               ref={foodRef}
               className={`site-header__nav-item${foodOpen ? " is-open" : ""}${isFoodActive ? " is-active" : ""}`}
               onClick={() => setFoodOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={foodOpen}
             >
               🍽️ Food
-              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               {foodOpen && (
@@ -167,9 +170,10 @@ export default function Header() {
               ref={geoRef}
               className={`site-header__nav-item${geoOpen ? " is-open" : ""}${isGeoActive ? " is-active" : ""}`}
               onClick={() => setGeoOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={geoOpen}
             >
               🌍 World
-              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
                 <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
               {geoOpen && (
