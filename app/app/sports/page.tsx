@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Sports Games — Football & NBA Quizzes | Ultimate Playground",
@@ -37,9 +38,31 @@ const OTHER_CATEGORIES = [
   { href: "/culture",    emoji: "🧠", label: "Culture"  },
 ];
 
+const BASE = "https://ultimate-playground.com";
+
 export default function SportsPage() {
   return (
-    <div className="home-page">
+    <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Sports Games — Football & NBA Quizzes",
+          "url": `${BASE}/sports`,
+          "description": "Free online football and NBA quiz games. Test your knowledge of transfers, salaries, stadiums and player careers.",
+          "inLanguage": "en",
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Sports", "item": `${BASE}/sports` },
+          ],
+        },
+      ]} />
+      <div className="home-page">
       <div className="home-page__content">
 
         {/* Hero */}
@@ -124,5 +147,6 @@ export default function SportsPage() {
 
       </div>
     </div>
+    </>
   );
 }

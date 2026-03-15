@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CareerOrderGame from "@/components/CareerOrderGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Football career quiz: put clubs in order | CareerOrder",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Test your football knowledge with CareerOrder. Drag and drop clubs into the correct order of a player's career. Quick, fun and challenging.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function CareerPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "CareerOrder",
+          "url": `${BASE}/career`,
+          "description": "Sort a football player's clubs in the correct chronological order. A challenging and addictive free online game for football fans.",
+          "applicationCategory": "Game",
+          "genre": "Quiz Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",        "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Sports",      "item": `${BASE}/sports` },
+            { "@type": "ListItem", "position": 3, "name": "CareerOrder", "item": `${BASE}/career` },
+          ],
+        },
+      ]} />
       <CareerOrderGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

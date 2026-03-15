@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FootballQuizGame from "@/components/FootballQuizGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Football Quiz – Trivia, transfers and stadiums online | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Test your football knowledge with FootballQuiz: trivia, stadiums, transfers and peak seasons. A fast, fun and addictive online game.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function FootballPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "FootballQuiz",
+          "url": `${BASE}/football`,
+          "description": "Test your football knowledge with FootballQuiz: trivia, stadiums, transfers and peak seasons. A fast, fun and addictive online game.",
+          "applicationCategory": "Game",
+          "genre": "Quiz Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",    "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Sports",  "item": `${BASE}/sports` },
+            { "@type": "ListItem", "position": 3, "name": "FootballQuiz", "item": `${BASE}/football` },
+          ],
+        },
+      ]} />
       <FootballQuizGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

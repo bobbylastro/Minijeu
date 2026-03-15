@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import WhatCameFirstGame from "@/components/WhatCameFirstGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "What came first quiz: history, tech & culture game | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Test your knowledge of history, science and culture. Guess which event came first, place events in order and estimate exact years.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function WCFPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "WhatCameFirst",
+          "url": `${BASE}/wcf`,
+          "description": "Pick which historical event, invention or cultural milestone happened first. A free online trivia game covering history, science and pop culture.",
+          "applicationCategory": "Game",
+          "genre": "Trivia Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",           "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Culture",        "item": `${BASE}/culture` },
+            { "@type": "ListItem", "position": 3, "name": "WhatCameFirst",  "item": `${BASE}/wcf` },
+          ],
+        },
+      ]} />
       <WhatCameFirstGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

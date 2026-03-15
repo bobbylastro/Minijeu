@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HigherOrLowerGame from "@/components/HigherOrLowerGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Higher or Lower Countries Game – Compare stats online | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Play the higher or lower countries game. Compare population, GDP, area and more. Test your knowledge and guess which country ranks higher.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function HigherOrLowerPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Higher or Lower",
+          "url": `${BASE}/higher-or-lower`,
+          "description": "Compare two countries on population, GDP, area, coastline and more. A free online geography and general knowledge game.",
+          "applicationCategory": "Game",
+          "genre": "Educational Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",           "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "World",          "item": `${BASE}/world` },
+            { "@type": "ListItem", "position": 3, "name": "Higher or Lower","item": `${BASE}/higher-or-lower` },
+          ],
+        },
+      ]} />
       <HigherOrLowerGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

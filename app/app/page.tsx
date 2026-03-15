@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import SeoExpand from "@/components/SeoExpand";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Ultimate Playground – Play free online quiz & mini games",
@@ -154,8 +155,36 @@ function CategorySection({
 }
 
 // ─── Page ──────────────────────────────────────────────────────────────────────
+const BASE = "https://ultimate-playground.com";
+
 export default function HomePage() {
   return (
+    <>
+    <JsonLd data={[
+      {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Ultimate Playground – Free Online Quiz & Mini Games",
+        "url": BASE,
+        "description": "Play free online quiz games and mini games — geography, sports, food, culture and more.",
+        "inLanguage": "en",
+      },
+      {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Games on Ultimate Playground",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "CityMix",         "url": `${BASE}/citymix` },
+          { "@type": "ListItem", "position": 2, "name": "Higher or Lower", "url": `${BASE}/higher-or-lower` },
+          { "@type": "ListItem", "position": 3, "name": "City Mapper",     "url": `${BASE}/city-origins` },
+          { "@type": "ListItem", "position": 4, "name": "FootballQuiz",    "url": `${BASE}/football` },
+          { "@type": "ListItem", "position": 5, "name": "NBAQuiz",         "url": `${BASE}/nba` },
+          { "@type": "ListItem", "position": 6, "name": "CareerOrder",     "url": `${BASE}/career` },
+          { "@type": "ListItem", "position": 7, "name": "WhatCameFirst",   "url": `${BASE}/wcf` },
+          { "@type": "ListItem", "position": 8, "name": "Food Origins",    "url": `${BASE}/food` },
+        ],
+      },
+    ]} />
     <div className="home-page">
       <div className="home-page__content">
         <div className="home-page__hero">
@@ -200,5 +229,6 @@ export default function HomePage() {
         </section>
       </div>
     </div>
+    </>
   );
 }

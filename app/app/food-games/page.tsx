@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Food Games — Cuisine & Origin Quizzes | Ultimate Playground",
@@ -23,9 +24,31 @@ const OTHER_CATEGORIES = [
   { href: "/culture", emoji: "🧠", label: "Culture"  },
 ];
 
+const BASE = "https://ultimate-playground.com";
+
 export default function FoodGamesPage() {
   return (
-    <div className="home-page">
+    <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Food Games — Cuisine & Origin Quizzes",
+          "url": `${BASE}/food-games`,
+          "description": "Free online food and cuisine quiz games. Identify dishes and find their country of origin on the world map.",
+          "inLanguage": "en",
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Food", "item": `${BASE}/food-games` },
+          ],
+        },
+      ]} />
+      <div className="home-page">
       <div className="home-page__content">
 
         {/* Hero */}
@@ -110,5 +133,6 @@ export default function FoodGamesPage() {
 
       </div>
     </div>
+    </>
   );
 }

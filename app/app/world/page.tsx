@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "World Games — Geography & City Challenges | Ultimate Playground",
@@ -37,9 +38,31 @@ const OTHER_CATEGORIES = [
   { href: "/culture",    emoji: "🧠", label: "Culture" },
 ];
 
+const BASE = "https://ultimate-playground.com";
+
 export default function WorldPage() {
   return (
-    <div className="home-page">
+    <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "World Games — Geography & City Challenges",
+          "url": `${BASE}/world`,
+          "description": "Free online geography and city quiz games. Guess populations, compare countries and find cities on the map.",
+          "inLanguage": "en",
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "World", "item": `${BASE}/world` },
+          ],
+        },
+      ]} />
+      <div className="home-page">
       <div className="home-page__content">
 
         {/* Hero */}
@@ -126,5 +149,6 @@ export default function WorldPage() {
 
       </div>
     </div>
+    </>
   );
 }

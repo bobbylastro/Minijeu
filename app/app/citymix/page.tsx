@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CityMixGame from "@/components/CityMixGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "CityMix – Guess city population game | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Play CityMix, the ultimate city population guessing game. Compare cities, estimate their population and test your geography skills online for free.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function CityMixPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "CityMix",
+          "url": `${BASE}/citymix`,
+          "description": "Pick the larger city then slide to guess its exact population. A free online geography quiz game.",
+          "applicationCategory": "Game",
+          "genre": "Educational Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",    "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "World",   "item": `${BASE}/world` },
+            { "@type": "ListItem", "position": 3, "name": "CityMix", "item": `${BASE}/citymix` },
+          ],
+        },
+      ]} />
       <CityMixGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

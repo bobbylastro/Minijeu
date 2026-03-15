@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import CityOriginGame from "@/components/CityOriginGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "City Mapper – Find the country behind the city | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Test your world geography! A city photo appears — click the right country on the map to score. 10 rounds, 100 cities from every continent.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function CityOriginsPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "City Mapper",
+          "url": `${BASE}/city-origins`,
+          "description": "A city photo appears — click the world map to find the country it belongs to. 100 cities from every continent. Free online geography game.",
+          "applicationCategory": "Game",
+          "genre": "Educational Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",        "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "World",       "item": `${BASE}/world` },
+            { "@type": "ListItem", "position": 3, "name": "City Mapper", "item": `${BASE}/city-origins` },
+          ],
+        },
+      ]} />
       <CityOriginGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

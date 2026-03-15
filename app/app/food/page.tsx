@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import FoodOriginGame from "@/components/FoodOriginGame";
 import RelatedGames from "@/components/RelatedGames";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Food Origins Game – Guess the country behind the dish | Ultimate Playground",
@@ -8,9 +9,36 @@ export const metadata: Metadata = {
     "Test your food geography knowledge! A dish appears on screen — click the right country on the world map to score. 10 rounds, 180+ dishes from every continent.",
 };
 
+const BASE = "https://ultimate-playground.com";
+
 export default function FoodPage() {
   return (
     <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "Food Origins",
+          "url": `${BASE}/food`,
+          "description": "A dish photo appears — click the country on the world map where it comes from. A free online geography and food culture game.",
+          "applicationCategory": "Game",
+          "genre": "Educational Game",
+          "operatingSystem": "Any",
+          "inLanguage": "en",
+          "isAccessibleForFree": true,
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home",         "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Food",         "item": `${BASE}/food-games` },
+            { "@type": "ListItem", "position": 3, "name": "Food Origins", "item": `${BASE}/food` },
+          ],
+        },
+      ]} />
       <FoodOriginGame />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

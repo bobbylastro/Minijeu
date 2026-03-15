@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Providers from "./providers";
 import CookieBanner from "@/components/CookieBanner";
 import ConsentScripts from "@/components/ConsentScripts";
+import JsonLd from "@/components/JsonLd";
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
@@ -63,6 +64,21 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${bebasNeue.variable} ${dmMono.variable} ${sora.variable}`}>
+      <head>
+        <JsonLd data={{
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "Ultimate Playground",
+          "url": BASE_URL,
+          "description": "Play free online quiz and mini games — geography, sports, food, culture and more. Challenge friends in real-time multiplayer.",
+          "inLanguage": "en",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Ultimate Playground",
+            "url": BASE_URL,
+          },
+        }} />
+      </head>
       <body>
         <Providers>
           <Header />

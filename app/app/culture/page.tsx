@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Culture Games — History & Pop Culture Quizzes | Ultimate Playground",
@@ -23,9 +24,31 @@ const OTHER_CATEGORIES = [
   { href: "/food-games", emoji: "🍽️", label: "Food"   },
 ];
 
+const BASE = "https://ultimate-playground.com";
+
 export default function CulturePage() {
   return (
-    <div className="home-page">
+    <>
+      <JsonLd data={[
+        {
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Culture Games — History & Pop Culture Quizzes",
+          "url": `${BASE}/culture`,
+          "description": "Free online culture and history quiz games. Test your knowledge of historical events, science and pop culture.",
+          "inLanguage": "en",
+          "publisher": { "@type": "Organization", "name": "Ultimate Playground", "url": BASE },
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": BASE },
+            { "@type": "ListItem", "position": 2, "name": "Culture", "item": `${BASE}/culture` },
+          ],
+        },
+      ]} />
+      <div className="home-page">
       <div className="home-page__content">
 
         {/* Hero */}
@@ -113,5 +136,6 @@ export default function CulturePage() {
 
       </div>
     </div>
+    </>
   );
 }
