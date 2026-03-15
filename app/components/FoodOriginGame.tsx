@@ -262,27 +262,27 @@ function ResultScreen({ score, oppScore, mode, onReplay }: {
           {isMulti ? (iWon ? "🏆" : tied ? "🤝" : "😅") : (pct >= 80 ? "🏆" : pct >= 50 ? "🙂" : "😅")}
         </div>
         <h2 className="home-title" style={{ fontSize: "1.6rem" }}>
-          {isMulti ? (iWon ? "You win!" : tied ? "It's a tie!" : "You lose!") : "Game Over!"}
+          {isMulti ? (iWon ? "You win!" : tied ? "It's a tie!" : "You lose!") : (pct >= 80 ? "Excellent!" : pct >= 50 ? "Well Done!" : "Keep Practicing!")}
         </h2>
 
         {isMulti ? (
           <div className="fd-result-scores">
             <div className={`score-circle score-circle--md ${myClass}`}>
               <span className="score-circle__label">You</span>
-              <span className="score-circle__value">{score}</span>
-              <span className="score-circle__label">/ {MAX_SCORE}</span>
+              <span className={`score-circle__value score-circle__value--md ${iWon ? "score-circle__value--green" : "score-circle__value--gold"}`}>{score}</span>
+              <span className="score-circle__total score-circle__total--md">/ {MAX_SCORE}</span>
             </div>
             <div className={`score-circle score-circle--md ${oppClass}`}>
               <span className="score-circle__label">Opp.</span>
-              <span className="score-circle__value">{oppScore}</span>
-              <span className="score-circle__label">/ {MAX_SCORE}</span>
+              <span className={`score-circle__value score-circle__value--md ${!iWon && !tied ? "score-circle__value--green" : "score-circle__value--gold"}`}>{oppScore}</span>
+              <span className="score-circle__total score-circle__total--md">/ {MAX_SCORE}</span>
             </div>
           </div>
         ) : (
           <>
             <div className={`score-circle score-circle--lg ${myClass}`}>
-              <span className="score-circle__value">{score}</span>
-              <span className="score-circle__label">/ {MAX_SCORE}</span>
+              <span className={`score-circle__value score-circle__value--lg ${pct >= 80 ? "score-circle__value--green" : "score-circle__value--gold"}`}>{score}</span>
+              <span className="score-circle__total score-circle__total--lg">/ {MAX_SCORE}</span>
             </div>
             <div className="result-score-bar" style={{ margin: "1rem 0" }}>
               <div
@@ -513,9 +513,6 @@ export default function FoodOriginGame() {
             if (!revealed && !showIntro) {
               if (!isTouchRef.current) {
                 reveal(alpha2);
-              } else if (pendingCountry?.alpha2 === alpha2) {
-                reveal(alpha2);
-                setPendingCountry(null);
               } else {
                 setPendingCountry({ alpha2, name });
               }
@@ -574,7 +571,10 @@ export default function FoodOriginGame() {
               alt={pendingCountry.name}
             />
             <span className="fd-country-tag__name">{pendingCountry.name}</span>
-            <span className="fd-country-tag__confirm">Tap again to confirm</span>
+            <button
+              className="fd-country-tag__confirm"
+              onClick={() => { reveal(pendingCountry.alpha2); setPendingCountry(null); }}
+            >Confirm ✓</button>
           </div>
         ) : (
           <div className="fd-map-tooltip">

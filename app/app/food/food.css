@@ -166,14 +166,25 @@
   border-color: rgba(245,158,11,0.6);
   box-shadow: 0 8px 28px rgba(0,0,0,0.5), 0 0 16px rgba(245,158,11,0.25);
   width: auto;
-  max-width: 320px;
+  max-width: 340px;
+  pointer-events: auto;
 }
 .fd-country-tag__confirm {
-  font-size: 0.72rem;
-  font-weight: 600;
+  flex-shrink: 0;
+  padding: 0.35rem 0.75rem;
+  background: rgba(245,158,11,0.2);
+  border: 1.5px solid rgba(245,158,11,0.7);
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 700;
   color: #f59e0b;
   white-space: nowrap;
-  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.fd-country-tag__confirm:hover,
+.fd-country-tag__confirm:active {
+  background: rgba(245,158,11,0.35);
 }
 
 /* ── Dish card clickable ─────────────────────────────────────────────────── */
