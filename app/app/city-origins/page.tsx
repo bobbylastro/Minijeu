@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CityOriginGame from "@/components/CityOriginGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "City Mapper – Find the country behind the city | Ultimate Playground",
@@ -68,6 +69,7 @@ export default function CityOriginsPage() {
           <p>How many cities can you correctly place on the map? Start playing and find out.</p>
         </div>
       </section>
+      <RelatedGames currentSlug="/city-origins" />
     </>
   );
 }

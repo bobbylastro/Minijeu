@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import NBAQuizGame from "@/components/NBAQuizGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "NBA Quiz – Salaries, contracts and trivia online | Ultimate Playground",
@@ -48,6 +49,7 @@ export default function NBAPage() {
           </p>
         </div>
       </section>
+      <RelatedGames currentSlug="/nba" />
     </>
   );
 }

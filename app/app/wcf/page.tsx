@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WhatCameFirstGame from "@/components/WhatCameFirstGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "What came first quiz: history, tech & culture game | Ultimate Playground",
@@ -46,6 +47,7 @@ export default function WCFPage() {
           </p>
         </div>
       </section>
+      <RelatedGames currentSlug="/wcf" />
     </>
   );
 }

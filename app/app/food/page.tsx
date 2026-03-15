@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FoodOriginGame from "@/components/FoodOriginGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "Food Origins Game – Guess the country behind the dish | Ultimate Playground",
@@ -75,6 +76,7 @@ export default function FoodPage() {
           <p>How many dishes can you place correctly? Start playing and find out.</p>
         </div>
       </section>
+      <RelatedGames currentSlug="/food" />
     </>
   );
 }

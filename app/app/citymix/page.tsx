@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CityMixGame from "@/components/CityMixGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "CityMix – Guess city population game | Ultimate Playground",
@@ -70,6 +71,7 @@ export default function CityMixPage() {
           </p>
         </div>
       </section>
+      <RelatedGames currentSlug="/citymix" />
     </>
   );
 }

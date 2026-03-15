@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import HigherOrLowerGame from "@/components/HigherOrLowerGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "Higher or Lower Countries Game – Compare stats online | Ultimate Playground",
@@ -73,6 +74,7 @@ export default function HigherOrLowerPage() {
           <p>Try it now and see how many correct answers you can get.</p>
         </div>
       </section>
+      <RelatedGames currentSlug="/higher-or-lower" />
     </>
   );
 }

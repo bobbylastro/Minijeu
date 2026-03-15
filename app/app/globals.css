@@ -2652,6 +2652,92 @@
   color: #7c3aed;
 }
 
+/* ── Related games section ────────────────────────────────────────────────── */
+.related-games {
+  background: #060614;
+  border-top: 1px solid rgba(124,58,237,0.15);
+  padding: 48px 24px 64px;
+}
+
+.related-games__inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.related-games__title {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  margin: 0 0 20px;
+}
+
+.related-games__grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.related-games__card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.related-games__card:hover {
+  background: rgba(124,58,237,0.1);
+  border-color: rgba(124,58,237,0.3);
+}
+
+.related-games__card-emoji {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  width: 36px;
+  text-align: center;
+}
+
+.related-games__card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.related-games__card-name {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 2px;
+}
+
+.related-games__card-desc {
+  font-family: var(--font-sora), sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.4);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.related-games__card-arrow {
+  font-size: 1rem;
+  color: rgba(124,58,237,0.6);
+  flex-shrink: 0;
+  transition: transform 0.15s;
+}
+
+.related-games__card:hover .related-games__card-arrow {
+  transform: translateX(3px);
+  color: #7c3aed;
+}
+
 /* ── Site footer ──────────────────────────────────────────────────────────── */
 .site-footer {
   text-align: center;

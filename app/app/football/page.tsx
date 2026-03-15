@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import FootballQuizGame from "@/components/FootballQuizGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "Football Quiz – Trivia, transfers and stadiums online | Ultimate Playground",
@@ -50,6 +51,7 @@ export default function FootballPage() {
           </p>
         </div>
       </section>
+      <RelatedGames currentSlug="/football" />
     </>
   );
 }

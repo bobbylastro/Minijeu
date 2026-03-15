@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import CareerOrderGame from "@/components/CareerOrderGame";
+import RelatedGames from "@/components/RelatedGames";
 
 export const metadata: Metadata = {
   title: "Football career quiz: put clubs in order | CareerOrder",
@@ -46,6 +47,7 @@ export default function CareerPage() {
           </p>
         </div>
       </section>
+      <RelatedGames currentSlug="/career" />
     </>
   );
 }
