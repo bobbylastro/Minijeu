@@ -44,7 +44,7 @@ export default function WorldPage() {
 
         {/* Hero */}
         <div className="cat-page__hero">
-          <h1 className="cat-page__h1">🌍 World Games</h1>
+          <h1 className="cat-page__h1">🌍 Free World Geography Quiz Games — Cities, Countries & Map Challenges</h1>
           <p className="cat-page__lead">
             Geography challenges, city quizzes and country comparisons — test everything you know
             about the world, from population stats to city landmarks.

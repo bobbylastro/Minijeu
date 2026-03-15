@@ -30,7 +30,7 @@ export default function CulturePage() {
 
         {/* Hero */}
         <div className="cat-page__hero">
-          <h1 className="cat-page__h1">🧠 Culture Games</h1>
+          <h1 className="cat-page__h1">🧠 Free Culture & History Quiz Games — Timeline & Trivia Challenges</h1>
           <p className="cat-page__lead">
             History, technology, pop culture and sports milestones — challenge your timeline
             knowledge and see if you can sort events in the right order.

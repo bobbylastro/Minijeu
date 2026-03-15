@@ -44,7 +44,7 @@ export default function SportsPage() {
 
         {/* Hero */}
         <div className="cat-page__hero">
-          <h1 className="cat-page__h1">🏆 Sports Games</h1>
+          <h1 className="cat-page__h1">🏆 Free Sports Quiz Games — Football, NBA & Career Trivia Online</h1>
           <p className="cat-page__lead">
             Football transfers, NBA contracts, stadium photos and career timelines — three games
             that put your sports knowledge to the ultimate test.

@@ -30,7 +30,7 @@ export default function FoodGamesPage() {
 
         {/* Hero */}
         <div className="cat-page__hero">
-          <h1 className="cat-page__h1">🍽️ Food Games</h1>
+          <h1 className="cat-page__h1">🍽️ Free Food Geography Quiz — Guess the Country Behind 180+ Dishes</h1>
           <p className="cat-page__lead">
             Explore the world through its cuisine. Match dishes to their country of origin
             on an interactive map — 180+ recipes from every corner of the globe.
