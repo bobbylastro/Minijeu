@@ -47,48 +47,36 @@ const N2A: Record<string, string> = {
   "795":"TM","800":"UG","804":"UA","784":"AE","826":"GB","840":"US","858":"UY",
   "860":"UZ","862":"VE","704":"VN","887":"YE","894":"ZM","716":"ZW","384":"CI",
   "304":"GL",
-  // previously missing
   "204":"BJ","064":"BT","226":"GQ","262":"DJ","270":"GM","426":"LS","430":"LR",
   "480":"MU","624":"GW","678":"ST","690":"SC","748":"SZ","084":"BZ","626":"TL",
   "020":"AD","174":"KM","132":"CV","090":"SB","548":"VU","882":"WS","296":"KI",
   "584":"MH","583":"FM","520":"NR","798":"TV","776":"TO",
-  // territories/disputed not in ISO 3166 numeric but present in Natural Earth
-  "732":"MA",   // Western Sahara — merged with Morocco
-  "383":"XK",   // Kosovo (informal numeric)
-  // French Guiana (GF) has no separate feature — it's a sub-polygon of France (250), handled by split logic below
+  "732":"MA",
+  "383":"XK",
 };
 
 // One color per continent
 const CONTINENT_COLOR: Record<string, string> = (() => {
   const map: Record<string, string> = {};
   const set = (color: string, codes: string[]) => codes.forEach(c => { map[c] = color; });
-
   set("#7eb8d4", ["AL","AD","AT","BY","BE","BA","BG","HR","CY","CZ","DK","EE","FI","FR","DE",
     "GR","HU","IS","IE","IT","LV","LT","LU","MT","MD","ME","NL","MK","NO","PL","PT",
-    "RO","RU","RS","SK","SI","ES","SE","CH","UA","GB","XK"]); // Europe — steel blue
-
+    "RO","RU","RS","SK","SI","ES","SE","CH","UA","GB","XK"]);
   set("#f4a261", ["AF","AM","AZ","BH","BD","BN","BT","KH","CN","GE","IN","ID","IR","IQ","JP",
     "JO","KZ","KW","KG","LA","LB","MY","MN","MM","NP","KP","OM","PK","PS","PH","QA",
-    "SA","KR","LK","SY","TW","TJ","TH","TL","TM","TR","AE","UZ","VN","YE"]); // Asia — warm orange
-
+    "SA","KR","LK","SY","TW","TJ","TH","TL","TM","TR","AE","UZ","VN","YE"]);
   set("#f9c74f", ["DZ","AO","BJ","BW","BF","BI","CM","CF","TD","CD","CG","CI","CV","KM",
     "DJ","EG","GQ","ER","ET","GA","GM","GH","GN","GW","KE","LS","LR","LY","MG","MW",
     "ML","MR","MA","MU","MZ","NA","NE","NG","RW","ST","SN","SC","SL","SO","ZA","SS",
-    "SD","SZ","TZ","TG","TN","UG","ZM","ZW"]); // Africa — golden
-
-  set("#c77dff", ["CA","US","MX","GL","BZ","CR","CU","DO","SV","GT","HT","HN","JM",
-    "NI","PA","TT"]); // North & Central America — violet
-
-  set("#6bcb77", ["AR","BO","BR","CL","CO","EC","GF","GY","PY","PE","SR","UY","VE"]); // South America — green
-
-  set("#ff9b85", ["AU","FJ","FM","KI","MH","NR","NZ","PG","SB","TO","TV","VU","WS"]); // Oceania — coral
-
+    "SD","SZ","TZ","TG","TN","UG","ZM","ZW"]);
+  set("#c77dff", ["CA","US","MX","GL","BZ","CR","CU","DO","SV","GT","HT","HN","JM","NI","PA","TT"]);
+  set("#6bcb77", ["AR","BO","BR","CL","CO","EC","GF","GY","PY","PE","SR","UY","VE"]);
+  set("#ff9b85", ["AU","FJ","FM","KI","MH","NR","NZ","PG","SB","TO","TV","VU","WS"]);
   return map;
 })();
 
-const C_DEFAULT = "#c8d8c8"; // fallback for unmapped territories
+const C_DEFAULT = "#c8d8c8";
 
-// French Guiana is bundled inside France's MultiPolygon in world-atlas — hardcode it as a separate overlay
 const FRENCH_GUIANA_GEOJSON = {
   type: "FeatureCollection" as const,
   features: [{
@@ -97,9 +85,9 @@ const FRENCH_GUIANA_GEOJSON = {
     geometry: {
       type: "Polygon" as const,
       coordinates: [[
-        [-54.6, 5.9],  [-53.8, 5.9], [-53.1, 5.7], [-52.3, 5.4],
-        [-50.5, 4.5],  [-50.5, 1.0], [-52.5, 1.0],
-        [-54.0, 2.0],  [-54.6, 3.2], [-54.6, 5.9],
+        [-54.6, 5.9], [-53.8, 5.9], [-53.1, 5.7], [-52.3, 5.4],
+        [-50.5, 4.5], [-50.5, 1.0], [-52.5, 1.0],
+        [-54.0, 2.0], [-54.6, 3.2], [-54.6, 5.9],
       ]],
     },
   }],
@@ -107,14 +95,14 @@ const FRENCH_GUIANA_GEOJSON = {
 
 type Position = { coordinates: [number, number]; zoom: number };
 
-// Per-element touch-start tracking (attached directly to the SVG path element)
-type TSEl = SVGPathElement & { _ts?: { x: number; y: number } };
-
 export default memo(function WorldMap({
   correctCode, clickedCode, pendingCode, revealed, disabled, onCountryClick, onCountryHover,
 }: Props) {
   const [position, setPosition] = useState<Position>({ coordinates: [10, 10], zoom: 1 });
   const wrapRef = useRef<HTMLDivElement>(null);
+  // Keep a stable ref to the callback so the native listener closure always calls the latest version
+  const onClickRef = useRef(onCountryClick);
+  useEffect(() => { onClickRef.current = onCountryClick; }, [onCountryClick]);
 
   // Prevent page scroll when wheel is used over the map
   useEffect(() => {
@@ -124,6 +112,46 @@ export default memo(function WorldMap({
     el.addEventListener("wheel", handler, { passive: false });
     return () => el.removeEventListener("wheel", handler);
   }, []);
+
+  // Native CAPTURE touch listeners on the wrapper div.
+  // The wrapper is an ancestor of the SVG where d3-zoom attaches its listeners,
+  // so capture phase on the wrapper fires BEFORE d3-zoom — giving us first-tap detection.
+  useEffect(() => {
+    const wrapper = wrapRef.current;
+    if (!wrapper) return;
+    let ts: { x: number; y: number } | null = null;
+
+    const onTouchStart = (e: TouchEvent) => {
+      if (e.touches.length === 1) {
+        ts = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      } else {
+        ts = null; // pinch zoom — don't track
+      }
+    };
+
+    const onTouchEnd = (e: TouchEvent) => {
+      if (!ts) return;
+      const t = e.changedTouches[0];
+      const dx = Math.abs(t.clientX - ts.x);
+      const dy = Math.abs(t.clientY - ts.y);
+      ts = null;
+      if (dx >= 10 || dy >= 10) return; // was a pan gesture, not a tap
+
+      // Walk up from the touched element to find our data-alpha2 attribute
+      let el: Element | null = document.elementFromPoint(t.clientX, t.clientY);
+      while (el && !el.getAttribute("data-alpha2")) el = el.parentElement;
+      const alpha2 = el?.getAttribute("data-alpha2");
+      const name   = el?.getAttribute("data-name") ?? "";
+      if (alpha2) onClickRef.current(alpha2, name);
+    };
+
+    wrapper.addEventListener("touchstart", onTouchStart, { capture: true });
+    wrapper.addEventListener("touchend",   onTouchEnd,   { capture: true });
+    return () => {
+      wrapper.removeEventListener("touchstart", onTouchStart, { capture: true });
+      wrapper.removeEventListener("touchend",   onTouchEnd,   { capture: true });
+    };
+  }, []); // empty deps — callback accessed via ref
 
   const handleMoveEnd = useCallback((pos: object) => {
     setPosition(pos as Position);
@@ -138,140 +166,94 @@ export default memo(function WorldMap({
     return (alpha2 && CONTINENT_COLOR[alpha2]) ?? C_DEFAULT;
   }
 
-  // Touch handlers attached directly to each Geography path.
-  // This fires on the FIRST tap, bypassing ZoomableGroup's delayed-click behaviour.
-  function makeTouchHandlers(clickable: boolean, alpha2: string, name: string) {
-    if (!clickable) return {};
-    return {
-      onTouchStart: (e: React.TouchEvent) => {
-        const t = e.touches[0];
-        (e.currentTarget as TSEl)._ts = { x: t.clientX, y: t.clientY };
-      },
-      onTouchEnd: (e: React.TouchEvent) => {
-        const el = e.currentTarget as TSEl;
-        const ts = el._ts;
-        el._ts = undefined;
-        if (!ts) return;
-        const t = e.changedTouches[0];
-        const dx = Math.abs(t.clientX - ts.x);
-        const dy = Math.abs(t.clientY - ts.y);
-        if (dx < 10 && dy < 10) {
-          // It's a tap — fire immediately and prevent browser's synthetic click
-          // (which ZoomableGroup would have processed on the *next* tap)
-          e.preventDefault();
-          onCountryClick(alpha2, name);
-        }
-      },
-    };
-  }
-
-  // logical canvas size — matches the projection coordinate space
   const W = 800, H = 500;
 
   return (
     <div ref={wrapRef} style={{ width: "100%", height: "100%", position: "relative" }}>
-    <ComposableMap
-      width={W}
-      height={H}
-      projection="geoNaturalEarth1"
-      projectionConfig={{ scale: 153, center: [10, 0] }}
-      style={{ width: "100%", height: "100%", background: "#cde6f5" }}
-    >
-      <ZoomableGroup
-        zoom={position.zoom}
-        center={position.coordinates}
-        onMoveEnd={handleMoveEnd}
-        minZoom={1}
-        maxZoom={8}
-        translateExtent={[[-10, -10], [W + 10, H + 10]]}
+      <ComposableMap
+        width={W}
+        height={H}
+        projection="geoNaturalEarth1"
+        projectionConfig={{ scale: 153, center: [10, 0] }}
+        style={{ width: "100%", height: "100%", background: "#cde6f5" }}
       >
-        <Geographies geography={GEO_URL}>
-          {({ geographies }) =>
-            geographies
-              .filter(geo => String(geo.id) !== "010" && String(geo.id) !== "275") // remove Antarctica + duplicate Palestine
-              .map(geo => {
-              const id        = String(geo.id ?? "");
-              const geoName   = geo.properties?.name ?? "";
-              const isSomaliland = geoName === "Somaliland";
-              const isIsrael  = false; // treated as Palestine
-              const alpha2    = (id === PALESTINE_ID || id === ISRAEL_ID) ? "PS"
-                              : isSomaliland ? "SO"
-                              : N2A[id];
-              const name      = (id === PALESTINE_ID || id === ISRAEL_ID) ? "Palestine"
-                              : id === "732" ? "Morocco"
-                              : geoName;
-              const clickable = !disabled && !revealed && !!alpha2;
-              const fill     = getFill(alpha2);
+        <ZoomableGroup
+          zoom={position.zoom}
+          center={position.coordinates}
+          onMoveEnd={handleMoveEnd}
+          minZoom={1}
+          maxZoom={8}
+          translateExtent={[[-10, -10], [W + 10, H + 10]]}
+        >
+          <Geographies geography={GEO_URL}>
+            {({ geographies }) =>
+              geographies
+                .filter(geo => String(geo.id) !== "010" && String(geo.id) !== "275")
+                .map(geo => {
+                  const id     = String(geo.id ?? "");
+                  const geoName = geo.properties?.name ?? "";
+                  const isSomaliland = geoName === "Somaliland";
+                  const alpha2 = (id === PALESTINE_ID || id === ISRAEL_ID) ? "PS"
+                               : isSomaliland ? "SO"
+                               : N2A[id];
+                  const name   = (id === PALESTINE_ID || id === ISRAEL_ID) ? "Palestine"
+                               : id === "732" ? "Morocco"
+                               : geoName;
+                  const clickable = !disabled && !revealed && !!alpha2;
+                  const fill   = getFill(alpha2);
 
+                  return (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      // data-* attributes are spread to the underlying <path> for touch hit-testing
+                      data-alpha2={clickable ? alpha2 : undefined}
+                      data-name={clickable ? name : undefined}
+                      onMouseEnter={() => { if (alpha2) onCountryHover({ name, alpha2 }); }}
+                      onMouseLeave={() => onCountryHover(null)}
+                      onClick={() => { if (clickable) onCountryClick(alpha2!, name); }}
+                      style={{
+                        default:  { fill, stroke: "#fff", strokeWidth: 0.4, outline: "none" },
+                        hover:    { fill: clickable ? "#f59e0b" : fill, stroke: "#fff", strokeWidth: clickable ? 0.8 : 0.4, outline: "none", cursor: clickable ? "pointer" : "default" },
+                        pressed:  { fill: clickable ? "#d97706" : fill, stroke: "#fff", strokeWidth: 0.8, outline: "none" },
+                      }}
+                    />
+                  );
+                })
+            }
+          </Geographies>
+
+          <Geographies geography={FRENCH_GUIANA_GEOJSON}>
+            {({ geographies }) => geographies.map(geo => {
+              const alpha2    = "GF";
+              const name      = "French Guiana";
+              const clickable = !disabled && !revealed;
+              const fill      = getFill(alpha2);
               return (
                 <Geography
-                  key={geo.rsmKey}
+                  key="french-guiana-overlay"
                   geography={geo}
-                  onMouseEnter={() => { if (!isIsrael && alpha2) onCountryHover({ name, alpha2 }); }}
+                  data-alpha2={clickable ? alpha2 : undefined}
+                  data-name={clickable ? name : undefined}
+                  onMouseEnter={() => onCountryHover({ name, alpha2 })}
                   onMouseLeave={() => onCountryHover(null)}
-                  onClick={() => { if (clickable) onCountryClick(alpha2!, name); }}
-                  {...makeTouchHandlers(clickable, alpha2!, name)}
+                  onClick={() => { if (clickable) onCountryClick(alpha2, name); }}
                   style={{
-                    default: {
-                      fill,
-                      stroke: "#fff",
-                      strokeWidth: 0.4,
-                      outline: "none",
-                    },
-                    hover: {
-                      fill: clickable ? "#f59e0b" : fill,
-                      stroke: "#fff",
-                      strokeWidth: clickable ? 0.8 : 0.4,
-                      outline: "none",
-                      cursor: clickable ? "pointer" : "default",
-                    },
-                    pressed: {
-                      fill: clickable ? "#d97706" : fill,
-                      stroke: "#fff",
-                      strokeWidth: 0.8,
-                      outline: "none",
-                    },
+                    default:  { fill, stroke: "#fff", strokeWidth: 0.4, outline: "none" },
+                    hover:    { fill: clickable ? "#f59e0b" : fill, stroke: "#fff", strokeWidth: clickable ? 0.8 : 0.4, outline: "none", cursor: clickable ? "pointer" : "default" },
+                    pressed:  { fill: clickable ? "#d97706" : fill, stroke: "#fff", strokeWidth: 0.8, outline: "none" },
                   }}
                 />
               );
-            })
-          }
-        </Geographies>
+            })}
+          </Geographies>
+        </ZoomableGroup>
+      </ComposableMap>
 
-        {/* French Guiana hardcoded overlay — covers the France polygon in South America */}
-        <Geographies geography={FRENCH_GUIANA_GEOJSON}>
-          {({ geographies }) => geographies.map(geo => {
-            const alpha2    = "GF";
-            const name      = "French Guiana";
-            const clickable = !disabled && !revealed;
-            const fill      = getFill(alpha2);
-            return (
-              <Geography
-                key="french-guiana-overlay"
-                geography={geo}
-                onMouseEnter={() => onCountryHover({ name, alpha2 })}
-                onMouseLeave={() => onCountryHover(null)}
-                onClick={() => { if (clickable) onCountryClick(alpha2, name); }}
-                {...makeTouchHandlers(clickable, alpha2, name)}
-                style={{
-                  default: { fill, stroke: "#fff", strokeWidth: 0.4, outline: "none" },
-                  hover: {
-                    fill: clickable ? "#f59e0b" : fill,
-                    stroke: "#fff", strokeWidth: clickable ? 0.8 : 0.4, outline: "none",
-                    cursor: clickable ? "pointer" : "default",
-                  },
-                  pressed: { fill: clickable ? "#d97706" : fill, stroke: "#fff", strokeWidth: 0.8, outline: "none" },
-                }}
-              />
-            );
-          })}
-        </Geographies>
-      </ZoomableGroup>
-    </ComposableMap>
-    <div className="fd-zoom-controls">
-      <button className="fd-zoom-btn" onClick={() => setPosition(p => ({ ...p, zoom: Math.min(p.zoom * 1.6, 10) }))}>+</button>
-      <button className="fd-zoom-btn" onClick={() => setPosition(p => ({ ...p, zoom: Math.max(p.zoom / 1.6, 1) }))}>−</button>
-    </div>
+      <div className="fd-zoom-controls">
+        <button className="fd-zoom-btn" onClick={() => setPosition(p => ({ ...p, zoom: Math.min(p.zoom * 1.6, 10) }))}>+</button>
+        <button className="fd-zoom-btn" onClick={() => setPosition(p => ({ ...p, zoom: Math.max(p.zoom / 1.6, 1) }))}>−</button>
+      </div>
     </div>
   );
 });

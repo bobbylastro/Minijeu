@@ -511,8 +511,8 @@ export default function CityOriginGame() {
           </div>
         )}
 
-        {/* Country hover tooltip (desktop only) */}
-        {hoveredCountry ? (
+        {/* Country hover tooltip (desktop only — hidden when confirm bar is active) */}
+        {hoveredCountry && !pendingCountry ? (
           <div className="fd-country-tag">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
