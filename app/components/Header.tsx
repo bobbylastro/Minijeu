@@ -39,6 +39,12 @@ export default function Header() {
   // Close mobile menu on route change
   useEffect(() => { setMenuOpen(false); }, [pathname]);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [menuOpen]);
+
   const closeMenu = () => setMenuOpen(false);
 
   const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
@@ -234,83 +240,41 @@ export default function Header() {
         <div className="mobile-menu" onClick={closeMenu}>
           <div className="mobile-menu__inner" onClick={e => e.stopPropagation()}>
 
-            <div className="mobile-menu__section">
-              <div className="mobile-menu__label">⚽ Sports</div>
-              <Link href="/football" className={`mobile-menu__item${pathname === "/football" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">⚽</span>
-                <div>
-                  <div className="mobile-menu__item-name">FootballQuiz</div>
-                  <div className="mobile-menu__item-desc">Transfers, salaries & trivia</div>
-                </div>
-              </Link>
-              <Link href="/nba" className={`mobile-menu__item${pathname === "/nba" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">🏀</span>
-                <div>
-                  <div className="mobile-menu__item-name">NBAQuiz</div>
-                  <div className="mobile-menu__item-desc">Arenas, contracts & trivia</div>
-                </div>
-              </Link>
-              <Link href="/career" className={`mobile-menu__item${pathname === "/career" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">🔀</span>
-                <div>
-                  <div className="mobile-menu__item-name">CareerOrder</div>
-                  <div className="mobile-menu__item-desc">Sort a player's clubs in order</div>
-                </div>
-              </Link>
-            </div>
+            <Link href="/sports" className={`mobile-menu__cat${isSportsActive ? " is-active" : ""}`} onClick={closeMenu}>
+              <span className="mobile-menu__cat-icon">⚽</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">Sports</div>
+                <div className="mobile-menu__cat-desc">Football, NBA, Career</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">›</span>
+            </Link>
 
-            <div className="mobile-menu__divider" />
+            <Link href="/culture" className={`mobile-menu__cat${isCultureActive ? " is-active" : ""}`} onClick={closeMenu}>
+              <span className="mobile-menu__cat-icon">🧠</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">Culture</div>
+                <div className="mobile-menu__cat-desc">History & pop culture</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">›</span>
+            </Link>
 
-            <div className="mobile-menu__section">
-              <div className="mobile-menu__label">🧠 Culture</div>
-              <Link href="/wcf" className={`mobile-menu__item${pathname === "/wcf" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">⏳</span>
-                <div>
-                  <div className="mobile-menu__item-name">WhatCameFirst</div>
-                  <div className="mobile-menu__item-desc">Pick the earlier event</div>
-                </div>
-              </Link>
-            </div>
+            <Link href="/food-games" className={`mobile-menu__cat${isFoodActive ? " is-active" : ""}`} onClick={closeMenu}>
+              <span className="mobile-menu__cat-icon">🍽️</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">Food</div>
+                <div className="mobile-menu__cat-desc">Cuisine & origins</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">›</span>
+            </Link>
 
-            <div className="mobile-menu__divider" />
-
-            <div className="mobile-menu__section">
-              <div className="mobile-menu__label">🍽️ Food</div>
-              <Link href="/food" className={`mobile-menu__item${pathname === "/food" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">🗺️</span>
-                <div>
-                  <div className="mobile-menu__item-name">Food Origins</div>
-                  <div className="mobile-menu__item-desc">Click the country where this dish is from</div>
-                </div>
-              </Link>
-            </div>
-
-            <div className="mobile-menu__divider" />
-
-            <div className="mobile-menu__section">
-              <div className="mobile-menu__label">🌍 World</div>
-              <Link href="/citymix" className={`mobile-menu__item${pathname === "/citymix" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">🌍</span>
-                <div>
-                  <div className="mobile-menu__item-name">CityMix</div>
-                  <div className="mobile-menu__item-desc">City population challenge</div>
-                </div>
-              </Link>
-              <Link href="/higher-or-lower" className={`mobile-menu__item${pathname === "/higher-or-lower" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">📊</span>
-                <div>
-                  <div className="mobile-menu__item-name">Higher or Lower</div>
-                  <div className="mobile-menu__item-desc">Compare countries</div>
-                </div>
-              </Link>
-              <Link href="/city-origins" className={`mobile-menu__item${pathname === "/city-origins" ? " is-active" : ""}`} onClick={closeMenu}>
-                <span className="mobile-menu__item-icon">🏙️</span>
-                <div>
-                  <div className="mobile-menu__item-name">City Mapper</div>
-                  <div className="mobile-menu__item-desc">Find the country behind the city</div>
-                </div>
-              </Link>
-            </div>
+            <Link href="/world" className={`mobile-menu__cat${isGeoActive ? " is-active" : ""}`} onClick={closeMenu}>
+              <span className="mobile-menu__cat-icon">🌍</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">World</div>
+                <div className="mobile-menu__cat-desc">Cities, countries & geography</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">›</span>
+            </Link>
 
           </div>
         </div>
