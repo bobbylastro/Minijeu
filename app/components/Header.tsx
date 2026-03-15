@@ -18,6 +18,7 @@ export default function Header() {
   const [foodOpen, setFoodOpen]       = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
   const [authOpen, setAuthOpen]       = useState(false);
+  const [mobileOpen, setMobileOpen]   = useState<string | null>(null);
 
   const geoRef     = useRef<HTMLDivElement>(null);
   const sportsRef  = useRef<HTMLDivElement>(null);
@@ -45,7 +46,8 @@ export default function Header() {
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  const closeMenu = () => setMenuOpen(false);
+  const closeMenu = () => { setMenuOpen(false); setMobileOpen(null); };
+  const toggleMobile = (key: string) => setMobileOpen(o => o === key ? null : key);
 
   const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
@@ -240,41 +242,85 @@ export default function Header() {
         <div className="mobile-menu" onClick={closeMenu}>
           <div className="mobile-menu__inner" onClick={e => e.stopPropagation()}>
 
-            <Link href="/sports" className={`mobile-menu__cat${isSportsActive ? " is-active" : ""}`} onClick={closeMenu}>
+            {/* Sports */}
+            <div
+              className={`mobile-menu__cat${isSportsActive ? " is-active" : ""}${mobileOpen === "sports" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("sports")}
+            >
               <span className="mobile-menu__cat-icon">⚽</span>
               <div className="mobile-menu__cat-body">
                 <div className="mobile-menu__cat-name">Sports</div>
                 <div className="mobile-menu__cat-desc">Football, NBA, Career</div>
               </div>
-              <span className="mobile-menu__cat-arrow">›</span>
-            </Link>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "sports" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "sports" && (
+              <div className="mobile-menu__sub">
+                <Link href="/sports" className="mobile-menu__sub-cat" onClick={closeMenu}>⚽ All Sports games →</Link>
+                <Link href="/football" className={`mobile-menu__sub-item${pathname === "/football" ? " is-active" : ""}`} onClick={closeMenu}><span>⚽</span> FootballQuiz</Link>
+                <Link href="/nba"      className={`mobile-menu__sub-item${pathname === "/nba"      ? " is-active" : ""}`} onClick={closeMenu}><span>🏀</span> NBAQuiz</Link>
+                <Link href="/career"   className={`mobile-menu__sub-item${pathname === "/career"   ? " is-active" : ""}`} onClick={closeMenu}><span>🔀</span> CareerOrder</Link>
+              </div>
+            )}
 
-            <Link href="/culture" className={`mobile-menu__cat${isCultureActive ? " is-active" : ""}`} onClick={closeMenu}>
+            {/* Culture */}
+            <div
+              className={`mobile-menu__cat${isCultureActive ? " is-active" : ""}${mobileOpen === "culture" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("culture")}
+            >
               <span className="mobile-menu__cat-icon">🧠</span>
               <div className="mobile-menu__cat-body">
                 <div className="mobile-menu__cat-name">Culture</div>
                 <div className="mobile-menu__cat-desc">History & pop culture</div>
               </div>
-              <span className="mobile-menu__cat-arrow">›</span>
-            </Link>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "culture" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "culture" && (
+              <div className="mobile-menu__sub">
+                <Link href="/culture" className="mobile-menu__sub-cat" onClick={closeMenu}>🧠 All Culture games →</Link>
+                <Link href="/wcf" className={`mobile-menu__sub-item${pathname === "/wcf" ? " is-active" : ""}`} onClick={closeMenu}><span>⏳</span> WhatCameFirst</Link>
+              </div>
+            )}
 
-            <Link href="/food-games" className={`mobile-menu__cat${isFoodActive ? " is-active" : ""}`} onClick={closeMenu}>
+            {/* Food */}
+            <div
+              className={`mobile-menu__cat${isFoodActive ? " is-active" : ""}${mobileOpen === "food" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("food")}
+            >
               <span className="mobile-menu__cat-icon">🍽️</span>
               <div className="mobile-menu__cat-body">
                 <div className="mobile-menu__cat-name">Food</div>
                 <div className="mobile-menu__cat-desc">Cuisine & origins</div>
               </div>
-              <span className="mobile-menu__cat-arrow">›</span>
-            </Link>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "food" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "food" && (
+              <div className="mobile-menu__sub">
+                <Link href="/food-games" className="mobile-menu__sub-cat" onClick={closeMenu}>🍽️ All Food games →</Link>
+                <Link href="/food" className={`mobile-menu__sub-item${pathname === "/food" ? " is-active" : ""}`} onClick={closeMenu}><span>🗺️</span> Food Origins</Link>
+              </div>
+            )}
 
-            <Link href="/world" className={`mobile-menu__cat${isGeoActive ? " is-active" : ""}`} onClick={closeMenu}>
+            {/* World */}
+            <div
+              className={`mobile-menu__cat${isGeoActive ? " is-active" : ""}${mobileOpen === "world" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("world")}
+            >
               <span className="mobile-menu__cat-icon">🌍</span>
               <div className="mobile-menu__cat-body">
                 <div className="mobile-menu__cat-name">World</div>
                 <div className="mobile-menu__cat-desc">Cities, countries & geography</div>
               </div>
-              <span className="mobile-menu__cat-arrow">›</span>
-            </Link>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "world" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "world" && (
+              <div className="mobile-menu__sub">
+                <Link href="/world" className="mobile-menu__sub-cat" onClick={closeMenu}>🌍 All World games →</Link>
+                <Link href="/citymix"        className={`mobile-menu__sub-item${pathname === "/citymix"        ? " is-active" : ""}`} onClick={closeMenu}><span>🌍</span> CityMix</Link>
+                <Link href="/higher-or-lower" className={`mobile-menu__sub-item${pathname === "/higher-or-lower" ? " is-active" : ""}`} onClick={closeMenu}><span>📊</span> Higher or Lower</Link>
+                <Link href="/city-origins"   className={`mobile-menu__sub-item${pathname === "/city-origins"   ? " is-active" : ""}`} onClick={closeMenu}><span>🏙️</span> City Mapper</Link>
+              </div>
+            )}
 
           </div>
         </div>
