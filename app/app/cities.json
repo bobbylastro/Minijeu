@@ -329,6 +329,7 @@
   },
   {
     "name": "Kuala Lumpur",
+    "country": "Malaysia",
     "flag": "https://flagcdn.com/w40/my.png",
     "population": 8285000,
     "image": "/images/geo/kuala-lumpur.webp",

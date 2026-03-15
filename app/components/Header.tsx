@@ -41,7 +41,7 @@ export default function Header() {
 
   const closeMenu = () => setMenuOpen(false);
 
-  const geoRoutes     = ["/citymix", "/higher-or-lower"];
+  const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
   const cultureRoutes = ["/wcf"];
   const foodRoutes    = ["/food"];
@@ -181,6 +181,13 @@ export default function Header() {
                         <div className="site-header__dropdown-desc">Compare countries</div>
                       </div>
                     </Link>
+                    <Link href="/city-origins" className={`site-header__dropdown-item${pathname === "/city-origins" ? " is-active" : ""}`} onClick={() => setGeoOpen(false)}>
+                      <div className="site-header__dropdown-icon">🏙️</div>
+                      <div>
+                        <div className="site-header__dropdown-name">City Mapper</div>
+                        <div className="site-header__dropdown-desc">Find the country behind the city</div>
+                      </div>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -278,6 +285,13 @@ export default function Header() {
                 <div>
                   <div className="mobile-menu__item-name">Higher or Lower</div>
                   <div className="mobile-menu__item-desc">Compare countries</div>
+                </div>
+              </Link>
+              <Link href="/city-origins" className={`mobile-menu__item${pathname === "/city-origins" ? " is-active" : ""}`} onClick={closeMenu}>
+                <span className="mobile-menu__item-icon">🏙️</span>
+                <div>
+                  <div className="mobile-menu__item-name">City Mapper</div>
+                  <div className="mobile-menu__item-desc">Find the country behind the city</div>
                 </div>
               </Link>
             </div>

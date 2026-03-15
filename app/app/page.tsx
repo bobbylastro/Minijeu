@@ -32,6 +32,13 @@ const WORLD_GAMES: GameDef[] = [
     desc: "Compare two countries on population, GDP, area, coastline and more.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/city-origins",
+    emoji: "🏙️",
+    title: "City Mapper",
+    desc: "A city photo appears — click the world map to find the country it belongs to. 100 cities from every continent.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const SPORTS_GAMES: GameDef[] = [
