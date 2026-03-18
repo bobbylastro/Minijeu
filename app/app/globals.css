@@ -594,7 +594,7 @@
   display: flex;
   gap: 14px;
   justify-content: center;
-  margin-top: 40px;
+  margin-top: 24px;
   flex-wrap: wrap;
 }
 
@@ -970,7 +970,7 @@
   justify-content: center;
 }
 
-.score-circle--lg { width: 140px; height: 140px; }
+.score-circle--lg { width: 140px; height: 140px; margin: 28px auto; }
 .score-circle--md { width: 130px; height: 130px; }
 
 .score-circle--solo {
@@ -1379,8 +1379,8 @@
 
 /* ── How it works box (PopGuessr home) ────────────────────────────────────── */
 .how-it-works {
-  margin: 36px auto 0;
-  padding: 20px 28px;
+  margin: 18px auto 0;
+  padding: 14px 20px;
   border-radius: 16px;
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);

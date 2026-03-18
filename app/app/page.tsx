@@ -74,6 +74,13 @@ const CULTURE_GAMES: GameDef[] = [
     desc: "Two events from sports, tech, history or pop culture — pick the one that happened first.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/origins",
+    emoji: "🌐",
+    title: "Origins Quiz",
+    desc: "A sport, tradition or invention appears — click the world map to find where it was born. Sports, music, festivals and more.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const FOOD_GAMES: GameDef[] = [
@@ -182,6 +189,7 @@ export default function HomePage() {
           { "@type": "ListItem", "position": 6, "name": "CareerOrder",     "url": `${BASE}/career` },
           { "@type": "ListItem", "position": 7, "name": "WhatCameFirst",   "url": `${BASE}/wcf` },
           { "@type": "ListItem", "position": 8, "name": "Food Origins",    "url": `${BASE}/food` },
+          { "@type": "ListItem", "position": 9, "name": "Origins Quiz",    "url": `${BASE}/origins` },
         ],
       },
     ]} />
@@ -219,6 +227,7 @@ export default function HomePage() {
               <li><strong>NBAQuiz</strong> – Test yourself on contracts, arenas and basketball trivia</li>
               <li><strong>CareerOrder</strong> – Rebuild a footballer&apos;s career in the correct chronological order</li>
               <li><strong>WhatCameFirst?</strong> – Pick which event happened first across sports, tech, history and pop culture</li>
+              <li><strong>Origins Quiz</strong> – Click the country where each sport, tradition or invention was born — 60+ items from around the world</li>
             </ul>
 
             <h2>Free online mini games for every player</h2>

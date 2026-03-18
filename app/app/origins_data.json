@@ -1,0 +1,530 @@
+[
+  {
+    "name": "Tennis",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "category": "Sport",
+    "hint": "Invented in the 1870s on manicured grass courts — its oldest tournament dates back to 1877",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/2013_Australian_Open_-_Guillaume_Rufin.jpg/500px-2013_Australian_Open_-_Guillaume_Rufin.jpg"
+  },
+  {
+    "name": "Rugby",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "category": "Sport",
+    "hint": "Legend says a schoolboy picked up the ball mid-game in 1823",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/2014_Women%27s_Six_Nations_Championship_-_France_Italy_%2851%29.jpg/500px-2014_Women%27s_Six_Nations_Championship_-_France_Italy_%2851%29.jpg"
+  },
+  {
+    "name": "Cricket",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "category": "Sport",
+    "hint": "Played in rural villages since the 16th century — it spread across the world with an empire",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Pollock_to_Hussey.jpg/500px-Pollock_to_Hussey.jpg"
+  },
+  {
+    "name": "Golf",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "category": "Sport",
+    "hint": "First played on windswept coastal links in the 15th century — beware the bunkers and the wind",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golfer_swing.jpg/500px-Golfer_swing.jpg"
+  },
+  {
+    "name": "Baseball",
+    "country": "United States",
+    "countryCode": "US",
+    "category": "Sport",
+    "hint": "Known as 'the national pastime' — bat, ball and a diamond-shaped field under the summer sun",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Tommy_Milone_gives_up_a_home_run_to_Mike_Trout_on_May_21%2C_2017.jpg/500px-Tommy_Milone_gives_up_a_home_run_to_Mike_Trout_on_May_21%2C_2017.jpg"
+  },
+  {
+    "name": "Basketball",
+    "country": "United States",
+    "countryCode": "US",
+    "category": "Sport",
+    "hint": "Invented in 1891 with a peach basket as the first hoop",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Steph_Curry_%2851915116957%29.jpg/500px-Steph_Curry_%2851915116957%29.jpg"
+  },
+  {
+    "name": "Ice Hockey",
+    "country": "Canada",
+    "countryCode": "CA",
+    "category": "Sport",
+    "hint": "Played on frozen rivers long before it had official rules",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Pittsburgh_Penguins%2C_Washington_Capitals%2C_Bryan_Rust_%2833744033514%29.jpg/500px-Pittsburgh_Penguins%2C_Washington_Capitals%2C_Bryan_Rust_%2833744033514%29.jpg"
+  },
+  {
+    "name": "Sumo",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Sport",
+    "hint": "A ritual combat sport with roots in Shinto tradition",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/Asashoryu_fight_Jan08.JPG/500px-Asashoryu_fight_Jan08.JPG"
+  },
+  {
+    "name": "Judo",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Sport",
+    "hint": "Created in 1882 by Kanō Jigorō — means 'gentle way'",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Jigoro_Kano_and_Kyuzo_Mifune_%28restoration%29.jpg/500px-Jigoro_Kano_and_Kyuzo_Mifune_%28restoration%29.jpg"
+  },
+  {
+    "name": "Taekwondo",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "category": "Sport",
+    "hint": "Martial art known for its spectacular high kicks",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Incheon_AsianGames_Taekwondo_030_%2815409139955%29.jpg/500px-Incheon_AsianGames_Taekwondo_030_%2815409139955%29.jpg"
+  },
+  {
+    "name": "Karate",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Sport",
+    "hint": "Developed on a chain of subtropical islands before spreading to the mainland — means 'empty hand'",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Hanashiro_Chomo.jpg/330px-Hanashiro_Chomo.jpg"
+  },
+  {
+    "name": "Pétanque",
+    "country": "France",
+    "countryCode": "FR",
+    "category": "Sport",
+    "hint": "Toss heavy metal balls as close as possible to a small wooden jack — feet must stay together",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Petanque_on_a_beach_of_Nice.jpg/500px-Petanque_on_a_beach_of_Nice.jpg"
+  },
+  {
+    "name": "Table Tennis",
+    "country": "United Kingdom",
+    "countryCode": "GB",
+    "category": "Sport",
+    "hint": "Started as an after-dinner parlour game in the 1880s — champagne corks and stacked books as first equipment",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Mondial_Ping_-_Men%27s_Singles_-_Round_4_-_Kenta_Matsudaira-Vladimir_Samsonov_-_57.jpg/500px-Mondial_Ping_-_Men%27s_Singles_-_Round_4_-_Kenta_Matsudaira-Vladimir_Samsonov_-_57.jpg"
+  },
+  {
+    "name": "Skiing",
+    "country": "Norway",
+    "countryCode": "NO",
+    "category": "Sport",
+    "hint": "The world's oldest ski artefact is over 5,000 years old, found here",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Ski_Famille_-_Family_Ski_Holidays.jpg/500px-Ski_Famille_-_Family_Ski_Holidays.jpg"
+  },
+  {
+    "name": "Kung Fu",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Sport",
+    "hint": "Practiced for centuries at a famous mountain monastery — the origin of countless martial arts traditions",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Shi_DeRu_and_Shi_DeYang.jpg/500px-Shi_DeRu_and_Shi_DeYang.jpg"
+  },
+  {
+    "name": "Polo",
+    "country": "Iran",
+    "countryCode": "IR",
+    "category": "Sport",
+    "hint": "One of the world's oldest team sports, played on horseback — beloved by ancient royalty across a vast empire",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Varsity_Polo_2013.jpg/500px-Varsity_Polo_2013.jpg"
+  },
+  {
+    "name": "Tango",
+    "country": "Argentina",
+    "countryCode": "AR",
+    "category": "Dance & Music",
+    "hint": "Born in the working-class port districts of a great South American city in the late 19th century",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Tango_Porte%C3%B1o.jpg/500px-Tango_Porte%C3%B1o.jpg"
+  },
+  {
+    "name": "Flamenco",
+    "country": "Spain",
+    "countryCode": "ES",
+    "category": "Dance & Music",
+    "hint": "Passionate art born from the fusion of Gypsy, Moorish and Jewish musical traditions in a sun-drenched southern peninsula",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Belen_maya.jpg/330px-Belen_maya.jpg"
+  },
+  {
+    "name": "Reggae",
+    "country": "Jamaica",
+    "countryCode": "JM",
+    "category": "Dance & Music",
+    "hint": "Emerged in the late 1960s — Bob Marley made it global",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5e/Bob-Marley.jpg"
+  },
+  {
+    "name": "Samba",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "category": "Dance & Music",
+    "hint": "The heartbeat of Carnival, blending African rhythms with local culture",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Originais_do_Samba.tif/lossy-page1-500px-Originais_do_Samba.tif.jpg"
+  },
+  {
+    "name": "Jazz",
+    "country": "United States",
+    "countryCode": "US",
+    "category": "Dance & Music",
+    "hint": "Born at the turn of the 20th century in a melting-pot port city, blending blues, ragtime and African rhythms",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Louis_Armstrong_in_Color_%28restored%29.jpg/500px-Louis_Armstrong_in_Color_%28restored%29.jpg"
+  },
+  {
+    "name": "Waltz",
+    "country": "Austria",
+    "countryCode": "AT",
+    "category": "Dance & Music",
+    "hint": "Spinning couple dance born in the grand ballrooms of a powerful 19th-century European empire",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Phenakistoscope_3g07690d.gif/500px-Phenakistoscope_3g07690d.gif"
+  },
+  {
+    "name": "Opera",
+    "country": "Italy",
+    "countryCode": "IT",
+    "category": "Dance & Music",
+    "hint": "Invented around 1600 by musicians seeking to revive ancient Greek theatre — drama told entirely through singing",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Macbeth_applause_at_Savonlinna_Opera_festival_in_2007_-_panoramio.jpg/500px-Macbeth_applause_at_Savonlinna_Opera_festival_in_2007_-_panoramio.jpg"
+  },
+  {
+    "name": "Ballet",
+    "country": "France",
+    "countryCode": "FR",
+    "category": "Dance & Music",
+    "hint": "Developed in Renaissance courts and formalised over centuries — its entire vocabulary uses one European language",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Edgar_Degas_-_La_Classe_de_danse.jpg/500px-Edgar_Degas_-_La_Classe_de_danse.jpg"
+  },
+  {
+    "name": "Fado",
+    "country": "Portugal",
+    "countryCode": "PT",
+    "category": "Dance & Music",
+    "hint": "Melancholic songs of longing — UNESCO Intangible Heritage since 2011",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/Jose_malhoa_fado.jpg/500px-Jose_malhoa_fado.jpg"
+  },
+  {
+    "name": "Salsa",
+    "country": "Cuba",
+    "countryCode": "CU",
+    "category": "Dance & Music",
+    "hint": "Rooted in son and mambo rhythms, it fused Caribbean beats with jazz to conquer dance floors worldwide",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1f/John_Narvaez_%26_Liz_Rojas_at_California_Dance_Festival_2025_01_%28cropped%29.jpg/500px-John_Narvaez_%26_Liz_Rojas_at_California_Dance_Festival_2025_01_%28cropped%29.jpg"
+  },
+  {
+    "name": "K-pop",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "category": "Dance & Music",
+    "hint": "A global phenomenon of synchronised performances and polished idol groups",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dc/BTS_at_American_Music_Awards_November_21%2C_2021.jpg/500px-BTS_at_American_Music_Awards_November_21%2C_2021.jpg"
+  },
+  {
+    "name": "Cumbia",
+    "country": "Colombia",
+    "countryCode": "CO",
+    "category": "Dance & Music",
+    "hint": "A fusion of African, Indigenous and Spanish rhythms from the Caribbean coast",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Instrumentos_musicales_del_vallenato.svg/500px-Instrumentos_musicales_del_vallenato.svg.png"
+  },
+  {
+    "name": "Capoeira",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "category": "Dance & Music",
+    "hint": "A martial art disguised as dance, created by enslaved Africans",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Rugendasroda.jpg/500px-Rugendasroda.jpg"
+  },
+  {
+    "name": "Bollywood",
+    "country": "India",
+    "countryCode": "IN",
+    "category": "Dance & Music",
+    "hint": "The world's most prolific film industry — its dazzling musicals have fans dancing on every continent",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/India_film_clapperboard_%28variant%29.svg/500px-India_film_clapperboard_%28variant%29.svg.png"
+  },
+  {
+    "name": "Oktoberfest",
+    "country": "Germany",
+    "countryCode": "DE",
+    "category": "Tradition",
+    "hint": "The world's largest beer festival — born in 1810 to celebrate a royal wedding, now drawing millions each autumn",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/O%27zapft_is%21_M%C3%BCnchens_5_Jahreszeit_hat_begonnen_-_O%27zapft_is%21_Munich_5_season%2C_the_Oktoberfest_has_begun_%289855483374%29.jpg/500px-O%27zapft_is%21_M%C3%BCnchens_5_Jahreszeit_hat_begonnen_-_O%27zapft_is%21_Munich_5_season%2C_the_Oktoberfest_has_begun_%289855483374%29.jpg"
+  },
+  {
+    "name": "Halloween",
+    "country": "Ireland",
+    "countryCode": "IE",
+    "category": "Tradition",
+    "hint": "Rooted in the ancient Celtic festival of Samhain, when the veil thins",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Jack-o%27-Lantern_2003-10-31.jpg/500px-Jack-o%27-Lantern_2003-10-31.jpg"
+  },
+  {
+    "name": "Día de los Muertos",
+    "country": "Mexico",
+    "countryCode": "MX",
+    "category": "Tradition",
+    "hint": "A vibrant celebration honouring deceased loved ones with altars and sugar skulls",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Catrina_3.jpg/500px-Catrina_3.jpg"
+  },
+  {
+    "name": "Holi",
+    "country": "India",
+    "countryCode": "IN",
+    "category": "Tradition",
+    "hint": "The festival of colours — celebrate spring by throwing bright pigment powder",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Playing_Holi.jpg/500px-Playing_Holi.jpg"
+  },
+  {
+    "name": "Hanami",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Tradition",
+    "hint": "The ancient custom of picnicking under cherry blossoms in full bloom",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Castle_Himeji_sakura02.jpg/500px-Castle_Himeji_sakura02.jpg"
+  },
+  {
+    "name": "La Tomatina",
+    "country": "Spain",
+    "countryCode": "ES",
+    "category": "Tradition",
+    "hint": "Every August, a town drowns in 150,000 kg of ripe tomatoes",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Tomatina_2006.jpg/500px-Tomatina_2006.jpg"
+  },
+  {
+    "name": "Midsommar",
+    "country": "Sweden",
+    "countryCode": "SE",
+    "category": "Tradition",
+    "hint": "Dance around the maypole on the longest day of the year",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Mittsommerfest_in_Norwegen%2C_Insel_Tysnes_IMG_4425WI.jpg/500px-Mittsommerfest_in_Norwegen%2C_Insel_Tysnes_IMG_4425WI.jpg"
+  },
+  {
+    "name": "Chinese New Year",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Tradition",
+    "hint": "Lunar festival with dragon dances, red envelopes and fireworks",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Kung_Hei_Fat_Choi%21_%286834861529%29.jpg/500px-Kung_Hei_Fat_Choi%21_%286834861529%29.jpg"
+  },
+  {
+    "name": "Diwali",
+    "country": "India",
+    "countryCode": "IN",
+    "category": "Tradition",
+    "hint": "The Festival of Lights — oil lamps flicker to celebrate the triumph of light over darkness",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/The_Rangoli_of_Lights.jpg/500px-The_Rangoli_of_Lights.jpg"
+  },
+  {
+    "name": "Carnival",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "category": "Tradition",
+    "hint": "The world's biggest party — elaborate dance troupes compete in a dazzling procession of feathers, floats and drums",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Desfile_Portela_2014_%28906185%29.jpg/500px-Desfile_Portela_2014_%28906185%29.jpg"
+  },
+  {
+    "name": "Carnival of Venice",
+    "country": "Italy",
+    "countryCode": "IT",
+    "category": "Tradition",
+    "hint": "Elaborate masks and costumes on the canals — dating back to the 13th century",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Venice_Carnival_-_Masked_Lovers_%282010%29.jpg/500px-Venice_Carnival_-_Masked_Lovers_%282010%29.jpg"
+  },
+  {
+    "name": "Running of the Bulls",
+    "country": "Spain",
+    "countryCode": "ES",
+    "category": "Tradition",
+    "hint": "Every July, brave (or reckless) runners sprint through narrow cobblestone streets just ahead of charging bulls",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Sanfermines_Vaquillas_Pamplona_08.jpg/500px-Sanfermines_Vaquillas_Pamplona_08.jpg"
+  },
+  {
+    "name": "Chess",
+    "country": "India",
+    "countryCode": "IN",
+    "category": "Invention",
+    "hint": "Invented as 'Chaturanga' around the 6th century AD — the king never dies, he surrenders",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/ChessSet.jpg/500px-ChessSet.jpg"
+  },
+  {
+    "name": "Playing Cards",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Invention",
+    "hint": "Shuffled and dealt over 1,200 years ago during one of history's great imperial dynasties — then adopted worldwide",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/AcetoFive.JPG/500px-AcetoFive.JPG"
+  },
+  {
+    "name": "Lego",
+    "country": "Denmark",
+    "countryCode": "DK",
+    "category": "Invention",
+    "hint": "The iconic interlocking plastic brick — its name literally means 'play well' in its native language",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/LEGO_logo.svg/500px-LEGO_logo.svg.png"
+  },
+  {
+    "name": "Origami",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Invention",
+    "hint": "The art of folding a single sheet of paper into intricate shapes",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Cranes_made_by_Origami_paper.jpg/500px-Cranes_made_by_Origami_paper.jpg"
+  },
+  {
+    "name": "Sauna",
+    "country": "Finland",
+    "countryCode": "FI",
+    "category": "Invention",
+    "hint": "There are more saunas than cars in this country — a sacred ritual",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Sauna_2.jpg/330px-Sauna_2.jpg"
+  },
+  {
+    "name": "Yoga",
+    "country": "India",
+    "countryCode": "IN",
+    "category": "Invention",
+    "hint": "Ancient practice of postures, breathwork and meditation from the Indus Valley",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Shiva_Bangalore.jpg/500px-Shiva_Bangalore.jpg"
+  },
+  {
+    "name": "Manga",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Invention",
+    "hint": "Comic art with bold lines, expressive eyes and iconic panel layouts",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Tagosaku_to_Mokube_no_Tokyo_Kenbutsu.jpg/500px-Tagosaku_to_Mokube_no_Tokyo_Kenbutsu.jpg"
+  },
+  {
+    "name": "Breakdancing",
+    "country": "United States",
+    "countryCode": "US",
+    "category": "Dance & Music",
+    "hint": "Born in the early 1970s in a northern borough of a major North American city, at the heart of hip-hop culture",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Dancesport_at_the_2018_Summer_Youth_Olympics_%E2%80%93_Mixed_Team_%E2%80%93_Battle_for_3rd_Place_%2853%29.jpeg/500px-Dancesport_at_the_2018_Summer_Youth_Olympics_%E2%80%93_Mixed_Team_%E2%80%93_Battle_for_3rd_Place_%2853%29.jpeg"
+  },
+  {
+    "name": "Polka",
+    "country": "Czech Republic",
+    "countryCode": "CZ",
+    "category": "Dance & Music",
+    "hint": "Lively folk dance from Central Europe that swept across ballrooms worldwide in the 1840s",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/La_Polka.jpg/500px-La_Polka.jpg"
+  },
+  {
+    "name": "Bungee Jumping",
+    "country": "New Zealand",
+    "countryCode": "NZ",
+    "category": "Sport",
+    "hint": "A sacred land-diving ritual from a Pacific island inspired a daring extreme sport — first commercialised from a bridge in 1988",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Bill%27s_Bungy_Jump.jpg/330px-Bill%27s_Bungy_Jump.jpg"
+  },
+  {
+    "name": "Afrobeats",
+    "country": "Nigeria",
+    "countryCode": "NG",
+    "category": "Dance & Music",
+    "hint": "Modern genre blending traditional highlife, hip-hop and percussion — now dominating global charts",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Fela_Kuti_circa_1986.jpg/500px-Fela_Kuti_circa_1986.jpg"
+  },
+  {
+    "name": "Tattoo (cultural)",
+    "country": "New Zealand",
+    "countryCode": "NZ",
+    "category": "Tradition",
+    "hint": "Intricate facial tattoos encoding genealogy and identity — one of the world's oldest tattooing traditions",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/MaoriChief1784.jpg/500px-MaoriChief1784.jpg"
+  },
+  {
+    "name": "Ikebana",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Invention",
+    "hint": "The art of flower arrangement as a meditative and aesthetic discipline",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/%E6%8C%BF%E8%8A%B1%E7%99%BE%E8%A6%8F-11.jpg/500px-%E6%8C%BF%E8%8A%B1%E7%99%BE%E8%A6%8F-11.jpg"
+  },
+  {
+    "name": "Acupuncture",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Invention",
+    "hint": "Ancient healing practice using fine needles along energy pathways",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0d/Acupuncture1-1.jpg"
+  },
+  {
+    "name": "Dominoes",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Invention",
+    "hint": "Tile-based game played for over 1,000 years before spreading West",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Dominospiel.JPG/500px-Dominospiel.JPG"
+  },
+  {
+    "name": "Lacrosse",
+    "country": "Canada",
+    "countryCode": "CA",
+    "category": "Sport",
+    "hint": "One of North America's oldest sports — played by Indigenous peoples for centuries",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/UNC_Lacrosse.jpg/500px-UNC_Lacrosse.jpg"
+  },
+  {
+    "name": "Beer",
+    "country": "Germany",
+    "countryCode": "DE",
+    "category": "Invention",
+    "hint": "While brewing is ancient, the country with the most styles and strictest purity law",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Hacker-Pschorr_Oktoberfest_Girl_Remix.jpg/500px-Hacker-Pschorr_Oktoberfest_Girl_Remix.jpg"
+  },
+  {
+    "name": "Morse Code",
+    "country": "United States",
+    "countryCode": "US",
+    "category": "Invention",
+    "hint": "Dots and dashes invented by Samuel Morse in the 1830s",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Morsetaste.jpg/500px-Morsetaste.jpg"
+  },
+  {
+    "name": "Printing Press",
+    "country": "Germany",
+    "countryCode": "DE",
+    "category": "Invention",
+    "hint": "Johannes Gutenberg's 1440 invention changed how knowledge spread forever",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/PrintMus_038.jpg/500px-PrintMus_038.jpg"
+  },
+  {
+    "name": "Champagne",
+    "country": "France",
+    "countryCode": "FR",
+    "category": "Invention",
+    "hint": "Sparkling wine that can only legally use this name if made in one specific protected region",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Glass_of_champagne.jpg/500px-Glass_of_champagne.jpg"
+  },
+  {
+    "name": "Sushi (Edo-style)",
+    "country": "Japan",
+    "countryCode": "JP",
+    "category": "Invention",
+    "hint": "Vinegared rice topped with fresh seafood — perhaps the world's most recognisable dish from East Asia",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/60/Sushi_platter.jpg/500px-Sushi_platter.jpg"
+  },
+  {
+    "name": "Kite",
+    "country": "China",
+    "countryCode": "CN",
+    "category": "Invention",
+    "hint": "Invented over 2,000 years ago — originally used to send military signals",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Kitesflying.jpg/500px-Kitesflying.jpg"
+  },
+  {
+    "name": "Sabre Fencing",
+    "country": "Hungary",
+    "countryCode": "HU",
+    "category": "Sport",
+    "hint": "The fastest of the three fencing weapons — one European country's academies dominated the Olympic podium for decades",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Final_Trophee_Monal_2012_n08.jpg/500px-Final_Trophee_Monal_2012_n08.jpg"
+  },
+  {
+    "name": "Martial Arts (Wrestling)",
+    "country": "Greece",
+    "countryCode": "GR",
+    "category": "Sport",
+    "hint": "Featured at the very first Ancient Olympic Games in 776 BC",
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/GR-olympia-palaestra.jpg/500px-GR-olympia-palaestra.jpg"
+  }
+]

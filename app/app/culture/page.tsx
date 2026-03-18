@@ -16,6 +16,13 @@ const GAMES = [
     desc: "Two events from sports, tech, history or pop culture — pick the one that happened first.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/origins",
+    emoji: "🌐",
+    title: "Origins Quiz",
+    desc: "A sport, tradition or invention appears — click the world map to find where it was born.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const OTHER_CATEGORIES = [

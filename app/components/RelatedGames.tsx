@@ -20,7 +20,8 @@ const SPORTS: GameLink[] = [
 ];
 
 const CULTURE: GameLink[] = [
-  { slug: "/wcf", emoji: "⏳", title: "WhatCameFirst", desc: "Pick which historical event happened first." },
+  { slug: "/wcf",     emoji: "⏳", title: "WhatCameFirst", desc: "Pick which historical event happened first." },
+  { slug: "/origins", emoji: "🌐", title: "Origins Quiz",  desc: "Click the country where this sport, tradition or invention was born." },
 ];
 
 const FOOD: GameLink[] = [

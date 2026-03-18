@@ -51,7 +51,7 @@ export default function Header() {
 
   const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
-  const cultureRoutes = ["/wcf"];
+  const cultureRoutes = ["/wcf", "/origins"];
   const foodRoutes    = ["/food"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
@@ -133,6 +133,13 @@ export default function Header() {
                       <div>
                         <div className="site-header__dropdown-name">WhatCameFirst</div>
                         <div className="site-header__dropdown-desc">Pick the earlier event</div>
+                      </div>
+                    </Link>
+                    <Link href="/origins" className={`site-header__dropdown-item${pathname === "/origins" ? " is-active" : ""}`} onClick={() => setCultureOpen(false)}>
+                      <div className="site-header__dropdown-icon">🌐</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Origins Quiz</div>
+                        <div className="site-header__dropdown-desc">Where was it invented?</div>
                       </div>
                     </Link>
                   </div>
@@ -278,7 +285,8 @@ export default function Header() {
             {mobileOpen === "culture" && (
               <div className="mobile-menu__sub">
                 <Link href="/culture" className="mobile-menu__sub-cat" onClick={closeMenu}>🧠 All Culture games →</Link>
-                <Link href="/wcf" className={`mobile-menu__sub-item${pathname === "/wcf" ? " is-active" : ""}`} onClick={closeMenu}><span>⏳</span> WhatCameFirst</Link>
+                <Link href="/wcf"     className={`mobile-menu__sub-item${pathname === "/wcf"     ? " is-active" : ""}`} onClick={closeMenu}><span>⏳</span> WhatCameFirst</Link>
+                <Link href="/origins" className={`mobile-menu__sub-item${pathname === "/origins" ? " is-active" : ""}`} onClick={closeMenu}><span>🌐</span> Origins Quiz</Link>
               </div>
             )}
 
