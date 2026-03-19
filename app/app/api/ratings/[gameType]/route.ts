@@ -4,6 +4,16 @@ import { POINTS_WIN, POINTS_LOSS, getRank, getRankFloor } from "@/lib/ranks";
 
 const VALID_GAME_TYPES = ["football", "nba", "career", "wcf", "citymix", "higher-or-lower"];
 
+// Maximum achievable score per game type (10 rounds × 100 pts for most)
+const MAX_SCORE: Record<string, number> = {
+  football: 1000,
+  nba: 1000,
+  career: 500,
+  wcf: 1000,
+  citymix: 1000,
+  "higher-or-lower": 1000,
+};
+
 // GET /api/ratings/[gameType] — top 50 leaderboard
 export async function GET(
   _req: NextRequest,
@@ -44,7 +54,13 @@ export async function POST(
   const body = await req.json();
   const { myScore, opponentScore } = body;
 
-  if (typeof myScore !== "number" || typeof opponentScore !== "number") {
+  const maxScore = MAX_SCORE[gameType] ?? 1000;
+  if (
+    typeof myScore !== "number" || typeof opponentScore !== "number" ||
+    !Number.isInteger(myScore) || !Number.isInteger(opponentScore) ||
+    myScore < 0 || opponentScore < 0 ||
+    myScore > maxScore || opponentScore > maxScore
+  ) {
     return NextResponse.json({ error: "Invalid scores" }, { status: 400 });
   }
 
