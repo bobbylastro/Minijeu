@@ -37,7 +37,6 @@ export const metadata: Metadata = {
   },
   description:
     "Play free online quiz and mini games — geography, sports, food culture, history and more. Challenge friends in real-time multiplayer. No download, no account needed.",
-  icons: { icon: "/images/favicon.png" },
   openGraph: {
     type: "website",
     siteName: "Ultimate Playground",
