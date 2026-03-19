@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import WealthGame from "@/components/WealthGame";
+import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Who's Richer? — Celebrity Wealth Quiz | Ultimate Playground",
+  title: "Who's Richer? — Celebrity Wealth Quiz",
   description:
     "Compare celebrity net worths and guess who's richer. Elon Musk vs Jeff Bezos? MrBeast vs Rihanna? Test your knowledge of billionaire fortunes in this addictive wealth quiz!",
 };
@@ -104,6 +105,7 @@ export default function WealthPage() {
           <p>How many billionaires can you rank correctly? Start playing now.</p>
         </div>
       </section>
+      <RelatedGames currentSlug="/wealth" />
     </>
   );
 }

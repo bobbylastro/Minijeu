@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Culture Games — History & Pop Culture Quizzes | Ultimate Playground",
+  title: "Culture Games — History & Pop Culture Quizzes",
   description:
     "Free online culture and history quiz games. Pick which event came first — sports records, tech milestones, historic moments and pop culture. Solo & multiplayer.",
 };

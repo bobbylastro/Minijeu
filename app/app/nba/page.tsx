@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "NBA Quiz – Salaries, contracts and trivia online | Ultimate Playground",
+  title: "NBA Quiz – Salaries, contracts and trivia online",
   description:
     "Test your NBA knowledge with NBAQuiz: trivia, arenas, salaries and contracts. A fast and addictive online game for basketball fans.",
 };

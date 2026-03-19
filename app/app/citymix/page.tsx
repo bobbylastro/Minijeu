@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "CityMix – Guess city population game | Ultimate Playground",
+  title: "CityMix – Guess city population game",
   description:
     "Play CityMix, the ultimate city population guessing game. Compare cities, estimate their population and test your geography skills online for free.",
 };

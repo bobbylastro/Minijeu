@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Football career quiz: put clubs in order | CareerOrder",
+  title: "Football career quiz: put clubs in order",
   description:
     "Test your football knowledge with CareerOrder. Drag and drop clubs into the correct order of a player's career. Quick, fun and challenging.",
 };

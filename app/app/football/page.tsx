@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Football Quiz – Trivia, transfers and stadiums online | Ultimate Playground",
+  title: "Football Quiz – Trivia, transfers and stadiums online",
   description:
     "Test your football knowledge with FootballQuiz: trivia, stadiums, transfers and peak seasons. A fast, fun and addictive online game.",
 };

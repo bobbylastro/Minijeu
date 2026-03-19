@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Higher or Lower Countries Game – Compare stats online | Ultimate Playground",
+  title: "Higher or Lower Countries Game – Compare stats online",
   description:
     "Play the higher or lower countries game. Compare population, GDP, area and more. Test your knowledge and guess which country ranks higher.",
 };

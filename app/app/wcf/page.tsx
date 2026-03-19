@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "What came first quiz: history, tech & culture game | Ultimate Playground",
+  title: "What came first quiz: history, tech & culture game",
   description:
     "Test your knowledge of history, science and culture. Guess which event came first, place events in order and estimate exact years.",
 };

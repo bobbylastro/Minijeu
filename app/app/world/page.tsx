@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "World Games — Geography & City Challenges | Ultimate Playground",
+  title: "World Games — Geography & City Challenges",
   description:
     "Play free world geography games online. Guess city populations, compare countries on GDP and area, or find the country behind a city photo. 3 games, solo & multiplayer.",
 };

@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Sports Games — Football & NBA Quizzes | Ultimate Playground",
+  title: "Sports Games — Football & NBA Quizzes",
   description:
     "Free online sports quiz games. Guess transfer fees, NBA contracts, stadium photos and player salaries. Rebuild career timelines in CareerOrder. Solo & multiplayer.",
 };

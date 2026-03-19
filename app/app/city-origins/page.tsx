@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "City Mapper – Find the country behind the city | Ultimate Playground",
+  title: "City Mapper – Find the country behind the city",
   description:
     "Test your world geography! A city photo appears — click the right country on the map to score. 10 rounds, 100 cities from every continent.",
 };

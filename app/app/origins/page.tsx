@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Origins Quiz – Where was it invented? | Ultimate Playground",
+  title: "Origins Quiz – Where was it invented?",
   description:
     "Test your cultural knowledge! A sport, tradition or invention appears — click the right country on the world map. Sports, music, festivals and more.",
 };

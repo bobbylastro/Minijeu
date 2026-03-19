@@ -3,7 +3,7 @@ import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Food Games — Cuisine & Origin Quizzes | Ultimate Playground",
+  title: "Food Games — Cuisine & Origin Quizzes",
   description:
     "Free online food geography games. A dish appears — click the world map to find the country it comes from. 180+ dishes from every continent. Solo & multiplayer.",
 };

@@ -4,7 +4,7 @@ import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
-  title: "Food Origins Game – Guess the country behind the dish | Ultimate Playground",
+  title: "Food Origins Game – Guess the country behind the dish",
   description:
     "Test your food geography knowledge! A dish appears on screen — click the right country on the world map to score. 10 rounds, 180+ dishes from every continent.",
 };

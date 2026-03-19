@@ -12,7 +12,7 @@
     "country": "Italy",
     "countryCode": "IT",
     "wiki": "Pizza Napoletana",
-    "hint": "The original pizza — born in Naples",
+    "hint": "The original pizza — thin dough, San Marzano tomatoes and fresh mozzarella, protected by strict authenticity rules",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg/500px-Neapolitan_pizza_at_Trappica_%2848701940197%29.jpg"
   },
   {
@@ -28,7 +28,7 @@
     "country": "Spain",
     "countryCode": "ES",
     "wiki": "Paella",
-    "hint": "Saffron-infused rice dish born in Valencia",
+    "hint": "Saffron-infused rice cooked in a wide shallow pan over an open flame with rabbit, chicken or seafood",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ed/01_Paella_Valenciana_original.jpg/500px-01_Paella_Valenciana_original.jpg"
   },
   {
@@ -68,7 +68,7 @@
     "country": "Austria",
     "countryCode": "AT",
     "wiki": "Wiener Schnitzel",
-    "hint": "Breaded veal cutlet — 'Wiener' literally means Vienna",
+    "hint": "Breaded and pan-fried veal cutlet — the dish's own name hints at the city that made it famous",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Wiener-Schnitzel02.jpg/500px-Wiener-Schnitzel02.jpg"
   },
   {
@@ -108,7 +108,7 @@
     "country": "Indonesia",
     "countryCode": "ID",
     "wiki": "Rendang",
-    "hint": "Slow-cooked dry beef curry from West Sumatra",
+    "hint": "Slow-cooked dry beef curry simmered for hours in coconut milk and spices until almost all liquid evaporates",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Rendang_daging_sapi_asli_Padang.JPG/500px-Rendang_daging_sapi_asli_Padang.JPG"
   },
   {
@@ -148,7 +148,7 @@
     "country": "Germany",
     "countryCode": "DE",
     "wiki": "Currywurst",
-    "hint": "Sliced sausage drenched in curried ketchup — Berlin's icon",
+    "hint": "Sliced pork sausage drenched in curried ketchup — a beloved post-war street food snack",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/20220430_currywurst.jpg/500px-20220430_currywurst.jpg"
   },
   {
@@ -164,7 +164,7 @@
     "country": "United States",
     "countryCode": "US",
     "wiki": "Hamburger",
-    "hint": "Ground beef patty in a bun — America's fast-food icon",
+    "hint": "Ground beef patty in a soft bun — named after a European port city but adopted worldwide as fast food",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RedDot_Burger.jpg/500px-RedDot_Burger.jpg"
   },
   {
@@ -188,7 +188,7 @@
     "country": "Mexico",
     "countryCode": "MX",
     "wiki": "Mole sauce",
-    "hint": "Complex chili-chocolate sauce from Puebla",
+    "hint": "Complex dark sauce made from over 20 ingredients including dried chilies and dark chocolate — a true labour of love",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/ChickRedMole.JPG/500px-ChickRedMole.JPG"
   },
   {
@@ -196,7 +196,7 @@
     "country": "India",
     "countryCode": "IN",
     "wiki": "Butter chicken",
-    "hint": "Creamy tomato-spiced chicken curry — invented in Delhi",
+    "hint": "Creamy tomato-based chicken curry — said to have been invented accidentally in a restaurant kitchen in the 1950s",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg/500px-Butter_Chicken_%26_Butter_Naan_-_Home_-_Chandigarh_-_India_-_0006.jpg"
   },
   {
@@ -308,7 +308,7 @@
     "country": "South Africa",
     "countryCode": "ZA",
     "wiki": "Bunny chow",
-    "hint": "A hollowed-out half loaf of bread filled with curry — Durban street food",
+    "hint": "A hollowed-out half loaf of bread filled with curry — invented by the Indian community of a coastal city",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Quarter_Mutton_Bunny_Chow.jpg/330px-Quarter_Mutton_Bunny_Chow.jpg"
   },
   {
@@ -1060,7 +1060,7 @@
     "country": "Cameroon",
     "countryCode": "CM",
     "wiki": "Ndolé",
-    "hint": "Bitter leaf stew with ground peanuts and shrimp — the national dish of a Central African country where French and English are both official languages",
+    "hint": "Bitter leaf stew with ground peanuts and shrimp — a beloved national dish combining local greens with protein-rich ingredients",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Ndol%C3%A8_%C3%A0_la_viande%2C_morue_et_crevettes.jpg/500px-Ndol%C3%A8_%C3%A0_la_viande%2C_morue_et_crevettes.jpg"
   },
   {
@@ -1308,7 +1308,7 @@
     "country": "Vietnam",
     "countryCode": "VN",
     "wiki": "Bánh_mì",
-    "hint": "A Vietnamese sandwich on a crispy baguette filled with pickled vegetables, cilantro, chili, and grilled meats — a legacy of French colonialism",
+    "hint": "Crispy baguette filled with pickled vegetables, fresh herbs, chili and grilled meats — a colonial culinary fusion",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png/500px-B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png"
   },
   {
@@ -1444,7 +1444,7 @@
     "country": "Spain",
     "countryCode": "ES",
     "wiki": "Gazpacho",
-    "hint": "A cold Andalusian soup blended from raw tomatoes, cucumber, bell pepper, garlic, olive oil, and vinegar",
+    "hint": "Cold raw vegetable soup blended from tomatoes, cucumber, bell pepper, garlic and vinegar — a refreshing summer tradition",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Gazpacho_Malague%C3%B1o_con_su_%E2%80%9Cpica%C3%ADto%E2%80%9D_-_Moreno%2C_Playa_Burriana_%28cropped%29.jpg/500px-Gazpacho_Malague%C3%B1o_con_su_%E2%80%9Cpica%C3%ADto%E2%80%9D_-_Moreno%2C_Playa_Burriana_%28cropped%29.jpg"
   },
   {
