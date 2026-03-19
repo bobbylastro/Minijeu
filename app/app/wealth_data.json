@@ -1,0 +1,650 @@
+[
+  {
+    "name": "Elon Musk",
+    "worth": 230000,
+    "displayWorth": "$230B",
+    "category": "tech",
+    "hint": "CEO of Tesla & SpaceX",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Elon_Musk_Royal_Society_%28crop2%29.jpg/320px-Elon_Musk_Royal_Society_%28crop2%29.jpg"
+  },
+  {
+    "name": "Jeff Bezos",
+    "worth": 180000,
+    "displayWorth": "$180B",
+    "category": "tech",
+    "hint": "Amazon founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg/320px-Jeff_Bezos_at_Amazon_Spheres_Grand_Opening_in_Seattle_-_2018_%2839074799225%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Mark Zuckerberg",
+    "worth": 170000,
+    "displayWorth": "$170B",
+    "category": "tech",
+    "hint": "Facebook / Meta founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg/320px-Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Bernard Arnault",
+    "worth": 160000,
+    "displayWorth": "$160B",
+    "category": "business",
+    "hint": "LVMH chairman & CEO",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Bernard_Arnault_%2803%29_-_2017_%28cropped%29.jpg/320px-Bernard_Arnault_%2803%29_-_2017_%28cropped%29.jpg"
+  },
+  {
+    "name": "Larry Ellison",
+    "worth": 140000,
+    "displayWorth": "$140B",
+    "category": "tech",
+    "hint": "Oracle co-founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Larry_Ellison_2013_%28cropped%29.jpg/320px-Larry_Ellison_2013_%28cropped%29.jpg"
+  },
+  {
+    "name": "Bill Gates",
+    "worth": 130000,
+    "displayWorth": "$130B",
+    "category": "tech",
+    "hint": "Microsoft co-founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Bill_Gates_2017_%28cropped%29.jpg/320px-Bill_Gates_2017_%28cropped%29.jpg"
+  },
+  {
+    "name": "Warren Buffett",
+    "worth": 120000,
+    "displayWorth": "$120B",
+    "category": "business",
+    "hint": "The Oracle of Omaha",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Warren_Buffett_KU_Visit.jpg/320px-Warren_Buffett_KU_Visit.jpg"
+  },
+  {
+    "name": "Larry Page",
+    "worth": 115000,
+    "displayWorth": "$115B",
+    "category": "tech",
+    "hint": "Google co-founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Larry_Page_in_the_European_Parliament%2C_17.06.2009_%28cropped%29.jpg/320px-Larry_Page_in_the_European_Parliament%2C_17.06.2009_%28cropped%29.jpg"
+  },
+  {
+    "name": "Sergey Brin",
+    "worth": 110000,
+    "displayWorth": "$110B",
+    "category": "tech",
+    "hint": "Google co-founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Sergey_Brin_Ted_2010.jpg/320px-Sergey_Brin_Ted_2010.jpg"
+  },
+  {
+    "name": "Steve Ballmer",
+    "worth": 100000,
+    "displayWorth": "$100B",
+    "category": "tech",
+    "hint": "Microsoft CEO & LA Clippers owner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Steve_Ballmer_2019.jpg/320px-Steve_Ballmer_2019.jpg"
+  },
+  {
+    "name": "Jensen Huang",
+    "worth": 90000,
+    "displayWorth": "$90B",
+    "category": "tech",
+    "hint": "NVIDIA founder & CEO",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Jensen_Huang_2021_%28cropped%29.jpg/320px-Jensen_Huang_2021_%28cropped%29.jpg"
+  },
+  {
+    "name": "Michael Bloomberg",
+    "worth": 80000,
+    "displayWorth": "$80B",
+    "category": "business",
+    "hint": "Bloomberg LP founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Michael_Bloomberg_Shankbone_2010_NYC.jpg/320px-Michael_Bloomberg_Shankbone_2010_NYC.jpg"
+  },
+  {
+    "name": "Jack Ma",
+    "worth": 35000,
+    "displayWorth": "$35B",
+    "category": "tech",
+    "hint": "Alibaba co-founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Jack_Ma_2018.jpg/320px-Jack_Ma_2018.jpg"
+  },
+  {
+    "name": "Sheikh Mansour",
+    "worth": 30000,
+    "displayWorth": "$30B",
+    "category": "royals",
+    "hint": "Manchester City owner, UAE royal",
+    "image": ""
+  },
+  {
+    "name": "Ken Griffin",
+    "worth": 36000,
+    "displayWorth": "$36B",
+    "category": "business",
+    "hint": "Citadel hedge fund founder",
+    "image": ""
+  },
+  {
+    "name": "Carl Icahn",
+    "worth": 18000,
+    "displayWorth": "$18B",
+    "category": "business",
+    "hint": "Legendary activist investor",
+    "image": ""
+  },
+  {
+    "name": "King Mohammed VI",
+    "worth": 5800,
+    "displayWorth": "$5.8B",
+    "category": "royals",
+    "hint": "King of Morocco since 1999",
+    "image": ""
+  },
+  {
+    "name": "George Lucas",
+    "worth": 5500,
+    "displayWorth": "$5.5B",
+    "category": "entertainment",
+    "hint": "Star Wars creator",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/George_Lucas_cropped_2009.jpg/320px-George_Lucas_cropped_2009.jpg"
+  },
+  {
+    "name": "Steven Spielberg",
+    "worth": 4000,
+    "displayWorth": "$4B",
+    "category": "entertainment",
+    "hint": "Jurassic Park, Schindler's List director",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Spielberg_2016_%28cropped%29.jpg/320px-Spielberg_2016_%28cropped%29.jpg"
+  },
+  {
+    "name": "Michael Jordan",
+    "worth": 3000,
+    "displayWorth": "$3B",
+    "category": "sports",
+    "hint": "6× NBA champion, greatest of all time",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Michael_Jordan_in_2014.jpg/320px-Michael_Jordan_in_2014.jpg"
+  },
+  {
+    "name": "Oprah Winfrey",
+    "worth": 2800,
+    "displayWorth": "$2.8B",
+    "category": "entertainment",
+    "hint": "The most influential talk show host",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Oprah_in_2014.jpg/320px-Oprah_in_2014.jpg"
+  },
+  {
+    "name": "Jay-Z",
+    "worth": 2500,
+    "displayWorth": "$2.5B",
+    "category": "music",
+    "hint": "Rapper & business mogul",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Jay-Z_at_the_2009_Tribeca_Film_Festival.jpg/320px-Jay-Z_at_the_2009_Tribeca_Film_Festival.jpg"
+  },
+  {
+    "name": "Kim Kardashian",
+    "worth": 1700,
+    "displayWorth": "$1.7B",
+    "category": "entertainment",
+    "hint": "Reality TV star & SKIMS founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Kim_Kardashian_2019_cropped.jpg/320px-Kim_Kardashian_2019_cropped.jpg"
+  },
+  {
+    "name": "Rihanna",
+    "worth": 1400,
+    "displayWorth": "$1.4B",
+    "category": "music",
+    "hint": "Singer & Fenty Beauty founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c2/Rihanna_Fenty_2018.jpg/320px-Rihanna_Fenty_2018.jpg"
+  },
+  {
+    "name": "Paul McCartney",
+    "worth": 1300,
+    "displayWorth": "$1.3B",
+    "category": "music",
+    "hint": "Former Beatle & music legend",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/81/Paul_McCartney_2018_cropped.jpg/320px-Paul_McCartney_2018_cropped.jpg"
+  },
+  {
+    "name": "LeBron James",
+    "worth": 1200,
+    "displayWorth": "$1.2B",
+    "category": "sports",
+    "hint": "4× NBA champion & billionaire athlete",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/LeBron_James_crop.jpg/320px-LeBron_James_crop.jpg"
+  },
+  {
+    "name": "Taylor Swift",
+    "worth": 1100,
+    "displayWorth": "$1.1B",
+    "category": "music",
+    "hint": "Pop superstar & Eras Tour queen",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png/320px-191125_Taylor_Swift_at_the_2019_American_Music_Awards_%28cropped%29.png"
+  },
+  {
+    "name": "Tiger Woods",
+    "worth": 1100,
+    "displayWorth": "$1.1B",
+    "category": "sports",
+    "hint": "15× golf major champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Tiger_Woods_at_the_2018_Ryder_Cup_%28cropped%29.jpg/320px-Tiger_Woods_at_the_2018_Ryder_Cup_%28cropped%29.jpg"
+  },
+  {
+    "name": "Diddy",
+    "worth": 1000,
+    "displayWorth": "$1B",
+    "category": "music",
+    "hint": "Sean Combs, rap mogul & Bad Boy Records",
+    "image": ""
+  },
+  {
+    "name": "Tyler Perry",
+    "worth": 1000,
+    "displayWorth": "$1B",
+    "category": "entertainment",
+    "hint": "Actor, director & studio owner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Tyler_Perry_2012.jpg/320px-Tyler_Perry_2012.jpg"
+  },
+  {
+    "name": "Roger Federer",
+    "worth": 900,
+    "displayWorth": "$900M",
+    "category": "sports",
+    "hint": "20× Grand Slam tennis champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Roger_Federer_2015_Roland_Garros_%28cropped%29.jpg/320px-Roger_Federer_2015_Roland_Garros_%28cropped%29.jpg"
+  },
+  {
+    "name": "Kylie Jenner",
+    "worth": 700,
+    "displayWorth": "$700M",
+    "category": "entertainment",
+    "hint": "Kylie Cosmetics founder",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Kylie_Jenner_2019_cropped.jpg/320px-Kylie_Jenner_2019_cropped.jpg"
+  },
+  {
+    "name": "MrBeast",
+    "worth": 700,
+    "displayWorth": "$700M",
+    "category": "entertainment",
+    "hint": "World's biggest YouTube channel",
+    "image": ""
+  },
+  {
+    "name": "Lionel Messi",
+    "worth": 700,
+    "displayWorth": "$700M",
+    "category": "sports",
+    "hint": "8× Ballon d'Or winner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/320px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"
+  },
+  {
+    "name": "King Charles III",
+    "worth": 600,
+    "displayWorth": "$600M",
+    "category": "royals",
+    "hint": "King of the United Kingdom",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/King_Charles_III_2023_%28cropped%29.jpg/320px-King_Charles_III_2023_%28cropped%29.jpg"
+  },
+  {
+    "name": "Cristiano Ronaldo",
+    "worth": 600,
+    "displayWorth": "$600M",
+    "category": "sports",
+    "hint": "5× Ballon d'Or winner, Al-Nassr star",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/320px-Cristiano_Ronaldo_2018.jpg"
+  },
+  {
+    "name": "Kobe Bryant estate",
+    "worth": 600,
+    "displayWorth": "$600M",
+    "category": "sports",
+    "hint": "Late Lakers legend, 5× NBA champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Kobe_Bryant_2012.jpg/320px-Kobe_Bryant_2012.jpg"
+  },
+  {
+    "name": "Elton John",
+    "worth": 550,
+    "displayWorth": "$550M",
+    "category": "music",
+    "hint": "Rocket Man — legendary British musician",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Elton_John_2015_%28Cropped%29.jpg/320px-Elton_John_2015_%28Cropped%29.jpg"
+  },
+  {
+    "name": "Mick Jagger",
+    "worth": 500,
+    "displayWorth": "$500M",
+    "category": "music",
+    "hint": "Rolling Stones frontman",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Mick_Jagger_2014_%28cropped%29.jpg/320px-Mick_Jagger_2014_%28cropped%29.jpg"
+  },
+  {
+    "name": "Floyd Mayweather",
+    "worth": 450,
+    "displayWorth": "$450M",
+    "category": "sports",
+    "hint": "Undefeated boxing champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Floyd_Mayweather_Jr_2015_%28cropped%29.jpg/320px-Floyd_Mayweather_Jr_2015_%28cropped%29.jpg"
+  },
+  {
+    "name": "Beyoncé",
+    "worth": 540,
+    "displayWorth": "$540M",
+    "category": "music",
+    "hint": "Queen Bey, Destiny's Child alum",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Beyonce_-_GMA_Summer_Concert_2011_Cropped.jpg/320px-Beyonce_-_GMA_Summer_Concert_2011_Cropped.jpg"
+  },
+  {
+    "name": "Madonna",
+    "worth": 850,
+    "displayWorth": "$850M",
+    "category": "music",
+    "hint": "Queen of Pop, Material Girl",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Madonna_%28Reinvention_Tour_2004%29_%28cropped%29.jpg/320px-Madonna_%28Reinvention_Tour_2004%29_%28cropped%29.jpg"
+  },
+  {
+    "name": "Drake",
+    "worth": 250,
+    "displayWorth": "$250M",
+    "category": "music",
+    "hint": "Started from the bottom, Toronto rapper",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_2014_Palmer_Fest.jpg/320px-Drake_2014_Palmer_Fest.jpg"
+  },
+  {
+    "name": "Kanye West",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "music",
+    "hint": "Ye, rapper & Yeezy creator",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kanye_West_2022.jpg/320px-Kanye_West_2022.jpg"
+  },
+  {
+    "name": "Eminem",
+    "worth": 250,
+    "displayWorth": "$250M",
+    "category": "music",
+    "hint": "Slim Shady, Detroit rap legend",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Eminem_-_Concert_for_Valor_%28cropped%29.jpg/320px-Eminem_-_Concert_for_Valor_%28cropped%29.jpg"
+  },
+  {
+    "name": "Jennifer Lopez",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "entertainment",
+    "hint": "J.Lo — singer, actress & entrepreneur",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Jennifer_Lopez_at_the_2019_Vanity_Fair_Oscar_Party_%28cropped%29.jpg/320px-Jennifer_Lopez_at_the_2019_Vanity_Fair_Oscar_Party_%28cropped%29.jpg"
+  },
+  {
+    "name": "Dwayne Johnson",
+    "worth": 800,
+    "displayWorth": "$800M",
+    "category": "entertainment",
+    "hint": "The Rock — wrestler turned Hollywood star",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Dwayne_Johnson_2014_%28cropped%29.jpg/320px-Dwayne_Johnson_2014_%28cropped%29.jpg"
+  },
+  {
+    "name": "Kevin Hart",
+    "worth": 450,
+    "displayWorth": "$450M",
+    "category": "entertainment",
+    "hint": "Stand-up comedian & Hollywood actor",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Kevin_Hart_-_Jumanji_Press_Tour_2017_%28cropped%29.jpg/320px-Kevin_Hart_-_Jumanji_Press_Tour_2017_%28cropped%29.jpg"
+  },
+  {
+    "name": "David Beckham",
+    "worth": 450,
+    "displayWorth": "$450M",
+    "category": "sports",
+    "hint": "England icon & Inter Miami co-owner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/David_Beckham_2014_%28cropped%29.jpg/320px-David_Beckham_2014_%28cropped%29.jpg"
+  },
+  {
+    "name": "Serena Williams",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "sports",
+    "hint": "23× Grand Slam tennis champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Serena_Williams_2013_US_Open.jpg/320px-Serena_Williams_2013_US_Open.jpg"
+  },
+  {
+    "name": "Novak Djokovic",
+    "worth": 220,
+    "displayWorth": "$220M",
+    "category": "sports",
+    "hint": "Most Grand Slams in tennis history",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Novak_Djokovic_2016_%28cropped%29.jpg/320px-Novak_Djokovic_2016_%28cropped%29.jpg"
+  },
+  {
+    "name": "Rafael Nadal",
+    "worth": 220,
+    "displayWorth": "$220M",
+    "category": "sports",
+    "hint": "King of Clay, 14× Roland Garros winner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Rafael_Nadal_2015_Roland_Garros_%28cropped%29.jpg/320px-Rafael_Nadal_2015_Roland_Garros_%28cropped%29.jpg"
+  },
+  {
+    "name": "Tom Brady",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "sports",
+    "hint": "7× Super Bowl champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Tom_Brady%2C_2017.jpg/320px-Tom_Brady%2C_2017.jpg"
+  },
+  {
+    "name": "Peyton Manning",
+    "worth": 250,
+    "displayWorth": "$250M",
+    "category": "sports",
+    "hint": "NFL legend, 2× Super Bowl winner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/Peyton_Manning_Broncos_2015_AFC_championship.jpg/320px-Peyton_Manning_Broncos_2015_AFC_championship.jpg"
+  },
+  {
+    "name": "Phil Mickelson",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "sports",
+    "hint": "Lefty — 6× major golf champion",
+    "image": ""
+  },
+  {
+    "name": "Bono",
+    "worth": 700,
+    "displayWorth": "$700M",
+    "category": "music",
+    "hint": "U2 frontman & activist investor",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Bono_2020_%28cropped%29.jpg/320px-Bono_2020_%28cropped%29.jpg"
+  },
+  {
+    "name": "Bruce Springsteen",
+    "worth": 1100,
+    "displayWorth": "$1.1B",
+    "category": "music",
+    "hint": "The Boss, sold catalog for $500M",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Bruce_Springsteen_2012_%28cropped%29.jpg/320px-Bruce_Springsteen_2012_%28cropped%29.jpg"
+  },
+  {
+    "name": "Andrew Lloyd Webber",
+    "worth": 1200,
+    "displayWorth": "$1.2B",
+    "category": "entertainment",
+    "hint": "Phantom of the Opera composer",
+    "image": ""
+  },
+  {
+    "name": "Sam Altman",
+    "worth": 2000,
+    "displayWorth": "$2B",
+    "category": "tech",
+    "hint": "OpenAI CEO",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e9/Sam_Altman_TechCrunch_SF_2019_cropped.jpg/320px-Sam_Altman_TechCrunch_SF_2019_cropped.jpg"
+  },
+  {
+    "name": "Patrick Mahomes",
+    "worth": 100,
+    "displayWorth": "$100M",
+    "category": "sports",
+    "hint": "3× Super Bowl champion, Chiefs QB",
+    "image": ""
+  },
+  {
+    "name": "Cristian Ronaldo (CR7)",
+    "worth": 600,
+    "displayWorth": "$600M",
+    "category": "sports",
+    "hint": "CR7, plays in Saudi Arabia",
+    "image": ""
+  },
+  {
+    "name": "Herb Alpert",
+    "worth": 900,
+    "displayWorth": "$900M",
+    "category": "music",
+    "hint": "Tijuana Brass & A&M Records co-founder",
+    "image": ""
+  },
+  {
+    "name": "Dolly Parton",
+    "worth": 650,
+    "displayWorth": "$650M",
+    "category": "music",
+    "hint": "Country legend & Dollywood owner",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Dolly_Parton_2014_%28cropped%29.jpg/320px-Dolly_Parton_2014_%28cropped%29.jpg"
+  },
+  {
+    "name": "Diddy (2020)",
+    "worth": 1000,
+    "displayWorth": "$1B",
+    "category": "music",
+    "hint": "Rap mogul & founder of Bad Boy Records",
+    "image": ""
+  },
+  {
+    "name": "Tyler, the Creator",
+    "worth": 16,
+    "displayWorth": "$16M",
+    "category": "music",
+    "hint": "Odd Future rapper & GOLF WANG creator",
+    "image": ""
+  },
+  {
+    "name": "Snoop Dogg",
+    "worth": 160,
+    "displayWorth": "$160M",
+    "category": "music",
+    "hint": "Gangsta rap legend from Long Beach",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Snoop_Dogg_2019_%28cropped%29.jpg/320px-Snoop_Dogg_2019_%28cropped%29.jpg"
+  },
+  {
+    "name": "Dr. Dre",
+    "worth": 500,
+    "displayWorth": "$500M",
+    "category": "music",
+    "hint": "Beats Electronics founder, NWA legend",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Dr._Dre_2011_%28cropped%29.jpg/320px-Dr._Dre_2011_%28cropped%29.jpg"
+  },
+  {
+    "name": "Nicki Minaj",
+    "worth": 100,
+    "displayWorth": "$100M",
+    "category": "music",
+    "hint": "Queen of rap, Trinidad-born",
+    "image": ""
+  },
+  {
+    "name": "Cardi B",
+    "worth": 40,
+    "displayWorth": "$40M",
+    "category": "music",
+    "hint": "Bronx rapper, WAP hitmaker",
+    "image": ""
+  },
+  {
+    "name": "Charlize Theron",
+    "worth": 170,
+    "displayWorth": "$170M",
+    "category": "entertainment",
+    "hint": "Oscar-winning actress from South Africa",
+    "image": ""
+  },
+  {
+    "name": "Tom Hanks",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "entertainment",
+    "hint": "2× Oscar winner, Forrest Gump star",
+    "image": ""
+  },
+  {
+    "name": "Ariana Grande",
+    "worth": 200,
+    "displayWorth": "$200M",
+    "category": "music",
+    "hint": "Thank U Next pop star",
+    "image": ""
+  },
+  {
+    "name": "Ed Sheeran",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "music",
+    "hint": "Shape of You British singer-songwriter",
+    "image": ""
+  },
+  {
+    "name": "Cristiano Ronaldo (Jr.)",
+    "worth": 600,
+    "displayWorth": "$600M",
+    "category": "sports",
+    "hint": "Al-Nassr superstar, 5× Ballon d'Or",
+    "image": ""
+  },
+  {
+    "name": "Shaquille O'Neal",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "sports",
+    "hint": "4× NBA champion, Big Diesel",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Shaquille_O%27Neal_2014_%28cropped%29.jpg/320px-Shaquille_O%27Neal_2014_%28cropped%29.jpg"
+  },
+  {
+    "name": "Kyrie Irving",
+    "worth": 90,
+    "displayWorth": "$90M",
+    "category": "sports",
+    "hint": "NBA star known for handles",
+    "image": ""
+  },
+  {
+    "name": "Gisele Bündchen",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "entertainment",
+    "hint": "World's highest-paid supermodel",
+    "image": ""
+  },
+  {
+    "name": "Lewis Hamilton",
+    "worth": 285,
+    "displayWorth": "$285M",
+    "category": "sports",
+    "hint": "7× Formula 1 world champion",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Lewis_Hamilton_2016_Malaysia_2_%28cropped%29.jpg/320px-Lewis_Hamilton_2016_Malaysia_2_%28cropped%29.jpg"
+  },
+  {
+    "name": "Usain Bolt",
+    "worth": 90,
+    "displayWorth": "$90M",
+    "category": "sports",
+    "hint": "World's fastest man, Jamaica",
+    "image": ""
+  },
+  {
+    "name": "Arnold Schwarzenegger",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "entertainment",
+    "hint": "Terminator star & former CA governor",
+    "image": ""
+  },
+  {
+    "name": "Scarlett Johansson",
+    "worth": 165,
+    "displayWorth": "$165M",
+    "category": "entertainment",
+    "hint": "Black Widow, Avengers star",
+    "image": ""
+  }
+]

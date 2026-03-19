@@ -23,6 +23,13 @@ const GAMES = [
     desc: "A sport, tradition or invention appears — click the world map to find where it was born.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/wealth",
+    emoji: "💰",
+    title: "Who's Richer?",
+    desc: "Two celebrities appear — tap the one with the higher net worth. Tech billionaires, athletes, musicians and more.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const OTHER_CATEGORIES = [

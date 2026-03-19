@@ -1,0 +1,506 @@
+/* ─── Who's Richer? game — wl- prefix ─────────────────────────────────────── */
+
+/* ── Wrapper ──────────────────────────────────────────────────────────────── */
+.wl-wrapper {
+  min-height: 100dvh;
+  background: #0a0a0f;
+  display: flex;
+  flex-direction: column;
+  padding-top: 60px; /* header height */
+  color: #fff;
+}
+
+/* ── Top bar ──────────────────────────────────────────────────────────────── */
+.wl-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1.25rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+  z-index: 10;
+  gap: 0.5rem;
+}
+
+.wl-topbar__left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 100px;
+}
+
+.wl-topbar__round {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
+}
+
+.wl-topbar__score {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f0c040;
+}
+
+.wl-topbar__right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* ── Streak display ───────────────────────────────────────────────────────── */
+.wl-streak {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ff6b35;
+  background: rgba(255, 107, 53, 0.12);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  border-radius: 20px;
+  padding: 0.2rem 0.6rem;
+}
+
+.wl-streak__multiplier {
+  font-size: 0.72rem;
+  color: #ffd700;
+  font-weight: 800;
+}
+
+/* ── Main playing area ────────────────────────────────────────────────────── */
+.wl-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem 2rem;
+  gap: 1.5rem;
+  overflow-y: auto;
+}
+
+/* ── Question label ───────────────────────────────────────────────────────── */
+.wl-question {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 760px;
+}
+
+.wl-question__label {
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.wl-question__sublabel {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: -0.75rem;
+}
+
+/* ── Duel layout ──────────────────────────────────────────────────────────── */
+.wl-duel {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+}
+
+.wl-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.35);
+  flex-shrink: 0;
+  width: 36px;
+}
+
+/* ── Celebrity card ───────────────────────────────────────────────────────── */
+.wl-card {
+  flex: 1;
+  max-width: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 1.25rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  cursor: pointer;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wl-card:hover:not(.wl-card--disabled) {
+  transform: translateY(-3px);
+  border-color: rgba(100, 220, 100, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.wl-card:active:not(.wl-card--disabled) {
+  transform: scale(0.97);
+}
+
+.wl-card--disabled {
+  cursor: default;
+}
+
+.wl-card--correct {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.12) !important;
+}
+
+.wl-card--wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  opacity: 0.75;
+}
+
+.wl-card--dimmed {
+  opacity: 0.5;
+}
+
+/* ── Celebrity photo ──────────────────────────────────────────────────────── */
+.wl-card__photo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+  background: #1a1a2e;
+}
+
+.wl-card__photo--initials {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  flex-shrink: 0;
+}
+
+.wl-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.wl-card__hint {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  line-height: 1.3;
+}
+
+.wl-card__worth {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #f0c040;
+  min-height: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.wl-card__worth--revealed {
+  opacity: 1;
+}
+
+/* ── Richer badge ─────────────────────────────────────────────────────────── */
+.wl-badge--richer {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 0.2rem 0.45rem;
+  border-radius: 8px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── Estimation layout ────────────────────────────────────────────────────── */
+.wl-estimation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.wl-estimation__photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #1a1a2e;
+}
+
+.wl-estimation__photo--initials {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.wl-estimation__name {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  text-align: center;
+}
+
+.wl-estimation__hint {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+.wl-estimation__question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+}
+
+/* ── Options ──────────────────────────────────────────────────────────────── */
+.wl-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  width: 100%;
+}
+
+.wl-option {
+  width: 100%;
+  padding: 0.8rem 1.25rem;
+  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.15s ease, background 0.15s ease;
+  text-align: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wl-option:hover:not(.wl-option--disabled) {
+  transform: translateY(-2px);
+  border-color: rgba(100, 200, 255, 0.4);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.wl-option:active:not(.wl-option--disabled) {
+  transform: scale(0.98);
+}
+
+.wl-option--disabled {
+  cursor: default;
+}
+
+.wl-option--correct {
+  border-color: #22c55e !important;
+  background: rgba(34, 197, 94, 0.15) !important;
+  color: #4ade80;
+}
+
+.wl-option--wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+  color: #f87171;
+  opacity: 0.75;
+}
+
+/* ── Feedback overlay ─────────────────────────────────────────────────────── */
+.wl-feedback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  animation: wlFadeIn 0.25s ease;
+}
+
+.wl-feedback__icon {
+  font-size: 2rem;
+}
+
+.wl-feedback__text {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.wl-feedback__text--correct {
+  color: #4ade80;
+}
+
+.wl-feedback__text--wrong {
+  color: #f87171;
+}
+
+.wl-feedback__pts {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.wl-feedback__streak {
+  font-size: 0.85rem;
+  color: #ff6b35;
+  font-weight: 700;
+}
+
+.wl-feedback__next-btn {
+  margin-top: 0.5rem;
+}
+
+@keyframes wlFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Result screen ────────────────────────────────────────────────────────── */
+.wl-result-percentile {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #f0c040;
+  text-align: center;
+}
+
+.wl-result-label {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+  text-align: center;
+  margin-top: -0.25rem;
+}
+
+.wl-result-streak {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ff6b35;
+  text-align: center;
+}
+
+/* ── Share button ─────────────────────────────────────────────────────────── */
+.wl-share-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.65rem 1.4rem;
+  border-radius: 12px;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.wl-share-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.wl-share-btn--copied {
+  border-color: #22c55e;
+  color: #4ade80;
+}
+
+/* ── Mobile responsive ────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .wl-duel {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .wl-card {
+    max-width: 100%;
+    flex-direction: row;
+    text-align: left;
+    gap: 0.8rem;
+    padding: 0.9rem 1rem;
+  }
+
+  .wl-card__photo,
+  .wl-card__photo--initials {
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+
+  .wl-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .wl-vs {
+    display: none;
+  }
+
+  .wl-question__label {
+    font-size: 1.1rem;
+  }
+
+  .wl-badge--richer {
+    top: 8px;
+    right: 8px;
+  }
+
+  .wl-main {
+    padding: 1rem 0.75rem 2rem;
+    gap: 1rem;
+  }
+
+  .wl-topbar {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* ── Multiplayer waiting ──────────────────────────────────────────────────── */
+.wl-waiting {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.45);
+}

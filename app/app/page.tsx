@@ -81,6 +81,13 @@ const CULTURE_GAMES: GameDef[] = [
     desc: "A sport, tradition or invention appears — click the world map to find where it was born. Sports, music, festivals and more.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/wealth",
+    emoji: "💰",
+    title: "Who's Richer?",
+    desc: "Two celebrities appear — tap the one with the higher net worth. Tech billionaires, athletes, musicians and more.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const FOOD_GAMES: GameDef[] = [
@@ -189,7 +196,8 @@ export default function HomePage() {
           { "@type": "ListItem", "position": 6, "name": "CareerOrder",     "url": `${BASE}/career` },
           { "@type": "ListItem", "position": 7, "name": "WhatCameFirst",   "url": `${BASE}/wcf` },
           { "@type": "ListItem", "position": 8, "name": "Food Origins",    "url": `${BASE}/food` },
-          { "@type": "ListItem", "position": 9, "name": "Origins Quiz",    "url": `${BASE}/origins` },
+          { "@type": "ListItem", "position": 9,  "name": "Origins Quiz",    "url": `${BASE}/origins` },
+          { "@type": "ListItem", "position": 10, "name": "Who's Richer?",  "url": `${BASE}/wealth` },
         ],
       },
     ]} />
