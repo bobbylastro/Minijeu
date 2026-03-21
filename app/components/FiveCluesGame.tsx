@@ -435,7 +435,8 @@ export default function FiveCluesGame() {
                 <div className="fc-actions">
                   {canNextClue && (
                     <button className="btn-outline fc-btn-clue btn-hover" onClick={handleNextClue}>
-                      Next Clue → ({CLUE_POINTS[currentClue] ?? 0} pts if correct)
+                      Next clue
+                      <span className="fc-btn-clue__pts">{CLUE_POINTS[currentClue] ?? 0} pts</span>
                     </button>
                   )}
                   <button className="fc-btn-skip btn-hover" onClick={handleReveal}>

@@ -20,9 +20,10 @@ const SPORTS: GameLink[] = [
 ];
 
 const CULTURE: GameLink[] = [
-  { slug: "/wcf",     emoji: "⏳", title: "WhatCameFirst", desc: "Pick which historical event happened first." },
-  { slug: "/origins", emoji: "🌐", title: "Origins Quiz",  desc: "Click the country where this sport, tradition or invention was born." },
-  { slug: "/wealth",  emoji: "💰", title: "Who's Richer?", desc: "Compare celebrity fortunes." },
+  { slug: "/wcf",        emoji: "⏳", title: "WhatCameFirst", desc: "Pick which historical event happened first." },
+  { slug: "/origins",    emoji: "🌐", title: "Origins Quiz",  desc: "Click the country where this sport, tradition or invention was born." },
+  { slug: "/wealth",     emoji: "💰", title: "Who's Richer?", desc: "Compare celebrity fortunes." },
+  { slug: "/five-clues", emoji: "🕵️", title: "5 Clues",       desc: "5 progressive clues, 3 attempts. Who am I?" },
 ];
 
 const FOOD: GameLink[] = [

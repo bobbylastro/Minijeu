@@ -2568,6 +2568,28 @@
   gap: 16px;
 }
 
+/* Horizontal slider when category has > 3 games */
+.category__games--slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  gap: 14px;
+  padding-bottom: 6px;
+  /* Fade-out hint on right edge */
+  mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
+}
+
+.category__games--slider::-webkit-scrollbar { display: none; }
+
+.category__games--slider .game-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 268px;
+}
+
 /* ── Game card ────────────────────────────────────────────────────────────── */
 .game-card {
   border-radius: 18px;
@@ -2951,8 +2973,12 @@
     gap: 36px;
   }
 
-  .category__games {
+  .category__games:not(.category__games--slider) {
     grid-template-columns: 1fr;
+  }
+
+  .category__games--slider .game-card {
+    width: min(268px, 78vw);
   }
 
   .game-card {

@@ -157,6 +157,7 @@ function CategorySection({
   soon?: boolean;
 }) {
   const slug = CATEGORY_SLUGS[name];
+  const isSlider = games.length > 3;
   return (
     <section className="category">
       <div className="category__header">
@@ -168,7 +169,7 @@ function CategorySection({
         {soon && <span className="site-header__soon-badge category__soon-pill">Soon</span>}
         <div className="category__line" />
       </div>
-      <div className="category__games">
+      <div className={`category__games${isSlider ? " category__games--slider" : ""}`}>
         {games.map(g => <GameCard key={g.slug} game={g} />)}
       </div>
     </section>
@@ -205,6 +206,7 @@ export default function HomePage() {
           { "@type": "ListItem", "position": 8, "name": "Food Origins",    "url": `${BASE}/food` },
           { "@type": "ListItem", "position": 9,  "name": "Origins Quiz",    "url": `${BASE}/origins` },
           { "@type": "ListItem", "position": 10, "name": "Who's Richer?",  "url": `${BASE}/wealth` },
+          { "@type": "ListItem", "position": 11, "name": "5 Clues",        "url": `${BASE}/five-clues` },
         ],
       },
     ]} />
