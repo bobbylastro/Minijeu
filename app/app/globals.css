@@ -2568,26 +2568,64 @@
   gap: 16px;
 }
 
-/* Horizontal slider when category has > 3 games */
-.category__games--slider {
+/* ── Game slider (client component, replaces category__games--slider) ───── */
+.game-slider {
+  position: relative;
+}
+
+.game-slider__track {
   display: flex;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
   -ms-overflow-style: none;
   gap: 14px;
-  padding-bottom: 6px;
-  /* Fade-out hint on right edge */
-  mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
-  -webkit-mask-image: linear-gradient(to right, black calc(100% - 48px), transparent 100%);
+  /* leave room for right arrow */
+  padding-right: 24px;
 }
 
-.category__games--slider::-webkit-scrollbar { display: none; }
+.game-slider__track::-webkit-scrollbar { display: none; }
 
-.category__games--slider .game-card {
+.game-slider__track .game-card {
   scroll-snap-align: start;
   flex-shrink: 0;
   width: 268px;
+}
+
+.game-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 5;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(124,58,237,0.25);
+  background: rgba(255,255,255,0.92);
+  color: #4c1d95;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 12px rgba(109,40,217,0.18), 0 1px 4px rgba(0,0,0,0.08);
+  transition: background 0.15s, transform 0.15s, box-shadow 0.15s;
+  padding: 0;
+}
+
+.game-slider__arrow:hover {
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(109,40,217,0.28), 0 1px 6px rgba(0,0,0,0.1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.game-slider__arrow--left  { left:  -17px; }
+.game-slider__arrow--right { right: -17px; }
+
+@media (max-width: 480px) {
+  .game-slider__arrow { display: none; }
+  .game-slider__track .game-card { width: min(268px, 78vw); }
 }
 
 /* ── Game card ────────────────────────────────────────────────────────────── */
@@ -2597,6 +2635,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-height: 156px;
   transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
   text-decoration: none;
 }
@@ -2652,6 +2691,10 @@
   line-height: 1.55;
   font-family: var(--font-sora), sans-serif;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .game-card__footer {
@@ -2973,12 +3016,8 @@
     gap: 36px;
   }
 
-  .category__games:not(.category__games--slider) {
+  .category__games {
     grid-template-columns: 1fr;
-  }
-
-  .category__games--slider .game-card {
-    width: min(268px, 78vw);
   }
 
   .game-card {

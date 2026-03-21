@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import SeoExpand from "@/components/SeoExpand";
 import JsonLd from "@/components/JsonLd";
+import GameSlider from "@/components/GameSlider";
 
 export const metadata: Metadata = {
   title: "Ultimate Playground – Play free online quiz & mini games",
@@ -157,7 +158,7 @@ function CategorySection({
   soon?: boolean;
 }) {
   const slug = CATEGORY_SLUGS[name];
-  const isSlider = games.length > 3;
+  const cards = games.map(g => <GameCard key={g.slug} game={g} />);
   return (
     <section className="category">
       <div className="category__header">
@@ -169,9 +170,10 @@ function CategorySection({
         {soon && <span className="site-header__soon-badge category__soon-pill">Soon</span>}
         <div className="category__line" />
       </div>
-      <div className={`category__games${isSlider ? " category__games--slider" : ""}`}>
-        {games.map(g => <GameCard key={g.slug} game={g} />)}
-      </div>
+      {games.length > 3
+        ? <GameSlider>{cards}</GameSlider>
+        : <div className="category__games">{cards}</div>
+      }
     </section>
   );
 }
