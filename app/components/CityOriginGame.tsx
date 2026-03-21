@@ -6,9 +6,12 @@ import "@/app/food/food.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
 import { seededShuffle } from "@/lib/seededRandom";
+import { recordMatch } from "@/lib/matchHistory";
+import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import NamePromptModal from "@/components/NamePromptModal";
+import RematchZone from "@/components/RematchZone";
 
 const LeafletMap = dynamic(() => import("@/components/LeafletMap"), { ssr: false });
 
@@ -222,8 +225,8 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
 }
 
 // ─── Result screen ────────────────────────────────────────────────────────────
-function ResultScreen({ score, oppScore, mode, onReplay }: {
-  score: number; oppScore: number | null; mode: Mode; onReplay: () => void;
+function ResultScreen({ score, oppScore, mode, onReplay, rematchZone }: {
+  score: number; oppScore: number | null; mode: Mode; onReplay: () => void; rematchZone?: React.ReactNode;
 }) {
   const pct = (score / MAX_SCORE) * 100;
   const isMulti = mode === "multi" && oppScore !== null;
@@ -275,6 +278,8 @@ function ResultScreen({ score, oppScore, mode, onReplay }: {
             </div>
           </>
         )}
+
+        {rematchZone}
 
         <button className="btn-primary btn-hover" onClick={onReplay} style={{ marginTop: "0.5rem" }}>
           Play Again
@@ -350,6 +355,17 @@ export default function CityOriginGame() {
     onNextRound:        onMpNextRound,
     onGameEnd:          onMpGameEnd,
   });
+
+  const { submitRating } = useRatingSubmit("citymap");
+
+  // Record match outcome + ELO rating when result screen is shown
+  useEffect(() => {
+    if (phase !== "result" || mode !== "multi" || !mp.opponent) return;
+    const result = score > mp.opponent.score ? "win" : score < mp.opponent.score ? "loss" : "tie";
+    recordMatch(mp.opponent.name, result);
+    submitRating(score, mp.opponent.score);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
@@ -429,7 +445,7 @@ export default function CityOriginGame() {
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
-      <MultiplayerScreen status={mp.status} onCancel={backToHome} />
+      <MultiplayerScreen status={mp.status} botCountdown={mp.botCountdown} onCancel={backToHome} onPlayBot={mp.playVsBot} />
     </>
   );
 
@@ -439,6 +455,14 @@ export default function CityOriginGame() {
       oppScore={mp.opponent?.score ?? null}
       mode={mode}
       onReplay={backToHome}
+      rematchZone={mode === "multi" && mp.opponent ? (
+        <RematchZone
+          opponent={mp.opponent}
+          myWantsRematch={mp.myWantsRematch}
+          series={mp.series}
+          onRematch={mp.requestRematch}
+        />
+      ) : undefined}
     />
   );
 
@@ -553,7 +577,9 @@ export default function CityOriginGame() {
       {/* Multiplayer overlay */}
       <MultiplayerScreen
         status={mp.status}
+        botCountdown={mp.botCountdown}
         onCancel={backToHome}
+        onPlayBot={mp.playVsBot}
         onContinueSolo={() => { setMode("solo"); }}
       />
 

@@ -316,9 +316,12 @@
 .ft-feedback-row__btn:hover { background: rgba(255,255,255,0.25); }
 
 @media (max-width: 480px) {
-  .ft-options-grid       { grid-template-columns: 1fr; }
-  .ft-question-text      { font-size: 15px; }
-  .ft-stadium-name       { font-size: 17px; }
-  .ft-transfer-name      { font-size: 17px; }
-  .ft-fee-display        { font-size: 26px; }
+  .ft-options-grid          { grid-template-columns: 1fr; }
+  .ft-question-text         { font-size: 15px; }
+  .ft-stadium-name          { font-size: 17px; }
+  .ft-transfer-name         { font-size: 17px; }
+  .ft-fee-display           { font-size: 26px; }
+  .ft-option                { min-height: 44px; }
+  .ft-salary-card           { min-height: 80px; }
+  .ft-feedback-row__btn     { min-height: 44px; padding: 11px 18px; }
 }

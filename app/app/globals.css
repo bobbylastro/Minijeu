@@ -1283,6 +1283,37 @@
   white-space: nowrap;
 }
 
+/* ── Pop slider mobile — bigger touch target ──────────────────────────────── */
+@media (max-width: 768px) {
+  .pop-slider__track {
+    height: 44px;
+    background: transparent;
+    margin-bottom: 4px;
+  }
+  .pop-slider__track::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 6px;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.1);
+    border-radius: 3px;
+    pointer-events: none;
+  }
+  .pop-slider__fill {
+    top: 50%;
+    bottom: auto;
+    height: 6px;
+    transform: translateY(-50%);
+  }
+  .pop-slider__thumb {
+    width: 30px;
+    height: 30px;
+  }
+}
+
 /* ── Reveal section ───────────────────────────────────────────────────────── */
 .reveal-section {
   margin-top: 20px;
@@ -1679,6 +1710,48 @@
   flex-direction: column;
   align-items: center;
   gap: 10px;
+}
+
+/* Session series pill */
+.rematch-series {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50px;
+  font-family: var(--font-sora), sans-serif;
+  animation: fadeInUp 0.3s ease-out both;
+}
+
+.rematch-series__label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+}
+
+.rematch-series__score {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+.rematch-series__me   { color: #00ffa0; }
+.rematch-series__sep  { color: rgba(255,255,255,0.25); font-size: 16px; }
+.rematch-series__opp  { color: #ff6b6b; }
+
+.rematch-series__ties {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  font-weight: 600;
+  background: rgba(255,255,255,0.06);
+  border-radius: 20px;
+  padding: 2px 8px;
 }
 
 .rematch-record {
@@ -2276,6 +2349,33 @@
   flex-shrink: 0;
   width: 48px;
   text-align: center;
+}
+
+/* ─── Higher or Lower — mobile stacking ─────────────────────────────────────── */
+@media (max-width: 520px) {
+  .hl-cards-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+  .hl-card {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 16px 18px;
+    gap: 14px;
+  }
+  .hl-card__flag-img {
+    width: 72px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .hl-card__name    { font-size: 16px; text-align: left; }
+  .hl-card__continent { text-align: left; }
+  .hl-card__choose  { margin-top: 0; }
+  .hl-vs-divider    { width: 100%; height: 28px; }
 }
 
 /* ─── Responsive — above-the-fold on all screens ────────────────────────────── */

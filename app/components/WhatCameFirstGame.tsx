@@ -3,7 +3,8 @@ import { memo, useState, useCallback, useEffect, useRef } from "react";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { seededShuffle } from "@/lib/seededRandom";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
-import { recordMatch, getRecord } from "@/lib/matchHistory";
+import { recordMatch } from "@/lib/matchHistory";
+import RematchZone from "@/components/RematchZone";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
@@ -725,7 +726,9 @@ export default function WhatCameFirst() {
       )}
       <MultiplayerScreen
         status={mp.status}
+        botCountdown={mp.botCountdown}
         onCancel={() => { mp.leaveQueue(); setMode("solo"); setScreen("home"); }}
+        onPlayBot={mp.playVsBot}
         onContinueSolo={() => { mp.disconnect(); setMode("solo"); setMultiWaiting(false); }}
       />
 
@@ -903,27 +906,12 @@ export default function WhatCameFirst() {
               </div>
             </div>
             {mode === "multi" && mp.opponent && (
-              <div className="rematch-zone">
-                {(() => {
-                  const rec = getRecord(mp.opponent.name);
-                  if (!rec) return null;
-                  return (
-                    <div className="rematch-record">
-                      vs <span className="rematch-record__name">{mp.opponent.name}</span>:{" "}
-                      <span className="rematch-record__win">{rec.wins}W</span>{" "}
-                      <span className="rematch-record__loss">{rec.losses}L</span>{" "}
-                      <span className="rematch-record__tie">{rec.ties}T</span>
-                    </div>
-                  );
-                })()}
-                {mp.opponent.wantsRematch && !mp.myWantsRematch && (
-                  <div className="rematch-notice">⚡ Opponent wants a rematch!</div>
-                )}
-                {mp.myWantsRematch
-                  ? <div className="waiting-indicator"><span className="waiting-dot" />Waiting for opponent…</div>
-                  : <button onClick={mp.requestRematch} className="btn-rematch btn-hover">⚡ Rematch</button>
-                }
-              </div>
+              <RematchZone
+                opponent={mp.opponent}
+                myWantsRematch={mp.myWantsRematch}
+                series={mp.series}
+                onRematch={mp.requestRematch}
+              />
             )}
             {mode === "multi" && mp.opponent ? (
               <div className="result-buttons--pop">

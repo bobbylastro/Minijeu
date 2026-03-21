@@ -168,7 +168,7 @@
   color: rgba(255,255,255,0.3);
 }
 .cr-slot-club {
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 600;
   color: rgba(255,255,255,0.75);
   text-align: center;
@@ -198,7 +198,7 @@
 }
 /* Correct answer hint below wrong slot */
 .cr-slot-correct-hint {
-  font-size: 8.5px;
+  font-size: 10px;
   color: rgba(0,255,160,0.65);
   font-weight: 600;
   text-align: center;
@@ -283,7 +283,7 @@
   color: rgba(255,255,255,0.30);
 }
 .cr-chip-label {
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 600;
   color: rgba(255,255,255,0.72);
   text-align: center;

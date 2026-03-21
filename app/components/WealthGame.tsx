@@ -5,6 +5,8 @@ import "@/app/wealth/wealth.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
+import { recordMatch } from "@/lib/matchHistory";
+import RematchZone from "@/components/RematchZone";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import NamePromptModal from "@/components/NamePromptModal";
@@ -261,7 +263,7 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
 
 // ─── Result screen ────────────────────────────────────────────────────────────
 function ResultScreen({
-  score, oppScore, mode, soloCorrect, soloStreak, onReplay,
+  score, oppScore, mode, soloCorrect, soloStreak, onReplay, rematchZone,
 }: {
   score: number;
   oppScore: number | null;
@@ -269,6 +271,7 @@ function ResultScreen({
   soloCorrect: number;
   soloStreak: number;
   onReplay: () => void;
+  rematchZone?: React.ReactNode;
 }) {
   const [shared, setShared] = useState(false);
   const isMulti  = mode === "multi" && oppScore !== null;
@@ -335,6 +338,8 @@ function ResultScreen({
             )}
           </>
         )}
+
+        {rematchZone}
 
         <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center", marginTop: "0.5rem" }}>
           <button className="btn-primary btn-hover" onClick={onReplay}>Play Again</button>
@@ -452,13 +457,13 @@ export default function WealthGame() {
   const onMpGameEnd = useCallback((scores: Record<string, number>) => {
     setMultiWaiting(false);
     setPhase("result");
-    // Submit rating
-    const myId = mpRef.current?.myId;
-    const oppId = mpRef.current?.opponent?.id;
-    if (myId && oppId) {
-      const myScore  = scores[myId]  ?? 0;
-      const oppScore = scores[oppId] ?? 0;
+    const myId  = mpRef.current?.myId;
+    const opp   = mpRef.current?.opponent;
+    if (myId && opp) {
+      const myScore  = scores[myId]    ?? 0;
+      const oppScore = scores[opp.id]  ?? 0;
       submitRating(myScore, oppScore);
+      recordMatch(opp.name, myScore > oppScore ? "win" : myScore < oppScore ? "loss" : "tie");
     }
   }, [submitRating]);
 
@@ -578,7 +583,7 @@ export default function WealthGame() {
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
-      <MultiplayerScreen status={mp.status} onCancel={backToHome} />
+      <MultiplayerScreen status={mp.status} botCountdown={mp.botCountdown} onCancel={backToHome} onPlayBot={mp.playVsBot} />
     </>
   );
 
@@ -591,6 +596,14 @@ export default function WealthGame() {
         soloCorrect={soloCorrect}
         soloStreak={bestStreak}
         onReplay={backToHome}
+        rematchZone={mode === "multi" && mp.opponent ? (
+          <RematchZone
+            opponent={mp.opponent}
+            myWantsRematch={mp.myWantsRematch}
+            series={mp.series}
+            onRematch={mp.requestRematch}
+          />
+        ) : undefined}
       />
       <RelatedGames currentSlug="/wealth" />
     </>
@@ -759,7 +772,9 @@ export default function WealthGame() {
       {/* Multiplayer overlay */}
       <MultiplayerScreen
         status={mp.status}
+        botCountdown={mp.botCountdown}
         onCancel={backToHome}
+        onPlayBot={mp.playVsBot}
         onContinueSolo={() => { setMode("solo"); mp.disconnect(); }}
       />
     </div>

@@ -3,11 +3,13 @@ import type { MultiplayerStatus } from "@/hooks/useMultiplayer";
 
 interface Props {
   status: MultiplayerStatus;
+  botCountdown?: number | null;
   onCancel: () => void;
+  onPlayBot?: () => void;
   onContinueSolo?: () => void;
 }
 
-export default function MultiplayerScreen({ status, onCancel, onContinueSolo }: Props) {
+export default function MultiplayerScreen({ status, botCountdown, onCancel, onPlayBot, onContinueSolo }: Props) {
   if (status === "idle" || status === "playing" || status === "finished") return null;
 
   const content: Record<string, { icon: string; title: string; sub: string }> = {
@@ -19,12 +21,18 @@ export default function MultiplayerScreen({ status, onCancel, onContinueSolo }: 
 
   const { icon, title, sub } = content[status] ?? content.connecting;
 
+  const showBotCountdown = status === "waiting" && botCountdown !== null && botCountdown !== undefined;
+
   return (
     <div className="mp-overlay">
       <div className="mp-overlay__card">
         <div className="mp-overlay__icon">{icon}</div>
         <div className="mp-overlay__title">{title}</div>
-        <div className="mp-overlay__sub">{sub}</div>
+        <div className="mp-overlay__sub">
+          {showBotCountdown
+            ? `No opponent found. A bot will join in ${botCountdown}s…`
+            : sub}
+        </div>
 
         {status === "waiting" && (
           <div className="mp-overlay__dots">
@@ -36,6 +44,12 @@ export default function MultiplayerScreen({ status, onCancel, onContinueSolo }: 
               />
             ))}
           </div>
+        )}
+
+        {showBotCountdown && onPlayBot && (
+          <button onClick={onPlayBot} className="btn-primary btn-hover" style={{ marginTop: 8 }}>
+            Play vs Bot now
+          </button>
         )}
 
         {status === "opponent_left" ? (

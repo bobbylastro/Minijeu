@@ -333,7 +333,7 @@
 .wcf-order-slot-img-wrap .wcf-event-img-placeholder { height: 52px; border-radius: 7px; }
 
 .wcf-order-slot-text {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   color: rgba(255,255,255,0.75);
   text-align: center;
@@ -346,7 +346,7 @@
   -webkit-box-orient: vertical;
 }
 .wcf-order-slot-year {
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 800;
   color: rgba(255,255,255,0.35);
   margin-top: 2px;
@@ -421,7 +421,7 @@
 .wcf-order-chip-img-wrap .wcf-event-img-placeholder { height: 52px; border-radius: 7px; }
 
 .wcf-order-chip-text {
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   color: rgba(255,255,255,0.72);
   text-align: center;
@@ -515,6 +515,19 @@
 .wcf-result-card__score  { text-align: right; flex-shrink: 0; }
 .wcf-result-card__pts    { font-size: 20px; font-weight: 800; }
 .wcf-result-card__label  { font-size: 10px; color: rgba(255,255,255,0.35); font-weight: 600; }
+
+/* ── Mobile slider thumb — bigger touch target ──────────────────────────── */
+@media (max-width: 768px) {
+  .wcf-slider-input { height: 8px; }
+  .wcf-slider-input::-webkit-slider-thumb {
+    width: 28px;
+    height: 28px;
+  }
+  .wcf-slider-input::-moz-range-thumb {
+    width: 28px;
+    height: 28px;
+  }
+}
 
 @media (max-width: 420px) {
   .wcf-order-chip { min-width: 60px; min-height: 130px; }
