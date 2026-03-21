@@ -51,7 +51,7 @@ export default function Header() {
 
   const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
-  const cultureRoutes = ["/wcf", "/origins", "/wealth"];
+  const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
@@ -147,6 +147,13 @@ export default function Header() {
                       <div>
                         <div className="site-header__dropdown-name">Who&apos;s Richer?</div>
                         <div className="site-header__dropdown-desc">Celebrity wealth quiz</div>
+                      </div>
+                    </Link>
+                    <Link href="/five-clues" className={`site-header__dropdown-item${pathname === "/five-clues" ? " is-active" : ""}`} onClick={() => setCultureOpen(false)}>
+                      <div className="site-header__dropdown-icon">🕵️</div>
+                      <div>
+                        <div className="site-header__dropdown-name">5 Clues</div>
+                        <div className="site-header__dropdown-desc">Who am I? Guess the person</div>
                       </div>
                     </Link>
                   </div>
@@ -294,7 +301,8 @@ export default function Header() {
                 <Link href="/culture" className="mobile-menu__sub-cat" onClick={closeMenu}>🧠 All Culture games →</Link>
                 <Link href="/wcf"     className={`mobile-menu__sub-item${pathname === "/wcf"     ? " is-active" : ""}`} onClick={closeMenu}><span>⏳</span> WhatCameFirst</Link>
                 <Link href="/origins" className={`mobile-menu__sub-item${pathname === "/origins" ? " is-active" : ""}`} onClick={closeMenu}><span>🌐</span> Origins Quiz</Link>
-                <Link href="/wealth"  className={`mobile-menu__sub-item${pathname === "/wealth"  ? " is-active" : ""}`} onClick={closeMenu}><span>💰</span> Who&apos;s Richer?</Link>
+                <Link href="/wealth"     className={`mobile-menu__sub-item${pathname === "/wealth"     ? " is-active" : ""}`} onClick={closeMenu}><span>💰</span> Who&apos;s Richer?</Link>
+                <Link href="/five-clues" className={`mobile-menu__sub-item${pathname === "/five-clues" ? " is-active" : ""}`} onClick={closeMenu}><span>🕵️</span> 5 Clues</Link>
               </div>
             )}
 

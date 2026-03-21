@@ -1,0 +1,678 @@
+[
+  {
+    "id": "cristiano-ronaldo",
+    "name": "Cristiano Ronaldo",
+    "category": "sport",
+    "accepted": ["ronaldo", "cristiano ronaldo", "cr7", "cristiano"],
+    "clues": [
+      "I was born in 1985 on a small Portuguese island in the Atlantic Ocean.",
+      "I grew up in poverty and left home at 12 to join a football academy on the mainland.",
+      "I have played for clubs including Sporting CP, Manchester United, Real Madrid, and Juventus.",
+      "I hold the record for the most international goals in men's football history.",
+      "I am known worldwide by my initials and squad number: CR7."
+    ]
+  },
+  {
+    "id": "lionel-messi",
+    "name": "Lionel Messi",
+    "category": "sport",
+    "accepted": ["messi", "lionel messi", "leo messi"],
+    "clues": [
+      "I was born in 1987 in Argentina, in a city known for its football passion.",
+      "As a child, I was diagnosed with a growth hormone deficiency and moved to Spain for treatment.",
+      "I spent the majority of my career at FC Barcelona, before joining PSG and then Inter Miami.",
+      "I have won the Ballon d'Or award a record eight times.",
+      "In 2022, I finally won the FIFA World Cup with Argentina."
+    ]
+  },
+  {
+    "id": "michael-jordan",
+    "name": "Michael Jordan",
+    "category": "sport",
+    "accepted": ["jordan", "michael jordan", "mj", "air jordan"],
+    "clues": [
+      "I was born in 1963 in New York, USA.",
+      "I was famously cut from my high school basketball varsity team.",
+      "I played the majority of my NBA career for the Chicago Bulls.",
+      "I won 6 NBA championships and was named Finals MVP each time.",
+      "My Air Jordan sneaker line, launched in 1984, became a billion-dollar cultural phenomenon."
+    ]
+  },
+  {
+    "id": "lebron-james",
+    "name": "LeBron James",
+    "category": "sport",
+    "accepted": ["lebron", "lebron james", "king james"],
+    "clues": [
+      "I was born in 1984 in Akron, Ohio, USA.",
+      "I appeared on the cover of Sports Illustrated at just 17 years old.",
+      "I was selected first overall in the 2003 NBA Draft.",
+      "I have won 4 NBA championships with three different franchises.",
+      "I am the all-time leading scorer in NBA history."
+    ]
+  },
+  {
+    "id": "usain-bolt",
+    "name": "Usain Bolt",
+    "category": "sport",
+    "accepted": ["bolt", "usain bolt", "usain"],
+    "clues": [
+      "I was born in 1986 in a small parish of Jamaica.",
+      "I grew up in a rural community and showed athletic talent from a very young age.",
+      "I am a sprinter specializing in the 100m and 200m.",
+      "I won 8 Olympic gold medals across three consecutive Olympic Games.",
+      "I hold the world records for both the 100m (9.58s) and 200m (19.19s)."
+    ]
+  },
+  {
+    "id": "roger-federer",
+    "name": "Roger Federer",
+    "category": "sport",
+    "accepted": ["federer", "roger federer"],
+    "clues": [
+      "I was born in 1981 in Basel, Switzerland.",
+      "I am the only Swiss man to have won a Grand Slam singles title.",
+      "I am considered one of the greatest tennis players of all time.",
+      "I won 20 Grand Slam titles over my career.",
+      "I won Wimbledon a record 8 times and retired in 2022."
+    ]
+  },
+  {
+    "id": "muhammad-ali",
+    "name": "Muhammad Ali",
+    "category": "sport",
+    "accepted": ["ali", "muhammad ali", "cassius clay"],
+    "clues": [
+      "I was born in 1942 in Louisville, Kentucky, USA.",
+      "I began boxing at age 12 after my bicycle was stolen and I wanted to fight the thief.",
+      "I won a gold medal at the 1960 Rome Olympics.",
+      "I defeated Sonny Liston to win the world heavyweight title in 1964.",
+      "I called myself 'The Greatest' and am known for the quote: 'Float like a butterfly, sting like a bee.'"
+    ]
+  },
+  {
+    "id": "tiger-woods",
+    "name": "Tiger Woods",
+    "category": "sport",
+    "accepted": ["tiger woods", "tiger"],
+    "clues": [
+      "I was born in 1975 in California, USA.",
+      "I appeared on The Mike Douglas Show at age 2, hitting golf balls.",
+      "I am a professional golfer who turned professional in 1996.",
+      "I hold the record for most weeks ranked world number 1 in golf history.",
+      "I have won 15 major championships, including a dramatic comeback at the 2019 Masters."
+    ]
+  },
+  {
+    "id": "serena-williams",
+    "name": "Serena Williams",
+    "category": "sport",
+    "accepted": ["serena", "serena williams"],
+    "clues": [
+      "I was born in 1981 in Saginaw, Michigan, USA.",
+      "I grew up in Compton, California, and was coached by my father on public courts.",
+      "I am an American tennis player who turned professional at age 14.",
+      "I have won 23 Grand Slam singles titles, the most in the Open Era.",
+      "I won the 2017 Australian Open while in the early stages of pregnancy."
+    ]
+  },
+  {
+    "id": "pele",
+    "name": "Pelé",
+    "category": "sport",
+    "accepted": ["pele", "pelé", "edson arantes"],
+    "clues": [
+      "I was born in 1940 in a small town in Minas Gerais, Brazil.",
+      "I grew up in poverty and practised football with a sock stuffed with rags.",
+      "I am a Brazilian footballer who made my World Cup debut at just 17.",
+      "I am the only player to have won three FIFA World Cups.",
+      "I scored over 1,000 career goals and am widely regarded as the greatest footballer of all time."
+    ]
+  },
+  {
+    "id": "zinedine-zidane",
+    "name": "Zinedine Zidane",
+    "category": "sport",
+    "accepted": ["zidane", "zinedine zidane", "zizou"],
+    "clues": [
+      "I was born in 1972 in Marseille, France, to Algerian immigrant parents.",
+      "I grew up in the La Castellane housing project in Marseille.",
+      "I am a retired French footballer widely considered one of the greatest midfielders ever.",
+      "I was named FIFA World Player of the Year three times.",
+      "I was controversially sent off in the 2006 World Cup final for a headbutt on Marco Materazzi."
+    ]
+  },
+  {
+    "id": "ayrton-senna",
+    "name": "Ayrton Senna",
+    "category": "sport",
+    "accepted": ["senna", "ayrton senna", "ayrton"],
+    "clues": [
+      "I was born in 1960 in São Paulo, Brazil.",
+      "I began karting at the age of 4 with a kart my father built for me.",
+      "I competed in Formula 1 from 1984 until my death.",
+      "I won three Formula 1 World Championships with McLaren.",
+      "I died in a crash at the San Marino Grand Prix at Imola on May 1, 1994."
+    ]
+  },
+  {
+    "id": "michael-schumacher",
+    "name": "Michael Schumacher",
+    "category": "sport",
+    "accepted": ["schumacher", "michael schumacher", "schumi"],
+    "clues": [
+      "I was born in 1969 in Hürth, West Germany.",
+      "I started karting as a child at a track run by my father.",
+      "I am a retired German Formula 1 driver.",
+      "I won a record seven Formula 1 World Championships.",
+      "I suffered a severe brain injury in a skiing accident in the French Alps in December 2013."
+    ]
+  },
+  {
+    "id": "mike-tyson",
+    "name": "Mike Tyson",
+    "category": "sport",
+    "accepted": ["tyson", "mike tyson", "iron mike"],
+    "clues": [
+      "I was born in 1966 in Brooklyn, New York, USA.",
+      "I was discovered by trainer Cus D'Amato after being arrested over 30 times as a teenager.",
+      "I am a retired American heavyweight boxer.",
+      "At 20 years old, I became the youngest heavyweight champion in history.",
+      "I am known as 'Iron Mike' and famously bit off a piece of Evander Holyfield's ear during a fight."
+    ]
+  },
+  {
+    "id": "kobe-bryant",
+    "name": "Kobe Bryant",
+    "category": "sport",
+    "accepted": ["kobe", "kobe bryant", "black mamba"],
+    "clues": [
+      "I was born in 1978 in Philadelphia, USA, and spent part of my childhood in Italy.",
+      "My father was also a professional basketball player.",
+      "I was drafted directly out of high school into the NBA in 1996.",
+      "I won 5 NBA championships, all with the Los Angeles Lakers.",
+      "I tragically died in a helicopter crash in January 2020, along with my daughter Gianna."
+    ]
+  },
+  {
+    "id": "michael-jackson",
+    "name": "Michael Jackson",
+    "category": "music",
+    "accepted": ["michael jackson", "mj", "king of pop"],
+    "clues": [
+      "I was born in 1958 in Gary, Indiana, USA.",
+      "I began performing with my brothers as a child before going solo.",
+      "I am an American singer, songwriter, and dancer.",
+      "My album 'Thriller' (1982) remains the best-selling album of all time.",
+      "I am known as the King of Pop and popularized the 'moonwalk' dance move."
+    ]
+  },
+  {
+    "id": "elvis-presley",
+    "name": "Elvis Presley",
+    "category": "music",
+    "accepted": ["elvis", "elvis presley", "the king"],
+    "clues": [
+      "I was born in 1935 in Tupelo, Mississippi, USA, into a working-class family.",
+      "My family moved to Memphis, Tennessee when I was 13.",
+      "I became one of the most significant cultural icons of the 20th century.",
+      "My 1956 hit 'Heartbreak Hotel' was my first number-one single.",
+      "I am known as 'The King of Rock and Roll' and my home, Graceland, is a famous landmark."
+    ]
+  },
+  {
+    "id": "freddie-mercury",
+    "name": "Freddie Mercury",
+    "category": "music",
+    "accepted": ["freddie mercury", "freddie", "mercury"],
+    "clues": [
+      "I was born in 1946 in Stone Town, Zanzibar, to Parsi Indian parents.",
+      "I grew up partly in India and later moved to England.",
+      "I was the lead vocalist of the rock band Queen.",
+      "I wrote 'Bohemian Rhapsody', one of the greatest rock songs ever recorded.",
+      "I died of AIDS-related complications in November 1991, aged 45."
+    ]
+  },
+  {
+    "id": "bob-marley",
+    "name": "Bob Marley",
+    "category": "music",
+    "accepted": ["bob marley", "marley"],
+    "clues": [
+      "I was born in 1945 in Nine Mile, Saint Ann Parish, Jamaica.",
+      "My father was a white Jamaican plantation overseer and my mother was Black Jamaican.",
+      "I am a musician and cultural icon who popularized reggae music worldwide.",
+      "My album 'Exodus' (1977) was named Album of the Century by Time magazine.",
+      "My most famous songs include 'No Woman, No Cry', 'One Love', and 'Redemption Song'."
+    ]
+  },
+  {
+    "id": "david-bowie",
+    "name": "David Bowie",
+    "category": "music",
+    "accepted": ["bowie", "david bowie", "ziggy stardust"],
+    "clues": [
+      "I was born in 1947 in Brixton, London, England.",
+      "I have a distinctive appearance including two different-coloured eyes, the result of a childhood fight.",
+      "I was a British singer, songwriter and actor known for constantly reinventing my image.",
+      "My alter ego 'Ziggy Stardust' became one of the most iconic personas in rock history.",
+      "My final album 'Blackstar' was released just two days before my death in January 2016."
+    ]
+  },
+  {
+    "id": "eminem",
+    "name": "Eminem",
+    "category": "music",
+    "accepted": ["eminem", "slim shady", "marshall mathers"],
+    "clues": [
+      "I was born in 1972 in St. Joseph, Missouri, USA.",
+      "I grew up in poverty in Detroit, Michigan, and dropped out of high school.",
+      "I am a white rapper who broke into a genre historically dominated by Black artists.",
+      "My 2002 film '8 Mile' was loosely based on my own life.",
+      "I am the best-selling rapper of all time and known for my alter ego 'Slim Shady'."
+    ]
+  },
+  {
+    "id": "beyonce",
+    "name": "Beyoncé",
+    "category": "music",
+    "accepted": ["beyonce", "beyoncé", "queen bey"],
+    "clues": [
+      "I was born in 1981 in Houston, Texas, USA.",
+      "My father managed my early career and pushed me from a very young age.",
+      "I first rose to fame as the lead singer of the girl group Destiny's Child.",
+      "I have won more Grammy Awards than any other artist in history.",
+      "I am married to rapper Jay-Z and together we are one of music's most powerful couples."
+    ]
+  },
+  {
+    "id": "madonna",
+    "name": "Madonna",
+    "category": "music",
+    "accepted": ["madonna"],
+    "clues": [
+      "I was born in 1958 in Bay City, Michigan, USA.",
+      "I moved to New York City in 1978 with just $35 in my pocket.",
+      "I am an American singer, songwriter, and actress.",
+      "I have sold over 300 million records worldwide, making me the best-selling female music artist of all time.",
+      "I am known as the 'Queen of Pop' and my 1984 MTV VMAs performance of 'Like a Virgin' was iconic."
+    ]
+  },
+  {
+    "id": "rihanna",
+    "name": "Rihanna",
+    "category": "music",
+    "accepted": ["rihanna", "riri"],
+    "clues": [
+      "I was born in 1988 in Saint Michael, Barbados.",
+      "I was discovered by an American music producer during his visit to Barbados.",
+      "I am a singer, actress, and businesswoman.",
+      "My song 'Umbrella' (2007) became one of the best-selling singles of all time.",
+      "I founded Fenty Beauty in 2017, a cosmetics brand valued at over $2.8 billion."
+    ]
+  },
+  {
+    "id": "taylor-swift",
+    "name": "Taylor Swift",
+    "category": "music",
+    "accepted": ["taylor swift", "taylor", "swift"],
+    "clues": [
+      "I was born in 1989 in West Reading, Pennsylvania, USA.",
+      "I moved to Nashville at 14 to pursue a country music career.",
+      "I am a singer-songwriter who crossed over from country into pop.",
+      "My 'Eras Tour' (2023–2024) became the highest-grossing concert tour of all time.",
+      "I have won 14 Grammy Awards, including a record four Album of the Year awards."
+    ]
+  },
+  {
+    "id": "kurt-cobain",
+    "name": "Kurt Cobain",
+    "category": "music",
+    "accepted": ["kurt cobain", "cobain", "kurt"],
+    "clues": [
+      "I was born in 1967 in Aberdeen, Washington, USA.",
+      "I had a troubled childhood following my parents' divorce.",
+      "I was the lead singer and guitarist of a band that defined the grunge movement.",
+      "My band Nirvana's album 'Nevermind' (1991) propelled alternative rock into the mainstream.",
+      "I died on April 5, 1994, at age 27, and am a member of the so-called '27 Club'."
+    ]
+  },
+  {
+    "id": "adele",
+    "name": "Adele",
+    "category": "music",
+    "accepted": ["adele"],
+    "clues": [
+      "I was born in 1988 in Tottenham, London, England.",
+      "I studied at the BRIT School for Performing Arts in London.",
+      "I am a British singer-songwriter known for my powerful voice and emotional ballads.",
+      "My album '21' spent 24 weeks at number one in the UK.",
+      "My song 'Hello' broke the record for most Spotify streams in its first week when released in 2015."
+    ]
+  },
+  {
+    "id": "leonardo-dicaprio",
+    "name": "Leonardo DiCaprio",
+    "category": "film",
+    "accepted": ["dicaprio", "leonardo dicaprio", "leo dicaprio"],
+    "clues": [
+      "I was born in 1974 in Los Angeles, California, USA.",
+      "My Italian father and German mother met at an art exhibit in Los Angeles.",
+      "I am an American actor and environmental activist.",
+      "I starred in 'Titanic' (1997), one of the highest-grossing films of all time.",
+      "I won my first Academy Award for Best Actor for 'The Revenant' in 2016, after multiple nominations."
+    ]
+  },
+  {
+    "id": "marilyn-monroe",
+    "name": "Marilyn Monroe",
+    "category": "film",
+    "accepted": ["marilyn monroe", "marilyn", "norma jean"],
+    "clues": [
+      "I was born in 1926 in Los Angeles, California, and spent much of my childhood in foster homes.",
+      "I was discovered as a model before transitioning to acting.",
+      "I am an American actress, model, and singer who became a cultural icon.",
+      "My rendition of 'Happy Birthday, Mr. President' for John F. Kennedy is one of history's most famous performances.",
+      "I died in 1962 at age 36, and the image of me in a white dress over a subway grate is iconic."
+    ]
+  },
+  {
+    "id": "charlie-chaplin",
+    "name": "Charlie Chaplin",
+    "category": "film",
+    "accepted": ["chaplin", "charlie chaplin", "charlie"],
+    "clues": [
+      "I was born in 1889 in Southwark, London, England.",
+      "I grew up in severe poverty, often living in workhouses as a child.",
+      "I am a British actor and filmmaker who became a legend of the silent film era.",
+      "My character 'The Tramp' is one of the most recognized images in cinema history.",
+      "My film 'The Great Dictator' (1940) was a satirical portrayal of Adolf Hitler."
+    ]
+  },
+  {
+    "id": "tom-hanks",
+    "name": "Tom Hanks",
+    "category": "film",
+    "accepted": ["tom hanks", "hanks"],
+    "clues": [
+      "I was born in 1956 in Concord, California, USA.",
+      "I had a difficult childhood, moving frequently after my parents' divorce.",
+      "I am an American actor known for my approachable, everyman roles.",
+      "I am one of only two actors to win back-to-back Academy Awards for Best Actor.",
+      "I starred in 'Forrest Gump' (1994) and 'Cast Away' (2000), both iconic films."
+    ]
+  },
+  {
+    "id": "morgan-freeman",
+    "name": "Morgan Freeman",
+    "category": "film",
+    "accepted": ["morgan freeman", "freeman"],
+    "clues": [
+      "I was born in 1937 in Memphis, Tennessee, USA.",
+      "I declined a full scholarship to study drama and joined the US Air Force instead.",
+      "I am an American actor and narrator known for my distinctive deep voice.",
+      "I won an Academy Award for Best Supporting Actor for 'Million Dollar Baby' (2004).",
+      "I am one of Hollywood's most recognizable narrators and have voiced God in two major films."
+    ]
+  },
+  {
+    "id": "arnold-schwarzenegger",
+    "name": "Arnold Schwarzenegger",
+    "category": "film",
+    "accepted": ["schwarzenegger", "arnold schwarzenegger", "arnold", "terminator"],
+    "clues": [
+      "I was born in 1947 in Thal, Austria.",
+      "I won the Mr. Universe title at age 20, the youngest ever to do so.",
+      "I am an Austrian-American actor, businessman, and politician.",
+      "I starred in the Terminator franchise, delivering the iconic line 'I'll be back.'",
+      "I served as the 38th Governor of California from 2003 to 2011."
+    ]
+  },
+  {
+    "id": "will-smith",
+    "name": "Will Smith",
+    "category": "film",
+    "accepted": ["will smith", "will", "fresh prince"],
+    "clues": [
+      "I was born in 1968 in Philadelphia, Pennsylvania, USA.",
+      "I began my career as a rapper before transitioning to acting.",
+      "I am an American actor who starred in blockbuster franchises including Men in Black and Bad Boys.",
+      "I won an Academy Award for Best Actor for 'King Richard' (2022).",
+      "At the 2022 Oscars, I slapped presenter Chris Rock on stage in front of a global audience."
+    ]
+  },
+  {
+    "id": "albert-einstein",
+    "name": "Albert Einstein",
+    "category": "history",
+    "accepted": ["einstein", "albert einstein"],
+    "clues": [
+      "I was born in 1879 in Ulm, in the Kingdom of Württemberg, Germany.",
+      "Contrary to popular belief, I was not a poor student — I clashed with rigid teaching methods.",
+      "I am a theoretical physicist who fundamentally changed our understanding of the universe.",
+      "I developed the theory of general relativity and the famous equation E=mc².",
+      "I won the Nobel Prize in Physics in 1921 and am the most recognizable scientist in history."
+    ]
+  },
+  {
+    "id": "nelson-mandela",
+    "name": "Nelson Mandela",
+    "category": "history",
+    "accepted": ["mandela", "nelson mandela", "madiba"],
+    "clues": [
+      "I was born in 1918 in Mvezo, a small village in South Africa.",
+      "I trained as a lawyer and became involved in anti-apartheid activism.",
+      "I am a South African political leader and statesman.",
+      "I spent 27 years in prison — largely on Robben Island — for my fight against apartheid.",
+      "I became South Africa's first democratically elected president in 1994 and won the Nobel Peace Prize."
+    ]
+  },
+  {
+    "id": "martin-luther-king",
+    "name": "Martin Luther King Jr.",
+    "category": "history",
+    "accepted": ["martin luther king", "mlk", "martin luther king jr", "king"],
+    "clues": [
+      "I was born in 1929 in Atlanta, Georgia, USA.",
+      "I entered Morehouse College at just 15 years old.",
+      "I am an American minister and civil rights leader.",
+      "I led the Montgomery Bus Boycott in 1955 and organized the March on Washington in 1963.",
+      "I delivered the 'I Have a Dream' speech and was assassinated in Memphis in April 1968."
+    ]
+  },
+  {
+    "id": "mahatma-gandhi",
+    "name": "Mahatma Gandhi",
+    "category": "history",
+    "accepted": ["gandhi", "mahatma gandhi", "mahatma"],
+    "clues": [
+      "I was born in 1869 in Porbandar, in what is now the state of Gujarat, India.",
+      "I studied law in London and worked as a lawyer in South Africa for 21 years.",
+      "I am an Indian lawyer, anti-colonial nationalist, and political ethicist.",
+      "I led India's independence movement against British rule using non-violent civil disobedience.",
+      "I was assassinated on January 30, 1948, just months after India gained independence."
+    ]
+  },
+  {
+    "id": "marie-curie",
+    "name": "Marie Curie",
+    "category": "history",
+    "accepted": ["marie curie", "curie", "maria sklodowska"],
+    "clues": [
+      "I was born in 1867 in Warsaw, Poland, then part of the Russian Empire.",
+      "I moved to Paris in 1891 to study science, as women could not attend university in Poland.",
+      "I am a physicist and chemist who conducted pioneering research on radioactivity.",
+      "I am the first and only person to win Nobel Prizes in two different sciences: Physics and Chemistry.",
+      "I discovered the elements polonium and radium, naming polonium after my homeland."
+    ]
+  },
+  {
+    "id": "nikola-tesla",
+    "name": "Nikola Tesla",
+    "category": "history",
+    "accepted": ["tesla", "nikola tesla"],
+    "clues": [
+      "I was born in 1856 in Smiljan, in what is now Croatia.",
+      "I moved to the United States in 1884 with just four cents in my pocket.",
+      "I am an inventor, electrical engineer, and futurist.",
+      "I developed the alternating current (AC) electrical system now used worldwide.",
+      "I had a famous rivalry with Thomas Edison and died alone in a New York hotel room in 1943."
+    ]
+  },
+  {
+    "id": "charles-darwin",
+    "name": "Charles Darwin",
+    "category": "history",
+    "accepted": ["darwin", "charles darwin"],
+    "clues": [
+      "I was born in 1809 in Shrewsbury, England.",
+      "My father wanted me to become a doctor, but I dropped out of medical school.",
+      "I am an English naturalist and biologist.",
+      "My 5-year voyage on the HMS Beagle laid the foundation for my later scientific work.",
+      "I proposed the theory of evolution by natural selection in my 1859 book 'On the Origin of Species'."
+    ]
+  },
+  {
+    "id": "napoleon-bonaparte",
+    "name": "Napoleon Bonaparte",
+    "category": "history",
+    "accepted": ["napoleon", "napoleon bonaparte"],
+    "clues": [
+      "I was born in 1769 in Ajaccio, Corsica, just months after France acquired the island from Genoa.",
+      "I was mocked for my Corsican accent when I arrived at a French military school at age 9.",
+      "I am a French military commander and political leader.",
+      "I declared myself Emperor of the French in 1804 and conquered much of Europe.",
+      "I was finally defeated at the Battle of Waterloo in 1815 and exiled to Saint Helena, where I died in 1821."
+    ]
+  },
+  {
+    "id": "steve-jobs",
+    "name": "Steve Jobs",
+    "category": "business",
+    "accepted": ["steve jobs", "jobs"],
+    "clues": [
+      "I was born in 1955 in San Francisco, California, and was adopted as an infant.",
+      "I dropped out of Reed College after one semester but kept attending a calligraphy class.",
+      "I am an American business magnate and co-founder of a technology company.",
+      "I co-founded Apple Inc. in a garage in 1976 and later returned to save it from bankruptcy.",
+      "I unveiled the first iPhone in 2007, revolutionizing the smartphone industry, and died of pancreatic cancer in 2011."
+    ]
+  },
+  {
+    "id": "bill-gates",
+    "name": "Bill Gates",
+    "category": "business",
+    "accepted": ["bill gates", "gates"],
+    "clues": [
+      "I was born in 1955 in Seattle, Washington, USA.",
+      "I enrolled at Harvard University but dropped out after two years.",
+      "I am an American business magnate and philanthropist.",
+      "I co-founded Microsoft with Paul Allen in 1975.",
+      "My charitable foundation is one of the largest private philanthropic organizations in the world."
+    ]
+  },
+  {
+    "id": "elon-musk",
+    "name": "Elon Musk",
+    "category": "business",
+    "accepted": ["elon musk", "musk", "elon"],
+    "clues": [
+      "I was born in 1971 in Pretoria, South Africa.",
+      "I taught myself to code at age 10 and sold my first video game, Blastar, at age 12.",
+      "I am a business magnate and investor.",
+      "I founded SpaceX in 2002 and co-founded Tesla Motors in 2003.",
+      "I purchased Twitter (now X) in 2022 for $44 billion and became the wealthiest person in the world."
+    ]
+  },
+  {
+    "id": "mark-zuckerberg",
+    "name": "Mark Zuckerberg",
+    "category": "business",
+    "accepted": ["mark zuckerberg", "zuckerberg", "zuck"],
+    "clues": [
+      "I was born in 1984 in White Plains, New York, USA.",
+      "My father, a dentist, hired a software developer to tutor me as a child.",
+      "I am an American technology entrepreneur.",
+      "I launched a social networking website from my Harvard dorm room in February 2004.",
+      "I co-founded Facebook (now Meta) and became one of the youngest self-made billionaires in history."
+    ]
+  },
+  {
+    "id": "barack-obama",
+    "name": "Barack Obama",
+    "category": "politics",
+    "accepted": ["obama", "barack obama", "barack"],
+    "clues": [
+      "I was born in 1961 in Honolulu, Hawaii, USA.",
+      "My father was from Kenya and my mother was from Kansas.",
+      "I am an American politician and attorney.",
+      "I was elected as a U.S. Senator from Illinois in 2004.",
+      "I became the 44th President of the United States in 2009, the first African American to hold the office."
+    ]
+  },
+  {
+    "id": "winston-churchill",
+    "name": "Winston Churchill",
+    "category": "politics",
+    "accepted": ["churchill", "winston churchill", "winston"],
+    "clues": [
+      "I was born in 1874 at Blenheim Palace, Oxfordshire, England.",
+      "I was considered a poor student but excelled at English and showed military aptitude.",
+      "I am a British statesman, soldier, and writer.",
+      "I served as Prime Minister of the United Kingdom during World War II.",
+      "I am famous for my wartime speeches and won the Nobel Prize in Literature in 1953."
+    ]
+  },
+  {
+    "id": "vladimir-putin",
+    "name": "Vladimir Putin",
+    "category": "politics",
+    "accepted": ["putin", "vladimir putin"],
+    "clues": [
+      "I was born in 1952 in Leningrad, Soviet Union, now Saint Petersburg, Russia.",
+      "I practised judo and sambo from a young age and hold a black belt.",
+      "I am a Russian politician and former intelligence officer.",
+      "I served as a KGB foreign intelligence officer for 16 years before entering politics.",
+      "I have dominated Russian politics since 2000, serving as both President and Prime Minister."
+    ]
+  },
+  {
+    "id": "leonardo-da-vinci",
+    "name": "Leonardo da Vinci",
+    "category": "history",
+    "accepted": ["leonardo da vinci", "da vinci", "leonard de vinci", "leonardo"],
+    "clues": [
+      "I was born in 1452 in Vinci, a small town in the Republic of Florence.",
+      "I was the illegitimate son of a notary and a peasant woman.",
+      "I am an Italian polymath of the Renaissance, excelling in art, science, and engineering.",
+      "I painted the Mona Lisa and The Last Supper, two of the most famous artworks in history.",
+      "My notebooks contain sketches of flying machines, tanks, and solar power centuries before their invention."
+    ]
+  },
+  {
+    "id": "stephen-hawking",
+    "name": "Stephen Hawking",
+    "category": "history",
+    "accepted": ["hawking", "stephen hawking", "stephen"],
+    "clues": [
+      "I was born in 1942 in Oxford, England, on the 300th anniversary of Galileo's death.",
+      "I was diagnosed with motor neurone disease at age 21 and given just two years to live.",
+      "I am a British theoretical physicist and cosmologist.",
+      "I held the position of Lucasian Professor of Mathematics at Cambridge, the same chair once held by Newton.",
+      "My book 'A Brief History of Time' (1988) sold over 25 million copies worldwide."
+    ]
+  },
+  {
+    "id": "oprah-winfrey",
+    "name": "Oprah Winfrey",
+    "category": "business",
+    "accepted": ["oprah", "oprah winfrey", "winfrey"],
+    "clues": [
+      "I was born in 1954 in rural Mississippi, USA, in extreme poverty.",
+      "I was the first Black female TV anchor in Nashville, Tennessee.",
+      "I am an American talk show host, actress, and businesswoman.",
+      "My talk show ran for 25 seasons from 1986 to 2011 and was watched by 48 million viewers weekly.",
+      "I became the first Black woman billionaire in North America."
+    ]
+  }
+]

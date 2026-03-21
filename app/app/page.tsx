@@ -88,6 +88,13 @@ const CULTURE_GAMES: GameDef[] = [
     desc: "Two celebrities appear — tap the one with the higher net worth. Tech billionaires, athletes, musicians and more.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/five-clues",
+    emoji: "🕵️",
+    title: "5 Clues",
+    desc: "5 progressive clues, 3 attempts. Guess the famous person — athletes, musicians, actors, historical figures and more.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const FOOD_GAMES: GameDef[] = [
