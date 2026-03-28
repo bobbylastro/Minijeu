@@ -155,12 +155,11 @@ function generateQuestions(count: number, seed?: number): Question[] {
 
 // ─── Solo "Top X%" percentile ────────────────────────────────────────────────
 function getPercentile(soloCorrect: number): string {
-  if (soloCorrect >= 20) return "Top 1%";
-  if (soloCorrect >= 15) return "Top 5%";
-  if (soloCorrect >= 10) return "Top 15%";
-  if (soloCorrect >= 7)  return "Top 30%";
-  if (soloCorrect >= 4)  return "Top 50%";
-  return "Top 75%";
+  if (soloCorrect >= 10) return "Top 1%";
+  if (soloCorrect >= 8)  return "Top 10%";
+  if (soloCorrect >= 6)  return "Top 30%";
+  if (soloCorrect >= 4)  return "Top 55%";
+  return "Top 80%";
 }
 
 // ─── Streak helpers ───────────────────────────────────────────────────────────
@@ -195,24 +194,31 @@ const Stars = memo(function Stars() {
 });
 
 // ─── CelebPhoto sub-component ─────────────────────────────────────────────────
+function proxyUrl(url: string): string {
+  const bare = url.replace(/^https?:\/\//, "");
+  return `https://wsrv.nl/?url=${encodeURIComponent(bare)}&w=160&h=160&fit=cover&output=jpg`;
+}
+
 function CelebPhoto({ celeb, className = "", initClassName = "" }: {
   celeb: Celebrity;
   className?: string;
   initClassName?: string;
 }) {
-  const [err, setErr] = useState(false);
-  // Reset error when celebrity changes
-  useEffect(() => { setErr(false); }, [celeb.name]);
+  const [stage, setStage] = useState<"direct" | "proxy" | "err">("direct");
+  // Reset when celebrity changes
+  useEffect(() => { setStage("direct"); }, [celeb.name]);
 
-  if (!err && celeb.image) {
+  if (stage !== "err" && celeb.image) {
+    const src = stage === "proxy" ? proxyUrl(celeb.image) : celeb.image;
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={celeb.image}
+        src={src}
         alt={celeb.name}
         className={className}
-        onError={() => setErr(true)}
+        onError={() => setStage(stage === "direct" ? "proxy" : "err")}
         draggable={false}
+        referrerPolicy="no-referrer"
       />
     );
   }
@@ -241,7 +247,7 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
             ["💰", "Two celebrities appear — tap the one worth more"],
             ["💡", "Some rounds ask you to estimate their total fortune"],
             ["🔥", "Build a streak for score multipliers (×1.5, ×2)"],
-            ["🏆", "Solo: survive as long as possible. Multi: 10 rounds"],
+            ["🏆", "Solo: 10 questions, then see your score. Multi: real-time duel"],
           ].map(([icon, text]) => (
             <div key={text as string} className="how-it-works__item">
               <span className="how-it-works__icon">{icon}</span>
@@ -288,7 +294,7 @@ function ResultScreen({
     : "";
 
   async function handleShare() {
-    const text = `🤑 Who's Richer? — I answered ${soloCorrect} right in a row!\nCan you beat me? ultimate-playground.com/wealth`;
+    const text = `🤑 Who's Richer? — I got ${soloCorrect}/10 correct!\nCan you beat me? ultimate-playground.com/wealth`;
     if (typeof navigator.share === "function") {
       try { await navigator.share({ text }); return; } catch { /* fallback */ }
     }
@@ -302,53 +308,57 @@ function ResultScreen({
   return (
     <div className="game-wrapper">
       <Stars />
-      <div className="home-screen">
-        <div className="home-emoji">
-          {isMulti ? (iWon ? "🏆" : tied ? "🤝" : "😅") : (pct >= 80 ? "🏆" : pct >= 50 ? "🙂" : "😅")}
+      <div className="glow-orb glow-orb--purple" />
+      <div className="glow-orb glow-orb--orange" />
+      <div className="fc-result">
+        <div className="fc-result__title">
+          {isMulti ? (iWon ? "You win! 🏆" : tied ? "It's a tie! 🤝" : "You lose! 😅") : "Game Over! 🤑"}
         </div>
-        <h2 className="home-title" style={{ fontSize: "1.6rem" }}>
-          {isMulti
-            ? (iWon ? "You win!" : tied ? "It&apos;s a tie!" : "You lose!")
-            : (pct >= 80 ? "Outstanding!" : pct >= 50 ? "Well Done!" : "Keep Practicing!")}
-        </h2>
 
         {isMulti ? (
-          <div className="fd-result-scores">
-            <div className={`score-circle score-circle--md ${myClass}`}>
-              <span className="score-circle__label">You</span>
-              <span className={`score-circle__value score-circle__value--md ${iWon ? "score-circle__value--green" : "score-circle__value--gold"}`}>{score}</span>
-              <span className="score-circle__total score-circle__total--md">/ {MAX_SCORE}</span>
+          <>
+            <div className="fc-result__score">
+              {score}<span className="fc-result__max">/{MAX_SCORE}</span>
             </div>
-            <div className={`score-circle score-circle--md ${oppClass}`}>
-              <span className="score-circle__label">Opp.</span>
-              <span className={`score-circle__value score-circle__value--md ${!iWon && !tied ? "score-circle__value--green" : "score-circle__value--gold"}`}>{oppScore}</span>
-              <span className="score-circle__total score-circle__total--md">/ {MAX_SCORE}</span>
+            <div className="fc-result__found">
+              {soloCorrect}/{ROUNDS_PER_GAME} correct
             </div>
-          </div>
+            <div className="fc-result__vs">
+              <div className={`fc-result__vs-score ${iWon ? "fc-result__vs-score--win" : "fc-result__vs-score--loss"}`}>
+                {iWon ? "You win! 🏆" : tied ? "It's a tie! 🤝" : "You lose 😢"}
+              </div>
+              <div className="fc-result__vs-detail">
+                You: {score} pts · Opp: {oppScore} pts
+              </div>
+            </div>
+          </>
         ) : (
           <>
-            <div className={`score-circle score-circle--lg ${myClass}`}>
-              <span className={`score-circle__value score-circle__value--lg ${pct >= 80 ? "score-circle__value--green" : "score-circle__value--gold"}`}>{soloCorrect}</span>
-              <span className="score-circle__total score-circle__total--lg">correct</span>
+            <div className="fc-result__score">
+              {score}<span className="fc-result__max">/{MAX_SCORE}</span>
             </div>
-            <div className="wl-result-percentile">{percentile}</div>
-            <div className="wl-result-label">of players</div>
-            {soloStreak >= 3 && (
-              <div className="wl-result-streak">🔥 Best streak: {soloStreak} in a row</div>
-            )}
+            <div className="fc-result__found">
+              {soloCorrect}/{ROUNDS_PER_GAME} correct
+              {soloStreak >= 3 && <span style={{ marginLeft: "10px", color: "#ff6b35" }}>🔥 {soloStreak} streak</span>}
+            </div>
           </>
         )}
 
+        <div className="result-score-bar" style={{ width: "100%" }}>
+          <div
+            className={`result-score-bar__fill ${pct >= 70 ? "result-score-bar__fill--excellent" : pct >= 40 ? "result-score-bar__fill--good" : "result-score-bar__fill--poor"}`}
+            style={{ width: `${pct}%` }}
+          />
+        </div>
+
         {rematchZone}
 
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", alignItems: "center", marginTop: "0.5rem" }}>
-          <button className="btn-primary btn-hover" onClick={onReplay}>Play Again</button>
-          {!isMulti && (
-            <button className={`wl-share-btn${shared ? " wl-share-btn--copied" : ""}`} onClick={handleShare}>
-              {shared ? "✓ Copied!" : "Share 🤑"}
-            </button>
-          )}
-        </div>
+        <button className="btn-primary btn-hover" onClick={onReplay}>Play Again</button>
+        {!isMulti && (
+          <button className={`wl-share-btn${shared ? " wl-share-btn--copied" : ""}`} onClick={handleShare}>
+            {shared ? "✓ Copied!" : "Share 🤑"}
+          </button>
+        )}
       </div>
     </div>
   );
@@ -509,12 +519,8 @@ export default function WealthGame() {
         setSoloCorrect(c => c + 1);
         setScore(s => s + pts);
       } else {
-        // Wrong = game over in solo — show feedback then result
+        // Wrong answer in solo — show feedback, user clicks Next to continue
         setStreak(0);
-        setScore(s => s + 0);
-        setTimeout(() => {
-          setPhase("result");
-        }, FEEDBACK_DELAY);
       }
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -527,28 +533,21 @@ export default function WealthGame() {
       mpRef.current?.readyForNext();
       return;
     }
-    // Solo: advance (only called after correct answers)
-    setRound(r => {
-      const next = r + 1;
-      setQuestions(prev => {
-        if (next >= prev.length) {
-          // Need more questions
-          const extra = generateQuestions(10);
-          return [...prev, ...extra];
-        }
-        return prev;
-      });
-      return next;
-    });
+    // Solo: check if game is over
+    if (round + 1 >= ROUNDS_PER_GAME) {
+      setPhase("result");
+      return;
+    }
+    setRound(round + 1);
     setSelectedIdx(null);
     setRevealed(false);
     revealedRef.current = false;
-  }, []);
+  }, [round]);
 
   // ── Game flow ─────────────────────────────────────────────────────────────
   function startSolo() {
     setMode("solo");
-    setQuestions(generateQuestions(20));
+    setQuestions(generateQuestions(ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setSoloCorrect(0);
@@ -630,25 +629,30 @@ export default function WealthGame() {
 
   return (
     <div className="wl-wrapper">
-      {/* Top bar */}
-      <div className="wl-topbar">
-        <div className="wl-topbar__left">
-          {isMulti
-            ? <span className="wl-topbar__round">Round {round + 1} / {ROUNDS_PER_GAME}</span>
-            : <span className="wl-topbar__round">#{soloCorrect + 1}</span>
-          }
-          {showStreak && (
-            <div className="wl-streak">
-              🔥 {streak}
-              {multiplier > 1 && (
-                <span className="wl-streak__multiplier">×{multiplier}</span>
+      {/* Progress bar */}
+      <div className="wl-progress-area">
+        <div className="progress-bar">
+          <div className="progress-bar__header">
+            <span className="progress-bar__question">
+              {isMulti ? "Round" : "Question"} {round + 1}/{ROUNDS_PER_GAME}
+            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              {showStreak && (
+                <div className="wl-streak">
+                  🔥 {streak}
+                  {multiplier > 1 && <span className="wl-streak__multiplier">×{multiplier}</span>}
+                </div>
               )}
+              <div className="progress-bar__stat">
+                <div className="progress-bar__stat-label">Score</div>
+                <div className="progress-bar__stat-value" style={{ color: "#f0c040" }}>{score}</div>
+              </div>
             </div>
-          )}
+          </div>
+          <div className="progress-bar__track">
+            <div className="progress-bar__fill" style={{ width: `${(round / ROUNDS_PER_GAME) * 100}%` }} />
+          </div>
         </div>
-        <span className="wl-topbar__score">
-          {isMulti ? `⭐ ${score} pts` : `✅ ${soloCorrect} correct`}
-        </span>
       </div>
 
       {/* Opponent bar */}
@@ -730,41 +734,20 @@ export default function WealthGame() {
             </div>
             <div className="wl-feedback__pts">
               {answerCorrect
-                ? `+${Math.round(100 * (mode === "solo" ? getMultiplier(streak - 1 < 0 ? 0 : streak) : 1))} pts${multiplier > 1 && !isMulti ? ` (×${multiplier})` : ""}`
+                ? <>+{Math.round(100 * (mode === "solo" ? getMultiplier(streak - 1 < 0 ? 0 : streak) : 1))} pts{multiplier > 1 && !isMulti ? <span className="wl-streak__multiplier" style={{ marginLeft: 4 }}>×{multiplier}</span> : null}</>
                 : "+0 pts"}
             </div>
-            {showStreak && answerCorrect && streak >= 5 && (
-              <div className="wl-feedback__streak">🔥 {streak} streak!</div>
-            )}
             {/* Next button */}
-            {answerCorrect && (
-              <button
-                className="btn-next btn-hover-sm wl-feedback__next-btn"
-                onClick={handleNext}
-                disabled={multiWaiting}
-              >
-                {multiWaiting
-                  ? <span className="wl-waiting"><span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" /> Waiting…</span>
-                  : isMulti && round + 1 >= ROUNDS_PER_GAME ? "See Results →"
-                  : "Next →"}
-              </button>
-            )}
-            {!answerCorrect && isMulti && (
-              <button
-                className="btn-next btn-hover-sm wl-feedback__next-btn"
-                onClick={handleNext}
-                disabled={multiWaiting}
-              >
-                {multiWaiting
-                  ? <span className="wl-waiting"><span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" /> Waiting…</span>
-                  : round + 1 >= ROUNDS_PER_GAME ? "See Results →" : "Next →"}
-              </button>
-            )}
-            {!answerCorrect && !isMulti && (
-              <div className="wl-feedback__pts" style={{ color: "rgba(255,255,255,0.35)", fontSize: "0.78rem" }}>
-                Game over…
-              </div>
-            )}
+            <button
+              className="btn-next btn-hover-sm wl-feedback__next-btn"
+              onClick={handleNext}
+              disabled={multiWaiting}
+            >
+              {multiWaiting
+                ? <span className="wl-waiting"><span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" /> Waiting…</span>
+                : round + 1 >= ROUNDS_PER_GAME ? "See Results →"
+                : "Next →"}
+            </button>
           </div>
         )}
       </div>

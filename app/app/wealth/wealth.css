@@ -10,43 +10,13 @@
   color: #fff;
 }
 
-/* ── Top bar ──────────────────────────────────────────────────────────────── */
-.wl-topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.6rem 1.25rem;
-  background: rgba(0, 0, 0, 0.6);
+/* ── Progress area ────────────────────────────────────────────────────────── */
+.wl-progress-area {
+  padding: 0.75rem 1.25rem 0.6rem;
+  background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
   flex-shrink: 0;
-  z-index: 10;
-  gap: 0.5rem;
-}
-
-.wl-topbar__left {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 100px;
-}
-
-.wl-topbar__round {
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 600;
-}
-
-.wl-topbar__score {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #f0c040;
-}
-
-.wl-topbar__right {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
 }
 
 /* ── Streak display ───────────────────────────────────────────────────────── */
@@ -393,28 +363,6 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ── Result screen ────────────────────────────────────────────────────────── */
-.wl-result-percentile {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #f0c040;
-  text-align: center;
-}
-
-.wl-result-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.55);
-  text-align: center;
-  margin-top: -0.25rem;
-}
-
-.wl-result-streak {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #ff6b35;
-  text-align: center;
-}
-
 /* ── Share button ─────────────────────────────────────────────────────────── */
 .wl-share-btn {
   display: flex;
@@ -499,8 +447,8 @@
     gap: 1rem;
   }
 
-  .wl-topbar {
-    padding: 0.5rem 0.75rem;
+  .wl-progress-area {
+    padding: 0.5rem 0.75rem 0.4rem;
   }
 }
 
