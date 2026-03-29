@@ -10,7 +10,6 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import NamePromptModal from "@/components/NamePromptModal";
 import careerData from "@/app/career_data.json";
-import { ensureCustomImages, getCustomImage } from "@/lib/customImages";
 
 // ─── Club → Wikipedia page title (only when it differs from the display name) ──
 const WIKI_CLUB: Record<string, string> = {
@@ -124,87 +123,13 @@ function generateRounds(seed?: number): Round[] {
   }));
 }
 
-// ─── Wikipedia image cache + hook (player photos only) ───────────────────────
-const wikiImgCache = new Map<string, string>();
-
-function useWikiImage(title: string | undefined, gameKey?: import("@/lib/customImages").GameKey, prefetchedUrl?: string | null): string | null {
-  const [src, setSrc] = useState<string | null>(
-    prefetchedUrl ??
-    (gameKey && title ? getCustomImage(gameKey, title) : null) ??
-    (title && wikiImgCache.has(title) ? wikiImgCache.get(title)! : null)
-  );
-  useEffect(() => {
-    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
-    if (!title) return;
-    let cancelled = false;
-    (async () => {
-      await ensureCustomImages();
-      if (cancelled) return;
-      if (gameKey) {
-        const custom = getCustomImage(gameKey, title);
-        if (custom) { setSrc(custom); return; }
-      }
-      if (wikiImgCache.has(title)) { setSrc(wikiImgCache.get(title)!); return; }
-      try {
-        const data = await (await fetch(
-          `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=300&origin=*`
-        )).json();
-        if (cancelled) return;
-        const pages = data?.query?.pages as Record<string, { thumbnail?: { source: string } }> | undefined;
-        const page = Object.values(pages ?? {})[0];
-        if (page?.thumbnail?.source) { wikiImgCache.set(title, page.thumbnail.source); setSrc(page.thumbnail.source); }
-      } catch {}
-    })();
-    return () => { cancelled = true; };
-  }, [title, gameKey, prefetchedUrl]);
-  return src;
-}
-
-// ─── Wikipedia club badge: parse section 0 HTML, grab first img in .images ───
-const wikiClubCache = new Map<string, string>();
-
-function useClubLogo(club: string): string | null {
-  const wikiTitle = WIKI_CLUB[club] ?? club;
+// ─── Wikipedia images via server-side proxy ──────────────────────────────────────
+// Club logos: use prefetched URL if available (proxied), else look up by wiki title
+function clubLogoSrc(club: string): string {
   const prefetched = (careerData as { club_logos?: Record<string, string> }).club_logos?.[club] ?? null;
-  const [src, setSrc] = useState<string | null>(
-    prefetched ?? getCustomImage("career_clubs", club) ?? (wikiClubCache.get(wikiTitle) ?? null)
-  );
-  useEffect(() => {
-    if (prefetched) { setSrc(prefetched); return; }
-    let cancelled = false;
-    (async () => {
-      await ensureCustomImages();
-      if (cancelled) return;
-      const customUrl = getCustomImage("career_clubs", club);
-      if (customUrl) { setSrc(customUrl); return; }
-      const cached = wikiClubCache.get(wikiTitle);
-      if (cached) { setSrc(cached); return; }
-      try {
-        const data = await (await fetch(
-          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(wikiTitle)}&prop=text&format=json&origin=*&section=0`
-        )).json();
-        if (cancelled) return;
-        const html: string = data?.parse?.text?.["*"] ?? "";
-        if (!html) return;
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        // 1) Try specific infobox image cells (old & new template formats)
-        // 2) Fallback: first img > 30px wide anywhere in the infobox (skips flag icons)
-        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
-        if (!img) {
-          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
-          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
-        }
-        let imgSrc = img?.getAttribute("src") ?? "";
-        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
-        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
-        if (!imgSrc) return;
-        wikiClubCache.set(wikiTitle, imgSrc);
-        setSrc(imgSrc);
-      } catch {}
-    })();
-    return () => { cancelled = true; };
-  }, [wikiTitle, club]);
-  return src;
+  if (prefetched) return `/api/wiki-image?url=${encodeURIComponent(prefetched)}`;
+  const wikiTitle = WIKI_CLUB[club] ?? club;
+  return `/api/wiki-image?title=${encodeURIComponent(wikiTitle)}`;
 }
 
 // ─── Stars ──────────────────────────────────────────────────────────────────────
@@ -265,10 +190,10 @@ function AnswerTimer({ timeLeft, total }: { timeLeft: number; total: number }) {
 function ClubLogoImg({ club, imgClass, placeholderClass }: {
   club: string; imgClass: string; placeholderClass: string;
 }) {
-  const logo = useClubLogo(club);
-  if (logo) {
+  const [failed, setFailed] = useState(false);
+  if (!failed) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={logo} alt={club} className={imgClass} draggable={false} loading="lazy" />;
+    return <img src={clubLogoSrc(club)} alt={club} className={imgClass} draggable={false} loading="lazy" onError={() => setFailed(true)} />;
   }
   return <div className={placeholderClass}>{club[0]}</div>;
 }
@@ -402,12 +327,16 @@ function SortingGame({
 
 // ─── PlayerCard ─────────────────────────────────────────────────────────────────
 function PlayerCard({ player }: { player: PlayerData }) {
-  const imgSrc = useWikiImage(player.wiki, "career_players", player.image_url);
+  const [imgFailed, setImgFailed] = useState(false);
+  const imgSrc = imgFailed ? null
+    : player.image_url ? `/api/wiki-image?url=${encodeURIComponent(player.image_url)}`
+    : player.wiki      ? `/api/wiki-image?title=${encodeURIComponent(player.wiki)}`
+    : null;
   return (
     <div className="cr-player-card">
       {imgSrc
         // eslint-disable-next-line @next/next/no-img-element
-        ? <img src={imgSrc} alt={player.name} className="cr-player-img" draggable={false} />
+        ? <img src={imgSrc} alt={player.name} className="cr-player-img" draggable={false} onError={() => setImgFailed(true)} />
         : <div className="cr-player-img" />
       }
       <div className="cr-player-info">

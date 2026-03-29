@@ -10,7 +10,6 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import NamePromptModal from "@/components/NamePromptModal";
 import wcfData from "@/app/wcf_data.json";
-import { ensureCustomImages, getCustomImage } from "@/lib/customImages";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface WcfEvent { text: string; year: number; category: string; wiki: string; image_url?: string; }
@@ -41,63 +40,6 @@ const INIT_YEAR     = 1990;
 const ROUND_PATTERN: RoundType[] = ["duel","slider","order","duel","slider","order","duel","slider","order"];
 const ALL_EVENTS: WcfEvent[] = wcfData.events as WcfEvent[];
 
-// ─── Wikipedia image cache + hook ─────────────────────────────────────────────
-const wikiImgCache = new Map<string, string>();
-function useWikiImage(title: string, prefetchedUrl?: string | null): string | null {
-  const [src, setSrc] = useState<string | null>(
-    prefetchedUrl ?? getCustomImage("wcf", title) ?? wikiImgCache.get(title) ?? null
-  );
-  useEffect(() => {
-    if (prefetchedUrl) { setSrc(prefetchedUrl); return; }
-    let cancelled = false;
-    (async () => {
-      await ensureCustomImages();
-      if (cancelled) return;
-      const customUrl = getCustomImage("wcf", title);
-      if (customUrl) { setSrc(customUrl); return; }
-      const cached = wikiImgCache.get(title);
-      if (cached) { setSrc(cached); return; }
-      try {
-        // 1) Fast path: pageimages API
-        const data = await (await fetch(
-          `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=400&origin=*`
-        )).json();
-        if (cancelled) return;
-        const pages = data?.query?.pages as Record<string, { thumbnail?: { source: string } }> | undefined;
-        const page = Object.values(pages ?? {})[0];
-        if (page?.thumbnail?.source) { wikiImgCache.set(title, page.thumbnail.source); setSrc(page.thumbnail.source); return; }
-        // 2) REST summary API
-        const rest = await (await fetch(
-          `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`
-        )).json();
-        if (cancelled) return;
-        const restUrl = rest?.originalimage?.source ?? rest?.thumbnail?.source;
-        if (restUrl) { wikiImgCache.set(title, restUrl); setSrc(restUrl); return; }
-        // 3) Fallback: parse infobox HTML
-        const data2 = await (await fetch(
-          `https://en.wikipedia.org/w/api.php?action=parse&page=${encodeURIComponent(title)}&prop=text&format=json&origin=*&section=0&redirects=1`
-        )).json();
-        if (cancelled) return;
-        const html: string = data2?.parse?.text?.["*"] ?? "";
-        if (!html) return;
-        const doc = new DOMParser().parseFromString(html, "text/html");
-        let img = doc.querySelector(".images img, .infobox-image img") as HTMLImageElement | null;
-        if (!img) {
-          const all = Array.from(doc.querySelectorAll("table.infobox img, table.vcard img")) as HTMLImageElement[];
-          img = all.find(i => parseInt(i.getAttribute("width") ?? "0") > 30) ?? null;
-        }
-        let imgSrc = img?.getAttribute("src") ?? "";
-        if (imgSrc.startsWith("//")) imgSrc = "https:" + imgSrc;
-        else if (imgSrc.startsWith("/")) imgSrc = "https://en.wikipedia.org" + imgSrc;
-        if (!imgSrc) return;
-        wikiImgCache.set(title, imgSrc);
-        setSrc(imgSrc);
-      } catch {}
-    })();
-    return () => { cancelled = true; };
-  }, [title, prefetchedUrl]);
-  return src;
-}
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function shuffle<T>(arr: T[]): T[] {
@@ -222,8 +164,11 @@ function CatBadge({ category }: { category: string }) {
   return <span className={`wcf-cat-badge ${BADGE_CLASS[category] ?? ""}`}>{category}</span>;
 }
 function EventImg({ wiki, alt, className, imageUrl }: { wiki: string; alt: string; className?: string; imageUrl?: string }) {
-  const src = useWikiImage(wiki, imageUrl);
-  if (src) return <img src={src} alt={alt} className={`wcf-event-img${className ? ` ${className}` : ""}`} draggable={false} />;
+  const [failed, setFailed] = useState(false);
+  const src = failed ? null
+    : imageUrl ? `/api/wiki-image?url=${encodeURIComponent(imageUrl)}`
+    : `/api/wiki-image?title=${encodeURIComponent(wiki)}`;
+  if (src) return <img src={src} alt={alt} className={`wcf-event-img${className ? ` ${className}` : ""}`} draggable={false} onError={() => setFailed(true)} />;
   return <div className="wcf-event-img-placeholder" />;
 }
 

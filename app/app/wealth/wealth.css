@@ -1,8 +1,9 @@
 /* ─── Who's Richer? game — wl- prefix ─────────────────────────────────────── */
 
-/* ── Wrapper ──────────────────────────────────────────────────────────────── */
+/* ── Wrapper — full viewport, no scroll ───────────────────────────────────── */
 .wl-wrapper {
-  min-height: 100dvh;
+  height: 100dvh;
+  overflow: hidden;
   background: #0a0a0f;
   display: flex;
   flex-direction: column;
@@ -39,27 +40,49 @@
   font-weight: 800;
 }
 
-/* ── Main playing area ────────────────────────────────────────────────────── */
+/* ── Main playing area — grows, never scrolls ─────────────────────────────── */
 .wl-main {
   flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
+  padding: 0.75rem 1rem 0.5rem;
+  overflow: hidden;
+}
+
+/* ── Action bar — always visible at the bottom ────────────────────────────── */
+.wl-action-bar {
+  flex-shrink: 0;
+  height: 72px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem 1rem 2rem;
-  gap: 1.5rem;
-  overflow-y: auto;
+  padding: 0 1.25rem 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+}
+
+.wl-action-bar__hint {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ── Question label ───────────────────────────────────────────────────────── */
 .wl-question {
+  flex: 1;
+  min-height: 0;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0.75rem;
   width: 100%;
   max-width: 760px;
+  margin: 0 auto;
 }
 
 .wl-question__label {
@@ -77,6 +100,8 @@
 
 /* ── Duel layout ──────────────────────────────────────────────────────────── */
 .wl-duel {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: row;
   gap: 1rem;
@@ -99,17 +124,19 @@
 /* ── Celebrity card ───────────────────────────────────────────────────────── */
 .wl-card {
   flex: 1;
+  min-height: 0;
+  min-height: 220px;
   max-width: 300px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #1a1a2e;
   border: 1.5px solid rgba(255, 255, 255, 0.1);
   border-radius: 18px;
-  padding: 1.25rem 1rem;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.65rem;
+  align-items: stretch;
+  gap: 0;
   cursor: pointer;
-  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -118,9 +145,9 @@
 }
 
 .wl-card:hover:not(.wl-card--disabled) {
-  transform: translateY(-3px);
-  border-color: rgba(100, 220, 100, 0.4);
-  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-4px);
+  border-color: rgba(100, 220, 100, 0.5);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
 }
 
 .wl-card:active:not(.wl-card--disabled) {
@@ -133,65 +160,90 @@
 
 .wl-card--correct {
   border-color: #22c55e !important;
-  background: rgba(34, 197, 94, 0.12) !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.3) !important;
 }
 
 .wl-card--wrong {
   border-color: #ef4444 !important;
-  background: rgba(239, 68, 68, 0.1) !important;
-  opacity: 0.75;
+  opacity: 0.7;
 }
 
 .wl-card--dimmed {
-  opacity: 0.5;
+  opacity: 0.45;
 }
 
-/* ── Celebrity photo ──────────────────────────────────────────────────────── */
+/* ── Celebrity photo — fills the entire card ──────────────────────────────── */
+.wl-card__photo-wrap {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.wl-card__photo-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.05) 30%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.88) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
 .wl-card__photo {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  flex-shrink: 0;
-  background: #1a1a2e;
+  object-position: top center;
+  display: block;
 }
 
 .wl-card__photo--initials {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
+  width: 100%;
+  height: 100%;
   background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
-  border: 2px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 4rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
-  flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Info overlaid at bottom of the card */
+.wl-card__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 1.5rem 1rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
 }
 
 .wl-card__name {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.25;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.8);
 }
 
 .wl-card__hint {
-  font-size: 0.75rem;
-  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.6);
   line-height: 1.3;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.9);
 }
 
 .wl-card__worth {
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: #f0c040;
-  min-height: 1.5rem;
+  min-height: 1.6rem;
   opacity: 0;
   transition: opacity 0.3s ease;
+  margin-top: 0.1rem;
 }
 
 .wl-card__worth--revealed {
@@ -215,35 +267,43 @@
 
 /* ── Estimation layout ────────────────────────────────────────────────────── */
 .wl-estimation {
+  flex: 1;
+  min-height: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.25rem;
+  gap: 0.75rem;
   width: 100%;
   max-width: 420px;
+  overflow: hidden;
 }
 
 .wl-estimation__photo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 190px;
+  border-radius: 14px;
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  object-position: top center;
+  border: 2px solid rgba(255, 255, 255, 0.15);
   background: #1a1a2e;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  display: block;
 }
 
 .wl-estimation__photo--initials {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
+  width: 150px;
+  height: 190px;
+  border-radius: 14px;
   background: linear-gradient(135deg, #2a2a3e, #1a1a2e);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.25rem;
+  font-size: 4rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
 }
 
 .wl-estimation__name {
@@ -316,51 +376,112 @@
   opacity: 0.75;
 }
 
-/* ── Feedback overlay ─────────────────────────────────────────────────────── */
+/* ── Feedback (inside action bar, horizontal layout) ──────────────────────── */
 .wl-feedback {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  max-width: 500px;
+  animation: wlFadeIn 0.2s ease;
+}
+
+.wl-feedback__left {
+  display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 1rem;
-  animation: wlFadeIn 0.25s ease;
+  flex: 1;
+  min-width: 0;
 }
 
 .wl-feedback__icon {
-  font-size: 2rem;
+  font-size: 1.4rem;
+  flex-shrink: 0;
 }
 
 .wl-feedback__text {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
-}
-
-.wl-feedback__text--correct {
-  color: #4ade80;
-}
-
-.wl-feedback__text--wrong {
-  color: #f87171;
+  flex-shrink: 0;
 }
 
 .wl-feedback__pts {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.55);
-}
-
-.wl-feedback__streak {
-  font-size: 0.85rem;
-  color: #ff6b35;
-  font-weight: 700;
-}
-
-.wl-feedback__next-btn {
-  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.5);
+  white-space: nowrap;
 }
 
 @keyframes wlFadeIn {
-  from { opacity: 0; transform: translateY(6px); }
+  from { opacity: 0; transform: translateY(4px); }
   to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Result screen ────────────────────────────────────────────────────────── */
+.wl-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px 20px 48px;
+  max-width: 480px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wl-result__title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.wl-result__score {
+  font-size: 64px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.wl-result__max {
+  font-size: 24px;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.wl-result__found {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  margin-top: -8px;
+}
+
+.wl-result__vs {
+  width: 100%;
+  padding: 14px 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+}
+
+.wl-result__vs-score {
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.wl-result__vs-score--win  { color: #00ffa0; }
+.wl-result__vs-score--loss { color: #ff6b6b; }
+
+.wl-result__vs-detail {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: 4px;
+}
+
+@media (max-width: 600px) {
+  .wl-result__score { font-size: 52px; }
 }
 
 /* ── Share button ─────────────────────────────────────────────────────────── */
@@ -392,41 +513,46 @@
 
 /* ── Mobile responsive ────────────────────────────────────────────────────── */
 @media (max-width: 600px) {
-  .wl-duel {
-    flex-direction: column;
-    gap: 0.75rem;
+  .wl-main {
+    padding: 0.5rem 0.75rem 0.4rem;
+    gap: 0.5rem;
   }
 
-  .wl-option {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  .wl-question {
+    gap: 0.5rem;
+  }
+
+  /* Duel: 2 cards stacked */
+  .wl-duel {
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
   .wl-card {
     max-width: 100%;
-    flex-direction: row;
-    text-align: left;
-    gap: 0.8rem;
-    padding: 0.9rem 1rem;
-    min-height: 80px;
+    min-height: 120px;
   }
 
-  .wl-card__photo,
+  .wl-card__photo-gradient {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 20%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.9) 100%);
+  }
+
   .wl-card__photo--initials {
-    width: 60px;
-    height: 60px;
-    font-size: 1.4rem;
-    flex-shrink: 0;
+    font-size: 3rem;
   }
 
   .wl-card__info {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    flex: 1;
-    min-width: 0;
+    padding: 1rem 0.85rem 0.7rem;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .wl-card__name {
+    font-size: 0.9rem;
+  }
+
+  .wl-card__worth {
+    font-size: 1rem;
   }
 
   .wl-vs {
@@ -434,21 +560,34 @@
   }
 
   .wl-question__label {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .wl-badge--richer {
-    top: 8px;
-    right: 8px;
-  }
-
-  .wl-main {
-    padding: 1rem 0.75rem 2rem;
-    gap: 1rem;
+    top: 6px;
+    right: 6px;
+    font-size: 0.6rem;
   }
 
   .wl-progress-area {
-    padding: 0.5rem 0.75rem 0.4rem;
+    padding: 0.4rem 0.75rem 0.35rem;
+  }
+
+  /* Estimation: smaller photo on mobile */
+  .wl-estimation__photo,
+  .wl-estimation__photo--initials {
+    width: 110px;
+    height: 140px;
+  }
+
+  .wl-option {
+    padding: 0.65rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .wl-action-bar {
+    height: 64px;
+    padding: 0 0.75rem 0.4rem;
   }
 }
 

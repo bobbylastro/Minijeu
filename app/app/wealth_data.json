@@ -109,7 +109,8 @@
     "displayWorth": "$30B",
     "category": "royals",
     "hint": "Manchester City owner, UAE royal",
-    "image": ""
+    "image": "",
+    "wiki": "Mansour bin Zayed Al Nahyan"
   },
   {
     "name": "Ken Griffin",
@@ -133,7 +134,8 @@
     "displayWorth": "$5.8B",
     "category": "royals",
     "hint": "King of Morocco since 1999",
-    "image": ""
+    "image": "",
+    "wiki": "Mohammed VI of Morocco"
   },
   {
     "name": "George Lucas",
@@ -229,7 +231,8 @@
     "displayWorth": "$1B",
     "category": "music",
     "hint": "Sean Combs, rap mogul & Bad Boy Records",
-    "image": ""
+    "image": "",
+    "wiki": "Sean Combs"
   },
   {
     "name": "Tyler Perry",
@@ -261,7 +264,8 @@
     "displayWorth": "$700M",
     "category": "entertainment",
     "hint": "World's biggest YouTube channel",
-    "image": ""
+    "image": "",
+    "wiki": "MrBeast"
   },
   {
     "name": "Lionel Messi",
@@ -277,7 +281,8 @@
     "displayWorth": "$600M",
     "category": "royals",
     "hint": "King of the United Kingdom",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/King_Charles_III_2023_%28cropped%29.jpg/320px-King_Charles_III_2023_%28cropped%29.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/King_Charles_III_2023_%28cropped%29.jpg/320px-King_Charles_III_2023_%28cropped%29.jpg",
+    "wiki": "Charles III"
   },
   {
     "name": "Cristiano Ronaldo",
@@ -293,7 +298,8 @@
     "displayWorth": "$600M",
     "category": "sports",
     "hint": "Late Lakers legend, 5× NBA champion",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Kobe_Bryant_2012.jpg/320px-Kobe_Bryant_2012.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Kobe_Bryant_2012.jpg/320px-Kobe_Bryant_2012.jpg",
+    "wiki": "Kobe Bryant"
   },
   {
     "name": "Elton John",
@@ -341,7 +347,8 @@
     "displayWorth": "$250M",
     "category": "music",
     "hint": "Started from the bottom, Toronto rapper",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_2014_Palmer_Fest.jpg/320px-Drake_2014_Palmer_Fest.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Drake_2014_Palmer_Fest.jpg/320px-Drake_2014_Palmer_Fest.jpg",
+    "wiki": "Drake (musician)"
   },
   {
     "name": "Kanye West",
@@ -349,7 +356,8 @@
     "displayWorth": "$400M",
     "category": "music",
     "hint": "Ye, rapper & Yeezy creator",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kanye_West_2022.jpg/320px-Kanye_West_2022.jpg"
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/11/Kanye_West_2022.jpg/320px-Kanye_West_2022.jpg",
+    "wiki": "Ye (rapper)"
   },
   {
     "name": "Eminem",
@@ -485,7 +493,8 @@
     "displayWorth": "$600M",
     "category": "sports",
     "hint": "CR7, plays in Saudi Arabia",
-    "image": ""
+    "image": "",
+    "wiki": "Cristiano Ronaldo"
   },
   {
     "name": "Herb Alpert",
@@ -509,7 +518,8 @@
     "displayWorth": "$1B",
     "category": "music",
     "hint": "Rap mogul & founder of Bad Boy Records",
-    "image": ""
+    "image": "",
+    "wiki": "Sean Combs"
   },
   {
     "name": "Tyler, the Creator",
@@ -517,7 +527,8 @@
     "displayWorth": "$16M",
     "category": "music",
     "hint": "Odd Future rapper & GOLF WANG creator",
-    "image": ""
+    "image": "",
+    "wiki": "Tyler, the Creator"
   },
   {
     "name": "Snoop Dogg",
@@ -589,7 +600,8 @@
     "displayWorth": "$600M",
     "category": "sports",
     "hint": "Al-Nassr superstar, 5× Ballon d'Or",
-    "image": ""
+    "image": "",
+    "wiki": "Cristiano Ronaldo"
   },
   {
     "name": "Shaquille O'Neal",

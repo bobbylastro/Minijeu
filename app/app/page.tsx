@@ -170,10 +170,7 @@ function CategorySection({
         {soon && <span className="site-header__soon-badge category__soon-pill">Soon</span>}
         <div className="category__line" />
       </div>
-      {games.length > 3
-        ? <GameSlider>{cards}</GameSlider>
-        : <div className="category__games">{cards}</div>
-      }
+      <GameSlider>{cards}</GameSlider>
     </section>
   );
 }

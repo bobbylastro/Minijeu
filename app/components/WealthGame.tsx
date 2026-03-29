@@ -20,6 +20,7 @@ interface Celebrity {
   category: string;
   hint: string;
   image: string;
+  wiki?: string;       // Wikipedia page title (defaults to name)
 }
 
 interface DuelQuestion {
@@ -194,31 +195,36 @@ const Stars = memo(function Stars() {
 });
 
 // ─── CelebPhoto sub-component ─────────────────────────────────────────────────
-function proxyUrl(url: string): string {
-  const bare = url.replace(/^https?:\/\//, "");
-  return `https://wsrv.nl/?url=${encodeURIComponent(bare)}&w=160&h=160&fit=cover&output=jpg`;
-}
-
+// Images are served through our own /api/wiki-image proxy so Wikimedia's
+// hotlink protection never triggers in the user's browser.
 function CelebPhoto({ celeb, className = "", initClassName = "" }: {
   celeb: Celebrity;
   className?: string;
   initClassName?: string;
 }) {
-  const [stage, setStage] = useState<"direct" | "proxy" | "err">("direct");
-  // Reset when celebrity changes
-  useEffect(() => { setStage("direct"); }, [celeb.name]);
+  const [step, setStep] = useState(0);
+  const title = celeb.wiki ?? celeb.name;
 
-  if (stage !== "err" && celeb.image) {
-    const src = stage === "proxy" ? proxyUrl(celeb.image) : celeb.image;
+  // Reset on celebrity change
+  useEffect(() => { setStep(0); }, [celeb.image, title]);
+
+  // Try stored URL first (faster), then Wikipedia title lookup
+  const urls = [
+    celeb.image ? `/api/wiki-image?url=${encodeURIComponent(celeb.image)}` : null,
+    `/api/wiki-image?title=${encodeURIComponent(title)}`,
+  ].filter((u): u is string => u !== null);
+
+  const src = step < urls.length ? urls[step] : null;
+
+  if (src) {
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
         src={src}
         alt={celeb.name}
         className={className}
-        onError={() => setStage(stage === "direct" ? "proxy" : "err")}
         draggable={false}
-        referrerPolicy="no-referrer"
+        onError={() => setStep(s => s + 1)}
       />
     );
   }
@@ -310,34 +316,34 @@ function ResultScreen({
       <Stars />
       <div className="glow-orb glow-orb--purple" />
       <div className="glow-orb glow-orb--orange" />
-      <div className="fc-result">
-        <div className="fc-result__title">
+      <div className="wl-result">
+        <div className="wl-result__title">
           {isMulti ? (iWon ? "You win! 🏆" : tied ? "It's a tie! 🤝" : "You lose! 😅") : "Game Over! 🤑"}
         </div>
 
         {isMulti ? (
           <>
-            <div className="fc-result__score">
-              {score}<span className="fc-result__max">/{MAX_SCORE}</span>
+            <div className="wl-result__score">
+              {score}<span className="wl-result__max">/{MAX_SCORE}</span>
             </div>
-            <div className="fc-result__found">
+            <div className="wl-result__found">
               {soloCorrect}/{ROUNDS_PER_GAME} correct
             </div>
-            <div className="fc-result__vs">
-              <div className={`fc-result__vs-score ${iWon ? "fc-result__vs-score--win" : "fc-result__vs-score--loss"}`}>
+            <div className="wl-result__vs">
+              <div className={`wl-result__vs-score ${iWon ? "wl-result__vs-score--win" : "wl-result__vs-score--loss"}`}>
                 {iWon ? "You win! 🏆" : tied ? "It's a tie! 🤝" : "You lose 😢"}
               </div>
-              <div className="fc-result__vs-detail">
+              <div className="wl-result__vs-detail">
                 You: {score} pts · Opp: {oppScore} pts
               </div>
             </div>
           </>
         ) : (
           <>
-            <div className="fc-result__score">
-              {score}<span className="fc-result__max">/{MAX_SCORE}</span>
+            <div className="wl-result__score">
+              {score}<span className="wl-result__max">/{MAX_SCORE}</span>
             </div>
-            <div className="fc-result__found">
+            <div className="wl-result__found">
               {soloCorrect}/{ROUNDS_PER_GAME} correct
               {soloStreak >= 3 && <span style={{ marginLeft: "10px", color: "#ff6b35" }}>🔥 {soloStreak} streak</span>}
             </div>
@@ -389,11 +395,14 @@ function DuelCard({
   return (
     <div className={cardClass} onClick={!revealed && !disabled ? onClick : undefined}>
       {revealed && isRicher && <div className="wl-badge--richer">Richer ✓</div>}
-      <CelebPhoto
-        celeb={celeb}
-        className="wl-card__photo"
-        initClassName="wl-card__photo wl-card__photo--initials"
-      />
+      <div className="wl-card__photo-wrap">
+        <CelebPhoto
+          celeb={celeb}
+          className="wl-card__photo"
+          initClassName="wl-card__photo wl-card__photo--initials"
+        />
+        <div className="wl-card__photo-gradient" />
+      </div>
       <div className="wl-card__info">
         <div className="wl-card__name">{celeb.name}</div>
         <div className="wl-card__hint">{celeb.hint}</div>
@@ -660,7 +669,7 @@ export default function WealthGame() {
         <OpponentBar opponent={mp.opponent} myScore={score} maxScore={MAX_SCORE} />
       )}
 
-      {/* Main question area */}
+      {/* Main question area — flex:1, no scroll */}
       <div className="wl-main">
         {isDuel ? (
           <div className="wl-question">
@@ -722,24 +731,25 @@ export default function WealthGame() {
             </div>
           </div>
         )}
+      </div>
 
-        {/* Feedback section (shown after answering) */}
-        {revealed && (
+      {/* Action bar — always visible at the bottom, stable height */}
+      <div className="wl-action-bar">
+        {revealed ? (
           <div className="wl-feedback">
-            <div className="wl-feedback__icon">
-              {answerCorrect ? "✅" : "❌"}
+            <div className="wl-feedback__left">
+              <span className="wl-feedback__icon">{answerCorrect ? "✅" : "❌"}</span>
+              <span className={`wl-feedback__text ${answerCorrect ? "feedback__text--correct" : "feedback__text--wrong"}`}>
+                {answerCorrect ? "Correct!" : "Wrong!"}
+              </span>
+              <span className="wl-feedback__pts">
+                {answerCorrect
+                  ? <>+{Math.round(100 * (mode === "solo" ? getMultiplier(streak - 1 < 0 ? 0 : streak) : 1))} pts{multiplier > 1 && !isMulti ? <span className="wl-streak__multiplier" style={{ marginLeft: 4 }}>×{multiplier}</span> : null}</>
+                  : "+0 pts"}
+              </span>
             </div>
-            <div className={`wl-feedback__text feedback__text ${answerCorrect ? "feedback__text--correct" : "feedback__text--wrong"}`}>
-              {answerCorrect ? "Correct!" : "Wrong!"}
-            </div>
-            <div className="wl-feedback__pts">
-              {answerCorrect
-                ? <>+{Math.round(100 * (mode === "solo" ? getMultiplier(streak - 1 < 0 ? 0 : streak) : 1))} pts{multiplier > 1 && !isMulti ? <span className="wl-streak__multiplier" style={{ marginLeft: 4 }}>×{multiplier}</span> : null}</>
-                : "+0 pts"}
-            </div>
-            {/* Next button */}
             <button
-              className="btn-next btn-hover-sm wl-feedback__next-btn"
+              className="btn-next btn-hover-sm"
               onClick={handleNext}
               disabled={multiWaiting}
             >
@@ -749,6 +759,8 @@ export default function WealthGame() {
                 : "Next →"}
             </button>
           </div>
+        ) : (
+          <div className="wl-action-bar__hint">Tap to answer</div>
         )}
       </div>
 
