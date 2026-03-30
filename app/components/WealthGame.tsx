@@ -208,9 +208,14 @@ function CelebPhoto({ celeb, className = "", initClassName = "" }: {
   // Reset on celebrity change
   useEffect(() => { setStep(0); }, [celeb.image, title]);
 
-  // Try stored URL first (faster), then Wikipedia title lookup
+  // Try stored URL first (faster), then Wikipedia title lookup.
+  // Local paths (/images/...) are served directly; only Wikimedia URLs go through the proxy.
   const urls = [
-    celeb.image ? `/api/wiki-image?url=${encodeURIComponent(celeb.image)}` : null,
+    celeb.image
+      ? celeb.image.startsWith('/')
+        ? celeb.image
+        : `/api/wiki-image?url=${encodeURIComponent(celeb.image)}`
+      : null,
     `/api/wiki-image?title=${encodeURIComponent(title)}`,
   ].filter((u): u is string => u !== null);
 
