@@ -658,5 +658,349 @@
     "category": "entertainment",
     "hint": "Black Widow, Avengers star",
     "image": "/images/wealth/scarlett_johansson.jpg"
+  },
+  {
+    "name": "Tim Cook",
+    "worth": 2000,
+    "displayWorth": "$2B",
+    "category": "tech",
+    "hint": "Apple CEO",
+    "image": "/images/wealth/tim_cook.jpg"
+  },
+  {
+    "name": "Mukesh Ambani",
+    "worth": 100000,
+    "displayWorth": "$100B",
+    "category": "business",
+    "hint": "Reliance Industries chairman",
+    "image": "/images/wealth/mukesh_ambani.jpg"
+  },
+  {
+    "name": "Amancio Ortega",
+    "worth": 80000,
+    "displayWorth": "$80B",
+    "category": "business",
+    "hint": "Zara & Inditex founder",
+    "image": "/images/wealth/amancio_ortega.jpg"
+  },
+  {
+    "name": "Carlos Slim",
+    "worth": 90000,
+    "displayWorth": "$90B",
+    "category": "business",
+    "hint": "Mexican telecom & business mogul",
+    "image": "/images/wealth/carlos_slim.jpg"
+  },
+  {
+    "name": "Michael Dell",
+    "worth": 55000,
+    "displayWorth": "$55B",
+    "category": "tech",
+    "hint": "Dell Technologies founder",
+    "image": "/images/wealth/michael_dell.jpg"
+  },
+  {
+    "name": "Phil Knight",
+    "worth": 35000,
+    "displayWorth": "$35B",
+    "category": "business",
+    "hint": "Nike co-founder",
+    "image": "/images/wealth/phil_knight.jpg"
+  },
+  {
+    "name": "Rupert Murdoch",
+    "worth": 20000,
+    "displayWorth": "$20B",
+    "category": "media",
+    "hint": "Fox News & News Corp media mogul",
+    "image": "/images/wealth/rupert_murdoch.jpg"
+  },
+  {
+    "name": "Peter Thiel",
+    "worth": 4000,
+    "displayWorth": "$4B",
+    "category": "tech",
+    "hint": "PayPal co-founder & Palantir investor",
+    "image": "/images/wealth/peter_thiel.jpg"
+  },
+  {
+    "name": "Eric Schmidt",
+    "worth": 25000,
+    "displayWorth": "$25B",
+    "category": "tech",
+    "hint": "Former Google CEO",
+    "image": "/images/wealth/eric_schmidt.jpg"
+  },
+  {
+    "name": "Jerry Seinfeld",
+    "worth": 1100,
+    "displayWorth": "$1.1B",
+    "category": "entertainment",
+    "hint": "Seinfeld creator & comedian",
+    "image": "/images/wealth/jerry_seinfeld.jpg"
+  },
+  {
+    "name": "Adam Sandler",
+    "worth": 440,
+    "displayWorth": "$440M",
+    "category": "entertainment",
+    "hint": "Happy Gilmore & Uncut Gems actor",
+    "image": "/images/wealth/adam_sandler.jpg"
+  },
+  {
+    "name": "Tom Cruise",
+    "worth": 620,
+    "displayWorth": "$620M",
+    "category": "entertainment",
+    "hint": "Mission Impossible franchise star",
+    "image": "/images/wealth/tom_cruise.jpg"
+  },
+  {
+    "name": "Leonardo DiCaprio",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "entertainment",
+    "hint": "Titanic & Wolf of Wall Street star",
+    "image": "/images/wealth/leonardo_dicaprio.jpg"
+  },
+  {
+    "name": "George Clooney",
+    "worth": 500,
+    "displayWorth": "$500M",
+    "category": "entertainment",
+    "hint": "Ocean's Eleven actor & director",
+    "image": "/images/wealth/george_clooney.jpg"
+  },
+  {
+    "name": "Ryan Reynolds",
+    "worth": 350,
+    "displayWorth": "$350M",
+    "category": "entertainment",
+    "hint": "Deadpool star & Aviation Gin owner",
+    "image": "/images/wealth/ryan_reynolds.jpg"
+  },
+  {
+    "name": "Will Smith",
+    "worth": 375,
+    "displayWorth": "$375M",
+    "category": "entertainment",
+    "hint": "Fresh Prince & Men in Black star",
+    "image": "/images/wealth/will_smith.jpg"
+  },
+  {
+    "name": "Brad Pitt",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "entertainment",
+    "hint": "Fight Club & Once Upon a Time star",
+    "image": "/images/wealth/brad_pitt.jpg"
+  },
+  {
+    "name": "Robert Downey Jr.",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "entertainment",
+    "hint": "Iron Man in the MCU",
+    "image": "/images/wealth/robert_downey_jr.jpg"
+  },
+  {
+    "name": "Ellen DeGeneres",
+    "worth": 500,
+    "displayWorth": "$500M",
+    "category": "entertainment",
+    "hint": "Talk show host & stand-up comedian",
+    "image": "/images/wealth/ellen_degeneres.jpg"
+  },
+  {
+    "name": "Steve Harvey",
+    "worth": 280,
+    "displayWorth": "$280M",
+    "category": "entertainment",
+    "hint": "Family Feud host & comedian",
+    "image": "/images/wealth/steve_harvey.jpg"
+  },
+  {
+    "name": "Celine Dion",
+    "worth": 800,
+    "displayWorth": "$800M",
+    "category": "music",
+    "hint": "My Heart Will Go On diva",
+    "image": "/images/wealth/celine_dion.jpg"
+  },
+  {
+    "name": "Mariah Carey",
+    "worth": 550,
+    "displayWorth": "$550M",
+    "category": "music",
+    "hint": "All I Want for Christmas Is You singer",
+    "image": "/images/wealth/mariah_carey.jpg"
+  },
+  {
+    "name": "Lady Gaga",
+    "worth": 320,
+    "displayWorth": "$320M",
+    "category": "music",
+    "hint": "Bad Romance & Poker Face pop icon",
+    "image": "/images/wealth/lady_gaga.jpg"
+  },
+  {
+    "name": "Shakira",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "music",
+    "hint": "Hips Don't Lie Colombian pop star",
+    "image": "/images/wealth/shakira.jpg"
+  },
+  {
+    "name": "Adele",
+    "worth": 250,
+    "displayWorth": "$250M",
+    "category": "music",
+    "hint": "Hello & Rolling in the Deep singer",
+    "image": "/images/wealth/adele.jpg"
+  },
+  {
+    "name": "Justin Bieber",
+    "worth": 285,
+    "displayWorth": "$285M",
+    "category": "music",
+    "hint": "Baby & Sorry Canadian pop phenomenon",
+    "image": "/images/wealth/justin_bieber.jpg"
+  },
+  {
+    "name": "The Weeknd",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "music",
+    "hint": "Blinding Lights R&B superstar",
+    "image": "/images/wealth/the_weeknd.jpg"
+  },
+  {
+    "name": "Bad Bunny",
+    "worth": 350,
+    "displayWorth": "$350M",
+    "category": "music",
+    "hint": "Global Latin trap & reggaeton star",
+    "image": "/images/wealth/bad_bunny.jpg"
+  },
+  {
+    "name": "Bruno Mars",
+    "worth": 175,
+    "displayWorth": "$175M",
+    "category": "music",
+    "hint": "Uptown Funk & Just the Way You Are singer",
+    "image": "/images/wealth/bruno_mars.jpg"
+  },
+  {
+    "name": "Lil Wayne",
+    "worth": 170,
+    "displayWorth": "$170M",
+    "category": "music",
+    "hint": "Tha Carter rap legend",
+    "image": "/images/wealth/lil_wayne.jpg"
+  },
+  {
+    "name": "50 Cent",
+    "worth": 40,
+    "displayWorth": "$40M",
+    "category": "music",
+    "hint": "In Da Club rapper & G-Unit founder",
+    "image": "/images/wealth/50_cent.jpg"
+  },
+  {
+    "name": "Harry Styles",
+    "worth": 100,
+    "displayWorth": "$100M",
+    "category": "music",
+    "hint": "One Direction breakout & solo star",
+    "image": "/images/wealth/harry_styles.jpg"
+  },
+  {
+    "name": "Neymar",
+    "worth": 400,
+    "displayWorth": "$400M",
+    "category": "sports",
+    "hint": "Brazilian football superstar",
+    "image": "/images/wealth/neymar.jpg"
+  },
+  {
+    "name": "Kylian Mbappe",
+    "worth": 300,
+    "displayWorth": "$300M",
+    "category": "sports",
+    "hint": "French football prodigy",
+    "image": "/images/wealth/kylian_mbappe.jpg"
+  },
+  {
+    "name": "Stephen Curry",
+    "worth": 160,
+    "displayWorth": "$160M",
+    "category": "sports",
+    "hint": "Golden State Warriors sharpshooter",
+    "image": "/images/wealth/stephen_curry.jpg"
+  },
+  {
+    "name": "Kevin Durant",
+    "worth": 190,
+    "displayWorth": "$190M",
+    "category": "sports",
+    "hint": "NBA Finals MVP & two-time champion",
+    "image": "/images/wealth/kevin_durant.jpg"
+  },
+  {
+    "name": "Magic Johnson",
+    "worth": 620,
+    "displayWorth": "$620M",
+    "category": "sports",
+    "hint": "Lakers legend & Showtime point guard",
+    "image": "/images/wealth/magic_johnson.jpg"
+  },
+  {
+    "name": "Zlatan Ibrahimovic",
+    "worth": 200,
+    "displayWorth": "$200M",
+    "category": "sports",
+    "hint": "Swedish football icon & goal machine",
+    "image": "/images/wealth/zlatan_ibrahimovic.jpg"
+  },
+  {
+    "name": "Wayne Gretzky",
+    "worth": 250,
+    "displayWorth": "$250M",
+    "category": "sports",
+    "hint": "The Great One — NHL all-time scorer",
+    "image": "/images/wealth/wayne_gretzky.jpg"
+  },
+  {
+    "name": "Zinedine Zidane",
+    "worth": 100,
+    "displayWorth": "$100M",
+    "category": "sports",
+    "hint": "French football legend & Real Madrid coach",
+    "image": "/images/wealth/zinedine_zidane.jpg"
+  },
+  {
+    "name": "Ronaldinho",
+    "worth": 90,
+    "displayWorth": "$90M",
+    "category": "sports",
+    "hint": "Brazilian dribbling magician",
+    "image": "/images/wealth/ronaldinho.jpg"
+  },
+  {
+    "name": "Venus Williams",
+    "worth": 95,
+    "displayWorth": "$95M",
+    "category": "sports",
+    "hint": "Tennis pioneer & 7x Grand Slam winner",
+    "image": "/images/wealth/venus_williams.jpg"
+  },
+  {
+    "name": "Naomi Osaka",
+    "worth": 80,
+    "displayWorth": "$80M",
+    "category": "sports",
+    "hint": "4x Grand Slam tennis champion",
+    "image": "/images/wealth/naomi_osaka.jpg"
   }
 ]
