@@ -169,9 +169,10 @@ function CategorySection({
   soon?: boolean;
 }) {
   const slug = CATEGORY_SLUGS[name];
+  const cat  = name.toLowerCase();
   const cards = games.map(g => <GameCard key={g.slug} game={g} />);
   return (
-    <section className="category">
+    <section className={`category category--${cat}`}>
       <div className="category__header">
         <span className="category__icon">{icon}</span>
         {slug
