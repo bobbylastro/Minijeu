@@ -16,6 +16,7 @@ export default function Header() {
   const [geoOpen, setGeoOpen]         = useState(false);
   const [cultureOpen, setCultureOpen] = useState(false);
   const [foodOpen, setFoodOpen]       = useState(false);
+  const [animalsOpen, setAnimalsOpen] = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
   const [authOpen, setAuthOpen]       = useState(false);
   const [mobileOpen, setMobileOpen]   = useState<string | null>(null);
@@ -24,6 +25,7 @@ export default function Header() {
   const sportsRef  = useRef<HTMLDivElement>(null);
   const cultureRef = useRef<HTMLDivElement>(null);
   const foodRef    = useRef<HTMLDivElement>(null);
+  const animalsRef = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click (desktop)
   useEffect(() => {
@@ -32,6 +34,7 @@ export default function Header() {
       if (sportsRef.current  && !sportsRef.current.contains(e.target as Node))  setSportsOpen(false);
       if (cultureRef.current && !cultureRef.current.contains(e.target as Node)) setCultureOpen(false);
       if (foodRef.current    && !foodRef.current.contains(e.target as Node))    setFoodOpen(false);
+      if (animalsRef.current && !animalsRef.current.contains(e.target as Node)) setAnimalsOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -53,10 +56,12 @@ export default function Header() {
   const sportsRoutes  = ["/football", "/nba", "/career"];
   const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
+  const animalsRoutes = ["/wild-battle"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
   const isCultureActive = cultureRoutes.includes(pathname);
   const isFoodActive    = foodRoutes.includes(pathname);
+  const isAnimalsActive = animalsRoutes.includes(pathname);
 
   return (
     <>
@@ -194,6 +199,36 @@ export default function Header() {
               )}
             </div>
 
+            {/* Animals dropdown */}
+            <div
+              ref={animalsRef}
+              className={`site-header__nav-item${animalsOpen ? " is-open" : ""}${isAnimalsActive ? " is-active" : ""}`}
+              onClick={() => setAnimalsOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={animalsOpen}
+            >
+              🦁 Animals
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {animalsOpen && (
+                <div className="site-header__dropdown">
+                  <div className="site-header__dropdown-section">
+                    <div className="site-header__dropdown-label">Animals</div>
+                    <Link href="/wild-battle" className={`site-header__dropdown-item${pathname === "/wild-battle" ? " is-active" : ""}`} onClick={() => setAnimalsOpen(false)}>
+                      <div className="site-header__dropdown-icon">🦁</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Wild Battle</div>
+                        <div className="site-header__dropdown-desc">Animal face-offs & wildlife trivia</div>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/animals" onClick={() => setAnimalsOpen(false)}>View all Animals games →</Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
             {/* Geography dropdown */}
             <div
               ref={geoRef}
@@ -322,6 +357,25 @@ export default function Header() {
               <div className="mobile-menu__sub">
                 <Link href="/food-games" className="mobile-menu__sub-cat" onClick={closeMenu}>🍽️ All Food games →</Link>
                 <Link href="/food" className={`mobile-menu__sub-item${pathname === "/food" ? " is-active" : ""}`} onClick={closeMenu}><span>🗺️</span> Food Origins</Link>
+              </div>
+            )}
+
+            {/* Animals */}
+            <div
+              className={`mobile-menu__cat${isAnimalsActive ? " is-active" : ""}${mobileOpen === "animals" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("animals")}
+            >
+              <span className="mobile-menu__cat-icon">🦁</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">Animals</div>
+                <div className="mobile-menu__cat-desc">Wildlife battles & trivia</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "animals" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "animals" && (
+              <div className="mobile-menu__sub">
+                <Link href="/animals" className="mobile-menu__sub-cat" onClick={closeMenu}>🦁 All Animals games →</Link>
+                <Link href="/wild-battle" className={`mobile-menu__sub-item${pathname === "/wild-battle" ? " is-active" : ""}`} onClick={closeMenu}><span>🦁</span> Wild Battle</Link>
               </div>
             )}
 

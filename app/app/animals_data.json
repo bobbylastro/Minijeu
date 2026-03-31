@@ -1,0 +1,636 @@
+{
+  "battles": [
+    {
+      "animal1": { "name": "Lion", "hint": "King of the savanna", "wiki": "Lion" },
+      "animal2": { "name": "Brown Bear", "hint": "Largest North American predator", "wiki": "Brown bear" },
+      "winner": "animal2",
+      "explanation": "A brown bear outweighs a lion by over 100 kg and delivers devastating paw strikes"
+    },
+    {
+      "animal1": { "name": "Tiger", "hint": "World's largest wild cat", "wiki": "Tiger" },
+      "animal2": { "name": "Gorilla", "hint": "Strongest primate on Earth", "wiki": "Gorilla" },
+      "winner": "animal1",
+      "explanation": "Tigers are apex predators — their speed, claws and bite force overpower a gorilla"
+    },
+    {
+      "animal1": { "name": "Hippopotamus", "hint": "Africa's deadliest large mammal", "wiki": "Hippopotamus" },
+      "animal2": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "winner": "animal1",
+      "explanation": "A hippo's massive jaws (1,821 psi) and sheer bulk overwhelm even a large crocodile"
+    },
+    {
+      "animal1": { "name": "Killer Whale", "hint": "Ocean's apex predator", "wiki": "Killer whale" },
+      "animal2": { "name": "Great White Shark", "hint": "Ocean's most feared fish", "wiki": "Great white shark" },
+      "winner": "animal1",
+      "explanation": "Orcas actively hunt and kill great whites — they flip them to induce tonic immobility"
+    },
+    {
+      "animal1": { "name": "Wolverine", "hint": "Most ferocious animal for its size", "wiki": "Wolverine (animal)" },
+      "animal2": { "name": "Gray Wolf", "hint": "Pack hunter of the north", "wiki": "Wolf" },
+      "winner": "animal1",
+      "explanation": "Wolverines are documented to drive wolves and even bears from their kills — pure ferocity"
+    },
+    {
+      "animal1": { "name": "Polar Bear", "hint": "Arctic's supreme predator", "wiki": "Polar bear" },
+      "animal2": { "name": "Grizzly Bear", "hint": "Mountain's fearsome omnivore", "wiki": "Grizzly bear" },
+      "winner": "animal1",
+      "explanation": "Polar bears are heavier, have a longer reach and are exclusively carnivorous predators"
+    },
+    {
+      "animal1": { "name": "Cape Buffalo", "hint": "Africa's most dangerous herbivore", "wiki": "African buffalo" },
+      "animal2": { "name": "African Lion", "hint": "Savanna's top predator", "wiki": "Lion" },
+      "winner": "animal1",
+      "explanation": "Cape buffalos kill lions regularly — their horns and charge deliver devastating force"
+    },
+    {
+      "animal1": { "name": "Saltwater Crocodile", "hint": "World's largest living reptile", "wiki": "Saltwater crocodile" },
+      "animal2": { "name": "Jaguar", "hint": "Strongest bite of all big cats", "wiki": "Jaguar" },
+      "winner": "animal1",
+      "explanation": "The saltwater croc's 3,700 psi bite and armoured hide are too much for a jaguar"
+    },
+    {
+      "animal1": { "name": "Honey Badger", "hint": "World's most fearless animal", "wiki": "Honey badger" },
+      "animal2": { "name": "King Cobra", "hint": "World's longest venomous snake", "wiki": "King cobra" },
+      "winner": "animal1",
+      "explanation": "Honey badgers are nearly immune to cobra venom and aggressively attack snakes head-on"
+    },
+    {
+      "animal1": { "name": "African Elephant", "hint": "World's largest land animal", "wiki": "African elephant" },
+      "animal2": { "name": "White Rhinoceros", "hint": "Second largest land animal", "wiki": "White rhinoceros" },
+      "winner": "animal1",
+      "explanation": "African elephants weigh 3× more and use tusks and trunk as devastating weapons"
+    },
+    {
+      "animal1": { "name": "Komodo Dragon", "hint": "World's largest lizard", "wiki": "Komodo dragon" },
+      "animal2": { "name": "Reticulated Python", "hint": "World's longest snake", "wiki": "Reticulated python" },
+      "winner": "animal1",
+      "explanation": "The Komodo's venomous bite and serrated teeth give it the edge over a constrictor"
+    },
+    {
+      "animal1": { "name": "Golden Eagle", "hint": "Hunting bird that takes foxes and deer fawns", "wiki": "Golden eagle" },
+      "animal2": { "name": "Peregrine Falcon", "hint": "Fastest animal on Earth in a dive", "wiki": "Peregrine falcon" },
+      "winner": "animal1",
+      "explanation": "Golden eagles are far larger with talons capable of killing full-grown foxes"
+    },
+    {
+      "animal1": { "name": "Green Anaconda", "hint": "World's heaviest snake", "wiki": "Green anaconda" },
+      "animal2": { "name": "Black Caiman", "hint": "Amazon's top aquatic predator", "wiki": "Black caiman" },
+      "winner": "animal1",
+      "explanation": "Anacondas are documented to constrict and swallow caimans whole in the Amazon"
+    },
+    {
+      "animal1": { "name": "Spotted Hyena", "hint": "Africa's most successful predator", "wiki": "Spotted hyena" },
+      "animal2": { "name": "Cheetah", "hint": "World's fastest land animal", "wiki": "Cheetah" },
+      "winner": "animal1",
+      "explanation": "Hyenas regularly steal kills from cheetahs — their jaws crack bone and they far outmuscle cheetahs"
+    },
+    {
+      "animal1": { "name": "Moose", "hint": "Largest member of the deer family", "wiki": "Moose" },
+      "animal2": { "name": "Gray Wolf", "hint": "Pack hunter of the north", "wiki": "Wolf" },
+      "winner": "animal1",
+      "explanation": "In a 1v1 fight, a moose kick can shatter bone — wolves only win through pack tactics"
+    },
+    {
+      "animal1": { "name": "Sperm Whale", "hint": "Deepest diving mammal on Earth", "wiki": "Sperm whale" },
+      "animal2": { "name": "Giant Squid", "hint": "Inspiration for the legendary Kraken", "wiki": "Giant squid" },
+      "winner": "animal1",
+      "explanation": "Sperm whales actively hunt giant squid at extreme depths — proven by squid beaks in their stomachs"
+    },
+    {
+      "animal1": { "name": "Cassowary", "hint": "World's most dangerous bird", "wiki": "Southern cassowary" },
+      "animal2": { "name": "Wild Boar", "hint": "Surprisingly aggressive forest dweller", "wiki": "Wild boar" },
+      "winner": "animal1",
+      "explanation": "The cassowary's 10 cm razor-sharp claws can deliver disemboweling kicks in milliseconds"
+    },
+    {
+      "animal1": { "name": "Leopard", "hint": "Most adaptable big cat", "wiki": "Leopard" },
+      "animal2": { "name": "Chimpanzee", "hint": "Humans' closest living relative", "wiki": "Chimpanzee" },
+      "winner": "animal1",
+      "explanation": "Leopards are apex predators that actively hunt primates — chimps flee from them"
+    },
+    {
+      "animal1": { "name": "Silverback Gorilla", "hint": "800 kg crushing grip force", "wiki": "Gorilla" },
+      "animal2": { "name": "Leopard", "hint": "Stealthy ambush predator", "wiki": "Leopard" },
+      "winner": "animal1",
+      "explanation": "A silverback gorilla's extraordinary strength has been documented defeating leopards"
+    },
+    {
+      "animal1": { "name": "Saltwater Crocodile", "hint": "World's largest living reptile", "wiki": "Saltwater crocodile" },
+      "animal2": { "name": "Bull Shark", "hint": "Most aggressive shark species", "wiki": "Bull shark" },
+      "winner": "animal1",
+      "explanation": "In shallow coastal waters, the saltwater croc's armour and raw power dominate"
+    },
+    {
+      "animal1": { "name": "Tiger", "hint": "World's largest wild cat", "wiki": "Tiger" },
+      "animal2": { "name": "Grizzly Bear", "hint": "Mountain's fearsome omnivore", "wiki": "Grizzly bear" },
+      "winner": "animal2",
+      "explanation": "A grizzly outweighs a tiger by up to 200 kg and can absorb blows a tiger cannot — most experts give the edge to the bear"
+    },
+    {
+      "animal1": { "name": "Lion", "hint": "King of the savanna", "wiki": "Lion" },
+      "animal2": { "name": "Spotted Hyena", "hint": "Africa's most successful predator", "wiki": "Spotted hyena" },
+      "winner": "animal1",
+      "explanation": "In a 1v1, lions dominate hyenas — their size and power advantage is decisive outside a pack"
+    },
+    {
+      "animal1": { "name": "Green Anaconda", "hint": "World's heaviest snake", "wiki": "Green anaconda" },
+      "animal2": { "name": "Jaguar", "hint": "Strongest bite of all big cats", "wiki": "Jaguar" },
+      "winner": "animal1",
+      "explanation": "In or near water, an anaconda ambushes and constricts a jaguar before it can react"
+    },
+    {
+      "animal1": { "name": "African Wild Dog", "hint": "80% hunt success rate — highest of any predator", "wiki": "African wild dog" },
+      "animal2": { "name": "Cheetah", "hint": "World's fastest land animal", "wiki": "Cheetah" },
+      "winner": "animal1",
+      "explanation": "Cheetahs almost never fight — wild dogs are heavier, far more aggressive, and regularly steal cheetah kills"
+    },
+    {
+      "animal1": { "name": "Honey Badger", "hint": "World's most fearless animal", "wiki": "Honey badger" },
+      "animal2": { "name": "Black Mamba", "hint": "World's fastest and most feared snake", "wiki": "Black mamba" },
+      "winner": "animal1",
+      "explanation": "Honey badgers are partially immune to black mamba venom and routinely kill and eat mambas"
+    },
+    {
+      "animal1": { "name": "Mako Shark", "hint": "Fastest shark in the ocean", "wiki": "Shortfin mako shark" },
+      "animal2": { "name": "Bull Shark", "hint": "Most aggressive shark species", "wiki": "Bull shark" },
+      "winner": "animal1",
+      "explanation": "The mako outweighs and outsizes a bull shark, and its speed gives it a decisive first-strike advantage"
+    },
+    {
+      "animal1": { "name": "Wolverine", "hint": "Most ferocious animal for its size", "wiki": "Wolverine (animal)" },
+      "animal2": { "name": "Mountain Lion", "hint": "North America's apex big cat", "wiki": "Cougar" },
+      "winner": "animal1",
+      "explanation": "Wolverines have been documented driving mountain lions from their kills — their ferocity and pain tolerance are unmatched"
+    },
+    {
+      "animal1": { "name": "Komodo Dragon", "hint": "World's largest lizard", "wiki": "Komodo dragon" },
+      "animal2": { "name": "Wild Boar", "hint": "Surprisingly aggressive forest dweller", "wiki": "Wild boar" },
+      "winner": "animal1",
+      "explanation": "A Komodo's venomous bite causes rapid blood loss — a wounded boar rarely survives long enough to fight back"
+    },
+    {
+      "animal1": { "name": "King Cobra", "hint": "World's longest venomous snake", "wiki": "King cobra" },
+      "animal2": { "name": "Nile Monitor", "hint": "Aggressive semi-aquatic lizard", "wiki": "Nile monitor" },
+      "winner": "animal1",
+      "explanation": "A king cobra's neurotoxic venom kills a Nile monitor in minutes — the lizard has no real defence"
+    },
+    {
+      "animal1": { "name": "Cape Buffalo", "hint": "Africa's most dangerous herbivore", "wiki": "African buffalo" },
+      "animal2": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "winner": "animal1",
+      "explanation": "Out of water, a cape buffalo's horns and sheer bulk overwhelm a crocodile — crocs typically release rather than risk injury"
+    },
+    {
+      "animal1": { "name": "Tiger", "hint": "World's largest wild cat", "wiki": "Tiger" },
+      "animal2": { "name": "African Lion", "hint": "Savanna's top predator", "wiki": "Lion" },
+      "winner": "animal1",
+      "explanation": "Siberian tigers are significantly larger and heavier than lions — in historical combats, tigers frequently won"
+    },
+    {
+      "animal1": { "name": "Grizzly Bear", "hint": "Mountain's fearsome omnivore", "wiki": "Grizzly bear" },
+      "animal2": { "name": "Moose", "hint": "Largest member of the deer family", "wiki": "Moose" },
+      "winner": "animal1",
+      "explanation": "Grizzlies are documented moose killers — a bear's crushing bite and sheer power overwhelm even a massive bull moose"
+    },
+    {
+      "animal1": { "name": "Polar Bear", "hint": "Arctic's supreme predator", "wiki": "Polar bear" },
+      "animal2": { "name": "Walrus", "hint": "Tusked giant of the Arctic seas", "wiki": "Walrus" },
+      "winner": "animal2",
+      "explanation": "Adult walruses weigh up to 1,700 kg — more than triple a polar bear — and their tusks inflict lethal wounds"
+    },
+    {
+      "animal1": { "name": "Saltwater Crocodile", "hint": "World's largest living reptile", "wiki": "Saltwater crocodile" },
+      "animal2": { "name": "Tiger Shark", "hint": "Ocean's second most dangerous shark", "wiki": "Tiger shark" },
+      "winner": "animal1",
+      "explanation": "In shallow coastal water, the croc's armour and ambush bite overpower a tiger shark out of its element"
+    },
+    {
+      "animal1": { "name": "Wolverine", "hint": "Most ferocious animal for its size", "wiki": "Wolverine (animal)" },
+      "animal2": { "name": "Lynx", "hint": "Elusive boreal forest predator", "wiki": "Canada lynx" },
+      "winner": "animal1",
+      "explanation": "Wolverines regularly compete with and displace lynx — their aggression and toughness make them superior fighters"
+    },
+    {
+      "animal1": { "name": "African Elephant", "hint": "World's largest land animal", "wiki": "African elephant" },
+      "animal2": { "name": "Hippopotamus", "hint": "Africa's deadliest large mammal", "wiki": "Hippopotamus" },
+      "winner": "animal1",
+      "explanation": "A bull elephant outweighs a hippo by 4,000 kg and uses tusks and raw mass to dominate — hippos give way to elephants at waterholes"
+    },
+    {
+      "animal1": { "name": "Mandrill", "hint": "World's largest monkey", "wiki": "Mandrill" },
+      "animal2": { "name": "Chimpanzee", "hint": "Humans' closest living relative", "wiki": "Chimpanzee" },
+      "winner": "animal2",
+      "explanation": "Chimpanzees are heavier, stronger and more combat-experienced — their group fighting instincts give them the decisive edge"
+    },
+    {
+      "animal1": { "name": "Snow Leopard", "hint": "Ghost of the mountains", "wiki": "Snow leopard" },
+      "animal2": { "name": "Gray Wolf", "hint": "Pack hunter of the north", "wiki": "Wolf" },
+      "winner": "animal1",
+      "explanation": "Snow leopards are built for ambush in their mountain terrain — they overpower wolves in one-on-one encounters"
+    },
+    {
+      "animal1": { "name": "Cassowary", "hint": "World's most dangerous bird", "wiki": "Southern cassowary" },
+      "animal2": { "name": "Komodo Dragon", "hint": "World's largest lizard", "wiki": "Komodo dragon" },
+      "winner": "animal2",
+      "explanation": "A Komodo's venomous bite and armoured hide absorb a cassowary's kicks — the dragon's patience and venom win the fight"
+    },
+    {
+      "animal1": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "animal2": { "name": "Bull Shark", "hint": "Most aggressive shark species", "wiki": "Bull shark" },
+      "winner": "animal1",
+      "explanation": "Nile crocs share rivers with bull sharks and dominate in shallow, murky water — their bite force and armour are unmatched"
+    },
+    {
+      "animal1": { "name": "Gorilla", "hint": "Strongest primate on Earth", "wiki": "Gorilla" },
+      "animal2": { "name": "Honey Badger", "hint": "World's most fearless animal", "wiki": "Honey badger" },
+      "winner": "animal1",
+      "explanation": "A gorilla's crushing grip delivers 800 kg of force — a honey badger's ferocity can't compensate for the massive size difference"
+    },
+    {
+      "animal1": { "name": "Great White Shark", "hint": "Ocean's most feared fish", "wiki": "Great white shark" },
+      "animal2": { "name": "Saltwater Crocodile", "hint": "World's largest living reptile", "wiki": "Saltwater crocodile" },
+      "winner": "animal1",
+      "explanation": "In deep open water, the great white's speed, size and bite force overwhelm a crocodile away from its coastal territory"
+    },
+    {
+      "animal1": { "name": "African Lion", "hint": "Savanna's top predator", "wiki": "Lion" },
+      "animal2": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "winner": "animal1",
+      "explanation": "On land, a lion's speed and coordinated attack overcome a crocodile — recorded instances show lions killing crocs at waterholes"
+    },
+    {
+      "animal1": { "name": "Bison", "hint": "North America's largest land animal — up to 900 kg", "wiki": "American bison" },
+      "animal2": { "name": "Grizzly Bear", "hint": "Mountain's fearsome omnivore", "wiki": "Grizzly bear" },
+      "winner": "animal1",
+      "explanation": "A bison outweighs a grizzly 3-to-1 — its charge and horns deliver devastating force that even a bear cannot absorb"
+    },
+    {
+      "animal1": { "name": "Gray Wolf", "hint": "Pack hunter of the north", "wiki": "Wolf" },
+      "animal2": { "name": "Mountain Lion", "hint": "North America's apex big cat", "wiki": "Cougar" },
+      "winner": "animal2",
+      "explanation": "A mountain lion ambushes from above and delivers a killing bite to the skull — in documented 1v1 encounters, the cougar dominates"
+    },
+    {
+      "animal1": { "name": "African Lion", "hint": "Savanna's top predator", "wiki": "Lion" },
+      "animal2": { "name": "Leopard", "hint": "Most adaptable big cat", "wiki": "Leopard" },
+      "winner": "animal1",
+      "explanation": "Lions weigh twice as much as leopards — leopards flee from lions and lose every direct confrontation"
+    },
+    {
+      "animal1": { "name": "Hippopotamus", "hint": "Africa's deadliest large mammal", "wiki": "Hippopotamus" },
+      "animal2": { "name": "Cape Buffalo", "hint": "Africa's most dangerous herbivore", "wiki": "African buffalo" },
+      "winner": "animal1",
+      "explanation": "A hippo weighs 3,000 kg versus 800 kg for a buffalo — its bone-crushing jaws and sheer mass settle this quickly"
+    },
+    {
+      "animal1": { "name": "Jaguar", "hint": "Strongest bite of all big cats", "wiki": "Jaguar" },
+      "animal2": { "name": "Caiman", "hint": "South America's armoured predator", "wiki": "Caiman" },
+      "winner": "animal1",
+      "explanation": "Jaguars have evolved a skull and bite force specifically adapted to pierce caiman skulls — they are documented caiman killers"
+    },
+    {
+      "animal1": { "name": "Grizzly Bear", "hint": "Mountain's fearsome omnivore", "wiki": "Grizzly bear" },
+      "animal2": { "name": "Black Bear", "hint": "North America's most common bear", "wiki": "American black bear" },
+      "winner": "animal1",
+      "explanation": "Grizzlies outweigh black bears by 200 kg and are far more aggressive — black bears almost always retreat from grizzlies"
+    },
+    {
+      "animal1": { "name": "Sperm Whale", "hint": "Deepest diving mammal on Earth", "wiki": "Sperm whale" },
+      "animal2": { "name": "Killer Whale", "hint": "Ocean's apex predator", "wiki": "Killer whale" },
+      "winner": "animal1",
+      "explanation": "A lone adult sperm whale outweighs an orca 10-to-1 — its massive tail fluke and crushing jaw make it more than a match in a 1v1"
+    },
+    {
+      "animal1": { "name": "King Cobra", "hint": "World's longest venomous snake", "wiki": "King cobra" },
+      "animal2": { "name": "Gaboon Viper", "hint": "Longest fangs of any snake — up to 5 cm", "wiki": "Gaboon viper" },
+      "winner": "animal1",
+      "explanation": "King cobras actively hunt and eat other snakes — they are faster, longer and their venom is specifically lethal to reptiles"
+    },
+    {
+      "animal1": { "name": "Mountain Lion", "hint": "North America's apex big cat", "wiki": "Cougar" },
+      "animal2": { "name": "Bobcat", "hint": "North America's most widespread wild cat", "wiki": "Bobcat" },
+      "winner": "animal1",
+      "explanation": "Mountain lions are three times heavier than bobcats — in any direct encounter, the outcome is not in doubt"
+    },
+    {
+      "animal1": { "name": "Snow Leopard", "hint": "Ghost of the mountains", "wiki": "Snow leopard" },
+      "animal2": { "name": "Wolverine", "hint": "Most ferocious animal for its size", "wiki": "Wolverine (animal)" },
+      "winner": "animal1",
+      "explanation": "Snow leopards weigh three times as much as wolverines — their speed and killing bite far outweigh the wolverine's ferocity"
+    },
+    {
+      "animal1": { "name": "Chimpanzee", "hint": "Humans' closest living relative", "wiki": "Chimpanzee" },
+      "animal2": { "name": "Baboon", "hint": "Highly aggressive primate with long canines", "wiki": "Baboon" },
+      "winner": "animal1",
+      "explanation": "Chimpanzees are stronger, heavier and far more combat-capable — their group fighting instinct translates to brutal 1v1 efficiency"
+    },
+    {
+      "animal1": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "animal2": { "name": "Green Anaconda", "hint": "World's heaviest snake", "wiki": "Green anaconda" },
+      "winner": "animal1",
+      "explanation": "In water, a Nile croc's 2,000 psi bite and death roll tear through anaconda muscle before constriction can take effect"
+    },
+    {
+      "animal1": { "name": "Harpy Eagle", "hint": "World's most powerful eagle — talons like a grizzly's claws", "wiki": "Harpy eagle" },
+      "animal2": { "name": "Golden Eagle", "hint": "Hunting bird that takes foxes and deer fawns", "wiki": "Golden eagle" },
+      "winner": "animal1",
+      "explanation": "Harpy eagles are twice the weight of golden eagles with talons 10 cm long — they are the undisputed apex raptor"
+    },
+    {
+      "animal1": { "name": "Hippopotamus", "hint": "Africa's deadliest large mammal", "wiki": "Hippopotamus" },
+      "animal2": { "name": "White Rhinoceros", "hint": "Second largest land animal", "wiki": "White rhinoceros" },
+      "winner": "animal1",
+      "explanation": "Hippos are 700 kg heavier and their bite force exceeds 1,800 psi — rhinos typically yield at shared waterholes"
+    },
+    {
+      "animal1": { "name": "American Alligator", "hint": "Ancient apex predator of the American south", "wiki": "American alligator" },
+      "animal2": { "name": "Nile Crocodile", "hint": "Prehistoric ambush predator", "wiki": "Nile crocodile" },
+      "winner": "animal2",
+      "explanation": "Nile crocodiles grow significantly larger and have a stronger bite — in documented comparisons, they dominate American alligators"
+    },
+    {
+      "animal1": { "name": "African Wild Dog", "hint": "80% hunt success rate — highest of any predator", "wiki": "African wild dog" },
+      "animal2": { "name": "Baboon", "hint": "Highly aggressive primate with long canines", "wiki": "Baboon" },
+      "winner": "animal1",
+      "explanation": "Wild dogs are relentless and coordinated — a lone baboon's canines can injure but not stop a determined wild dog"
+    },
+    {
+      "animal1": { "name": "Reticulated Python", "hint": "World's longest snake", "wiki": "Reticulated python" },
+      "animal2": { "name": "King Cobra", "hint": "World's longest venomous snake", "wiki": "King cobra" },
+      "winner": "animal2",
+      "explanation": "King cobras eat pythons — their neurotoxic venom immobilises the python's muscles before it can complete a constriction"
+    },
+    {
+      "animal1": { "name": "Wolverine", "hint": "Most ferocious animal for its size", "wiki": "Wolverine (animal)" },
+      "animal2": { "name": "North American Porcupine", "hint": "30,000 barbed quills as armour", "wiki": "North American porcupine" },
+      "winner": "animal1",
+      "explanation": "Wolverines have extra-tough skin and attack from the face where quills are sparse — they are one of the few predators that successfully hunt porcupines"
+    },
+    {
+      "animal1": { "name": "Green Anaconda", "hint": "World's heaviest snake", "wiki": "Green anaconda" },
+      "animal2": { "name": "Puma", "hint": "South America's apex big cat", "wiki": "Cougar" },
+      "winner": "animal1",
+      "explanation": "Near water, an anaconda ambushes and begins constriction before a puma can react — documented kills of large cats have been recorded"
+    },
+    {
+      "animal1": { "name": "Komodo Dragon", "hint": "World's largest lizard", "wiki": "Komodo dragon" },
+      "animal2": { "name": "Monitor Lizard", "hint": "Highly intelligent ambush reptile", "wiki": "Monitor lizard" },
+      "winner": "animal1",
+      "explanation": "Komodo dragons reach 3 m and 90 kg versus 1.5 m for most monitors — their venom and sheer bulk decide the outcome immediately"
+    }
+  ],
+  "comparisons": [
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster?",
+      "animal1": { "name": "Cheetah", "hint": "120 km/h", "wiki": "Cheetah" },
+      "animal2": { "name": "Lion", "hint": "80 km/h", "wiki": "Lion" },
+      "winner": "animal1",
+      "explanation": "A cheetah hits 120 km/h — 50% faster than a sprinting lion"
+    },
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster?",
+      "animal1": { "name": "Pronghorn", "hint": "89 km/h", "wiki": "Pronghorn" },
+      "animal2": { "name": "Gray Wolf", "hint": "75 km/h", "wiki": "Wolf" },
+      "winner": "animal1",
+      "explanation": "The pronghorn is North America's fastest land animal at 89 km/h — evolved to outrun now-extinct predators"
+    },
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster in a dive?",
+      "animal1": { "name": "Peregrine Falcon", "hint": "Up to 389 km/h", "wiki": "Peregrine falcon" },
+      "animal2": { "name": "Golden Eagle", "hint": "Up to 240 km/h", "wiki": "Golden eagle" },
+      "winner": "animal1",
+      "explanation": "The peregrine falcon dives at 389 km/h — the fastest recorded movement in the entire animal kingdom"
+    },
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster in water?",
+      "animal1": { "name": "Sailfish", "hint": "Up to 110 km/h", "wiki": "Sailfish" },
+      "animal2": { "name": "Mako Shark", "hint": "Up to 74 km/h", "wiki": "Shortfin mako shark" },
+      "winner": "animal1",
+      "explanation": "The sailfish reaches 110 km/h — it's the fastest fish in the ocean"
+    },
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster on land?",
+      "animal1": { "name": "Ostrich", "hint": "Up to 70 km/h", "wiki": "Ostrich" },
+      "animal2": { "name": "Grizzly Bear", "hint": "Up to 55 km/h", "wiki": "Grizzly bear" },
+      "winner": "animal1",
+      "explanation": "An ostrich can sustain 60 km/h for long distances — faster than most horses in a sprint"
+    },
+    {
+      "questionEmoji": "⚡",
+      "questionText": "Who's faster on land?",
+      "animal1": { "name": "Kangaroo", "hint": "Up to 71 km/h", "wiki": "Red kangaroo" },
+      "animal2": { "name": "Polar Bear", "hint": "Up to 40 km/h", "wiki": "Polar bear" },
+      "winner": "animal1",
+      "explanation": "Red kangaroos can hit 71 km/h in short bursts — nearly as fast as a cheetah's cruising speed"
+    },
+    {
+      "questionEmoji": "⚖️",
+      "questionText": "Who's heavier?",
+      "animal1": { "name": "Hippopotamus", "hint": "~3,000 kg", "wiki": "Hippopotamus" },
+      "animal2": { "name": "White Rhinoceros", "hint": "~2,300 kg", "wiki": "White rhinoceros" },
+      "winner": "animal1",
+      "explanation": "Adult hippos reach 3,000 kg — making them the world's third-heaviest land animal after elephants and rhinos"
+    },
+    {
+      "questionEmoji": "⚖️",
+      "questionText": "Who's heavier?",
+      "animal1": { "name": "Polar Bear", "hint": "~500 kg", "wiki": "Polar bear" },
+      "animal2": { "name": "Grizzly Bear", "hint": "~300 kg", "wiki": "Grizzly bear" },
+      "winner": "animal1",
+      "explanation": "Polar bears average 500 kg — nearly double a typical grizzly"
+    },
+    {
+      "questionEmoji": "⚖️",
+      "questionText": "Who's heavier?",
+      "animal1": { "name": "Saltwater Crocodile", "hint": "~700 kg", "wiki": "Saltwater crocodile" },
+      "animal2": { "name": "Komodo Dragon", "hint": "~80 kg", "wiki": "Komodo dragon" },
+      "winner": "animal1",
+      "explanation": "Saltwater crocodiles reach 700 kg — nearly 9 times heavier than the world's largest lizard"
+    },
+    {
+      "questionEmoji": "⚖️",
+      "questionText": "Who's heavier?",
+      "animal1": { "name": "Moose", "hint": "~600 kg", "wiki": "Moose" },
+      "animal2": { "name": "Jaguar", "hint": "~100 kg", "wiki": "Jaguar" },
+      "winner": "animal1",
+      "explanation": "A bull moose reaches 600 kg — 6 times heavier than the largest jaguar"
+    },
+    {
+      "questionEmoji": "🦷",
+      "questionText": "Who has the stronger bite?",
+      "animal1": { "name": "Saltwater Crocodile", "hint": "3,700 psi", "wiki": "Saltwater crocodile" },
+      "animal2": { "name": "Great White Shark", "hint": "669 psi", "wiki": "Great white shark" },
+      "winner": "animal1",
+      "explanation": "The saltwater croc bites at 3,700 psi — nearly 6× the bite force of a great white shark"
+    },
+    {
+      "questionEmoji": "🦷",
+      "questionText": "Who has the stronger bite?",
+      "animal1": { "name": "Hippopotamus", "hint": "1,821 psi", "wiki": "Hippopotamus" },
+      "animal2": { "name": "Lion", "hint": "650 psi", "wiki": "Lion" },
+      "winner": "animal1",
+      "explanation": "A hippo's bite at 1,821 psi can cut a crocodile in half — nearly 3× stronger than a lion"
+    },
+    {
+      "questionEmoji": "🦷",
+      "questionText": "Who has the stronger bite?",
+      "animal1": { "name": "Gorilla", "hint": "1,300 psi", "wiki": "Gorilla" },
+      "animal2": { "name": "Jaguar", "hint": "1,500 psi", "wiki": "Jaguar" },
+      "winner": "animal2",
+      "explanation": "A jaguar bites at 1,500 psi — the strongest bite relative to body size of all big cats"
+    },
+    {
+      "questionEmoji": "⏳",
+      "questionText": "Who lives longer?",
+      "animal1": { "name": "Greenland Shark", "hint": "~400 years", "wiki": "Greenland shark" },
+      "animal2": { "name": "Bowhead Whale", "hint": "~200 years", "wiki": "Bowhead whale" },
+      "winner": "animal1",
+      "explanation": "Greenland sharks live 400+ years — some alive today were born before Mozart"
+    },
+    {
+      "questionEmoji": "⏳",
+      "questionText": "Who lives longer?",
+      "animal1": { "name": "Giant Tortoise", "hint": "~150 years", "wiki": "Aldabra giant tortoise" },
+      "animal2": { "name": "African Elephant", "hint": "~70 years", "wiki": "African elephant" },
+      "winner": "animal1",
+      "explanation": "Giant tortoises regularly reach 150+ years — the verified record is 187 years"
+    },
+    {
+      "questionEmoji": "⏳",
+      "questionText": "Who lives longer?",
+      "animal1": { "name": "Koi Fish", "hint": "Up to 226 years", "wiki": "Koi" },
+      "animal2": { "name": "African Grey Parrot", "hint": "Up to 60 years", "wiki": "African grey parrot" },
+      "winner": "animal1",
+      "explanation": "The oldest verified koi — Hanako — lived to 226 years old in Japan"
+    },
+    {
+      "questionEmoji": "💪",
+      "questionText": "Who's stronger relative to body size?",
+      "animal1": { "name": "Dung Beetle", "hint": "Lifts 1,141× its own weight", "wiki": "Dung beetle" },
+      "animal2": { "name": "Leafcutter Ant", "hint": "Lifts 50× its own weight", "wiki": "Leafcutter ant" },
+      "winner": "animal1",
+      "explanation": "The dung beetle lifts 1,141× its body weight — the strongest animal on Earth relative to size"
+    },
+    {
+      "questionEmoji": "💪",
+      "questionText": "Who's stronger?",
+      "animal1": { "name": "Gorilla", "hint": "Can lift ~800 kg", "wiki": "Gorilla" },
+      "animal2": { "name": "Chimpanzee", "hint": "Can lift ~200 kg", "wiki": "Chimpanzee" },
+      "winner": "animal1",
+      "explanation": "A silverback gorilla can lift up to 800 kg — 4× more than the strongest chimpanzee"
+    },
+    {
+      "questionEmoji": "💪",
+      "questionText": "Who delivers more force?",
+      "animal1": { "name": "Mantis Shrimp", "hint": "Strike at 23 m/s", "wiki": "Mantis shrimp" },
+      "animal2": { "name": "Pistol Shrimp", "hint": "Snapping claw creates 218 dB", "wiki": "Pistol shrimp" },
+      "winner": "animal1",
+      "explanation": "The mantis shrimp's punch accelerates like a bullet — it can break aquarium glass"
+    },
+    {
+      "questionEmoji": "🏊",
+      "questionText": "Who dives deeper?",
+      "animal1": { "name": "Sperm Whale", "hint": "Down to 2,000 m", "wiki": "Sperm whale" },
+      "animal2": { "name": "Leatherback Turtle", "hint": "Down to 1,200 m", "wiki": "Leatherback sea turtle" },
+      "winner": "animal1",
+      "explanation": "Sperm whales reach 2,000 m and hold their breath for up to 90 minutes"
+    }
+  ],
+  "sliders": [
+    {
+      "question": "How fast (km/h) can a peregrine falcon dive?",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "answer": 389,
+      "unit": " km/h",
+      "explanation": "The peregrine falcon dives at 389 km/h — the fastest movement ever recorded in the animal kingdom"
+    },
+    {
+      "question": "How many times its own body weight can a dung beetle lift?",
+      "min": 10,
+      "max": 2000,
+      "step": 10,
+      "answer": 1141,
+      "unit": "×",
+      "explanation": "The dung beetle lifts 1,141× its body weight — the strongest animal on Earth relative to size"
+    },
+    {
+      "question": "How deep (in metres) can a sperm whale dive?",
+      "min": 200,
+      "max": 3500,
+      "step": 100,
+      "answer": 2000,
+      "unit": " m",
+      "explanation": "Sperm whales reach 2,000+ metres, holding their breath for up to 90 minutes"
+    },
+    {
+      "question": "At what age does a Greenland shark reach sexual maturity? (years)",
+      "min": 10,
+      "max": 300,
+      "step": 10,
+      "answer": 150,
+      "unit": " years",
+      "explanation": "Greenland sharks mature around 150 years old — making them the slowest-maturing vertebrate on Earth"
+    },
+    {
+      "question": "How many kg can an African elephant lift with its trunk?",
+      "min": 10,
+      "max": 600,
+      "step": 10,
+      "answer": 270,
+      "unit": " kg",
+      "explanation": "An elephant's trunk can lift 270 kg and contains over 40,000 muscles"
+    },
+    {
+      "question": "How heavy (in kg) is an adult male polar bear?",
+      "min": 100,
+      "max": 900,
+      "step": 10,
+      "answer": 500,
+      "unit": " kg",
+      "explanation": "Adult male polar bears average 500 kg — nearly double a grizzly bear, making them the world's largest land carnivore"
+    },
+    {
+      "question": "What is the bite force (in psi) of a saltwater crocodile?",
+      "min": 200,
+      "max": 5000,
+      "step": 100,
+      "answer": 3700,
+      "unit": " psi",
+      "explanation": "The saltwater croc bites at 3,700 psi — the strongest bite force ever measured, nearly 6× that of a great white shark"
+    },
+    {
+      "question": "How fast (km/h) can a cheetah run at top speed?",
+      "min": 60,
+      "max": 160,
+      "step": 5,
+      "answer": 120,
+      "unit": " km/h",
+      "explanation": "A cheetah reaches 120 km/h in short bursts — it accelerates from 0 to 100 km/h in just 3 seconds"
+    },
+    {
+      "question": "How many volts can an electric eel discharge?",
+      "min": 100,
+      "max": 1000,
+      "step": 10,
+      "answer": 860,
+      "unit": " V",
+      "explanation": "Electric eels can discharge up to 860 volts — enough to stun a horse or kill smaller animals outright"
+    },
+    {
+      "question": "How many times per second does a hummingbird flap its wings?",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "answer": 53,
+      "unit": "×/s",
+      "explanation": "A ruby-throated hummingbird beats its wings ~53 times per second — creating the characteristic humming sound"
+    }
+  ]
+}

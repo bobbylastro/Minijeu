@@ -36,6 +36,7 @@ const OTHER_CATEGORIES = [
   { href: "/world",      emoji: "🌍", label: "World"   },
   { href: "/food-games", emoji: "🍽️", label: "Food"    },
   { href: "/culture",    emoji: "🧠", label: "Culture"  },
+  { href: "/animals",    emoji: "🦁", label: "Animals"  },
 ];
 
 const BASE = "https://ultimate-playground.com";

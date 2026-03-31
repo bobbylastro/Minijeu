@@ -33,9 +33,10 @@ const GAMES = [
 ];
 
 const OTHER_CATEGORIES = [
-  { href: "/sports",     emoji: "🏆", label: "Sports" },
-  { href: "/food-games", emoji: "🍽️", label: "Food"   },
-  { href: "/culture",    emoji: "🧠", label: "Culture" },
+  { href: "/sports",     emoji: "🏆", label: "Sports"  },
+  { href: "/food-games", emoji: "🍽️", label: "Food"    },
+  { href: "/culture",    emoji: "🧠", label: "Culture"  },
+  { href: "/animals",    emoji: "🦁", label: "Animals"  },
 ];
 
 const BASE = "https://ultimate-playground.com";

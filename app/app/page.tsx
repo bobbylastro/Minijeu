@@ -108,6 +108,16 @@ const FOOD_GAMES: GameDef[] = [
   },
 ];
 
+const ANIMALS_GAMES: GameDef[] = [
+  {
+    slug: "/wild-battle",
+    emoji: "🦁",
+    title: "Wild Battle",
+    desc: "Two animals face off — pick the winner, then compare speed, weight, bite force and more. Animal face-offs every round.",
+    tags: ["Solo", "Multiplayer"],
+  },
+];
+
 // ─── GameCard ──────────────────────────────────────────────────────────────────
 function GameCard({ game }: { game: GameDef }) {
   if (game.soon) {
@@ -146,6 +156,7 @@ const CATEGORY_SLUGS: Record<string, string> = {
   Sports:  "/sports",
   Culture: "/culture",
   Food:    "/food-games",
+  Animals: "/animals",
 };
 
 // ─── CategorySection ───────────────────────────────────────────────────────────
@@ -206,6 +217,7 @@ export default function HomePage() {
           { "@type": "ListItem", "position": 9,  "name": "Origins Quiz",    "url": `${BASE}/origins` },
           { "@type": "ListItem", "position": 10, "name": "Who's Richer?",  "url": `${BASE}/wealth` },
           { "@type": "ListItem", "position": 11, "name": "5 Clues",        "url": `${BASE}/five-clues` },
+          { "@type": "ListItem", "position": 12, "name": "Wild Battle",    "url": `${BASE}/wild-battle` },
         ],
       },
     ]} />
@@ -225,6 +237,7 @@ export default function HomePage() {
           <CategorySection icon="🏆" name="Sports"  games={SPORTS_GAMES} />
           <CategorySection icon="🧠" name="Culture" games={CULTURE_GAMES} />
           <CategorySection icon="🍽️" name="Food"    games={FOOD_GAMES} />
+          <CategorySection icon="🦁" name="Animals" games={ANIMALS_GAMES} />
         </main>
 
         <section className="seo-section">
@@ -244,6 +257,7 @@ export default function HomePage() {
               <li><strong>CareerOrder</strong> – Rebuild a footballer&apos;s career in the correct chronological order</li>
               <li><strong>WhatCameFirst?</strong> – Pick which event happened first across sports, tech, history and pop culture</li>
               <li><strong>Origins Quiz</strong> – Click the country where each sport, tradition or invention was born — 60+ items from around the world</li>
+              <li><strong>Wild Battle</strong> – Animal face-offs: pick the winner, compare speed, weight and bite force, estimate wild animal records</li>
             </ul>
 
             <h2>Free online mini games for every player</h2>

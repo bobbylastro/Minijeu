@@ -30,7 +30,11 @@ const FOOD: GameLink[] = [
   { slug: "/food", emoji: "🗺️", title: "Food Origins", desc: "Click the country where this dish is from." },
 ];
 
-const ALL_CATEGORIES = [WORLD, SPORTS, CULTURE, FOOD];
+const ANIMALS: GameLink[] = [
+  { slug: "/wild-battle", emoji: "🦁", title: "Wild Battle", desc: "Animal face-offs, trivia & wild record estimation." },
+];
+
+const ALL_CATEGORIES = [WORLD, SPORTS, CULTURE, FOOD, ANIMALS];
 
 function findRelated(currentSlug: string): { label: string; games: GameLink[] } {
   for (const cat of ALL_CATEGORIES) {
@@ -40,7 +44,8 @@ function findRelated(currentSlug: string): { label: string; games: GameLink[] } 
         const label =
           cat === WORLD   ? "More World games" :
           cat === SPORTS  ? "More Sports games" :
-          cat === CULTURE ? "More Culture games" :
+          cat === CULTURE  ? "More Culture games" :
+          cat === ANIMALS  ? "More Animals games" :
           "More Food games";
         return { label, games: others };
       }

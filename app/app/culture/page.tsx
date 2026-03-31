@@ -17,6 +17,13 @@ const GAMES = [
     tags: ["Solo", "Multiplayer"],
   },
   {
+    slug: "/five-clues",
+    emoji: "🕵️",
+    title: "5 Clues",
+    desc: "5 progressive clues, 3 attempts. Guess the famous person — athletes, musicians, actors and historical figures.",
+    tags: ["Solo", "Multiplayer"],
+  },
+  {
     slug: "/origins",
     emoji: "🌐",
     title: "Origins Quiz",
@@ -33,9 +40,10 @@ const GAMES = [
 ];
 
 const OTHER_CATEGORIES = [
-  { href: "/world",      emoji: "🌍", label: "World"  },
-  { href: "/sports",     emoji: "🏆", label: "Sports" },
-  { href: "/food-games", emoji: "🍽️", label: "Food"   },
+  { href: "/world",      emoji: "🌍", label: "World"   },
+  { href: "/sports",     emoji: "🏆", label: "Sports"  },
+  { href: "/food-games", emoji: "🍽️", label: "Food"    },
+  { href: "/animals",    emoji: "🦁", label: "Animals"  },
 ];
 
 const BASE = "https://ultimate-playground.com";

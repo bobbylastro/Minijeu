@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/sports`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/food-games`, lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/culture`,    lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/animals`,    lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
 
     // ── World games ───────────────────────────────────────────────────────────
     { url: `${BASE}/citymix`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
@@ -32,6 +33,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/origins`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/wealth`,      lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/five-clues`,  lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+
+    // ── Animals games ─────────────────────────────────────────────────────────
+    { url: `${BASE}/wild-battle`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // ── Other public pages ────────────────────────────────────────────────────
     { url: `${BASE}/leaderboard`, lastModified: NOW, changeFrequency: "daily", priority: 0.6 },
