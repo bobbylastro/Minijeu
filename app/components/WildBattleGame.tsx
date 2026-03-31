@@ -165,9 +165,9 @@ const ANIMAL_EMOJIS: Record<string, string> = {
   "Leatherback Turtle": "🐢",
   "African Wild Dog": "🦊", "Black Mamba": "🐍", "Mountain Lion": "🦁",
   "Nile Monitor": "🦎", "Walrus": "🦭", "Tiger Shark": "🦈",
-  "Lynx": "🐈", "Mandrill": "🐒", "Snow Leopard": "🐆", "Grizzly Bear": "🐻",
+  "Lynx": "🐈", "Mandrill": "🐒", "Snow Leopard": "🐆",
   "Bison": "🦬", "Black Bear": "🐻", "Caiman": "🐊", "Gaboon Viper": "🐍",
-  "Bobcat": "🐈", "Baboon": "🐒", "Harpy Eagle": "🦅", "American Alligator": "🐊",
+  "Bobcat": "🐈‍⬛", "Baboon": "🐒", "Harpy Eagle": "🦅", "American Alligator": "🐊",
   "North American Porcupine": "🦔", "Puma": "🦁", "Monitor Lizard": "🦎",
 };
 
