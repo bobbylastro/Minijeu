@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CityMixGame from "@/components/CityMixGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "CityMix – Guess city population game",
@@ -97,6 +99,25 @@ export default function CityMixPage() {
           <p>
             Jump into the game now and see how close you can get to the perfect score.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/citymix-rules">📖 Full rules and how to play CityMix →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is CityMix free to play?",
+              a: "Yes, CityMix is completely free. No download or account needed — jump straight in from your browser on desktop or mobile.",
+            },
+            {
+              q: "How are points scored in CityMix?",
+              a: "Comparison rounds award 100 points for the correct pick. Estimation rounds award points based on how close your population guess is to the real figure — the closer, the more points. Maximum per round is 1,000 points, total maximum 10,000 across 10 rounds.",
+            },
+            {
+              q: "Can I play CityMix in multiplayer?",
+              a: "Yes — CityMix supports real-time multiplayer. Both players face the same cities and questions generated from a shared seed for fair competition.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/citymix" />

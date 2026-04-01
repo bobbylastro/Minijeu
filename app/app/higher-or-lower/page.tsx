@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import HigherOrLowerGame from "@/components/HigherOrLowerGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Higher or Lower Countries Game – Compare stats online",
@@ -100,6 +102,25 @@ export default function HigherOrLowerPage() {
             gameplay.
           </p>
           <p>Try it now and see how many correct answers you can get.</p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/higher-or-lower-rules">📖 Full rules and how to play Higher or Lower →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is Higher or Lower free to play?",
+              a: "Yes, completely free. No account or download required — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "Which statistics are used in Higher or Lower?",
+              a: "The game compares countries across multiple metrics including population, GDP, land area, coastline length and life expectancy. The metric changes each round to keep the game varied and unpredictable.",
+            },
+            {
+              q: "Can I play Higher or Lower with a friend?",
+              a: "Yes — Higher or Lower supports real-time multiplayer. Both players answer the same 10 questions in parallel, powered by a shared seed for fair competition.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/higher-or-lower" />

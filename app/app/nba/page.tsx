@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import NBAQuizGame from "@/components/NBAQuizGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "NBA Quiz – Salaries, contracts and trivia online",
@@ -75,6 +77,25 @@ export default function NBAPage() {
             knowledge. You&apos;ll discover data on contracts, salaries, performances and
             franchises. Even the most dedicated fans can learn something new with every session.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/nba-rules">📖 Full rules and how to play NBAQuiz →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is NBAQuiz free to play?",
+              a: "Yes, NBAQuiz is completely free. No registration, download or payment required — open your browser and play immediately on desktop or mobile.",
+            },
+            {
+              q: "What types of questions appear in NBAQuiz?",
+              a: "NBAQuiz has 10 rounds mixing five types: general trivia, arena photo identification, contract value sliders, salary comparisons between two players, and peak season estimation. Each mode tests a different facet of your basketball knowledge.",
+            },
+            {
+              q: "How do the slider rounds work?",
+              a: "Slider rounds ask you to estimate a numerical value — a player's contract or salary. Points are awarded based on proximity: the closer your guess, the higher your score. A perfect answer earns 100 points; you don't need to be exact.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/nba" />

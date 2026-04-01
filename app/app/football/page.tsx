@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import FootballQuizGame from "@/components/FootballQuizGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Football Quiz – Trivia, transfers and stadiums online",
@@ -77,6 +79,25 @@ export default function FootballPage() {
             don&apos;t always know. It&apos;s genuinely a game where you improve with every
             session.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/football-rules">📖 Full rules and how to play FootballQuiz →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is FootballQuiz free to play?",
+              a: "Yes, FootballQuiz is completely free. No account, download or payment required — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How many rounds are in a FootballQuiz game?",
+              a: "Each game has 10 rounds mixing five types: trivia questions, stadium photo identification, transfer fee sliders, salary comparisons and peak season estimation. Each correct answer is worth up to 100 points for a maximum of 1,000 points.",
+            },
+            {
+              q: "Can I play FootballQuiz against a friend?",
+              a: "Yes — FootballQuiz supports real-time multiplayer. Both players see the same 10 questions generated from a shared seed. If no opponent is found within 30 seconds, a bot steps in automatically so you never wait too long.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/football" />

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Animal Games — Wildlife Quizzes & Nature Trivia Online",
@@ -127,6 +128,21 @@ export default function AnimalsPage() {
               who knows their wildlife better after ten rounds. If no opponent is found within
               30 seconds, a bot opponent steps in so you never wait too long.
             </p>
+
+            <FAQ items={[
+              {
+                q: "Is Wild Battle free to play?",
+                a: "Yes, Wild Battle is completely free. No account or download required — play in your browser on desktop or mobile.",
+              },
+              {
+                q: "Are the animal battle outcomes based on real biology?",
+                a: "Yes — every battle result in Wild Battle is grounded in documented animal behaviour and comparative biology. After each round a short explanation reveals the science behind the outcome.",
+              },
+              {
+                q: "Does Wild Battle support multiplayer?",
+                a: "Yes — Wild Battle supports real-time multiplayer. Both players see the same questions powered by a shared seed. If no opponent is found within 30 seconds, a bot steps in automatically.",
+              },
+            ]} />
           </div>
 
         </div>

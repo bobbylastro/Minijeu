@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import WhatCameFirstGame from "@/components/WhatCameFirstGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "What came first quiz: history, tech & culture game",
@@ -73,6 +75,25 @@ export default function WCFPage() {
             mix of topics. What Came First? is designed to be both educational and entertaining,
             making it easy to learn something new while having fun.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/wcf-rules">📖 Full rules and how to play WhatCameFirst? →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is WhatCameFirst? free to play?",
+              a: "Yes, completely free. No account or download needed — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "What topics does WhatCameFirst? cover?",
+              a: "Events span four domains: Sports (records, tournaments, historic moments), Technology (inventions, product launches, milestones), History (treaties, discoveries, political events) and Pop culture (album releases, films, iconic moments).",
+            },
+            {
+              q: "Can I play WhatCameFirst? against someone?",
+              a: "Yes — WhatCameFirst? supports real-time multiplayer. Both players see the same event pairs powered by a shared seed. If no opponent is found within 30 seconds, a bot steps in automatically.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/wcf" />

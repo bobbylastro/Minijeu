@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import FoodOriginGame from "@/components/FoodOriginGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Food Origins Game – Guess the country behind the dish",
@@ -102,6 +104,25 @@ export default function FoodPage() {
             selection, so there&apos;s always a new challenge waiting.
           </p>
           <p>How many dishes can you place correctly? Start playing and find out.</p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/food-rules">📖 Full rules and how to play Food Origins →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is Food Origins free to play?",
+              a: "Yes, Food Origins is completely free. No account or download required — play directly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How many dishes are in Food Origins?",
+              a: "Food Origins features 180+ dishes from every continent, spanning Africa, Asia, Europe, the Americas and Oceania. Each game randomly selects 10 dishes so no two sessions are exactly the same.",
+            },
+            {
+              q: "Can I play Food Origins in multiplayer?",
+              a: "Yes — Food Origins supports real-time multiplayer. Both players receive the same 10 dishes in the same order, seeded for fairness, so the outcome depends purely on geography knowledge.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/food" />

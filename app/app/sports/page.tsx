@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Sports Games — Football & NBA Quizzes",
@@ -144,6 +145,21 @@ export default function SportsPage() {
             powered by a shared seed for fairness. Submit your answers, wait for your opponent,
             and see who comes out on top after ten rounds.
           </p>
+
+          <FAQ items={[
+            {
+              q: "Are the Sports games on Ultimate Playground free?",
+              a: "Yes, all three sports games — FootballQuiz, NBAQuiz and CareerOrder — are completely free to play. No account, download or payment is required.",
+            },
+            {
+              q: "Do the Sports games support multiplayer?",
+              a: "Yes, all three games support real-time multiplayer. Both players receive the same questions powered by a shared seed, ensuring fair competition. If no opponent is found within 30 seconds, a bot steps in.",
+            },
+            {
+              q: "How often is the sports content updated?",
+              a: "New questions, players and data are added regularly to keep the content fresh and relevant to current seasons and transfers.",
+            },
+          ]} />
         </div>
 
       </div>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Culture Games — History & Pop Culture Quizzes",
@@ -154,6 +155,21 @@ export default function CulturePage() {
             see the same event pairs, race the same timer and accumulate points in real time.
             A great way to settle once and for all who really knows their history.
           </p>
+
+          <FAQ items={[
+            {
+              q: "Are the Culture games free to play?",
+              a: "Yes, all Culture games — WhatCameFirst?, 5 Clues, Origins Quiz and Who's Richer? — are completely free. No account, download or payment needed.",
+            },
+            {
+              q: "What topics do the Culture games cover?",
+              a: "The Culture category spans history, technology, sports milestones, pop culture, world geography, celebrity wealth and famous personalities. Each game focuses on a different dimension of cultural knowledge.",
+            },
+            {
+              q: "Do the Culture games support multiplayer?",
+              a: "Yes, all Culture games support real-time multiplayer. Both players see the same questions generated from a shared seed for fair competition.",
+            },
+          ]} />
         </div>
 
       </div>

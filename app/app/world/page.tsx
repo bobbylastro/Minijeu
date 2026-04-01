@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "World Games — Geography & City Challenges",
@@ -146,6 +147,21 @@ export default function WorldPage() {
             questions thanks to a shared seed, so the competition is always fair. Race to out-guess
             your opponent and claim the top score.
           </p>
+
+          <FAQ items={[
+            {
+              q: "Are the World games free to play?",
+              a: "Yes, CityMix, Higher or Lower and City Mapper are all completely free. No account or download required — play instantly in any browser on desktop or mobile.",
+            },
+            {
+              q: "What geography topics do the World games cover?",
+              a: "The three games cover different areas: city population sizes and comparisons (CityMix), country statistics like GDP, area and life expectancy (Higher or Lower), and visual city-to-country mapping (City Mapper).",
+            },
+            {
+              q: "Do the World games support multiplayer?",
+              a: "Yes — all three World games support real-time multiplayer. Both players face the same questions from a shared seed, so the result is always decided by knowledge, not luck.",
+            },
+          ]} />
         </div>
 
       </div>

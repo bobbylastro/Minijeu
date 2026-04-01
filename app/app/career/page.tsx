@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CareerOrderGame from "@/components/CareerOrderGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Football career quiz: put clubs in order",
@@ -73,6 +75,25 @@ export default function CareerPage() {
             designed for players who enjoy testing their football knowledge and improving with
             every game. The more you play, the sharper your memory becomes.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/career-rules">📖 Full rules and how to play CareerOrder →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "How does CareerOrder work?",
+              a: "Each round shows a footballer and a pool of clubs they played for. Tap clubs to place them in numbered slots in chronological order. Tap a placed club to return it to the pool. After submitting, correct positions turn green and incorrect ones turn red with the right answer shown.",
+            },
+            {
+              q: "How is the CareerOrder score calculated?",
+              a: "Each round scores up to 100 points based on the number of clubs placed in the correct position. Across 5 rounds the maximum score is 500 points.",
+            },
+            {
+              q: "Can I play CareerOrder against someone?",
+              a: "Yes — CareerOrder supports real-time multiplayer. Both players receive the same sequence of players, powered by a shared seed for fair competition.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/career" />

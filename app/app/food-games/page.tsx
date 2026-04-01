@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Food Games — Cuisine & Origin Quizzes",
@@ -130,6 +131,21 @@ export default function FoodGamesPage() {
             in the same order — seeded for fairness — so the better geography knowledge wins.
             Who has the broader culinary world map? Find out.
           </p>
+
+          <FAQ items={[
+            {
+              q: "Is Food Origins free to play?",
+              a: "Yes, completely free. No account or download required — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How many dishes are in Food Origins?",
+              a: "Food Origins features 180+ dishes from every continent — from well-known classics like Sushi, Pizza and Tacos to lesser-known gems like Bhutanese Ema Datshi or Kazakhstani Beshbarmak. Each session randomly selects 10 dishes.",
+            },
+            {
+              q: "Does Food Origins support multiplayer?",
+              a: "Yes — Food Origins supports real-time multiplayer. Both players receive the same 10 dishes in the same order, seeded for fairness, so the better geography knowledge always wins.",
+            },
+          ]} />
         </div>
 
       </div>

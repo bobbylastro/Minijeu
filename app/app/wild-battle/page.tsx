@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import WildBattleGame from "@/components/WildBattleGame";
 import RelatedGames from "@/components/RelatedGames";
+import FAQ from "@/components/FAQ";
 
 const BASE = "https://ultimate-playground.com";
 
@@ -46,36 +48,6 @@ export default function WildBattlePage() {
             { "@type": "ListItem", "position": 3, "name": "Wild Battle", "item": `${BASE}/wild-battle` },
           ],
         },
-        {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          "mainEntity": [
-            {
-              "@type": "Question",
-              "name": "How does Wild Battle work?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Wild Battle has 10 rounds mixing three formats: animal face-offs where you pick the winner, multiple-choice wildlife trivia, and slider rounds where you estimate wild animal facts. Build a streak for score multipliers."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "Can I play Wild Battle multiplayer?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Yes — Wild Battle supports real-time multiplayer. Both players see the same questions powered by a shared seed. If no opponent is found within 30 seconds, you play against a bot."
-              }
-            },
-            {
-              "@type": "Question",
-              "name": "How is scoring calculated in Wild Battle?",
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": "Correct battle and trivia answers earn 100 points. Slider rounds award up to 100 points based on proximity to the correct answer. In solo mode, streaks of 5+ grant a ×1.5 multiplier and 10+ grant ×2."
-              }
-            }
-          ]
-        }
       ]} />
       <WildBattleGame />
       <section className="game-seo-section">
@@ -114,6 +86,25 @@ export default function WildBattlePage() {
             cobra, or how a mantis shrimp strikes harder than most predators twice its size.
             You&apos;ll walk away knowing things you never expected to know.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/wild-battle-rules">📖 Full rules and how to play Wild Battle →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "How does Wild Battle work?",
+              a: "Wild Battle has 10 rounds mixing three formats: animal face-offs where you pick the winner, multiple-choice wildlife trivia, and slider rounds where you estimate wild animal facts. Build a streak for score multipliers.",
+            },
+            {
+              q: "Can I play Wild Battle multiplayer?",
+              a: "Yes — Wild Battle supports real-time multiplayer. Both players see the same questions powered by a shared seed. If no opponent is found within 30 seconds, you play against a bot.",
+            },
+            {
+              q: "How is scoring calculated in Wild Battle?",
+              a: "Correct battle and trivia answers earn 100 points. Slider rounds award up to 100 points based on proximity to the correct answer. In solo mode, streaks of 5+ grant a ×1.5 multiplier and 10+ grant ×2.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/wild-battle" />

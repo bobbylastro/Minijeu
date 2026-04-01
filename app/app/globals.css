@@ -3008,6 +3008,62 @@
   color: #7c3aed;
 }
 
+/* ── FAQ block ───────────────────────────────────────────────────────────── */
+.faq-block {
+  margin-top: 8px;
+}
+
+.faq-item {
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 2px 0;
+}
+
+.faq-item__q {
+  cursor: pointer;
+  padding: 13px 4px 13px 0;
+  font-size: 13px;
+  font-weight: 600;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  user-select: none;
+}
+
+.faq-item__q::-webkit-details-marker { display: none; }
+
+.faq-item__q::after {
+  content: '+';
+  font-size: 18px;
+  color: #7c3aed;
+  flex-shrink: 0;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.faq-item[open] > .faq-item__q::after {
+  content: '−';
+}
+
+/* Dark context (game pages inside .game-seo-section) */
+.game-seo-section .faq-item {
+  border-top-color: rgba(255,255,255,0.07);
+}
+
+.game-seo-section .faq-item__q {
+  color: rgba(255,255,255,0.85);
+}
+
+/* Light context (category pages inside .cat-page__seo) */
+.cat-page__seo .faq-item {
+  border-top-color: rgba(0,0,0,0.08);
+}
+
+.cat-page__seo .faq-item__q {
+  color: #1e1b4b;
+}
+
 /* ── Related games section ────────────────────────────────────────────────── */
 .related-games {
   background: #060614;
@@ -4337,4 +4393,295 @@
     justify-content: flex-end;
     flex-wrap: wrap;
   }
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   RULES PAGE — /[game]-rules
+══════════════════════════════════════════════════════════════════════════════ */
+
+.rules-page {
+  min-height: 100vh;
+  background: #f8f9ff;
+  padding-bottom: 80px;
+}
+
+.rules-page__breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 16px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-size: 12px;
+  color: #94a3b8;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__breadcrumb a {
+  color: #7c3aed;
+  text-decoration: none;
+}
+
+.rules-page__breadcrumb a:hover { text-decoration: underline; }
+
+.rules-page__hero {
+  background: linear-gradient(135deg, #1e1b4b 0%, #3730a3 100%);
+  padding: 52px 24px 48px;
+  text-align: center;
+}
+
+.rules-page__hero-game {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 12px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__hero-title {
+  font-size: clamp(24px, 5vw, 40px);
+  font-weight: 800;
+  color: white;
+  line-height: 1.2;
+  margin-bottom: 14px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__hero-desc {
+  font-size: 15px;
+  color: rgba(255,255,255,0.65);
+  max-width: 520px;
+  margin: 0 auto 28px;
+  line-height: 1.7;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: white;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 13px 32px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-family: var(--font-sora), sans-serif;
+  transition: opacity 0.15s, transform 0.15s;
+  box-shadow: 0 4px 16px rgba(124,58,237,0.35);
+}
+
+.rules-page__play-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+.rules-page__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.rules-page__section {
+  background: white;
+  border-radius: 16px;
+  padding: 28px 32px;
+  border: 1px solid rgba(0,0,0,0.07);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.rules-page__section-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #18103a;
+  margin: 0 0 18px;
+  font-family: var(--font-sora), sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rules-page__section-title::before {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 15px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.rules-page__p {
+  font-size: 14px;
+  color: #475569;
+  line-height: 1.8;
+  margin: 0 0 10px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__p:last-child { margin-bottom: 0; }
+
+.rules-page__steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.rules-page__step {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.rules-page__step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__step-body { flex: 1; }
+
+.rules-page__step-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #18103a;
+  margin-bottom: 3px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__step-desc {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.7;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__scoring {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rules-page__score-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 16px;
+  background: #f8f9ff;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.rules-page__score-label {
+  font-size: 13px;
+  color: #475569;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__score-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7c3aed;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__tips {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rules-page__tip {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__tip::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #7c3aed;
+  font-weight: 700;
+}
+
+.rules-page__cta-wrap {
+  text-align: center;
+  padding: 36px 28px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.06), rgba(59,130,246,0.06));
+  border-radius: 16px;
+  border: 1px dashed rgba(124,58,237,0.25);
+}
+
+.rules-page__cta-text {
+  font-size: 16px;
+  font-weight: 700;
+  color: #18103a;
+  margin: 0 0 18px;
+  font-family: var(--font-sora), sans-serif;
+}
+
+.rules-page__game-link {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-family: var(--font-sora), sans-serif;
+  transition: color 0.15s;
+}
+
+.rules-page__game-link:hover { color: #7c3aed; }
+
+/* Link from game SEO section → rules page */
+.game-seo-section__rules-link {
+  margin-top: 28px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.game-seo-section__rules-link a {
+  font-size: 13px;
+  color: rgba(124,58,237,0.85);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: var(--font-sora), sans-serif;
+  transition: color 0.15s;
+}
+
+.game-seo-section__rules-link a:hover {
+  color: #3b82f6;
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .rules-page__section { padding: 20px 18px; }
+  .rules-page__hero    { padding: 40px 20px 36px; }
+  .rules-page__inner   { padding: 24px 16px 0; gap: 16px; }
 }

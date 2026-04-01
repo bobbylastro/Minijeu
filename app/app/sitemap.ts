@@ -37,6 +37,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Animals games ─────────────────────────────────────────────────────────
     { url: `${BASE}/wild-battle`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
+    // ── Rules pages ───────────────────────────────────────────────────────────
+    { url: `${BASE}/football-rules`,        lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/nba-rules`,             lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/career-rules`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/wild-battle-rules`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/food-rules`,            lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/origins-rules`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/higher-or-lower-rules`, lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/citymix-rules`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/city-origins-rules`,    lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/wealth-rules`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/five-clues-rules`,      lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/wcf-rules`,             lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+
     // ── Other public pages ────────────────────────────────────────────────────
     { url: `${BASE}/leaderboard`, lastModified: NOW, changeFrequency: "daily", priority: 0.6 },
 

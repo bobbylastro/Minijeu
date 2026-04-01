@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import FiveCluesGame from "@/components/FiveCluesGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "5 Clues — Who Am I? Quiz Game",
@@ -121,6 +123,25 @@ export default function FiveCluesPage() {
             on desktop or mobile. A new set of 10 people every game — never the same
             combination twice.
           </p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/five-clues-rules">📖 Full rules and how to play 5 Clues →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is 5 Clues free to play?",
+              a: "Yes, completely free. No account or download needed — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How does the scoring work in 5 Clues?",
+              a: "You earn more points for guessing early: 500 points if you identify the person on the first clue, down to 100 for the fifth. Three wrong guesses or exhausting all 5 clues without the right answer gives 0 for that round.",
+            },
+            {
+              q: "Does 5 Clues accept spelling mistakes?",
+              a: "Yes — 5 Clues uses fuzzy matching to tolerate typos, missing accents and common nickname variations. 'Ronaldo', 'ronaldu' and 'CR7' are all accepted.",
+            },
+          ]} />
         </div>
       </section>
 

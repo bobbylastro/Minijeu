@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import OriginsGame from "@/components/OriginsGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Origins Quiz – Where was it invented?",
@@ -99,6 +101,25 @@ export default function OriginsPage() {
             Each session is randomised so there is always a new challenge waiting.
           </p>
           <p>How many origins can you get right? Start playing and find out.</p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/origins-rules">📖 Full rules and how to play Origins Quiz →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is Origins Quiz free to play?",
+              a: "Yes, completely free. No account or download needed — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "What categories does Origins Quiz cover?",
+              a: "Origins Quiz spans four categories: Sports (Tennis, Rugby, Sumo…), Dance & Music (Tango, Flamenco, Reggae…), Traditions & Festivals (Halloween, Diwali, Carnival…) and Inventions & Culture (Chess, Lego, Yoga, Origami…). Over 60 items from every continent.",
+            },
+            {
+              q: "How long does a game of Origins Quiz last?",
+              a: "Each game is 10 rounds with a 25-second timer per round, so a full session takes around 5 to 6 minutes.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/origins" />

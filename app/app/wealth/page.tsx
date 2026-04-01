@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import WealthGame from "@/components/WealthGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Who's Richer? — Celebrity Wealth Quiz",
@@ -103,6 +105,25 @@ export default function WealthPage() {
             knowledge of celebrity fortunes.
           </p>
           <p>How many billionaires can you rank correctly? Start playing now.</p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/wealth-rules">📖 Full rules and how to play Who&apos;s Richer? →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is Who's Richer? free to play?",
+              a: "Yes, completely free. No account, no download required — play instantly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How many celebrities are in Who's Richer?",
+              a: "The game features 80+ well-known personalities from six categories: Tech billionaires, Business leaders, Entertainment stars, Music artists, Sports legends and Royals.",
+            },
+            {
+              q: "What happens when I get one wrong in solo mode?",
+              a: "In solo mode, one wrong answer ends your run. The goal is to build the longest streak possible. Answer 5 in a row for a ×1.5 multiplier, 10 in a row for ×2.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/wealth" />

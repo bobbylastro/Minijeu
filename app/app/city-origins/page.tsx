@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import CityOriginGame from "@/components/CityOriginGame";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
+import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "City Mapper – Find the country behind the city",
@@ -95,6 +97,25 @@ export default function CityOriginsPage() {
             fresh challenge to take on.
           </p>
           <p>How many cities can you correctly place on the map? Start playing and find out.</p>
+
+          <div className="game-seo-section__rules-link">
+            <Link href="/city-origins-rules">📖 Full rules and how to play City Mapper →</Link>
+          </div>
+
+          <FAQ items={[
+            {
+              q: "Is City Mapper free to play?",
+              a: "Yes, completely free. No account or download required — play directly in your browser on desktop or mobile.",
+            },
+            {
+              q: "How many cities are in City Mapper?",
+              a: "City Mapper features 100 cities spanning 68 countries and every continent — from megacities like Tokyo, Delhi and São Paulo to regional capitals and cultural hubs.",
+            },
+            {
+              q: "Can I play City Mapper against someone?",
+              a: "Yes — City Mapper supports real-time multiplayer. Both players see the same 10 cities in the same order, generated from a shared seed for fairness.",
+            },
+          ]} />
         </div>
       </section>
       <RelatedGames currentSlug="/city-origins" />
