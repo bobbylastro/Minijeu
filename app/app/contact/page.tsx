@@ -40,7 +40,7 @@ export default function ContactPage() {
             <div className="contact-success__icon">✉️</div>
             <h2 className="contact-success__title">Message sent!</h2>
             <p className="contact-success__body">
-              Thanks for reaching out. We'll get back to you as soon as possible.
+              Thanks for reaching out. We&apos;ll get back to you as soon as possible.
             </p>
             <button className="btn-outline" onClick={() => { setSent(false); setForm({ name: "", email: "", subject: "", message: "" }); }}>
               Send another message
@@ -50,7 +50,7 @@ export default function ContactPage() {
           <>
             <div className="contact-card__header">
               <h1 className="contact-card__title">Contact us</h1>
-              <p className="contact-card__subtitle">A question, a suggestion, a bug? We're listening.</p>
+              <p className="contact-card__subtitle">A question, a suggestion, a bug? We&apos;re listening.</p>
             </div>
 
             <form className="contact-form" onSubmit={handleSubmit}>

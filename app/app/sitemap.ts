@@ -54,6 +54,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // ── Other public pages ────────────────────────────────────────────────────
     { url: `${BASE}/leaderboard`, lastModified: NOW, changeFrequency: "daily", priority: 0.6 },
 
+    // ── Gaming ────────────────────────────────────────────────────────────────
+    { url: `${BASE}/gaming`,                lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
+    { url: `${BASE}/game-tournament`,       lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/game-tournament-rules`, lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+
+    // ── Blog ──────────────────────────────────────────────────────────────────
+    { url: `${BASE}/blog`,                                                    lastModified: NOW, changeFrequency: "weekly",  priority: 0.80 },
+    { url: `${BASE}/blog/best-online-geography-quiz-games`,                   lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/best-online-football-quiz-games`,                    lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/online-trivia-games-to-play-with-friends`,           lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+
     // noindex pages (contact, privacy, terms, legal, cookies) intentionally excluded
   ];
 }

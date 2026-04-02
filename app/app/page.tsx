@@ -118,6 +118,16 @@ const ANIMALS_GAMES: GameDef[] = [
   },
 ];
 
+const GAMING_GAMES: GameDef[] = [
+  {
+    slug: "/game-tournament",
+    emoji: "🏆",
+    title: "Gaming Tournament",
+    desc: "32 legendary video games battle it out in a 5-round bracket. Pick your favorites and crown your all-time #1.",
+    tags: ["Solo"],
+  },
+];
+
 // ─── GameCard ──────────────────────────────────────────────────────────────────
 function GameCard({ game }: { game: GameDef }) {
   if (game.soon) {
@@ -157,6 +167,7 @@ const CATEGORY_SLUGS: Record<string, string> = {
   Culture: "/culture",
   Food:    "/food-games",
   Animals: "/animals",
+  Gaming:  "/gaming",
 };
 
 // ─── CategorySection ───────────────────────────────────────────────────────────
@@ -239,6 +250,7 @@ export default function HomePage() {
           <CategorySection icon="🧠" name="Culture" games={CULTURE_GAMES} />
           <CategorySection icon="🍽️" name="Food"    games={FOOD_GAMES} />
           <CategorySection icon="🦁" name="Animals" games={ANIMALS_GAMES} />
+          <CategorySection icon="🎮" name="Gaming"  games={GAMING_GAMES} />
         </main>
 
         <section className="seo-section">

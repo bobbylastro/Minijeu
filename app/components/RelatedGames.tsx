@@ -34,7 +34,11 @@ const ANIMALS: GameLink[] = [
   { slug: "/wild-battle", emoji: "🦁", title: "Wild Battle", desc: "Animal face-offs, trivia & wild record estimation." },
 ];
 
-const ALL_CATEGORIES = [WORLD, SPORTS, CULTURE, FOOD, ANIMALS];
+const GAMING: GameLink[] = [
+  { slug: "/game-tournament", emoji: "🏆", title: "Gaming Tournament", desc: "32 iconic games, 5 rounds. Crown your all-time favourite." },
+];
+
+const ALL_CATEGORIES = [WORLD, SPORTS, CULTURE, FOOD, ANIMALS, GAMING];
 
 function findRelated(currentSlug: string): { label: string; games: GameLink[] } {
   for (const cat of ALL_CATEGORIES) {
@@ -44,8 +48,9 @@ function findRelated(currentSlug: string): { label: string; games: GameLink[] } 
         const label =
           cat === WORLD   ? "More World games" :
           cat === SPORTS  ? "More Sports games" :
-          cat === CULTURE  ? "More Culture games" :
-          cat === ANIMALS  ? "More Animals games" :
+          cat === CULTURE ? "More Culture games" :
+          cat === ANIMALS ? "More Animals games" :
+          cat === GAMING  ? "More Gaming games" :
           "More Food games";
         return { label, games: others };
       }

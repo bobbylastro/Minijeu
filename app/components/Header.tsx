@@ -17,6 +17,7 @@ export default function Header() {
   const [cultureOpen, setCultureOpen] = useState(false);
   const [foodOpen, setFoodOpen]       = useState(false);
   const [animalsOpen, setAnimalsOpen] = useState(false);
+  const [gamingOpen, setGamingOpen]   = useState(false);
   const [menuOpen, setMenuOpen]       = useState(false);
   const [authOpen, setAuthOpen]       = useState(false);
   const [mobileOpen, setMobileOpen]   = useState<string | null>(null);
@@ -26,6 +27,7 @@ export default function Header() {
   const cultureRef = useRef<HTMLDivElement>(null);
   const foodRef    = useRef<HTMLDivElement>(null);
   const animalsRef = useRef<HTMLDivElement>(null);
+  const gamingRef  = useRef<HTMLDivElement>(null);
 
   // Close dropdowns on outside click (desktop)
   useEffect(() => {
@@ -35,6 +37,7 @@ export default function Header() {
       if (cultureRef.current && !cultureRef.current.contains(e.target as Node)) setCultureOpen(false);
       if (foodRef.current    && !foodRef.current.contains(e.target as Node))    setFoodOpen(false);
       if (animalsRef.current && !animalsRef.current.contains(e.target as Node)) setAnimalsOpen(false);
+      if (gamingRef.current  && !gamingRef.current.contains(e.target as Node))  setGamingOpen(false);
     };
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
@@ -57,11 +60,13 @@ export default function Header() {
   const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
   const animalsRoutes = ["/wild-battle"];
+  const gamingRoutes  = ["/game-tournament"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
   const isCultureActive = cultureRoutes.includes(pathname);
   const isFoodActive    = foodRoutes.includes(pathname);
   const isAnimalsActive = animalsRoutes.includes(pathname);
+  const isGamingActive  = gamingRoutes.includes(pathname);
 
   return (
     <>
@@ -107,7 +112,7 @@ export default function Header() {
                       <div className="site-header__dropdown-icon">🔀</div>
                       <div>
                         <div className="site-header__dropdown-name">CareerOrder</div>
-                        <div className="site-header__dropdown-desc">Sort a player's clubs in order</div>
+                        <div className="site-header__dropdown-desc">Sort a player&apos;s clubs in order</div>
                       </div>
                     </Link>
                   </div>
@@ -224,6 +229,36 @@ export default function Header() {
                   </div>
                   <div className="site-header__dropdown-viewall">
                     <Link href="/animals" onClick={() => setAnimalsOpen(false)}>View all Animals games →</Link>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Gaming dropdown */}
+            <div
+              ref={gamingRef}
+              className={`site-header__nav-item${gamingOpen ? " is-open" : ""}${isGamingActive ? " is-active" : ""}`}
+              onClick={() => setGamingOpen(o => !o)}
+              role="button" aria-haspopup="true" aria-expanded={gamingOpen}
+            >
+              🎮 Gaming
+              <svg className="site-header__chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true">
+                <path d="M1 1l4 4 4-4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              {gamingOpen && (
+                <div className="site-header__dropdown">
+                  <div className="site-header__dropdown-section">
+                    <div className="site-header__dropdown-label">Gaming</div>
+                    <Link href="/game-tournament" className={`site-header__dropdown-item${pathname === "/game-tournament" ? " is-active" : ""}`} onClick={() => setGamingOpen(false)}>
+                      <div className="site-header__dropdown-icon">🏆</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Gaming Tournament</div>
+                        <div className="site-header__dropdown-desc">32 games, 5 rounds, 1 champion</div>
+                      </div>
+                    </Link>
+                  </div>
+                  <div className="site-header__dropdown-viewall">
+                    <Link href="/gaming" onClick={() => setGamingOpen(false)}>View all Gaming games →</Link>
                   </div>
                 </div>
               )}
@@ -376,6 +411,25 @@ export default function Header() {
               <div className="mobile-menu__sub">
                 <Link href="/animals" className="mobile-menu__sub-cat" onClick={closeMenu}>🦁 All Animals games →</Link>
                 <Link href="/wild-battle" className={`mobile-menu__sub-item${pathname === "/wild-battle" ? " is-active" : ""}`} onClick={closeMenu}><span>🦁</span> Wild Battle</Link>
+              </div>
+            )}
+
+            {/* Gaming */}
+            <div
+              className={`mobile-menu__cat${isGamingActive ? " is-active" : ""}${mobileOpen === "gaming" ? " is-open" : ""}`}
+              onClick={() => toggleMobile("gaming")}
+            >
+              <span className="mobile-menu__cat-icon">🎮</span>
+              <div className="mobile-menu__cat-body">
+                <div className="mobile-menu__cat-name">Gaming</div>
+                <div className="mobile-menu__cat-desc">Video game tournaments</div>
+              </div>
+              <span className="mobile-menu__cat-arrow">{mobileOpen === "gaming" ? "⌄" : "›"}</span>
+            </div>
+            {mobileOpen === "gaming" && (
+              <div className="mobile-menu__sub">
+                <Link href="/gaming" className="mobile-menu__sub-cat" onClick={closeMenu}>🎮 All Gaming games →</Link>
+                <Link href="/game-tournament" className={`mobile-menu__sub-item${pathname === "/game-tournament" ? " is-active" : ""}`} onClick={closeMenu}><span>🏆</span> Gaming Tournament</Link>
               </div>
             )}
 

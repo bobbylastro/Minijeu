@@ -75,7 +75,7 @@ export default function CityOriginsPage() {
             once to preview its name, then tap again to confirm your answer.
           </p>
 
-          <h2>A tour of the world's great cities</h2>
+          <h2>A tour of the world&apos;s great cities</h2>
           <p>
             From megacities like Shanghai, Delhi, and New York to regional capitals and cultural
             hubs like Nairobi, Santiago, or Bangkok — City Mapper covers the full spectrum of

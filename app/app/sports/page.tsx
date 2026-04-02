@@ -132,7 +132,7 @@ export default function SportsPage() {
             challenge what you know.
           </p>
 
-          <h2>CareerOrder — rebuild a player's career timeline</h2>
+          <h2>CareerOrder — rebuild a player&apos;s career timeline</h2>
           <p>
             A footballer&apos;s clubs are shuffled into a random order. Your job is to drag and
             drop the club badges back into chronological sequence. CareerOrder rewards deep

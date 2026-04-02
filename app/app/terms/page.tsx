@@ -77,7 +77,7 @@ export default function TermsPage() {
               <li>Inaccuracies in game data</li>
             </ul>
             <p>
-              The service is provided "as is" without any warranty of any kind,
+              The service is provided &quot;as is&quot; without any warranty of any kind,
               express or implied.
             </p>
           </div>

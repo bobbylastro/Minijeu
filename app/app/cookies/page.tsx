@@ -33,7 +33,7 @@ export default function CookiesPage() {
             <p>
               Cookies are small text files stored on your device when you visit a website.
               They help websites remember information about your visit, such as your
-              preferences or consent choices, so you don't have to re-enter them each time.
+              preferences or consent choices, so you don&apos;t have to re-enter them each time.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ export default function CookiesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Google's Privacy Policy
+                  Google&apos;s Privacy Policy
                 </a>
                 .
               </li>
@@ -100,7 +100,7 @@ export default function CookiesPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Google's Privacy Policy
+                  Google&apos;s Privacy Policy
                 </a>
                 .
               </li>
@@ -112,7 +112,7 @@ export default function CookiesPage() {
           <h2 className="legal-section__title">5. How to Manage Your Preferences</h2>
           <div className="legal-section__body">
             <p>
-              You can change your cookie preference at any time by clearing your browser's
+              You can change your cookie preference at any time by clearing your browser&apos;s
               local storage and reloading the page — the cookie banner will reappear.
             </p>
             <p>You can also manage or disable cookies directly in your browser settings:</p>

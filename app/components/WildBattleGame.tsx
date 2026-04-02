@@ -579,11 +579,30 @@ export default function WildBattleGame() {
   }
 
   const qLabel =
-    currentQ.type === "battle"     ? "🥊 Who wins the fight?" :
-    currentQ.type === "comparison" ? `${currentQ.data.questionEmoji} ${currentQ.data.questionText}` :
-    "📏 Estimate the answer";
+    currentQ.type === "battle"     ? "Who wins the fight?" :
+    currentQ.type === "comparison" ? currentQ.data.questionText :
+    currentQ.data.question;
 
   const isDuel = currentQ.type === "battle" || currentQ.type === "comparison";
+
+  // Mood badge: visual context per question type
+  const mood: { icon: string; label: string; color: string; glow: string } = (() => {
+    if (currentQ.type === "battle") {
+      return { icon: "🥊", label: "FIGHT!", color: "rgba(239,68,68,0.85)", glow: "rgba(239,68,68,0.35)" };
+    }
+    if (currentQ.type === "slider") {
+      return { icon: "📏", label: "ESTIMATE", color: "rgba(139,92,246,0.85)", glow: "rgba(139,92,246,0.35)" };
+    }
+    // comparison — derive from emoji
+    const e = currentQ.data.questionEmoji;
+    if (e === "⚡") return { icon: "⚡", label: "SPEED",      color: "rgba(234,179,8,0.85)",   glow: "rgba(234,179,8,0.35)"   };
+    if (e === "⚖️") return { icon: "⚖️", label: "WEIGHT",     color: "rgba(59,130,246,0.85)",  glow: "rgba(59,130,246,0.35)"  };
+    if (e === "🦷") return { icon: "🦷", label: "BITE FORCE", color: "rgba(249,115,22,0.85)",  glow: "rgba(249,115,22,0.35)"  };
+    if (e === "⏳") return { icon: "⏳", label: "LIFESPAN",   color: "rgba(168,85,247,0.85)",  glow: "rgba(168,85,247,0.35)"  };
+    if (e === "💪") return { icon: "💪", label: "STRENGTH",   color: "rgba(34,197,94,0.85)",   glow: "rgba(34,197,94,0.35)"   };
+    if (e === "🏊") return { icon: "🏊", label: "DEPTH",      color: "rgba(6,182,212,0.85)",   glow: "rgba(6,182,212,0.35)"   };
+    return { icon: e, label: "COMPARE", color: "rgba(249,115,22,0.85)", glow: "rgba(249,115,22,0.35)" };
+  })();
 
   return (
     <div className="wb-wrapper">
@@ -622,6 +641,10 @@ export default function WildBattleGame() {
         {/* ── DUEL (battle + comparison) ──────────────────────────── */}
         {isDuel && (
           <div className="wb-question">
+            <div className="wb-mood-badge" style={{ background: mood.color, boxShadow: `0 0 18px ${mood.glow}` }}>
+              <span className="wb-mood-badge__icon">{mood.icon}</span>
+              <span className="wb-mood-badge__label">{mood.label}</span>
+            </div>
             <div className="wb-question__label">{qLabel}</div>
             <div className="wb-battle">
               <DuelCard
@@ -656,7 +679,10 @@ export default function WildBattleGame() {
           const pctFill = ((sliderValue - min) / (max - min)) * 100;
           return (
             <div className="wb-question">
-              <div className="wb-question__label">{qLabel}</div>
+              <div className="wb-mood-badge" style={{ background: mood.color, boxShadow: `0 0 18px ${mood.glow}` }}>
+                <span className="wb-mood-badge__icon">{mood.icon}</span>
+                <span className="wb-mood-badge__label">{mood.label}</span>
+              </div>
               <div className="wb-slider">
                 <div className="wb-slider__question">{currentQ.data.question}</div>
                 <div className={`wb-slider__value-display${revealed ? " wb-slider__value-display--locked" : ""}`}>
