@@ -14,6 +14,7 @@ export const metadata: Metadata = {
       "Learn how Gaming Tournament works: 32 games drawn at random, 5 rounds of head-to-head picks, 1 champion. Full rules and guide.",
     url: `${BASE}/game-tournament-rules`,
     type: "article",
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ultimate Playground" }],
   },
 };
 

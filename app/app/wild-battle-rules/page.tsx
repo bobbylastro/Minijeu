@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn every Wild Battle game mode: battle rounds, trivia and estimation sliders. Full rules and scoring guide.",
     url: `${BASE}/wild-battle-rules`,
     type: "article",
+    images: [{ url: "/wild-battle/opengraph-image", width: 1200, height: 630, alt: "Wild Battle" }],
   },
 };
 

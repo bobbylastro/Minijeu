@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how to play City Mapper: city photo appears, find the country on the map. Full rules, map controls and scoring.",
     url: `${BASE}/city-origins-rules`,
     type: "article",
+    images: [{ url: "/city-origins/opengraph-image", width: 1200, height: 630, alt: "City Mapper" }],
   },
 };
 

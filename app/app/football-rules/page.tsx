@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Master every FootballQuiz game mode: trivia, stadiums, transfers, salaries and peak seasons. Full rules guide.",
     url: `${BASE}/football-rules`,
     type: "article",
+    images: [{ url: "/football/opengraph-image", width: 1200, height: 630, alt: "FootballQuiz" }],
   },
 };
 

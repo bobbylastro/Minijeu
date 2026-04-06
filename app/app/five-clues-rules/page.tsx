@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how 5 Clues works: progressive clues, 3 attempts, guess the person. Full rules, scoring table and tips.",
     url: `${BASE}/five-clues-rules`,
     type: "article",
+    images: [{ url: "/five-clues/opengraph-image", width: 1200, height: 630, alt: "5 Clues" }],
   },
 };
 

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how to play Food Origins: dish appears, click the map. Full rules, map controls and scoring guide.",
     url: `${BASE}/food-rules`,
     type: "article",
+    images: [{ url: "/food/opengraph-image", width: 1200, height: 630, alt: "FoodQuiz" }],
   },
 };
 

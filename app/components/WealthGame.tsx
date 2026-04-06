@@ -229,6 +229,7 @@ function CelebPhoto({ celeb, className = "", initClassName = "" }: {
         alt={celeb.name}
         className={className}
         draggable={false}
+        loading="lazy"
         onError={() => setStep(s => s + 1)}
       />
     );

@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how Who's Richer? works: duel rounds, estimation rounds, solo survival and multiplayer. Full rules and scoring guide.",
     url: `${BASE}/wealth-rules`,
     type: "article",
+    images: [{ url: "/wealth/opengraph-image", width: 1200, height: 630, alt: "Who's Richer?" }],
   },
 };
 

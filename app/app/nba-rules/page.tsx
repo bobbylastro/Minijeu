@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Master every NBAQuiz game mode: trivia, arenas, contracts, salaries and peak seasons. Full rules guide.",
     url: `${BASE}/nba-rules`,
     type: "article",
+    images: [{ url: "/nba/opengraph-image", width: 1200, height: 630, alt: "NBAQuiz" }],
   },
 };
 

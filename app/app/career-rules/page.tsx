@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn to reconstruct a footballer's career in order. Full rules, scoring and tips for CareerOrder.",
     url: `${BASE}/career-rules`,
     type: "article",
+    images: [{ url: "/career/opengraph-image", width: 1200, height: 630, alt: "CareerOrder" }],
   },
 };
 

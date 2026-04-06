@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how CityMix works: pick the larger city, then slide to guess the exact population. Full rules and scoring guide.",
     url: `${BASE}/citymix-rules`,
     type: "article",
+    images: [{ url: "/citymix/opengraph-image", width: 1200, height: 630, alt: "CityMix" }],
   },
 };
 

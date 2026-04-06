@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how to play Origins Quiz: click the country where each sport, dance or invention was born. Full rules and map guide.",
     url: `${BASE}/origins-rules`,
     type: "article",
+    images: [{ url: "/origins/opengraph-image", width: 1200, height: 630, alt: "Origins Quiz" }],
   },
 };
 

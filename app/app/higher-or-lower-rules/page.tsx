@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how to play Higher or Lower: compare two countries on population, GDP, area and more. Full rules and scoring guide.",
     url: `${BASE}/higher-or-lower-rules`,
     type: "article",
+    images: [{ url: "/higher-or-lower/opengraph-image", width: 1200, height: 630, alt: "Higher or Lower" }],
   },
 };
 

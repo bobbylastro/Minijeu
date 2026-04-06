@@ -44,14 +44,14 @@ export const metadata: Metadata = {
     description:
       "Play free online quiz and mini games — geography, sports, food culture, history and more. Challenge friends in real-time multiplayer.",
     url: BASE_URL,
-    images: [{ url: "/images/og-default.png", width: 1200, height: 630, alt: "Ultimate Playground" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ultimate Playground" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ultimate Playground — Free Online Quiz & Mini Games",
     description:
       "Geography, sports, food & culture quiz games. Solo or multiplayer, free, no download.",
-    images: ["/images/og-default.png"],
+    images: ["/opengraph-image"],
   },
   robots: { index: true, follow: true },
 };

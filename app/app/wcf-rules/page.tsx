@@ -13,6 +13,7 @@ export const metadata: Metadata = {
     description: "Learn how WhatCameFirst? works: pick the earlier event across history, tech, sports and pop culture. Full rules and scoring guide.",
     url: `${BASE}/wcf-rules`,
     type: "article",
+    images: [{ url: "/wcf/opengraph-image", width: 1200, height: 630, alt: "What Came First?" }],
   },
 };
 
