@@ -220,8 +220,7 @@ function WikiImg({ title, alt, className, imageUrl }: { title?: string; alt: str
 
 function FlagImg({ code, alt }: { code?: string; alt: string }) {
   if (!code) return null;
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img src={`https://flagcdn.com/w80/${code}.png`} alt={alt} className="ft-flag-img" loading="lazy" />;
+  return <img src={`/flags/${code}_w80.png`} alt={alt} className="ft-flag-img" loading="lazy" width={80} height={60} />;
 }
 
 // ─── Stars ──────────────────────────────────────────────────────────────────────
@@ -392,8 +391,7 @@ function MCQOptions({ options, chosen, correct, onChoice, flagOptions }: {
           <button key={i} className={cls} onClick={() => chosen === null && onChoice(i)} disabled={chosen !== null}>
             <span className="ft-option__letter">{String.fromCharCode(65 + i)}</span>
             {flagCode && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={`https://flagcdn.com/w40/${flagCode}.png`} alt="" className="ft-option__flag" loading="lazy" />
+              <img src={`/flags/${flagCode}_w40.png`} alt="" className="ft-option__flag" loading="lazy" width={40} height={30} />
             )}
             <span className="ft-option__text">{opt}</span>
           </button>

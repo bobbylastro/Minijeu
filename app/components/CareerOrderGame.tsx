@@ -341,8 +341,7 @@ function PlayerCard({ player }: { player: PlayerData }) {
       }
       <div className="cr-player-info">
         <div className="cr-player-name">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={`https://flagcdn.com/w40/${player.flagCode}.png`} alt="" className="cr-player-flag" draggable={false} />
+          <img src={`/flags/${player.flagCode}_w40.png`} alt="" className="cr-player-flag" draggable={false} width={40} height={30} />
           {player.name}
         </div>
         <span className="cr-club-count">{player.clubs.length} clubs</span>

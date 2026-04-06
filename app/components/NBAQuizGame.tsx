@@ -249,8 +249,7 @@ function TeamLogoImg({ team }: { team: string }) {
 
 function FlagImg({ code, alt }: { code?: string; alt: string }) {
   if (!code) return null;
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img src={`https://flagcdn.com/w80/${code}.png`} alt={alt} className="ft-flag-img" loading="lazy" />;
+  return <img src={`/flags/${code}_w80.png`} alt={alt} className="ft-flag-img" loading="lazy" width={80} height={60} />;
 }
 
 // ─── Stars ──────────────────────────────────────────────────────────────────────
