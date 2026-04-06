@@ -55,6 +55,36 @@ const ARTICLES = [
     readTime: "5 min read",
     date: "Apr 2, 2026",
   },
+  {
+    slug: "/blog/best-online-nba-quiz-games",
+    emoji: "🏀",
+    tags: ["Sports", "Guide"],
+    title: "Best Free Online NBA Quiz Games (2026)",
+    excerpt:
+      "Contracts, arena photos, salary showdowns and peak season sliders — the best free online NBA quiz games that actually test your basketball knowledge.",
+    readTime: "5 min read",
+    date: "Apr 6, 2026",
+  },
+  {
+    slug: "/blog/best-animal-quiz-games-online",
+    emoji: "🦁",
+    tags: ["Animals", "Guide"],
+    title: "Best Free Online Animal Quiz Games (2026)",
+    excerpt:
+      "From 1v1 animal battles to group vs predator showdowns — the best free online animal quiz games that test your real wildlife knowledge.",
+    readTime: "5 min read",
+    date: "Apr 6, 2026",
+  },
+  {
+    slug: "/blog/best-online-culture-history-quiz-games",
+    emoji: "🎭",
+    tags: ["Culture", "Guide"],
+    title: "Best Free Online Culture & History Quiz Games (2026)",
+    excerpt:
+      "From video game origins to world geography — the best free online culture and history quiz games that test your knowledge across eras and continents.",
+    readTime: "5 min read",
+    date: "Apr 6, 2026",
+  },
 ];
 
 export default function BlogIndex() {

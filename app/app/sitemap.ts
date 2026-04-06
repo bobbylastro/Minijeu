@@ -64,6 +64,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/best-online-geography-quiz-games`,                   lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/blog/best-online-football-quiz-games`,                    lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/blog/online-trivia-games-to-play-with-friends`,           lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/best-online-nba-quiz-games`,                        lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/best-animal-quiz-games-online`,                     lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/best-online-culture-history-quiz-games`,            lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // noindex pages (contact, privacy, terms, legal, cookies) intentionally excluded
   ];
