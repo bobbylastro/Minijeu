@@ -632,5 +632,217 @@
       "unit": "×/s",
       "explanation": "A ruby-throated hummingbird beats its wings ~53 times per second — creating the characteristic humming sound"
     }
+  ],
+  "quantity_battles": [
+    {
+      "side1": { "count": 3, "name": "Chimpanzee", "hint": "Each 5× stronger than a human", "wiki": "Chimpanzee" },
+      "side2": { "count": 1, "name": "Cheetah", "hint": "Built to flee, not to fight", "wiki": "Cheetah" },
+      "winner": "side1",
+      "explanation": "Cheetahs avoid all confrontation — cornered by 3 chimps, they'd be overwhelmed by combined primate strength before they could escape"
+    },
+    {
+      "side1": { "count": 5, "name": "Gray Wolf", "hint": "~40 kg each — disciplined pack hunters", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — thick hide, devastating swipes", "wiki": "Grizzly bear" },
+      "winner": "side2",
+      "explanation": "Documented encounters show lone grizzlies driving off entire wolf packs — their mass, thick fur and power make 5 wolves insufficient to bring one down"
+    },
+    {
+      "side1": { "count": 2, "name": "Spotted Hyena", "hint": "~65 kg each — 1,100 psi bone-cracking jaws", "wiki": "Spotted hyena" },
+      "side2": { "count": 1, "name": "African Lion", "hint": "~200 kg — king of the savanna", "wiki": "Lion" },
+      "winner": "side1",
+      "explanation": "Two hyenas routinely steal kills from lone male lions — their combined jaw pressure and endurance outlast a single lion in a sustained fight"
+    },
+    {
+      "side1": { "count": 4, "name": "Chimpanzee", "hint": "~55 kg each — highly coordinated fighters", "wiki": "Chimpanzee" },
+      "side2": { "count": 1, "name": "Silverback Gorilla", "hint": "~180 kg — 10× stronger than a chimpanzee", "wiki": "Gorilla" },
+      "winner": "side2",
+      "explanation": "A silverback's crushing grip generates 800 kg of force — documented troop skirmishes show silverbacks holding off larger chimp groups with raw power alone"
+    },
+    {
+      "side1": { "count": 2, "name": "African Lion", "hint": "~200 kg each — Africa's apex big cat", "wiki": "Lion" },
+      "side2": { "count": 1, "name": "Hippopotamus", "hint": "~3,000 kg — 1,821 psi bite force", "wiki": "Hippopotamus" },
+      "winner": "side2",
+      "explanation": "Hippos are notoriously lion-proof — their hide absorbs claws, their bite is catastrophic, and even 2 lions rarely attempt an adult hippo"
+    },
+    {
+      "side1": { "count": 5, "name": "African Wild Dog", "hint": "80% hunt success — fearless and relentless", "wiki": "African wild dog" },
+      "side2": { "count": 1, "name": "Leopard", "hint": "~70 kg — most adaptable big cat", "wiki": "Leopard" },
+      "winner": "side1",
+      "explanation": "Wild dogs show zero fear of leopards — 5 dogs in open terrain leave the leopard no escape route and exhaust it rapidly before it reaches a tree"
+    },
+    {
+      "side1": { "count": 2, "name": "King Cobra", "hint": "World's longest venomous snake — lethal neurotoxin", "wiki": "King cobra" },
+      "side2": { "count": 1, "name": "Honey Badger", "hint": "Partially immune to cobra venom", "wiki": "Honey badger" },
+      "winner": "side1",
+      "explanation": "A honey badger can shrug off one cobra bite but is overwhelmed by simultaneous neurotoxin doses from two king cobras at once"
+    },
+    {
+      "side1": { "count": 3, "name": "Cape Buffalo", "hint": "~850 kg each — lethal horns and unstoppable charge", "wiki": "African buffalo" },
+      "side2": { "count": 1, "name": "African Lion", "hint": "~200 kg — savanna apex predator", "wiki": "Lion" },
+      "winner": "side1",
+      "explanation": "Three cape buffaloes present a wall of horns and 2,500 kg of combined mass — documented group defences routinely gore and drive off even large male lions"
+    },
+    {
+      "side1": { "count": 2, "name": "Wolverine", "hint": "Most ferocious animal for its size — fearless", "wiki": "Wolverine (animal)" },
+      "side2": { "count": 1, "name": "Gray Wolf", "hint": "~40 kg — pack hunter of the north", "wiki": "Wolf" },
+      "winner": "side1",
+      "explanation": "Even a single wolverine drives off lone wolves — 2 wolverines attacking simultaneously overwhelm a lone gray wolf with zero hesitation"
+    },
+    {
+      "side1": { "count": 3, "name": "Gray Wolf", "hint": "~40 kg each — evolved to hunt large prey", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Moose", "hint": "~600 kg — a single kick shatters bone", "wiki": "Moose" },
+      "winner": "side2",
+      "explanation": "Studies show wolves typically need 4–6 individuals to reliably take down a healthy adult moose — 3 wolves get battered and retreat"
+    },
+    {
+      "side1": { "count": 3, "name": "Nile Crocodile", "hint": "~500 kg each — 2,000 psi bite", "wiki": "Nile crocodile" },
+      "side2": { "count": 1, "name": "Hippopotamus", "hint": "~3,000 kg — undisputed ruler of the river", "wiki": "Hippopotamus" },
+      "winner": "side2",
+      "explanation": "Hippos regularly kill crocodiles and dominate African waterways — even 3 crocodiles cannot match a hippo's mass, aggression and bone-crushing bite"
+    },
+    {
+      "side1": { "count": 5, "name": "Gray Wolf", "hint": "~40 kg each — coordinated endurance hunters", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Cape Buffalo", "hint": "~850 kg — Africa's most dangerous herbivore", "wiki": "African buffalo" },
+      "winner": "side1",
+      "explanation": "5 wolves working in coordinated relay attacks can exhaust and bring down a cape buffalo — enough numbers to manage its lethal horns safely"
+    },
+    {
+      "side1": { "count": 2, "name": "Grizzly Bear", "hint": "~350 kg each — North America's top predator", "wiki": "Grizzly bear" },
+      "side2": { "count": 1, "name": "African Elephant", "hint": "~6,000 kg — skin 2.5 cm thick", "wiki": "African elephant" },
+      "winner": "side2",
+      "explanation": "An African elephant at 6 tonnes dwarfs both grizzlies combined — a single trunk slam or tusk strike ends the encounter instantly"
+    },
+    {
+      "side1": { "count": 3, "name": "Spotted Hyena", "hint": "~65 kg each — bone-crushing endurance fighters", "wiki": "Spotted hyena" },
+      "side2": { "count": 1, "name": "Silverback Gorilla", "hint": "~180 kg — 800 kg grip force", "wiki": "Gorilla" },
+      "winner": "side2",
+      "explanation": "A silverback's explosive strength and thick hide absorb hyena bites — a single arm strike sends 65 kg of hyena flying, and its intimidating charge breaks the attack"
+    },
+    {
+      "side1": { "count": 4, "name": "African Lion", "hint": "~200 kg each — Africa's apex predator", "wiki": "Lion" },
+      "side2": { "count": 1, "name": "African Elephant", "hint": "~6,000 kg — impenetrable hide, lethal tusks", "wiki": "African elephant" },
+      "winner": "side2",
+      "explanation": "Documented elephant kills by lions require prides of 10+ — 4 lions simply cannot penetrate adult elephant hide or overcome its mass and tusk power"
+    },
+    {
+      "side1": { "count": 3, "name": "Gray Wolf", "hint": "~40 kg each — relentless pack hunters", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — thick fur, devastating paw swipes", "wiki": "Grizzly bear" },
+      "winner": "side2",
+      "explanation": "A grizzly's hide shrugs off wolf bites and a single paw strike is lethal — 3 wolves repeatedly disengage and the bear barely breaks a sweat"
+    },
+    {
+      "side1": { "count": 4, "name": "Gray Wolf", "hint": "~40 kg each — evolved specifically to hunt moose", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Moose", "hint": "~600 kg — kicks hard enough to shatter bone", "wiki": "Moose" },
+      "winner": "side1",
+      "explanation": "Isle Royale long-term studies show 4 wolves is the inflection point — enough to coordinate relay harassment while avoiding lethal kicks, eventually wearing the moose down"
+    },
+    {
+      "side1": { "count": 2, "name": "Tiger", "hint": "~250 kg each — world's largest wild cat", "wiki": "Tiger" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — North America's apex predator", "wiki": "Grizzly bear" },
+      "winner": "side1",
+      "explanation": "Two tigers attacking from opposite flanks overwhelm even a grizzly — each tiger individually nearly matches the bear, and coordinated simultaneous strikes leave no escape"
+    },
+    {
+      "side1": { "count": 5, "name": "Spotted Hyena", "hint": "~65 kg each — powerful jaws, relentless endurance", "wiki": "Spotted hyena" },
+      "side2": { "count": 1, "name": "Hippopotamus", "hint": "~3,000 kg — most lethal large mammal in Africa", "wiki": "Hippopotamus" },
+      "winner": "side2",
+      "explanation": "A hippo's 1,821 psi bite and 3-tonne bulk are simply too much — it charges and scatters 5 hyenas as if they were nothing, and its hide defeats their jaws completely"
+    },
+    {
+      "side1": { "count": 3, "name": "Honey Badger", "hint": "Most fearless animal — thick loose hide, partial venom immunity", "wiki": "Honey badger" },
+      "side2": { "count": 1, "name": "Leopard", "hint": "~70 kg — powerful ambush predator", "wiki": "Leopard" },
+      "winner": "side1",
+      "explanation": "Three honey badgers attacking simultaneously from all sides overwhelm a leopard — their loose skin prevents a killing bite, and their ferocity breaks any big cat's nerve"
+    },
+    {
+      "side1": { "count": 2, "name": "Silverback Gorilla", "hint": "~180 kg each — 800 kg grip force", "wiki": "Gorilla" },
+      "side2": { "count": 1, "name": "African Lion", "hint": "~200 kg — savanna's apex predator", "wiki": "Lion" },
+      "winner": "side1",
+      "explanation": "A lone silverback already rivals a lion in a documented 1v1 — two silverbacks coordinating leaves the lion no angle of attack and no chance against combined gorilla strength"
+    },
+    {
+      "side1": { "count": 3, "name": "African Lion", "hint": "~200 kg each — coordinated pride hunters", "wiki": "Lion" },
+      "side2": { "count": 1, "name": "Hippopotamus", "hint": "~3,000 kg — bone-crushing 1,821 psi jaws", "wiki": "Hippopotamus" },
+      "winner": "side2",
+      "explanation": "Even 3 lions avoid adult hippos — the hippo's 3-tonne bulk and catastrophic bite make it effectively lion-proof regardless of numbers"
+    },
+    {
+      "side1": { "count": 4, "name": "Spotted Hyena", "hint": "~65 kg each — 1,100 psi endurance predators", "wiki": "Spotted hyena" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — thick layered hide, lethal swipes", "wiki": "Grizzly bear" },
+      "winner": "side1",
+      "explanation": "Four hyenas outweigh the grizzly combined and relay-attack from all sides — their bone-cracking jaws find leg tendons and flanks the bear cannot protect simultaneously"
+    },
+    {
+      "side1": { "count": 3, "name": "African Lion", "hint": "~200 kg each — powerful, coordinated fighters", "wiki": "Lion" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — North America's apex predator", "wiki": "Grizzly bear" },
+      "winner": "side1",
+      "explanation": "Three lions attacking simultaneously from multiple angles overwhelm even a grizzly — the bear cannot protect every flank, and coordinated bites to the neck end the fight quickly"
+    },
+    {
+      "side1": { "count": 2, "name": "Cape Buffalo", "hint": "~850 kg each — lethal horns, unstoppable charge", "wiki": "African buffalo" },
+      "side2": { "count": 1, "name": "African Elephant", "hint": "~6,000 kg — tusks and mass beyond compare", "wiki": "African elephant" },
+      "winner": "side2",
+      "explanation": "An African elephant at 6 tonnes simply brushes aside two charging buffaloes — a single tusk strike or stomp settles the encounter immediately"
+    },
+    {
+      "side1": { "count": 5, "name": "Gray Wolf", "hint": "~40 kg each — disciplined endurance hunters", "wiki": "Wolf" },
+      "side2": { "count": 1, "name": "Polar Bear", "hint": "~500 kg — Arctic's largest predator", "wiki": "Polar bear" },
+      "winner": "side2",
+      "explanation": "A polar bear at 500 kg outweighs the 5 wolves combined — its dense hide deflects bites and a single paw swipe sends a wolf flying, quickly breaking the attack"
+    },
+    {
+      "side1": { "count": 4, "name": "Honey Badger", "hint": "Fearless, thick loose hide, partial venom immunity", "wiki": "Honey badger" },
+      "side2": { "count": 1, "name": "African Lion", "hint": "~200 kg — apex predator of the savanna", "wiki": "Lion" },
+      "winner": "side1",
+      "explanation": "Four honey badgers attacking simultaneously from all sides are too much for a single lion — their loose skin defeats the killing bite, and relentless aggression breaks the lion's nerve"
+    },
+    {
+      "side1": { "count": 2, "name": "Moose", "hint": "~600 kg each — a single kick shatters bone", "wiki": "Moose" },
+      "side2": { "count": 1, "name": "Grizzly Bear", "hint": "~350 kg — documented moose predator", "wiki": "Grizzly bear" },
+      "winner": "side1",
+      "explanation": "Two moose at 1,200 kg combined present synchronized kicks from both sides — even a grizzly cannot handle that payload and retreats rather than risk a broken skull"
+    },
+    {
+      "side1": { "count": 2, "name": "Saltwater Crocodile", "hint": "~700 kg each — 3,700 psi ambush predator", "wiki": "Saltwater crocodile" },
+      "side2": { "count": 1, "name": "African Lion", "hint": "~200 kg — savanna's apex predator", "wiki": "Lion" },
+      "winner": "side1",
+      "explanation": "Near the water's edge, two saltwater crocs ambush from different angles simultaneously — a lion cannot handle two armoured reptiles with 3,700 psi bites at once"
+    },
+    {
+      "side1": { "count": 3, "name": "Wolverine", "hint": "Most ferocious animal for its size — pain-immune", "wiki": "Wolverine (animal)" },
+      "side2": { "count": 1, "name": "Mountain Lion", "hint": "~70 kg — North America's apex big cat", "wiki": "Cougar" },
+      "winner": "side1",
+      "explanation": "Three wolverines attacking from all sides are simply too much — each one alone nearly matches a mountain lion in ferocity, and their thick hide defeats the cat's killing bite"
+    },
+    {
+      "side1": { "count": 3, "name": "King Cobra", "hint": "World's longest venomous snake — lethal neurotoxin", "wiki": "King cobra" },
+      "side2": { "count": 1, "name": "Honey Badger", "hint": "Partial venom immunity — fearless fighter", "wiki": "Honey badger" },
+      "winner": "side1",
+      "explanation": "A honey badger can survive one cobra bite through partial immunity and sheer toughness — simultaneous bites from three king cobras deliver a lethal neurotoxin load it simply cannot metabolise"
+    },
+    {
+      "side1": { "count": 2, "name": "Hippopotamus", "hint": "~3,000 kg each — 1,821 psi crushing bite", "wiki": "Hippopotamus" },
+      "side2": { "count": 1, "name": "African Elephant", "hint": "~6,000 kg — world's largest land animal", "wiki": "African elephant" },
+      "winner": "side2",
+      "explanation": "Even two hippos at 6,000 kg combined face an elephant that matches their total weight alone — with tusks as weapons and sheer mass, the elephant dominates at shared waterholes"
+    },
+    {
+      "side1": { "count": 3, "name": "African Wild Dog", "hint": "80% hunt success — coordinated and relentless", "wiki": "African wild dog" },
+      "side2": { "count": 1, "name": "Gray Wolf", "hint": "~40 kg — pack hunter of the north", "wiki": "Wolf" },
+      "winner": "side1",
+      "explanation": "African wild dogs are pound-for-pound more aggressive and combat-capable than gray wolves — three of them versus one wolf is a very one-sided affair"
+    },
+    {
+      "side1": { "count": 2, "name": "Honey Badger", "hint": "Most fearless animal on Earth — thick loose skin", "wiki": "Honey badger" },
+      "side2": { "count": 1, "name": "Gray Wolf", "hint": "~40 kg — apex pack hunter", "wiki": "Wolf" },
+      "winner": "side1",
+      "explanation": "A single honey badger regularly drives lone wolves from their kills — two attacking simultaneously with their crushing bite and loose escape-proof hide leave the wolf no options"
+    },
+    {
+      "side1": { "count": 5, "name": "African Lion", "hint": "~200 kg each — pride of Africa's apex predators", "wiki": "Lion" },
+      "side2": { "count": 1, "name": "African Elephant", "hint": "~6,000 kg — impenetrable hide, lethal tusks", "wiki": "African elephant" },
+      "winner": "side2",
+      "explanation": "Documented elephant kills by prides require 10+ lions and take hours of exhausting coordination — 5 lions cannot penetrate adult elephant hide or survive a tusk counter-attack"
+    }
   ]
 }

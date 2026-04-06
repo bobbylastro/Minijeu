@@ -26,6 +26,20 @@ interface RawBattle {
   explanation: string;
 }
 
+interface QuantityAnimal {
+  count: number;
+  name: string;
+  hint: string;
+  wiki: string;
+}
+
+interface RawQuantityBattle {
+  side1: QuantityAnimal;
+  side2: QuantityAnimal;
+  winner: "side1" | "side2";
+  explanation: string;
+}
+
 interface RawComparison {
   questionEmoji: string;
   questionText: string;
@@ -45,18 +59,20 @@ interface RawSlider {
   explanation: string;
 }
 
-interface BattleQuestion      { type: "battle";     data: RawBattle     }
-interface ComparisonQuestion  { type: "comparison"; data: RawComparison }
-interface SliderQuestion      { type: "slider";     data: RawSlider     }
-type Question = BattleQuestion | ComparisonQuestion | SliderQuestion;
+interface BattleQuestion         { type: "battle";          data: RawBattle         }
+interface ComparisonQuestion     { type: "comparison";      data: RawComparison     }
+interface SliderQuestion         { type: "slider";          data: RawSlider         }
+interface QuantityBattleQuestion { type: "quantity_battle"; data: RawQuantityBattle }
+type Question = BattleQuestion | ComparisonQuestion | SliderQuestion | QuantityBattleQuestion;
 type Phase    = "home" | "playing" | "result";
 type Mode     = "solo" | "multi";
 
 // ─── Constants ─────────────────────────────────────────────────────────────────
-const BATTLES_PER_GAME     = 7;
-const COMPARISONS_PER_GAME = 2;
-const SLIDERS_PER_GAME     = 1;
-const ROUNDS_PER_GAME      = BATTLES_PER_GAME + COMPARISONS_PER_GAME + SLIDERS_PER_GAME; // 10
+const BATTLES_PER_GAME          = 3;
+const QUANTITY_BATTLES_PER_GAME = 4;
+const COMPARISONS_PER_GAME      = 2;
+const SLIDERS_PER_GAME          = 1;
+const ROUNDS_PER_GAME           = BATTLES_PER_GAME + QUANTITY_BATTLES_PER_GAME + COMPARISONS_PER_GAME + SLIDERS_PER_GAME; // 10
 const MAX_SCORE            = ROUNDS_PER_GAME * 100;
 
 // ─── Seeded random ─────────────────────────────────────────────────────────────
@@ -82,14 +98,16 @@ function generateQuestions(count: number, seed?: number): Question[] {
   const rand = seed !== undefined ? seededRandom(seed) : Math.random;
   const fn   = seed !== undefined ? rand : Math.random;
 
-  const battles     = seededShuffle([...rawData.battles],     fn).slice(0, BATTLES_PER_GAME);
-  const comparisons = seededShuffle([...rawData.comparisons], fn).slice(0, COMPARISONS_PER_GAME);
-  const sliders     = seededShuffle([...rawData.sliders],     fn).slice(0, SLIDERS_PER_GAME);
+  const battles         = seededShuffle([...rawData.battles],          fn).slice(0, BATTLES_PER_GAME);
+  const quantityBattles = seededShuffle([...(rawData as { quantity_battles: RawQuantityBattle[] }).quantity_battles], fn).slice(0, QUANTITY_BATTLES_PER_GAME);
+  const comparisons     = seededShuffle([...rawData.comparisons],      fn).slice(0, COMPARISONS_PER_GAME);
+  const sliders         = seededShuffle([...rawData.sliders],          fn).slice(0, SLIDERS_PER_GAME);
 
   const questions: Question[] = [
-    ...battles.map(d     => ({ type: "battle"     as const, data: d as RawBattle     })),
-    ...comparisons.map(d => ({ type: "comparison" as const, data: d as RawComparison })),
-    ...sliders.map(d     => ({ type: "slider"     as const, data: d as RawSlider     })),
+    ...battles.map(d         => ({ type: "battle"          as const, data: d as RawBattle         })),
+    ...quantityBattles.map(d => ({ type: "quantity_battle" as const, data: d as RawQuantityBattle })),
+    ...comparisons.map(d     => ({ type: "comparison"      as const, data: d as RawComparison     })),
+    ...sliders.map(d         => ({ type: "slider"          as const, data: d as RawSlider         })),
   ];
 
   return seededShuffle(questions, fn).slice(0, count);
@@ -312,9 +330,10 @@ function ResultScreen({
 
 // ─── DuelCard ───────────────────────────────────────────────────────────────────
 function DuelCard({
-  animal, revealed, isWinner, isSelected, showHint, onClick, disabled,
+  animal, count = 1, revealed, isWinner, isSelected, showHint, onClick, disabled,
 }: {
   animal: Animal;
+  count?: number;
   revealed: boolean;
   isWinner: boolean;
   isSelected: boolean;
@@ -334,6 +353,7 @@ function DuelCard({
 
   return (
     <div className={cls} onClick={!revealed && !disabled ? onClick : undefined}>
+      {count > 1 && <div className="wb-card__count">×{count}</div>}
       {revealed && isWinner && <div className="wb-badge--winner">Winner 🏆</div>}
       <div className="wb-card__photo-wrap">
         <AnimalPhoto
@@ -472,6 +492,11 @@ export default function WildBattleGame() {
       isCorrect = value === winnerIdx;
       const multiplier = modeRef.current === "solo" ? getMultiplier(streak) : 1;
       pts = isCorrect ? Math.round(100 * multiplier) : 0;
+    } else if (currentQ.type === "quantity_battle") {
+      const winnerIdx = currentQ.data.winner === "side1" ? 0 : 1;
+      isCorrect = value === winnerIdx;
+      const multiplier = modeRef.current === "solo" ? getMultiplier(streak) : 1;
+      pts = isCorrect ? Math.round(100 * multiplier) : 0;
     } else {
       pts = sliderScore(value, currentQ.data.answer);
       isCorrect = pts >= 50;
@@ -572,6 +597,10 @@ export default function WildBattleGame() {
       const winnerIdx = currentQ.data.winner === "animal1" ? 0 : 1;
       answerCorrect = selectedAnswer === winnerIdx;
       feedbackPts = answerCorrect ? Math.round(100 * (isMulti ? 1 : multiplier)) : 0;
+    } else if (currentQ.type === "quantity_battle") {
+      const winnerIdx = currentQ.data.winner === "side1" ? 0 : 1;
+      answerCorrect = selectedAnswer === winnerIdx;
+      feedbackPts = answerCorrect ? Math.round(100 * (isMulti ? 1 : multiplier)) : 0;
     } else {
       feedbackPts = sliderScore(selectedAnswer, currentQ.data.answer);
       answerCorrect = feedbackPts >= 50;
@@ -579,15 +608,16 @@ export default function WildBattleGame() {
   }
 
   const qLabel =
-    currentQ.type === "battle"     ? "Who wins the fight?" :
-    currentQ.type === "comparison" ? currentQ.data.questionText :
+    currentQ.type === "battle"          ? "Who wins the fight?" :
+    currentQ.type === "quantity_battle" ? "Who wins the fight?" :
+    currentQ.type === "comparison"      ? currentQ.data.questionText :
     currentQ.data.question;
 
-  const isDuel = currentQ.type === "battle" || currentQ.type === "comparison";
+  const isDuel = currentQ.type === "battle" || currentQ.type === "comparison" || currentQ.type === "quantity_battle";
 
   // Mood badge: visual context per question type
   const mood: { icon: string; label: string; color: string; glow: string } = (() => {
-    if (currentQ.type === "battle") {
+    if (currentQ.type === "battle" || currentQ.type === "quantity_battle") {
       return { icon: "🥊", label: "FIGHT!", color: "rgba(239,68,68,0.85)", glow: "rgba(239,68,68,0.35)" };
     }
     if (currentQ.type === "slider") {
@@ -638,8 +668,20 @@ export default function WildBattleGame() {
 
       {/* Question area (relative so verdict overlay can be absolute inside) */}
       <div className="wb-main">
-        {/* ── DUEL (battle + comparison) ──────────────────────────── */}
-        {isDuel && (
+        {/* ── DUEL (battle + comparison + quantity_battle) ────────── */}
+        {isDuel && (() => {
+          const isQB = currentQ.type === "quantity_battle";
+          const a1: Animal = isQB
+            ? { name: currentQ.data.side1.name, hint: currentQ.data.side1.hint, wiki: currentQ.data.side1.wiki }
+            : currentQ.data.animal1;
+          const a2: Animal = isQB
+            ? { name: currentQ.data.side2.name, hint: currentQ.data.side2.hint, wiki: currentQ.data.side2.wiki }
+            : currentQ.data.animal2;
+          const c1 = isQB ? currentQ.data.side1.count : 1;
+          const c2 = isQB ? currentQ.data.side2.count : 1;
+          const w1 = isQB ? currentQ.data.winner === "side1" : currentQ.data.winner === "animal1";
+          const w2 = isQB ? currentQ.data.winner === "side2" : currentQ.data.winner === "animal2";
+          return (
           <div className="wb-question">
             <div className="wb-mood-badge" style={{ background: mood.color, boxShadow: `0 0 18px ${mood.glow}` }}>
               <span className="wb-mood-badge__icon">{mood.icon}</span>
@@ -648,9 +690,10 @@ export default function WildBattleGame() {
             <div className="wb-question__label">{qLabel}</div>
             <div className="wb-battle">
               <DuelCard
-                animal={currentQ.data.animal1}
+                animal={a1}
+                count={c1}
                 revealed={revealed}
-                isWinner={currentQ.data.winner === "animal1"}
+                isWinner={w1}
                 isSelected={selectedAnswer === 0}
                 showHint={revealed}
                 onClick={() => handleAnswer(0)}
@@ -661,9 +704,10 @@ export default function WildBattleGame() {
                 <div className="wb-fight__text">VS</div>
               </div>
               <DuelCard
-                animal={currentQ.data.animal2}
+                animal={a2}
+                count={c2}
                 revealed={revealed}
-                isWinner={currentQ.data.winner === "animal2"}
+                isWinner={w2}
                 isSelected={selectedAnswer === 1}
                 showHint={revealed}
                 onClick={() => handleAnswer(1)}
@@ -671,7 +715,8 @@ export default function WildBattleGame() {
               />
             </div>
           </div>
-        )}
+          );
+        })()}
 
         {/* ── SLIDER ──────────────────────────────────────────────── */}
         {currentQ.type === "slider" && (() => {
