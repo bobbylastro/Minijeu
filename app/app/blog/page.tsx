@@ -95,6 +95,16 @@ const ARTICLES = [
     readTime: "4 min read",
     date: "Apr 7, 2026",
   },
+  {
+    slug: "/blog/best-browser-games-to-stream-on-twitch",
+    emoji: "🎮",
+    tags: ["Streaming", "Twitch"],
+    title: "Best Free Browser Games to Stream on Twitch — No Setup Required",
+    excerpt:
+      "Zero install, zero OBS config, instant chat engagement. These free browser quiz games are made for streaming — and your viewers can play live in private rooms.",
+    readTime: "5 min read",
+    date: "Apr 7, 2026",
+  },
 ];
 
 export default function BlogIndex() {
