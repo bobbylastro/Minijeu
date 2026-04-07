@@ -3,6 +3,7 @@ import type * as Party from "partykit/server";
 // ─── Types ─────────────────────────────────────────────────────────────────────
 interface PlayerState {
   id: string;
+  name: string;
   score: number;
   roundPoints: number[];
   roundAnswer: unknown | null;
@@ -18,6 +19,7 @@ interface GameState {
   round: number;
   status: GameStatus;
   players: Record<string, PlayerState>;
+  maxPlayers: number;
 }
 
 const RECONNECT_GRACE_MS = 8_000;
@@ -31,30 +33,32 @@ export default class GameServer implements Party.Server {
     round: 0,
     status: "waiting",
     players: {},
+    maxPlayers: 2,
   };
   private rematchRequested = new Set<string>();
-
-  // Ghost slot: the disconnected player's state + a timer to declare them gone
-  private ghost: { state: PlayerState; timer: ReturnType<typeof setTimeout> } | null = null;
+  private ghosts = new Map<string, { state: PlayerState; timer: ReturnType<typeof setTimeout> }>();
 
   constructor(readonly room: Party.Room) {}
 
   onConnect(conn: Party.Connection, ctx: Party.ConnectionContext) {
+    const url         = new URL(ctx.request.url);
+    const gameType    = url.searchParams.get("gameType") ?? "";
+    const seed        = parseInt(url.searchParams.get("seed")       ?? "0", 10);
+    const maxPlayers  = parseInt(url.searchParams.get("maxPlayers") ?? "2", 10);
+    const name        = decodeURIComponent(url.searchParams.get("name") ?? "Anonymous");
+
     const activePlayers = Object.keys(this.state.players).length;
 
     // ── Reconnect within grace period ────────────────────────────────────────
-    if (this.ghost && activePlayers === 1) {
-      clearTimeout(this.ghost.timer);
-      const restored = { ...this.ghost.state, id: conn.id };
-      this.ghost = null;
-
+    const ghost = this.ghosts.get(conn.id);
+    if (ghost) {
+      clearTimeout(ghost.timer);
+      this.ghosts.delete(conn.id);
+      const restored = { ...ghost.state, id: conn.id };
       this.state.players[conn.id] = restored;
 
-      // If this player hadn't answered yet, server still waits — nothing to do.
-      // If they had already answered, check whether the round can now progress.
       if (restored.roundAnswer !== null) {
-        const allAnswered = Object.values(this.state.players).every(p => p.roundAnswer !== null);
-        if (allAnswered && this.state.status === "playing") {
+        if (this.allAnswered() && this.state.status === "playing") {
           this.state.status = "round_end";
           this.broadcast(JSON.stringify({
             type: "round_end",
@@ -65,7 +69,6 @@ export default class GameServer implements Party.Server {
         }
       }
 
-      // Send the reconnecting client a sync so they jump to the right round
       conn.send(JSON.stringify({
         type: "game_sync",
         round: this.state.round,
@@ -76,50 +79,47 @@ export default class GameServer implements Party.Server {
         status: this.state.status,
       }));
 
-      // Tell the other player the opponent is back
       this.broadcast(JSON.stringify({ type: "opponent_reconnected" }), conn.id);
       return;
     }
 
     // ── Normal connect ───────────────────────────────────────────────────────
-    if (activePlayers >= 2) {
+    if (activePlayers === 0) {
+      this.state.gameType   = gameType;
+      this.state.seed       = seed;
+      this.state.maxPlayers = maxPlayers;
+    }
+
+    if (activePlayers >= this.state.maxPlayers) {
       conn.close(1008, "Room full");
       return;
     }
 
-    const url = new URL(ctx.request.url);
-    const gameType = url.searchParams.get("gameType") ?? "";
-    const seed = parseInt(url.searchParams.get("seed") ?? "0", 10);
-
-    if (activePlayers === 0) {
-      this.state.gameType = gameType;
-      this.state.seed = seed;
-    }
-
     this.state.players[conn.id] = {
-      id: conn.id,
-      score: 0,
-      roundPoints: [],
-      roundAnswer: null,
-      readyForNext: false,
+      id: conn.id, name,
+      score: 0, roundPoints: [],
+      roundAnswer: null, readyForNext: false,
     };
 
-    if (Object.keys(this.state.players).length === 2) {
+    if (Object.keys(this.state.players).length === this.state.maxPlayers) {
       this.state.status = "playing";
-      this.state.round = 0;
-      this.broadcast(JSON.stringify({ type: "game_start", state: this.state }));
+      this.state.round  = 0;
+      this.broadcast(JSON.stringify({
+        type: "game_start",
+        state: this.state,
+        playerNames: this.namesSnapshot(),
+      }));
     }
   }
 
   onMessage(message: string, sender: Party.Connection) {
-    const data = JSON.parse(message as string);
+    const data   = JSON.parse(message as string);
     const player = this.state.players[sender.id];
     if (!player) return;
 
     // ── Submit answer ────────────────────────────────────────────────────────
     if (data.type === "submit_answer") {
       if (player.roundAnswer !== null) return;
-
       player.roundAnswer = data.answer;
       player.roundPoints.push(data.points ?? 0);
       player.score += data.points ?? 0;
@@ -131,8 +131,7 @@ export default class GameServer implements Party.Server {
         scores: this.scoresSnapshot(),
       }), sender.id);
 
-      const allAnswered = Object.values(this.state.players).every(p => p.roundAnswer !== null);
-      if (allAnswered) {
+      if (this.allAnswered()) {
         this.state.status = "round_end";
         this.broadcast(JSON.stringify({
           type: "round_end",
@@ -147,21 +146,19 @@ export default class GameServer implements Party.Server {
     if (data.type === "next_round") {
       player.readyForNext = true;
 
-      const allReady = Object.values(this.state.players).every(p => p.readyForNext);
-      if (allReady) {
+      if (this.allReady()) {
         this.state.round++;
         const finished = this.state.round >= this.state.totalRounds;
         this.state.status = finished ? "finished" : "playing";
-
         Object.values(this.state.players).forEach(p => {
-          p.roundAnswer = null;
+          p.roundAnswer  = null;
           p.readyForNext = false;
         });
-
         this.broadcast(JSON.stringify({
           type: finished ? "game_end" : "next_round",
           round: this.state.round,
           scores: this.scoresSnapshot(),
+          playerNames: this.namesSnapshot(),
         }));
       }
     }
@@ -172,19 +169,21 @@ export default class GameServer implements Party.Server {
       this.broadcast(JSON.stringify({ type: "rematch_requested" }), sender.id);
 
       const playerIds = Object.keys(this.state.players);
-      if (playerIds.length === 2 && playerIds.every(id => this.rematchRequested.has(id))) {
+      if (playerIds.length >= 2 && playerIds.every(id => this.rematchRequested.has(id))) {
         this.rematchRequested.clear();
         const newSeed = Math.floor(Math.random() * 1_000_000);
-        this.state.seed = newSeed;
+        this.state.seed  = newSeed;
         this.state.round = 0;
         this.state.status = "playing";
         Object.values(this.state.players).forEach(p => {
-          p.score = 0;
-          p.roundPoints = [];
-          p.roundAnswer = null;
-          p.readyForNext = false;
+          p.score = 0; p.roundPoints = [];
+          p.roundAnswer = null; p.readyForNext = false;
         });
-        this.broadcast(JSON.stringify({ type: "game_start", state: this.state }));
+        this.broadcast(JSON.stringify({
+          type: "game_start",
+          state: this.state,
+          playerNames: this.namesSnapshot(),
+        }));
       }
     }
   }
@@ -192,30 +191,61 @@ export default class GameServer implements Party.Server {
   onClose(conn: Party.Connection) {
     const player = this.state.players[conn.id];
     if (!player) return;
-
     delete this.state.players[conn.id];
 
-    // During an active game: grace period before declaring opponent_left
     if (this.state.status === "playing" || this.state.status === "round_end") {
-      if (this.ghost) clearTimeout(this.ghost.timer); // cancel any existing ghost
-      this.ghost = {
+      // Cancel previous ghost for this id if any
+      const existing = this.ghosts.get(conn.id);
+      if (existing) clearTimeout(existing.timer);
+
+      this.ghosts.set(conn.id, {
         state: player,
         timer: setTimeout(() => {
-          this.ghost = null;
-          if (Object.keys(this.state.players).length > 0) {
-            this.broadcast(JSON.stringify({ type: "opponent_left" }));
+          this.ghosts.delete(conn.id);
+          if (Object.keys(this.state.players).length === 0) return;
+
+          this.broadcast(JSON.stringify({ type: "opponent_left", playerId: conn.id }));
+
+          // Unblock rounds if remaining players have already answered / are ready
+          if (this.allAnswered() && this.state.status === "playing") {
+            this.state.status = "round_end";
+            this.broadcast(JSON.stringify({
+              type: "round_end",
+              round: this.state.round,
+              scores: this.scoresSnapshot(),
+              roundPoints: this.roundPointsSnapshot(),
+            }));
+          }
+          if (this.allReady() && this.state.status === "round_end") {
+            this.state.round++;
+            const finished = this.state.round >= this.state.totalRounds;
+            this.state.status = finished ? "finished" : "playing";
+            Object.values(this.state.players).forEach(p => {
+              p.roundAnswer = null; p.readyForNext = false;
+            });
+            this.broadcast(JSON.stringify({
+              type: finished ? "game_end" : "next_round",
+              round: this.state.round,
+              scores: this.scoresSnapshot(),
+              playerNames: this.namesSnapshot(),
+            }));
           }
         }, RECONNECT_GRACE_MS),
-      };
+      });
     } else {
-      // Not in an active game (waiting / finished) — declare immediately
       if (Object.keys(this.state.players).length > 0) {
-        this.broadcast(JSON.stringify({ type: "opponent_left" }));
+        this.broadcast(JSON.stringify({ type: "opponent_left", playerId: conn.id }));
       }
     }
   }
 
   // ─── Helpers ─────────────────────────────────────────────────────────────────
+  private allAnswered() {
+    return Object.values(this.state.players).every(p => p.roundAnswer !== null);
+  }
+  private allReady() {
+    return Object.values(this.state.players).every(p => p.readyForNext);
+  }
   private scoresSnapshot() {
     return Object.fromEntries(
       Object.entries(this.state.players).map(([id, p]) => [id, p.score])
@@ -224,6 +254,11 @@ export default class GameServer implements Party.Server {
   private roundPointsSnapshot() {
     return Object.fromEntries(
       Object.entries(this.state.players).map(([id, p]) => [id, p.roundPoints.at(-1) ?? 0])
+    );
+  }
+  private namesSnapshot() {
+    return Object.fromEntries(
+      Object.entries(this.state.players).map(([id, p]) => [id, p.name])
     );
   }
   private broadcast(message: string, excludeId?: string) {

@@ -5,8 +5,8 @@ import JsonLd from "@/components/JsonLd";
 import GameSlider from "@/components/GameSlider";
 
 export const metadata: Metadata = {
-  title: "Ultimate Playground – Play free online quiz & mini games",
-  description: "Play addictive online quiz games and mini games for free. Guess populations, compare stats, test your knowledge in sports, culture and more on Ultimate Playground.",
+  title: "Ultimate Playground – Free Online Quiz & Multiplayer Mini Games",
+  description: "Play free online quiz and mini games — solo or with friends in private rooms. Geography, sports, animals, culture and more. No download, no sign-up. Play now.",
 };
 
 // ─── Game definitions ──────────────────────────────────────────────────────────
@@ -256,7 +256,7 @@ export default function HomePage() {
         <section className="seo-section">
           <p>From guessing city populations in CityMix to tracking a footballer&apos;s career in CareerOrder, each game is designed to be simple, competitive and highly addictive. Whether you&apos;re into sports, geography, food culture or general knowledge, there&apos;s always a new challenge waiting for you.</p>
 
-          <p>Play solo or compete with friends in real-time multiplayer modes across all our games.</p>
+          <p>Play solo, jump into a Quick Match against a random opponent, or <strong>create a private room</strong> and invite up to 8 friends with a 4-letter code — no account needed. Every multiplayer game uses a shared random seed so everyone gets the same questions in the same order.</p>
 
           <SeoExpand>
             <h2>All games on Ultimate Playground</h2>
@@ -271,12 +271,16 @@ export default function HomePage() {
               <li><strong>WhatCameFirst?</strong> – Pick which event happened first across sports, tech, history and pop culture</li>
               <li><strong>Origins Quiz</strong> – Click the country where each sport, tradition or invention was born — 60+ items from around the world</li>
               <li><strong>Wild Battle</strong> – Animal face-offs: pick the winner, compare speed, weight and bite force, estimate wild animal records</li>
+              <li><strong>Five Clues</strong> – Five cryptic hints, one mystery player — the fewer clues you need, the more points you score</li>
+              <li><strong>Wealth Quiz</strong> – Compare the net worth of celebrities, athletes and business figures across categories</li>
             </ul>
 
+            <h2>Play online quiz games with friends — private rooms</h2>
+            <p>Ultimate Playground now supports <strong>private rooms</strong>: create a lobby with a unique 4-letter code, share it with your friends, and compete together in real time with up to 8 players. The host decides when to start; everyone gets the same questions simultaneously. A ranked leaderboard with medals is revealed at the end of every group game.</p>
+
             <h2>Free online mini games for every player</h2>
-            <p>Ultimate Playground brings together geography, sports, food and culture challenges in a single browser-based platform. Every game is designed for quick sessions — most rounds take under two minutes — with enough depth to keep you coming back. No download, no account and no payment required.</p>
-            <p>All games support real-time multiplayer so you can challenge a friend from anywhere in the world. Both players see the same questions, powered by a shared random seed that guarantees a fair fight every time.</p>
-            <p>New games are released regularly. Bookmark the site and check back — there is always a new challenge waiting.</p>
+            <p>Ultimate Playground brings together geography, sports, food, animals and culture challenges in a single browser-based platform. Every game is designed for quick sessions — most rounds take under two minutes — with enough depth to keep you coming back. No download, no account and no payment required.</p>
+            <p>New games and features are released regularly. Bookmark the site and check back — there is always something new waiting.</p>
           </SeoExpand>
         </section>
       </div>

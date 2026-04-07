@@ -9,7 +9,8 @@ import { recordMatch } from "@/lib/matchHistory";
 import RematchZone from "@/components/RematchZone";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RelatedGames from "@/components/RelatedGames";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -592,8 +593,14 @@ export default function WealthGame() {
     <>
       <HomeScreen onSolo={startSolo} onMulti={startMulti} />
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="wealth"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -620,6 +627,12 @@ export default function WealthGame() {
         ) : undefined}
       />
       <RelatedGames currentSlug="/wealth" />
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); backToHome(); }}
+        />
+      )}
     </>
   );
 
@@ -671,8 +684,8 @@ export default function WealthGame() {
       </div>
 
       {/* Opponent bar */}
-      {isMulti && mp.opponent && (
-        <OpponentBar opponent={mp.opponent} myScore={score} maxScore={MAX_SCORE} />
+      {isMulti && (
+        <OpponentBar opponents={mp.opponents} myScore={score} maxScore={MAX_SCORE} />
       )}
 
       {/* Main question area — flex:1, no scroll */}

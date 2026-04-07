@@ -10,7 +10,8 @@ import { recordMatch } from "@/lib/matchHistory";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RematchZone from "@/components/RematchZone";
 
 const LeafletMap = dynamic(() => import("@/components/LeafletMap"), { ssr: false });
@@ -440,8 +441,14 @@ export default function CityOriginGame() {
     <>
       <HomeScreen onSolo={startSolo} onMulti={startMulti} />
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="citymap"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -450,20 +457,28 @@ export default function CityOriginGame() {
   );
 
   if (phase === "result") return (
-    <ResultScreen
-      score={score}
-      oppScore={mp.opponent?.score ?? null}
-      mode={mode}
-      onReplay={backToHome}
-      rematchZone={mode === "multi" && mp.opponent ? (
-        <RematchZone
-          opponent={mp.opponent}
-          myWantsRematch={mp.myWantsRematch}
-          series={mp.series}
-          onRematch={mp.requestRematch}
+    <>
+      <ResultScreen
+        score={score}
+        oppScore={mp.opponent?.score ?? null}
+        mode={mode}
+        onReplay={backToHome}
+        rematchZone={mode === "multi" && mp.opponent ? (
+          <RematchZone
+            opponent={mp.opponent}
+            myWantsRematch={mp.myWantsRematch}
+            series={mp.series}
+            onRematch={mp.requestRematch}
+          />
+        ) : undefined}
+      />
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); backToHome(); }}
         />
-      ) : undefined}
-    />
+      )}
+    </>
   );
 
   if (!currentCity) return null;
@@ -480,8 +495,8 @@ export default function CityOriginGame() {
       </div>
 
       {/* Opponent bar */}
-      {mode === "multi" && mp.opponent && (
-        <OpponentBar opponent={mp.opponent} myScore={score} maxScore={MAX_SCORE} />
+      {mode === "multi" && (
+        <OpponentBar opponents={mp.opponents} myScore={score} maxScore={MAX_SCORE} />
       )}
 
       {/* Full-screen map */}

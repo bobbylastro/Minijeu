@@ -3,7 +3,8 @@
   "main": "party/matchmaking.ts",
   "parties": {
     "matchmaking": "party/matchmaking.ts",
-    "game": "party/game.ts"
+    "game": "party/game.ts",
+    "lobby": "party/lobby.ts"
   },
   "port": 1999,
   "compatibilityDate": "2026-02-27"

@@ -8,7 +8,8 @@ import RematchZone from "@/components/RematchZone";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 interface City { name: string; country: string; flag: string; flag2x: string; population: number; image: string; }
@@ -613,8 +614,14 @@ export default function CityMix() {
   return (
     <>
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="citymix"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -665,8 +672,8 @@ export default function CityMix() {
         {/* ── GAME ─────────────────────────────────────────────────────────── */}
         {screen === "game" && (
           <div className="citymix-container">
-            {mode === "multi" && mp.opponent && (
-              <OpponentBar opponent={mp.opponent} myScore={totalScore} maxScore={MAX_TOTAL} />
+            {mode === "multi" && (
+              <OpponentBar opponents={mp.opponents} myScore={totalScore} maxScore={MAX_TOTAL} />
             )}
 
             <ProgressBar current={qNum} total={TOTAL} score={totalScore} />
@@ -923,6 +930,12 @@ export default function CityMix() {
           </div>
         )}
       </div>
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); handleBackToMenu(); }}
+        />
+      )}
     </>
   );
 }

@@ -85,6 +85,16 @@ const ARTICLES = [
     readTime: "5 min read",
     date: "Apr 6, 2026",
   },
+  {
+    slug: "/blog/play-online-games-with-friends-private-rooms",
+    emoji: "👥",
+    tags: ["Multiplayer", "Feature"],
+    title: "Play Online Games with Friends — Private Rooms on Ultimate Playground",
+    excerpt:
+      "Create a private room, share a 4-letter code and compete with up to 8 friends in real-time quiz battles. No account, no download — just pick a game and go.",
+    readTime: "4 min read",
+    date: "Apr 7, 2026",
+  },
 ];
 
 export default function BlogIndex() {

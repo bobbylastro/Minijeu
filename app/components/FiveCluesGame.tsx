@@ -1,11 +1,13 @@
 "use client";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
+import { getPartykitHost } from "@/lib/partykitHost";
 import { recordMatch } from "@/lib/matchHistory";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RematchZone from "@/components/RematchZone";
 import rawData from "@/app/five-clues-data.json";
 import "@/app/five-clues/five-clues.css";
@@ -314,6 +316,12 @@ export default function FiveCluesGame() {
           )}
           <button onClick={backToHome} className="btn-outline btn-hover">Back to Menu</button>
         </div>
+        {mp.finalLeaderboard && (
+          <LeaderboardOverlay
+            leaderboard={mp.finalLeaderboard}
+            onClose={() => { mp.disconnect(); backToHome(); }}
+          />
+        )}
       </div>
     );
   }
@@ -323,8 +331,14 @@ export default function FiveCluesGame() {
     return (
       <>
         {showNamePrompt && (
-          <NamePromptModal
-            onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          <MultiplayerEntryModal
+            gameType="five-clues"
+            host={getPartykitHost()}
+            onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+            onLobbyStart={(payload, myName) => {
+              setShowNamePrompt(false);
+              mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+            }}
             onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
           />
         )}
@@ -341,9 +355,9 @@ export default function FiveCluesGame() {
           <div className="glow-orb glow-orb--purple" />
           <div className="glow-orb glow-orb--orange" />
 
-          {mode === "multi" && mp.opponent && (
+          {mode === "multi" && (
             <OpponentBar
-              opponent={mp.opponent}
+              opponents={mp.opponents}
               myScore={totalScore}
               maxScore={TOTAL_ROUNDS * 500}
             />
@@ -501,8 +515,15 @@ export default function FiveCluesGame() {
       </div>
 
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); setMode("multi"); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="five-clues"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); setMode("multi"); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            setMode("multi");
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => setShowNamePrompt(false)}
         />
       )}

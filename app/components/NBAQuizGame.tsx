@@ -8,7 +8,8 @@ import RematchZone from "@/components/RematchZone";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import nbaData from "@/app/nba_data.json";
 
 // ─── Raw data types ─────────────────────────────────────────────────────────────
@@ -888,8 +889,14 @@ export default function NbaQuiz() {
   return (
     <>
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="nba"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -941,8 +948,8 @@ export default function NbaQuiz() {
         {/* ── GAME ───────────────────────────────────────────────────────────── */}
         {screen === "game" && currentRound && (
           <div className="ft-container">
-            {mode === "multi" && mp.opponent && (
-              <OpponentBar opponent={mp.opponent} myScore={totalScore} maxScore={MAX_TOTAL} />
+            {mode === "multi" && (
+              <OpponentBar opponents={mp.opponents} myScore={totalScore} maxScore={MAX_TOTAL} />
             )}
 
             <ProgressBar current={qNum} total={TOTAL} score={totalScore} />
@@ -1262,6 +1269,12 @@ export default function NbaQuiz() {
           </div>
         )}
       </div>
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); handleBackToMenu(); }}
+        />
+      )}
     </>
   );
 }

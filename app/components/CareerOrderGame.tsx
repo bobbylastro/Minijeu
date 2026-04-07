@@ -8,7 +8,8 @@ import RematchZone from "@/components/RematchZone";
 import { useRatingSubmit } from "@/hooks/useRatingSubmit";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import careerData from "@/app/career_data.json";
 
 // ─── Club → Wikipedia page title (only when it differs from the display name) ──
@@ -699,8 +700,14 @@ export default function CareerQuiz() {
   return (
     <>
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="career"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -749,8 +756,8 @@ export default function CareerQuiz() {
         {/* ── GAME ───────────────────────────────────────────────────────────── */}
         {screen === "game" && currentRound && (
           <div className="cr-container">
-            {mode === "multi" && mp.opponent && (
-              <OpponentBar opponent={mp.opponent} myScore={totalScore} maxScore={MAX_TOTAL} />
+            {mode === "multi" && (
+              <OpponentBar opponents={mp.opponents} myScore={totalScore} maxScore={MAX_TOTAL} />
             )}
             <ProgressBar current={qNum} total={TOTAL} score={totalScore} />
             {mode === "multi" && answerTimeLeft !== null && !submitted && (
@@ -890,6 +897,12 @@ export default function CareerQuiz() {
           </div>
         )}
       </div>
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); handleMenu(); }}
+        />
+      )}
     </>
   );
 }

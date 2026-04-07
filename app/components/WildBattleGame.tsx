@@ -9,7 +9,8 @@ import { recordMatch } from "@/lib/matchHistory";
 import RematchZone from "@/components/RematchZone";
 import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
-import NamePromptModal from "@/components/NamePromptModal";
+import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
+import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RelatedGames from "@/components/RelatedGames";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -364,7 +365,10 @@ function DuelCard({
         <div className="wb-card__photo-gradient" />
       </div>
       <div className="wb-card__info">
-        <div className="wb-card__name">{animal.name}</div>
+        <div className="wb-card__name">
+          {count > 1 && <span className="wb-card__name-count">×{count} </span>}
+          {animal.name}
+        </div>
         <div className={`wb-card__hint-stat${showHint ? " wb-card__hint-stat--visible" : ""}`}>
           {animal.hint}
         </div>
@@ -555,8 +559,14 @@ export default function WildBattleGame() {
     <>
       <HomeScreen onSolo={startSolo} onMulti={startMulti} />
       {showNamePrompt && (
-        <NamePromptModal
-          onConfirm={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+        <MultiplayerEntryModal
+          gameType="wild-battle"
+          host={getPartykitHost()}
+          onQuickMatch={name => { setShowNamePrompt(false); mp.joinQueue(name); }}
+          onLobbyStart={(payload, myName) => {
+            setShowNamePrompt(false);
+            mp.joinFromLobby(payload.gameId, payload.seed, myName, payload.totalPlayers, payload.playerNames);
+          }}
           onCancel={() => { setShowNamePrompt(false); setMode("solo"); }}
         />
       )}
@@ -578,6 +588,12 @@ export default function WildBattleGame() {
         ) : undefined}
       />
       <RelatedGames currentSlug="/wild-battle" />
+      {mp.finalLeaderboard && (
+        <LeaderboardOverlay
+          leaderboard={mp.finalLeaderboard}
+          onClose={() => { mp.disconnect(); backToHome(); }}
+        />
+      )}
     </>
   );
 
@@ -662,8 +678,8 @@ export default function WildBattleGame() {
         </div>
       </div>
 
-      {isMulti && mp.opponent && (
-        <OpponentBar opponent={mp.opponent} myScore={score} maxScore={MAX_SCORE} />
+      {isMulti && (
+        <OpponentBar opponents={mp.opponents} myScore={score} maxScore={MAX_SCORE} />
       )}
 
       {/* Question area (relative so verdict overlay can be absolute inside) */}

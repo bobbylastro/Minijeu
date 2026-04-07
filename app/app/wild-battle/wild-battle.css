@@ -219,6 +219,14 @@
   text-shadow: 0 1px 8px rgba(0,0,0,0.9);
   letter-spacing: 0.01em;
 }
+.wb-card__name-count {
+  color: #ffb347;
+  font-size: 1.2em;
+  font-weight: 900;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.7);
+  margin-right: 1px;
+}
+
 .wb-card__hint-stat {
   font-size: 0.78rem; font-weight: 700;
   color: rgba(255,220,120,0); margin-top: 4px;
@@ -231,12 +239,17 @@
 
 .wb-card__count {
   position: absolute; top: 10px; left: 10px; z-index: 3;
-  background: linear-gradient(135deg, #ef4444, #dc2626);
-  color: #fff; font-size: 1rem; font-weight: 900;
-  padding: 4px 9px; border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(239,68,68,0.5);
-  letter-spacing: -0.5px;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+  background: linear-gradient(135deg, #ff5722, #e53935);
+  color: #fff; font-size: 2rem; font-weight: 900;
+  padding: 4px 14px 4px 10px; border-radius: 14px;
+  box-shadow: 0 4px 22px rgba(239,68,68,0.70), 0 0 0 2.5px rgba(255,255,255,0.28);
+  letter-spacing: -1.5px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.55);
+  animation: wb-count-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+@keyframes wb-count-pop {
+  from { opacity: 0; transform: scale(0.35) rotate(-14deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
 .wb-badge--winner {
@@ -453,6 +466,7 @@
   .wb-fight__text { font-size: 0.56rem; }
   .wb-fight__bolt { font-size: 1.4rem; }
   .wb-card { border-radius: 16px; }
+  .wb-card__count { font-size: 1.5rem; padding: 3px 10px 3px 8px; border-radius: 12px; }
   .wb-card__name { font-size: 0.90rem; }
   .wb-card__photo--initials { font-size: 3rem; }
 
