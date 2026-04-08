@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef } from "react";
-import rawData from "@/app/game-tournament/games_data.json";
 import "@/app/game-tournament/gaming-tournament.css";
 
 interface Game {
@@ -19,7 +18,7 @@ interface ResultGame {
   wins: number;
 }
 
-const ALL_GAMES = rawData.games as Game[];
+interface GamingData { games: Game[]; }
 
 const ROUND_NAMES = [
   "Round of 32",
@@ -82,7 +81,8 @@ const INITIAL: State = {
   results: [],
 };
 
-export default function GamingTournamentGame() {
+export default function GamingTournamentGame({ initialData }: { initialData: GamingData }) {
+  const ALL_GAMES = initialData.games;
   const [state, setState] = useState<State>(INITIAL);
 
   // Always up-to-date ref to avoid stale closures in setTimeout

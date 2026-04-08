@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import GamingTournamentGame from "@/components/GamingTournamentGame";
+import gamingData from "@/app/game-tournament/games_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import FAQ from "@/components/FAQ";
 
@@ -61,7 +62,7 @@ export default function GameTournamentPage() {
         },
       ]} />
 
-      <GamingTournamentGame />
+      <GamingTournamentGame initialData={gamingData} />
 
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

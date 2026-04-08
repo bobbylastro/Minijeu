@@ -1,7 +1,6 @@
 "use client";
 import { memo, useState, useEffect, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import rawDishes from "@/app/food_data.json";
 import "@/app/food/food.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
@@ -30,15 +29,14 @@ type Phase = "home" | "playing" | "result";
 type Mode  = "solo" | "multi";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
-const ALL_DISHES = rawDishes as Dish[];
 const ROUNDS_PER_GAME = 10;
 const ROUND_SECONDS   = 20;
 const INTRO_SECONDS   = 3;
 const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 
-function pickDishes(n: number, seed?: number): Dish[] {
-  if (seed !== undefined) return seededShuffle([...ALL_DISHES], seed).slice(0, n);
-  return [...ALL_DISHES].sort(() => Math.random() - 0.5).slice(0, n);
+function pickDishes(dishes: Dish[], n: number, seed?: number): Dish[] {
+  if (seed !== undefined) return seededShuffle([...dishes], seed).slice(0, n);
+  return [...dishes].sort(() => Math.random() - 0.5).slice(0, n);
 }
 
 // ─── Stars ───────────────────────────────────────────────────────────────────
@@ -308,7 +306,7 @@ function ResultScreen({ score, oppScore, mode, onReplay, rematchZone }: {
 }
 
 // ─── Main game ────────────────────────────────────────────────────────────────
-export default function FoodOriginGame() {
+export default function FoodOriginGame({ initialData }: { initialData: Dish[] }) {
   const [phase, setPhase]               = useState<Phase>("home");
   const [mode, setMode]                 = useState<Mode>("solo");
   const [showNamePrompt, setShowNamePrompt] = useState(false);
@@ -338,7 +336,7 @@ export default function FoodOriginGame() {
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    setDishes(seededShuffle([...ALL_DISHES], seed).slice(0, ROUNDS_PER_GAME));
+    setDishes(seededShuffle([...initialData], seed).slice(0, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setClickedCode(null);
@@ -437,7 +435,7 @@ export default function FoodOriginGame() {
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
     setMode("solo");
-    setDishes(pickDishes(ROUNDS_PER_GAME));
+    setDishes(pickDishes(initialData, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setClickedCode(null);

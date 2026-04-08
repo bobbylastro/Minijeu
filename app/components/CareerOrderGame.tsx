@@ -10,7 +10,6 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
-import careerData from "@/app/career_data.json";
 
 // ─── Club → Wikipedia page title (only when it differs from the display name) ──
 const WIKI_CLUB: Record<string, string> = {
@@ -82,8 +81,6 @@ const MAX_PTS     = 100;
 const MAX_TOTAL   = TOTAL * MAX_PTS;
 const ANSWER_TIME = 20;
 const NEXT_TIME   = 3;
-const ALL_PLAYERS: PlayerData[] = careerData.players as PlayerData[];
-
 // ─── Helpers ────────────────────────────────────────────────────────────────────
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -114,21 +111,24 @@ function gradeLabel(pts: number): string {
   return "😬 Need more training";
 }
 
-function generateRounds(seed?: number): Round[] {
+interface RawCareerData { players: PlayerData[]; club_logos?: Record<string, string>; }
+
+function generateRounds(allPlayers: PlayerData[], seed?: number): Round[] {
   const players = seed !== undefined
-    ? seededShuffle([...ALL_PLAYERS], seed).slice(0, TOTAL)
-    : shuffle([...ALL_PLAYERS]).slice(0, TOTAL);
+    ? seededShuffle([...allPlayers], seed).slice(0, TOTAL)
+    : shuffle([...allPlayers]).slice(0, TOTAL);
   return players.map((player, i) => ({
     player,
     shuffledClubs: shuffleClubs(player.clubs, seed !== undefined ? seed + i + 1 : undefined),
   }));
 }
 
-// ─── Wikipedia images via server-side proxy ──────────────────────────────────────
-// Club logos: use prefetched URL if available (proxied), else look up by wiki title
-function clubLogoSrc(club: string): string {
-  const prefetched = (careerData as { club_logos?: Record<string, string> }).club_logos?.[club] ?? null;
-  if (prefetched) return `/api/wiki-image?url=${encodeURIComponent(prefetched)}`;
+// ─── Wikipedia images ─────────────────────────────────────────────────────────────
+// Prefetched Wikimedia URLs load directly (upload.wikimedia.org is in CSP img-src).
+// Unknown clubs fall back to the server-side wiki-image proxy.
+function clubLogoSrc(club: string, clubLogos?: Record<string, string>): string {
+  const prefetched = clubLogos?.[club] ?? null;
+  if (prefetched) return prefetched;
   const wikiTitle = WIKI_CLUB[club] ?? club;
   return `/api/wiki-image?title=${encodeURIComponent(wikiTitle)}`;
 }
@@ -188,22 +188,23 @@ function AnswerTimer({ timeLeft, total }: { timeLeft: number; total: number }) {
 }
 
 // ─── ClubLogoImg: logo + fallback initial ────────────────────────────────────────
-function ClubLogoImg({ club, imgClass, placeholderClass }: {
-  club: string; imgClass: string; placeholderClass: string;
+function ClubLogoImg({ club, imgClass, placeholderClass, clubLogos }: {
+  club: string; imgClass: string; placeholderClass: string; clubLogos?: Record<string, string>;
 }) {
   const [failed, setFailed] = useState(false);
   if (!failed) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={clubLogoSrc(club)} alt={club} className={imgClass} draggable={false} loading="lazy" onError={() => setFailed(true)} />;
+    return <img src={clubLogoSrc(club, clubLogos)} alt={club} className={imgClass} draggable={false} onError={() => setFailed(true)} />;
   }
   return <div className={placeholderClass}>{club[0]}</div>;
 }
 
 // ─── ClubChip: draggable pool item ───────────────────────────────────────────────
-function ClubChip({ club, isDragging, onPointerDown }: {
+function ClubChip({ club, isDragging, onPointerDown, clubLogos }: {
   club: string;
   isDragging: boolean;
   onPointerDown: (e: React.MouseEvent | React.TouchEvent, el: HTMLElement) => void;
+  clubLogos?: Record<string, string>;
 }) {
   return (
     <div
@@ -212,7 +213,7 @@ function ClubChip({ club, isDragging, onPointerDown }: {
       onTouchStart={e => { onPointerDown(e, e.currentTarget); }}
     >
       <div className="cr-chip-logo-wrap">
-        <ClubLogoImg club={club} imgClass="cr-chip-logo" placeholderClass="cr-chip-logo-placeholder" />
+        <ClubLogoImg club={club} imgClass="cr-chip-logo" placeholderClass="cr-chip-logo-placeholder" clubLogos={clubLogos} />
       </div>
       <span className="cr-chip-label">{club}</span>
     </div>
@@ -222,7 +223,7 @@ function ClubChip({ club, isDragging, onPointerDown }: {
 // ─── SortingGame ─────────────────────────────────────────────────────────────────
 function SortingGame({
   round, submitted, placed, draggingClub, draggingFromSlot, dragOverSlot,
-  slotRefs, onSlotDragStart,
+  slotRefs, onSlotDragStart, clubLogos,
 }: {
   round: Round;
   submitted: boolean;
@@ -232,6 +233,7 @@ function SortingGame({
   dragOverSlot: number | null;
   slotRefs: React.MutableRefObject<(HTMLDivElement | null)[]>;
   onSlotDragStart: (club: string, slotIndex: number, e: React.MouseEvent | React.TouchEvent, el: HTMLElement) => void;
+  clubLogos?: Record<string, string>;
 }) {
   const correct = round.player.clubs;
   const cols = placed.length <= 4 ? placed.length : 3;
@@ -279,7 +281,7 @@ function SortingGame({
                       <span className="cr-slot-verdict">{club === correct[i] ? "✓" : "✗"}</span>
                     )}
                     <div className="cr-slot-logo-wrap">
-                      <ClubLogoImg club={club} imgClass="cr-slot-logo" placeholderClass="cr-slot-logo-placeholder" />
+                      <ClubLogoImg club={club} imgClass="cr-slot-logo" placeholderClass="cr-slot-logo-placeholder" clubLogos={clubLogos} />
                     </div>
                     <span className="cr-slot-club">{club}</span>
                     {submitted && club !== correct[i] && (
@@ -309,6 +311,7 @@ function SortingGame({
                   key={club}
                   club={club}
                   isDragging={false}
+                  clubLogos={clubLogos}
                   onPointerDown={(e, el) => {
                     if (e.type === "mousedown") {
                       (e as React.MouseEvent).preventDefault();
@@ -330,7 +333,7 @@ function SortingGame({
 function PlayerCard({ player }: { player: PlayerData }) {
   const [imgFailed, setImgFailed] = useState(false);
   const imgSrc = imgFailed ? null
-    : player.image_url ? `/api/wiki-image?url=${encodeURIComponent(player.image_url)}`
+    : player.image_url ? player.image_url
     : player.wiki      ? `/api/wiki-image?title=${encodeURIComponent(player.wiki)}`
     : null;
   return (
@@ -379,7 +382,7 @@ function ResultCard({ entry }: { entry: RoundResult }) {
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────────
-export default function CareerQuiz() {
+export default function CareerQuiz({ initialData }: { initialData: RawCareerData }) {
   const [screen, setScreen]         = useState<Screen>("home");
   const [mode, setMode]             = useState<Mode>("solo");
   const [rounds, setRounds]         = useState<Round[]>([]);
@@ -549,7 +552,7 @@ export default function CareerQuiz() {
 
   // ── Multiplayer callbacks ─────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const newRounds = generateRounds(seed);
+    const newRounds = generateRounds(initialData.players, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -642,7 +645,7 @@ export default function CareerQuiz() {
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
     setMode("solo");
-    const newRounds = generateRounds();
+    const newRounds = generateRounds(initialData.players);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -775,6 +778,7 @@ export default function CareerQuiz() {
               dragOverSlot={dragOverSlot}
               slotRefs={slotRefs}
               onSlotDragStart={handleSlotDragStart}
+              clubLogos={initialData.club_logos}
             />
 
             {/* Submit */}

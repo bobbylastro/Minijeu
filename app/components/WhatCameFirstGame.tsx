@@ -10,7 +10,6 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
-import wcfData from "@/app/wcf_data.json";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 interface WcfEvent { text: string; year: number; category: string; wiki: string; image_url?: string; }
@@ -39,9 +38,6 @@ const MIN_YEAR      = 1950;
 const MAX_YEAR      = 2025;
 const INIT_YEAR     = 1990;
 const ROUND_PATTERN: RoundType[] = ["duel","slider","order","duel","slider","order","duel","slider","order"];
-const ALL_EVENTS: WcfEvent[] = wcfData.events as WcfEvent[];
-
-
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 function shuffle<T>(arr: T[]): T[] {
   const a = [...arr];
@@ -52,8 +48,8 @@ function shuffle<T>(arr: T[]): T[] {
   return a;
 }
 
-function generateRounds(seed?: number): Round[] {
-  const events = seed !== undefined ? seededShuffle([...ALL_EVENTS], seed) : shuffle([...ALL_EVENTS]);
+function generateRounds(allEvents: WcfEvent[], seed?: number): Round[] {
+  const events = seed !== undefined ? seededShuffle([...allEvents], seed) : shuffle([...allEvents]);
   const used = new Set<number>();
   function pickEvent(excludeYears = new Set<number>()): WcfEvent | null {
     for (let i = 0; i < events.length; i++) {
@@ -167,7 +163,7 @@ function CatBadge({ category }: { category: string }) {
 function EventImg({ wiki, alt, className, imageUrl }: { wiki: string; alt: string; className?: string; imageUrl?: string }) {
   const [failed, setFailed] = useState(false);
   const src = failed ? null
-    : imageUrl ? `/api/wiki-image?url=${encodeURIComponent(imageUrl)}`
+    : imageUrl ? imageUrl
     : `/api/wiki-image?title=${encodeURIComponent(wiki)}`;
   if (src) return <img src={src} alt={alt} className={`wcf-event-img${className ? ` ${className}` : ""}`} draggable={false} onError={() => setFailed(true)} />;
   return <div className="wcf-event-img-placeholder" />;
@@ -355,7 +351,7 @@ function ResultCard({ entry }: { entry: RoundResult }) {
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
-export default function WhatCameFirst() {
+export default function WhatCameFirst({ initialData }: { initialData: { events: WcfEvent[] } }) {
   const [screen, setScreen]         = useState<Screen>("home");
   const [mode, setMode]             = useState<Mode>("solo");
   const [rounds, setRounds]         = useState<Round[]>([]);
@@ -525,7 +521,7 @@ export default function WhatCameFirst() {
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const newRounds = generateRounds(seed);
+    const newRounds = generateRounds(initialData.events, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -610,7 +606,7 @@ export default function WhatCameFirst() {
   // ── Solo game actions ──────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
     setMode("solo");
-    const newRounds = generateRounds();
+    const newRounds = generateRounds(initialData.events);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;

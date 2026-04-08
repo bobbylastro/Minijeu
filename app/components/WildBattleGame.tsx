@@ -1,6 +1,5 @@
 "use client";
 import { memo, useState, useEffect, useRef, useCallback } from "react";
-import rawData from "@/app/animals_data.json";
 import "@/app/wild-battle/wild-battle.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
@@ -95,14 +94,21 @@ function seededShuffle<T>(arr: T[], rand: () => number): T[] {
 }
 
 // ─── Question generation ───────────────────────────────────────────────────────
-function generateQuestions(count: number, seed?: number): Question[] {
+interface RawAnimalsData {
+  battles: (Omit<RawBattle, "winner"> & { winner: string })[];
+  quantity_battles: (Omit<RawQuantityBattle, "winner"> & { winner: string })[];
+  comparisons: (Omit<RawComparison, "winner"> & { winner: string })[];
+  sliders: RawSlider[];
+}
+
+function generateQuestions(data: RawAnimalsData, count: number, seed?: number): Question[] {
   const rand = seed !== undefined ? seededRandom(seed) : Math.random;
   const fn   = seed !== undefined ? rand : Math.random;
 
-  const battles         = seededShuffle([...rawData.battles],          fn).slice(0, BATTLES_PER_GAME);
-  const quantityBattles = seededShuffle([...(rawData as { quantity_battles: RawQuantityBattle[] }).quantity_battles], fn).slice(0, QUANTITY_BATTLES_PER_GAME);
-  const comparisons     = seededShuffle([...rawData.comparisons],      fn).slice(0, COMPARISONS_PER_GAME);
-  const sliders         = seededShuffle([...rawData.sliders],          fn).slice(0, SLIDERS_PER_GAME);
+  const battles         = seededShuffle([...data.battles],         fn).slice(0, BATTLES_PER_GAME);
+  const quantityBattles = seededShuffle([...data.quantity_battles], fn).slice(0, QUANTITY_BATTLES_PER_GAME);
+  const comparisons     = seededShuffle([...data.comparisons],     fn).slice(0, COMPARISONS_PER_GAME);
+  const sliders         = seededShuffle([...data.sliders],         fn).slice(0, SLIDERS_PER_GAME);
 
   const questions: Question[] = [
     ...battles.map(d         => ({ type: "battle"          as const, data: d as RawBattle         })),
@@ -408,7 +414,7 @@ function Verdict({
 }
 
 // ─── Main game component ────────────────────────────────────────────────────────
-export default function WildBattleGame() {
+export default function WildBattleGame({ initialData }: { initialData: RawAnimalsData }) {
   const [phase, setPhase]               = useState<Phase>("home");
   const [mode, setMode]                 = useState<Mode>("solo");
   const [showNamePrompt, setShowNamePrompt] = useState(false);
@@ -445,7 +451,7 @@ export default function WildBattleGame() {
 
   // ── Multiplayer callbacks ────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const qs = generateQuestions(ROUNDS_PER_GAME, seed);
+    const qs = generateQuestions(initialData, ROUNDS_PER_GAME, seed);
     setQuestions(qs);
     setRound(0); setScore(0); setSoloCorrect(0); setStreak(0); setBestStreak(0);
     setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
@@ -544,7 +550,7 @@ export default function WildBattleGame() {
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
     setMode("solo");
-    setQuestions(generateQuestions(ROUNDS_PER_GAME));
+    setQuestions(generateQuestions(initialData, ROUNDS_PER_GAME));
     setRound(0); setScore(0); setSoloCorrect(0); setStreak(0); setBestStreak(0);
     setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
     setMultiWaiting(false);

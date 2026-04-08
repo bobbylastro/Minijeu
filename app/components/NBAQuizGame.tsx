@@ -10,8 +10,6 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
-import nbaData from "@/app/nba_data.json";
-
 // ─── Raw data types ─────────────────────────────────────────────────────────────
 interface TriviaItem   { question: string; options: string[]; correct: number; }
 interface ArenaItem    { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; image_url?: string; }
@@ -19,11 +17,14 @@ interface ContractItem { player: string; team: string; year: number; total_m: nu
 interface SalaryItem   { player: string; team: string; annual_m: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
 interface PeakItem     { player: string; team: string; season: number; ppg: number; flag: string; wiki?: string; flagCode?: string; image_url?: string; }
 
-const TRIVIA:    TriviaItem[]    = nbaData.trivia    as TriviaItem[];
-const ARENAS:    ArenaItem[]     = nbaData.arenas    as ArenaItem[];
-const CONTRACTS: ContractItem[]  = nbaData.contracts as ContractItem[];
-const SALARIES:  SalaryItem[]    = nbaData.salaries  as SalaryItem[];
-const PEAKS:     PeakItem[]      = (nbaData as unknown as { peaks: PeakItem[] }).peaks;
+interface RawNBAData {
+  trivia: TriviaItem[];
+  arenas: ArenaItem[];
+  contracts: ContractItem[];
+  salaries: SalaryItem[];
+  peaks: PeakItem[];
+  team_logos?: Record<string, string>;
+}
 
 // ─── Round types ────────────────────────────────────────────────────────────────
 type RoundType = "trivia" | "arena" | "contract" | "salary" | "peak";
@@ -122,16 +123,16 @@ function gradeLabel(pts: number): string {
   return "😬 Need more training";
 }
 
-function generateRounds(seed?: number): Round[] {
+function generateRounds(data: RawNBAData, seed?: number): Round[] {
   const doShuffle = <T,>(arr: T[], offset: number): T[] =>
     seed !== undefined ? seededShuffle(arr, seed + offset) : shuffle(arr);
 
   const rng       = seed !== undefined ? mulberry32(seed + 999) : Math.random.bind(Math);
-  const trivia    = doShuffle([...TRIVIA],    0).slice(0, 2);
-  const arenas    = doShuffle([...ARENAS],    1).slice(0, 2);
-  const contracts = doShuffle([...CONTRACTS], 2).slice(0, 2);
-  const salaries  = doShuffle([...SALARIES],  3);
-  const peaks     = doShuffle([...PEAKS],     4).slice(0, 2);
+  const trivia    = doShuffle([...data.trivia],    0).slice(0, 2);
+  const arenas    = doShuffle([...data.arenas],    1).slice(0, 2);
+  const contracts = doShuffle([...data.contracts], 2).slice(0, 2);
+  const salaries  = doShuffle([...data.salaries],  3);
+  const peaks     = doShuffle([...data.peaks],     4).slice(0, 2);
 
   let ti = 0, ai = 0, ci = 0, sai = 0, pi = 0;
 
@@ -212,11 +213,11 @@ function TypeBanner({ type, question }: { type: RoundType; question?: string }) 
   );
 }
 
-// ─── Wikipedia image via server-side proxy ───────────────────────────────────────
+// ─── Wikipedia image ─────────────────────────────────────────────────────────────
 function WikiImg({ title, alt, className, imageUrl }: { title?: string; alt: string; className?: string; imageUrl?: string | null }) {
   const [failed, setFailed] = useState(false);
   const src = failed ? null
-    : imageUrl ? `/api/wiki-image?url=${encodeURIComponent(imageUrl)}`
+    : imageUrl ? imageUrl
     : title    ? `/api/wiki-image?title=${encodeURIComponent(title)}`
     : null;
   if (!src) return <div className={`ft-img-placeholder ${className ?? ""}`} />;
@@ -232,18 +233,18 @@ const WIKI_TEAM: Record<string, string> = {
   "Philadelphia Warriors":"Philadelphia Warriors",
 };
 
-function teamLogoSrc(team: string): string {
-  const prefetched = (nbaData as { team_logos?: Record<string, string> }).team_logos?.[team] ?? null;
-  if (prefetched) return `/api/wiki-image?url=${encodeURIComponent(prefetched)}`;
+function teamLogoSrc(team: string, teamLogos?: Record<string, string>): string {
+  const prefetched = teamLogos?.[team] ?? null;
+  if (prefetched) return prefetched;
   const wikiTitle = WIKI_TEAM[team] ?? team;
   return `/api/wiki-image?title=${encodeURIComponent(wikiTitle)}`;
 }
 
-function TeamLogoImg({ team }: { team: string }) {
+function TeamLogoImg({ team, teamLogos }: { team: string; teamLogos?: Record<string, string> }) {
   const [failed, setFailed] = useState(false);
   if (!failed) {
     // eslint-disable-next-line @next/next/no-img-element
-    return <img src={teamLogoSrc(team)} alt={team} className="ft-team-logo" draggable={false} loading="lazy" onError={() => setFailed(true)} />;
+    return <img src={teamLogoSrc(team, teamLogos)} alt={team} className="ft-team-logo" draggable={false} loading="lazy" onError={() => setFailed(true)} />;
   }
   return <div className="ft-team-logo-placeholder">{team[0]}</div>;
 }
@@ -570,7 +571,7 @@ function NbaResultCard({ entry }: { entry: RoundEntry }) {
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────────
-export default function NbaQuiz() {
+export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
   const [screen, setScreen]             = useState<Screen>("home");
   const [mode, setMode]                 = useState<Mode>("solo");
   const [rounds, setRounds]             = useState<Round[]>([]);
@@ -634,7 +635,7 @@ export default function NbaQuiz() {
 
   // ── Multiplayer callbacks ────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const newRounds = generateRounds(seed);
+    const newRounds = generateRounds(initialData, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -775,7 +776,7 @@ export default function NbaQuiz() {
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
     setMode("solo");
-    const newRounds = generateRounds();
+    const newRounds = generateRounds(initialData);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -1007,7 +1008,7 @@ export default function NbaQuiz() {
                       <span className="ft-transfer-year">({currentRound.year})</span>
                     </div>
                     <div className="ft-transfer-move">
-                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} /></div>
+                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} teamLogos={initialData.team_logos} /></div>
                       <span className="ft-transfer-club">{currentRound.team}</span>
                     </div>
                   </div>
@@ -1086,7 +1087,7 @@ export default function NbaQuiz() {
                         <FlagImg code={player.flagCode} alt={player.player} />
                         <div className="ft-salary-player">{player.player}</div>
                         <div className="ft-salary-team-wrap">
-                          <TeamLogoImg team={player.team} />
+                          <TeamLogoImg team={player.team} teamLogos={initialData.team_logos} />
                           <span className="ft-salary-team">{player.team}</span>
                         </div>
                         {chosen !== null && (
@@ -1111,7 +1112,7 @@ export default function NbaQuiz() {
                       <span className="ft-transfer-name">{currentRound.player}</span>
                     </div>
                     <div className="ft-transfer-move">
-                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} /></div>
+                      <div className="ft-team-logo-wrap"><TeamLogoImg team={currentRound.team} teamLogos={initialData.team_logos} /></div>
                       <span className="ft-transfer-club">{currentRound.team}</span>
                     </div>
                   </div>

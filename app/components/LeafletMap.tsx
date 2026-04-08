@@ -18,7 +18,7 @@ interface Props {
   onCountryHover: (info: { name: string; alpha2: string } | null) => void;
 }
 
-const GEO_URL      = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json";
+const GEO_URL      = "/world-110m.json";
 const ISRAEL_ID    = "376";
 const PALESTINE_ID = "275";
 

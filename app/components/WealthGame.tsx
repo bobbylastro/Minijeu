@@ -1,6 +1,5 @@
 "use client";
 import { memo, useState, useEffect, useRef, useCallback } from "react";
-import rawData from "@/app/wealth_data.json";
 import "@/app/wealth/wealth.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
@@ -42,7 +41,6 @@ type Phase = "home" | "playing" | "result";
 type Mode  = "solo" | "multi";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const ALL_CELEBS      = rawData as Celebrity[];
 const ROUNDS_PER_GAME = 10;
 const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 const FEEDBACK_DELAY  = 1500; // ms before auto-advancing in solo wrong-answer case
@@ -93,13 +91,13 @@ function makeEstimationOptions(celeb: Celebrity, rand: () => number): { label: s
   return opts;
 }
 
-function generateQuestions(count: number, seed?: number): Question[] {
+function generateQuestions(celebrities: Celebrity[], count: number, seed?: number): Question[] {
   const rand = seed !== undefined ? seededRandom(seed) : Math.random;
   const randFn = seed !== undefined ? rand : Math.random;
 
   const shuffled = seed !== undefined
-    ? seededShuffle([...ALL_CELEBS], rand)
-    : [...ALL_CELEBS].sort(() => Math.random() - 0.5);
+    ? seededShuffle([...celebrities], rand)
+    : [...celebrities].sort(() => Math.random() - 0.5);
 
   const questions: Question[] = [];
   let idx = 0;
@@ -212,11 +210,7 @@ function CelebPhoto({ celeb, className = "", initClassName = "" }: {
   // Try stored URL first (faster), then Wikipedia title lookup.
   // Local paths (/images/...) are served directly; only Wikimedia URLs go through the proxy.
   const urls = [
-    celeb.image
-      ? celeb.image.startsWith('/')
-        ? celeb.image
-        : `/api/wiki-image?url=${encodeURIComponent(celeb.image)}`
-      : null,
+    celeb.image || null,
     `/api/wiki-image?title=${encodeURIComponent(title)}`,
   ].filter((u): u is string => u !== null);
 
@@ -422,7 +416,7 @@ function DuelCard({
 }
 
 // ─── Main game component ──────────────────────────────────────────────────────
-export default function WealthGame() {
+export default function WealthGame({ initialData }: { initialData: Celebrity[] }) {
   const [phase, setPhase]             = useState<Phase>("home");
   const [mode, setMode]               = useState<Mode>("solo");
   const [showNamePrompt, setShowNamePrompt] = useState(false);
@@ -454,7 +448,7 @@ export default function WealthGame() {
 
   // ── Multiplayer callbacks ─────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const qs = generateQuestions(ROUNDS_PER_GAME, seed);
+    const qs = generateQuestions(initialData, ROUNDS_PER_GAME, seed);
     setQuestions(qs);
     setRound(0);
     setScore(0);
@@ -563,7 +557,7 @@ export default function WealthGame() {
   // ── Game flow ─────────────────────────────────────────────────────────────
   function startSolo() {
     setMode("solo");
-    setQuestions(generateQuestions(ROUNDS_PER_GAME));
+    setQuestions(generateQuestions(initialData, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setSoloCorrect(0);

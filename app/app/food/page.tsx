@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FoodOriginGame from "@/components/FoodOriginGame";
+import foodData from "@/app/food_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
@@ -41,7 +42,7 @@ export default function FoodPage() {
           ],
         },
       ]} />
-      <FoodOriginGame />
+      <FoodOriginGame initialData={foodData} />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">
           <h1 className="game-seo-section__h1">

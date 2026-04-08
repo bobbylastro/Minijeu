@@ -9,7 +9,6 @@ import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RematchZone from "@/components/RematchZone";
-import rawData from "@/app/five-clues-data.json";
 import "@/app/five-clues/five-clues.css";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -20,8 +19,6 @@ interface Subject {
   accepted: string[];
   clues: string[];
 }
-
-const ALL_SUBJECTS = rawData as Subject[];
 
 // ─── Fuzzy matching ───────────────────────────────────────────────────────────
 function normalize(s: string): string {
@@ -62,10 +59,10 @@ function checkAnswer(input: string, accepted: string[]): boolean {
 }
 
 // ─── Seeded shuffle ──────────────────────────────────────────────────────────
-function pickSubjects(seed: number, count = 10): Subject[] {
+function pickSubjects(subjects: Subject[], seed: number, count = 10): Subject[] {
   let s = seed >>> 0;
   const rng = () => { s = (Math.imul(s, 1664525) + 1013904223) >>> 0; return s / 0x100000000; };
-  const arr = [...ALL_SUBJECTS];
+  const arr = [...subjects];
   for (let i = arr.length - 1; i > 0; i--) {
     const j = Math.floor(rng() * (i + 1));
     [arr[i], arr[j]] = [arr[j], arr[i]];
@@ -105,7 +102,7 @@ function Stars() {
 }
 
 // ─── Main component ──────────────────────────────────────────────────────────
-export default function FiveCluesGame() {
+export default function FiveCluesGame({ initialData }: { initialData: Subject[] }) {
   const HOST = process.env.NEXT_PUBLIC_PARTYKIT_HOST ?? "localhost:1999";
   const { submitRating } = useRatingSubmit("five-clues");
 
@@ -159,7 +156,7 @@ export default function FiveCluesGame() {
       setScreen("result");
     },
     onGameSync(roundNum, seed, myScore) {
-      const picked = pickSubjects(seed, TOTAL_ROUNDS);
+      const picked = pickSubjects(initialData, seed, TOTAL_ROUNDS);
       subjectsRef.current = picked;
       setSubjects(picked);
       setTotalScore(myScore);
@@ -169,7 +166,7 @@ export default function FiveCluesGame() {
   });
 
   function initGame(seed: number) {
-    const picked = pickSubjects(seed, TOTAL_ROUNDS);
+    const picked = pickSubjects(initialData, seed, TOTAL_ROUNDS);
     subjectsRef.current = picked;
     setSubjects(picked);
     setTotalScore(0);

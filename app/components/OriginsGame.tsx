@@ -1,7 +1,6 @@
 "use client";
 import { memo, useState, useEffect, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import rawItems from "@/app/origins_data.json";
 import "@/app/food/food.css";    // reuse identical visual design
 import "@/app/globals.css";      // ensure related-games + page-level CSS is bundled
 import { useMultiplayer } from "@/hooks/useMultiplayer";
@@ -31,15 +30,14 @@ type Phase = "home" | "playing" | "result";
 type Mode  = "solo" | "multi";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const ALL_ITEMS      = rawItems as OriginItem[];
 const ROUNDS_PER_GAME = 10;
 const ROUND_SECONDS   = 25;
 const INTRO_SECONDS   = 3;
 const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 
-function pickItems(n: number, seed?: number): OriginItem[] {
-  if (seed !== undefined) return seededShuffle([...ALL_ITEMS], seed).slice(0, n);
-  return [...ALL_ITEMS].sort(() => Math.random() - 0.5).slice(0, n);
+function pickItems(items: OriginItem[], n: number, seed?: number): OriginItem[] {
+  if (seed !== undefined) return seededShuffle([...items], seed).slice(0, n);
+  return [...items].sort(() => Math.random() - 0.5).slice(0, n);
 }
 
 // ─── Stars ────────────────────────────────────────────────────────────────────
@@ -303,7 +301,7 @@ function ResultScreen({ score, oppScore, mode, onReplay, rematchZone }: {
 }
 
 // ─── Main game ────────────────────────────────────────────────────────────────
-export default function OriginsGame() {
+export default function OriginsGame({ initialData }: { initialData: OriginItem[] }) {
   const [phase, setPhase]               = useState<Phase>("home");
   const [mode, setMode]                 = useState<Mode>("solo");
   const [showNamePrompt, setShowNamePrompt] = useState(false);
@@ -333,7 +331,7 @@ export default function OriginsGame() {
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    setItems(seededShuffle([...ALL_ITEMS], seed).slice(0, ROUNDS_PER_GAME));
+    setItems(seededShuffle([...initialData], seed).slice(0, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setClickedCode(null);
@@ -430,7 +428,7 @@ export default function OriginsGame() {
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
     setMode("solo");
-    setItems(pickItems(ROUNDS_PER_GAME));
+    setItems(pickItems(initialData, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
     setClickedCode(null);

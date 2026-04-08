@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import WhatCameFirstGame from "@/components/WhatCameFirstGame";
+import wcfData from "@/app/wcf_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
@@ -41,7 +42,7 @@ export default function WCFPage() {
           ],
         },
       ]} />
-      <WhatCameFirstGame />
+      <WhatCameFirstGame initialData={wcfData} />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">
           <h1 className="game-seo-section__h1">

@@ -9,7 +9,7 @@ const csp = [
   // Next.js requires 'unsafe-inline' for hydration scripts
   `script-src 'self' 'unsafe-inline'${process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : ""} https://www.googletagmanager.com https://www.google-analytics.com https://googleads.g.doubleclick.net https://www.googleadservices.com`,
   "style-src 'self' 'unsafe-inline'",
-  `img-src 'self' data: blob: https://upload.wikimedia.org https://wsrv.nl https://${supabaseHost} https://www.google-analytics.com https://www.googletagmanager.com https://cdn.cloudflare.steamstatic.com https://cdn.steamstatic.com`,
+  `img-src 'self' data: blob: https://upload.wikimedia.org https://wsrv.nl https://flagcdn.com https://${supabaseHost} https://www.google-analytics.com https://www.googletagmanager.com https://cdn.cloudflare.steamstatic.com https://cdn.steamstatic.com`,
   `connect-src 'self' https://${supabaseHost} wss://${supabaseHost} https://*.partykit.dev wss://*.partykit.dev https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`,
   "font-src 'self'",
   "frame-src 'none'",

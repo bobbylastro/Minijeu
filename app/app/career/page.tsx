@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import CareerOrderGame from "@/components/CareerOrderGame";
+import careerData from "@/app/career_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
@@ -41,7 +42,7 @@ export default function CareerPage() {
           ],
         },
       ]} />
-      <CareerOrderGame />
+      <CareerOrderGame initialData={careerData} />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">
           <h1 className="game-seo-section__h1">

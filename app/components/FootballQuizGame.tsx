@@ -10,18 +10,18 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
-import footballData from "@/app/football_data.json";
-
 // ─── Raw data types ─────────────────────────────────────────────────────────────
 interface TriviaItem   { question: string; options: string[]; correct: number; flagOptions?: boolean; }
 interface StadiumItem  { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; }
 interface TransferItem { player: string; from: string; to: string; year: number; fee_m: number; flag: string; wiki?: string; flagCode?: string; }
 interface PeakItem     { player: string; club: string; season: number; goals: number; flag: string; wiki?: string; flagCode?: string; }
 
-const TRIVIA:    TriviaItem[]   = footballData.trivia    as TriviaItem[];
-const STADIUMS:  StadiumItem[]  = footballData.stadiums  as StadiumItem[];
-const TRANSFERS: TransferItem[] = footballData.transfers as TransferItem[];
-const PEAKS:     PeakItem[]     = (footballData as unknown as { peaks: PeakItem[] }).peaks;
+interface RawFootballData {
+  trivia: TriviaItem[];
+  stadiums: StadiumItem[];
+  transfers: TransferItem[];
+  peaks: PeakItem[];
+}
 
 // ─── Round types ────────────────────────────────────────────────────────────────
 type RoundType = "trivia" | "stadium" | "transfer" | "peak";
@@ -118,15 +118,15 @@ function gradeLabel(pts: number): string {
   return "😬 Need more training";
 }
 
-function generateRounds(seed?: number): Round[] {
+function generateRounds(data: RawFootballData, seed?: number): Round[] {
   const doShuffle = <T,>(arr: T[], offset: number): T[] =>
     seed !== undefined ? seededShuffle(arr, seed + offset) : shuffle(arr);
 
   const rng       = seed !== undefined ? mulberry32(seed + 999) : Math.random.bind(Math);
-  const trivia    = doShuffle([...TRIVIA],    0).slice(0, 2);
-  const stadiums  = doShuffle([...STADIUMS],  1).slice(0, 2);
-  const transfers = doShuffle([...TRANSFERS], 2).slice(0, 2);
-  const peaks     = doShuffle([...PEAKS],     3).slice(0, 2);
+  const trivia    = doShuffle([...data.trivia],    0).slice(0, 2);
+  const stadiums  = doShuffle([...data.stadiums],  1).slice(0, 2);
+  const transfers = doShuffle([...data.transfers], 2).slice(0, 2);
+  const peaks     = doShuffle([...data.peaks],     3).slice(0, 2);
 
   let ti = 0, sti = 0, tri_i = 0, pi = 0;
 
@@ -207,11 +207,13 @@ function TypeBanner({ type, question }: { type: RoundType; question?: string }) 
   );
 }
 
-// ─── Wikipedia image via server-side proxy ───────────────────────────────────────
+// ─── Wikipedia image ─────────────────────────────────────────────────────────────
+// Direct Wikimedia URLs load from upload.wikimedia.org (allowed in CSP img-src).
+// Unknown images fall back to the server-side wiki-image proxy.
 function WikiImg({ title, alt, className, imageUrl }: { title?: string; alt: string; className?: string; imageUrl?: string | null }) {
   const [failed, setFailed] = useState(false);
   const src = failed ? null
-    : imageUrl ? `/api/wiki-image?url=${encodeURIComponent(imageUrl)}`
+    : imageUrl ? imageUrl
     : title    ? `/api/wiki-image?title=${encodeURIComponent(title)}`
     : null;
   if (!src) return <div className={`ft-img-placeholder ${className ?? ""}`} />;
@@ -524,7 +526,7 @@ function FtResultCard({ entry }: { entry: RoundEntry }) {
 }
 
 // ─── Main ───────────────────────────────────────────────────────────────────────
-export default function Football() {
+export default function Football({ initialData }: { initialData: RawFootballData }) {
   const [screen, setScreen]             = useState<Screen>("home");
   const [mode, setMode]                 = useState<Mode>("solo");
   const [rounds, setRounds]             = useState<Round[]>([]);
@@ -588,7 +590,7 @@ export default function Football() {
 
   // ── Multiplayer callbacks ────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
-    const newRounds = generateRounds(seed);
+    const newRounds = generateRounds(initialData, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;
@@ -726,7 +728,7 @@ export default function Football() {
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
     setMode("solo");
-    const newRounds = generateRounds();
+    const newRounds = generateRounds(initialData);
     roundsRef.current = newRounds;
     setRounds(newRounds);
     setQNum(1); qNumRef.current = 1;

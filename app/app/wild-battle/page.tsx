@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import WildBattleGame from "@/components/WildBattleGame";
+import animalsData from "@/app/animals_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import FAQ from "@/components/FAQ";
 
@@ -49,7 +50,7 @@ export default function WildBattlePage() {
           ],
         },
       ]} />
-      <WildBattleGame />
+      <WildBattleGame initialData={animalsData} />
       <section className="game-seo-section">
         <div className="game-seo-section__inner">
           <h1 className="game-seo-section__h1">

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import FiveCluesGame from "@/components/FiveCluesGame";
+import fiveCluesData from "@/app/five-clues-data.json";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
@@ -43,7 +44,7 @@ export default function FiveCluesPage() {
         },
       ]} />
 
-      <FiveCluesGame />
+      <FiveCluesGame initialData={fiveCluesData} />
 
       <section className="game-seo-section">
         <div className="game-seo-section__inner">

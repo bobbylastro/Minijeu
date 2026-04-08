@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import WealthGame from "@/components/WealthGame";
+import wealthData from "@/app/wealth_data.json";
 import RelatedGames from "@/components/RelatedGames";
 import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
@@ -43,7 +44,7 @@ export default function WealthPage() {
         },
       ]} />
 
-      <WealthGame />
+      <WealthGame initialData={wealthData} />
 
       <section className="game-seo-section">
         <div className="game-seo-section__inner">
