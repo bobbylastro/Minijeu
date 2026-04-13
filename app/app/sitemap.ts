@@ -71,6 +71,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/best-online-culture-history-quiz-games`,            lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/blog/play-online-games-with-friends-private-rooms`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.80 },
     { url: `${BASE}/blog/best-browser-games-to-stream-on-twitch`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.80 },
+    { url: `${BASE}/blog/best-animal-geography-games-online`,              lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // noindex pages (contact, privacy, terms, legal, cookies) intentionally excluded
   ];

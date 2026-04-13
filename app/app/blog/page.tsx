@@ -105,6 +105,16 @@ const ARTICLES = [
     readTime: "5 min read",
     date: "Apr 7, 2026",
   },
+  {
+    slug: "/blog/best-animal-geography-games-online",
+    emoji: "🗺️",
+    tags: ["Animals", "Geography"],
+    title: "Best Animal Geography Games to Play Online (2026)",
+    excerpt:
+      "Can you click where a panda lives on a world map? The best animal geography games test wildlife knowledge and world geography at the same time — free, no download.",
+    readTime: "5 min read",
+    date: "Apr 13, 2026",
+  },
 ];
 
 export default function BlogIndex() {
