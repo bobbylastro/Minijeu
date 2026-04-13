@@ -17,6 +17,13 @@ const GAMES = [
     desc: "Two animals face off — pick the winner, answer wildlife trivia and estimate wild records.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/animal-locator",
+    emoji: "🗺️",
+    title: "Animal Locator",
+    desc: "An animal appears — click its home country on the world map. 30 species from pandas to axolotls.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const OTHER_CATEGORIES = [
@@ -121,12 +128,20 @@ export default function AnimalsPage() {
               After each answer you see the explanation so you learn something new every round.
             </p>
 
+            <h2>Animal Locator — click where each species lives on the world map</h2>
+            <p>
+              Animal Locator brings geography and wildlife together. Each round, an animal photo
+              and a clue appear — you have 25 seconds to click the country on the world map where
+              that species is primarily found. From the Giant Panda in China to the Axolotl in Mexico
+              and the Kakapo in New Zealand, 30 species across mammals, birds, reptiles and amphibians
+              will test how well you know the world&apos;s wild places.
+            </p>
+
             <h2>Compete in real-time multiplayer</h2>
             <p>
-              Wild Battle supports live multiplayer — both players see the same questions powered
-              by a shared seed for fairness. Submit your answers, wait for your opponent, and see
-              who knows their wildlife better after ten rounds. If no opponent is found within
-              30 seconds, a bot opponent steps in so you never wait too long.
+              Both Wild Battle and Animal Locator support live multiplayer — both players see the
+              same questions powered by a shared seed for fairness. If no opponent is found within
+              30 seconds, a bot steps in so you never wait too long.
             </p>
 
             <FAQ items={[

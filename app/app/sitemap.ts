@@ -35,13 +35,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/five-clues`,  lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // ── Animals games ─────────────────────────────────────────────────────────
-    { url: `${BASE}/wild-battle`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/wild-battle`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/animal-locator`,  lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // ── Rules pages ───────────────────────────────────────────────────────────
     { url: `${BASE}/football-rules`,        lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/nba-rules`,             lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/career-rules`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
-    { url: `${BASE}/wild-battle-rules`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/wild-battle-rules`,       lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/animal-locator-rules`,   lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/food-rules`,            lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/origins-rules`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/higher-or-lower-rules`, lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },

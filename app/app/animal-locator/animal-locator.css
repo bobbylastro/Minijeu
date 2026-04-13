@@ -1,0 +1,29 @@
+/* ─── Animal Locator game — al- prefix (map + fd- base classes reused) ─── */
+
+/* Type badge (Mammal / Bird / Reptile …) shown on card and intro */
+.al-type-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+.al-type-badge--mammal   { background: rgba(251,191,36,0.18); color: #fbbf24; }
+.al-type-badge--bird     { background: rgba(96,165,250,0.18);  color: #60a5fa; }
+.al-type-badge--reptile  { background: rgba(52,211,153,0.18);  color: #34d399; }
+.al-type-badge--amphibian{ background: rgba(167,139,250,0.18); color: #a78bfa; }
+.al-type-badge--fish     { background: rgba(56,189,248,0.18);  color: #38bdf8; }
+
+/* Override dish-card header to stack badge + name vertically */
+.al-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}

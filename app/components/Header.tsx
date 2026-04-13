@@ -59,7 +59,7 @@ export default function Header() {
   const sportsRoutes  = ["/football", "/nba", "/career"];
   const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
-  const animalsRoutes = ["/wild-battle"];
+  const animalsRoutes = ["/wild-battle", "/animal-locator"];
   const gamingRoutes  = ["/game-tournament"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
@@ -224,6 +224,13 @@ export default function Header() {
                       <div>
                         <div className="site-header__dropdown-name">Wild Battle</div>
                         <div className="site-header__dropdown-desc">Animal face-offs & wildlife trivia</div>
+                      </div>
+                    </Link>
+                    <Link href="/animal-locator" className={`site-header__dropdown-item${pathname === "/animal-locator" ? " is-active" : ""}`} onClick={() => setAnimalsOpen(false)}>
+                      <div className="site-header__dropdown-icon">🗺️</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Animal Locator</div>
+                        <div className="site-header__dropdown-desc">Click where each animal lives on the map</div>
                       </div>
                     </Link>
                   </div>
@@ -411,6 +418,7 @@ export default function Header() {
               <div className="mobile-menu__sub">
                 <Link href="/animals" className="mobile-menu__sub-cat" onClick={closeMenu}>🦁 All Animals games →</Link>
                 <Link href="/wild-battle" className={`mobile-menu__sub-item${pathname === "/wild-battle" ? " is-active" : ""}`} onClick={closeMenu}><span>🦁</span> Wild Battle</Link>
+                <Link href="/animal-locator" className={`mobile-menu__sub-item${pathname === "/animal-locator" ? " is-active" : ""}`} onClick={closeMenu}><span>🗺️</span> Animal Locator</Link>
               </div>
             )}
 

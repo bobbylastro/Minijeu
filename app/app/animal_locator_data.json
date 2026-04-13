@@ -1,0 +1,272 @@
+[
+  {
+    "name": "Giant Panda",
+    "country": "China",
+    "countryCode": "CN",
+    "type": "Mammal",
+    "hint": "This bear-like mammal eats almost exclusively one type of plant, consuming up to 12 hours a day. Fewer than 1,900 survive in the wild.",
+    "wiki": "Giant panda",
+    "image_url": null
+  },
+  {
+    "name": "Bengal Tiger",
+    "country": "India",
+    "countryCode": "IN",
+    "type": "Mammal",
+    "hint": "The most numerous wild tiger subspecies, known for its striking orange and black stripes. Each individual's pattern is unique, like a fingerprint.",
+    "wiki": "Bengal tiger",
+    "image_url": null
+  },
+  {
+    "name": "Kangaroo",
+    "country": "Australia",
+    "countryCode": "AU",
+    "type": "Mammal",
+    "hint": "This iconic marsupial can cover 9 metres in a single bound and reach 70 km/h. It raises its young in a pouch for several months after birth.",
+    "wiki": "Kangaroo",
+    "image_url": null
+  },
+  {
+    "name": "Polar Bear",
+    "country": "Norway",
+    "countryCode": "NO",
+    "type": "Mammal",
+    "hint": "The world's largest land carnivore depends entirely on sea ice to hunt seals. It can swim over 300 km without rest.",
+    "wiki": "Polar bear",
+    "image_url": null
+  },
+  {
+    "name": "Kiwi",
+    "country": "New Zealand",
+    "countryCode": "NZ",
+    "type": "Bird",
+    "hint": "This flightless, nocturnal bird lays an egg that can weigh up to 20% of its own body weight — one of the largest egg-to-body ratios of any bird.",
+    "wiki": "Kiwi (bird)",
+    "image_url": null
+  },
+  {
+    "name": "Mountain Gorilla",
+    "country": "DR Congo",
+    "countryCode": "CD",
+    "type": "Mammal",
+    "hint": "The world's largest primate lives in dense rainforest around volcanic mountains. Fewer than 1,100 individuals remain in the wild.",
+    "wiki": "Mountain gorilla",
+    "image_url": null
+  },
+  {
+    "name": "Ring-tailed Lemur",
+    "country": "Madagascar",
+    "countryCode": "MG",
+    "type": "Mammal",
+    "hint": "All lemur species evolved in total isolation on a single island for over 60 million years — found absolutely nowhere else on Earth.",
+    "wiki": "Ring-tailed lemur",
+    "image_url": null
+  },
+  {
+    "name": "Capybara",
+    "country": "Brazil",
+    "countryCode": "BR",
+    "type": "Mammal",
+    "hint": "The world's largest rodent is highly social and semi-aquatic. It can remain submerged for up to 5 minutes to escape predators.",
+    "wiki": "Capybara",
+    "image_url": null
+  },
+  {
+    "name": "Komodo Dragon",
+    "country": "Indonesia",
+    "countryCode": "ID",
+    "type": "Reptile",
+    "hint": "The world's heaviest lizard can take down prey much larger than itself using bacteria-laden saliva and venom. It can weigh over 70 kg.",
+    "wiki": "Komodo dragon",
+    "image_url": null
+  },
+  {
+    "name": "Fennec Fox",
+    "country": "Algeria",
+    "countryCode": "DZ",
+    "type": "Mammal",
+    "hint": "The world's smallest fox has ears proportionally larger than any other carnivore — they act as radiators to dissipate heat in extreme temperatures.",
+    "wiki": "Fennec fox",
+    "image_url": null
+  },
+  {
+    "name": "Jaguar",
+    "country": "Colombia",
+    "countryCode": "CO",
+    "type": "Mammal",
+    "hint": "The largest cat in the Americas kills by crushing the skull of its prey — a unique hunting technique among big cats. It is an excellent swimmer.",
+    "wiki": "Jaguar",
+    "image_url": null
+  },
+  {
+    "name": "Axolotl",
+    "country": "Mexico",
+    "countryCode": "MX",
+    "type": "Amphibian",
+    "hint": "Unlike most amphibians, this salamander never undergoes metamorphosis — it retains its larval features for life. It can regenerate entire limbs.",
+    "wiki": "Axolotl",
+    "image_url": null
+  },
+  {
+    "name": "Platypus",
+    "country": "Australia",
+    "countryCode": "AU",
+    "type": "Mammal",
+    "hint": "One of only five egg-laying mammals alive today. It hunts using electroreception — sensing the electric fields produced by muscle contractions of prey.",
+    "wiki": "Platypus",
+    "image_url": null
+  },
+  {
+    "name": "Red Panda",
+    "country": "Nepal",
+    "countryCode": "NP",
+    "type": "Mammal",
+    "hint": "This rusty-furred animal is the only living member of its own family. Despite the name, it is not closely related to the giant panda.",
+    "wiki": "Red panda",
+    "image_url": null
+  },
+  {
+    "name": "Snow Leopard",
+    "country": "Mongolia",
+    "countryCode": "MN",
+    "type": "Mammal",
+    "hint": "This elusive big cat uses its long, thick tail as a blanket while sleeping in extreme cold. It cannot roar — it can only chuff, hiss and mew.",
+    "wiki": "Snow leopard",
+    "image_url": null
+  },
+  {
+    "name": "Saiga Antelope",
+    "country": "Kazakhstan",
+    "countryCode": "KZ",
+    "type": "Mammal",
+    "hint": "This antelope's oversized, bulbous nose acts as a natural filter in dusty summers and a warming chamber for frozen winter air.",
+    "wiki": "Saiga antelope",
+    "image_url": null
+  },
+  {
+    "name": "Proboscis Monkey",
+    "country": "Malaysia",
+    "countryCode": "MY",
+    "type": "Mammal",
+    "hint": "Found only in the coastal mangroves and riverine forests of a single large island. The male's enormous nose is thought to attract mates.",
+    "wiki": "Proboscis monkey",
+    "image_url": null
+  },
+  {
+    "name": "Aye-aye",
+    "country": "Madagascar",
+    "countryCode": "MG",
+    "type": "Mammal",
+    "hint": "The world's largest nocturnal primate taps on bark with its elongated finger to locate insect larvae by sound — a technique called percussive foraging.",
+    "wiki": "Aye-aye",
+    "image_url": null
+  },
+  {
+    "name": "Kakapo",
+    "country": "New Zealand",
+    "countryCode": "NZ",
+    "type": "Bird",
+    "hint": "The world's heaviest parrot is also the only flightless and nocturnal one. Every individual is known by name — there are fewer than 250 left.",
+    "wiki": "Kakapo",
+    "image_url": null
+  },
+  {
+    "name": "Tasmanian Devil",
+    "country": "Australia",
+    "countryCode": "AU",
+    "type": "Mammal",
+    "hint": "The world's largest carnivorous marsupial has one of the strongest bites relative to body size of any mammal. Its screech can be heard from far away.",
+    "wiki": "Tasmanian devil",
+    "image_url": null
+  },
+  {
+    "name": "Ethiopian Wolf",
+    "country": "Ethiopia",
+    "countryCode": "ET",
+    "type": "Mammal",
+    "hint": "The world's rarest canid lives exclusively above 3,000 metres altitude in Afro-alpine grassland. Fewer than 500 survive.",
+    "wiki": "Ethiopian wolf",
+    "image_url": null
+  },
+  {
+    "name": "Gharial",
+    "country": "India",
+    "countryCode": "IN",
+    "type": "Reptile",
+    "hint": "This crocodilian's extremely long, narrow snout lined with interlocking teeth is perfectly designed for snatching fish. Males develop a bulbous growth on the tip of their snout.",
+    "wiki": "Gharial",
+    "image_url": null
+  },
+  {
+    "name": "American Bison",
+    "country": "United States",
+    "countryCode": "US",
+    "type": "Mammal",
+    "hint": "Once the most numerous large land animal in the western hemisphere, hunted to fewer than 1,000 individuals before conservation efforts reversed the decline.",
+    "wiki": "American bison",
+    "image_url": null
+  },
+  {
+    "name": "Moose",
+    "country": "Canada",
+    "countryCode": "CA",
+    "type": "Mammal",
+    "hint": "The largest member of the deer family. Males shed and regrow their antlers — which can span 1.8 metres — every single year.",
+    "wiki": "Moose",
+    "image_url": null
+  },
+  {
+    "name": "African Wild Dog",
+    "country": "Botswana",
+    "countryCode": "BW",
+    "type": "Mammal",
+    "hint": "This pack hunter has an 80% hunt success rate — the highest of any large predator. Each individual's coat pattern is completely unique.",
+    "wiki": "African wild dog",
+    "image_url": null
+  },
+  {
+    "name": "Vicuña",
+    "country": "Peru",
+    "countryCode": "PE",
+    "type": "Mammal",
+    "hint": "This wild relative of the llama produces the finest natural animal fibre in the world. It can only be shorn every three years under strict regulations.",
+    "wiki": "Vicuña",
+    "image_url": null
+  },
+  {
+    "name": "Siberian Tiger",
+    "country": "Russia",
+    "countryCode": "RU",
+    "type": "Mammal",
+    "hint": "The world's largest wild cat can weigh over 300 kg and needs to consume around 10 kg of meat per day. Its territory can span over 1,000 km².",
+    "wiki": "Siberian tiger",
+    "image_url": null
+  },
+  {
+    "name": "Andean Condor",
+    "country": "Chile",
+    "countryCode": "CL",
+    "type": "Bird",
+    "hint": "With a wingspan up to 3.3 metres, this is one of the world's largest flying birds. It can soar for hours on thermal updrafts without a single wingbeat.",
+    "wiki": "Andean condor",
+    "image_url": null
+  },
+  {
+    "name": "Galápagos Tortoise",
+    "country": "Ecuador",
+    "countryCode": "EC",
+    "type": "Reptile",
+    "hint": "The world's largest living tortoise can live over 150 years and survive a year without food or water. Darwin's observations of this species helped shape his theory of evolution.",
+    "wiki": "Galápagos tortoise",
+    "image_url": null
+  },
+  {
+    "name": "African Penguin",
+    "country": "South Africa",
+    "countryCode": "ZA",
+    "type": "Bird",
+    "hint": "The only penguin species native to the African continent. It brays like a donkey — earning it the nickname 'jackass penguin'.",
+    "wiki": "African penguin",
+    "image_url": null
+  }
+]

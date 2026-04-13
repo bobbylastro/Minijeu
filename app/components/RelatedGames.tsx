@@ -31,7 +31,8 @@ const FOOD: GameLink[] = [
 ];
 
 const ANIMALS: GameLink[] = [
-  { slug: "/wild-battle", emoji: "🦁", title: "Wild Battle", desc: "Animal face-offs, trivia & wild record estimation." },
+  { slug: "/wild-battle",     emoji: "🦁", title: "Wild Battle",      desc: "Animal face-offs, trivia & wild record estimation." },
+  { slug: "/animal-locator",  emoji: "🗺️", title: "Animal Locator",   desc: "An animal appears — click its home country on the map." },
 ];
 
 const GAMING: GameLink[] = [

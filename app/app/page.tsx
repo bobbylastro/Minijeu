@@ -116,6 +116,13 @@ const ANIMALS_GAMES: GameDef[] = [
     desc: "Two animals face off — pick the winner, then compare speed, weight, bite force and more. Animal face-offs every round.",
     tags: ["Solo", "Multiplayer"],
   },
+  {
+    slug: "/animal-locator",
+    emoji: "🗺️",
+    title: "Animal Locator",
+    desc: "An animal appears — click its home country on the world map. 30 species from pandas to axolotls.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const GAMING_GAMES: GameDef[] = [
@@ -229,7 +236,8 @@ export default function HomePage() {
           { "@type": "ListItem", "position": 9,  "name": "Origins Quiz",    "url": `${BASE}/origins` },
           { "@type": "ListItem", "position": 10, "name": "Who's Richer?",  "url": `${BASE}/wealth` },
           { "@type": "ListItem", "position": 11, "name": "5 Clues",        "url": `${BASE}/five-clues` },
-          { "@type": "ListItem", "position": 12, "name": "Wild Battle",    "url": `${BASE}/wild-battle` },
+          { "@type": "ListItem", "position": 12, "name": "Wild Battle",      "url": `${BASE}/wild-battle` },
+          { "@type": "ListItem", "position": 13, "name": "Animal Locator",  "url": `${BASE}/animal-locator` },
         ],
       },
     ]} />
@@ -271,6 +279,7 @@ export default function HomePage() {
               <li><strong>WhatCameFirst?</strong> – Pick which event happened first across sports, tech, history and pop culture</li>
               <li><strong>Origins Quiz</strong> – Click the country where each sport, tradition or invention was born — 60+ items from around the world</li>
               <li><strong>Wild Battle</strong> – Animal face-offs: pick the winner, compare speed, weight and bite force, estimate wild animal records</li>
+              <li><strong>Animal Locator</strong> – An animal appears — click its home country on the world map. 30 species from mammals to reptiles</li>
               <li><strong>Five Clues</strong> – Five cryptic hints, one mystery player — the fewer clues you need, the more points you score</li>
               <li><strong>Wealth Quiz</strong> – Compare the net worth of celebrities, athletes and business figures across categories</li>
             </ul>
