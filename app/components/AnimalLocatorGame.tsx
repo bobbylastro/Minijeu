@@ -77,7 +77,12 @@ function AnimalPhoto({ animal, className = "" }: { animal: Animal; className?: s
     ? animal.image_url
     : `/api/wiki-image?title=${encodeURIComponent(animal.wiki)}`;
 
-  if (failed) return null;
+  if (failed) return (
+    <div className="al-photo-fallback">
+      <span className="al-photo-fallback__emoji">{TYPE_ICONS[animal.type] ?? "🐾"}</span>
+      <span>{animal.name}</span>
+    </div>
+  );
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
@@ -136,7 +141,7 @@ function IntroPopup({ animal, round, total, onDismiss }: {
     <div className="fd-popup-backdrop" onClick={onDismiss}>
       <div className="fd-intro-card" onClick={e => e.stopPropagation()}>
         <div className="fd-intro-round">Round {round + 1} / {total}</div>
-        <div className="fd-intro-photo-wrap">
+        <div className="fd-intro-photo-wrap al-photo-wrap">
           <AnimalPhoto animal={animal} className="fd-intro-photo" />
         </div>
         <span className={typeBadgeClass(animal.type)}>
@@ -520,7 +525,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
         {/* Animal card — bottom-left overlay */}
         {!showIntro && (
           <div className="fd-dish-card fd-dish-card--clickable" onClick={() => setShowAnimalZoom(true)}>
-            <div className="fd-dish-card__photo-wrap">
+            <div className="fd-dish-card__photo-wrap al-photo-wrap">
               <AnimalPhoto animal={currentAnimal} />
               <div className="fd-dish-card__zoom-hint">🔍</div>
             </div>
@@ -538,7 +543,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
         {showAnimalZoom && (
           <div className="fd-popup-backdrop fd-popup-backdrop--dim" onClick={() => setShowAnimalZoom(false)}>
             <div className="fd-dish-zoom-card" onClick={e => e.stopPropagation()}>
-              <div className="fd-dish-zoom-card__photo">
+              <div className="fd-dish-zoom-card__photo al-photo-wrap">
                 <AnimalPhoto animal={currentAnimal} />
               </div>
               <div className="fd-dish-zoom-card__info">
