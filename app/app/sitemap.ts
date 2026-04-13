@@ -60,6 +60,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/gaming`,                lastModified: NOW, changeFrequency: "monthly", priority: 0.85 },
     { url: `${BASE}/game-tournament`,       lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/game-tournament-rules`, lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/gaming-mix`,            lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/gaming-mix-rules`,      lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
 
     // ── Blog ──────────────────────────────────────────────────────────────────
     { url: `${BASE}/blog`,                                                    lastModified: NOW, changeFrequency: "weekly",  priority: 0.80 },

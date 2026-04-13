@@ -60,7 +60,7 @@ export default function Header() {
   const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
   const animalsRoutes = ["/wild-battle", "/animal-locator"];
-  const gamingRoutes  = ["/game-tournament"];
+  const gamingRoutes  = ["/game-tournament", "/gaming-mix"];
   const isGeoActive     = geoRoutes.includes(pathname);
   const isSportsActive  = sportsRoutes.includes(pathname);
   const isCultureActive = cultureRoutes.includes(pathname);
@@ -263,6 +263,13 @@ export default function Header() {
                         <div className="site-header__dropdown-desc">32 games, 5 rounds, 1 champion</div>
                       </div>
                     </Link>
+                    <Link href="/gaming-mix" className={`site-header__dropdown-item${pathname === "/gaming-mix" ? " is-active" : ""}`} onClick={() => setGamingOpen(false)}>
+                      <div className="site-header__dropdown-icon">🎮</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Gaming Mix</div>
+                        <div className="site-header__dropdown-desc">Guess release years & best-sellers</div>
+                      </div>
+                    </Link>
                   </div>
                   <div className="site-header__dropdown-viewall">
                     <Link href="/gaming" onClick={() => setGamingOpen(false)}>View all Gaming games →</Link>
@@ -438,6 +445,7 @@ export default function Header() {
               <div className="mobile-menu__sub">
                 <Link href="/gaming" className="mobile-menu__sub-cat" onClick={closeMenu}>🎮 All Gaming games →</Link>
                 <Link href="/game-tournament" className={`mobile-menu__sub-item${pathname === "/game-tournament" ? " is-active" : ""}`} onClick={closeMenu}><span>🏆</span> Gaming Tournament</Link>
+                <Link href="/gaming-mix" className={`mobile-menu__sub-item${pathname === "/gaming-mix" ? " is-active" : ""}`} onClick={closeMenu}><span>🎮</span> Gaming Mix</Link>
               </div>
             )}
 

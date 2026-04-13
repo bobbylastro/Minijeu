@@ -17,6 +17,13 @@ const GAMES = [
     desc: "32 legendary video games face off head-to-head. Pick your favorites across 5 rounds to crown your ultimate game and reveal your Top 5.",
     tags: ["Solo"],
   },
+  {
+    slug: "/gaming-mix",
+    emoji: "🎮",
+    title: "Gaming Mix",
+    desc: "Guess the release year of iconic games with a slider, then pick which sold more copies. 10 rounds mixing both question types.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 const OTHER_CATEGORIES = [
@@ -55,7 +62,7 @@ export default function GamingPage() {
           "@type": "ItemList",
           "name": "Gaming Games on Ultimate Playground",
           "url": `${BASE}/gaming`,
-          "numberOfItems": 1,
+          "numberOfItems": 2,
           "itemListElement": [
             {
               "@type": "ListItem",
@@ -63,6 +70,13 @@ export default function GamingPage() {
               "name": "Gaming Tournament",
               "url": `${BASE}/game-tournament`,
               "description": "32 legendary video games face off in a bracket tournament. Crown your ultimate favorite.",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Gaming Mix",
+              "url": `${BASE}/gaming-mix`,
+              "description": "Guess the release year with a slider, then pick which game sold more copies. 10 rounds, solo or multiplayer.",
             },
           ],
         },

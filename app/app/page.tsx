@@ -133,6 +133,13 @@ const GAMING_GAMES: GameDef[] = [
     desc: "32 legendary video games battle it out in a 5-round bracket. Pick your favorites and crown your all-time #1.",
     tags: ["Solo"],
   },
+  {
+    slug: "/gaming-mix",
+    emoji: "🎮",
+    title: "Gaming Mix",
+    desc: "Guess the release year with a slider, then pick which game sold more copies. 10 rounds mixing both formats.",
+    tags: ["Solo", "Multiplayer"],
+  },
 ];
 
 // ─── GameCard ──────────────────────────────────────────────────────────────────

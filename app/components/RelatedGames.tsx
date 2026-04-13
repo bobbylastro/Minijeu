@@ -37,6 +37,7 @@ const ANIMALS: GameLink[] = [
 
 const GAMING: GameLink[] = [
   { slug: "/game-tournament", emoji: "🏆", title: "Gaming Tournament", desc: "32 iconic games, 5 rounds. Crown your all-time favourite." },
+  { slug: "/gaming-mix",      emoji: "🎮", title: "Gaming Mix",        desc: "Guess release years & pick the best-seller. 10 rounds." },
 ];
 
 const ALL_CATEGORIES = [WORLD, SPORTS, CULTURE, FOOD, ANIMALS, GAMING];
