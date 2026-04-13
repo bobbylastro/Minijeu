@@ -9,7 +9,7 @@ import {
 } from "react-simple-maps";
 
 interface Props {
-  correctCode: string;
+  correctCode: string | string[];
   clickedCode: string | null;
   pendingCode?: string | null;
   revealed: boolean;
@@ -157,10 +157,12 @@ export default memo(function WorldMap({
     setPosition(pos as Position);
   }, []);
 
+  const correctCodes = Array.isArray(correctCode) ? correctCode : [correctCode];
+
   function getFill(alpha2: string | undefined): string {
     if (revealed) {
-      if (alpha2 === correctCode)                return "#22c55e";
-      if (clickedCode && alpha2 === clickedCode) return "#ef4444";
+      if (alpha2 && correctCodes.includes(alpha2))  return "#22c55e";
+      if (clickedCode && alpha2 === clickedCode)     return "#ef4444";
     }
     if (!revealed && pendingCode && alpha2 === pendingCode) return "#f59e0b";
     return (alpha2 && CONTINENT_COLOR[alpha2]) ?? C_DEFAULT;

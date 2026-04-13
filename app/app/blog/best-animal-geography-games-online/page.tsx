@@ -42,11 +42,11 @@ export const metadata: Metadata = {
 const FAQ_ITEMS = [
   {
     q: "What is Animal Locator?",
-    a: "Animal Locator is a free online game where an animal photo and a habitat hint appear each round — you have 25 seconds to click the country on the world map where that species primarily lives. 30 species, 10 rounds per session.",
+    a: "Animal Locator is a free online game where an animal photo and a habitat hint appear each round — you have 25 seconds to click the country on the world map where that species primarily lives. 55 species, 10 rounds per session.",
   },
   {
     q: "Which animals are in Animal Locator?",
-    a: "30 species across four classes: mammals (Giant Panda, Polar Bear, Saiga Antelope, Proboscis Monkey…), birds (Kakapo, Shoebill, Harpy Eagle…), reptiles (Komodo Dragon, Gharial, Gila Monster…) and amphibians (Axolotl, Chinese Giant Salamander…). Ten are drawn randomly each session.",
+    a: "55 species across four classes: mammals (Giant Panda, Iberian Lynx, Saiga Antelope, Proboscis Monkey…), birds (Kakapo, Shoebill, Harpy Eagle, Resplendent Quetzal…), reptiles (Komodo Dragon, Gharial, Black Caiman…) and amphibians (Axolotl, Poison Dart Frog…). Ten are drawn randomly each session.",
   },
   {
     q: "Is Animal Locator multiplayer?",
@@ -167,12 +167,12 @@ export default function BestAnimalGeographyGamesPage() {
                 wildlife knowledge.
               </p>
               <p>
-                The pool of 30 species is deliberately varied — spanning mammals, birds,
+                The pool of 55 species is deliberately varied — spanning mammals, birds,
                 reptiles and amphibians across every inhabited continent. You will see
-                well-known species (Kangaroo, Komodo Dragon, Giant Panda) alongside
+                well-known species (Kangaroo, Komodo Dragon, Giant Panda, Cheetah) alongside
                 genuinely surprising ones: the Axolotl, found only in a single lake system
                 near Mexico City; the Kakapo, a flightless parrot endemic to New Zealand;
-                the Gharial, a critically endangered crocodilian found only in northern India.
+                the Irrawaddy Dolphin, sacred to communities along the Mekong.
               </p>
               <p>
                 The hints are carefully written to be biological and behavioural — they
@@ -187,7 +187,7 @@ export default function BestAnimalGeographyGamesPage() {
                   <p className="blog-cta__title">🗺️ Animal Locator</p>
                   <p className="blog-cta__desc">
                     An animal appears — click its home country on the world map.
-                    30 species, 25 seconds per round, solo or multiplayer.
+                    55 species, 25 seconds per round, solo or multiplayer.
                   </p>
                 </div>
                 <span className="blog-cta__btn">Play now →</span>
@@ -238,7 +238,7 @@ export default function BestAnimalGeographyGamesPage() {
 
               <h3>Which animals appear — and why they were chosen</h3>
               <p>
-                The 30 species in the pool were selected for two reasons: strong geographic
+                The 55 species in the pool were selected for two reasons: strong geographic
                 specificity (each species is clearly associated with one country or region)
                 and genuine variety of difficulty. Some are easy anchors — Kangaroo/Australia,
                 Polar Bear/Arctic/Canada — that give you early momentum. Others are the kind
@@ -321,7 +321,7 @@ export default function BestAnimalGeographyGamesPage() {
                   <p className="blog-cta__label">Ready to test your wildlife geography?</p>
                   <p className="blog-cta__title">🗺️ Play Animal Locator — it&apos;s free</p>
                   <p className="blog-cta__desc">
-                    30 species. 10 rounds. 25 seconds each. Click the right country on the world map.
+                    55 species. 10 rounds. 25 seconds each. Click the right country on the world map.
                   </p>
                 </div>
                 <span className="blog-cta__btn">Play now →</span>

@@ -27,15 +27,6 @@
     "image_url": null
   },
   {
-    "name": "Polar Bear",
-    "country": "Norway",
-    "countryCode": "NO",
-    "type": "Mammal",
-    "hint": "The world's largest land carnivore depends entirely on sea ice to hunt seals. It can swim over 300 km without rest.",
-    "wiki": "Polar bear",
-    "image_url": null
-  },
-  {
     "name": "Kiwi",
     "country": "New Zealand",
     "countryCode": "NZ",
@@ -48,8 +39,9 @@
     "name": "Mountain Gorilla",
     "country": "DR Congo",
     "countryCode": "CD",
+    "altCodes": ["RW", "UG"],
     "type": "Mammal",
-    "hint": "The world's largest primate lives in dense rainforest around volcanic mountains. Fewer than 1,100 individuals remain in the wild.",
+    "hint": "The world's largest primate lives in dense rainforest around a chain of volcanic mountains on the border of three countries. Fewer than 1,100 individuals remain in the wild.",
     "wiki": "Mountain gorilla",
     "image_url": null
   },
@@ -66,8 +58,9 @@
     "name": "Capybara",
     "country": "Brazil",
     "countryCode": "BR",
+    "altCodes": ["VE", "CO", "AR", "BO", "PE", "GY"],
     "type": "Mammal",
-    "hint": "The world's largest rodent is highly social and semi-aquatic. It can remain submerged for up to 5 minutes to escape predators.",
+    "hint": "The world's largest rodent is highly social and semi-aquatic. It can remain submerged for up to 5 minutes to escape predators across tropical South America.",
     "wiki": "Capybara",
     "image_url": null
   },
@@ -76,7 +69,7 @@
     "country": "Indonesia",
     "countryCode": "ID",
     "type": "Reptile",
-    "hint": "The world's heaviest lizard can take down prey much larger than itself using bacteria-laden saliva and venom. It can weigh over 70 kg.",
+    "hint": "The world's heaviest lizard can take down prey much larger than itself using bacteria-laden saliva and venom. It is found only on a handful of small volcanic islands in a tropical archipelago.",
     "wiki": "Komodo dragon",
     "image_url": null
   },
@@ -84,8 +77,9 @@
     "name": "Fennec Fox",
     "country": "Algeria",
     "countryCode": "DZ",
+    "altCodes": ["LY", "TN", "MA", "MR", "ML", "NE", "SD"],
     "type": "Mammal",
-    "hint": "The world's smallest fox has ears proportionally larger than any other carnivore — they act as radiators to dissipate heat in extreme temperatures.",
+    "hint": "The world's smallest fox has ears proportionally larger than any other carnivore — they act as radiators to dissipate heat across the Sahara Desert.",
     "wiki": "Fennec fox",
     "image_url": null
   },
@@ -93,8 +87,9 @@
     "name": "Jaguar",
     "country": "Colombia",
     "countryCode": "CO",
+    "altCodes": ["BR", "VE", "PE", "BO", "EC", "MX", "PY", "GY"],
     "type": "Mammal",
-    "hint": "The largest cat in the Americas kills by crushing the skull of its prey — a unique hunting technique among big cats. It is an excellent swimmer.",
+    "hint": "The largest cat in the Americas kills by crushing the skull of its prey — a unique technique among big cats. It is an excellent swimmer and hunts both on land and in rivers.",
     "wiki": "Jaguar",
     "image_url": null
   },
@@ -103,7 +98,7 @@
     "country": "Mexico",
     "countryCode": "MX",
     "type": "Amphibian",
-    "hint": "Unlike most amphibians, this salamander never undergoes metamorphosis — it retains its larval features for life. It can regenerate entire limbs.",
+    "hint": "Unlike most amphibians, this salamander never undergoes metamorphosis — it retains its larval features for life, including external gills. It can regenerate entire limbs.",
     "wiki": "Axolotl",
     "image_url": null
   },
@@ -112,7 +107,7 @@
     "country": "Australia",
     "countryCode": "AU",
     "type": "Mammal",
-    "hint": "One of only five egg-laying mammals alive today. It hunts using electroreception — sensing the electric fields produced by muscle contractions of prey.",
+    "hint": "One of only five egg-laying mammals alive today. It hunts underwater using electroreception — sensing the electric fields produced by the muscle contractions of its prey.",
     "wiki": "Platypus",
     "image_url": null
   },
@@ -120,8 +115,9 @@
     "name": "Red Panda",
     "country": "Nepal",
     "countryCode": "NP",
+    "altCodes": ["CN", "IN", "BT", "MM"],
     "type": "Mammal",
-    "hint": "This rusty-furred animal is the only living member of its own family. Despite the name, it is not closely related to the giant panda.",
+    "hint": "This rusty-furred animal is the only living member of its own family. Despite the name, it is not closely related to the giant panda — it lives in Himalayan forests.",
     "wiki": "Red panda",
     "image_url": null
   },
@@ -129,8 +125,9 @@
     "name": "Snow Leopard",
     "country": "Mongolia",
     "countryCode": "MN",
+    "altCodes": ["CN", "RU", "NP", "IN", "KG", "TJ", "AF", "PK"],
     "type": "Mammal",
-    "hint": "This elusive big cat uses its long, thick tail as a blanket while sleeping in extreme cold. It cannot roar — it can only chuff, hiss and mew.",
+    "hint": "This elusive big cat uses its long, thick tail as a blanket while sleeping in extreme mountain cold above 3,000 metres. It cannot roar — only chuff, hiss and mew.",
     "wiki": "Snow leopard",
     "image_url": null
   },
@@ -138,8 +135,9 @@
     "name": "Saiga Antelope",
     "country": "Kazakhstan",
     "countryCode": "KZ",
+    "altCodes": ["MN", "RU", "UZ"],
     "type": "Mammal",
-    "hint": "This antelope's oversized, bulbous nose acts as a natural filter in dusty summers and a warming chamber for frozen winter air.",
+    "hint": "This antelope's oversized, bulbous nose acts as a natural filter in dusty summers and a warming chamber for frozen steppe winters. Its migrations once rivalled the Serengeti's.",
     "wiki": "Saiga antelope",
     "image_url": null
   },
@@ -147,8 +145,9 @@
     "name": "Proboscis Monkey",
     "country": "Malaysia",
     "countryCode": "MY",
+    "altCodes": ["ID", "BN"],
     "type": "Mammal",
-    "hint": "Found only in the coastal mangroves and riverine forests of a single large island. The male's enormous nose is thought to attract mates.",
+    "hint": "Found only in the coastal mangroves and riverine forests of a single large island shared by three countries. The male's enormous nose is thought to amplify calls to attract mates.",
     "wiki": "Proboscis monkey",
     "image_url": null
   },
@@ -157,7 +156,7 @@
     "country": "Madagascar",
     "countryCode": "MG",
     "type": "Mammal",
-    "hint": "The world's largest nocturnal primate taps on bark with its elongated finger to locate insect larvae by sound — a technique called percussive foraging.",
+    "hint": "The world's largest nocturnal primate taps on bark with its elongated finger to locate insect larvae by sound — a technique called percussive foraging, unique among primates.",
     "wiki": "Aye-aye",
     "image_url": null
   },
@@ -166,7 +165,7 @@
     "country": "New Zealand",
     "countryCode": "NZ",
     "type": "Bird",
-    "hint": "The world's heaviest parrot is also the only flightless and nocturnal one. Every individual is known by name — there are fewer than 250 left.",
+    "hint": "The world's heaviest parrot is also the only flightless and nocturnal one. Every individual is known by name — there are fewer than 250 left on a few predator-free islands.",
     "wiki": "Kakapo",
     "image_url": null
   },
@@ -175,7 +174,7 @@
     "country": "Australia",
     "countryCode": "AU",
     "type": "Mammal",
-    "hint": "The world's largest carnivorous marsupial has one of the strongest bites relative to body size of any mammal. Its screech can be heard from far away.",
+    "hint": "The world's largest carnivorous marsupial has one of the strongest bites relative to body size of any mammal. It is found only on a large island separated from the mainland.",
     "wiki": "Tasmanian devil",
     "image_url": null
   },
@@ -184,7 +183,7 @@
     "country": "Ethiopia",
     "countryCode": "ET",
     "type": "Mammal",
-    "hint": "The world's rarest canid lives exclusively above 3,000 metres altitude in Afro-alpine grassland. Fewer than 500 survive.",
+    "hint": "The world's rarest canid lives exclusively above 3,000 metres altitude in Afro-alpine grassland. Fewer than 500 survive, all in a single landlocked East African country.",
     "wiki": "Ethiopian wolf",
     "image_url": null
   },
@@ -192,6 +191,7 @@
     "name": "Gharial",
     "country": "India",
     "countryCode": "IN",
+    "altCodes": ["NP"],
     "type": "Reptile",
     "hint": "This crocodilian's extremely long, narrow snout lined with interlocking teeth is perfectly designed for snatching fish. Males develop a bulbous growth on the tip of their snout.",
     "wiki": "Gharial",
@@ -201,8 +201,9 @@
     "name": "American Bison",
     "country": "United States",
     "countryCode": "US",
+    "altCodes": ["CA"],
     "type": "Mammal",
-    "hint": "Once the most numerous large land animal in the western hemisphere, hunted to fewer than 1,000 individuals before conservation efforts reversed the decline.",
+    "hint": "Once the most numerous large land animal in the western hemisphere, hunted to fewer than 1,000 individuals before conservation efforts reversed the decline across the Great Plains.",
     "wiki": "American bison",
     "image_url": null
   },
@@ -210,8 +211,9 @@
     "name": "Moose",
     "country": "Canada",
     "countryCode": "CA",
+    "altCodes": ["NO", "SE", "FI", "RU"],
     "type": "Mammal",
-    "hint": "The largest member of the deer family. Males shed and regrow their antlers — which can span 1.8 metres — every single year.",
+    "hint": "The largest member of the deer family. Males shed and regrow their antlers — which can span 1.8 metres — every single year across boreal forests of the northern hemisphere.",
     "wiki": "Moose",
     "image_url": null
   },
@@ -219,8 +221,9 @@
     "name": "African Wild Dog",
     "country": "Botswana",
     "countryCode": "BW",
+    "altCodes": ["TZ", "ZM", "MZ", "ZW", "ZA", "KE"],
     "type": "Mammal",
-    "hint": "This pack hunter has an 80% hunt success rate — the highest of any large predator. Each individual's coat pattern is completely unique.",
+    "hint": "This pack hunter has an 80% hunt success rate — the highest of any large predator. Each individual's coat pattern is completely unique. Botswana holds the largest single population.",
     "wiki": "African wild dog",
     "image_url": null
   },
@@ -228,8 +231,9 @@
     "name": "Vicuña",
     "country": "Peru",
     "countryCode": "PE",
+    "altCodes": ["BO", "CL", "AR"],
     "type": "Mammal",
-    "hint": "This wild relative of the llama produces the finest natural animal fibre in the world. It can only be shorn every three years under strict regulations.",
+    "hint": "This wild relative of the llama produces the finest natural animal fibre in the world. It lives above 3,500 metres on the Andean plateau and can only be shorn every three years under strict regulations.",
     "wiki": "Vicuña",
     "image_url": null
   },
@@ -237,8 +241,9 @@
     "name": "Siberian Tiger",
     "country": "Russia",
     "countryCode": "RU",
+    "altCodes": ["CN"],
     "type": "Mammal",
-    "hint": "The world's largest wild cat can weigh over 300 kg and needs to consume around 10 kg of meat per day. Its territory can span over 1,000 km².",
+    "hint": "The world's largest wild cat can weigh over 300 kg. It roams vast boreal forest territories in the Russian Far East, hunting deer and wild boar through deep snow.",
     "wiki": "Siberian tiger",
     "image_url": null
   },
@@ -246,8 +251,9 @@
     "name": "Andean Condor",
     "country": "Chile",
     "countryCode": "CL",
+    "altCodes": ["AR", "PE", "BO", "CO", "EC"],
     "type": "Bird",
-    "hint": "With a wingspan up to 3.3 metres, this is one of the world's largest flying birds. It can soar for hours on thermal updrafts without a single wingbeat.",
+    "hint": "With a wingspan up to 3.3 metres, this is one of the world's largest flying birds. It can soar for hours on thermal updrafts along the entire length of the Andes without a single wingbeat.",
     "wiki": "Andean condor",
     "image_url": null
   },
@@ -256,7 +262,7 @@
     "country": "Ecuador",
     "countryCode": "EC",
     "type": "Reptile",
-    "hint": "The world's largest living tortoise can live over 150 years and survive a year without food or water. Darwin's observations of this species helped shape his theory of evolution.",
+    "hint": "The world's largest living tortoise can live over 150 years and survive a year without food or water. Darwin's observations of this species on a volcanic archipelago helped shape his theory of evolution.",
     "wiki": "Galápagos tortoise",
     "image_url": null
   },
@@ -264,9 +270,265 @@
     "name": "African Penguin",
     "country": "South Africa",
     "countryCode": "ZA",
+    "altCodes": ["NA"],
     "type": "Bird",
-    "hint": "The only penguin species native to the African continent. It brays like a donkey — earning it the nickname 'jackass penguin'.",
+    "hint": "The only penguin species native to the African continent. It brays like a donkey — earning it the nickname 'jackass penguin'. It nests in burrows along rocky southern coastlines.",
     "wiki": "African penguin",
+    "image_url": null
+  },
+  {
+    "name": "Japanese Macaque",
+    "country": "Japan",
+    "countryCode": "JP",
+    "type": "Mammal",
+    "hint": "The most northerly-living non-human primate, famous for bathing in volcanic hot springs to survive harsh winters. It has been observed washing food before eating it.",
+    "wiki": "Japanese macaque",
+    "image_url": null
+  },
+  {
+    "name": "Iberian Lynx",
+    "country": "Spain",
+    "countryCode": "ES",
+    "altCodes": ["PT"],
+    "type": "Mammal",
+    "hint": "The world's most endangered wild cat species, its survival depends almost entirely on one prey animal — the European rabbit. Intensive breeding programmes have brought it back from fewer than 100 individuals.",
+    "wiki": "Iberian lynx",
+    "image_url": null
+  },
+  {
+    "name": "Resplendent Quetzal",
+    "country": "Guatemala",
+    "countryCode": "GT",
+    "altCodes": ["MX", "HN", "CR", "BZ", "NI", "PA"],
+    "type": "Bird",
+    "hint": "This iridescent bird with a tail up to 1 metre long was sacred to the ancient Maya and Aztec. It lives in cool mountain cloud forests and appears on the national flag and currency of its primary home country.",
+    "wiki": "Resplendent quetzal",
+    "image_url": null
+  },
+  {
+    "name": "Victoria Crowned Pigeon",
+    "country": "Papua New Guinea",
+    "countryCode": "PG",
+    "type": "Bird",
+    "hint": "The world's largest living pigeon wears a lacy, fan-shaped blue crest and reaches the size of a turkey. It is found only in the lowland rainforests of the large island directly north of Australia.",
+    "wiki": "Victoria crowned pigeon",
+    "image_url": null
+  },
+  {
+    "name": "Mandrill",
+    "country": "Gabon",
+    "countryCode": "GA",
+    "altCodes": ["CM", "CG", "CD", "CF", "GQ"],
+    "type": "Mammal",
+    "hint": "The world's largest monkey, the male's face is decorated with vivid blue and scarlet skin. It lives in tropical equatorial rainforests of West-Central Africa, and Gabon holds the largest population.",
+    "wiki": "Mandrill",
+    "image_url": null
+  },
+  {
+    "name": "Pygmy Hippopotamus",
+    "country": "Liberia",
+    "countryCode": "LR",
+    "altCodes": ["CI", "GN", "SL"],
+    "type": "Mammal",
+    "hint": "A nocturnal, solitary relative of the common hippo — one-fifth the size — that spends more time on land than in water. Critically endangered, it survives in dense West African forest near rivers and swamps.",
+    "wiki": "Pygmy hippopotamus",
+    "image_url": null
+  },
+  {
+    "name": "Philippine Tarsier",
+    "country": "Philippines",
+    "countryCode": "PH",
+    "type": "Mammal",
+    "hint": "One of the world's smallest primates, each of its eyes is as large as its brain. It cannot rotate its eyes in their sockets, so it turns its head nearly 180 degrees to look around.",
+    "wiki": "Philippine tarsier",
+    "image_url": null
+  },
+  {
+    "name": "Shoebill",
+    "country": "Uganda",
+    "countryCode": "UG",
+    "altCodes": ["CD", "SS", "TZ", "RW", "ZM", "SD"],
+    "type": "Bird",
+    "hint": "This prehistoric-looking bird stands over 1.2 metres tall and has a massive shoe-shaped bill it uses to ambush lungfish in papyrus swamps. It stands so still when hunting it is often mistaken for a statue.",
+    "wiki": "Shoebill",
+    "image_url": null
+  },
+  {
+    "name": "Red-crowned Crane",
+    "country": "South Korea",
+    "countryCode": "KR",
+    "altCodes": ["JP", "CN", "RU"],
+    "type": "Bird",
+    "hint": "One of the rarest cranes in the world and a symbol of longevity in East Asian culture. Its elaborate courtship dance — a synchronised leaping display — is one of nature's most complex mating rituals.",
+    "wiki": "Red-crowned crane",
+    "image_url": null
+  },
+  {
+    "name": "Andean Flamingo",
+    "country": "Bolivia",
+    "countryCode": "BO",
+    "altCodes": ["CL", "AR", "PE"],
+    "type": "Bird",
+    "hint": "One of the rarest flamingo species, it breeds only at high-altitude salt lakes above 3,500 metres. The vivid red and white salt flats it inhabits create one of nature's most spectacular landscapes.",
+    "wiki": "Andean flamingo",
+    "image_url": null
+  },
+  {
+    "name": "Okapi",
+    "country": "DR Congo",
+    "countryCode": "CD",
+    "type": "Mammal",
+    "hint": "Despite its zebra-striped legs, this animal is the giraffe's only living relative. It was completely unknown to Western science until 1901 and exists exclusively in one dense equatorial rainforest.",
+    "wiki": "Okapi",
+    "image_url": null
+  },
+  {
+    "name": "Cheetah",
+    "country": "Kenya",
+    "countryCode": "KE",
+    "altCodes": ["TZ", "ZA", "BW", "NA", "ZM", "ET"],
+    "type": "Mammal",
+    "hint": "The fastest land animal on Earth, reaching 112 km/h in short bursts. Unlike other big cats it cannot roar, and hunts entirely by sight rather than scent.",
+    "wiki": "Cheetah",
+    "image_url": null
+  },
+  {
+    "name": "African Elephant",
+    "country": "Tanzania",
+    "countryCode": "TZ",
+    "altCodes": ["KE", "ZA", "BW", "ZM", "UG", "CD", "MZ", "ZW"],
+    "type": "Mammal",
+    "hint": "The largest land animal on Earth communicates through infrasound too low for humans to hear. Its tusks never stop growing throughout its life of up to 70 years.",
+    "wiki": "African bush elephant",
+    "image_url": null
+  },
+  {
+    "name": "Hippopotamus",
+    "country": "Zambia",
+    "countryCode": "ZM",
+    "altCodes": ["TZ", "KE", "UG", "CD", "ZW", "MZ"],
+    "type": "Mammal",
+    "hint": "The third-largest land mammal spends most of the day submerged in rivers and lakes to stay cool. It secretes a natural oily red fluid that acts as both sunscreen and antiseptic.",
+    "wiki": "Hippopotamus",
+    "image_url": null
+  },
+  {
+    "name": "Sumatran Orangutan",
+    "country": "Indonesia",
+    "countryCode": "ID",
+    "type": "Mammal",
+    "hint": "The most arboreal of the great apes, it builds a fresh nest of leaves and branches high in the forest canopy every night. Found only on a single large island in Southeast Asia.",
+    "wiki": "Sumatran orangutan",
+    "image_url": null
+  },
+  {
+    "name": "Giant Anteater",
+    "country": "Venezuela",
+    "countryCode": "VE",
+    "altCodes": ["BR", "CO", "BO", "GY", "PE", "AR"],
+    "type": "Mammal",
+    "hint": "This animal has no teeth — its long, sticky tongue can flick 150 times per minute to collect up to 35,000 insects per day. Its claws are so powerful it can tear open concrete-hard termite mounds.",
+    "wiki": "Giant anteater",
+    "image_url": null
+  },
+  {
+    "name": "European Bison",
+    "country": "Poland",
+    "countryCode": "PL",
+    "altCodes": ["BY", "LT", "UA", "DE", "RO"],
+    "type": "Mammal",
+    "hint": "The heaviest land animal in Europe, it was declared extinct in the wild in 1927 before being reintroduced from zoo-bred individuals. The largest free-roaming herd lives in an ancient lowland forest straddling two Central European countries.",
+    "wiki": "European bison",
+    "image_url": null
+  },
+  {
+    "name": "Sun Bear",
+    "country": "Thailand",
+    "countryCode": "TH",
+    "altCodes": ["MY", "ID", "VN", "MM", "BN", "KH", "CN", "IN"],
+    "type": "Mammal",
+    "hint": "The world's smallest bear species has an exceptionally long tongue — up to 25 cm — designed to extract honey from bee nests. The pale crescent on its chest gave it its name.",
+    "wiki": "Sun bear",
+    "image_url": null
+  },
+  {
+    "name": "Arctic Fox",
+    "country": "Iceland",
+    "countryCode": "IS",
+    "altCodes": ["NO", "FI", "SE", "RU", "CA"],
+    "type": "Mammal",
+    "hint": "This is the only land mammal native to a North Atlantic island nation, having walked across sea ice during the Ice Age. Its coat changes from brown in summer to pure white in winter for camouflage in snow.",
+    "wiki": "Arctic fox",
+    "image_url": null
+  },
+  {
+    "name": "Slow Loris",
+    "country": "Vietnam",
+    "countryCode": "VN",
+    "altCodes": ["MY", "ID", "TH", "MM", "KH"],
+    "type": "Mammal",
+    "hint": "The only venomous primate in the world, it produces toxin from glands near its elbows and mixes it with saliva. Its large forward-facing eyes allow night vision in the dense forests of Southeast Asia.",
+    "wiki": "Slow loris",
+    "image_url": null
+  },
+  {
+    "name": "Clouded Leopard",
+    "country": "Myanmar",
+    "countryCode": "MM",
+    "altCodes": ["TH", "MY", "ID", "VN", "IN", "BT", "NP", "KH"],
+    "type": "Mammal",
+    "hint": "This forest cat has the longest canine teeth relative to body size of any living cat species, and can hang upside down from branches like a sloth. It is a master of mountain forest canopy across mainland and island Southeast Asia.",
+    "wiki": "Clouded leopard",
+    "image_url": null
+  },
+  {
+    "name": "Poison Dart Frog",
+    "country": "Costa Rica",
+    "countryCode": "CR",
+    "altCodes": ["PA", "CO", "EC", "VE", "BR", "BO", "PE", "NI"],
+    "type": "Amphibian",
+    "hint": "These tiny, brightly coloured frogs advertise their toxicity with vivid patterns of red, blue and yellow. Indigenous peoples extracted their skin secretions to poison blowgun darts for hunting.",
+    "wiki": "Poison dart frog",
+    "image_url": null
+  },
+  {
+    "name": "Maned Wolf",
+    "country": "Argentina",
+    "countryCode": "AR",
+    "altCodes": ["BR", "BO", "PY", "UY"],
+    "type": "Mammal",
+    "hint": "Despite its appearance, this is not a true wolf or fox — it is the only species in its genus. Its long legs evolved to see above the tall grasslands of South America.",
+    "wiki": "Maned wolf",
+    "image_url": null
+  },
+  {
+    "name": "Black Caiman",
+    "country": "Guyana",
+    "countryCode": "GY",
+    "altCodes": ["BR", "BO", "CO", "VE", "PE", "EC"],
+    "type": "Reptile",
+    "hint": "The largest predator in the Amazon basin, it can reach 5 metres in length. It was nearly hunted to extinction for its black-scaled hide before protections allowed populations to recover.",
+    "wiki": "Black caiman",
+    "image_url": null
+  },
+  {
+    "name": "Harpy Eagle",
+    "country": "Panama",
+    "countryCode": "PA",
+    "altCodes": ["MX", "GT", "HN", "CR", "CO", "VE", "BR", "PE", "EC", "BO", "GY", "SR"],
+    "type": "Bird",
+    "hint": "The most powerful raptor in the Americas, it hunts sloths and monkeys in the forest canopy. Its facial disc of feathers works like a satellite dish, channelling sound to its ears with extraordinary precision.",
+    "wiki": "Harpy eagle",
+    "image_url": null
+  },
+  {
+    "name": "Irrawaddy Dolphin",
+    "country": "Cambodia",
+    "countryCode": "KH",
+    "altCodes": ["MM", "ID", "IN", "TH", "BD"],
+    "type": "Mammal",
+    "hint": "This blunt-headed freshwater dolphin lives in rivers and estuaries across coastal South and Southeast Asia. In the Mekong River it is sacred to local communities and has been known to cooperate with fishermen.",
+    "wiki": "Irrawaddy dolphin",
     "image_url": null
   }
 ]

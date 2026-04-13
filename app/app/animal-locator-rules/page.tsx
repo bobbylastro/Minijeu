@@ -7,7 +7,7 @@ const BASE = "https://ultimate-playground.com";
 export const metadata: Metadata = {
   title: "How to Play Animal Locator — Rules & Scoring",
   description:
-    "Complete Animal Locator rules: an animal appears, click its home country on the world map. 30 species, 25-second timer, 10 rounds. Learn how to navigate the map and score maximum points.",
+    "Complete Animal Locator rules: an animal appears, click its home country on the world map. 55 species, 25-second timer, 10 rounds. Learn how to navigate the map and score maximum points.",
   openGraph: {
     title: "How to Play Animal Locator — Rules & Scoring",
     description: "Learn how to play Animal Locator: an animal appears, click where it lives on the world map. Full rules and scoring guide.",
@@ -39,7 +39,7 @@ const STEPS = [
   },
   {
     name: "Repeat for all 10 rounds",
-    text: "A new animal appears each round. The 10 animals are drawn randomly from a pool of 30 species across mammals, birds, reptiles and amphibians — so every session is different.",
+    text: "A new animal appears each round. The 10 animals are drawn randomly from a pool of 55 species across mammals, birds, reptiles and amphibians — so every session is different.",
   },
 ];
 
@@ -52,7 +52,7 @@ export default function AnimalLocatorRulesPage() {
           "@type": "WebPage",
           "name": "How to Play Animal Locator — Rules & Scoring",
           "url": `${BASE}/animal-locator-rules`,
-          "description": "Complete guide to Animal Locator: an animal appears, click its home country on the world map. 30 species, 25-second timer, 10 rounds.",
+          "description": "Complete guide to Animal Locator: an animal appears, click its home country on the world map. 55 species, 25-second timer, 10 rounds.",
           "inLanguage": "en",
           "isPartOf": { "@type": "WebSite", "name": "Ultimate Playground", "url": BASE },
         },
@@ -70,7 +70,7 @@ export default function AnimalLocatorRulesPage() {
           "@context": "https://schema.org",
           "@type": "HowTo",
           "name": "How to play Animal Locator",
-          "description": "Animal Locator shows an animal photo and a habitat hint — click its home country on the world map within 25 seconds. 10 rounds, 30 species.",
+          "description": "Animal Locator shows an animal photo and a habitat hint — click its home country on the world map within 25 seconds. 10 rounds, 55 species.",
           "totalTime": "PT5M",
           "step": STEPS.map((s, i) => ({
             "@type": "HowToStep",
@@ -97,7 +97,7 @@ export default function AnimalLocatorRulesPage() {
           <h1 className="rules-page__hero-title">How to Play Animal Locator</h1>
           <p className="rules-page__hero-desc">
             An animal appears — click its home country on the world map.
-            30 species, 25 seconds per round, 10 rounds total.
+            55 species, 25 seconds per round, 10 rounds total.
           </p>
           <Link href="/animal-locator" className="rules-page__play-btn">▶ Play Animal Locator</Link>
         </div>
@@ -112,7 +112,7 @@ export default function AnimalLocatorRulesPage() {
               primarily lives on an interactive world map — before the 25-second timer runs out.
             </p>
             <p className="rules-page__p">
-              The pool of 30 animals spans five continents and four animal classes — mammals,
+              The pool of 55 animals spans five continents and four animal classes — mammals,
               birds, reptiles and amphibians. Species range from the iconic (Giant Panda, Polar
               Bear, Kangaroo) to the surprising (Axolotl, Saiga Antelope, Proboscis Monkey).
               10 are drawn at random each session, so the game stays fresh.

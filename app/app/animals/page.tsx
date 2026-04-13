@@ -21,7 +21,7 @@ const GAMES = [
     slug: "/animal-locator",
     emoji: "🗺️",
     title: "Animal Locator",
-    desc: "An animal appears — click its home country on the world map. 30 species from pandas to axolotls.",
+    desc: "An animal appears — click its home country on the world map. 55 species from pandas to axolotls.",
     tags: ["Solo", "Multiplayer"],
   },
 ];
@@ -123,7 +123,7 @@ export default function AnimalsPage() {
             <h2>Real animal facts behind every question</h2>
             <p>
               Every battle outcome in Wild Battle is grounded in documented animal behaviour and
-              comparative biology. The game covers over 30 species from six continents, including
+              comparative biology. The game covers over 55 species from six continents, including
               apex predators, record-holders and some of nature&apos;s most surprising fighters.
               After each answer you see the explanation so you learn something new every round.
             </p>
@@ -133,7 +133,7 @@ export default function AnimalsPage() {
               Animal Locator brings geography and wildlife together. Each round, an animal photo
               and a clue appear — you have 25 seconds to click the country on the world map where
               that species is primarily found. From the Giant Panda in China to the Axolotl in Mexico
-              and the Kakapo in New Zealand, 30 species across mammals, birds, reptiles and amphibians
+              and the Kakapo in New Zealand, 55 species across mammals, birds, reptiles and amphibians
               will test how well you know the world&apos;s wild places.
             </p>
 

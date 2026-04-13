@@ -21,6 +21,7 @@ interface Animal {
   name: string;
   country: string;
   countryCode: string;
+  altCodes?: string[];
   type: string;
   hint: string;
   wiki: string;
@@ -167,7 +168,8 @@ function FeedbackPopup({ animal, clickedCode, onNext, isLast, multiWaiting, oppo
   animal: Animal; clickedCode: string | null; onNext: () => void; isLast: boolean;
   multiWaiting: boolean; opponentTimeLeft?: number;
 }) {
-  const isCorrect = clickedCode === animal.countryCode;
+  const validCodes = [animal.countryCode, ...(animal.altCodes ?? [])];
+  const isCorrect = !!clickedCode && validCodes.includes(clickedCode);
   const isTimeout = !clickedCode;
   const [autoCountdown, setAutoCountdown] = useState(Math.round(TIMEOUT_AUTO_ADVANCE_MS / 1000));
 
@@ -411,7 +413,10 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
     revealedRef.current = true;
     setClickedCode(alpha2);
     setRevealed(true);
-    const pts = alpha2 && currentAnimal && alpha2 === currentAnimal.countryCode ? 100 : 0;
+    const validCodes = currentAnimal
+      ? [currentAnimal.countryCode, ...(currentAnimal.altCodes ?? [])]
+      : [];
+    const pts = alpha2 && validCodes.includes(alpha2) ? 100 : 0;
     setScore(s => s + pts);
     if (modeRef.current === "multi") mpRef.current?.submitAnswer(alpha2, pts);
   }, [currentAnimal, stopTimer]);
@@ -508,7 +513,9 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
       <div className="fd-map-full">
         <LeafletMap
           key={round}
-          correctCode={currentAnimal.countryCode}
+          correctCode={currentAnimal.altCodes?.length
+            ? [currentAnimal.countryCode, ...currentAnimal.altCodes]
+            : currentAnimal.countryCode}
           clickedCode={clickedCode}
           pendingCode={pendingCountry?.alpha2 ?? null}
           revealed={revealed}

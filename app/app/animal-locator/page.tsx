@@ -8,7 +8,7 @@ import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
   title: "Animal Locator — Find Where Animals Live on the Map",
-  description: "An animal appears — click its home country on the world map. 30 species from pandas to axolotls. Free wildlife geography game, solo or multiplayer.",
+  description: "An animal appears — click its home country on the world map. 55 species from pandas to axolotls. Free wildlife geography game, solo or multiplayer.",
 };
 
 const BASE = "https://ultimate-playground.com";
@@ -22,7 +22,7 @@ export default function AnimalLocatorPage() {
           "@type": "WebApplication",
           "name": "Animal Locator",
           "url": `${BASE}/animal-locator`,
-          "description": "Click the right country on the world map to show where each animal lives. 30 species, solo or multiplayer.",
+          "description": "Click the right country on the world map to show where each animal lives. 55 species, solo or multiplayer.",
           "applicationCategory": "Game",
           "operatingSystem": "Any",
           "inLanguage": "en",
@@ -55,7 +55,7 @@ export default function AnimalLocatorPage() {
             },
             {
               q: "Which animals are in the game?",
-              a: "30 species across mammals, birds, reptiles and amphibians — including the Giant Panda, Komodo Dragon, Kakapo, Axolotl, Saiga Antelope and more. Animals are shuffled each game so you get a different set every time.",
+              a: "55 species across mammals, birds, reptiles and amphibians — including the Giant Panda, Komodo Dragon, Kakapo, Axolotl, Saiga Antelope and more. Animals are shuffled each game so you get a different set every time.",
             },
             {
               q: "Is Animal Locator multiplayer?",
