@@ -84,7 +84,7 @@ export default function CulturePage() {
         </div>
 
         {/* Game cards */}
-        <div className="category__games">
+        <div className="category__games cat-theme--culture">
           {GAMES.map(g => (
             <Link key={g.slug} href={g.slug} className="game-card game-card--available">
               <div className="game-card__header">

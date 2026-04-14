@@ -13,7 +13,7 @@
   justify-content: flex-start;
   padding: 0;
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .gm-glow {
@@ -68,6 +68,8 @@
 }
 .gm-topbar__type--year    { background: rgba(56,189,248,0.15); color: #38bdf8; }
 .gm-topbar__type--battle  { background: rgba(251,113,133,0.15); color: #fb7185; }
+.gm-topbar__type--studio  { background: rgba(167,139,250,0.15); color: #a78bfa; }
+.gm-topbar__type--older   { background: rgba(251,191,36,0.15);  color: #fbbf24; }
 
 /* ── Playing area ────────────────────────────────────────────────────────── */
 .gm-play-area {
@@ -75,7 +77,7 @@
   z-index: 1;
   width: 100%;
   max-width: 680px;
-  padding: 80px 16px 40px;
+  padding: 80px 16px 100px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -234,7 +236,7 @@
 .gm-year-reveal__pts--miss     { color: #fb7185; }
 
 /* ─────────────────────────────────────────────────────────────────────────────
-   BEST SELLER BATTLE ROUND
+   BEST SELLER BATTLE / TIMELINE DUEL — shared card layout
 ───────────────────────────────────────────────────────────────────────────── */
 
 .gm-battle-label {
@@ -244,6 +246,10 @@
   text-transform: uppercase;
   color: rgba(251,113,133,0.7);
   text-align: center;
+}
+
+.gm-battle-label--older {
+  color: rgba(251,191,36,0.7);
 }
 
 .gm-battle-question {
@@ -276,6 +282,11 @@
   transform: translateY(-3px);
   border-color: rgba(251,113,133,0.5);
   box-shadow: 0 8px 24px rgba(251,113,133,0.15);
+}
+
+.gm-battle-card--older:hover:not(:disabled) {
+  border-color: rgba(251,191,36,0.5);
+  box-shadow: 0 8px 24px rgba(251,191,36,0.15);
 }
 
 .gm-battle-card:disabled { cursor: default; }
@@ -337,6 +348,17 @@
 .gm-battle-card__sales--loser  { color: rgba(255,255,255,0.3); }
 .gm-battle-card__sales--hidden { color: transparent; }
 
+.gm-battle-card__year {
+  font-family: var(--font-bebas), cursive;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+.gm-battle-card__year--winner { color: #fbbf24; }
+.gm-battle-card__year--loser  { color: rgba(255,255,255,0.3); }
+.gm-battle-card__year--hidden { color: transparent; }
+
 .gm-battle-card__sales-label {
   font-size: 0.65rem;
   color: rgba(255,255,255,0.3);
@@ -386,6 +408,57 @@
 .gm-battle-result__pts--correct { color: #22c55e; }
 .gm-battle-result__pts--wrong   { color: #fb7185; }
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   STUDIO GUESS — MCQ
+───────────────────────────────────────────────────────────────────────────── */
+
+.gm-mcq-options {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.gm-mcq-btn {
+  padding: 16px 14px;
+  background: rgba(255,255,255,0.05);
+  border: 2px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s, transform 0.12s;
+  text-align: center;
+  line-height: 1.35;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gm-mcq-btn:hover:not(:disabled) {
+  border-color: rgba(167,139,250,0.6);
+  background: rgba(167,139,250,0.1);
+  transform: translateY(-2px);
+}
+
+.gm-mcq-btn--correct {
+  border-color: #22c55e !important;
+  background: rgba(34,197,94,0.15) !important;
+  color: #4ade80;
+}
+
+.gm-mcq-btn--wrong {
+  border-color: #ef4444 !important;
+  background: rgba(239,68,68,0.1) !important;
+  color: #fb7185;
+}
+
+.gm-mcq-btn--dim {
+  opacity: 0.3;
+}
+
 /* ── Next button ─────────────────────────────────────────────────────────── */
 .gm-next-btn {
   width: 100%;
@@ -405,7 +478,7 @@
 .gm-next-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(124,58,237,0.5); }
 .gm-next-btn:disabled { opacity: 0.5; cursor: default; transform: none; }
 
-/* ── Timer ring (reuse fd- is overkill, do a small inline) ───────────────── */
+/* ── Timer ring ──────────────────────────────────────────────────────────── */
 .gm-timer { flex-shrink: 0; }
 
 /* ── Home / Result screens ───────────────────────────────────────────────── */
@@ -433,9 +506,25 @@
 
 /* ── Mobile ──────────────────────────────────────────────────────────────── */
 @media (max-width: 480px) {
-  .gm-play-area { padding: 70px 12px 32px; gap: 16px; }
-  .gm-battle-card__body { padding: 8px 10px 12px; }
-  .gm-battle-card__title { font-size: 0.75rem; }
-  .gm-battle-card__sales { font-size: 1.3rem; }
-  .gm-battle-cards { gap: 8px; }
+  .gm-play-area { padding: 70px 12px 100px; gap: 16px; }
+
+  /* Stack battle/older cards vertically → full-width covers */
+  .gm-battle-cards {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .gm-battle-vs { display: none; }
+
+  .gm-battle-card__cover {
+    aspect-ratio: 16/9;
+  }
+
+  .gm-battle-card__body { padding: 10px 12px 14px; }
+  .gm-battle-card__title { font-size: 0.82rem; }
+  .gm-battle-card__sales { font-size: 1.4rem; }
+  .gm-battle-card__year  { font-size: 1.4rem; }
+
+  /* MCQ: single column on very small screens */
+  .gm-mcq-options { grid-template-columns: 1fr; }
+  .gm-mcq-btn { min-height: 48px; font-size: 0.82rem; }
 }

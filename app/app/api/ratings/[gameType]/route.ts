@@ -2,18 +2,31 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { POINTS_WIN, POINTS_LOSS, getRank, getRankFloor } from "@/lib/ranks";
 
-const VALID_GAME_TYPES = ["football", "nba", "career", "wcf", "citymix", "higher-or-lower", "wealth", "origins"];
+const VALID_GAME_TYPES = [
+  "football", "nba", "career",
+  "wcf", "citymix", "higher-or-lower", "citymap", "origins",
+  "wealth", "five-clues",
+  "food",
+  "wild-battle", "animal-locator",
+  "gaming-mix",
+];
 
-// Maximum achievable score per game type (10 rounds × 100 pts for most)
+// Maximum achievable score per game type
 const MAX_SCORE: Record<string, number> = {
-  football: 1000,
-  nba: 1000,
-  career: 500,
-  wcf: 1000,
-  citymix: 1000,
+  football:         1000,
+  nba:              1000,
+  career:           500,
+  wcf:              1000,
+  citymix:          1000,
   "higher-or-lower": 1000,
-  wealth: 1000,
-  origins: 1000,
+  citymap:          1000,
+  origins:          1000,
+  wealth:           1000,
+  "five-clues":     5000, // 10 rounds × 500 pts
+  food:             1000,
+  "wild-battle":    1000,
+  "animal-locator": 1000,
+  "gaming-mix":     1000,
 };
 
 // GET /api/ratings/[gameType] — top 50 leaderboard

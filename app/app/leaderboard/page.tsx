@@ -3,29 +3,87 @@ import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { getRank } from "@/lib/ranks";
 
-const GAME_TABS = [
-  { key: "football",       label: "⚽ Football" },
-  { key: "nba",            label: "🏀 NBA" },
-  { key: "career",         label: "🔀 Career" },
-  { key: "wcf",            label: "⏳ WhatCameFirst" },
-  { key: "citymix",        label: "🌍 CityMix" },
-  { key: "higher-or-lower", label: "📊 Higher or Lower" },
+// ─── Category + game structure ────────────────────────────────────────────────
+// IMPORTANT: when adding a new game, add it here + in /api/ratings/[gameType]/route.ts
+interface GameEntry   { key: string; label: string }
+interface CategoryDef {
+  key: string; label: string;
+  color: string; bg: string; // accent + tinted bg for active state
+  games: GameEntry[];
+}
+
+const CATEGORIES: CategoryDef[] = [
+  {
+    key: "sports", label: "⚽ Sports",
+    color: "#4ade80", bg: "rgba(74,222,128,0.12)",
+    games: [
+      { key: "football",  label: "⚽ Football" },
+      { key: "nba",       label: "🏀 NBA" },
+      { key: "career",    label: "🔀 Career Order" },
+    ],
+  },
+  {
+    key: "geography", label: "🌍 Geography",
+    color: "#38bdf8", bg: "rgba(56,189,248,0.12)",
+    games: [
+      { key: "citymix",          label: "🌍 CityMix" },
+      { key: "higher-or-lower",  label: "📊 Higher or Lower" },
+      { key: "citymap",          label: "🏙️ City Origins" },
+    ],
+  },
+  {
+    key: "culture", label: "🎭 Culture",
+    color: "#a78bfa", bg: "rgba(167,139,250,0.12)",
+    games: [
+      { key: "wcf",        label: "⏳ What Came First" },
+      { key: "origins",    label: "🌐 Origins" },
+      { key: "wealth",     label: "💰 Wealth" },
+      { key: "five-clues", label: "🕵️ Five Clues" },
+    ],
+  },
+  {
+    key: "food", label: "🍜 Food",
+    color: "#fb923c", bg: "rgba(251,146,60,0.12)",
+    games: [
+      { key: "food", label: "🍜 Food Origins" },
+    ],
+  },
+  {
+    key: "animals", label: "🦁 Animals",
+    color: "#f59e0b", bg: "rgba(245,158,11,0.12)",
+    games: [
+      { key: "wild-battle",     label: "🦁 Wild Battle" },
+      { key: "animal-locator",  label: "🗺️ Animal Locator" },
+    ],
+  },
+  {
+    key: "gaming", label: "🎮 Gaming",
+    color: "#e879f9", bg: "rgba(232,121,249,0.12)",
+    games: [
+      { key: "gaming-mix", label: "🎮 Gaming Mix" },
+    ],
+  },
 ];
 
 interface RatingRow {
-  user_id: string;
-  points: number;
-  wins: number;
-  losses: number;
+  user_id:    string;
+  points:     number;
+  wins:       number;
+  losses:     number;
   rank_floor: number;
-  profiles: { username: string; avatar_url: string | null };
+  profiles:   { username: string; avatar_url: string | null };
 }
 
 export default function LeaderboardPage() {
   const { user, profile } = useAuth();
-  const [activeTab, setActiveTab] = useState(GAME_TABS[0].key);
-  const [rows, setRows]           = useState<RatingRow[]>([]);
-  const [loading, setLoading]     = useState(true);
+
+  const [activeCatKey,  setActiveCatKey]  = useState(CATEGORIES[0].key);
+  const [activeGameKey, setActiveGameKey] = useState(CATEGORIES[0].games[0].key);
+  const [rows,    setRows]    = useState<RatingRow[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  const activeCat  = CATEGORIES.find(c => c.key === activeCatKey)!;
+  const activeGame = activeCat.games.find(g => g.key === activeGameKey) ?? activeCat.games[0];
 
   const fetchLeaderboard = useCallback(async (gameType: string) => {
     setLoading(true);
@@ -41,30 +99,61 @@ export default function LeaderboardPage() {
   }, []);
 
   useEffect(() => {
-    fetchLeaderboard(activeTab);
-  }, [activeTab, fetchLeaderboard]);
+    fetchLeaderboard(activeGame.key);
+  }, [activeGame.key, fetchLeaderboard]);
+
+  function selectCategory(cat: CategoryDef) {
+    setActiveCatKey(cat.key);
+    setActiveGameKey(cat.games[0].key);
+  }
 
   const myRank = user ? rows.findIndex(r => r.user_id === user.id) : -1;
   const myRow  = myRank !== -1 ? rows[myRank] : null;
 
   return (
     <div className="leaderboard-page">
+
+      {/* Header */}
       <div className="leaderboard-page__header">
         <h1 className="leaderboard-page__title">🏆 Leaderboard</h1>
-        <p className="leaderboard-page__subtitle">Top 50 players by game — earn points in multiplayer matches</p>
+        <p className="leaderboard-page__subtitle">Top 50 players per game</p>
+        <div className="leaderboard-mp-note">
+          🎮 Multiplayer only — rankings are earned in online matches against real players
+        </div>
       </div>
 
-      {/* Tab bar */}
-      <div className="leaderboard-tabs">
-        {GAME_TABS.map(t => (
-          <button
-            key={t.key}
-            className={`leaderboard-tab${activeTab === t.key ? " is-active" : ""}`}
-            onClick={() => setActiveTab(t.key)}
-          >
-            {t.label}
-          </button>
-        ))}
+      {/* Category pills */}
+      <div className="leaderboard-cat-row">
+        {CATEGORIES.map(cat => {
+          const isActive = cat.key === activeCatKey;
+          return (
+            <button
+              key={cat.key}
+              className={`leaderboard-cat-btn${isActive ? " is-active" : ""}`}
+              style={isActive ? { background: cat.bg, borderColor: cat.color, color: cat.color } : {}}
+              onClick={() => selectCategory(cat)}
+            >
+              {cat.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {/* Game pills (within selected category) */}
+      <div className="leaderboard-game-row">
+        {activeCat.games.map(game => {
+          const isActive = game.key === activeGame.key;
+          return (
+            <button
+              key={game.key}
+              className={`leaderboard-game-btn${isActive ? " is-active" : ""}`}
+              style={isActive ? { background: activeCat.bg, borderColor: activeCat.color, color: activeCat.color } : {}}
+              onClick={() => setActiveGameKey(game.key)}
+            >
+              {game.label}
+            </button>
+          );
+        })}
       </div>
 
       {/* Table */}
@@ -91,8 +180,8 @@ export default function LeaderboardPage() {
             </thead>
             <tbody>
               {rows.map((row, idx) => {
-                const tier    = getRank(row.points);
-                const isMe    = user?.id === row.user_id;
+                const tier = getRank(row.points);
+                const isMe = user?.id === row.user_id;
                 return (
                   <tr key={row.user_id} className={`leaderboard-row${isMe ? " leaderboard-row--me" : ""}`}>
                     <td className="leaderboard-td leaderboard-td--rank">

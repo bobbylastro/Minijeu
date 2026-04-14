@@ -77,7 +77,7 @@ export default function SportsPage() {
         </div>
 
         {/* Game cards */}
-        <div className="category__games">
+        <div className="category__games cat-theme--sports">
           {GAMES.map(g => (
             <Link key={g.slug} href={g.slug} className="game-card game-card--available">
               <div className="game-card__header">

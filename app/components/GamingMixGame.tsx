@@ -22,28 +22,26 @@ interface Game {
   sales: number;
 }
 
-type RoundType = "year" | "battle";
+type RoundType = "year" | "battle" | "studio" | "older";
 
-interface YearRound {
-  type: "year";
-  game: Game;
-}
-interface BattleRound {
-  type: "battle";
-  games: [Game, Game]; // [left, right]
-}
-type Round = YearRound | BattleRound;
+interface YearRound   { type: "year";   game: Game; }
+interface BattleRound { type: "battle"; games: [Game, Game]; }
+interface StudioRound { type: "studio"; game: Game; options: string[]; }
+interface OlderRound  { type: "older";  games: [Game, Game]; }
+type Round = YearRound | BattleRound | StudioRound | OlderRound;
 
 type Phase = "home" | "playing" | "result";
 type Mode  = "solo" | "multi";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
-const ROUNDS_PER_GAME  = 10;
-const YEAR_TIMER       = 30;
-const BATTLE_TIMER     = 20;
-const YEAR_MIN         = 1990;
-const YEAR_MAX         = 2024;
-const MAX_SCORE        = ROUNDS_PER_GAME * 100;
+const ROUNDS_PER_GAME = 10;
+const YEAR_TIMER      = 30;
+const BATTLE_TIMER    = 20;
+const STUDIO_TIMER    = 20;
+const OLDER_TIMER     = 20;
+const YEAR_MIN        = 1990;
+const YEAR_MAX        = 2024;
+const MAX_SCORE       = ROUNDS_PER_GAME * 100;
 
 function steamCover(id: number) {
   return `https://cdn.cloudflare.steamstatic.com/steam/apps/${id}/header.jpg`;
@@ -66,34 +64,49 @@ function yearPtsClass(pts: number): string {
   return "gm-year-reveal__pts--miss";
 }
 
-// ─── Build rounds from shuffled games ────────────────────────────────────────
+// ─── Build rounds ─────────────────────────────────────────────────────────────
+// Distribution: 3 Year + 3 Battle + 2 Studio + 2 Older = 10 rounds
 function buildRounds(games: Game[], seed?: number): Round[] {
-  const shuffled = seed !== undefined
-    ? seededShuffle([...games], seed)
-    : [...games].sort(() => Math.random() - 0.5);
+  const allStudios = [...new Set(games.map(g => g.studio))];
 
-  // 5 year rounds + 5 battle rounds = 10 total, shuffled
-  const forYear   = shuffled.slice(0, 5);
-  const forBattle = shuffled.slice(5, 15); // 10 games → 5 pairs
-
-  const yearRounds:   YearRound[]   = forYear.map(g => ({ type: "year",   game: g }));
-  const battleRounds: BattleRound[] = [];
-  for (let i = 0; i < 5; i++) {
-    battleRounds.push({
-      type: "battle",
-      games: [forBattle[i * 2], forBattle[i * 2 + 1]],
-    });
+  function doShuffle<T>(arr: T[], s?: number): T[] {
+    return s !== undefined ? seededShuffle([...arr], s) : [...arr].sort(() => Math.random() - 0.5);
   }
 
-  const all: Round[] = [...yearRounds, ...battleRounds];
-  // Shuffle the round order (but keep seed-determinism)
-  const roundSeed = seed !== undefined ? seed + 9999 : undefined;
-  return roundSeed !== undefined
-    ? seededShuffle(all, roundSeed)
-    : all.sort(() => Math.random() - 0.5);
+  const shuffled = doShuffle(games, seed);
+
+  // Each type draws from its own slice — 3+6+2+4 = 15 unique slots
+  const forYear   = shuffled.slice(0, 3);
+  const forBattle = shuffled.slice(3, 9);   // 3 pairs
+  const forStudio = shuffled.slice(9, 11);  // 2 studio rounds
+  const forOlder  = shuffled.slice(11, 15); // 2 pairs
+
+  const yearRounds: YearRound[] = forYear.map(g => ({ type: "year", game: g }));
+
+  const battleRounds: BattleRound[] = [0, 1, 2].map(i => ({
+    type: "battle" as const,
+    games: [forBattle[i * 2], forBattle[i * 2 + 1]] as [Game, Game],
+  }));
+
+  const studioRounds: StudioRound[] = forStudio.map((g, idx) => {
+    const wrong = doShuffle(
+      allStudios.filter(s => s !== g.studio),
+      seed != null ? seed + idx * 37 + 100 : undefined,
+    ).slice(0, 3);
+    const options = doShuffle([...wrong, g.studio], seed != null ? seed + idx * 37 + 200 : undefined);
+    return { type: "studio" as const, game: g, options };
+  });
+
+  const olderRounds: OlderRound[] = [0, 1].map(i => ({
+    type: "older" as const,
+    games: [forOlder[i * 2], forOlder[i * 2 + 1]] as [Game, Game],
+  }));
+
+  const all: Round[] = [...yearRounds, ...battleRounds, ...studioRounds, ...olderRounds];
+  return doShuffle(all, seed != null ? seed + 9999 : undefined);
 }
 
-// ─── Stars ────────────────────────────────────────────────────────────────────
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 const STARS = Array.from({ length: 60 }, (_, i) => ({
   id: i, x: Math.random() * 100, y: Math.random() * 100,
   size: Math.random() * 2 + 0.5, opacity: Math.random() * 0.3 + 0.1, delay: Math.random() * 4,
@@ -111,7 +124,6 @@ const Stars = memo(function Stars() {
   );
 });
 
-// ─── Timer ring ───────────────────────────────────────────────────────────────
 function TimerRing({ seconds, total }: { seconds: number; total: number }) {
   const r = 17; const circ = 2 * Math.PI * r;
   const pct   = seconds / total;
@@ -139,14 +151,16 @@ function HomeScreen({ onSolo, onMulti }: { onSolo: () => void; onMulti: () => vo
       <div className="home-screen" style={{ position: "relative", zIndex: 1 }}>
         <div className="home-emoji">🎮</div>
         <p className="home-title">Gaming <span className="accent">Mix</span></p>
-        <p className="home-subtitle">Guess the release year — or pick the best-seller</p>
+        <p className="home-subtitle">4 game types — test your gaming knowledge</p>
 
         <div className="how-it-works">
           <div className="how-it-works__title">How it works</div>
           {[
-            ["📅", "Release Year — slide to guess when the game came out"],
+            ["📅", "Release Year — slide to guess when the game launched"],
             ["💰", "Best Seller — which game sold more copies?"],
-            ["🔀", `${ROUNDS_PER_GAME} rounds mixing both types`],
+            ["🏢", "Studio Guess — pick the developer from 4 options"],
+            ["📆", "Timeline Duel — which game is older?"],
+            ["🔀", `${ROUNDS_PER_GAME} rounds, 4 types mixed randomly`],
             ["⭐", "Up to 100 pts per round — max 1000 pts"],
           ].map(([icon, text]) => (
             <div key={text as string} className="how-it-works__item">
@@ -226,15 +240,21 @@ function ResultScreen({ score, oppScore, mode, onReplay, rematchZone }: {
 }
 
 // ─── Release Year Round ───────────────────────────────────────────────────────
-function YearRound({ round, totalRounds, game, timeLeft, onSubmit, revealed, guessedYear, score }: {
-  round: number; totalRounds: number; game: Game; timeLeft: number;
-  onSubmit: (year: number) => void; revealed: boolean; guessedYear: number | null; score: number;
+function YearRoundComp({ game, onSubmit, revealed, guessedYear }: {
+  game: Game;
+  onSubmit: (year: number) => void;
+  revealed: boolean;
+  guessedYear: number | null;
 }) {
   const [sliderVal, setSliderVal] = useState(Math.round((YEAR_MIN + YEAR_MAX) / 2));
   const [coverLoaded, setCoverLoaded] = useState(false);
   const [coverFailed, setCoverFailed] = useState(false);
 
-  useEffect(() => { setSliderVal(Math.round((YEAR_MIN + YEAR_MAX) / 2)); setCoverLoaded(false); setCoverFailed(false); }, [game]);
+  useEffect(() => {
+    setSliderVal(Math.round((YEAR_MIN + YEAR_MAX) / 2));
+    setCoverLoaded(false);
+    setCoverFailed(false);
+  }, [game]);
 
   const diff = guessedYear != null ? Math.abs(guessedYear - game.year) : 0;
   const pts  = guessedYear != null ? yearScore(guessedYear, game.year) : 0;
@@ -310,9 +330,11 @@ function YearRound({ round, totalRounds, game, timeLeft, onSubmit, revealed, gue
 }
 
 // ─── Best Seller Battle Round ─────────────────────────────────────────────────
-function BattleRound({ round, totalRounds, games, timeLeft, onSubmit, revealed, pickedIndex }: {
-  round: number; totalRounds: number; games: [Game, Game]; timeLeft: number;
-  onSubmit: (index: 0 | 1) => void; revealed: boolean; pickedIndex: 0 | 1 | null;
+function BattleRoundComp({ games, onSubmit, revealed, pickedIndex }: {
+  games: [Game, Game];
+  onSubmit: (index: 0 | 1) => void;
+  revealed: boolean;
+  pickedIndex: 0 | 1 | null;
 }) {
   const winnerIndex = games[0].sales >= games[1].sales ? 0 : 1;
   const isCorrect   = pickedIndex === winnerIndex;
@@ -383,20 +405,198 @@ function BattleRound({ round, totalRounds, games, timeLeft, onSubmit, revealed, 
   );
 }
 
+// ─── Studio Guess Round ───────────────────────────────────────────────────────
+function StudioRoundComp({ game, options, onSubmit, revealed, picked }: {
+  game: Game;
+  options: string[];
+  onSubmit: (studio: string) => void;
+  revealed: boolean;
+  picked: string | null;
+}) {
+  const [coverLoaded, setCoverLoaded] = useState(false);
+  const [coverFailed, setCoverFailed] = useState(false);
+  useEffect(() => { setCoverLoaded(false); setCoverFailed(false); }, [game]);
+
+  const isCorrect = picked === game.studio;
+
+  function btnClass(opt: string): string {
+    if (!revealed) return "gm-mcq-btn";
+    if (opt === game.studio) return "gm-mcq-btn gm-mcq-btn--correct";
+    if (opt === picked)      return "gm-mcq-btn gm-mcq-btn--wrong";
+    return "gm-mcq-btn gm-mcq-btn--dim";
+  }
+
+  return (
+    <div className="gm-play-area">
+      <div className="gm-year-card">
+        {!coverFailed ? (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={steamCover(game.id)}
+            alt={game.title}
+            className="gm-year-card__cover"
+            style={{ opacity: coverLoaded ? 1 : 0, transition: "opacity 0.4s" }}
+            onLoad={() => setCoverLoaded(true)}
+            onError={() => setCoverFailed(true)}
+            draggable={false}
+          />
+        ) : (
+          <div className="gm-year-card__cover" style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <span style={{ fontSize: "3rem" }}>🎮</span>
+          </div>
+        )}
+        <div className="gm-year-card__body">
+          <span className="gm-genre-badge">🎮 {game.genre}</span>
+          <div className="gm-year-card__title">{game.title}</div>
+          <div className="gm-year-card__meta" style={{ color: "rgba(167,139,250,0.6)", fontWeight: 700 }}>
+            Which studio developed this game?
+          </div>
+        </div>
+      </div>
+
+      <div className="gm-mcq-options">
+        {options.map(opt => (
+          <button
+            key={opt}
+            className={btnClass(opt)}
+            onClick={() => !revealed && onSubmit(opt)}
+            disabled={revealed}
+          >
+            {opt}
+          </button>
+        ))}
+      </div>
+
+      {revealed && (
+        <div className="gm-year-reveal">
+          <div className="gm-year-reveal__result">
+            {picked === null
+              ? `Time's up! It was ${game.studio}`
+              : isCorrect
+              ? "Correct! 🎯"
+              : `Wrong! It was ${game.studio}`}
+          </div>
+          <div className={`gm-year-reveal__pts ${isCorrect ? "gm-year-reveal__pts--perfect" : "gm-year-reveal__pts--miss"}`}>
+            {isCorrect ? "+100 pts" : "+0 pts"}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── Timeline Duel Round ──────────────────────────────────────────────────────
+function OlderRoundComp({ games, onSubmit, revealed, pickedIndex }: {
+  games: [Game, Game];
+  onSubmit: (index: 0 | 1) => void;
+  revealed: boolean;
+  pickedIndex: 0 | 1 | null;
+}) {
+  // older = lower year (released earlier)
+  const olderIndex = games[0].year <= games[1].year ? 0 : 1;
+  const isCorrect  = pickedIndex === olderIndex;
+
+  function cardClass(i: 0 | 1): string {
+    if (!revealed) return "gm-battle-card--older";
+    if (i === olderIndex && i === pickedIndex) return "gm-battle-card--correct-pick";
+    if (i !== olderIndex && i === pickedIndex) return "gm-battle-card--wrong-pick";
+    if (i === olderIndex)                      return "gm-battle-card--winner";
+    return "gm-battle-card--loser";
+  }
+
+  function yearClass(i: 0 | 1): string {
+    if (!revealed) return "gm-battle-card__year--hidden";
+    return i === olderIndex ? "gm-battle-card__year--winner" : "gm-battle-card__year--loser";
+  }
+
+  return (
+    <div className="gm-play-area">
+      <div className="gm-battle-label gm-battle-label--older">Timeline Duel</div>
+      <div className="gm-battle-question">Which game came out FIRST?</div>
+
+      <div className="gm-battle-cards-wrap">
+        <div className="gm-battle-cards">
+          {games.map((game, i) => {
+            const idx = i as 0 | 1;
+            return (
+              <button
+                key={game.id}
+                className={`gm-battle-card ${cardClass(idx)}`}
+                onClick={() => !revealed && onSubmit(idx)}
+                disabled={revealed}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={steamCover(game.id)}
+                  alt={game.title}
+                  className="gm-battle-card__cover"
+                  draggable={false}
+                />
+                <div className="gm-battle-card__body">
+                  <span className="gm-genre-badge" style={{ fontSize: "9px", padding: "2px 6px" }}>{game.genre}</span>
+                  <div className="gm-battle-card__title">{game.title}</div>
+                  <div className="gm-battle-card__studio">{game.studio}</div>
+                  <div className={`gm-battle-card__year ${yearClass(idx)}`}>
+                    {revealed ? game.year : "?"}
+                    {revealed && <span className="gm-battle-card__sales-label">release year</span>}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+        {!revealed && <div className="gm-battle-vs" style={{ color: "rgba(251,191,36,0.5)" }}>VS</div>}
+      </div>
+
+      {revealed && (
+        <div className="gm-battle-result">
+          <div className={`gm-battle-result__verdict ${isCorrect ? "gm-battle-result__verdict--correct" : "gm-battle-result__verdict--wrong"}`}>
+            {pickedIndex === null ? "Time's up!" : isCorrect ? "Correct! 🎯" : "Wrong!"}
+          </div>
+          <div className={`gm-battle-result__pts ${isCorrect ? "gm-battle-result__pts--correct" : "gm-battle-result__pts--wrong"}`}>
+            {isCorrect ? "+100 pts" : "+0 pts"}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── Main game ────────────────────────────────────────────────────────────────
 interface GamingMixData { games: Game[] }
 
+const TYPE_LABEL: Record<RoundType, string> = {
+  year:   "📅 Release Year",
+  battle: "💰 Best Seller",
+  studio: "🏢 Studio Guess",
+  older:  "📆 Timeline Duel",
+};
+const TYPE_CLASS: Record<RoundType, string> = {
+  year:   "gm-topbar__type--year",
+  battle: "gm-topbar__type--battle",
+  studio: "gm-topbar__type--studio",
+  older:  "gm-topbar__type--older",
+};
+const TIMER_FOR: Record<RoundType, number> = {
+  year:   YEAR_TIMER,
+  battle: BATTLE_TIMER,
+  studio: STUDIO_TIMER,
+  older:  OLDER_TIMER,
+};
+
 export default function GamingMixGame({ initialData }: { initialData: GamingMixData }) {
-  const [phase, setPhase]             = useState<Phase>("home");
-  const [mode, setMode]               = useState<Mode>("solo");
+  const [phase, setPhase]               = useState<Phase>("home");
+  const [mode, setMode]                 = useState<Mode>("solo");
   const [showNamePrompt, setShowNamePrompt] = useState(false);
-  const [rounds, setRounds]           = useState<Round[]>([]);
-  const [round, setRound]             = useState(0);
-  const [score, setScore]             = useState(0);
-  const [revealed, setRevealed]       = useState(false);
-  const [guessedYear, setGuessedYear] = useState<number | null>(null);
+  const [rounds, setRounds]             = useState<Round[]>([]);
+  const [round, setRound]               = useState(0);
+  const [score, setScore]               = useState(0);
+  const [revealed, setRevealed]         = useState(false);
+  const [guessedYear, setGuessedYear]   = useState<number | null>(null);
   const [pickedBattle, setPickedBattle] = useState<0 | 1 | null>(null);
-  const [timeLeft, setTimeLeft]       = useState(YEAR_TIMER);
+  const [pickedStudio, setPickedStudio] = useState<string | null>(null);
+  const [pickedOlder, setPickedOlder]   = useState<0 | 1 | null>(null);
+  const [timeLeft, setTimeLeft]         = useState(YEAR_TIMER);
   const [multiWaiting, setMultiWaiting] = useState(false);
 
   const timerRef    = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -407,24 +607,34 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
   useEffect(() => { modeRef.current = mode; }, [mode]);
 
   const currentRound = rounds[round] ?? null;
-  const currentTimer = currentRound?.type === "battle" ? BATTLE_TIMER : YEAR_TIMER;
+  const currentTimer = currentRound ? TIMER_FOR[currentRound.type] : YEAR_TIMER;
+
+  function resetAnswers() {
+    setGuessedYear(null);
+    setPickedBattle(null);
+    setPickedStudio(null);
+    setPickedOlder(null);
+  }
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
     setRounds(buildRounds(initialData.games, seed));
-    setRound(0); setScore(0); setRevealed(false); setGuessedYear(null); setPickedBattle(null);
+    setRound(0); setScore(0); setRevealed(false); resetAnswers();
     setMultiWaiting(false); setPhase("playing");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialData]);
 
   const onMpGameSync = useCallback((round: number, _seed: number, myScore: number, alreadyAnswered: boolean) => {
     setRound(round); setScore(myScore); setRevealed(alreadyAnswered);
-    setMultiWaiting(alreadyAnswered); setGuessedYear(null); setPickedBattle(null);
+    setMultiWaiting(alreadyAnswered); resetAnswers();
     setPhase("playing");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onMpNextRound = useCallback((nextRound: number) => {
     setMultiWaiting(false); setRound(nextRound);
-    setRevealed(false); setGuessedYear(null); setPickedBattle(null);
+    setRevealed(false); resetAnswers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const onMpGameEnd = useCallback(() => {
@@ -458,14 +668,23 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
   }, []);
 
-  const revealWithAnswer = useCallback((pts: number, year: number | null, battle: 0 | 1 | null) => {
+  const revealWithAnswer = useCallback((pts: number, extra: {
+    year?: number; battle?: 0 | 1; studio?: string; older?: 0 | 1;
+  }) => {
     if (modeRef.current !== "multi") stopTimer();
     revealedRef.current = true;
     setRevealed(true);
-    if (year !== null)   setGuessedYear(year);
-    if (battle !== null) setPickedBattle(battle);
+    if (extra.year   != null) setGuessedYear(extra.year);
+    if (extra.battle != null) setPickedBattle(extra.battle);
+    if (extra.studio != null) setPickedStudio(extra.studio);
+    if (extra.older  != null) setPickedOlder(extra.older);
     setScore(s => s + pts);
-    if (modeRef.current === "multi") mpRef.current?.submitAnswer(String(year ?? battle ?? "timeout"), pts);
+    const answerStr = extra.year != null ? String(extra.year)
+      : extra.battle != null ? String(extra.battle)
+      : extra.studio != null ? extra.studio
+      : extra.older  != null ? String(extra.older)
+      : "timeout";
+    if (modeRef.current === "multi") mpRef.current?.submitAnswer(answerStr, pts);
   }, [stopTimer]);
 
   useEffect(() => {
@@ -476,7 +695,6 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
       setTimeLeft(t => {
         if (t <= 1) {
           if (!revealedRef.current) {
-            // timeout — reveal with 0 pts
             revealedRef.current = true;
             setRevealed(true);
             if (modeRef.current === "multi") mpRef.current?.submitAnswer("timeout", 0);
@@ -495,8 +713,8 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
   function startSolo() {
     setMode("solo");
     setRounds(buildRounds(initialData.games));
-    setRound(0); setScore(0); setRevealed(false); setGuessedYear(null);
-    setPickedBattle(null); setMultiWaiting(false); setPhase("playing");
+    setRound(0); setScore(0); setRevealed(false); resetAnswers();
+    setMultiWaiting(false); setPhase("playing");
   }
 
   function startMulti() { mp.disconnect(); setMode("multi"); setShowNamePrompt(true); }
@@ -507,7 +725,8 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
       if (r + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return r; }
       return r + 1;
     });
-    setRevealed(false); setGuessedYear(null); setPickedBattle(null);
+    setRevealed(false); resetAnswers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function backToHome() { mp.disconnect(); setMode("solo"); setPhase("home"); }
@@ -562,8 +781,8 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
         <div className="gm-topbar__round">Round {round + 1} / {ROUNDS_PER_GAME}</div>
         <div className="gm-topbar__score">⭐ {score} pts</div>
         <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <span className={`gm-topbar__type ${currentRound.type === "year" ? "gm-topbar__type--year" : "gm-topbar__type--battle"}`}>
-            {currentRound.type === "year" ? "📅 Release Year" : "💰 Best Seller"}
+          <span className={`gm-topbar__type ${TYPE_CLASS[currentRound.type]}`}>
+            {TYPE_LABEL[currentRound.type]}
           </span>
           {!revealed && <TimerRing seconds={timeLeft} total={currentTimer} />}
         </div>
@@ -574,22 +793,46 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
       )}
 
       {/* Round content */}
-      {currentRound.type === "year" ? (
-        <YearRound
-          round={round} totalRounds={ROUNDS_PER_GAME} game={currentRound.game}
-          timeLeft={timeLeft}
-          onSubmit={year => revealWithAnswer(yearScore(year, currentRound.game.year), year, null)}
-          revealed={revealed} guessedYear={guessedYear} score={score}
+      {currentRound.type === "year" && (
+        <YearRoundComp
+          game={currentRound.game}
+          onSubmit={year => revealWithAnswer(yearScore(year, currentRound.game.year), { year })}
+          revealed={revealed}
+          guessedYear={guessedYear}
         />
-      ) : (
-        <BattleRound
-          round={round} totalRounds={ROUNDS_PER_GAME} games={currentRound.games}
-          timeLeft={timeLeft}
+      )}
+
+      {currentRound.type === "battle" && (
+        <BattleRoundComp
+          games={currentRound.games}
           onSubmit={idx => {
             const winner = currentRound.games[0].sales >= currentRound.games[1].sales ? 0 : 1;
-            revealWithAnswer(idx === winner ? 100 : 0, null, idx);
+            revealWithAnswer(idx === winner ? 100 : 0, { battle: idx });
           }}
-          revealed={revealed} pickedIndex={pickedBattle}
+          revealed={revealed}
+          pickedIndex={pickedBattle}
+        />
+      )}
+
+      {currentRound.type === "studio" && (
+        <StudioRoundComp
+          game={currentRound.game}
+          options={currentRound.options}
+          onSubmit={studio => revealWithAnswer(studio === currentRound.game.studio ? 100 : 0, { studio })}
+          revealed={revealed}
+          picked={pickedStudio}
+        />
+      )}
+
+      {currentRound.type === "older" && (
+        <OlderRoundComp
+          games={currentRound.games}
+          onSubmit={idx => {
+            const older = currentRound.games[0].year <= currentRound.games[1].year ? 0 : 1;
+            revealWithAnswer(idx === older ? 100 : 0, { older: idx });
+          }}
+          revealed={revealed}
+          pickedIndex={pickedOlder}
         />
       )}
 

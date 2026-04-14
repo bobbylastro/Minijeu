@@ -24,11 +24,17 @@ export const metadata: Metadata = {
 
 const BASE = "https://ultimate-playground.com";
 
-const ARTICLES = [
+type ArticleTheme = "sports" | "geography" | "culture" | "food" | "animals" | "gaming" | null;
+
+const ARTICLES: {
+  slug: string; emoji: string; tags: string[]; title: string;
+  excerpt: string; readTime: string; date: string; theme: ArticleTheme;
+}[] = [
   {
     slug: "/blog/best-online-geography-quiz-games",
     emoji: "🌍",
     tags: ["World", "Guide"],
+    theme: "geography",
     title: "Best Free Online Geography Quiz Games (2026)",
     excerpt:
       "From city population sliders to map click challenges — a curated list of the best geography quiz games you can play free in your browser, no download needed.",
@@ -39,6 +45,7 @@ const ARTICLES = [
     slug: "/blog/best-online-football-quiz-games",
     emoji: "⚽",
     tags: ["Sports", "Guide"],
+    theme: "sports",
     title: "Best Free Online Football Quiz Games (2026)",
     excerpt:
       "Transfer fees, stadium photos, salary comparisons and career timelines — the best football quiz games online, ranked by depth and replayability.",
@@ -49,6 +56,7 @@ const ARTICLES = [
     slug: "/blog/online-trivia-games-to-play-with-friends",
     emoji: "🧠",
     tags: ["Multiplayer", "Guide"],
+    theme: null,
     title: "Best Online Trivia Games to Play with Friends (2026)",
     excerpt:
       "Looking for a multiplayer trivia game that actually tests your knowledge? Here are the best free online trivia games you can play with friends right now.",
@@ -59,6 +67,7 @@ const ARTICLES = [
     slug: "/blog/best-online-nba-quiz-games",
     emoji: "🏀",
     tags: ["Sports", "Guide"],
+    theme: "sports",
     title: "Best Free Online NBA Quiz Games (2026)",
     excerpt:
       "Contracts, arena photos, salary showdowns and peak season sliders — the best free online NBA quiz games that actually test your basketball knowledge.",
@@ -69,6 +78,7 @@ const ARTICLES = [
     slug: "/blog/best-animal-quiz-games-online",
     emoji: "🦁",
     tags: ["Animals", "Guide"],
+    theme: "animals",
     title: "Best Free Online Animal Quiz Games (2026)",
     excerpt:
       "From 1v1 animal battles to group vs predator showdowns — the best free online animal quiz games that test your real wildlife knowledge.",
@@ -79,6 +89,7 @@ const ARTICLES = [
     slug: "/blog/best-online-culture-history-quiz-games",
     emoji: "🎭",
     tags: ["Culture", "Guide"],
+    theme: "culture",
     title: "Best Free Online Culture & History Quiz Games (2026)",
     excerpt:
       "From video game origins to world geography — the best free online culture and history quiz games that test your knowledge across eras and continents.",
@@ -89,6 +100,7 @@ const ARTICLES = [
     slug: "/blog/play-online-games-with-friends-private-rooms",
     emoji: "👥",
     tags: ["Multiplayer", "Feature"],
+    theme: null,
     title: "Play Online Games with Friends — Private Rooms on Ultimate Playground",
     excerpt:
       "Create a private room, share a 4-letter code and compete with up to 8 friends in real-time quiz battles. No account, no download — just pick a game and go.",
@@ -99,6 +111,7 @@ const ARTICLES = [
     slug: "/blog/best-browser-games-to-stream-on-twitch",
     emoji: "🎮",
     tags: ["Streaming", "Twitch"],
+    theme: null,
     title: "Best Free Browser Games to Stream on Twitch — No Setup Required",
     excerpt:
       "Zero install, zero OBS config, instant chat engagement. These free browser quiz games are made for streaming — and your viewers can play live in private rooms.",
@@ -109,6 +122,7 @@ const ARTICLES = [
     slug: "/blog/best-animal-geography-games-online",
     emoji: "🗺️",
     tags: ["Animals", "Geography"],
+    theme: "animals",
     title: "Best Animal Geography Games to Play Online (2026)",
     excerpt:
       "Can you click where a panda lives on a world map? The best animal geography games test wildlife knowledge and world geography at the same time — free, no download.",
@@ -170,7 +184,11 @@ export default function BlogIndex() {
           {/* Article cards */}
           <div className="blog-index__grid">
             {ARTICLES.map(a => (
-              <Link key={a.slug} href={a.slug} className="blog-card">
+              <Link
+                key={a.slug}
+                href={a.slug}
+                className={`blog-card${a.theme ? ` blog-card--${a.theme}` : ""}`}
+              >
                 <div className="blog-card__tags">
                   {a.tags.map(t => (
                     <span key={t} className="blog-card__tag">{t}</span>
