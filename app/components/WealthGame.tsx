@@ -43,7 +43,6 @@ type Mode  = "solo" | "multi";
 // ─── Constants ────────────────────────────────────────────────────────────────
 const ROUNDS_PER_GAME = 10;
 const MAX_SCORE       = ROUNDS_PER_GAME * 100;
-const FEEDBACK_DELAY  = 1500; // ms before auto-advancing in solo wrong-answer case
 
 // ─── Seeded random ────────────────────────────────────────────────────────────
 function seededRandom(seed: number) {
@@ -151,15 +150,6 @@ function generateQuestions(celebrities: Celebrity[], count: number, seed?: numbe
   }
 
   return questions;
-}
-
-// ─── Solo "Top X%" percentile ────────────────────────────────────────────────
-function getPercentile(soloCorrect: number): string {
-  if (soloCorrect >= 10) return "Top 1%";
-  if (soloCorrect >= 8)  return "Top 10%";
-  if (soloCorrect >= 6)  return "Top 30%";
-  if (soloCorrect >= 4)  return "Top 55%";
-  return "Top 80%";
 }
 
 // ─── Streak helpers ───────────────────────────────────────────────────────────
@@ -291,15 +281,6 @@ function ResultScreen({
   const pct      = (score / MAX_SCORE) * 100;
   const iWon     = isMulti && score > oppScore!;
   const tied     = isMulti && score === oppScore!;
-  const percentile = getPercentile(soloCorrect);
-
-  const myClass = isMulti
-    ? (iWon ? "score-circle--win" : tied ? "score-circle--neutral" : "score-circle--lose")
-    : (pct >= 80 ? "score-circle--win" : pct >= 50 ? "score-circle--neutral" : "score-circle--lose");
-  const oppClass = isMulti
-    ? (!iWon && !tied ? "score-circle--win" : tied ? "score-circle--neutral" : "score-circle--lose")
-    : "";
-
   async function handleShare() {
     const text = `🤑 Who's Richer? — I got ${soloCorrect}/10 correct!\nCan you beat me? ultimate-playground.com/wealth`;
     if (typeof navigator.share === "function") {
@@ -460,7 +441,7 @@ export default function WealthGame({ initialData }: { initialData: Celebrity[] }
     revealedRef.current = false;
     setMultiWaiting(false);
     setPhase("playing");
-  }, []);
+  }, [initialData]);
 
   const onMpOpponentAnswered = useCallback(() => {}, []);
 
@@ -533,7 +514,6 @@ export default function WealthGame({ initialData }: { initialData: Celebrity[] }
         setStreak(0);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQ, streak]);
 
   // ── Next round (multi) ────────────────────────────────────────────────────

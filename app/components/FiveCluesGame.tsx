@@ -111,7 +111,6 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
   const [showNamePrompt, setShowNamePrompt] = useState(false);
 
   // Game state
-  const [subjects, setSubjects] = useState<Subject[]>([]);
   const [round, setRound]       = useState(0);
   const [currentClue, setCurrentClue]   = useState(1);
   const [attemptsLeft, setAttemptsLeft] = useState(MAX_ATTEMPTS);
@@ -158,7 +157,6 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
     onGameSync(roundNum, seed, myScore) {
       const picked = pickSubjects(initialData, seed, TOTAL_ROUNDS);
       subjectsRef.current = picked;
-      setSubjects(picked);
       setTotalScore(myScore);
       totalScoreRef.current = myScore;
       beginRound(roundNum - 1);
@@ -168,7 +166,6 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
   function initGame(seed: number) {
     const picked = pickSubjects(initialData, seed, TOTAL_ROUNDS);
     subjectsRef.current = picked;
-    setSubjects(picked);
     setTotalScore(0);
     totalScoreRef.current = 0;
     setRoundScores([]);

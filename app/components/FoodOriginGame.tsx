@@ -345,7 +345,7 @@ export default function FoodOriginGame({ initialData }: { initialData: Dish[] })
     setMultiWaiting(false);
     setShowIntro(true);
     setPhase("playing");
-  }, []);
+  }, [initialData]);
 
   const onMpGameSync = useCallback((round: number, _seed: number, myScore: number, alreadyAnswered: boolean) => {
     setRound(round);

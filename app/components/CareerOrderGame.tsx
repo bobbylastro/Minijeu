@@ -510,7 +510,6 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
     window.addEventListener("mouseup",   onMouseUp);
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     window.addEventListener("touchend",  onTouchEnd);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Cleanup ghost on unmount
@@ -559,7 +558,7 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
     setTotalScore(0); setResults([]);
     resetRound(newRounds[0].player.clubs.length);
     setScreen("game");
-  }, [resetRound]);
+  }, [resetRound, initialData.players]);
 
   const onMpRoundEnd  = useCallback(() => setRoundOver(true), []);
 
@@ -652,7 +651,7 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
     setTotalScore(0); setResults([]);
     resetRound(newRounds[0].player.clubs.length);
     setScreen("game");
-  }, [resetRound]);
+  }, [resetRound, initialData.players]);
 
   const startMulti    = () => { mp.disconnect(); setMode("multi"); setShowNamePrompt(true); };
   const handleNewOpp  = () => { mp.disconnect(); setMode("multi"); setScreen("home"); setShowNamePrompt(true); };

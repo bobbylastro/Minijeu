@@ -1,5 +1,5 @@
 "use client";
-import { memo, useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import "@/app/wild-battle/wild-battle.css";
 import { useMultiplayer } from "@/hooks/useMultiplayer";
 import { getPartykitHost, isMultiplayerEnabled } from "@/lib/partykitHost";
@@ -145,30 +145,6 @@ function getPercentile(correct: number): string {
   if (correct >= 4)  return "Top 55%";
   return "Top 80%";
 }
-
-// ─── Stars background ───────────────────────────────────────────────────────────
-const STARS = Array.from({ length: 55 }, (_, i) => ({
-  id: i,
-  x: Math.random() * 100,
-  y: Math.random() * 100,
-  size: Math.random() * 2 + 0.5,
-  opacity: Math.random() * 0.25 + 0.05,
-  delay: Math.random() * 4,
-}));
-
-const Stars = memo(function Stars() {
-  return (
-    <div className="stars-layer">
-      {STARS.map(s => (
-        <div key={s.id} className="star" style={{
-          left: `${s.x}%`, top: `${s.y}%`,
-          width: s.size, height: s.size,
-          opacity: s.opacity, animationDelay: `${s.delay}s`,
-        }} />
-      ))}
-    </div>
-  );
-});
 
 // ─── AnimalPhoto ────────────────────────────────────────────────────────────────
 const ANIMAL_EMOJIS: Record<string, string> = {
@@ -457,7 +433,7 @@ export default function WildBattleGame({ initialData }: { initialData: RawAnimal
     setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
     setMultiWaiting(false);
     setPhase("playing");
-  }, []);
+  }, [initialData]);
 
   const onMpNextRound = useCallback((nextRound: number) => {
     setMultiWaiting(false);
@@ -533,7 +509,6 @@ export default function WildBattleGame({ initialData }: { initialData: RawAnimal
         setStreak(0);
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentQ, streak]);
 
   const handleNext = useCallback(() => {

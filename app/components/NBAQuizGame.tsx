@@ -650,7 +650,7 @@ export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
     setRoundOver(false);
     setMultiWaiting(false);
     setScreen("game");
-  }, []);
+  }, [initialData]);
 
   const onMpRoundEnd  = useCallback(() => { setRoundOver(true); }, []);
 
@@ -784,7 +784,7 @@ export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
     setRoundResults([]);
     resetRound();
     setScreen("game");
-  }, [resetRound]);
+  }, [resetRound, initialData]);
 
   const startMulti = () => { mp.disconnect(); setMode("multi"); setShowNamePrompt(true); };
 

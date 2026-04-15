@@ -599,11 +599,6 @@ export default function CityMix() {
   // ── Result helpers ───────────────────────────────────────────────────────────
   const pct           = totalScore / MAX_TOTAL;
   const scoreBarGrade = pct >= 0.75 ? "excellent" : pct >= 0.5 ? "good" : "poor";
-  const myCircleClass = mode === "multi" && mp.opponent
-    ? totalScore > mp.opponent.score ? "score-circle--win" : "score-circle--neutral"
-    : "score-circle--solo";
-  const oppCircleClass = mode === "multi" && mp.opponent
-    ? mp.opponent.score > totalScore ? "score-circle--win" : "score-circle--lose" : "";
   const myValueColor = mode === "multi" && mp.opponent
     ? totalScore > mp.opponent.score ? "score-circle__value--green" : "score-circle__value--gold"
     : "score-circle__value--gold";

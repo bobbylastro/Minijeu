@@ -609,33 +609,30 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
   const currentRound = rounds[round] ?? null;
   const currentTimer = currentRound ? TIMER_FOR[currentRound.type] : YEAR_TIMER;
 
-  function resetAnswers() {
+  const resetAnswers = useCallback(() => {
     setGuessedYear(null);
     setPickedBattle(null);
     setPickedStudio(null);
     setPickedOlder(null);
-  }
+  }, []);
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
     setRounds(buildRounds(initialData.games, seed));
     setRound(0); setScore(0); setRevealed(false); resetAnswers();
     setMultiWaiting(false); setPhase("playing");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [initialData]);
+  }, [initialData, resetAnswers]);
 
   const onMpGameSync = useCallback((round: number, _seed: number, myScore: number, alreadyAnswered: boolean) => {
     setRound(round); setScore(myScore); setRevealed(alreadyAnswered);
     setMultiWaiting(alreadyAnswered); resetAnswers();
     setPhase("playing");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resetAnswers]);
 
   const onMpNextRound = useCallback((nextRound: number) => {
     setMultiWaiting(false); setRound(nextRound);
     setRevealed(false); resetAnswers();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [resetAnswers]);
 
   const onMpGameEnd = useCallback(() => {
     setMultiWaiting(false); setPhase("result");
@@ -660,8 +657,7 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
     const result = score > mp.opponent.score ? "win" : score < mp.opponent.score ? "loss" : "tie";
     recordMatch(mp.opponent.name, result);
     submitRating(score, mp.opponent.score);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [phase]);
+  }, [phase, mode, score, mp.opponent, submitRating]);
 
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {

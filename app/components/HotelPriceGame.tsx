@@ -48,11 +48,6 @@ const LOG_MAX = Math.log(2500);
 function posToPrice(pos: number): number {
   return Math.round(Math.exp(LOG_MIN + (pos / 100) * (LOG_MAX - LOG_MIN)));
 }
-function priceToPos(price: number): number {
-  const clamped = Math.max(15, Math.min(price, 2500));
-  return Math.round(((Math.log(clamped) - LOG_MIN) / (LOG_MAX - LOG_MIN)) * 100);
-}
-
 function formatPrice(n: number): string {
   return "$" + n.toLocaleString("en-US");
 }
@@ -563,7 +558,6 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
   const [score, setScore]               = useState(0);
   const [soloCorrect, setSoloCorrect]   = useState(0);
   const [streak, setStreak]             = useState(0);
-  const [bestStreak, setBestStreak]     = useState(0);
 
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [pendingAnswer, setPendingAnswer]   = useState<number | null>(null);
@@ -594,7 +588,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
   const onMpGameStart = useCallback((seed: number) => {
     const qs = generateQuestions(initialData, seed);
     setQuestions(qs);
-    setRound(0); setScore(0); setSoloCorrect(0); setStreak(0); setBestStreak(0);
+    setRound(0); setScore(0); setSoloCorrect(0); setStreak(0);
     setSelectedAnswer(null); setPendingAnswer(null); setRevealed(false); revealedRef.current = false;
     setMultiWaiting(false);
     setPhase("playing");
@@ -651,7 +645,6 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
         if (isCorrect) {
           const newStreak = streak + 1;
           setStreak(newStreak);
-          setBestStreak(b => Math.max(b, newStreak));
           setSoloCorrect(c => c + 1);
         } else {
           setStreak(0);
@@ -672,7 +665,6 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
         if (isCorrect) {
           const newStreak = streak + 1;
           setStreak(newStreak);
-          setBestStreak(b => Math.max(b, newStreak));
           setSoloCorrect(c => c + 1);
         } else {
           setStreak(0);
@@ -710,7 +702,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
     if (initialData.length < 5) return;
     setMode("solo");
     setQuestions(generateQuestions(initialData));
-    setRound(0); setScore(0); setSoloCorrect(0); setStreak(0); setBestStreak(0);
+    setRound(0); setScore(0); setSoloCorrect(0); setStreak(0);
     setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
     setMultiWaiting(false);
     setPhase("playing");

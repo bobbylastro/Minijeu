@@ -361,7 +361,6 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
   const [answered, setAnswered]     = useState(false);
 
   // Per-round state
-  const [duelPick, setDuelPick]         = useState<"a"|"b"|null>(null);
   const [sliderValue, setSliderValue]   = useState(INIT_YEAR);
   const [orderPlaced, setOrderPlaced]   = useState<(string|null)[]>([null, null, null, null]);
   const [draggingText, setDraggingText] = useState<string|null>(null);
@@ -458,7 +457,6 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
     window.addEventListener("mouseup",   onMouseUp);
     window.addEventListener("touchmove", onTouchMove, { passive: false });
     window.addEventListener("touchend",  onTouchEnd);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => () => { ghostRef.current?.remove(); }, []);
@@ -481,7 +479,6 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
 
   const resetRound = useCallback(() => {
     setAnswered(false); answeredRef.current = false;
-    setDuelPick(null);
     setSliderValue(INIT_YEAR); sliderRef.current = INIT_YEAR;
     setOrderPlaced([null, null, null, null]); orderPlacedRef.current = [null, null, null, null];
     setDraggingText(null); setDraggingFromSlot(null); setDragOverSlot(null);
@@ -494,7 +491,6 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
     clearTimers();
     const earlier: "a"|"b" = currentRound.a.year <= currentRound.b.year ? "a" : "b";
     const points = side === earlier ? MAX_PTS : 0;
-    setDuelPick(side);
     const pts = doSubmit({ round: qNumRef.current, type: "duel", a: currentRound.a, b: currentRound.b, picked: side, earlier, points });
     if (mode === "multi") mp.submitAnswer(0, pts);
   };
@@ -528,7 +524,7 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
     setTotalScore(0); setResults([]);
     resetRound();
     setScreen("game");
-  }, [resetRound]);
+  }, [resetRound, initialData.events]);
 
   const onMpRoundEnd  = useCallback(() => setRoundOver(true), []);
   const onMpNextRound = useCallback((round: number) => {
@@ -613,7 +609,7 @@ export default function WhatCameFirst({ initialData }: { initialData: { events: 
     setTotalScore(0); setResults([]);
     resetRound();
     setScreen("game");
-  }, [resetRound]);
+  }, [resetRound, initialData.events]);
 
   const startMulti   = () => { mp.disconnect(); setMode("multi"); setShowNamePrompt(true); };
   const handleNewOpp = () => { mp.disconnect(); setMode("multi"); setScreen("home"); setShowNamePrompt(true); };

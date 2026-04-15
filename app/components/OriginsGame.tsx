@@ -340,7 +340,7 @@ export default function OriginsGame({ initialData }: { initialData: OriginItem[]
     setMultiWaiting(false);
     setShowIntro(true);
     setPhase("playing");
-  }, []);
+  }, [initialData]);
 
   const onMpGameSync = useCallback((round: number, _seed: number, myScore: number, alreadyAnswered: boolean) => {
     setRound(round);
