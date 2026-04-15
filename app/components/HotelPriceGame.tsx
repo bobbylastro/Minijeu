@@ -817,12 +817,18 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                   </div>
 
                   {revealed ? (
-                    <div className={`hp-slider-verdict ${sliderVerdictClass(sliderPts)}`}>
-                      <span className="hp-slider-verdict__correct">{sliderVerdictLabel(sliderPts)}</span>
-                      <span className="hp-slider-verdict__pts">
-                        Actual: {formatPrice(hotel.priceUsd)} · +{sliderPts} pts
-                      </span>
-                    </div>
+                    <>
+                      <div className={`hp-slider-verdict ${sliderVerdictClass(sliderPts)}`}>
+                        <span className="hp-slider-verdict__correct">{sliderVerdictLabel(sliderPts)}</span>
+                        <span className="hp-slider-verdict__pts">
+                          Actual: {formatPrice(hotel.priceUsd)} · +{sliderPts} pts
+                        </span>
+                      </div>
+                      {/* Desktop only: Next button in place of Confirm */}
+                      <button className="hp-slider__lock-btn hp-slider__next-desktop" onClick={handleNext}>
+                        {round + 1 >= ROUNDS_PER_GAME ? "See Results" : "Next →"}
+                      </button>
+                    </>
                   ) : (
                     <>
                       <div className="hp-slider__track-wrap">
@@ -841,7 +847,8 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                         </div>
                       </div>
                       {!sliderLocked && !multiWaiting && (
-                        <button className="hp-slider__lock-btn" onClick={handleSliderSubmit}>
+                        /* Desktop only: Confirm in slider-controls */
+                        <button className="hp-slider__lock-btn hp-slider__confirm-desktop" onClick={handleSliderSubmit}>
                           Confirm — {formatPrice(displayPrice)}/night
                         </button>
                       )}
@@ -910,12 +917,19 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
       </div>
 
       {/* Action bar */}
-      <div className="hp-action-bar">
+      <div className={`hp-action-bar${!revealed && currentQ.type === "price_slider" ? " hp-action-bar--mobile-confirm" : ""}`}>
         {!revealed && !multiWaiting && currentQ.type === "price_battle" && (
           <div className="hp-action-bar__hint">Tap the more expensive hotel</div>
         )}
         {!revealed && !multiWaiting && currentQ.type === "price_slider" && (
-          <div className="hp-action-bar__hint">Drag the slider, then confirm</div>
+          <>
+            {/* Mobile only: Confirm button in action bar */}
+            <button className="hp-slider__lock-btn hp-slider__confirm-mobile" onClick={handleSliderSubmit} disabled={sliderLocked}>
+              Confirm — {formatPrice(displayPrice)}/night
+            </button>
+            {/* Desktop hint */}
+            <div className="hp-action-bar__hint">Drag the slider, then confirm</div>
+          </>
         )}
         {multiWaiting && (
           <div className="hp-waiting">
@@ -944,7 +958,8 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                 </>
               )}
             </div>
-            <button className="btn-next btn-hover-sm" onClick={handleNext}>
+            {/* Desktop slider: Next is in slider-controls; show here for battle + mobile */}
+            <button className={`btn-next btn-hover-sm${currentQ.type === "price_slider" ? " hp-next-actionbar-slider" : ""}`} onClick={handleNext}>
               {round + 1 >= ROUNDS_PER_GAME ? "See Results" : "Next →"}
             </button>
           </div>
