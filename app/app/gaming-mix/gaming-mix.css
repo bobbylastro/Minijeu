@@ -508,21 +508,23 @@
 @media (max-width: 480px) {
   .gm-play-area { padding: 70px 12px 100px; gap: 16px; }
 
-  /* Battle cards: side by side on mobile to keep confirm button visible */
+  /* Battle: full-width horizontal cards stacked (image left, info right) */
   .gm-battle-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 10px;
   }
-
+  .gm-battle-vs { display: none; }
+  .gm-battle-card { flex-direction: row; min-height: 88px; }
   .gm-battle-card__cover {
-    aspect-ratio: 4/3;
+    width: 38%; flex-shrink: 0;
+    aspect-ratio: auto; height: 100%;
+    min-height: 88px;
   }
-
-  .gm-battle-card__body { padding: 8px 10px 12px; }
-  .gm-battle-card__title { font-size: 0.75rem; }
-  .gm-battle-card__sales { font-size: 1.2rem; }
-  .gm-battle-card__year  { font-size: 1.2rem; }
-  .gm-battle-card__sales-label { font-size: 0.6rem; }
+  .gm-battle-card__body { padding: 10px 12px; justify-content: center; }
+  .gm-battle-card__title { font-size: 0.8rem; }
+  .gm-battle-card__sales { font-size: 1.3rem; }
+  .gm-battle-card__year  { font-size: 1.3rem; }
+  .gm-battle-card__sales-label { font-size: 0.62rem; }
 
   /* MCQ: single column on very small screens */
   .gm-mcq-options { grid-template-columns: 1fr; }

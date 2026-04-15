@@ -614,17 +614,20 @@
   .hp-action-bar__hint { display: none; }
   .hp-action-bar { height: 52px; }
 
-  /* Battle: 2 cards side by side (no VS column), like Gaming Mix desktop */
+  /* Battle: full-width horizontal cards stacked (image left, info right) */
   .hp-battle {
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
+    grid-template-columns: 1fr;
+    gap: 10px;
     max-height: none;
   }
   .hp-vs-divider { display: none; }
-  .hp-card { border-radius: 14px; }
-  .hp-card__img-wrap { aspect-ratio: 4/3; flex: none; }
+  .hp-card { flex-direction: row; border-radius: 14px; min-height: 90px; }
+  .hp-card__img-wrap {
+    width: 40%; flex: none;
+    aspect-ratio: auto; height: 100%; min-height: 90px;
+  }
   .hp-card__name { font-size: 0.78rem; }
-  .hp-card__body { padding: 8px 10px; }
+  .hp-card__body { padding: 8px 10px; justify-content: center; }
   .hp-battle-round { max-height: none; }
 
   .hp-verdict { padding: 16px 18px; gap: 4px; }
