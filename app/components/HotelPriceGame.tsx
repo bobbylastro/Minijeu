@@ -247,8 +247,19 @@ function SliderGallery({ hotel, resetKey, showTier = false }: { hotel: Hotel; re
     ? `📐 ${hotel.roomSizeFt ? `${hotel.roomSizeFt} ft²` : ""}${hotel.roomSizeSqm && hotel.roomSizeFt ? " · " : ""}${hotel.roomSizeSqm ? `${hotel.roomSizeSqm} m²` : ""}`
     : null;
 
+  // Swipe support
+  const touchStartX = useRef<number | null>(null);
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchEnd   = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || count <= 1) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) < 40) return; // ignore small movements
+    setIdx(i => dx < 0 ? (i + 1) % count : (i - 1 + count) % count);
+    touchStartX.current = null;
+  };
+
   return (
-    <div className="hp-gallery">
+    <div className="hp-gallery" onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
       {src ? (
         <HotelImage src={src} alt={hotel.name} className="hp-gallery__img" />
       ) : (
