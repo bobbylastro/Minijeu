@@ -11,6 +11,7 @@ const WORLD: GameLink[] = [
   { slug: "/citymix",        emoji: "🌍", title: "CityMix",         desc: "Pick the larger city, then guess its exact population." },
   { slug: "/higher-or-lower",emoji: "📊", title: "Higher or Lower", desc: "Compare two countries on population, GDP, area and more." },
   { slug: "/city-origins",   emoji: "🏙️", title: "City Mapper",     desc: "A city photo appears — find the country it belongs to." },
+  { slug: "/hotel-price",    emoji: "🏨", title: "Hotel Price",      desc: "Guess the nightly rate from real hotel photos and amenities." },
 ];
 
 const SPORTS: GameLink[] = [

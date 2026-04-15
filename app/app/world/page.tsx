@@ -4,12 +4,19 @@ import JsonLd from "@/components/JsonLd";
 import FAQ from "@/components/FAQ";
 
 export const metadata: Metadata = {
-  title: "World Games — Geography & City Challenges",
+  title: "World Games — Geography, Cities & Hotel Prices",
   description:
-    "Play free world geography games online. Guess city populations, compare countries on GDP and area, or find the country behind a city photo. 3 games, solo & multiplayer.",
+    "Play free world geography games online. Guess city populations, compare countries, find cities on the map, or guess hotel nightly prices from real photos. 4 games, solo & multiplayer.",
 };
 
 const GAMES = [
+  {
+    slug: "/hotel-price",
+    emoji: "🏨",
+    title: "Hotel Price",
+    desc: "Real hotel photos from NYC to Bali — slide to guess the nightly rate, or pick the more expensive hotel in a battle round.",
+    tags: ["Solo", "Multiplayer"],
+  },
   {
     slug: "/citymix",
     emoji: "🌍",
@@ -141,9 +148,19 @@ export default function WorldPage() {
             fast-paced, visual format.
           </p>
 
+          <h2>Hotel Price — guess the nightly rate from real photos</h2>
+          <p>
+            Hotel Price takes the World category in a new direction. Real hotel photos from
+            Booking.com appear alongside the city, star rating and amenities — your job is to
+            estimate what the room costs per night in USD using a logarithmic slider. Battle rounds
+            pit two hotels from the same price tier against each other, so you can&apos;t just
+            pick the obvious luxury winner. Hotels span budget guesthouses in Hanoi and Medellín
+            through to five-star suites in New York, Santorini and Dubai.
+          </p>
+
           <h2>Play solo or challenge a friend</h2>
           <p>
-            All three World games support real-time multiplayer. Both players face the same
+            All four World games support real-time multiplayer. Both players face the same
             questions thanks to a shared seed, so the competition is always fair. Race to out-guess
             your opponent and claim the top score.
           </p>
@@ -151,15 +168,15 @@ export default function WorldPage() {
           <FAQ items={[
             {
               q: "Are the World games free to play?",
-              a: "Yes, CityMix, Higher or Lower and City Mapper are all completely free. No account or download required — play instantly in any browser on desktop or mobile.",
+              a: "Yes, all World games are completely free. No account or download required — play instantly in any browser on desktop or mobile.",
             },
             {
-              q: "What geography topics do the World games cover?",
-              a: "The three games cover different areas: city population sizes and comparisons (CityMix), country statistics like GDP, area and life expectancy (Higher or Lower), and visual city-to-country mapping (City Mapper).",
+              q: "What topics do the World games cover?",
+              a: "The four games cover city population sizes (CityMix), country statistics like GDP and area (Higher or Lower), visual city-to-country mapping (City Mapper), and real hotel nightly prices from cities worldwide (Hotel Price).",
             },
             {
               q: "Do the World games support multiplayer?",
-              a: "Yes — all three World games support real-time multiplayer. Both players face the same questions from a shared seed, so the result is always decided by knowledge, not luck.",
+              a: "Yes — all four World games support real-time multiplayer. Both players face the same questions from a shared seed, so the result is always decided by knowledge, not luck.",
             },
           ]} />
         </div>

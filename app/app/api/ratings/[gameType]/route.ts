@@ -9,6 +9,7 @@ const VALID_GAME_TYPES = [
   "food",
   "wild-battle", "animal-locator",
   "gaming-mix",
+  "hotel-price",
 ];
 
 // Maximum achievable score per game type
@@ -27,6 +28,7 @@ const MAX_SCORE: Record<string, number> = {
   "wild-battle":    1000,
   "animal-locator": 1000,
   "gaming-mix":     1000,
+  "hotel-price":    1000,
 };
 
 // GET /api/ratings/[gameType] — top 50 leaderboard

@@ -21,6 +21,13 @@ interface GameDef {
 
 const WORLD_GAMES: GameDef[] = [
   {
+    slug: "/hotel-price",
+    emoji: "🏨",
+    title: "Hotel Price",
+    desc: "Real hotel photos from NYC to Bali — slide to guess the nightly rate, or pick the more expensive of two hotels.",
+    tags: ["Solo", "Multiplayer"],
+  },
+  {
     slug: "/citymix",
     emoji: "🌍",
     title: "CityMix",
@@ -232,21 +239,22 @@ export default function HomePage() {
         "@type": "ItemList",
         "name": "Games on Ultimate Playground",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1,  "name": "CityMix",              "url": `${BASE}/citymix` },
-          { "@type": "ListItem", "position": 2,  "name": "Higher or Lower",      "url": `${BASE}/higher-or-lower` },
-          { "@type": "ListItem", "position": 3,  "name": "City Mapper",          "url": `${BASE}/city-origins` },
-          { "@type": "ListItem", "position": 4,  "name": "FootballQuiz",         "url": `${BASE}/football` },
-          { "@type": "ListItem", "position": 5,  "name": "NBAQuiz",              "url": `${BASE}/nba` },
-          { "@type": "ListItem", "position": 6,  "name": "CareerOrder",          "url": `${BASE}/career` },
-          { "@type": "ListItem", "position": 7,  "name": "WhatCameFirst?",       "url": `${BASE}/wcf` },
-          { "@type": "ListItem", "position": 8,  "name": "Origins Quiz",         "url": `${BASE}/origins` },
-          { "@type": "ListItem", "position": 9,  "name": "Who's Richer?",        "url": `${BASE}/wealth` },
-          { "@type": "ListItem", "position": 10, "name": "5 Clues",              "url": `${BASE}/five-clues` },
-          { "@type": "ListItem", "position": 11, "name": "Food Origins",         "url": `${BASE}/food` },
-          { "@type": "ListItem", "position": 12, "name": "Wild Battle",          "url": `${BASE}/wild-battle` },
-          { "@type": "ListItem", "position": 13, "name": "Animal Locator",       "url": `${BASE}/animal-locator` },
-          { "@type": "ListItem", "position": 14, "name": "Gaming Mix",           "url": `${BASE}/gaming-mix` },
-          { "@type": "ListItem", "position": 15, "name": "Gaming Tournament",    "url": `${BASE}/game-tournament` },
+          { "@type": "ListItem", "position": 1,  "name": "Hotel Price",          "url": `${BASE}/hotel-price` },
+          { "@type": "ListItem", "position": 2,  "name": "CityMix",              "url": `${BASE}/citymix` },
+          { "@type": "ListItem", "position": 3,  "name": "Higher or Lower",      "url": `${BASE}/higher-or-lower` },
+          { "@type": "ListItem", "position": 4,  "name": "City Mapper",          "url": `${BASE}/city-origins` },
+          { "@type": "ListItem", "position": 5,  "name": "FootballQuiz",         "url": `${BASE}/football` },
+          { "@type": "ListItem", "position": 6,  "name": "NBAQuiz",              "url": `${BASE}/nba` },
+          { "@type": "ListItem", "position": 7,  "name": "CareerOrder",          "url": `${BASE}/career` },
+          { "@type": "ListItem", "position": 8,  "name": "WhatCameFirst?",       "url": `${BASE}/wcf` },
+          { "@type": "ListItem", "position": 9,  "name": "Origins Quiz",         "url": `${BASE}/origins` },
+          { "@type": "ListItem", "position": 10, "name": "Who's Richer?",        "url": `${BASE}/wealth` },
+          { "@type": "ListItem", "position": 11, "name": "5 Clues",              "url": `${BASE}/five-clues` },
+          { "@type": "ListItem", "position": 12, "name": "Food Origins",         "url": `${BASE}/food` },
+          { "@type": "ListItem", "position": 13, "name": "Wild Battle",          "url": `${BASE}/wild-battle` },
+          { "@type": "ListItem", "position": 14, "name": "Animal Locator",       "url": `${BASE}/animal-locator` },
+          { "@type": "ListItem", "position": 15, "name": "Gaming Mix",           "url": `${BASE}/gaming-mix` },
+          { "@type": "ListItem", "position": 16, "name": "Gaming Tournament",    "url": `${BASE}/game-tournament` },
         ],
       },
     ]} />
@@ -258,7 +266,7 @@ export default function HomePage() {
         </div>
 
         <p className="home-page__intro">
-          15 free games across geography, sports, food, animals, culture and gaming — play solo or challenge friends in real-time multiplayer. No download, no account required.
+          16 free games across geography, sports, food, animals, culture and gaming — play solo or challenge friends in real-time multiplayer. No download, no account required.
         </p>
 
         <main className="categories">
@@ -276,10 +284,11 @@ export default function HomePage() {
           <p>Play solo, jump into a Quick Match against a random opponent, or <strong>create a private room</strong> and invite up to 8 friends with a 4-letter code — no account needed. Every multiplayer game uses a shared random seed so everyone gets the same questions in the same order.</p>
 
           <SeoExpand>
-            <h2>All 15 games on Ultimate Playground</h2>
+            <h2>All 16 games on Ultimate Playground</h2>
 
             <h3>🌍 World &amp; Geography</h3>
             <ul>
+              <li><strong>Hotel Price</strong> – Real hotel photos from 40+ cities worldwide. Slide to guess the nightly rate in USD, or pick the most expensive hotel in a battle round.</li>
               <li><strong>CityMix</strong> – Guess which city is bigger, then slide to estimate its exact population. Two challenges per round.</li>
               <li><strong>Higher or Lower</strong> – Compare two countries on population, GDP, area, coastline and more. 10 rounds of head-to-head country data.</li>
               <li><strong>City Mapper</strong> – A city photo appears — click the country it belongs to on the world map. 100 cities across 68 countries.</li>

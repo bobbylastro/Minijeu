@@ -556,6 +556,41 @@
 .game-wrapper.theme-safari .how-it-works__title { color: rgba(255,230,170,0.8); }
 .game-wrapper.theme-safari .how-it-works__text  { color: rgba(255,230,170,0.65); }
 
+/* ── Hotel theme — midnight navy + gold ────────────────────────────────────── */
+.game-wrapper.theme-hotel {
+  background: linear-gradient(160deg, #050b18 0%, #091527 50%, #0d1f3a 100%);
+}
+.game-wrapper.theme-hotel .glow-orb--orange {
+  background: radial-gradient(circle, rgba(200,145,58,0.30) 0%, rgba(200,120,30,0.08) 50%, transparent 70%);
+  top: -220px; right: -200px; width: 850px; height: 850px;
+}
+.game-wrapper.theme-hotel .glow-orb--purple {
+  background: radial-gradient(circle, rgba(70,110,200,0.13) 0%, transparent 68%);
+  bottom: -140px; left: -110px; width: 600px; height: 600px;
+}
+.game-wrapper.theme-hotel .stars-layer { display: block; }
+.game-wrapper.theme-hotel .accent { color: #e8c068; }
+.game-wrapper.theme-hotel .home-title { color: #fff; text-shadow: 0 2px 24px rgba(200,145,58,0.32); }
+.game-wrapper.theme-hotel .home-subtitle { color: rgba(220,195,150,0.72); }
+.game-wrapper.theme-hotel .btn-primary {
+  background: linear-gradient(135deg, #d4a040, #e8b84b);
+  color: #1a0a00;
+  box-shadow: 0 0 28px rgba(200,145,58,0.42), 0 8px 24px rgba(0,0,0,0.35);
+}
+.game-wrapper.theme-hotel .btn-outline {
+  color: #e8c068;
+  border-color: rgba(200,145,58,0.42);
+  box-shadow: 0 0 14px rgba(200,145,58,0.10);
+}
+.game-wrapper.theme-hotel .btn-hover:hover    { box-shadow: 0 0 55px rgba(200,145,58,0.62), 0 12px 32px rgba(0,0,0,0.48) !important; }
+.game-wrapper.theme-hotel .btn-hover-sm:hover { box-shadow: 0 0 42px rgba(200,145,58,0.52), 0 8px  24px rgba(0,0,0,0.42) !important; }
+.game-wrapper.theme-hotel .how-it-works {
+  background: rgba(0,0,0,0.22);
+  border-color: rgba(200,145,58,0.18);
+}
+.game-wrapper.theme-hotel .how-it-works__title { color: rgba(220,195,150,0.80); }
+.game-wrapper.theme-hotel .how-it-works__text  { color: rgba(220,195,150,0.60); }
+
 /* ── Home screen ──────────────────────────────────────────────────────────── */
 .home-screen {
   text-align: center;

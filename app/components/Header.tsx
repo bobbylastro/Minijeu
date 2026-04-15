@@ -55,7 +55,7 @@ export default function Header() {
   const closeMenu = () => { setMenuOpen(false); setMobileOpen(null); };
   const toggleMobile = (key: string) => setMobileOpen(o => o === key ? null : key);
 
-  const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins"];
+  const geoRoutes     = ["/citymix", "/higher-or-lower", "/city-origins", "/hotel-price"];
   const sportsRoutes  = ["/football", "/nba", "/career"];
   const cultureRoutes = ["/wcf", "/origins", "/wealth", "/five-clues"];
   const foodRoutes    = ["/food"];
@@ -314,6 +314,13 @@ export default function Header() {
                         <div className="site-header__dropdown-desc">Find the country behind the city</div>
                       </div>
                     </Link>
+                    <Link href="/hotel-price" className={`site-header__dropdown-item${pathname === "/hotel-price" ? " is-active" : ""}`} onClick={() => setGeoOpen(false)}>
+                      <div className="site-header__dropdown-icon">🏨</div>
+                      <div>
+                        <div className="site-header__dropdown-name">Hotel Price</div>
+                        <div className="site-header__dropdown-desc">Guess the nightly rate from photos</div>
+                      </div>
+                    </Link>
                   </div>
                   <div className="site-header__dropdown-viewall">
                     <Link href="/world" onClick={() => setGeoOpen(false)}>View all World games →</Link>
@@ -467,6 +474,7 @@ export default function Header() {
                 <Link href="/citymix"        className={`mobile-menu__sub-item${pathname === "/citymix"        ? " is-active" : ""}`} onClick={closeMenu}><span>🌍</span> CityMix</Link>
                 <Link href="/higher-or-lower" className={`mobile-menu__sub-item${pathname === "/higher-or-lower" ? " is-active" : ""}`} onClick={closeMenu}><span>📊</span> Higher or Lower</Link>
                 <Link href="/city-origins"   className={`mobile-menu__sub-item${pathname === "/city-origins"   ? " is-active" : ""}`} onClick={closeMenu}><span>🏙️</span> City Mapper</Link>
+                <Link href="/hotel-price"   className={`mobile-menu__sub-item${pathname === "/hotel-price"   ? " is-active" : ""}`} onClick={closeMenu}><span>🏨</span> Hotel Price</Link>
               </div>
             )}
 

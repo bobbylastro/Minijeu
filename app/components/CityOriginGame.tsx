@@ -70,12 +70,21 @@ const Stars = memo(function Stars() {
 // ─── City photo ───────────────────────────────────────────────────────────────
 function CityPhoto({ city, className = "" }: { city: City; className?: string }) {
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => setLoaded(false), [city]);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    setLoaded(false);
+    // If already cached the browser won't fire onLoad — check immediately
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+  }, [city]);
+
   return (
     <>
       {!loaded && <div className={`fd-dish-photo fd-dish-photo--placeholder ${className}`} />}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
+        ref={imgRef}
         src={city.image}
         alt={city.name}
         className={`fd-dish-photo${loaded ? " fd-dish-photo--visible" : ""} ${className}`}
@@ -309,6 +318,7 @@ export default function CityOriginGame() {
 
   const timerRef   = useRef<ReturnType<typeof setInterval> | null>(null);
   const modeRef    = useRef<Mode>("solo");
+  const mpRef      = useRef<ReturnType<typeof useMultiplayer> | null>(null);
   const isTouchRef = useRef(false);
   useEffect(() => { modeRef.current = mode; }, [mode]);
   useEffect(() => {
@@ -356,6 +366,7 @@ export default function CityOriginGame() {
     onNextRound:        onMpNextRound,
     onGameEnd:          onMpGameEnd,
   });
+  useEffect(() => { mpRef.current = mp; });
 
   const { submitRating } = useRatingSubmit("citymap");
 
@@ -379,8 +390,8 @@ export default function CityOriginGame() {
     setRevealed(true);
     const pts = alpha2 && currentCity && alpha2 === getAlpha2(currentCity) ? 100 : 0;
     setScore(s => s + pts);
-    if (modeRef.current === "multi") mp.submitAnswer(alpha2, pts);
-  }, [currentCity, stopTimer, mp]);
+    if (modeRef.current === "multi") mpRef.current?.submitAnswer(alpha2, pts);
+  }, [currentCity, stopTimer]);
 
   useEffect(() => {
     if (phase !== "playing" || revealed || showIntro) return;

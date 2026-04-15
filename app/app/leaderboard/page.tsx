@@ -29,6 +29,7 @@ const CATEGORIES: CategoryDef[] = [
       { key: "citymix",          label: "🌍 CityMix" },
       { key: "higher-or-lower",  label: "📊 Higher or Lower" },
       { key: "citymap",          label: "🏙️ City Origins" },
+      { key: "hotel-price",      label: "🏨 Hotel Price" },
     ],
   },
   {

@@ -19,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/citymix`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/higher-or-lower`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
     { url: `${BASE}/city-origins`,    lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/hotel-price`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // ── Sports games ──────────────────────────────────────────────────────────
     { url: `${BASE}/football`, lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
@@ -48,6 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/origins-rules`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/higher-or-lower-rules`, lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/citymix-rules`,         lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
+    { url: `${BASE}/hotel-price-rules`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/city-origins-rules`,    lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/wealth-rules`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
     { url: `${BASE}/five-clues-rules`,      lastModified: NOW, changeFrequency: "monthly", priority: 0.65 },
@@ -74,6 +76,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/blog/play-online-games-with-friends-private-rooms`,     lastModified: NOW, changeFrequency: "monthly", priority: 0.80 },
     { url: `${BASE}/blog/best-browser-games-to-stream-on-twitch`,          lastModified: NOW, changeFrequency: "monthly", priority: 0.80 },
     { url: `${BASE}/blog/best-animal-geography-games-online`,              lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
+    { url: `${BASE}/blog/best-price-guessing-games-online`,               lastModified: NOW, changeFrequency: "monthly", priority: 0.75 },
 
     // noindex pages (contact, privacy, terms, legal, cookies) intentionally excluded
   ];

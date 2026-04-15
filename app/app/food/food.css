@@ -260,6 +260,14 @@
   position: relative;
 }
 .fd-dish-zoom-card__photo .fd-dish-photo { position: absolute; inset: 0; width: 100% !important; height: 100% !important; }
+
+/* Zoom city photos slightly to hide white edge artefacts baked into some Wikipedia images */
+.fd-dish-card__photo-wrap .fd-dish-photo,
+.fd-dish-zoom-card__photo .fd-dish-photo,
+.fd-intro-photo-wrap .fd-dish-photo {
+  transform: scale(1.07);
+  transform-origin: center;
+}
 .fd-dish-zoom-card__info {
   padding: 1rem 1.25rem 1.25rem;
 }

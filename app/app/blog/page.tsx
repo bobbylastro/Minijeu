@@ -129,6 +129,17 @@ const ARTICLES: {
     readTime: "5 min read",
     date: "Apr 13, 2026",
   },
+  {
+    slug: "/blog/best-price-guessing-games-online",
+    emoji: "🏨",
+    tags: ["World", "Guide"],
+    theme: "geography",
+    title: "Best Price Guessing Games Online — Guess What Things Cost (2026)",
+    excerpt:
+      "Think you know what a New York hotel costs per night? The best free online price guessing games — hotel rates, celebrity net worths, transfer fees — ranked by how badly they'll humiliate you.",
+    readTime: "6 min read",
+    date: "Apr 15, 2026",
+  },
 ];
 
 export default function BlogIndex() {
