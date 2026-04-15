@@ -161,7 +161,7 @@
 }
 /* Bottom-right: room size */
 .hp-gallery__size {
-  position: absolute; bottom: 12px; right: 12px; z-index: 2;
+  position: absolute; bottom: 12px; right: 12px; z-index: 4;
   font-size: 0.74rem; font-weight: 600; color: rgba(255,255,255,0.90);
   background: rgba(0,0,0,0.50); border: 1px solid rgba(255,255,255,0.18);
   border-radius: 10px; padding: 3px 10px;
@@ -405,6 +405,10 @@
   font-size: 0.68rem; color: rgba(220,195,150,0.60);
   font-weight: 400;
 }
+/* In battle cards, push size badge above the dots row */
+.hp-card .hp-gallery__size {
+  bottom: 36px;
+}
 
 /* ── VS divider ─────────────────────────────────────── */
 .hp-vs-divider {
@@ -463,6 +467,36 @@
 .hp-verdict--wrong   .hp-verdict__label { color: #f87171; }
 .hp-verdict__pts { font-size: 1.02rem; font-weight: 700; color: #e8c068; }
 .hp-verdict__detail { font-size: 0.80rem; color: rgba(255,255,255,0.60); text-align: center; line-height: 1.45; margin-top: 2px; }
+
+/* Battle verdict: price comparison rows */
+.hp-verdict__prices {
+  display: flex; flex-direction: column; gap: 5px;
+  width: 100%; margin-top: 4px;
+}
+.hp-verdict__price-row {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  font-size: 0.78rem; color: rgba(255,255,255,0.60);
+  padding: 4px 8px; border-radius: 8px;
+}
+.hp-verdict__price-row--correct {
+  background: rgba(34,197,94,0.15);
+  color: #4ade80;
+  font-weight: 700;
+}
+.hp-verdict__price-row--wrong {
+  background: rgba(239,68,68,0.12);
+  color: #f87171;
+  font-weight: 700;
+}
+.hp-verdict__price-name {
+  flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.hp-verdict__price-val {
+  font-weight: 700; white-space: nowrap;
+}
+.hp-verdict__price-night {
+  font-size: 0.68rem; font-weight: 400; opacity: 0.65; margin-left: 1px;
+}
 
 /* ── Slider score inline (replaces verdict overlay for sliders) */
 .hp-slider-verdict {

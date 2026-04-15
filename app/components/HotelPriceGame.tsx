@@ -519,6 +519,13 @@ function BattleCard({
         </div>
       )}
 
+      {/* Bottom-right: room size */}
+      {hotel.roomSizeSqm !== null && (
+        <div className="hp-gallery__size">
+          {hotel.roomSizeSqm} m² · {hotel.roomSizeFt} ft²
+        </div>
+      )}
+
       {/* Gallery nav arrows */}
       {count > 1 && (
         <button className="hp-gallery__btn hp-gallery__btn--prev"
@@ -966,8 +973,20 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                       </span>
                     )}
                   </div>
-                  <div className="hp-verdict__detail">
-                    {(correctIdx === 0 ? hotel1 : hotel2).name} — {formatPrice(Math.max(hotel1.priceUsd, hotel2.priceUsd))}/night
+                  <div className="hp-verdict__prices">
+                    {[hotel1, hotel2].map((h, idx) => {
+                      const isSelected = selectedAnswer === idx;
+                      const isCorrect  = idx === correctIdx;
+                      let cls = "hp-verdict__price-row";
+                      if (isSelected && isCorrect)  cls += " hp-verdict__price-row--correct";
+                      if (isSelected && !isCorrect) cls += " hp-verdict__price-row--wrong";
+                      return (
+                        <div key={h.id} className={cls}>
+                          <span className="hp-verdict__price-name">{h.name}</span>
+                          <span className="hp-verdict__price-val">{formatPrice(h.priceUsd)}<span className="hp-verdict__price-night">/night</span></span>
+                        </div>
+                      );
+                    })}
                   </div>
                 </div>
               )}
