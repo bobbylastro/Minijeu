@@ -300,7 +300,6 @@
   width: 100%; max-width: 760px;
   display: flex; flex-direction: column;
   align-items: center; gap: 10px;
-  height: 100%; max-height: 500px;
   justify-content: center;
 }
 
@@ -315,25 +314,22 @@
   grid-template-columns: 1fr 1fr;
   position: relative;
   gap: 12px;
-  align-items: stretch;
-  width: 100%; flex: 1;
-  max-height: 380px;
-  min-height: 0;
+  width: 100%;
 }
 
-/* ── Hotel card (battle) ────────────────────────────── */
+/* ── Hotel card (battle) — gallery style ─────────────── */
 .hp-card {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
+  height: 340px;
   transition: transform 0.18s ease, box-shadow 0.2s ease;
   border: 1.5px solid rgba(200,145,58,0.14);
   background: rgba(5, 12, 30, 0.50);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   box-shadow: 0 4px 22px rgba(0,0,0,0.30), inset 0 1px 0 rgba(255,255,255,0.06);
-  display: flex; flex-direction: column;
 }
 .hp-card:hover:not(.hp-card--disabled) {
   transform: translateY(-4px) scale(1.015);
@@ -365,9 +361,7 @@
 }
 .hp-card--disabled { cursor: default; pointer-events: none; }
 
-.hp-card__img-wrap {
-  flex: 1; position: relative; overflow: hidden; min-height: 0;
-}
+/* Image fills the entire card */
 .hp-card__img {
   width: 100%; height: 100%; object-fit: cover; display: block;
   transition: transform 0.35s ease;
@@ -376,48 +370,34 @@
   transform: scale(1.05);
 }
 .hp-card__img-fallback {
-  width: 100%; height: 100%; min-height: 120px;
+  width: 100%; height: 100%;
   display: flex; align-items: center; justify-content: center;
   font-size: 3.5rem;
   background: linear-gradient(135deg, rgba(0,0,0,0.4), rgba(0,0,0,0.25));
 }
+/* Strong bottom gradient for price overlay readability */
 .hp-card__img-gradient {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.30) 50%, transparent 100%);
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.30) 45%, transparent 70%);
+  pointer-events: none;
 }
 .hp-card__winner-badge {
-  position: absolute; top: 10px; right: 10px; z-index: 2;
+  position: absolute; top: 10px; right: 10px; z-index: 4;
   background: linear-gradient(135deg, #e8d060, #c8901a);
   color: #1a0a00; font-size: 0.66rem; font-weight: 900;
   padding: 3px 10px; border-radius: 20px;
   box-shadow: 0 2px 12px rgba(200,145,58,0.55);
   letter-spacing: 0.06em; text-transform: uppercase;
 }
-
-.hp-card__body {
-  padding: 10px 12px;
-  flex-shrink: 0;
-}
-.hp-card__name {
-  font-size: 0.92rem; font-weight: 800; color: #fff;
-  line-height: 1.2; letter-spacing: 0.01em;
-}
-.hp-card__location {
-  font-size: 0.74rem; color: rgba(220,195,150,0.60);
-  margin-top: 2px;
-}
-.hp-card__stars {
-  font-size: 0.78rem; color: #e8b84b; letter-spacing: 1px;
-  margin-top: 3px;
-}
-.hp-card__price {
-  font-size: 1.3rem; font-weight: 900;
-  color: #e8c068; margin-top: 6px;
-  text-shadow: 0 0 20px rgba(200,145,58,0.40);
+/* Price overlay bottom-left when revealed */
+.hp-card__price-overlay {
+  position: absolute; bottom: 36px; left: 14px; z-index: 3;
+  font-size: 1.35rem; font-weight: 900; color: #e8c068;
+  text-shadow: 0 0 20px rgba(200,145,58,0.50);
   animation: hp-badge-in 0.3s ease;
 }
 .hp-card__price-label {
-  font-size: 0.68rem; color: rgba(220,195,150,0.50);
+  font-size: 0.68rem; color: rgba(220,195,150,0.60);
   font-weight: 400;
 }
 
@@ -636,54 +616,21 @@
   /* Hide the desktop text hint (button label is enough) */
   .hp-action-bar--mobile-confirm .hp-action-bar__hint { display: none; }
 
-  /* Battle: 2 columns side-by-side, portrait cards, text overlaid on image */
+  /* Battle: stacked full-width, gallery-style cards */
   .hp-battle {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 8px;
     max-height: none;
-    align-items: stretch;
   }
-  .hp-vs-divider { display: flex; }
+  .hp-vs-divider { display: none; }
   .hp-card {
-    flex-direction: column;
+    height: min(38dvh, 210px);
     border-radius: 14px;
-    min-height: 0;
-    aspect-ratio: 9 / 14;
-    position: relative;
-    overflow: hidden;
   }
-  /* Image fills entire card */
-  .hp-card__img-wrap {
-    position: absolute;
-    inset: 0;
-    width: 100%; height: 100%;
-    flex: none;
-    aspect-ratio: auto;
-    min-height: 0;
-  }
-  /* Stronger bottom gradient for text readability */
-  .hp-card__img-gradient {
-    background: linear-gradient(
-      to top,
-      rgba(0,0,0,0.92) 0%,
-      rgba(0,0,0,0.55) 40%,
-      transparent 70%
-    );
-  }
-  /* Text floats over image at bottom */
-  .hp-card__body {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 8px 10px 10px;
-    z-index: 3;
-    background: none;
-    display: flex; flex-direction: column; gap: 2px;
-  }
-  .hp-card__name { font-size: 0.76rem; }
-  .hp-card__location { font-size: 0.66rem; }
-  .hp-card__stars { font-size: 0.68rem; margin-top: 1px; }
-  .hp-card__price { font-size: 1.05rem; margin-top: 4px; }
+  .hp-card__price-overlay { font-size: 1.1rem; bottom: 30px; }
   .hp-battle-round { max-height: none; }
+  .hp-gallery__info { top: 10px; left: 12px; right: 48px; gap: 3px; }
+  .hp-gallery__name { font-size: 0.94rem; }
 
   .hp-verdict { padding: 16px 18px; gap: 4px; }
   .hp-verdict__icon { font-size: 2.3rem; }

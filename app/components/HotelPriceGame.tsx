@@ -444,7 +444,22 @@ function BattleCard({
   disabled: boolean;
 }) {
   const [imgFailed, setImgFailed] = useState(false);
-  useEffect(() => { setImgFailed(false); }, [hotel.id]);
+  const [imgIdx, setImgIdx] = useState(0);
+  const touchStartX = useRef<number | null>(null);
+  useEffect(() => { setImgFailed(false); setImgIdx(0); }, [hotel.id]);
+
+  const images = hotel.images;
+  const count  = images.length;
+  const src    = images[imgIdx];
+
+  const handleTouchStart = (e: React.TouchEvent) => { touchStartX.current = e.touches[0].clientX; };
+  const handleTouchEnd   = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || count <= 1) return;
+    const dx = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(dx) < 40) return;
+    setImgIdx(i => dx < 0 ? (i + 1) % count : (i - 1 + count) % count);
+    touchStartX.current = null;
+  };
 
   let cls = "hp-card";
   if (revealed) {
@@ -456,41 +471,73 @@ function BattleCard({
     cls += " hp-card--disabled";
   }
 
-  const src = hotel.images[0];
-
   return (
-    <div className={cls} onClick={!revealed && !disabled ? onClick : undefined}>
+    <div className={cls}
+      onClick={!revealed && !disabled ? onClick : undefined}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
+      {/* Image fills the card */}
+      {src && !imgFailed ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={proxyUrl(src)} alt={hotel.name} className="hp-card__img"
+          draggable={false} onError={() => setImgFailed(true)} />
+      ) : (
+        <div className="hp-card__img-fallback">🏨</div>
+      )}
+
+      {/* Gradients for overlay readability */}
+      <div className="hp-gallery__grad-top" />
+      <div className="hp-card__img-gradient" />
+
+      {/* Winner badge */}
       {revealed && isWinner && <div className="hp-card__winner-badge">Most Expensive 💰</div>}
-      <div className="hp-card__img-wrap">
-        {src && !imgFailed ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img src={proxyUrl(src)} alt={hotel.name} className="hp-card__img"
-            draggable={false} onError={() => setImgFailed(true)} />
-        ) : (
-          <div className="hp-card__img-fallback">🏨</div>
-        )}
-        <div className="hp-card__img-gradient" />
-      </div>
-      <div className="hp-card__body">
-        <div className="hp-card__name">{hotel.name}</div>
-        <div className="hp-card__location">
-          <CountryFlag code={hotel.countryCode} /> {hotel.city}
-        </div>
-        {hotel.stars !== null && hotel.stars > 0 && (
-          <div className="hp-card__stars">{"★".repeat(hotel.stars)}</div>
-        )}
-        {hotel.amenities.slice(0, 2).map(a => (
-          <span key={a} style={{ fontSize: "0.68rem", color: "rgba(220,195,150,0.55)", display: "block", marginTop: 2 }}>
-            {amenityIcon(a)}{a}
+
+      {/* Top-left: name + location + stars */}
+      <div className="hp-gallery__info">
+        <div className="hp-gallery__name">{hotel.name}</div>
+        <div className="hp-gallery__meta">
+          <span className="hp-gallery__location">
+            <CountryFlag code={hotel.countryCode} /> {hotel.city}
           </span>
-        ))}
-        {revealed && (
-          <div className="hp-card__price">
-            {formatPrice(hotel.priceUsd)}
-            <span className="hp-card__price-label"> / night</span>
-          </div>
-        )}
+          {hotel.stars !== null && hotel.stars > 0 && (
+            <span className="hp-gallery__stars">
+              {"★".repeat(hotel.stars)}
+              <span className="hp-gallery__stars-empty">{"★".repeat(5 - hotel.stars)}</span>
+            </span>
+          )}
+        </div>
       </div>
+
+      {/* Bottom-left: price when revealed */}
+      {revealed && (
+        <div className="hp-card__price-overlay">
+          {formatPrice(hotel.priceUsd)}
+          <span className="hp-card__price-label"> / night</span>
+        </div>
+      )}
+
+      {/* Gallery nav arrows */}
+      {count > 1 && (
+        <button className="hp-gallery__btn hp-gallery__btn--prev"
+          onClick={e => { e.stopPropagation(); setImgIdx(i => (i - 1 + count) % count); }}>‹</button>
+      )}
+      {count > 1 && (
+        <button className="hp-gallery__btn hp-gallery__btn--next"
+          onClick={e => { e.stopPropagation(); setImgIdx(i => (i + 1) % count); }}>›</button>
+      )}
+
+      {/* Dots */}
+      {count > 1 && (
+        <div className="hp-gallery__dots">
+          {images.map((_, i) => (
+            <button key={i}
+              className={`hp-gallery__dot${i === imgIdx ? " hp-gallery__dot--active" : ""}`}
+              onClick={e => { e.stopPropagation(); setImgIdx(i); }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
