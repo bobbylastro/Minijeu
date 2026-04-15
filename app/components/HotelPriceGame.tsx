@@ -469,6 +469,8 @@ function BattleCard({
     cls += " hp-card--disabled";
   } else if (disabled) {
     cls += " hp-card--disabled";
+  } else if (isSelected) {
+    cls += " hp-card--pending";
   }
 
   return (
@@ -557,6 +559,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
   const [bestStreak, setBestStreak]     = useState(0);
 
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [pendingAnswer, setPendingAnswer]   = useState<number | null>(null);
   const [revealed, setRevealed]         = useState(false);
   const [multiWaiting, setMultiWaiting] = useState(false);
 
@@ -585,7 +588,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
     const qs = generateQuestions(initialData, seed);
     setQuestions(qs);
     setRound(0); setScore(0); setSoloCorrect(0); setStreak(0); setBestStreak(0);
-    setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
+    setSelectedAnswer(null); setPendingAnswer(null); setRevealed(false); revealedRef.current = false;
     setMultiWaiting(false);
     setPhase("playing");
   }, [initialData]);
@@ -593,7 +596,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
   const onMpNextRound = useCallback((nextRound: number) => {
     setMultiWaiting(false);
     setRound(nextRound);
-    setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
+    setSelectedAnswer(null); setPendingAnswer(null); setRevealed(false); revealedRef.current = false;
   }, []);
 
   const onMpGameEnd = useCallback((scores: Record<string, number>) => {
@@ -680,6 +683,10 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
     handleAnswer(sliderPos);
   }, [sliderPos, handleAnswer]);
 
+  const handleBattleConfirm = useCallback(() => {
+    if (pendingAnswer !== null) handleAnswer(pendingAnswer);
+  }, [pendingAnswer, handleAnswer]);
+
   const handleNext = useCallback(() => {
     if (modeRef.current === "multi") {
       setMultiWaiting(true);
@@ -688,7 +695,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
     }
     if (round + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return; }
     setRound(round + 1);
-    setSelectedAnswer(null); setRevealed(false); revealedRef.current = false;
+    setSelectedAnswer(null); setPendingAnswer(null); setRevealed(false); revealedRef.current = false;
   }, [round]);
 
   // ── Game flow ──────────────────────────────────────────────────────────────
@@ -923,8 +930,8 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                   hotel={hotel1}
                   revealed={revealed}
                   isWinner={correctIdx === 0}
-                  isSelected={selectedAnswer === 0}
-                  onClick={() => handleAnswer(0)}
+                  isSelected={revealed ? selectedAnswer === 0 : pendingAnswer === 0}
+                  onClick={() => setPendingAnswer(0)}
                   disabled={revealed || multiWaiting}
                 />
                 <div className="hp-vs-divider">
@@ -935,11 +942,17 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                   hotel={hotel2}
                   revealed={revealed}
                   isWinner={correctIdx === 1}
-                  isSelected={selectedAnswer === 1}
-                  onClick={() => handleAnswer(1)}
+                  isSelected={revealed ? selectedAnswer === 1 : pendingAnswer === 1}
+                  onClick={() => setPendingAnswer(1)}
                   disabled={revealed || multiWaiting}
                 />
               </div>
+
+              {pendingAnswer !== null && !revealed && !multiWaiting && (
+                <button className="hp-slider__lock-btn hp-battle__confirm-desktop" onClick={handleBattleConfirm}>
+                  Confirm Selection
+                </button>
+              )}
 
               {revealed && (
                 <div className={`hp-verdict hp-verdict--${battleCorrect ? "correct" : "wrong"}`}>
@@ -964,9 +977,16 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
       </div>
 
       {/* Action bar */}
-      <div className={`hp-action-bar${!revealed && currentQ.type === "price_slider" ? " hp-action-bar--mobile-confirm" : ""}`}>
+      <div className={`hp-action-bar${(!revealed && currentQ.type === "price_slider") || (!revealed && currentQ.type === "price_battle" && pendingAnswer !== null) ? " hp-action-bar--mobile-confirm" : ""}`}>
         {!revealed && !multiWaiting && currentQ.type === "price_battle" && (
-          <div className="hp-action-bar__hint">Tap the more expensive hotel</div>
+          <>
+            {pendingAnswer !== null && (
+              <button className="hp-slider__lock-btn hp-battle__confirm-mobile" onClick={handleBattleConfirm}>
+                Confirm Selection
+              </button>
+            )}
+            <div className="hp-action-bar__hint">Tap the more expensive hotel</div>
+          </>
         )}
         {!revealed && !multiWaiting && currentQ.type === "price_slider" && (
           <>

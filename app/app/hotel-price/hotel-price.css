@@ -360,6 +360,11 @@
   box-shadow: 0 0 26px rgba(239,68,68,0.32) !important;
 }
 .hp-card--disabled { cursor: default; pointer-events: none; }
+.hp-card--pending {
+  border-color: rgba(200,165,80,0.70) !important;
+  box-shadow: 0 0 0 2px rgba(200,165,80,0.50), 0 0 32px rgba(200,145,58,0.35);
+  transform: scale(1.01);
+}
 
 /* Image fills the entire card */
 .hp-card__img {
@@ -564,6 +569,10 @@
 .hp-slider__confirm-mobile { display: none; }
 /* hp-slider__confirm-desktop and hp-slider__next-desktop: visible by default */
 
+/* Battle confirm: desktop button lives inside hp-battle-round; mobile in action bar */
+.hp-battle__confirm-mobile  { display: none; }
+.hp-battle__confirm-desktop { display: block; width: auto; margin: 14px auto 0; padding: 12px 36px; }
+
 /* Desktop slider after reveal: Next is in slider-controls, hide from action bar */
 @media (min-width: 641px) {
   .hp-next-actionbar-slider { display: none; }
@@ -605,6 +614,10 @@
   .hp-slider__next-desktop { display: none; }
   /* Mobile confirm button: visible in action bar */
   .hp-slider__confirm-mobile { display: block; width: 100%; }
+
+  /* Battle confirm: hide desktop button, show mobile button in action bar */
+  .hp-battle__confirm-desktop { display: none; }
+  .hp-battle__confirm-mobile  { display: block; width: 100%; }
 
   /* Action bar height */
   .hp-action-bar { height: 52px; }
