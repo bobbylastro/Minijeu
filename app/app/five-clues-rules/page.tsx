@@ -114,7 +114,7 @@ export default function FiveCluesRulesPage() {
               commit — guess too early and you might be wrong; wait too long and you lose points.
             </p>
             <p className="rules-page__p">
-              The game features 50 well-known personalities from sport, music, film, history,
+              The game features 52 well-known personalities from sport, music, film, history,
               science and business. Every session draws 10 at random — no two games are the same.
             </p>
           </div>

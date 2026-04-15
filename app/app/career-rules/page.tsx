@@ -7,7 +7,7 @@ const BASE = "https://ultimate-playground.com";
 export const metadata: Metadata = {
   title: "How to Play CareerOrder — Rules & Scoring",
   description:
-    "Complete CareerOrder rules: how to drag and drop club badges into the correct chronological order of a footballer's career. Scoring, tips and multiplayer explained.",
+    "Complete CareerOrder rules: how to tap and place club badges into the correct chronological order of a footballer's career. Scoring, tips and multiplayer explained.",
   openGraph: {
     title: "How to Play CareerOrder — Football Career Quiz Rules",
     description: "Learn to reconstruct a footballer's career in order. Full rules, scoring and tips for CareerOrder.",
@@ -98,7 +98,7 @@ export default function CareerRulesPage() {
           <h1 className="rules-page__hero-title">How to Play CareerOrder</h1>
           <p className="rules-page__hero-desc">
             Reconstruct a footballer&apos;s career club by club, in chronological order.
-            5 rounds, drag-and-drop mechanics and real career data.
+            5 rounds, tap-to-place mechanics and real career data.
           </p>
           <Link href="/career" className="rules-page__play-btn">▶ Play CareerOrder</Link>
         </div>
@@ -114,7 +114,7 @@ export default function CareerRulesPage() {
               last.
             </p>
             <p className="rules-page__p">
-              The game covers 25 players ranging from legendary icons to modern stars.
+              The game covers 33 players ranging from legendary icons to modern stars.
               Some careers are well-known; others will surprise even dedicated fans.
             </p>
           </div>

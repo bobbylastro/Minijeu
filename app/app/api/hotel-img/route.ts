@@ -38,12 +38,14 @@ export async function GET(request: NextRequest) {
     const ct = imgRes.headers.get("Content-Type") ?? "";
     if (!ct.startsWith("image/")) return new NextResponse(null, { status: 502 });
 
-    return new NextResponse(imgRes.body, {
-      headers: {
-        "Content-Type": ct,
-        "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
-      },
-    });
+    const responseHeaders: Record<string, string> = {
+      "Content-Type": ct,
+      "Cache-Control": "public, max-age=604800, stale-while-revalidate=86400",
+    };
+    const cl = imgRes.headers.get("Content-Length");
+    if (cl) responseHeaders["Content-Length"] = cl;
+
+    return new NextResponse(imgRes.body, { headers: responseHeaders });
   } catch {
     return new NextResponse(null, { status: 502 });
   }

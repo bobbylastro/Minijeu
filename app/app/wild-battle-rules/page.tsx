@@ -7,10 +7,10 @@ const BASE = "https://ultimate-playground.com";
 export const metadata: Metadata = {
   title: "How to Play Wild Battle — Rules, Modes & Scoring",
   description:
-    "Complete Wild Battle rules: animal face-offs, wildlife trivia and wild record sliders. Learn how streak multipliers work and how to maximise your score.",
+    "Complete Wild Battle rules: animal battle rounds, group fights, stat comparisons and estimation sliders. Learn how streak multipliers work and how to maximise your score.",
   openGraph: {
     title: "How to Play Wild Battle — Animal Quiz Rules",
-    description: "Learn every Wild Battle game mode: battle rounds, trivia and estimation sliders. Full rules and scoring guide.",
+    description: "Learn every Wild Battle round type: animal battles, group fights, stat comparisons and sliders. Full rules and scoring guide.",
     url: `${BASE}/wild-battle-rules`,
     type: "article",
     images: [{ url: "/wild-battle/opengraph-image", width: 1200, height: 630, alt: "Wild Battle" }],
@@ -23,20 +23,24 @@ const STEPS = [
     text: "Tap Solo to play alone with streak multipliers, or Multiplayer to face a real opponent. Both players see the same 10 rounds from an identical seed. A bot joins if no opponent is found in 30 seconds.",
   },
   {
-    name: "Battle round — pick the winner",
-    text: "Two animals are shown side by side. Pick the one that would win a real encounter based on biology, size, strength and hunting behaviour. Each answer is grounded in documented animal data.",
+    name: "Battle round — pick the animal that wins",
+    text: "Two animals are shown side by side. Pick the one that would win a real encounter based on biology, size, strength and predatory behaviour. Each outcome is grounded in documented animal data — not guesswork.",
   },
   {
-    name: "Trivia round — multiple choice",
-    text: "A wildlife question appears with four options. Topics include speed records, diving depths, lifespan, diet, venom potency, bite force and animal behaviour. Select your answer before the timer expires.",
+    name: "Quantity Battle round — pick the winning side",
+    text: "A group battle question appears: for example, '3 Wolves vs 1 Jaguar'. Pick the side you believe would win. These rounds test your understanding of pack dynamics, size differentials and hunting strategies.",
+  },
+  {
+    name: "Comparison round — pick the record holder",
+    text: "A stat-based duel appears with a question like 'Who's faster?' or 'Who bites harder?'. Two animals are shown — pick the one that holds the higher record. The actual values are revealed after your answer.",
   },
   {
     name: "Slider round — estimate the wild record",
     text: "An animal stat question appears — for example, the top speed of a cheetah in km/h, the weight of a blue whale in tonnes, or the lifespan of a giant tortoise in years. Drag the slider to your estimate. Points are awarded based on how close you are.",
   },
   {
-    name: "Build a streak for multipliers",
-    text: "In solo mode, consecutive correct answers build a streak. Reach 5 in a row to activate a ×1.5 multiplier — every subsequent correct answer earns 1.5× points. Push to 10 in a row and the multiplier rises to ×2.",
+    name: "Build a streak for multipliers (solo only)",
+    text: "In solo mode, consecutive correct answers build a streak. Reach 5 in a row to activate a ×1.5 multiplier — every subsequent correct answer earns 1.5× points. Push to 10 in a row and the multiplier rises to ×2. One wrong answer resets the streak.",
   },
   {
     name: "Read the explanation after each round",
@@ -53,7 +57,7 @@ export default function WildBattleRulesPage() {
           "@type": "WebPage",
           "name": "How to Play Wild Battle — Rules & Game Modes",
           "url": `${BASE}/wild-battle-rules`,
-          "description": "Complete guide to Wild Battle: animal face-offs, wildlife trivia and estimation sliders with streak multipliers.",
+          "description": "Complete guide to Wild Battle: animal battle face-offs, group fights, stat comparisons and estimation sliders with streak multipliers.",
           "inLanguage": "en",
           "isPartOf": { "@type": "WebSite", "name": "Ultimate Playground", "url": BASE },
         },
@@ -71,7 +75,7 @@ export default function WildBattleRulesPage() {
           "@context": "https://schema.org",
           "@type": "HowTo",
           "name": "How to play Wild Battle",
-          "description": "Wild Battle is a 10-round animal quiz mixing battle face-offs, wildlife trivia and estimation sliders, with streak multipliers in solo mode.",
+          "description": "Wild Battle is a 10-round animal quiz mixing battle face-offs, group fights, stat comparisons and estimation sliders, with streak multipliers in solo mode.",
           "totalTime": "PT5M",
           "step": STEPS.map((s, i) => ({
             "@type": "HowToStep",
@@ -97,7 +101,7 @@ export default function WildBattleRulesPage() {
           <p className="rules-page__hero-game">🦁 Wild Battle</p>
           <h1 className="rules-page__hero-title">How to Play Wild Battle</h1>
           <p className="rules-page__hero-desc">
-            10 rounds of animal face-offs, wildlife trivia and wild record sliders.
+            10 rounds of animal battles, group fights, stat comparisons and estimation sliders.
             Build streaks to multiply your score.
           </p>
           <Link href="/wild-battle" className="rules-page__play-btn">▶ Play Wild Battle</Link>
@@ -108,9 +112,10 @@ export default function WildBattleRulesPage() {
           <div className="rules-page__section">
             <h2 className="rules-page__section-title">Overview</h2>
             <p className="rules-page__p">
-              Wild Battle is a free online animal quiz with 10 rounds per game mixing three
-              formats: battle face-offs, wildlife trivia and estimation sliders. All battle
-              outcomes are based on real animal biology and documented behaviour — not guesswork.
+              Wild Battle is a free online animal quiz with 10 rounds per game mixing four
+              formats: battle face-offs (3), group fights (4), stat comparisons (2) and an
+              estimation slider (1). All outcomes are based on real animal biology and documented
+              behaviour — not guesswork.
             </p>
             <p className="rules-page__p">
               Solo mode rewards consistency with streak multipliers. Multiplayer mode pits you
@@ -137,7 +142,7 @@ export default function WildBattleRulesPage() {
             <h2 className="rules-page__section-title">Scoring</h2>
             <div className="rules-page__scoring">
               <div className="rules-page__score-row">
-                <span className="rules-page__score-label">Correct battle or trivia answer</span>
+                <span className="rules-page__score-label">Correct battle / group fight / comparison</span>
                 <span className="rules-page__score-value">+100 pts</span>
               </div>
               <div className="rules-page__score-row">

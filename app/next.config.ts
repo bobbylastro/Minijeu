@@ -25,10 +25,28 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "upload.wikimedia.org" },
       { protocol: "https", hostname: "wsrv.nl" },
+      { protocol: "https", hostname: "flagcdn.com" },
+      { protocol: "https", hostname: "cdn.cloudflare.steamstatic.com" },
+      { protocol: "https", hostname: "cdn.steamstatic.com" },
+      { protocol: "https", hostname: supabaseHost },
     ],
   },
   async headers() {
     return [
+      // Long-lived cache for hashed static assets
+      {
+        source: "/_next/static/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
+      // Long-lived cache for public images (filenames are stable content)
+      {
+        source: "/images/(.*)",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=31536000, immutable" },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

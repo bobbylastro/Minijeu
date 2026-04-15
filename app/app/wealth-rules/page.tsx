@@ -7,7 +7,7 @@ const BASE = "https://ultimate-playground.com";
 export const metadata: Metadata = {
   title: "How to Play Who's Richer? — Rules & Scoring",
   description:
-    "Complete Who's Richer? rules: tap the richer celebrity, estimate net worths, and build streaks for multipliers. 80+ celebrities across 6 categories explained.",
+    "Complete Who's Richer? rules: tap the richer celebrity, estimate net worths, and build streaks for multipliers. 120+ celebrities across 6 categories explained.",
   openGraph: {
     title: "How to Play Who's Richer? — Celebrity Wealth Quiz Rules",
     description: "Learn how Who's Richer? works: duel rounds, estimation rounds, solo survival and multiplayer. Full rules and scoring guide.",
@@ -53,7 +53,7 @@ export default function WealthRulesPage() {
           "@type": "WebPage",
           "name": "How to Play Who's Richer? — Rules & Scoring",
           "url": `${BASE}/wealth-rules`,
-          "description": "Complete guide to Who's Richer?: duel rounds, estimation rounds, solo streak multipliers and multiplayer mode. 80+ celebrities from 6 categories.",
+          "description": "Complete guide to Who's Richer?: duel rounds, estimation rounds, solo streak multipliers and multiplayer mode. 120+ celebrities from 6 categories.",
           "inLanguage": "en",
           "isPartOf": { "@type": "WebSite", "name": "Ultimate Playground", "url": BASE },
         },
@@ -98,7 +98,7 @@ export default function WealthRulesPage() {
           <h1 className="rules-page__hero-title">How to Play Who&apos;s Richer?</h1>
           <p className="rules-page__hero-desc">
             Tap the richer celebrity. Survive wrong answers in solo mode.
-            80+ billionaires, athletes and entertainment icons.
+            120+ billionaires, athletes and entertainment icons.
           </p>
           <Link href="/wealth" className="rules-page__play-btn">▶ Play Who&apos;s Richer?</Link>
         </div>
@@ -110,7 +110,7 @@ export default function WealthRulesPage() {
             <p className="rules-page__p">
               Who&apos;s Richer? is a celebrity net worth quiz. Each round puts two famous people
               side by side — your job is to identify which one is worth more. The game features
-              80+ personalities from tech, business, entertainment, music, sports and royalty.
+              120+ personalities from tech, business, entertainment, music, sports and royalty.
             </p>
             <p className="rules-page__p">
               Solo mode is a survival game — one wrong answer ends your run. Multiplayer is a

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, DM_Mono, Sora } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -28,6 +28,12 @@ const sora = Sora({
 });
 
 const BASE_URL = "https://ultimate-playground.com";
+
+export const viewport: Viewport = {
+  themeColor: "#0f0c1a",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -64,6 +70,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bebasNeue.variable} ${dmMono.variable} ${sora.variable}`}>
       <head>
+        {/* Preconnect to key external services to reduce latency */}
+        {process.env.NEXT_PUBLIC_SUPABASE_URL && (
+          <link rel="preconnect" href={new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin} />
+        )}
+        {process.env.NEXT_PUBLIC_PARTYKIT_HOST && (
+          <link rel="dns-prefetch" href={`https://${process.env.NEXT_PUBLIC_PARTYKIT_HOST}`} />
+        )}
         <JsonLd data={{
           "@context": "https://schema.org",
           "@type": "WebSite",

@@ -7,7 +7,7 @@ const BASE = "https://ultimate-playground.com";
 export const metadata: Metadata = {
   title: "How to Play Gaming Mix — Rules & Scoring",
   description:
-    "Complete Gaming Mix rules: guess the release year of iconic games with a slider, then pick which game sold more copies. 10 rounds, full scoring breakdown.",
+    "Complete Gaming Mix rules: 4 round types — release year slider, best-seller battle, guess the studio and which game came first. 10 rounds, full scoring breakdown.",
   openGraph: {
     title: "How to Play Gaming Mix — Rules & Scoring",
     description: "Learn how to play Gaming Mix: release year slider + best-seller battle. Full rules and scoring guide.",
@@ -23,15 +23,23 @@ const STEPS = [
   },
   {
     name: "Read the round type badge",
-    text: "Each round is either a Release Year or a Best Seller Battle. The badge in the top-right corner shows which type is active before you see the question.",
+    text: "Each round is one of four types — Release Year, Best Seller Battle, Guess the Studio or Which Came First. The coloured badge in the top-right corner shows which type is active before you see the question.",
   },
   {
     name: "Release Year — drag the slider",
-    text: "A game cover, title and studio appear on screen. Drag the slider between 1990 and 2024 to guess the release year. You have 30 seconds. When you're confident, tap Lock In.",
+    text: "A game cover, title and studio appear on screen. Drag the slider between 1990 and 2024 to guess the release year. You have 30 seconds. When you're confident, tap Lock In. Being close still scores points.",
   },
   {
-    name: "Best Seller Battle — click the winner",
-    text: "Two game covers appear side by side. Pick the one that sold more copies worldwide. You have 20 seconds. After you click, both sales figures are revealed.",
+    name: "Best Seller Battle — click the bigger seller",
+    text: "Two game covers appear side by side. Pick the one that sold more copies worldwide. After you click, both sales figures are revealed. Longevity and platform breadth often matter more than critical acclaim.",
+  },
+  {
+    name: "Guess the Studio — pick the right developer",
+    text: "A game cover is shown with four studio options. Select the studio that developed it. Questions cover well-known publishers and cult indie studios alike.",
+  },
+  {
+    name: "Which Came First — pick the earlier release",
+    text: "Two game covers appear side by side. Pick the one that was released first. The correct years are revealed after your answer — the gap is often more surprising than you expect.",
   },
   {
     name: "See your score and continue",
@@ -66,7 +74,7 @@ export default function GamingMixRulesPage() {
           "@context": "https://schema.org",
           "@type": "HowTo",
           "name": "How to play Gaming Mix",
-          "description": "Gaming Mix alternates between Release Year (slider) and Best Seller Battle (pick the bigger seller) rounds across 10 rounds.",
+          "description": "Gaming Mix mixes four round types across 10 rounds: Release Year (slider), Best Seller Battle, Guess the Studio and Which Came First.",
           "totalTime": "PT5M",
           "step": STEPS.map((s, i) => ({
             "@type": "HowToStep",
@@ -92,8 +100,8 @@ export default function GamingMixRulesPage() {
           <p className="rules-page__hero-game">🎮 Gaming Mix</p>
           <h1 className="rules-page__hero-title">How to Play Gaming Mix</h1>
           <p className="rules-page__hero-desc">
-            Guess when games came out — then pick the bigger seller.
-            10 rounds mixing two question types, solo or multiplayer.
+            Release year slider, best-seller battle, studio guessing and which came first.
+            10 rounds mixing four question types, solo or multiplayer.
           </p>
           <Link href="/gaming-mix" className="rules-page__play-btn">▶ Play Gaming Mix</Link>
         </div>
@@ -103,14 +111,15 @@ export default function GamingMixRulesPage() {
           <div className="rules-page__section">
             <h2 className="rules-page__section-title">Overview</h2>
             <p className="rules-page__p">
-              Gaming Mix tests two kinds of video game knowledge. Release Year rounds ask you to
-              drag a slider to the year a game was released — close answers still score points,
-              so it pays to have a rough idea even if you&apos;re not certain. Best Seller Battle
-              rounds put two games head-to-head and ask which sold more copies worldwide.
+              Gaming Mix tests four kinds of video game knowledge across 10 rounds. Release Year
+              rounds ask you to drag a slider to the year a game launched — being close still
+              earns points. Best Seller Battle rounds put two games head-to-head on global sales.
+              Guess the Studio rounds challenge you to identify the developer from four options.
+              Which Came First rounds show two games and ask which was released earlier.
             </p>
             <p className="rules-page__p">
-              Each session draws 10 rounds at random from a pool of 50 iconic games. The mix of
-              round types is shuffled every time, so no two sessions play out the same way.
+              Each session draws 10 rounds from a pool of 85+ iconic games. The four types are
+              mixed and shuffled every time, so no two sessions play out the same way.
             </p>
           </div>
 
@@ -132,7 +141,7 @@ export default function GamingMixRulesPage() {
           <div className="rules-page__section">
             <h2 className="rules-page__section-title">Scoring</h2>
 
-            <p className="rules-page__p" style={{ marginBottom: "0.75rem", fontWeight: 700 }}>Release Year</p>
+            <p className="rules-page__p" style={{ marginBottom: "0.75rem", fontWeight: 700 }}>Release Year (3 rounds)</p>
             <div className="rules-page__scoring">
               <div className="rules-page__score-row"><span className="rules-page__score-label">Exact year</span><span className="rules-page__score-value" style={{ color: "#22c55e" }}>100 pts 🎯</span></div>
               <div className="rules-page__score-row"><span className="rules-page__score-label">Off by 1 year</span><span className="rules-page__score-value">80 pts</span></div>
@@ -142,7 +151,19 @@ export default function GamingMixRulesPage() {
               <div className="rules-page__score-row"><span className="rules-page__score-label">Off by 5+ years</span><span className="rules-page__score-value" style={{ color: "#fb7185" }}>0 pts</span></div>
             </div>
 
-            <p className="rules-page__p" style={{ marginTop: "1.25rem", marginBottom: "0.75rem", fontWeight: 700 }}>Best Seller Battle</p>
+            <p className="rules-page__p" style={{ marginTop: "1.25rem", marginBottom: "0.75rem", fontWeight: 700 }}>Best Seller Battle (3 rounds)</p>
+            <div className="rules-page__scoring">
+              <div className="rules-page__score-row"><span className="rules-page__score-label">Correct pick</span><span className="rules-page__score-value" style={{ color: "#22c55e" }}>100 pts</span></div>
+              <div className="rules-page__score-row"><span className="rules-page__score-label">Wrong pick or timeout</span><span className="rules-page__score-value">0 pts</span></div>
+            </div>
+
+            <p className="rules-page__p" style={{ marginTop: "1.25rem", marginBottom: "0.75rem", fontWeight: 700 }}>Guess the Studio (2 rounds)</p>
+            <div className="rules-page__scoring">
+              <div className="rules-page__score-row"><span className="rules-page__score-label">Correct studio</span><span className="rules-page__score-value" style={{ color: "#22c55e" }}>100 pts</span></div>
+              <div className="rules-page__score-row"><span className="rules-page__score-label">Wrong answer or timeout</span><span className="rules-page__score-value">0 pts</span></div>
+            </div>
+
+            <p className="rules-page__p" style={{ marginTop: "1.25rem", marginBottom: "0.75rem", fontWeight: 700 }}>Which Came First (2 rounds)</p>
             <div className="rules-page__scoring">
               <div className="rules-page__score-row"><span className="rules-page__score-label">Correct pick</span><span className="rules-page__score-value" style={{ color: "#22c55e" }}>100 pts</span></div>
               <div className="rules-page__score-row"><span className="rules-page__score-label">Wrong pick or timeout</span><span className="rules-page__score-value">0 pts</span></div>
@@ -157,11 +178,12 @@ export default function GamingMixRulesPage() {
           <div className="rules-page__section">
             <h2 className="rules-page__section-title">Tips</h2>
             <ul className="rules-page__tips">
-              <li className="rules-page__tip">For Release Year rounds: if you know the console generation a game belongs to, you can narrow the decade immediately. PC-only indie games cluster around 2015–2020.</li>
+              <li className="rules-page__tip">Release Year: if you know the console generation a game belongs to, you can narrow the decade immediately. Most modern indie hits cluster around 2015–2020.</li>
               <li className="rules-page__tip">Getting within 1 year still scores 80 points — commit to a range rather than guessing randomly across the full slider.</li>
-              <li className="rules-page__tip">For Best Seller rounds: free-to-play games (Rocket League, Among Us) and decade-old franchises (GTA V, Skyrim) dramatically outsell their perceived competition. Longevity and platform breadth matter more than critical acclaim.</li>
-              <li className="rules-page__tip">When unsure about a Best Seller pick, favour the game with broader platform coverage or the longer release window.</li>
-              <li className="rules-page__tip">In multiplayer, both round types reward speed on Best Sellers (same 100 pts either way) — confident players answer faster and put psychological pressure on opponents heading into the next round.</li>
+              <li className="rules-page__tip">Best Seller: free-to-play games (Rocket League, Among Us) and long-running franchises (GTA V, Minecraft) dramatically outsell recent critical darlings. Longevity and platform breadth matter more than reviews.</li>
+              <li className="rules-page__tip">Guess the Studio: Indie games from one studio are often the giveaway — Supergiant (Hades), ConcernedApe (Stardew Valley) and Team Cherry (Hollow Knight) each have a distinctive style.</li>
+              <li className="rules-page__tip">Which Came First: if you know one game well, use it as an anchor — even an approximate year narrows down which of the two is older.</li>
+              <li className="rules-page__tip">In multiplayer, binary rounds (Battle, Studio, Older) reward speed — both players score the same 100 pts for a correct answer, so answering confidently and quickly creates momentum.</li>
             </ul>
           </div>
 

@@ -520,7 +520,7 @@ function BattleCard({
       )}
 
       {/* Bottom-right: room size */}
-      {hotel.roomSizeSqm !== null && (
+      {hotel.roomSizeSqm != null && (
         <div className="hp-gallery__size">
           {hotel.roomSizeSqm} m² · {hotel.roomSizeFt} ft²
         </div>
