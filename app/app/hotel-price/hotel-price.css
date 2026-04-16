@@ -6,8 +6,8 @@
 .hp-wrapper {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
-  overflow: hidden;
+  min-height: 100dvh;
+  padding-top: 56px; /* fixed site header */
   background: linear-gradient(160deg, #060c1a 0%, #0a1628 45%, #0f2040 100%);
   color: #fff;
   position: relative;
@@ -35,7 +35,10 @@
 .hp-progress-area {
   flex-shrink: 0;
   padding: 14px 16px 8px;
-  position: relative; z-index: 1;
+  position: sticky;
+  top: 56px;
+  z-index: 5;
+  background: rgba(6, 12, 26, 0.95);
 }
 .hp-progress-area .progress-bar {
   background: rgba(0,0,0,0.28);
@@ -52,13 +55,11 @@
 /* ── Main area ─────────────────────────────────────── */
 .hp-main {
   flex: 1;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 8px 16px 4px;
-  min-height: 0;
+  justify-content: flex-start;
+  padding: 8px 16px 32px;
   position: relative;
 }
 
@@ -91,11 +92,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: calc(100dvh - 150px);
-  overflow-y: auto; overflow-x: hidden;
-  scrollbar-width: none; -ms-overflow-style: none;
 }
-.hp-slider-round::-webkit-scrollbar { display: none; }
 
 /* ── Full-width gallery with overlays ──────────────── */
 .hp-gallery {
@@ -224,7 +221,7 @@
 .hp-slider-controls {
   flex-shrink: 0;
   display: flex; flex-direction: column; gap: 10px;
-  padding: 16px 18px 84px; /* bottom clears the 68px action bar */
+  padding: 16px 18px 20px;
   background: rgba(5, 12, 30, 0.55);
   border: 1px solid rgba(200,145,58,0.13);
   border-radius: 18px;
@@ -295,12 +292,21 @@
 .hp-slider__lock-btn:active { transform: translateY(0); }
 .hp-slider__lock-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
+.hp-slider__hint {
+  text-align: center;
+  font-size: 0.74rem;
+  color: rgba(220,195,150,0.40);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 /* ── BATTLE ROUND ──────────────────────────────────── */
 .hp-battle-round {
   width: 100%; max-width: 760px;
   display: flex; flex-direction: column;
   align-items: center; gap: 10px;
   justify-content: center;
+  position: relative;
 }
 
 .hp-battle-question {
@@ -530,32 +536,6 @@
   font-size: 0.88rem; font-weight: 700; color: rgba(255,255,255,0.60);
 }
 
-/* ── Action bar ──────────────────────────────────────── */
-.hp-action-bar {
-  flex-shrink: 0; height: 68px;
-  display: flex; align-items: center;
-  padding: 0 18px;
-  background: rgba(0,0,0,0.45);
-  border-top: 1px solid rgba(200,145,58,0.08);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-}
-.hp-action-bar__hint {
-  width: 100%; text-align: center;
-  font-size: 0.78rem; color: rgba(220,195,150,0.35);
-  letter-spacing: 0.10em; text-transform: uppercase;
-}
-.hp-feedback {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; gap: 12px;
-}
-.hp-feedback__left {
-  display: flex; align-items: center; gap: 8px; min-width: 0; flex: 1;
-}
-.hp-feedback__icon { font-size: 1.25rem; flex-shrink: 0; }
-.hp-feedback__text { font-size: 0.90rem; font-weight: 700; }
-.hp-feedback__text--correct { color: #4ade80; }
-.hp-feedback__text--wrong   { color: #f87171; }
 .hp-waiting {
   display: flex; align-items: center; gap: 6px;
   font-size: 0.84rem; color: rgba(220,195,150,0.45);
@@ -598,33 +578,14 @@
 .hp-empty__title { font-size: 1.4rem; font-weight: 800; color: #fff; }
 .hp-empty__text  { font-size: 0.92rem; color: rgba(220,195,150,0.60); max-width: 320px; line-height: 1.55; }
 
-/* ── Desktop-only / Mobile-only button visibility ──── */
-/* Desktop: Confirm + Next live inside slider-controls */
-.hp-slider__confirm-mobile { display: none; }
-/* hp-slider__confirm-desktop and hp-slider__next-desktop: visible by default */
-
-/* Battle confirm: desktop button lives inside hp-battle-round; mobile in action bar */
-.hp-battle__confirm-mobile  { display: none; }
-.hp-battle__confirm-desktop { display: block; width: auto; margin: 14px auto 0; padding: 12px 36px; }
-
-/* Desktop slider after reveal: Next is in slider-controls, hide from action bar */
-@media (min-width: 641px) {
-  .hp-next-actionbar-slider { display: none; }
-}
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media (max-width: 640px) {
-  /* hp-main starts from top, scrollable so action bar never covers content */
   .hp-main {
-    justify-content: flex-start;
-    padding: 6px 12px 8px;
-    overflow-y: auto;
-    overflow-x: hidden;
+    padding: 6px 12px 24px;
   }
 
-  /* Slider round: single column, already flex */
   .hp-slider-round {
-    max-height: none;
     gap: 8px;
   }
   .hp-gallery {
@@ -637,31 +598,10 @@
   .hp-gallery__size { font-size: 0.68rem; padding: 2px 8px; }
 
   .hp-slider-controls {
-    padding: 12px 14px 16px; /* Confirm is in action bar on mobile, no bottom clearance needed */
+    padding: 12px 14px 16px;
     gap: 8px;
   }
   .hp-price-display { font-size: 1.9rem; min-height: 36px; }
-
-  /* Mobile: Confirm lives in action bar, hide it from slider-controls */
-  .hp-slider__confirm-desktop { display: none; }
-  /* Next button in slider-controls is desktop-only */
-  .hp-slider__next-desktop { display: none; }
-  /* Mobile confirm button: visible in action bar */
-  .hp-slider__confirm-mobile { display: block; width: 100%; }
-
-  /* Battle confirm: hide desktop button, show mobile button in action bar */
-  .hp-battle__confirm-desktop { display: none; }
-  .hp-battle__confirm-mobile  { display: block; width: 100%; }
-
-  /* Action bar height */
-  .hp-action-bar { height: 52px; }
-  /* Taller action bar when showing the mobile confirm button */
-  .hp-action-bar--mobile-confirm {
-    height: auto;
-    padding: 10px 16px;
-  }
-  /* Hide the desktop text hint (button label is enough) */
-  .hp-action-bar--mobile-confirm .hp-action-bar__hint { display: none; }
 
   /* Battle: stacked full-width, gallery-style cards */
   .hp-battle {
