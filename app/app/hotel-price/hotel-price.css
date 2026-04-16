@@ -608,27 +608,47 @@
 
 /* ── Mobile ──────────────────────────────────────────── */
 @media (max-width: 640px) {
+  /* Compact progress area */
+  .hp-progress-area {
+    padding: 6px 12px 4px;
+  }
+  .hp-progress-area .progress-bar {
+    padding: 7px 12px;
+  }
+
   .hp-main {
-    padding: 6px 12px 24px;
+    padding: 4px 12px 10px;
+  }
+
+  .hp-round-badge {
+    padding: 4px 12px 4px 10px;
   }
 
   .hp-slider-round {
-    gap: 8px;
+    gap: 6px;
   }
   .hp-gallery {
-    height: min(50dvh, 340px);
-    min-height: 200px;
+    height: min(42dvh, 280px);
+    min-height: 170px;
     border-radius: 14px;
   }
   .hp-gallery__name { font-size: 0.98rem; }
   .hp-gallery__info { top: 10px; left: 12px; right: 48px; gap: 3px; }
   .hp-gallery__size { font-size: 0.68rem; padding: 2px 8px; }
 
-  .hp-slider-controls {
-    padding: 12px 14px 16px;
-    gap: 8px;
+  .hp-amenities-strip__chip {
+    font-size: 0.68rem;
+    padding: 3px 8px;
   }
-  .hp-price-display { font-size: 1.9rem; min-height: 36px; }
+
+  .hp-slider-controls {
+    padding: 10px 12px 12px;
+    gap: 6px;
+  }
+  .hp-price-display { font-size: 1.6rem; min-height: 30px; }
+
+  .hp-slider__labels { font-size: 0.65rem; }
+  .hp-slider__hint   { font-size: 0.68rem; }
 
   /* Battle: stacked full-width, gallery-style cards */
   .hp-battle {
@@ -638,7 +658,7 @@
   }
   .hp-vs-divider { display: none; }
   .hp-card {
-    height: min(38dvh, 210px);
+    height: min(36dvh, 200px);
     border-radius: 14px;
   }
   .hp-card__price-overlay { font-size: 1.1rem; bottom: 30px; }
@@ -650,10 +670,12 @@
   .hp-verdict__icon { font-size: 2.3rem; }
   .hp-verdict__label { font-size: 1.25rem; }
 
-  .hp-price-display { font-size: 1.75rem; }
   .hp-result__score { font-size: 2.6rem; }
 }
 
 @media (max-width: 380px) {
+  .hp-gallery {
+    height: min(38dvh, 240px);
+  }
   .hp-verdict { padding: 12px; }
 }
