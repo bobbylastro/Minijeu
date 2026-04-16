@@ -65,19 +65,32 @@ function priceSliderScore(guess: number, answer: number): number {
   return 0;
 }
 
+function sliderVerdictMod(pts: number): "excellent" | "good" | "poor" {
+  if (pts >= 75) return "excellent";
+  if (pts >= 25) return "good";
+  return "poor";
+}
+
 function sliderVerdictClass(pts: number): string {
-  if (pts >= 75) return "hp-slider-verdict--excellent";
-  if (pts >= 25) return "hp-slider-verdict--good";
-  return "hp-slider-verdict--poor";
+  return `hp-slider-verdict--${sliderVerdictMod(pts)}`;
+}
+
+function sliderVerdictIcon(pts: number): string {
+  if (pts === 100) return "🎯";
+  if (pts >= 90)  return "✨";
+  if (pts >= 75)  return "👌";
+  if (pts >= 50)  return "👍";
+  if (pts >= 25)  return "😬";
+  return "😅";
 }
 
 function sliderVerdictLabel(pts: number): string {
-  if (pts === 100) return "Perfect! 🎯";
-  if (pts >= 90)  return "Excellent! ✨";
+  if (pts === 100) return "Perfect!";
+  if (pts >= 90)  return "Excellent!";
   if (pts >= 75)  return "Very close!";
   if (pts >= 50)  return "Not bad!";
   if (pts >= 25)  return "Wide of the mark";
-  return "Way off! 😅";
+  return "Way off!";
 }
 
 // ─── Seeded random ─────────────────────────────────────────────────────────────
@@ -870,24 +883,16 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                   </div>
 
                   {revealed ? (
-                    <>
-                      <div className={`hp-slider-verdict ${sliderVerdictClass(sliderPts)}`}>
-                        <span className="hp-slider-verdict__correct">{sliderVerdictLabel(sliderPts)}</span>
-                        <span className="hp-slider-verdict__pts">
-                          Actual: {formatPrice(hotel.priceUsd)} · +{sliderPts} pts
-                        </span>
+                    multiWaiting ? (
+                      <div className="hp-waiting hp-waiting--center">
+                        <div className="waiting-dot" /><div className="waiting-dot" /><div className="waiting-dot" />
+                        <span>Waiting for opponent…</span>
                       </div>
-                      {multiWaiting ? (
-                        <div className="hp-waiting hp-waiting--center">
-                          <div className="waiting-dot" /><div className="waiting-dot" /><div className="waiting-dot" />
-                          <span>Waiting for opponent…</span>
-                        </div>
-                      ) : (
-                        <button className="hp-slider__lock-btn" onClick={handleNext}>
-                          {round + 1 >= ROUNDS_PER_GAME ? "See Results" : "Next →"}
-                        </button>
-                      )}
-                    </>
+                    ) : (
+                      <button className="hp-slider__lock-btn" onClick={handleNext}>
+                        {round + 1 >= ROUNDS_PER_GAME ? "See Results" : "Next →"}
+                      </button>
+                    )
                   ) : (
                     <>
                       <div className="hp-slider__track-wrap">
@@ -922,6 +927,18 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
                     </>
                   )}
                 </div>
+
+                {/* Verdict popup — centered overlay over gallery */}
+                {revealed && (
+                  <div className={`hp-slider-popup hp-slider-popup--${sliderVerdictMod(sliderPts)}`}>
+                    <div className="hp-slider-popup__icon">{sliderVerdictIcon(sliderPts)}</div>
+                    <div className="hp-slider-popup__label">{sliderVerdictLabel(sliderPts)}</div>
+                    <div className="hp-slider-popup__pts">+{sliderPts} pts</div>
+                    <div className="hp-slider-popup__actual">
+                      Actual: <strong>{formatPrice(hotel.priceUsd)}</strong>/night
+                    </div>
+                  </div>
+                )}
               </div>
             </>
           );
