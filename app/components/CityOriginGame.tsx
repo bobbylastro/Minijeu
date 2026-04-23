@@ -13,6 +13,7 @@ import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RematchZone from "@/components/RematchZone";
+import { trackEvent } from "@/lib/analytics";
 
 const LeafletMap = dynamic(() => import("@/components/LeafletMap"), { ssr: false });
 
@@ -329,6 +330,7 @@ export default function CityOriginGame() {
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "city-origins", mode: "multi" });
     setCities(seededShuffle([...ALL_CITIES], seed).slice(0, ROUNDS_PER_GAME));
     setRound(0);
     setScore(0);
@@ -379,6 +381,19 @@ export default function CityOriginGame() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "city-origins",
+      mode: mode as "solo" | "multi",
+      final_score: score,
+      max_score: MAX_SCORE,
+      score_pct: Math.round((score / MAX_SCORE) * 100),
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
+
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
@@ -407,6 +422,7 @@ export default function CityOriginGame() {
 
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
+    trackEvent("game_start", { game_type: "city-origins", mode: "solo" });
     setMode("solo");
     setCities(pickCities(ROUNDS_PER_GAME));
     setRound(0);

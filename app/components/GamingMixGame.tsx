@@ -10,6 +10,7 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
+import { trackEvent } from "@/lib/analytics";
 import RematchZone from "@/components/RematchZone";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -618,6 +619,7 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
 
   // ── Multiplayer callbacks ──────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "gaming-mix", mode: "multi" });
     setRounds(buildRounds(initialData.games, seed));
     setRound(0); setScore(0); setRevealed(false); resetAnswers();
     setMultiWaiting(false); setPhase("playing");
@@ -658,6 +660,19 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
     recordMatch(mp.opponent.name, result);
     submitRating(score, mp.opponent.score);
   }, [phase, mode, score, mp.opponent, submitRating]);
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "gaming-mix",
+      mode: mode as "solo" | "multi",
+      final_score: score,
+      max_score: MAX_SCORE,
+      score_pct: Math.round((score / MAX_SCORE) * 100),
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
@@ -707,6 +722,7 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
 
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
+    trackEvent("game_start", { game_type: "gaming-mix", mode: "solo" });
     setMode("solo");
     setRounds(buildRounds(initialData.games));
     setRound(0); setScore(0); setRevealed(false); resetAnswers();

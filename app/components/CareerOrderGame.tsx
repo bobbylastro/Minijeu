@@ -10,6 +10,7 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── Club → Wikipedia page title (only when it differs from the display name) ──
 const WIKI_CLUB: Record<string, string> = {
@@ -551,6 +552,7 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
 
   // ── Multiplayer callbacks ─────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "career", mode: "multi" });
     const newRounds = generateRounds(initialData.players, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
@@ -588,6 +590,19 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
     if (screen !== "result" || mode !== "multi" || !mp.opponent) return;
     recordMatch(mp.opponent.name, totalScore > mp.opponent.score ? "win" : totalScore < mp.opponent.score ? "loss" : "tie");
     submitRating(totalScore, mp.opponent.score);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen]);
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "career",
+      mode: mode as "solo" | "multi",
+      final_score: totalScore,
+      max_score: MAX_TOTAL,
+      score_pct: Math.round((totalScore / MAX_TOTAL) * 100),
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
@@ -643,6 +658,7 @@ export default function CareerQuiz({ initialData }: { initialData: RawCareerData
 
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
+    trackEvent("game_start", { game_type: "career", mode: "solo" });
     setMode("solo");
     const newRounds = generateRounds(initialData.players);
     roundsRef.current = newRounds;

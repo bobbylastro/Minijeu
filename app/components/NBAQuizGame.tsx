@@ -10,6 +10,7 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
+import { trackEvent } from "@/lib/analytics";
 // ─── Raw data types ─────────────────────────────────────────────────────────────
 interface TriviaItem   { question: string; options: string[]; correct: number; }
 interface ArenaItem    { name: string; team: string; city: string; capacity: number; options: string[]; wiki?: string; image_url?: string; }
@@ -635,6 +636,7 @@ export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
 
   // ── Multiplayer callbacks ────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "nba", mode: "multi" });
     const newRounds = generateRounds(initialData, seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
@@ -686,6 +688,19 @@ export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
     const result = totalScore > mp.opponent.score ? "win" : totalScore < mp.opponent.score ? "loss" : "tie";
     recordMatch(mp.opponent.name, result);
     submitRating(totalScore, mp.opponent.score);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen]);
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "nba",
+      mode: mode as "solo" | "multi",
+      final_score: totalScore,
+      max_score: MAX_TOTAL,
+      score_pct: Math.round((totalScore / MAX_TOTAL) * 100),
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
@@ -775,6 +790,7 @@ export default function NbaQuiz({ initialData }: { initialData: RawNBAData }) {
 
   // ── Game actions ─────────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
+    trackEvent("game_start", { game_type: "nba", mode: "solo" });
     setMode("solo");
     const newRounds = generateRounds(initialData);
     roundsRef.current = newRounds;

@@ -10,6 +10,7 @@ import MultiplayerScreen from "@/components/MultiplayerScreen";
 import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
+import { trackEvent } from "@/lib/analytics";
 import countriesData from "@/app/countries.json";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
@@ -358,6 +359,7 @@ export default function HigherOrLower() {
 
   // ── Multiplayer callbacks ─────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "higher-or-lower", mode: "multi" });
     const newRounds = generateRounds(seed);
     roundsRef.current = newRounds;
     setRounds(newRounds);
@@ -402,6 +404,19 @@ export default function HigherOrLower() {
     const result = totalScore > mp.opponent.score ? "win" : totalScore < mp.opponent.score ? "loss" : "tie";
     recordMatch(mp.opponent.name, result);
     submitRating(totalScore, mp.opponent.score);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen]);
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "higher-or-lower",
+      mode: mode as "solo" | "multi",
+      final_score: totalScore,
+      max_score: MAX_TOTAL,
+      score_pct: Math.round((totalScore / MAX_TOTAL) * 100),
+    });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screen]);
 
@@ -476,6 +491,7 @@ export default function HigherOrLower() {
 
   // ── Game actions ──────────────────────────────────────────────────────────
   const startSolo = useCallback(() => {
+    trackEvent("game_start", { game_type: "higher-or-lower", mode: "solo" });
     setMode("solo");
     const newRounds = generateRounds();
     roundsRef.current = newRounds;

@@ -9,6 +9,7 @@ import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RematchZone from "@/components/RematchZone";
+import { trackEvent } from "@/lib/analytics";
 import "@/app/five-clues/five-clues.css";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -134,7 +135,7 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
   const mp = useMultiplayer({
     gameType: "five-clues",
     host: HOST,
-    onGameStart(seed) { initGame(seed); },
+    onGameStart(seed) { trackEvent("game_start", { game_type: "five-clues", mode: "multi" }); initGame(seed); },
     onOpponentAnswered() { /* opponent bar updates via mp.opponent.hasAnswered */ },
     onRoundEnd(_, roundPoints) {
       const myPts  = mp.myId      ? (roundPoints[mp.myId]      ?? 0) : 0;
@@ -250,6 +251,7 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
   }
 
   function startSolo() {
+    trackEvent("game_start", { game_type: "five-clues", mode: "solo" });
     setMode("solo");
     initGame(Math.floor(Math.random() * 1_000_000));
   }
@@ -259,6 +261,21 @@ export default function FiveCluesGame({ initialData }: { initialData: Subject[] 
     setScreen("home");
     setMode("solo");
   }
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (screen !== "result") return;
+    const finalScore = mode === "multi" && mp.myId ? (finalScores[mp.myId] ?? totalScore) : totalScore;
+    const maxScore   = TOTAL_ROUNDS * 500;
+    trackEvent("game_complete", {
+      game_type: "five-clues",
+      mode: mode as "solo" | "multi",
+      final_score: finalScore,
+      max_score: maxScore,
+      score_pct: Math.round((finalScore / maxScore) * 100),
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [screen]);
 
   // ── Derived ───────────────────────────────────────────────────────────────
   const subject    = subjectsRef.current[round];

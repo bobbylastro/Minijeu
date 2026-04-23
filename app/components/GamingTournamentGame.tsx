@@ -2,6 +2,7 @@
 
 import { useState, useRef } from "react";
 import "@/app/game-tournament/gaming-tournament.css";
+import { trackEvent } from "@/lib/analytics";
 
 interface Game {
   id: number;
@@ -90,6 +91,7 @@ export default function GamingTournamentGame({ initialData }: { initialData: Gam
   ref.current = state;
 
   function startGame() {
+    trackEvent("game_start", { game_type: "game-tournament", mode: "solo" });
     const chosen = shuffle(ALL_GAMES).slice(0, 32);
     const matchups = pair(shuffle(chosen));
     setState({
@@ -129,6 +131,7 @@ export default function GamingTournamentGame({ initialData }: { initialData: Gam
           .map(g => ({ game: g, wins: newWins[g.id] || 0 }))
           .sort((a, b) => b.wins - a.wins)
           .slice(0, 5);
+        trackEvent("game_complete", { game_type: "game-tournament", mode: "solo", final_score: 0, max_score: 0, score_pct: 0 });
         setState(prev => ({ ...prev, picked: null, allWins: newWins, results: ranked, screen: "results" }));
       } else {
         // Advance to next round

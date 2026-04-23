@@ -11,6 +11,7 @@ import OpponentBar from "@/components/OpponentBar";
 import MultiplayerEntryModal from "@/components/MultiplayerEntryModal";
 import LeaderboardOverlay from "@/components/LeaderboardOverlay";
 import RelatedGames from "@/components/RelatedGames";
+import { trackEvent } from "@/lib/analytics";
 
 // ─── Types ─────────────────────────────────────────────────────────────────────
 export interface Hotel {
@@ -599,6 +600,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
 
   // ── Multiplayer callbacks ────────────────────────────────────────────────────
   const onMpGameStart = useCallback((seed: number) => {
+    trackEvent("game_start", { game_type: "hotel-price", mode: "multi" });
     const qs = generateQuestions(initialData, seed);
     setQuestions(qs);
     setRound(0); setScore(0); setSoloCorrect(0); setStreak(0);
@@ -636,6 +638,19 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
     onGameEnd:          onMpGameEnd,
   });
   useEffect(() => { mpRef.current = mp; });
+
+  // ── Analytics: track game completion ─────────────────────────────────────────
+  useEffect(() => {
+    if (phase !== "result") return;
+    trackEvent("game_complete", {
+      game_type: "hotel-price",
+      mode: mode as "solo" | "multi",
+      final_score: score,
+      max_score: MAX_SCORE,
+      score_pct: Math.round((score / MAX_SCORE) * 100),
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [phase]);
 
   // ── Answer logic ─────────────────────────────────────────────────────────────
   const handleAnswer = useCallback((value: number) => {
@@ -713,6 +728,7 @@ export default function HotelPriceGame({ initialData }: { initialData: Hotel[] }
   // ── Game flow ──────────────────────────────────────────────────────────────
   function startSolo() {
     if (initialData.length < 5) return;
+    trackEvent("game_start", { game_type: "hotel-price", mode: "solo" });
     setMode("solo");
     setQuestions(generateQuestions(initialData));
     setRound(0); setScore(0); setSoloCorrect(0); setStreak(0);
