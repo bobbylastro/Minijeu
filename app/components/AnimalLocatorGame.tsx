@@ -208,10 +208,12 @@ function FeedbackPopup({ animal, clickedCode, onNext, isLast, multiWaiting, oppo
         <div className={`fd-feedback-card__verdict feedback__text ${isCorrect ? "feedback__text--correct" : "feedback__text--wrong"}`}>
           {isCorrect ? "Correct!" : isTimeout ? "Time's up!" : "Wrong!"}
         </div>
-        <div className="fd-feedback-card__country">
-          {!isCorrect && <span className="fd-feedback-card__label">It was </span>}
-          <strong>{animal.country}</strong>
-        </div>
+        {!isCorrect && (
+          <div className="fd-feedback-card__country">
+            <span className="fd-feedback-card__label">It was </span>
+            <strong>{animal.country}</strong>
+          </div>
+        )}
         <div className="fd-feedback-card__pts">
           {isCorrect ? "+100 pts ⭐" : "+0 pts"}
         </div>
