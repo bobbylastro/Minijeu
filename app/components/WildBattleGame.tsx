@@ -480,6 +480,9 @@ export default function WildBattleGame({ initialData }: { initialData: RawAnimal
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  // Scroll to top on every phase transition so the SEO section below never shows
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [phase]);
+
   // ── Answer logic ─────────────────────────────────────────────────────────────
   const handleAnswer = useCallback((value: number) => {
     if (revealedRef.current || !currentQ) return;

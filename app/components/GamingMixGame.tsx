@@ -674,6 +674,9 @@ export default function GamingMixGame({ initialData }: { initialData: GamingMixD
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phase]);
 
+  // Scroll to top on every phase transition so the SEO section below never shows
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [phase]);
+
   // ── Timer ──────────────────────────────────────────────────────────────────
   const stopTimer = useCallback(() => {
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
