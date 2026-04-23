@@ -73,7 +73,15 @@ const Stars = memo(function Stars() {
 function AnimalPhoto({ animal, className = "" }: { animal: Animal; className?: string }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
-  useEffect(() => { setLoaded(false); setFailed(false); }, [animal]);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    setLoaded(false);
+    setFailed(false);
+    // onLoad doesn't fire for cached images on mobile — check immediately after mount
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+  }, [animal]);
 
   const src = animal.image_url
     ? animal.image_url
@@ -88,6 +96,7 @@ function AnimalPhoto({ animal, className = "" }: { animal: Animal; className?: s
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      ref={imgRef}
       src={src}
       alt={animal.name}
       className={`fd-dish-photo${loaded ? " fd-dish-photo--visible" : ""} ${className}`}

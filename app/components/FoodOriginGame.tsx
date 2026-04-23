@@ -61,11 +61,19 @@ const Stars = memo(function Stars() {
 // ─── Dish photo ───────────────────────────────────────────────────────────────
 function DishPhoto({ dish, className = "" }: { dish: Dish; className?: string }) {
   const [loaded, setLoaded] = useState(false);
-  useEffect(() => setLoaded(false), [dish]);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    setLoaded(false);
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+  }, [dish]);
+
   if (!dish.image_url) return null;
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
+      ref={imgRef}
       src={dish.image_url}
       alt={dish.name}
       className={`fd-dish-photo${loaded ? " fd-dish-photo--visible" : ""} ${className}`}
