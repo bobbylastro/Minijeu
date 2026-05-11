@@ -16,7 +16,61 @@ interface Props {
   disabled: boolean;
   onCountryClick: (alpha2: string, name: string) => void;
   onCountryHover: (info: { name: string; alpha2: string } | null) => void;
+  zoomOnReveal?: boolean;
+  onRevealAnimationEnd?: () => void;
 }
+
+// Geographic centers [lon, lat] + zoom level for zoom-to-country on reveal
+const COUNTRY_CENTERS: Record<string, { ll: [number, number]; z: number }> = {
+  AR: { ll: [-64, -34],  z: 3   },
+  AU: { ll: [134, -25],  z: 2.5 },
+  BO: { ll: [-65, -17],  z: 4.5 },
+  BR: { ll: [-52, -10],  z: 2.5 },
+  BW: { ll: [24,  -22],  z: 5   },
+  CA: { ll: [-96,  57],  z: 2.5 },
+  CD: { ll: [24,   -3],  z: 4   },
+  CL: { ll: [-71, -35],  z: 3.5 },
+  CN: { ll: [103,  36],  z: 2.5 },
+  CO: { ll: [-74,   4],  z: 4.5 },
+  CR: { ll: [-84,  10],  z: 7   },
+  DZ: { ll: [3,    28],  z: 4   },
+  EC: { ll: [-78,  -2],  z: 5.5 },
+  ES: { ll: [-4,   40],  z: 5   },
+  ET: { ll: [40,    9],  z: 4.5 },
+  GA: { ll: [12,   -1],  z: 5.5 },
+  GT: { ll: [-90,  15],  z: 6.5 },
+  GY: { ll: [-59,   5],  z: 5.5 },
+  ID: { ll: [118,  -2],  z: 3.5 },
+  IN: { ll: [79,   22],  z: 3.5 },
+  IS: { ll: [-19,  65],  z: 5.5 },
+  JP: { ll: [138,  37],  z: 5   },
+  KE: { ll: [38,    1],  z: 5   },
+  KH: { ll: [105,  12],  z: 6   },
+  KR: { ll: [128,  37],  z: 6   },
+  KZ: { ll: [68,   48],  z: 3.5 },
+  LR: { ll: [-9,    6],  z: 6.5 },
+  MG: { ll: [47,  -20],  z: 5   },
+  MM: { ll: [96,   19],  z: 5   },
+  MN: { ll: [103,  47],  z: 4   },
+  MX: { ll: [-102, 23],  z: 4   },
+  MY: { ll: [110,   3],  z: 5   },
+  NP: { ll: [84,   28],  z: 6   },
+  NZ: { ll: [172, -42],  z: 5   },
+  PA: { ll: [-80,   9],  z: 7   },
+  PE: { ll: [-76, -10],  z: 4.5 },
+  PG: { ll: [145,  -6],  z: 5   },
+  PH: { ll: [122,  12],  z: 5   },
+  PL: { ll: [20,   52],  z: 5.5 },
+  RU: { ll: [100,  62],  z: 1.8 },
+  TH: { ll: [101,  15],  z: 5   },
+  TZ: { ll: [35,   -6],  z: 5   },
+  UG: { ll: [32,    1],  z: 6   },
+  US: { ll: [-100, 40],  z: 2.5 },
+  VE: { ll: [-66,   8],  z: 4.5 },
+  VN: { ll: [106,  16],  z: 5   },
+  ZA: { ll: [25,  -29],  z: 5   },
+  ZM: { ll: [28,  -14],  z: 5   },
+};
 
 const GEO_URL      = "/world-110m.json";
 const ISRAEL_ID    = "376";
@@ -97,6 +151,7 @@ type Position = { coordinates: [number, number]; zoom: number };
 
 export default memo(function WorldMap({
   correctCode, clickedCode, pendingCode, revealed, disabled, onCountryClick, onCountryHover,
+  zoomOnReveal = false, onRevealAnimationEnd,
 }: Props) {
   const [position, setPosition] = useState<Position>({ coordinates: [10, 10], zoom: 1 });
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -153,17 +208,85 @@ export default memo(function WorldMap({
     };
   }, []); // empty deps — callback accessed via ref
 
-  const handleMoveEnd = useCallback((pos: object) => {
-    setPosition(pos as Position);
+  // Track position in a ref so the RAF closure always reads the latest value
+  const posRef = useRef<Position>({ coordinates: [10, 10], zoom: 1 });
+  const animRef = useRef<number | null>(null);
+
+  const setPos = useCallback((p: Position) => {
+    posRef.current = p;
+    setPosition(p);
   }, []);
 
+  const handleMoveEnd = useCallback((pos: object) => {
+    setPos(pos as Position);
+  }, [setPos]);
+
   const correctCodes = Array.isArray(correctCode) ? correctCode : [correctCode];
+  const primaryCode = correctCodes[0];
+
+  const onRevealAnimationEndRef = useRef(onRevealAnimationEnd);
+  useEffect(() => { onRevealAnimationEndRef.current = onRevealAnimationEnd; }, [onRevealAnimationEnd]);
+
+  // Smooth fly-to animation on reveal
+  useEffect(() => {
+    if (!revealed || !zoomOnReveal) return;
+    const c = COUNTRY_CENTERS[primaryCode];
+    if (!c) return;
+
+    if (animRef.current) cancelAnimationFrame(animRef.current);
+
+    const from = { ...posRef.current };
+    const to: Position = { coordinates: c.ll, zoom: Math.min(c.z, 5.5) };
+
+    const easeOut   = (t: number) => 1 - Math.pow(1 - t, 3);
+    const easeInOut = (t: number) => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+
+    // Check if target is within the current viewport (no arc needed)
+    const dLon = Math.abs(to.coordinates[0] - from.coordinates[0]);
+    const dLat = Math.abs(to.coordinates[1] - from.coordinates[1]);
+    const isNearby = dLon < 250 / from.zoom && dLat < 140 / from.zoom;
+    const useArc   = from.zoom > 1.3 && !isNearby;
+
+    const duration = useArc ? 1500 : 1100;
+    const start = performance.now();
+
+    function tick(now: number) {
+      const raw = Math.min((now - start) / duration, 1);
+      const posE = useArc ? easeInOut(raw) : easeOut(raw);
+
+      let zoom: number;
+      if (useArc) {
+        // Parabolic zoom arc: dips to minZoom at t=0.5, single continuous curve
+        const minZoom = Math.max(1, Math.min(from.zoom, to.zoom) * 0.5);
+        const baseZoom = from.zoom + (to.zoom - from.zoom) * posE;
+        const midBase  = (from.zoom + to.zoom) / 2;
+        zoom = baseZoom + 4 * raw * (1 - raw) * (minZoom - midBase);
+      } else {
+        zoom = from.zoom + (to.zoom - from.zoom) * posE;
+      }
+
+      setPos({
+        coordinates: [
+          from.coordinates[0] + (to.coordinates[0] - from.coordinates[0]) * posE,
+          from.coordinates[1] + (to.coordinates[1] - from.coordinates[1]) * posE,
+        ],
+        zoom,
+      });
+
+      if (raw < 1) {
+        animRef.current = requestAnimationFrame(tick);
+      } else {
+        onRevealAnimationEndRef.current?.();
+      }
+    }
+    animRef.current = requestAnimationFrame(tick);
+
+    return () => { if (animRef.current) cancelAnimationFrame(animRef.current); };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [revealed]);
 
   function getFill(alpha2: string | undefined): string {
-    if (revealed) {
-      if (alpha2 && correctCodes.includes(alpha2))  return "#22c55e";
-      if (clickedCode && alpha2 === clickedCode)     return "#ef4444";
-    }
+    if (revealed && alpha2 === primaryCode) return "#f97316";
     if (!revealed && pendingCode && alpha2 === pendingCode) return "#f59e0b";
     return (alpha2 && CONTINENT_COLOR[alpha2]) ?? C_DEFAULT;
   }
@@ -201,8 +324,9 @@ export default memo(function WorldMap({
                   const name   = (id === PALESTINE_ID || id === ISRAEL_ID) ? "Palestine"
                                : id === "732" ? "Morocco"
                                : geoName;
-                  const clickable = !disabled && !revealed && !!alpha2;
-                  const fill   = getFill(alpha2);
+                  const clickable   = !disabled && !revealed && !!alpha2;
+                  const isHighlight = revealed && zoomOnReveal && alpha2 === primaryCode;
+                  const fill        = getFill(alpha2);
 
                   return (
                     <Geography
@@ -215,8 +339,8 @@ export default memo(function WorldMap({
                       onMouseLeave={() => onCountryHover(null)}
                       onClick={() => { if (clickable) onCountryClick(alpha2!, name); }}
                       style={{
-                        default:  { fill, stroke: "#fff", strokeWidth: 0.4, outline: "none" },
-                        hover:    { fill: clickable ? "#f59e0b" : fill, stroke: "#fff", strokeWidth: clickable ? 0.8 : 0.4, outline: "none", cursor: clickable ? "pointer" : "default" },
+                        default:  { fill, stroke: "#fff", strokeWidth: isHighlight ? 1.2 : 0.4, outline: "none" },
+                        hover:    { fill: clickable ? "#f59e0b" : fill, stroke: "#fff", strokeWidth: clickable ? 0.8 : isHighlight ? 1.2 : 0.4, outline: "none", cursor: clickable ? "pointer" : "default" },
                         pressed:  { fill: clickable ? "#d97706" : fill, stroke: "#fff", strokeWidth: 0.8, outline: "none" },
                       }}
                     />

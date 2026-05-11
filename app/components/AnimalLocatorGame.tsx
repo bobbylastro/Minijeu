@@ -174,13 +174,14 @@ function IntroPopup({ animal, round, total, onDismiss }: {
 // ─── Feedback popup ───────────────────────────────────────────────────────────
 const TIMEOUT_AUTO_ADVANCE_MS = 2000;
 
-function FeedbackPopup({ animal, clickedCode, onNext, isLast, multiWaiting, opponentTimeLeft }: {
+function FeedbackBar({ animal, clickedCode, onNext, isLast, multiWaiting, opponentTimeLeft }: {
   animal: Animal; clickedCode: string | null; onNext: () => void; isLast: boolean;
   multiWaiting: boolean; opponentTimeLeft?: number;
 }) {
   const validCodes = [animal.countryCode, ...(animal.altCodes ?? [])];
   const isCorrect = !!clickedCode && validCodes.includes(clickedCode);
   const isTimeout = !clickedCode;
+  const variant = isCorrect ? "correct" : isTimeout ? "timeout" : "wrong";
   const [autoCountdown, setAutoCountdown] = useState(Math.round(TIMEOUT_AUTO_ADVANCE_MS / 1000));
 
   useEffect(() => {
@@ -200,34 +201,37 @@ function FeedbackPopup({ animal, clickedCode, onNext, isLast, multiWaiting, oppo
     : "Waiting for opponent…";
 
   return (
-    <div className="fd-popup-backdrop fd-popup-backdrop--dim">
-      <div className={`fd-feedback-card fd-feedback-card--${isCorrect ? "correct" : isTimeout ? "timeout" : "wrong"}`}>
-        <div className="fd-feedback-card__icon">
+    <div className="al-reveal-overlay">
+      <div className={`al-reveal-card al-reveal-card--${variant}`}>
+        <div className="al-reveal-card__icon">
           {isCorrect ? "✅" : isTimeout ? "⏱️" : "❌"}
         </div>
-        <div className={`fd-feedback-card__verdict feedback__text ${isCorrect ? "feedback__text--correct" : "feedback__text--wrong"}`}>
+        <div className={`al-reveal-card__verdict al-reveal-card__verdict--${variant}`}>
           {isCorrect ? "Correct!" : isTimeout ? "Time's up!" : "Wrong!"}
         </div>
-        {!isCorrect && (
-          <div className="fd-feedback-card__country">
-            <span className="fd-feedback-card__label">It was </span>
-            <strong>{animal.country}</strong>
-          </div>
-        )}
-        <div className="fd-feedback-card__pts">
+        <div className="al-reveal-card__country">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            className="al-reveal-card__flag"
+            src={`https://flagcdn.com/w40/${animal.countryCode.toLowerCase()}.png`}
+            alt={animal.country}
+          />
+          <span className="al-reveal-card__country-name">{animal.country}</span>
+        </div>
+        <div className="al-reveal-card__pts">
           {isCorrect ? "+100 pts ⭐" : "+0 pts"}
         </div>
         {isTimeout ? (
-          <div className="fd-feedback-card__auto">
+          <div className="al-reveal-card__waiting">
             {multiWaiting ? waitLabel : `Next in ${autoCountdown}s…`}
           </div>
         ) : (
           <button
-            className="btn-next btn-hover-sm fd-feedback-card__btn"
+            className="al-reveal-card__btn"
             onClick={onNext}
             disabled={multiWaiting}
           >
-            {multiWaiting ? waitLabel : isLast ? "See Results →" : "Next Animal →"}
+            {multiWaiting ? waitLabel : isLast ? "Results →" : "Next →"}
           </button>
         )}
       </div>
@@ -353,6 +357,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
   const [timeLeft, setTimeLeft]         = useState(ROUND_SECONDS);
   const [showIntro, setShowIntro]       = useState(false);
   const [revealed, setRevealed]         = useState(false);
+  const [showFeedback, setShowFeedback] = useState(false);
   const [multiWaiting, setMultiWaiting] = useState(false);
 
   const timerRef    = useRef<ReturnType<typeof setInterval> | null>(null);
@@ -372,7 +377,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
     trackEvent("game_start", { game_type: "animal-locator", mode: "multi" });
     setAnimals(seededShuffle([...initialData], seed).slice(0, ROUNDS_PER_GAME));
     setRound(0); setScore(0); setClickedCode(null); setPendingCountry(null);
-    setRevealed(false); setMultiWaiting(false); setShowIntro(true);
+    setRevealed(false); setShowFeedback(false); setMultiWaiting(false); setShowIntro(true);
     setPhase("playing");
   }, [initialData]);
 
@@ -437,6 +442,10 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
     if (timerRef.current) { clearInterval(timerRef.current); timerRef.current = null; }
   }, []);
 
+  useEffect(() => {
+    if (!revealed) setShowFeedback(false);
+  }, [revealed]);
+
   const reveal = useCallback((alpha2: string | null) => {
     if (modeRef.current !== "multi") stopTimer();
     revealedRef.current = true;
@@ -482,7 +491,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
       if (r + 1 >= ROUNDS_PER_GAME) { setPhase("result"); return r; }
       return r + 1;
     });
-    setClickedCode(null); setPendingCountry(null); setRevealed(false); setShowIntro(true);
+    setClickedCode(null); setPendingCountry(null); setRevealed(false); setShowFeedback(false); setShowIntro(true);
   }, []);
 
   function backToHome() { mp.disconnect(); setMode("solo"); setPhase("home"); }
@@ -543,24 +552,24 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
       <div className="fd-map-full">
         <LeafletMap
           key={round}
-          correctCode={currentAnimal.altCodes?.length
-            ? [currentAnimal.countryCode, ...currentAnimal.altCodes]
-            : currentAnimal.countryCode}
+          correctCode={currentAnimal.countryCode}
           clickedCode={clickedCode}
           pendingCode={pendingCountry?.alpha2 ?? null}
           revealed={revealed}
           disabled={showIntro}
+          zoomOnReveal
+          onRevealAnimationEnd={() => setShowFeedback(true)}
           onCountryClick={(alpha2, name) => {
             if (!revealed && !showIntro) {
               if (!isTouchRef.current) reveal(alpha2);
               else setPendingCountry({ alpha2, name });
             }
           }}
-          onCountryHover={setHoveredCountry}
+          onCountryHover={revealed ? () => {} : setHoveredCountry}
         />
 
-        {/* Animal card — bottom-left overlay */}
-        {!showIntro && (
+        {/* Animal card — bottom-left overlay (hidden during reveal so map is fully visible) */}
+        {!showIntro && !revealed && (
           <div className="fd-dish-card fd-dish-card--clickable" onClick={() => setShowAnimalZoom(true)}>
             <div className="fd-dish-card__photo-wrap al-photo-wrap">
               <AnimalPhoto animal={currentAnimal} />
@@ -595,8 +604,8 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
           </div>
         )}
 
-        {/* Country hover tooltip */}
-        {hoveredCountry && !pendingCountry ? (
+        {/* Country hover tooltip — hidden during reveal */}
+        {!revealed && (hoveredCountry && !pendingCountry ? (
           <div className="fd-country-tag">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -610,7 +619,7 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
           <div className="fd-map-tooltip">
             {showIntro ? "" : "Click on a country to answer"}
           </div>
-        )}
+        ))}
       </div>
 
       {/* Intro popup */}
@@ -618,9 +627,9 @@ export default function AnimalLocatorGame({ initialData }: { initialData: Animal
         <IntroPopup animal={currentAnimal} round={round} total={ROUNDS_PER_GAME} onDismiss={dismissIntro} />
       )}
 
-      {/* Feedback popup */}
-      {revealed && (
-        <FeedbackPopup
+      {/* Reveal overlay — appears after zoom finishes */}
+      {revealed && showFeedback && (
+        <FeedbackBar
           animal={currentAnimal} clickedCode={clickedCode} onNext={nextRound}
           isLast={round + 1 >= ROUNDS_PER_GAME} multiWaiting={multiWaiting}
           opponentTimeLeft={mode === "multi" ? timeLeft : undefined}
