@@ -117,6 +117,7 @@ export function useMultiplayer({
   const botTimerRef   = useRef<ReturnType<typeof setTimeout>  | null>(null);
   const botWaitRef    = useRef<ReturnType<typeof setTimeout>  | null>(null);
   const botCdRef      = useRef<ReturnType<typeof setInterval> | null>(null);
+  const roundReadyRef = useRef(false);
 
   const cb = useRef(callbacks);
   useEffect(() => { cb.current = callbacks; });
@@ -146,6 +147,7 @@ export function useMultiplayer({
     const roundPoints: Record<string, number> = { [bs.playerId]: bs.playerPoints, [bs.botId]: bs.botPoints };
     bs.playerAnswered = false;
     bs.botAnswered    = false;
+    roundReadyRef.current = false;
     setOpponents(prev => prev.map(o => o.id === bs.botId ? { ...o, score: bs.botScore, hasAnswered: false } : o));
     cb.current.onRoundEnd(scores, roundPoints);
   }, []);
@@ -207,6 +209,7 @@ export function useMultiplayer({
     const seed     = Math.floor(Math.random() * 1_000_000);
 
     isBotRef.current = true;
+    roundReadyRef.current = false;
     botStateRef.current = {
       playerScore: 0, botScore: 0,
       round: 0, totalRounds,
@@ -462,6 +465,8 @@ export function useMultiplayer({
     if (isBotRef.current) {
       const bs = botStateRef.current;
       if (!bs) return;
+      if (roundReadyRef.current) return;
+      roundReadyRef.current = true;
       if (bs.round + 1 >= bs.totalRounds) {
         isBotRef.current = false;
         setStatus("finished");
@@ -494,6 +499,7 @@ export function useMultiplayer({
       bs.playerScore = 0; bs.botScore = 0; bs.round = 0;
       bs.playerAnswered = false; bs.botAnswered = false;
       bs.playerPoints = 0; bs.botPoints = 0; bs.seed = newSeed;
+      roundReadyRef.current = false;
       isBotRef.current = true;
       setStatus("playing");
       setMyWantsRematch(false);
