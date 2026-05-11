@@ -209,7 +209,7 @@ export function useMultiplayer({
     isBotRef.current = true;
     botStateRef.current = {
       playerScore: 0, botScore: 0,
-      round: 1, totalRounds,
+      round: 0, totalRounds,
       playerAnswered: false, botAnswered: false,
       playerPoints: 0, botPoints: 0,
       botId, botName, seed, playerId,
@@ -462,7 +462,7 @@ export function useMultiplayer({
     if (isBotRef.current) {
       const bs = botStateRef.current;
       if (!bs) return;
-      if (bs.round >= bs.totalRounds) {
+      if (bs.round + 1 >= bs.totalRounds) {
         isBotRef.current = false;
         setStatus("finished");
         const finalScores: Record<string, number> = {
@@ -491,7 +491,7 @@ export function useMultiplayer({
       const bs = botStateRef.current;
       if (!bs) return;
       const newSeed = Math.floor(Math.random() * 1_000_000);
-      bs.playerScore = 0; bs.botScore = 0; bs.round = 1;
+      bs.playerScore = 0; bs.botScore = 0; bs.round = 0;
       bs.playerAnswered = false; bs.botAnswered = false;
       bs.playerPoints = 0; bs.botPoints = 0; bs.seed = newSeed;
       isBotRef.current = true;

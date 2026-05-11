@@ -456,12 +456,18 @@ export default function WildBattleGame({ initialData }: { initialData: RawAnimal
     }
   }, [submitRating]);
 
+  const onMpRoundEnd = useCallback((scores: Record<string, number>) => {
+    setMultiWaiting(false);
+    const myId = mpRef.current?.myId;
+    if (myId != null && scores[myId] != null) setScore(scores[myId]);
+  }, []);
+
   const mp = useMultiplayer({
     gameType: "wild-battle",
     host: getPartykitHost(),
     onGameStart:        onMpGameStart,
     onOpponentAnswered: useCallback(() => {}, []),
-    onRoundEnd:         useCallback(() => {}, []),
+    onRoundEnd:         onMpRoundEnd,
     onNextRound:        onMpNextRound,
     onGameEnd:          onMpGameEnd,
   });
