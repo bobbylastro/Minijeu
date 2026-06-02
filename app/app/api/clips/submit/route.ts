@@ -1,10 +1,10 @@
 import { NextRequest } from "next/server";
-import { createServiceClient } from "@/lib/supabase/server";
+import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isGameSlug } from "@/lib/clips-shared";
 
 export const maxDuration = 30;
 
-const DAILY_LIMIT = 3;
+const DAILY_LIMIT = 2;
 const MAX_SIZE = 200 * 1024 * 1024;
 const ALLOWED_TYPES = new Set([
   "video/mp4", "video/webm", "video/quicktime",
@@ -28,6 +28,11 @@ export async function POST(req: NextRequest) {
   if (!process.env.NEXT_PUBLIC_SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
     return err("not_configured", 503);
   }
+
+  // Auth required
+  const sessionClient = await createClient();
+  const { data: { user } } = await sessionClient.auth.getUser();
+  if (!user) return err("auth_required", 401);
 
   let body: {
     title?: string;
@@ -74,12 +79,12 @@ export async function POST(req: NextRequest) {
   const supabase = createServiceClient();
   const ip = getIP(req);
 
-  // Rate limit: 3 submissions per 24h per IP (exclude rejected ones that were cleared)
+  // Rate limit: 2 submissions per 24h per user
   const since = new Date(Date.now() - 86_400_000).toISOString();
   const { count } = await supabase
     .from("clip_submissions")
     .select("id", { count: "exact", head: true })
-    .eq("submitter_ip", ip)
+    .eq("user_id", user.id)
     .in("status", ["uploading", "pending", "approved"])
     .gte("created_at", since);
 
@@ -106,6 +111,7 @@ export async function POST(req: NextRequest) {
       game,
       submitter_name: body.submitterName || null,
       submitter_ip: ip,
+      user_id: user.id,
       storage_path: storagePath,
       status: "uploading",
     })

@@ -1935,6 +1935,21 @@ kbd {
 }
 .submit-fine-print a { color: rgba(99,102,241,0.7); text-decoration: underline; }
 
+/* Auth gate */
+.submit-auth-gate {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 8px 0 4px;
+  text-align: center;
+}
+.submit-auth-gate__text {
+  font-size: 14px;
+  color: var(--color-muted);
+  line-height: 1.6;
+}
+
 /* Success state */
 .submit-success {
   width: 100%;

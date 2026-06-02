@@ -1,7 +1,11 @@
 "use client";
 import { useState, useRef, useCallback } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import { GAMES, GAME_SLUGS } from "@/lib/clips-shared";
+import { useAuth } from "@/hooks/useAuth";
+
+const AuthModal = dynamic(() => import("@/components/AuthModal"), { ssr: false });
 
 type State = "idle" | "submitting" | "success" | "error";
 
@@ -11,18 +15,22 @@ const ALLOWED_EXTS = /\.(mp4|webm|mov|mkv|avi)$/i;
 
 function errMsg(code: string): string {
   const map: Record<string, string> = {
-    rate_limit: "You've reached the 3 clips/day limit. Try again tomorrow.",
-    invalid_game: "Please select a valid game.",
-    invalid_title: "Title must be between 3 and 80 characters.",
-    invalid_file: "Unsupported file type. Use MP4, WebM, MOV or MKV.",
+    auth_required:  "You must be signed in to submit a clip.",
+    rate_limit:     "You've reached the 2 clips/day limit. Try again tomorrow.",
+    invalid_game:   "Please select a valid game.",
+    invalid_title:  "Title must be between 3 and 80 characters.",
+    invalid_file:   "Unsupported file type. Use MP4, WebM, MOV or MKV.",
     file_too_large: "File exceeds the 200 MB limit.",
     not_configured: "Submissions are temporarily unavailable. Try again later.",
-    default: "Something went wrong. Please try again.",
+    default:        "Something went wrong. Please try again.",
   };
   return map[code] ?? map.default;
 }
 
 export default function SubmitPage() {
+  const { user, loading } = useAuth();
+  const [authOpen, setAuthOpen] = useState(false);
+
   const [state, setState] = useState<State>("idle");
   const [error, setError] = useState("");
   const [title, setTitle] = useState("");
@@ -71,7 +79,6 @@ export default function SubmitPage() {
           filename: file.name,
           fileType: file.type,
           fileSize: file.size,
-          // honeypot is always empty — the real honeypot field is in the form
           honeypot: (document.getElementById("sub-hp") as HTMLInputElement)?.value ?? "",
         }),
       });
@@ -85,7 +92,7 @@ export default function SubmitPage() {
 
       const { submissionId, signedUrl } = await prepareRes.json();
 
-      // Step 2 — upload file directly to Supabase Storage (no server involved)
+      // Step 2 — upload file directly to Supabase Storage
       const uploadRes = await fetch(signedUrl, {
         method: "PUT",
         body: file,
@@ -118,6 +125,45 @@ export default function SubmitPage() {
     }
   }
 
+  // ── Auth loading ──────────────────────────────────────────────────────────
+  if (loading) {
+    return (
+      <main className="submit-page">
+        <div className="submit-card">
+          <div className="adm-loading">
+            <span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" />
+          </div>
+        </div>
+      </main>
+    );
+  }
+
+  // ── Not logged in ─────────────────────────────────────────────────────────
+  if (!user) {
+    return (
+      <main className="submit-page">
+        <div className="submit-card">
+          <div className="submit-card__header">
+            <h1 className="submit-card__title">Submit a clip</h1>
+            <p className="submit-card__sub">
+              You need an account to submit clips.
+            </p>
+          </div>
+          <div className="submit-auth-gate">
+            <p className="submit-auth-gate__text">
+              Sign in or create a free account to share your best moments with the community.
+            </p>
+            <button className="btn-primary" onClick={() => setAuthOpen(true)}>
+              Sign in / Create account
+            </button>
+          </div>
+        </div>
+        {authOpen && <AuthModal onClose={() => setAuthOpen(false)} />}
+      </main>
+    );
+  }
+
+  // ── Success ───────────────────────────────────────────────────────────────
   if (state === "success") {
     return (
       <main className="submit-page">
@@ -138,6 +184,7 @@ export default function SubmitPage() {
     );
   }
 
+  // ── Form ──────────────────────────────────────────────────────────────────
   return (
     <main className="submit-page">
       <div className="submit-card">
@@ -149,7 +196,7 @@ export default function SubmitPage() {
         </div>
 
         <form className="submit-form" onSubmit={handleSubmit} noValidate>
-          {/* Honeypot — hidden from humans, filled by bots */}
+          {/* Honeypot */}
           <input
             id="sub-hp"
             type="text"
@@ -201,7 +248,7 @@ export default function SubmitPage() {
           {/* Handle */}
           <div className="submit-field">
             <label className="submit-label" htmlFor="sub-handle">
-              Your handle <span className="submit-optional">(optional)</span>
+              In-game name <span className="submit-optional">(optional)</span>
             </label>
             <input
               id="sub-handle"
@@ -273,7 +320,7 @@ export default function SubmitPage() {
           <p className="submit-fine-print">
             By submitting, you confirm you own the rights to this clip and agree to our{" "}
             <Link href="/terms">Terms of Service</Link>.
-            Max 3 submissions per day.
+            Max 2 submissions per day.
           </p>
         </form>
       </div>
