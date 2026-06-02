@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { GAMES, isGameSlug } from "@/lib/clips-shared";
 
 interface Submission {
@@ -44,6 +44,8 @@ export default function AdminClipsDashboard() {
   const [loading, setLoading]   = useState(true);
   const [actioning, setActioning] = useState<string | null>(null);
   const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
+  const [previewClip,   setPreviewClip]   = useState<LiveClip | null>(null);
+  const previewVideoRef = useRef<HTMLVideoElement>(null);
 
   const loadSubmissions = useCallback(async (status: "pending" | "approved" | "rejected") => {
     setLoading(true);
@@ -192,13 +194,21 @@ export default function AdminClipsDashboard() {
                         </button>
                       </>
                     ) : (
-                      <button
-                        className="adm-btn adm-btn--reject"
-                        onClick={() => setConfirmDelete(clip.id)}
-                        disabled={busy}
-                      >
-                        Delete
-                      </button>
+                      <>
+                        <button
+                          className="adm-btn adm-btn--approve"
+                          onClick={() => setPreviewClip(clip)}
+                        >
+                          ▶ Preview
+                        </button>
+                        <button
+                          className="adm-btn adm-btn--reject"
+                          onClick={() => setConfirmDelete(clip.id)}
+                          disabled={busy}
+                        >
+                          Delete
+                        </button>
+                      </>
                     )}
                   </div>
                 </div>
@@ -269,6 +279,37 @@ export default function AdminClipsDashboard() {
               </div>
             );
           })}
+        </div>
+      )}
+
+      {/* ── Video preview modal ───────────────────────────────────────── */}
+      {previewClip && (
+        <div
+          className="adm-preview-overlay"
+          onClick={() => { setPreviewClip(null); previewVideoRef.current?.pause(); }}
+          onKeyDown={(e) => { if (e.key === "Escape") { setPreviewClip(null); previewVideoRef.current?.pause(); } }}
+          tabIndex={-1}
+        >
+          <div className="adm-preview-box" onClick={(e) => e.stopPropagation()}>
+            <div className="adm-preview-header">
+              <span className="adm-preview-title">{previewClip.title}</span>
+              <button
+                className="adm-preview-close"
+                onClick={() => { setPreviewClip(null); previewVideoRef.current?.pause(); }}
+              >
+                ×
+              </button>
+            </div>
+            <video
+              ref={previewVideoRef}
+              className="adm-preview-video"
+              src={previewClip.video_url}
+              controls
+              autoPlay
+              playsInline
+              preload="auto"
+            />
+          </div>
         </div>
       )}
     </main>
