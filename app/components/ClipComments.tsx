@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import type { Comment } from "@/lib/clips-shared";
+import { trackCommentPost, trackCommentLike } from "@/lib/analytics";
 
 interface Props {
   clipId: string;
@@ -50,6 +51,7 @@ export default function ClipComments({ clipId, isLoggedIn, onAuthRequired }: Pro
         setComments((prev) => [...prev, comment]);
         setText("");
         setTimeout(() => bottomRef.current?.scrollIntoView({ behavior: "smooth" }), 50);
+        trackCommentPost(clipId, "");
       }
     } finally {
       setPosting(false);
@@ -59,6 +61,8 @@ export default function ClipComments({ clipId, isLoggedIn, onAuthRequired }: Pro
   const toggleLike = async (commentId: string) => {
     if (!isLoggedIn) { onAuthRequired(); return; }
     // Optimistic update
+    const comment = comments.find((c) => c.id === commentId);
+    const wasLiked = comment?.userHasLiked ?? false;
     setComments((prev) => prev.map((c) =>
       c.id !== commentId ? c : {
         ...c,
@@ -66,6 +70,7 @@ export default function ClipComments({ clipId, isLoggedIn, onAuthRequired }: Pro
         likesCount: c.userHasLiked ? c.likesCount - 1 : c.likesCount + 1,
       }
     ));
+    trackCommentLike(commentId, !wasLiked);
     try {
       await fetch(`/api/comments/${commentId}/like`, { method: "POST" });
     } catch {
