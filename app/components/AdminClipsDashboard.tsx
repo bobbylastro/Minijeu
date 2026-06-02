@@ -14,7 +14,18 @@ interface Submission {
   previewUrl: string | null;
 }
 
-type Filter = "pending" | "approved" | "rejected";
+interface LiveClip {
+  id: string;
+  title: string;
+  game: string;
+  video_url: string;
+  thumbnail_url: string | null;
+  source: string;
+  likes_count: number;
+  created_at: string;
+}
+
+type Tab = "pending" | "approved" | "rejected" | "live";
 
 function timeAgo(iso: string): string {
   const diff = Date.now() - new Date(iso).getTime();
@@ -27,12 +38,14 @@ function timeAgo(iso: string): string {
 }
 
 export default function AdminClipsDashboard() {
-  const [filter, setFilter] = useState<Filter>("pending");
-  const [subs, setSubs] = useState<Submission[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [tab, setTab]           = useState<Tab>("live");
+  const [subs, setSubs]         = useState<Submission[]>([]);
+  const [liveClips, setLiveClips] = useState<LiveClip[]>([]);
+  const [loading, setLoading]   = useState(true);
   const [actioning, setActioning] = useState<string | null>(null);
+  const [confirmDelete, setConfirmDelete] = useState<string | null>(null);
 
-  const load = useCallback(async (status: Filter) => {
+  const loadSubmissions = useCallback(async (status: "pending" | "approved" | "rejected") => {
     setLoading(true);
     try {
       const res = await fetch(`/api/admin/clips?status=${status}`);
@@ -44,7 +57,22 @@ export default function AdminClipsDashboard() {
     }
   }, []);
 
-  useEffect(() => { load(filter); }, [filter, load]);
+  const loadLiveClips = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/clips/live");
+      if (!res.ok) throw new Error("forbidden");
+      const { clips } = await res.json();
+      setLiveClips(clips ?? []);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (tab === "live") loadLiveClips();
+    else loadSubmissions(tab);
+  }, [tab, loadSubmissions, loadLiveClips]);
 
   async function act(id: string, action: "approve" | "reject") {
     setActioning(id);
@@ -56,18 +84,36 @@ export default function AdminClipsDashboard() {
     }
   }
 
+  async function deleteClip(id: string) {
+    setActioning(id);
+    setConfirmDelete(null);
+    try {
+      const res = await fetch(`/api/admin/clips/${id}`, { method: "DELETE" });
+      if (res.ok) setLiveClips((prev) => prev.filter((c) => c.id !== id));
+    } finally {
+      setActioning(null);
+    }
+  }
+
+  const tabs: { key: Tab; label: string }[] = [
+    { key: "live",     label: "Live clips" },
+    { key: "pending",  label: "Pending" },
+    { key: "approved", label: "Approved" },
+    { key: "rejected", label: "Rejected" },
+  ];
+
   return (
     <main className="adm-page">
       <div className="adm-header">
-        <h1 className="adm-title">Clip submissions</h1>
+        <h1 className="adm-title">Admin</h1>
         <div className="adm-filters">
-          {(["pending", "approved", "rejected"] as Filter[]).map((f) => (
+          {tabs.map(({ key, label }) => (
             <button
-              key={f}
-              className={`adm-filter-btn${filter === f ? " is-active" : ""}`}
-              onClick={() => setFilter(f)}
+              key={key}
+              className={`adm-filter-btn${tab === key ? " is-active" : ""}`}
+              onClick={() => setTab(key)}
             >
-              {f.charAt(0).toUpperCase() + f.slice(1)}
+              {label}
             </button>
           ))}
         </div>
@@ -77,8 +123,91 @@ export default function AdminClipsDashboard() {
         <div className="adm-loading">
           <span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" />
         </div>
+      ) : tab === "live" ? (
+        liveClips.length === 0 ? (
+          <div className="adm-empty">No live clips.</div>
+        ) : (
+          <div className="adm-grid">
+            {liveClips.map((clip) => {
+              const game = isGameSlug(clip.game) ? GAMES[clip.game] : null;
+              const busy = actioning === clip.id;
+              const confirming = confirmDelete === clip.id;
+              return (
+                <div key={clip.id} className="adm-card">
+                  <div className="adm-card__video-wrap">
+                    {clip.thumbnail_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={clip.thumbnail_url}
+                        alt={clip.title}
+                        className="adm-card__thumb"
+                      />
+                    ) : (
+                      <div
+                        className="adm-card__no-preview"
+                        style={{ background: game ? game.color + "33" : undefined }}
+                      >
+                        {game?.name ?? clip.game}
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="adm-card__body">
+                    <div className="adm-card__badges">
+                      {game && (
+                        <span
+                          className="adm-card__game-badge"
+                          style={{ background: game.color, color: game.textColor }}
+                        >
+                          {game.name}
+                        </span>
+                      )}
+                      {!game && (
+                        <span className="adm-card__game-badge" style={{ background: "#555", color: "#fff" }}>
+                          {clip.game}
+                        </span>
+                      )}
+                      <span className="adm-card__time">{timeAgo(clip.created_at)}</span>
+                    </div>
+                    <p className="adm-card__title">{clip.title}</p>
+                    <p className="adm-card__ip">{clip.likes_count} like{clip.likes_count !== 1 ? "s" : ""} · {clip.source}</p>
+                  </div>
+
+                  <div className="adm-card__actions">
+                    {confirming ? (
+                      <>
+                        <span className="adm-confirm-label">Delete?</span>
+                        <button
+                          className="adm-btn adm-btn--reject"
+                          onClick={() => deleteClip(clip.id)}
+                          disabled={busy}
+                        >
+                          {busy ? "…" : "Yes, delete"}
+                        </button>
+                        <button
+                          className="adm-btn adm-btn--approve"
+                          onClick={() => setConfirmDelete(null)}
+                        >
+                          Cancel
+                        </button>
+                      </>
+                    ) : (
+                      <button
+                        className="adm-btn adm-btn--reject"
+                        onClick={() => setConfirmDelete(clip.id)}
+                        disabled={busy}
+                      >
+                        Delete
+                      </button>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )
       ) : subs.length === 0 ? (
-        <div className="adm-empty">No {filter} submissions.</div>
+        <div className="adm-empty">No {tab} submissions.</div>
       ) : (
         <div className="adm-grid">
           {subs.map((sub) => {
@@ -119,7 +248,7 @@ export default function AdminClipsDashboard() {
                   <p className="adm-card__ip">{sub.submitter_ip}</p>
                 </div>
 
-                {filter === "pending" && (
+                {tab === "pending" && (
                   <div className="adm-card__actions">
                     <button
                       className="adm-btn adm-btn--approve"
