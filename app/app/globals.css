@@ -285,8 +285,8 @@ body {
 }
 
 /* ══════════════════════════════════════════════════════════════════════════ */
-/* CLIP FEED LAYOUT — 3-column full-screen                                    */
-/* left: game filters | center: player | right: comments                     */
+/* CLIP FEED LAYOUT — 2-column (games sidebar + player, comments as overlay)  */
+/* left: game filters | center: player                                        */
 /* ══════════════════════════════════════════════════════════════════════════ */
 .cf-layout {
   display: flex;
@@ -295,20 +295,21 @@ body {
   overflow: hidden;
 }
 
-/* Left panel: game filters */
+/* Left panel: game filters — flexible, fills space not taken by the video */
 .cf-games-panel {
-  width: 220px;
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 180px;
+  max-width: 400px;
   height: 100%;
   overflow-y: auto;
   border-right: 1px solid var(--color-border);
   background: var(--color-surface);
 }
 
-/* Center: video fills all remaining width */
+/* Center: video — exact 9:16 width for the available height, clamped for extreme screens */
 .cf-video-area {
-  flex: 1;
-  min-width: 0;
+  width: clamp(300px, calc((100dvh - var(--header-h)) * 9 / 16), 540px);
+  flex-shrink: 0;
   height: 100%;
   background: #000;
   display: flex;
@@ -1245,6 +1246,9 @@ kbd {
   .cp-autoscroll-label { display: none; }
   .cp-autoscroll-btn { right: 70px; padding: 0 10px; min-width: 46px; }
 
+  /* Video fills full width — sidebar is overlay */
+  .cf-video-area { width: 100%; flex: 1; }
+
   /* Panels become fixed overlays */
   .cf-games-panel {
     position: fixed;
@@ -1292,6 +1296,9 @@ kbd {
 @media (orientation: landscape) and (max-height: 600px) {
   /* Reveal burger button */
   .cf-burger-btn   { display: flex; }
+
+  /* Video fills full width — sidebar is overlay */
+  .cf-video-area { width: 100%; flex: 1; }
 
   /* Games panel — left overlay (same as portrait mobile) */
   .cf-games-panel {
