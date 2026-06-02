@@ -295,21 +295,20 @@ body {
   overflow: hidden;
 }
 
-/* Left panel: game filters — flexible, fills space not taken by the video */
+/* Left panel: game filters */
 .cf-games-panel {
-  flex: 1;
-  min-width: 180px;
-  max-width: 400px;
+  width: clamp(200px, 18vw, 320px);
+  flex-shrink: 0;
   height: 100%;
   overflow-y: auto;
   border-right: 1px solid var(--color-border);
   background: var(--color-surface);
 }
 
-/* Center: video — exact 9:16 width for the available height, clamped for extreme screens */
+/* Center: video fills all remaining width */
 .cf-video-area {
-  width: clamp(300px, calc((100dvh - var(--header-h)) * 9 / 16), 540px);
-  flex-shrink: 0;
+  flex: 1;
+  min-width: 0;
   height: 100%;
   background: #000;
   display: flex;
@@ -542,6 +541,17 @@ body {
   flex-shrink: 0;
 }
 
+/* Blurred ambient background — fills letterbox areas with a soft version of the thumbnail */
+.cp-feed-bg-blur {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+  filter: blur(28px) brightness(0.45);
+  transform: scale(1.08); /* prevent blur edge halos */
+}
+
 /* Thumbnail/color overlay shown before video plays — sits above video, hidden on play */
 .cp-feed-preplay {
   position: absolute;
@@ -553,13 +563,15 @@ body {
   transition: opacity 0.25s;
 }
 
-/* Video: contained + centered, black letterbox */
+/* Video: contained + centered, ambient background fills the letterbox areas */
 .cp-feed-video {
   width: 100%;
   height: 100%;
   display: block;
   object-fit: contain;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 }
 
 /* ── Splash intro slide ───────────────────────────────────────────────── */
@@ -1246,9 +1258,6 @@ kbd {
   .cp-autoscroll-label { display: none; }
   .cp-autoscroll-btn { right: 70px; padding: 0 10px; min-width: 46px; }
 
-  /* Video fills full width — sidebar is overlay */
-  .cf-video-area { width: 100%; flex: 1; }
-
   /* Panels become fixed overlays */
   .cf-games-panel {
     position: fixed;
@@ -1296,9 +1305,6 @@ kbd {
 @media (orientation: landscape) and (max-height: 600px) {
   /* Reveal burger button */
   .cf-burger-btn   { display: flex; }
-
-  /* Video fills full width — sidebar is overlay */
-  .cf-video-area { width: 100%; flex: 1; }
 
   /* Games panel — left overlay (same as portrait mobile) */
   .cf-games-panel {

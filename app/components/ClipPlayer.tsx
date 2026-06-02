@@ -460,6 +460,15 @@ export default function ClipPlayer({
                 <div className="cp-speed-badge">2×</div>
               )}
 
+              {/* Blurred ambient background — fills letterbox areas on wide screens */}
+              <div
+                className="cp-feed-bg-blur"
+                style={clip.thumbnailUrl
+                  ? { backgroundImage: `url("${clip.thumbnailUrl}")` }
+                  : { background: game.color }
+                }
+              />
+
               {/* Thumbnail/color overlay — visible before first play, hidden once video plays */}
               <div
                 className="cp-feed-preplay"
