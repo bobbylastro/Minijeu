@@ -30,7 +30,7 @@ const sora = Sora({
 const BASE_URL = "https://ultimate-playground.com";
 
 export const viewport: Viewport = {
-  themeColor: "#0f0c1a",
+  themeColor: "#0a0a0f",
   width: "device-width",
   initialScale: 1,
 };
@@ -39,25 +39,25 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
     template: "%s | Ultimate Playground",
-    default: "Ultimate Playground — Free Online Quiz & Mini Games",
+    default: "Ultimate Playground — The best gaming clips right now",
   },
   description:
-    "Play free online quiz and mini games — geography, sports, food culture, history and more. Challenge friends in real-time multiplayer. No download, no account needed.",
+    "Watch the best Valorant, Apex Legends, Marvel Rivals, The Finals, Rocket League and Rainbow Six Siege clips. Curated automatically, fresh clips every week.",
   openGraph: {
     type: "website",
     siteName: "Ultimate Playground",
-    title: "Ultimate Playground — Free Online Quiz & Mini Games",
+    title: "Ultimate Playground — The best gaming clips right now",
     description:
-      "Play free online quiz and mini games — geography, sports, food culture, history and more. Challenge friends in real-time multiplayer.",
+      "The best Valorant, Apex, Marvel Rivals, The Finals, Rocket League and R6 Siege clips — curated automatically.",
     url: BASE_URL,
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "Ultimate Playground" }],
+    images: [{ url: "/og-gamingclips.png", width: 1200, height: 630, alt: "Ultimate Playground" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Ultimate Playground — Free Online Quiz & Mini Games",
+    title: "Ultimate Playground — The best gaming clips right now",
     description:
-      "Geography, sports, food & culture quiz games. Solo or multiplayer, free, no download.",
-    images: ["/opengraph-image"],
+      "Valorant, Apex, Marvel Rivals, The Finals, Rocket League, R6 Siege. The best clips, every week.",
+    images: ["/og-gamingclips.png"],
   },
   robots: { index: true, follow: true },
 };
@@ -70,19 +70,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bebasNeue.variable} ${dmMono.variable} ${sora.variable}`}>
       <head>
-        {/* Preconnect to key external services to reduce latency */}
         {process.env.NEXT_PUBLIC_SUPABASE_URL && (
           <link rel="preconnect" href={new URL(process.env.NEXT_PUBLIC_SUPABASE_URL).origin} />
-        )}
-        {process.env.NEXT_PUBLIC_PARTYKIT_HOST && (
-          <link rel="dns-prefetch" href={`https://${process.env.NEXT_PUBLIC_PARTYKIT_HOST}`} />
         )}
         <JsonLd data={{
           "@context": "https://schema.org",
           "@type": "WebSite",
           "name": "Ultimate Playground",
           "url": BASE_URL,
-          "description": "Play free online quiz and mini games — geography, sports, food, culture and more. Challenge friends in real-time multiplayer.",
+          "description": "The best gaming clips — Valorant, Apex, CS2, LoL, Minecraft, GTA V, Rust, Overwatch and more.",
           "inLanguage": "en",
           "publisher": {
             "@type": "Organization",
@@ -91,7 +87,7 @@ export default function RootLayout({
           },
         }} />
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Providers>
           <Header />
           {children}
