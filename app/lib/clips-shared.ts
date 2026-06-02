@@ -13,8 +13,7 @@ export type GameSlug =
   | "gta-v"
   | "minecraft"
   | "overwatch"
-  | "arc-raiders"
-  | "tft";
+  | "arc-raiders";
 
 export interface GameMeta {
   name: string;
@@ -36,7 +35,6 @@ export const GAMES: Record<GameSlug, GameMeta> = {
   "minecraft":          { name: "Minecraft",            color: "#5b8c2a", textColor: "#fff" },
   "overwatch":          { name: "Overwatch",            color: "#f99e1a", textColor: "#000" },
   "arc-raiders":        { name: "ARC Raiders",          color: "#00b4d8", textColor: "#000" },
-  "tft":                { name: "TFT",                  color: "#0ac8b9", textColor: "#000" },
 };
 
 export const GAME_SLUGS = Object.keys(GAMES) as GameSlug[];
