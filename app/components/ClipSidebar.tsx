@@ -6,9 +6,10 @@ interface Props {
   selected: Set<GameSlug>;
   onToggle: (game: GameSlug) => void;
   onClearAll: () => void;
+  onSelectAll: () => void;
 }
 
-export default function ClipSidebar({ selected, onToggle, onClearAll }: Props) {
+export default function ClipSidebar({ selected, onToggle, onClearAll, onSelectAll }: Props) {
   const [query, setQuery] = useState("");
   const [logoErrors, setLogoErrors] = useState<Set<string>>(new Set());
   const [popularity, setPopularity] = useState<GameSlug[]>([]);
@@ -121,7 +122,12 @@ export default function ClipSidebar({ selected, onToggle, onClearAll }: Props) {
       {selected.size > 0 && (
         <div className="cs-active-summary">
           <span>{selected.size} game{selected.size > 1 ? "s" : ""} selected</span>
-          <button className="cs-clear-btn" onClick={onClearAll}>Clear</button>
+          <div className="cs-summary-actions">
+            {selected.size < GAME_SLUGS.length && (
+              <button className="cs-clear-btn" onClick={onSelectAll}>Select all</button>
+            )}
+            <button className="cs-clear-btn" onClick={onClearAll}>Clear</button>
+          </div>
         </div>
       )}
     </aside>

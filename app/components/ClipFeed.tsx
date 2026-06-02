@@ -27,89 +27,84 @@ interface Props {
 export default function ClipFeed({ clips }: Props) {
   const { user } = useAuth();
 
-  const seenIdsRef = useRef<Set<string>>(new Set());
-
-  const [feedClips, setFeedClips] = useState<Clip[]>(() => {
-    const initial = shuffle(clips);
-    for (const c of initial) seenIdsRef.current.add(c.id);
-    return initial;
-  });
-
-  const [selectedGames, setSelectedGames] = useState<Set<GameSlug>>(new Set());
-  const prevGamesRef   = useRef<Set<GameSlug>>(new Set());
-  const [activeClip,   setActiveClip]   = useState<Clip | null>(clips[0] ?? null);
+  const [feedClips,    setFeedClips]    = useState<Clip[]>(clips);
+  const [selectedGames,setSelectedGames]= useState<Set<GameSlug>>(new Set());
+  const [activeClip,   setActiveClip]   = useState<Clip | null>(null);
   const [likedIds,     setLikedIds]     = useState<Set<string>>(new Set());
   const [authOpen,     setAuthOpen]     = useState(false);
   const [gameMenuOpen, setGameMenuOpen] = useState(false);
   const [commentsOpen, setCommentsOpen] = useState(false);
+  const [feedLoading,  setFeedLoading]  = useState(false);
+  const [feedKey,      setFeedKey]      = useState(0);
 
-  // Close panels on desktop resize
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  // Client-side shuffle after mount (avoids SSR hydration mismatch)
+  useEffect(() => {
+    setFeedClips(shuffle(clips));
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Close overlays when switching layout mode (desktop or landscape mobile)
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 768) {
-        setGameMenuOpen(false);
-        setCommentsOpen(false);
-      }
+      // Close panels when entering desktop layout OR landscape mobile layout
+      // (layout changes require panels to reset — user re-opens if needed)
+      const isPortraitMobile = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+      if (!isPortraitMobile) { setGameMenuOpen(false); setCommentsOpen(false); }
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  // Update feed when filter changes — never remounts the player
-  useEffect(() => {
-    const prev = prevGamesRef.current;
-    const curr = selectedGames;
-
-    const added   = GAME_SLUGS.filter((g) => curr.has(g) && !prev.has(g));
-    const removed = GAME_SLUGS.filter((g) => !curr.has(g) && prev.has(g));
-
-    setFeedClips((current) => {
-      let next = [...current];
-
-      if (removed.length > 0) {
-        const removedSet = new Set(removed);
-        const activeIdx  = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
-        next = next.filter((c, i) => {
-          if (!removedSet.has(c.game as GameSlug)) return true;
-          if (i <= activeIdx) return true;
-          return false;
-        });
+  // Fetch clips for the current game selection and refresh the feed
+  const refreshFeed = useCallback(async (games: Set<GameSlug>) => {
+    setFeedLoading(true);
+    try {
+      let fresh: Clip[];
+      if (games.size === 0) {
+        const res  = await fetch("/api/clips");
+        const data = await res.json();
+        fresh = shuffle(data.clips ?? []);
+      } else {
+        const results = await Promise.all(
+          Array.from(games).map((g) =>
+            fetch(`/api/clips?game=${g}`).then((r) => r.json()).then((d) => d.clips ?? [])
+          )
+        );
+        fresh = shuffle((results.flat() as Clip[]));
       }
-
-      let toAdd: Clip[] = [];
-      if (added.length > 0) {
-        const addedSet = new Set(added);
-        toAdd = clips.filter((c) => addedSet.has(c.game as GameSlug) && !seenIdsRef.current.has(c.id));
-      } else if (curr.size === 0 && prev.size > 0) {
-        toAdd = clips.filter((c) => !seenIdsRef.current.has(c.id));
-      }
-
-      if (toAdd.length > 0) {
-        for (const c of toAdd) seenIdsRef.current.add(c.id);
-        const activeIdx = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
-        const played    = next.slice(0, activeIdx + 1);
-        const remaining = next.slice(activeIdx + 1);
-        next = [...played, ...shuffle([...remaining, ...toAdd])];
-      }
-
-      return next;
-    });
-
-    prevGamesRef.current = new Set(curr);
-  }, [selectedGames, clips, activeClip]);
+      setFeedClips(fresh);
+      setFeedKey((k) => k + 1); // remount player at top
+    } catch { /* keep existing feed on error */ }
+    finally { setFeedLoading(false); }
+  }, []);
 
   const handleToggleGame = useCallback((game: GameSlug) => {
     setSelectedGames((prev) => {
       const next = new Set(prev);
       if (next.has(game)) next.delete(game); else next.add(game);
       trackGameFilter(next.size === 0 ? null : game);
+
+      // Debounce: wait 400ms after last toggle before fetching
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+      debounceRef.current = setTimeout(() => refreshFeed(next), 400);
+
       return next;
     });
-  }, []);
+  }, [refreshFeed]);
 
   const handleClearAll = useCallback(() => {
     setSelectedGames(new Set());
-  }, []);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    refreshFeed(new Set());
+  }, [refreshFeed]);
+
+  const handleSelectAll = useCallback(() => {
+    const all = new Set(GAME_SLUGS);
+    setSelectedGames(all);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    refreshFeed(all);
+  }, [refreshFeed]);
 
   const handleLikeToggle = useCallback(async (clipId: string) => {
     const clip     = feedClips.find((c) => c.id === clipId);
@@ -139,25 +134,24 @@ export default function ClipFeed({ clips }: Props) {
   return (
     <div className="cf-layout">
 
-      {/* ── Backdrop overlay (mobile) ───────────────────────────── */}
+      {/* Backdrop overlay (mobile) */}
       <div
         className={`cf-overlay${gameMenuOpen || commentsOpen ? " is-open" : ""}`}
         onClick={closeAll}
       />
 
-      {/* ── Left: game filters ──────────────────────────────────── */}
+      {/* Left: game filters */}
       <aside className={`cf-games-panel${gameMenuOpen ? " is-open" : ""}`}>
         <ClipSidebar
           selected={selectedGames}
           onToggle={handleToggleGame}
           onClearAll={handleClearAll}
+          onSelectAll={handleSelectAll}
         />
       </aside>
 
-      {/* ── Center: TikTok-style scroll feed ────────────────────── */}
+      {/* Center: video feed */}
       <div className="cf-video-area">
-
-        {/* Burger button — mobile only */}
         <button
           className="cf-burger-btn"
           onClick={() => setGameMenuOpen((v) => !v)}
@@ -170,8 +164,16 @@ export default function ClipFeed({ clips }: Props) {
           </svg>
         </button>
 
+        {feedLoading && (
+          <div className="cf-feed-loading">
+            <span className="cf-feed-loading__spinner" />
+          </div>
+        )}
+
         <ClipPlayer
+          key={feedKey}
           clips={feedClips}
+          skipSplash={selectedGames.size > 0}
           likedClipIds={likedIds}
           onLikeToggle={handleLikeToggle}
           onAuthRequired={() => setAuthOpen(true)}
@@ -181,15 +183,13 @@ export default function ClipFeed({ clips }: Props) {
         />
       </div>
 
-      {/* ── Right: comments ─────────────────────────────────────── */}
+      {/* Right: comments */}
       <aside className={`cf-comments-panel${commentsOpen ? " is-open" : ""}`}>
-        {/* Mobile handle + close */}
         <div className="cf-sheet-handle" />
         <div className="cf-sheet-header">
           <span className="cf-sheet-header__title">Comments</span>
           <button className="cf-sheet-close" onClick={() => setCommentsOpen(false)} aria-label="Close">×</button>
         </div>
-
         {activeClip ? (
           <ClipComments
             clipId={activeClip.id}

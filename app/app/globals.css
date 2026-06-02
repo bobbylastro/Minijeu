@@ -489,6 +489,11 @@ body {
   font-family: var(--font-sora), sans-serif;
   margin-top: 4px;
 }
+.cs-summary-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .cs-clear-btn {
   background: none;
   border: none;
@@ -527,6 +532,17 @@ body {
   background: #000;
   overflow: hidden;
   flex-shrink: 0;
+}
+
+/* Thumbnail/color overlay shown before video plays — sits above video, hidden on play */
+.cp-feed-preplay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  transition: opacity 0.25s;
 }
 
 /* Video: contained + centered, black letterbox */
@@ -1093,6 +1109,29 @@ kbd {
 /* MOBILE RESPONSIVE                                                          */
 /* ══════════════════════════════════════════════════════════════════════════ */
 
+/* Feed loading overlay */
+.cf-feed-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(4px);
+}
+.cf-feed-loading__spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid rgba(255,255,255,0.15);
+  border-top-color: #a5b4fc;
+  animation: cfSpin 0.7s linear infinite;
+}
+@keyframes cfSpin {
+  to { transform: rotate(360deg); }
+}
+
 /* Burger button — visible only on mobile */
 .cf-burger-btn {
   display: none;
@@ -1243,6 +1282,52 @@ kbd {
   /* Splash shortcuts hidden on mobile */
   .cp-splash__shortcuts { display: none; }
   .cp-splash__sub { font-size: 12px; }
+}
+
+/* ── Mobile landscape — burger + right sidebar for comments ─────────────── */
+/* Targets phones/small tablets rotated landscape (wide but short)           */
+@media (orientation: landscape) and (max-height: 600px) {
+  /* Reveal burger + comment buttons */
+  .cf-burger-btn   { display: flex; }
+  .cp-feed-comment { display: flex; }
+  .cf-sheet-header { display: flex; }
+  .cf-sheet-handle { display: none; }
+
+  /* Games panel — left overlay (same as portrait mobile) */
+  .cf-games-panel {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 280px;
+    height: 100%;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid var(--color-border);
+  }
+  .cf-games-panel.is-open { transform: translateX(0); }
+
+  /* Comments panel — right sidebar (slides in from right, not bottom sheet) */
+  .cf-comments-panel {
+    position: fixed;
+    right: 0; top: 0; bottom: 0;
+    width: 300px;
+    height: 100%;
+    border-left: 1px solid var(--color-border);
+    border-top: none;
+    border-radius: 0;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 200;
+    flex-direction: column;
+  }
+  .cf-comments-panel.is-open { transform: translateX(0); }
+
+  /* Overlay */
+  .cf-overlay.is-open { display: block; }
+
+  /* Autoscroll label hidden to save space */
+  .cp-autoscroll-label { display: none; }
+  .cp-autoscroll-btn { right: 70px; padding: 0 10px; min-width: 46px; }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════ */

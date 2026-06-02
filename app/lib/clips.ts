@@ -80,10 +80,12 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
   const supabase = createServiceClient();
 
   // Clips + user prefs in parallel
+  // Fetch recent clips, then cap per-game for diversity
   let clipsQuery = supabase
     .from("clips")
     .select("id, title, game, video_url, thumbnail_url, source, likes_count, created_at")
-    .limit(20);
+    .order("created_at", { ascending: false })
+    .limit(opts.game ? 20 : 200);
   if (opts.game) clipsQuery = clipsQuery.eq("game", opts.game);
 
   const [{ data: clipsData, error: clipsError }, gamePrefs] = await Promise.all([
@@ -96,17 +98,27 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
     return opts.game ? fallback.filter((c) => c.game === opts.game) : fallback;
   }
 
+  // Cap at 5 clips per game to ensure diversity across all games
+  let sampledData = clipsData;
+  if (!opts.game) {
+    const perGame: Record<string, number> = {};
+    sampledData = clipsData.filter((c) => {
+      perGame[c.game] = (perGame[c.game] ?? 0) + 1;
+      return perGame[c.game] <= 5;
+    });
+  }
+
   // Fetch scores (needs clip IDs)
   const { data: scoresData } = await supabase
     .from("clip_scores")
     .select("clip_id, view_count, avg_watch_ratio, score")
-    .in("clip_id", clipsData.map((c) => c.id));
+    .in("clip_id", sampledData.map((c) => c.id));
 
   const scoresMap = new Map<string, ClipScore>();
   for (const s of scoresData ?? []) scoresMap.set(s.clip_id, s);
 
   // Compute final score per clip
-  const scored = clipsData.map((row) => {
+  const scored = sampledData.map((row) => {
     const s = scoresMap.get(row.id) ?? { clip_id: row.id, view_count: 0, avg_watch_ratio: 0, score: 0 };
     const base = computeScore(s, row.created_at);
     // Personal boost: up to +4 for preferred games (0-1 range scaled)

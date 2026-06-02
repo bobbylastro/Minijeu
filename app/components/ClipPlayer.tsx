@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, useCallback } from "react";
+import { useEffect, useLayoutEffect, useRef, useState, useCallback } from "react";
 import type { Clip } from "@/lib/clips-shared";
 import { GAMES } from "@/lib/clips-shared";
 import { sendWatchEvent } from "@/lib/watch";
@@ -13,6 +13,9 @@ interface Props {
   isLoggedIn: boolean;
   onActiveClipChange: (clip: Clip | null) => void;
   onCommentClick?: () => void;
+  scrollToClipId?: string | null;
+  onScrolledToClip?: () => void;
+  skipSplash?: boolean;
 }
 
 export default function ClipPlayer({
@@ -23,8 +26,12 @@ export default function ClipPlayer({
   isLoggedIn,
   onActiveClipChange,
   onCommentClick,
+  scrollToClipId,
+  onScrolledToClip,
+  skipSplash,
 }: Props) {
   const scrollRef          = useRef<HTMLDivElement>(null);
+  const splashRef          = useRef<HTMLDivElement>(null);
   const videoRefs          = useRef<Map<string, HTMLVideoElement>>(new Map());
   const progressRefs       = useRef<Map<string, HTMLDivElement>>(new Map());
   const activeIdRef        = useRef<string | null>(null);
@@ -32,8 +39,11 @@ export default function ClipPlayer({
   const autoScrollRef      = useRef(true);
   const autoScrollDoneRef  = useRef<Set<string>>(new Set());
   const autoScrollCountRef = useRef(0); // consecutive auto-scrolls, resets on user interaction
+  const splashPassedRef    = useRef(false);
+  const isPeekingRef       = useRef(false);
 
   const [activeId,    setActiveId]    = useState<string | null>(clips[0]?.id ?? null);
+  const [splashPassed, setSplashPassed] = useState(false);
   const [muted,       setMuted]       = useState(true);
   const [toastId,     setToastId]     = useState<string | null>(null);
   const [autoScroll,  setAutoScrollUI] = useState<boolean>(() => {
@@ -61,34 +71,43 @@ export default function ClipPlayer({
 
   // ── Looping peek ─────────────────────────────────────────────────────────
   useEffect(() => {
+    if (skipSplash) return; // splash is skipped, no peek needed
     const container = scrollRef.current;
     if (!container) return;
 
     let stopped = false;
-    let isPeeking = false;
     const timers: ReturnType<typeof setTimeout>[] = [];
 
-    const onUserScroll = () => {
-      if (isPeeking) return;
+    const stopPeek = () => {
+      if (stopped) return;
       stopped = true;
       timers.forEach(clearTimeout);
       container.style.scrollSnapType = "";
-      container.removeEventListener("scroll", onUserScroll);
+      isPeekingRef.current = false;
     };
-    container.addEventListener("scroll", onUserScroll);
+
+    // Detect only genuine user input — programmatic scrollTo() won't fire wheel/touch
+    const onWheel     = () => stopPeek();
+    const onTouch     = () => stopPeek();
+    const onKey       = (e: KeyboardEvent) => {
+      if (["ArrowDown", "ArrowUp", " "].includes(e.key)) stopPeek();
+    };
+    container.addEventListener("wheel",      onWheel, { capture: true, passive: true });
+    container.addEventListener("touchstart", onTouch, { capture: true, passive: true });
+    document.addEventListener("keydown",     onKey,   { capture: true });
 
     const runPeek = () => {
       if (stopped) return;
-      isPeeking = true;
+      isPeekingRef.current = true;
       container.style.scrollSnapType = "none";
       container.scrollTo({ top: Math.round(container.clientHeight * 0.5), behavior: "smooth" });
 
       timers.push(setTimeout(() => {
-        if (stopped) { container.style.scrollSnapType = ""; isPeeking = false; return; }
+        if (stopped) { container.style.scrollSnapType = ""; isPeekingRef.current = false; return; }
         container.scrollTo({ top: 0, behavior: "smooth" });
         timers.push(setTimeout(() => {
-          isPeeking = false;
-          if (stopped) { container.style.scrollSnapType = ""; return; }
+          if (stopped) { container.style.scrollSnapType = ""; isPeekingRef.current = false; return; }
+          isPeekingRef.current = false;
           container.style.scrollSnapType = "";
           timers.push(setTimeout(runPeek, 2000));
         }, 800));
@@ -101,7 +120,10 @@ export default function ClipPlayer({
       stopped = true;
       timers.forEach(clearTimeout);
       container.style.scrollSnapType = "";
-      container.removeEventListener("scroll", onUserScroll);
+      isPeekingRef.current = false;
+      container.removeEventListener("wheel",      onWheel, { capture: true });
+      container.removeEventListener("touchstart", onTouch, { capture: true });
+      document.removeEventListener("keydown",     onKey,   { capture: true });
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -117,7 +139,13 @@ export default function ClipPlayer({
           if (!id) continue;
 
           if (id === "__splash__") {
-            if (entry.isIntersecting) setActiveId("__splash__");
+            if (entry.isIntersecting) {
+              setActiveId("__splash__");
+            } else if (!splashPassedRef.current && !isPeekingRef.current) {
+              // Only collapse if user actually scrolled (not during peek animation)
+              splashPassedRef.current = true;
+              setSplashPassed(true);
+            }
             continue;
           }
 
@@ -147,6 +175,9 @@ export default function ClipPlayer({
               sendWatchEvent(id, watchedSec, ratio);
             }
             if (video) { video.pause(); video.currentTime = 0; }
+            // Restore preplay overlay so thumbnail shows again on next scroll-to
+            const preplay = container.querySelector<HTMLElement>(`[data-clip-preplay="${id}"]`);
+            if (preplay) preplay.style.opacity = "1";
           }
         }
       },
@@ -237,12 +268,49 @@ export default function ClipPlayer({
   }, [muted]);
 
   // ── Reset + notify parent ─────────────────────────────────────────────────
-  // activeId resets happen via feedKey (ClipPlayer remounts) — no effect needed here
-
   useEffect(() => {
     if (activeId === "__splash__") { onActiveClipChange?.(null); return; }
     onActiveClipChange?.(clips.find((c) => c.id === activeId) ?? null);
   }, [activeId, clips, onActiveClipChange]);
+
+  // ── Skip splash on mount (when a game filter is active) ─────────────────
+  useEffect(() => {
+    if (!skipSplash || !scrollRef.current) return;
+    const container = scrollRef.current;
+    requestAnimationFrame(() => {
+      const firstClip = container.querySelector<HTMLElement>('[data-clip-id]:not([data-clip-id="__splash__"])');
+      firstClip?.scrollIntoView();
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // ── Collapse splash once passed (can't scroll back) ──────────────────────
+  useLayoutEffect(() => {
+    if (!splashPassed || !splashRef.current || !scrollRef.current) return;
+    const splash = splashRef.current;
+    const container = scrollRef.current;
+    const splashHeight = splash.offsetHeight;
+    // Disable scroll anchoring so browser doesn't auto-adjust scrollTop
+    container.style.overflowAnchor = "none";
+    // Collapse the splash out of the scroll flow
+    splash.style.height = "0";
+    splash.style.minHeight = "0";
+    splash.style.overflow = "hidden";
+    splash.style.scrollSnapAlign = "none";
+    splash.style.scrollSnapStop = "unset";
+    // Compensate scrollTop so visual position stays on current clip
+    container.scrollTop -= splashHeight;
+    container.style.overflowAnchor = "";
+  }, [splashPassed]);
+
+  // ── External scroll-to (used by filter to skip non-matching clips) ─────────
+  useEffect(() => {
+    if (!scrollToClipId || !scrollRef.current) return;
+    const el = scrollRef.current.querySelector<HTMLElement>(`[data-clip-id="${scrollToClipId}"]`);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      onScrolledToClip?.();
+    }
+  }, [scrollToClipId, onScrolledToClip]);
 
   // ── Share ─────────────────────────────────────────────────────────────────
   const handleShare = useCallback((clipId: string) => {
@@ -346,7 +414,7 @@ export default function ClipPlayer({
 
       <div className="cp-scroll-feed" ref={scrollRef}>
         {/* ── Splash intro slide ───────────────────────────────── */}
-        <div className="cp-feed-item cp-splash" data-clip-id="__splash__">
+        <div className="cp-feed-item cp-splash" data-clip-id="__splash__" ref={splashRef}>
           <div className="cp-splash__orb cp-splash__orb--a" />
           <div className="cp-splash__orb cp-splash__orb--b" />
           <div className="cp-splash__orb cp-splash__orb--c" />
@@ -374,7 +442,7 @@ export default function ClipPlayer({
         </div>
 
         {/* ── Clip items ───────────────────────────────────────── */}
-        {clips.map((clip) => {
+        {clips.map((clip, index) => {
           const game  = GAMES[clip.game];
           const liked = likedClipIds.has(clip.id);
 
@@ -391,6 +459,17 @@ export default function ClipPlayer({
               {speed2xId === clip.id && (
                 <div className="cp-speed-badge">2×</div>
               )}
+
+              {/* Thumbnail/color overlay — visible before first play, hidden once video plays */}
+              <div
+                className="cp-feed-preplay"
+                data-clip-preplay={clip.id}
+                style={clip.thumbnailUrl
+                  ? { backgroundImage: `url("${clip.thumbnailUrl}")` }
+                  : { background: `linear-gradient(180deg, ${game.color}55 0%, rgba(0,0,0,0.85) 100%)` }
+                }
+              />
+
               <video
                 ref={(el) => {
                   if (el) { videoRefs.current.set(clip.id, el); el.muted = muted; }
@@ -399,9 +478,13 @@ export default function ClipPlayer({
                 className="cp-feed-video"
                 loop
                 playsInline
-                preload="none"
+                preload={index === 0 ? "auto" : "none"}
                 poster={clip.thumbnailUrl ?? undefined}
                 onClick={() => togglePlay(clip.id)}
+                onPlay={() => {
+                  const preplay = scrollRef.current?.querySelector<HTMLElement>(`[data-clip-preplay="${clip.id}"]`);
+                  if (preplay) preplay.style.opacity = "0";
+                }}
               >
                 <source src={clip.videoUrl} />
               </video>
