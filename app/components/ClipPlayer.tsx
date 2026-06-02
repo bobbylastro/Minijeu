@@ -429,7 +429,7 @@ export default function ClipPlayer({
             </p>
             <div className="cp-splash__shortcuts">
               <span className="cp-splash__shortcut"><kbd>Space</kbd> Play / Pause</span>
-              <span className="cp-splash__shortcut"><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+              <span className="cp-splash__shortcut"><kbd>↑</kbd><kbd>↓</kbd> or scroll</span>
             </div>
           </div>
 
