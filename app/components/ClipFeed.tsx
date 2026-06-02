@@ -27,63 +27,72 @@ interface Props {
 export default function ClipFeed({ clips }: Props) {
   const { user } = useAuth();
 
-  // Feed state — managed separately from selectedGames to support append
-  const [feedClips, setFeedClips] = useState<Clip[]>(() => shuffle(clips));
-  const [feedKey, setFeedKey]     = useState(0); // increment → ClipPlayer remounts (full reset)
+  // Track all clip IDs ever added to the feed — never re-add them
+  const seenIdsRef = useRef<Set<string>>(new Set());
 
-  // Game filter state
+  const [feedClips, setFeedClips] = useState<Clip[]>(() => {
+    const initial = shuffle(clips);
+    for (const c of initial) seenIdsRef.current.add(c.id);
+    return initial;
+  });
+
   const [selectedGames, setSelectedGames] = useState<Set<GameSlug>>(new Set());
-  const prevGamesRef = useRef<Set<GameSlug>>(new Set());
+  const prevGamesRef   = useRef<Set<GameSlug>>(new Set());
+  const [activeClip, setActiveClip] = useState<Clip | null>(clips[0] ?? null);
+  const [likedIds,   setLikedIds]   = useState<Set<string>>(new Set());
+  const [authOpen,   setAuthOpen]   = useState(false);
 
-  // Update feed when filter changes
+  // Update feed when filter changes — never remounts the player
   useEffect(() => {
     const prev = prevGamesRef.current;
     const curr = selectedGames;
 
-    if (curr.size === 0) {
-      // Cleared → full shuffled feed, remount player
-      setFeedClips(shuffle(clips));
-      setFeedKey((k) => k + 1);
-      prevGamesRef.current = new Set();
-      return;
-    }
-
     const added   = GAME_SLUGS.filter((g) => curr.has(g) && !prev.has(g));
     const removed = GAME_SLUGS.filter((g) => !curr.has(g) && prev.has(g));
 
-    if (prev.size === 0) {
-      // First filter applied → replace with shuffled selection, remount player
-      setFeedClips(shuffle(clips.filter((c) => curr.has(c.game as GameSlug))));
-      setFeedKey((k) => k + 1);
-    } else {
-      setFeedClips((current) => {
-        let next = [...current];
-        if (removed.length > 0) {
-          const removedSet = new Set(removed);
-          next = next.filter((c) => !removedSet.has(c.game as GameSlug));
-        }
-        if (added.length > 0) {
-          const addedSet = new Set(added);
-          const toAdd = shuffle(clips.filter((c) => addedSet.has(c.game as GameSlug)));
-          next = [...next, ...toAdd];
-        }
-        return next;
-      });
-      // No feedKey change — player keeps its scroll position
-    }
+    setFeedClips((current) => {
+      let next = [...current];
+
+      // Remove clips of deselected games that are after the active clip
+      if (removed.length > 0) {
+        const removedSet  = new Set(removed);
+        const activeIdx   = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
+        next = next.filter((c, i) => {
+          if (!removedSet.has(c.game as GameSlug)) return true; // keep other games
+          if (i <= activeIdx) return true;                       // keep already-played clips
+          return false;
+        });
+      }
+
+      // Inject unseen clips for newly added games (or clear-all)
+      // Shuffle new clips INTO the remaining (unplayed) portion of the feed
+      let toAdd: Clip[] = [];
+      if (added.length > 0) {
+        const addedSet = new Set(added);
+        toAdd = clips.filter((c) => addedSet.has(c.game as GameSlug) && !seenIdsRef.current.has(c.id));
+      } else if (curr.size === 0 && prev.size > 0) {
+        toAdd = clips.filter((c) => !seenIdsRef.current.has(c.id));
+      }
+
+      if (toAdd.length > 0) {
+        for (const c of toAdd) seenIdsRef.current.add(c.id);
+        const activeIdx  = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
+        const played     = next.slice(0, activeIdx + 1);
+        const remaining  = next.slice(activeIdx + 1);
+        next = [...played, ...shuffle([...remaining, ...toAdd])];
+      }
+
+      return next;
+    });
 
     prevGamesRef.current = new Set(curr);
-  }, [selectedGames, clips]);
-
-  const [activeClip, setActiveClip] = useState<Clip | null>(clips[0] ?? null);
-  const [likedIds, setLikedIds]     = useState<Set<string>>(new Set());
-  const [authOpen, setAuthOpen]     = useState(false);
+  }, [selectedGames, clips, activeClip]);
 
   const handleToggleGame = useCallback((game: GameSlug) => {
     setSelectedGames((prev) => {
       const next = new Set(prev);
       if (next.has(game)) next.delete(game); else next.add(game);
-      trackGameFilter(next.has(game) ? null : game);
+      trackGameFilter(next.size === 0 ? null : game);
       return next;
     });
   }, []);
@@ -93,7 +102,7 @@ export default function ClipFeed({ clips }: Props) {
   }, []);
 
   const handleLikeToggle = useCallback(async (clipId: string) => {
-    const clip = feedClips.find((c) => c.id === clipId);
+    const clip     = feedClips.find((c) => c.id === clipId);
     const wasLiked = likedIds.has(clipId);
     setLikedIds((prev) => {
       const next = new Set(prev);
@@ -126,7 +135,6 @@ export default function ClipFeed({ clips }: Props) {
       {/* ── Center: TikTok-style scroll feed ────────────────────── */}
       <div className="cf-video-area">
         <ClipPlayer
-          key={feedKey}
           clips={feedClips}
           likedClipIds={likedIds}
           onLikeToggle={handleLikeToggle}
