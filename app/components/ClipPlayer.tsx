@@ -443,7 +443,7 @@ export default function ClipPlayer({
 
         {/* ── Clip items ───────────────────────────────────────── */}
         {clips.map((clip, index) => {
-          const game  = GAMES[clip.game];
+          const game  = GAMES[clip.game] ?? { name: clip.game, color: "#555", textColor: "#fff" };
           const liked = likedClipIds.has(clip.id);
 
           return (
