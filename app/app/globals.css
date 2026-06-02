@@ -1325,6 +1325,11 @@ kbd {
   /* Overlay */
   .cf-overlay.is-open { display: block; }
 
+  /* Hide header — clips take the full screen */
+  .gc-header      { display: none; }
+  .gc-main        { padding-top: 0; }
+  .gc-player-zone { height: 100dvh; }
+
   /* Autoscroll label hidden to save space */
   .cp-autoscroll-label { display: none; }
   .cp-autoscroll-btn { right: 70px; padding: 0 10px; min-width: 46px; }
