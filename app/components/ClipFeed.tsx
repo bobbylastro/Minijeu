@@ -44,13 +44,17 @@ export default function ClipFeed({ clips }: Props) {
     setFeedClips(shuffle(clips));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
-  // Close overlays when switching layout mode (desktop or landscape mobile)
+  // Close overlays when switching layout mode (portrait mobile ↔ other)
   useEffect(() => {
+    const isPortraitMobile = () => window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
+    let wasPortrait = isPortraitMobile();
     const onResize = () => {
-      // Close panels when entering desktop layout OR landscape mobile layout
-      // (layout changes require panels to reset — user re-opens if needed)
-      const isPortraitMobile = window.innerWidth <= 768 && window.innerHeight > window.innerWidth;
-      if (!isPortraitMobile) { setGameMenuOpen(false); setCommentsOpen(false); }
+      const nowPortrait = isPortraitMobile();
+      if (wasPortrait !== nowPortrait) {
+        setGameMenuOpen(false);
+        setCommentsOpen(false);
+        wasPortrait = nowPortrait;
+      }
     };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
@@ -134,7 +138,7 @@ export default function ClipFeed({ clips }: Props) {
   return (
     <div className="cf-layout">
 
-      {/* Backdrop overlay (mobile) */}
+      {/* Backdrop overlay */}
       <div
         className={`cf-overlay${gameMenuOpen || commentsOpen ? " is-open" : ""}`}
         onClick={closeAll}

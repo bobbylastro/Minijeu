@@ -44,7 +44,7 @@ export default function ClipPlayer({
 
   const [activeId,    setActiveId]    = useState<string | null>(clips[0]?.id ?? null);
   const [splashPassed, setSplashPassed] = useState(false);
-  const [muted,       setMuted]       = useState(true);
+  const [muted,       setMuted]       = useState(false);
   const [toastId,     setToastId]     = useState<string | null>(null);
   const [autoScroll,  setAutoScrollUI] = useState<boolean>(() => {
     if (typeof window === "undefined") return true;
@@ -515,7 +515,7 @@ export default function ClipPlayer({
 
               {/* Right column: comment (mobile) + like + share */}
               <div className="cp-feed-actions">
-                {/* Comment button — mobile only */}
+                {/* Comment button */}
                 <button
                   className="cp-feed-comment"
                   onClick={onCommentClick}
