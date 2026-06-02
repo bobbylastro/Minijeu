@@ -129,6 +129,14 @@ export default function ClipPlayer({
             setActiveId(id);
             const clip = clips.find((c) => c.id === id);
             if (clip) trackClipView(id, clip.game);
+
+            // Preload the next clip
+            const idx = clips.findIndex((c) => c.id === id);
+            const next = clips[idx + 1];
+            if (next) {
+              const nextVideo = videoRefs.current.get(next.id);
+              if (nextVideo && nextVideo.preload === "none") nextVideo.preload = "metadata";
+            }
           } else {
             // Record watch time before pausing
             const startTs = playStartRef.current.get(id);
@@ -257,7 +265,40 @@ export default function ClipPlayer({
     [isLoggedIn, onAuthRequired, onLikeToggle, resetAutoScrollCount]
   );
 
+  // ── 2× speed on right-side hold ──────────────────────────────────────────
+  const speed2xTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [speed2xId,     setSpeed2xId]     = useState<string | null>(null);
+  const wasSpeed2xRef   = useRef(false);
+
+  const startSpeed2x = useCallback((e: React.PointerEvent, clipId: string) => {
+    // Only right half, skip if target is a button
+    if ((e.target as HTMLElement).closest("button")) return;
+    const rect = (e.currentTarget as HTMLElement).getBoundingClientRect();
+    if (e.clientX < rect.left + rect.width / 2) return;
+
+    speed2xTimerRef.current = setTimeout(() => {
+      const v = videoRefs.current.get(clipId);
+      if (v) v.playbackRate = 2;
+      setSpeed2xId(clipId);
+    }, 200);
+  }, []);
+
+  const stopSpeed2x = useCallback((clipId: string) => {
+    if (speed2xTimerRef.current) {
+      clearTimeout(speed2xTimerRef.current);
+      speed2xTimerRef.current = null;
+    }
+    if (speed2xId === clipId) {
+      wasSpeed2xRef.current = true;
+      setTimeout(() => { wasSpeed2xRef.current = false; }, 0);
+    }
+    const v = videoRefs.current.get(clipId);
+    if (v) v.playbackRate = 1;
+    setSpeed2xId(null);
+  }, [speed2xId]);
+
   const togglePlay = (id: string) => {
+    if (wasSpeed2xRef.current) return;
     resetAutoScrollCount();
     const v = videoRefs.current.get(id);
     if (!v) return;
@@ -338,7 +379,18 @@ export default function ClipPlayer({
           const liked = likedClipIds.has(clip.id);
 
           return (
-            <div key={clip.id} className="cp-feed-item" data-clip-id={clip.id}>
+            <div
+              key={clip.id}
+              className="cp-feed-item"
+              data-clip-id={clip.id}
+              onPointerDown={(e) => startSpeed2x(e, clip.id)}
+              onPointerUp={() => stopSpeed2x(clip.id)}
+              onPointerLeave={() => stopSpeed2x(clip.id)}
+              onPointerCancel={() => stopSpeed2x(clip.id)}
+            >
+              {speed2xId === clip.id && (
+                <div className="cp-speed-badge">2×</div>
+              )}
               <video
                 ref={(el) => {
                   if (el) { videoRefs.current.set(clip.id, el); el.muted = muted; }
@@ -347,7 +399,7 @@ export default function ClipPlayer({
                 className="cp-feed-video"
                 loop
                 playsInline
-                preload="metadata"
+                preload="none"
                 poster={clip.thumbnailUrl ?? undefined}
                 onClick={() => togglePlay(clip.id)}
               >
