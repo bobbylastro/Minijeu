@@ -27,7 +27,6 @@ interface Props {
 export default function ClipFeed({ clips }: Props) {
   const { user } = useAuth();
 
-  // Track all clip IDs ever added to the feed — never re-add them
   const seenIdsRef = useRef<Set<string>>(new Set());
 
   const [feedClips, setFeedClips] = useState<Clip[]>(() => {
@@ -38,9 +37,23 @@ export default function ClipFeed({ clips }: Props) {
 
   const [selectedGames, setSelectedGames] = useState<Set<GameSlug>>(new Set());
   const prevGamesRef   = useRef<Set<GameSlug>>(new Set());
-  const [activeClip, setActiveClip] = useState<Clip | null>(clips[0] ?? null);
-  const [likedIds,   setLikedIds]   = useState<Set<string>>(new Set());
-  const [authOpen,   setAuthOpen]   = useState(false);
+  const [activeClip,   setActiveClip]   = useState<Clip | null>(clips[0] ?? null);
+  const [likedIds,     setLikedIds]     = useState<Set<string>>(new Set());
+  const [authOpen,     setAuthOpen]     = useState(false);
+  const [gameMenuOpen, setGameMenuOpen] = useState(false);
+  const [commentsOpen, setCommentsOpen] = useState(false);
+
+  // Close panels on desktop resize
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 768) {
+        setGameMenuOpen(false);
+        setCommentsOpen(false);
+      }
+    };
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
+  }, []);
 
   // Update feed when filter changes — never remounts the player
   useEffect(() => {
@@ -53,19 +66,16 @@ export default function ClipFeed({ clips }: Props) {
     setFeedClips((current) => {
       let next = [...current];
 
-      // Remove clips of deselected games that are after the active clip
       if (removed.length > 0) {
-        const removedSet  = new Set(removed);
-        const activeIdx   = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
+        const removedSet = new Set(removed);
+        const activeIdx  = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
         next = next.filter((c, i) => {
-          if (!removedSet.has(c.game as GameSlug)) return true; // keep other games
-          if (i <= activeIdx) return true;                       // keep already-played clips
+          if (!removedSet.has(c.game as GameSlug)) return true;
+          if (i <= activeIdx) return true;
           return false;
         });
       }
 
-      // Inject unseen clips for newly added games (or clear-all)
-      // Shuffle new clips INTO the remaining (unplayed) portion of the feed
       let toAdd: Clip[] = [];
       if (added.length > 0) {
         const addedSet = new Set(added);
@@ -76,9 +86,9 @@ export default function ClipFeed({ clips }: Props) {
 
       if (toAdd.length > 0) {
         for (const c of toAdd) seenIdsRef.current.add(c.id);
-        const activeIdx  = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
-        const played     = next.slice(0, activeIdx + 1);
-        const remaining  = next.slice(activeIdx + 1);
+        const activeIdx = activeClip ? next.findIndex((c) => c.id === activeClip.id) : -1;
+        const played    = next.slice(0, activeIdx + 1);
+        const remaining = next.slice(activeIdx + 1);
         next = [...played, ...shuffle([...remaining, ...toAdd])];
       }
 
@@ -121,10 +131,22 @@ export default function ClipFeed({ clips }: Props) {
     }
   }, [feedClips, likedIds]);
 
+  const closeAll = useCallback(() => {
+    setGameMenuOpen(false);
+    setCommentsOpen(false);
+  }, []);
+
   return (
     <div className="cf-layout">
+
+      {/* ── Backdrop overlay (mobile) ───────────────────────────── */}
+      <div
+        className={`cf-overlay${gameMenuOpen || commentsOpen ? " is-open" : ""}`}
+        onClick={closeAll}
+      />
+
       {/* ── Left: game filters ──────────────────────────────────── */}
-      <aside className="cf-games-panel">
+      <aside className={`cf-games-panel${gameMenuOpen ? " is-open" : ""}`}>
         <ClipSidebar
           selected={selectedGames}
           onToggle={handleToggleGame}
@@ -134,6 +156,20 @@ export default function ClipFeed({ clips }: Props) {
 
       {/* ── Center: TikTok-style scroll feed ────────────────────── */}
       <div className="cf-video-area">
+
+        {/* Burger button — mobile only */}
+        <button
+          className="cf-burger-btn"
+          onClick={() => setGameMenuOpen((v) => !v)}
+          aria-label="Game filters"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+            <line x1="3" y1="6"  x2="21" y2="6"  />
+            <line x1="3" y1="12" x2="21" y2="12" />
+            <line x1="3" y1="18" x2="21" y2="18" />
+          </svg>
+        </button>
+
         <ClipPlayer
           clips={feedClips}
           likedClipIds={likedIds}
@@ -141,11 +177,19 @@ export default function ClipFeed({ clips }: Props) {
           onAuthRequired={() => setAuthOpen(true)}
           isLoggedIn={!!user}
           onActiveClipChange={setActiveClip}
+          onCommentClick={() => setCommentsOpen(true)}
         />
       </div>
 
-      {/* ── Right: comments for the active clip ─────────────────── */}
-      <aside className="cf-comments-panel">
+      {/* ── Right: comments ─────────────────────────────────────── */}
+      <aside className={`cf-comments-panel${commentsOpen ? " is-open" : ""}`}>
+        {/* Mobile handle + close */}
+        <div className="cf-sheet-handle" />
+        <div className="cf-sheet-header">
+          <span className="cf-sheet-header__title">Comments</span>
+          <button className="cf-sheet-close" onClick={() => setCommentsOpen(false)} aria-label="Close">×</button>
+        </div>
+
         {activeClip ? (
           <ClipComments
             clipId={activeClip.id}

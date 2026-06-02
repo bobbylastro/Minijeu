@@ -105,22 +105,47 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 14px;
-  border-radius: 20px;
-  border: 1.5px solid rgba(99,102,241,0.6);
-  background: rgba(99,102,241,0.12);
-  color: #a5b4fc;
+  height: 35px;
+  padding: 0 14px;
+  border-radius: 50px;
+  border: 1px solid rgba(99,102,241,0.4);
+  background: rgba(99,102,241,0.08);
+  color: rgba(255,255,255,0.8);
   font-size: 13px;
   font-weight: 600;
   font-family: var(--font-sora), sans-serif;
+  line-height: 1;
+  box-sizing: border-box;
   text-decoration: none;
   white-space: nowrap;
-  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  transition: background 0.13s, border-color 0.13s, color 0.13s;
 }
 .gc-header__submit-btn:hover {
   background: rgba(99,102,241,0.25);
   border-color: rgba(99,102,241,0.9);
   color: #fff;
+}
+
+/* Logo: full on desktop, short on mobile */
+.gc-header__logo-short { display: none; }
+.gc-header__submit-short { display: none; }
+
+@media (max-width: 480px) {
+  .gc-header__inner { padding: 0 12px; gap: 8px; }
+
+  .gc-header__logo-full  { display: none; }
+  .gc-header__logo-short { display: inline; }
+
+  .gc-header__logo {
+    font-size: 24px;
+    letter-spacing: 3px;
+  }
+
+  .gc-header__submit-label { display: none; }
+  .gc-header__submit-short { display: inline; }
+  .gc-header__submit-btn {
+    padding: 0 10px;
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════════════ */
@@ -1039,6 +1064,162 @@ kbd {
 .cf-skeleton--sidebar   { width: 100%; height: 100%; min-height: 200px; }
 .cf-skeleton--player    { width: 100%; height: 100%; min-height: 400px; }
 .cf-skeleton--comments  { width: 100%; height: 100%; min-height: 200px; }
+
+/* ══════════════════════════════════════════════════════════════════════════ */
+/* MOBILE RESPONSIVE                                                          */
+/* ══════════════════════════════════════════════════════════════════════════ */
+
+/* Burger button — visible only on mobile */
+.cf-burger-btn {
+  display: none;
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.cf-burger-btn:hover { background: rgba(0,0,0,0.8); border-color: rgba(255,255,255,0.45); }
+
+/* Comment button in feed actions — visible only on mobile */
+.cp-feed-comment {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  border-radius: 50px;
+  padding: 16px 14px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-sora), sans-serif;
+  transition: transform 0.15s, background 0.15s;
+  min-width: 58px;
+}
+.cp-feed-comment:hover { transform: scale(1.1); background: rgba(0,0,0,0.75); }
+
+/* Backdrop overlay for drawers */
+.cf-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 150;
+  backdrop-filter: blur(2px);
+}
+
+/* Bottom sheet handle */
+.cf-sheet-handle {
+  display: none;
+  width: 36px;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  margin: 10px auto 0;
+  flex-shrink: 0;
+}
+
+/* Bottom sheet header */
+.cf-sheet-header {
+  display: none;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 16px 12px;
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+}
+.cf-sheet-header__title {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+.cf-sheet-close {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--color-border);
+  background: rgba(255,255,255,0.05);
+  color: var(--color-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+@media (max-width: 768px) {
+  /* Show burger + comment buttons */
+  .cf-burger-btn    { display: flex; }
+  .cp-feed-comment  { display: flex; }
+  .cf-sheet-handle  { display: block; }
+  .cf-sheet-header  { display: flex; }
+
+  /* Autoscroll label hidden on mobile to save space */
+  .cp-autoscroll-label { display: none; }
+  .cp-autoscroll-btn { right: 70px; padding: 0 10px; min-width: 46px; }
+
+  /* Panels become fixed overlays */
+  .cf-games-panel {
+    position: fixed;
+    left: 0; top: 0; bottom: 0;
+    width: 280px;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-right: 1px solid var(--color-border);
+  }
+  .cf-games-panel.is-open {
+    transform: translateX(0);
+  }
+
+  .cf-comments-panel {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    width: auto;
+    height: 55dvh;
+    z-index: 200;
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    border-radius: 16px 16px 0 0;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-direction: column;
+  }
+  .cf-comments-panel.is-open {
+    transform: translateY(0);
+  }
+
+  /* Overlay visible when any panel is open */
+  .cf-overlay.is-open { display: block; }
+
+  /* Bigger touch targets on mobile */
+  .cp-feed-like, .cp-feed-share, .cp-feed-comment {
+    padding: 14px 12px;
+    min-width: 52px;
+  }
+
+  /* Splash shortcuts hidden on mobile */
+  .cp-splash__shortcuts { display: none; }
+  .cp-splash__sub { font-size: 12px; }
+}
 
 /* ══════════════════════════════════════════════════════════════════════════ */
 /* AUTH MODAL                                                                 */

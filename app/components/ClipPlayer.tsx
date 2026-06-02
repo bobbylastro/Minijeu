@@ -12,6 +12,7 @@ interface Props {
   onAuthRequired: () => void;
   isLoggedIn: boolean;
   onActiveClipChange: (clip: Clip | null) => void;
+  onCommentClick?: () => void;
 }
 
 export default function ClipPlayer({
@@ -21,6 +22,7 @@ export default function ClipPlayer({
   onAuthRequired,
   isLoggedIn,
   onActiveClipChange,
+  onCommentClick,
 }: Props) {
   const scrollRef          = useRef<HTMLDivElement>(null);
   const videoRefs          = useRef<Map<string, HTMLVideoElement>>(new Map());
@@ -376,8 +378,20 @@ export default function ClipPlayer({
                 <p className="cp-feed-title">{clip.title}</p>
               </div>
 
-              {/* Right column: like + share */}
+              {/* Right column: comment (mobile) + like + share */}
               <div className="cp-feed-actions">
+                {/* Comment button — mobile only */}
+                <button
+                  className="cp-feed-comment"
+                  onClick={onCommentClick}
+                  aria-label="Comments"
+                >
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                  <span>Chat</span>
+                </button>
+
                 <button
                   className={`cp-feed-like${liked ? " is-liked" : ""}`}
                   onClick={() => handleLike(clip.id)}

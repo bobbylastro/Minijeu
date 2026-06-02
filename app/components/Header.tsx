@@ -17,11 +17,13 @@ export default function Header() {
       <header className="gc-header">
         <div className="gc-header__inner">
           <Link href="/" className="gc-header__logo">
-            Ultimate<span className="site-header__logo-accent"> Playground</span>
+            <span className="gc-header__logo-full">Ultimate<span className="site-header__logo-accent"> Playground</span></span>
+            <span className="gc-header__logo-short">U<span className="site-header__logo-accent">P</span></span>
           </Link>
 
           <Link href="/submit" className="gc-header__submit-btn">
-            + Submit a clip
+            <span className="gc-header__submit-label">+ Submit a clip</span>
+            <span className="gc-header__submit-short">+ Submit</span>
           </Link>
 
           <div className="gc-header__auth">
