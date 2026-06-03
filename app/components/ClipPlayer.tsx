@@ -448,9 +448,7 @@ export default function ClipPlayer({
             <p className="cp-splash__headline">
               The best gaming clips,<br />curated for you
             </p>
-            <p className="cp-splash__sub">
-              Valorant · Apex · Marvel Rivals · The Finals · Rocket League · R6
-            </p>
+
             <div className="cp-splash__shortcuts">
               <span className="cp-splash__shortcut"><kbd>Space</kbd> Play / Pause</span>
               <span className="cp-splash__shortcut"><kbd>↑</kbd><kbd>↓</kbd> or scroll</span>
