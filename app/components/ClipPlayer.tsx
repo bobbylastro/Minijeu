@@ -300,8 +300,8 @@ export default function ClipPlayer({
     if (!skipSplash || !scrollRef.current) return;
     const container = scrollRef.current;
     requestAnimationFrame(() => {
-      const firstClip = container.querySelector<HTMLElement>('[data-clip-id]:not([data-clip-id="__splash__"])');
-      firstClip?.scrollIntoView();
+      const splash = container.querySelector<HTMLElement>('[data-clip-id="__splash__"]');
+      if (splash) container.scrollTop = splash.offsetHeight;
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
