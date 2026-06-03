@@ -33,6 +33,7 @@ export default function ClipPlayer({
   const scrollRef          = useRef<HTMLDivElement>(null);
   const splashRef          = useRef<HTMLDivElement>(null);
   const videoRefs          = useRef<Map<string, HTMLVideoElement>>(new Map());
+  const bgVideoRefs        = useRef<Map<string, HTMLVideoElement>>(new Map());
   const progressRefs       = useRef<Map<string, HTMLDivElement>>(new Map());
   const activeIdRef        = useRef<string | null>(null);
   const playStartRef       = useRef<Map<string, number>>(new Map()); // clipId → play start timestamp
@@ -149,11 +150,13 @@ export default function ClipPlayer({
             continue;
           }
 
-          const video = videoRefs.current.get(id);
+          const video   = videoRefs.current.get(id);
+          const bgVideo = bgVideoRefs.current.get(id);
           if (entry.isIntersecting) {
             playStartRef.current.set(id, Date.now());
             autoScrollDoneRef.current.delete(id);
             video?.play().catch(() => {});
+            bgVideo?.play().catch(() => {});
             setActiveId(id);
             const clip = clips.find((c) => c.id === id);
             if (clip) trackClipView(id, clip.game);
@@ -175,6 +178,7 @@ export default function ClipPlayer({
               sendWatchEvent(id, watchedSec, ratio);
             }
             if (video) { video.pause(); video.currentTime = 0; }
+            if (bgVideo) { bgVideo.pause(); bgVideo.currentTime = 0; }
             // Restore preplay overlay so thumbnail shows again on next scroll-to
             const preplay = container.querySelector<HTMLElement>(`[data-clip-preplay="${id}"]`);
             if (preplay) preplay.style.opacity = "1";
@@ -245,8 +249,12 @@ export default function ClipPlayer({
       if (e.key === " ") {
         e.preventDefault();
         resetAutoScrollCount();
-        const video = videoRefs.current.get(activeIdRef.current ?? "");
-        if (video) { if (video.paused) { video.play().catch(() => {}); } else { video.pause(); } }
+        const video   = videoRefs.current.get(activeIdRef.current ?? "");
+        const bgVideo = bgVideoRefs.current.get(activeIdRef.current ?? "");
+        if (video) {
+          if (video.paused) { video.play().catch(() => {}); bgVideo?.play().catch(() => {}); }
+          else              { video.pause(); bgVideo?.pause(); }
+        }
       } else if (e.key === "ArrowDown") {
         e.preventDefault();
         resetAutoScrollCount();
@@ -368,9 +376,11 @@ export default function ClipPlayer({
   const togglePlay = (id: string) => {
     if (wasSpeed2xRef.current) return;
     resetAutoScrollCount();
-    const v = videoRefs.current.get(id);
+    const v  = videoRefs.current.get(id);
+    const bg = bgVideoRefs.current.get(id);
     if (!v) return;
-    if (v.paused) { v.play().catch(() => {}); } else { v.pause(); }
+    if (v.paused) { v.play().catch(() => {}); bg?.play().catch(() => {}); }
+    else          { v.pause(); bg?.pause(); }
   };
 
   if (clips.length === 0) {
@@ -461,13 +471,21 @@ export default function ClipPlayer({
               )}
 
               {/* Blurred ambient background — fills letterbox areas on wide screens */}
-              <div
+              <video
+                ref={(el) => {
+                  if (el) bgVideoRefs.current.set(clip.id, el);
+                  else bgVideoRefs.current.delete(clip.id);
+                }}
                 className="cp-feed-bg-blur"
-                style={clip.thumbnailUrl
-                  ? { backgroundImage: `url("${clip.thumbnailUrl}")` }
-                  : { background: game.color }
-                }
-              />
+                muted
+                loop
+                playsInline
+                preload="none"
+                tabIndex={-1}
+                aria-hidden="true"
+              >
+                <source src={clip.videoUrl} />
+              </video>
 
               {/* Thumbnail/color overlay — visible before first play, hidden once video plays */}
               <div
