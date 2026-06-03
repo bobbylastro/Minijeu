@@ -191,9 +191,12 @@ export default function ClipFeed({ clips }: Props) {
 
         <ClipPlayer
           key={feedKey}
-          clips={feedClips.filter((c) => !seenIds.has(c.id)).length > 0
-            ? feedClips.filter((c) => !seenIds.has(c.id))
-            : feedClips /* all seen → reset, show everything */}
+          clips={(() => {
+            const unseen = feedClips.filter((c) => !seenIds.has(c.id));
+            if (unseen.length > 0) return unseen;
+            // All seen → reset, but always exclude liked clips
+            return feedClips.filter((c) => !likedIds.has(c.id));
+          })()}
           skipSplash={selectedGames.size > 0}
           likedClipIds={likedIds}
           onLikeToggle={handleLikeToggle}

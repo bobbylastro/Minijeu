@@ -155,27 +155,32 @@ export default function ClipPlayer({
           const video   = videoRefs.current.get(id);
           const bgVideo = bgVideoRefs.current.get(id);
           if (entry.isIntersecting) {
+            // Mark as seen immediately (any pixel visible, ratio ≥ 0)
             markClipSeen(id);
-            playStartRef.current.set(id, Date.now());
-            autoScrollDoneRef.current.delete(id);
-            if (video) {
-              video.play().catch(() => {
-                video.muted = true;
-                setMuted(true);
-                video.play().catch(() => {});
-              });
-            }
-            bgVideo?.play().catch(() => {});
-            setActiveId(id);
-            const clip = clips.find((c) => c.id === id);
-            if (clip) trackClipView(id, clip.game);
 
-            // Preload the next clip
-            const idx = clips.findIndex((c) => c.id === id);
-            const next = clips[idx + 1];
-            if (next) {
-              const nextVideo = videoRefs.current.get(next.id);
-              if (nextVideo && nextVideo.preload === "none") nextVideo.preload = "metadata";
+            // Autoplay + tracking only at 70% visibility
+            if (entry.intersectionRatio >= 0.7) {
+              playStartRef.current.set(id, Date.now());
+              autoScrollDoneRef.current.delete(id);
+              if (video) {
+                video.play().catch(() => {
+                  video.muted = true;
+                  setMuted(true);
+                  video.play().catch(() => {});
+                });
+              }
+              bgVideo?.play().catch(() => {});
+              setActiveId(id);
+              const clip = clips.find((c) => c.id === id);
+              if (clip) trackClipView(id, clip.game);
+
+              // Preload the next clip
+              const idx = clips.findIndex((c) => c.id === id);
+              const next = clips[idx + 1];
+              if (next) {
+                const nextVideo = videoRefs.current.get(next.id);
+                if (nextVideo && nextVideo.preload === "none") nextVideo.preload = "metadata";
+              }
             }
           } else {
             // Record watch time before pausing
@@ -194,7 +199,7 @@ export default function ClipPlayer({
           }
         }
       },
-      { root: container, threshold: 0.7 }
+      { root: container, threshold: [0, 0.7] }
     );
 
     container.querySelectorAll("[data-clip-id]").forEach((el) => observer.observe(el));
