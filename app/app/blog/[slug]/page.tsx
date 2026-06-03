@@ -4,6 +4,7 @@ import Link from "next/link";
 import { BLOG_ARTICLES, getArticle } from "@/lib/blog";
 import { GAMES } from "@/lib/clips-shared";
 import JsonLd from "@/components/JsonLd";
+import type { BlogArticle } from "@/lib/blog";
 
 const BASE = "https://ultimate-playground.com";
 
@@ -51,6 +52,9 @@ export default async function BlogArticlePage({
   if (!article) notFound();
 
   const game = GAMES[article.game];
+  const related = article.relatedSlugs
+    .map((s) => BLOG_ARTICLES.find((a) => a.slug === s))
+    .filter((a): a is BlogArticle => !!a);
   const pageUrl = `${BASE}/blog/${slug}`;
 
   const articleSchema = {
@@ -110,6 +114,29 @@ export default async function BlogArticlePage({
           className="blog-article__content"
           dangerouslySetInnerHTML={{ __html: article.content }}
         />
+
+        {related.length > 0 && (
+          <aside className="blog-related">
+            <h2 className="blog-related__title">Read next</h2>
+            <div className="blog-related__grid">
+              {related.map((rel) => {
+                const relGame = GAMES[rel.game];
+                return (
+                  <Link
+                    key={rel.slug}
+                    href={`/blog/${rel.slug}`}
+                    className="blog-related__card"
+                    style={{ "--game-color": relGame.color } as React.CSSProperties}
+                  >
+                    <span className="blog-related__game">{relGame.name}</span>
+                    <span className="blog-related__card-title">{rel.metaTitle}</span>
+                    <span className="blog-related__meta">{rel.readMinutes} min read →</span>
+                  </Link>
+                );
+              })}
+            </div>
+          </aside>
+        )}
 
         <footer className="blog-article__footer">
           <Link href="/" className="blog-article__cta">

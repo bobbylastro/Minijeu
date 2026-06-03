@@ -2626,6 +2626,66 @@ kbd {
 .blog-article__content li { line-height: 1.6; }
 .blog-article__content strong { color: rgba(255,255,255,0.92); font-weight: 600; }
 
+/* Related articles */
+.blog-related {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--color-border);
+}
+
+.blog-related__title {
+  font-family: var(--font-bebas), cursive;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.blog-related__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.blog-related__card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  border-left: 3px solid var(--game-color, var(--color-accent));
+  transition: background 0.15s, border-color 0.15s;
+}
+.blog-related__card:hover {
+  background: rgba(255,255,255,0.04);
+  border-color: var(--game-color, var(--color-accent));
+}
+
+.blog-related__game {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--game-color, var(--color-accent));
+}
+
+.blog-related__card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.4;
+}
+
+.blog-related__meta {
+  font-size: 11px;
+  color: var(--color-muted);
+  margin-top: 2px;
+}
+
 /* Footer */
 .blog-article__footer {
   margin-top: 56px;

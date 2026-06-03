@@ -8,6 +8,7 @@ export interface BlogArticle {
   description: string;
   publishDate: string;
   readMinutes: number;
+  relatedSlugs: string[];
   content: string;
 }
 
@@ -20,6 +21,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "What makes Valorant clips so compelling? Tight gunplay, creative agent abilities, and clutch situations that no one sees coming. Here's what to look for.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["cs2", "rainbow-six-siege", "overwatch"],
     content: `
 <p>Few games produce highlights as instantly readable as Valorant. A single round — 100 seconds at most — can contain a complete story arc: the failed execute, the desperate rotate, the five-on-one clutch nobody thought was possible. That compression is what makes Valorant clips so shareable.</p>
 
@@ -49,6 +51,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Apex Legends has the best movement in any battle royale. Wall jumps, bunny hops, Octane stims — here's why Apex clips hit differently.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["the-finals", "arc-raiders", "overwatch"],
     content: `
 <p>Apex Legends committed to a movement system that most shooters would never attempt — and the clip culture it created is unlike anything else in the genre. When a Pathfinder grapples across an entire ring, or an Octane stim-slides through three squads to res a teammate, it's not just impressive. It's a different grammar of action entirely.</p>
 
@@ -73,6 +76,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Marvel Rivals brought a new dimension to hero shooters. Cinematic abilities, character synergies, and moments that feel ripped from a comic book.",
     publishDate: "2025-06-01",
     readMinutes: 3,
+    relatedSlugs: ["overwatch", "valorant", "the-finals"],
     content: `
 <p>When Marvel Rivals launched, it brought something the hero shooter genre hadn't seen in a while: genuine spectacle. A Magneto pulling the battlefield apart. A Spider-Man swinging through a team fight and landing on the carry. Doctor Strange opening a portal in the middle of a corridor to redirect an entire push. The abilities don't just do damage — they reshape the space the fight happens in.</p>
 
@@ -97,6 +101,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "The Finals built its identity around environmental destruction. When a building collapses mid-fight, you get moments that are completely unrepeatable.",
     publishDate: "2025-06-01",
     readMinutes: 3,
+    relatedSlugs: ["apex-legends", "arc-raiders", "rust"],
     content: `
 <p>The Finals made a single design bet: what if destruction wasn't a set piece, but the game? Walls you can shoot through, floors you can blow out, entire buildings you can collapse onto the team camping below. That bet paid off in a clip library unlike anything else in competitive shooters — because the environment itself becomes an actor.</p>
 
@@ -121,6 +126,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Rocket League has one of the highest mechanical skill ceilings in competitive gaming. Ceiling shots, air dribbles, flip resets — here's why the clips are unmatched.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["cs2", "valorant", "league-of-legends"],
     content: `
 <p>Rocket League is simultaneously one of the simplest games to understand and one of the hardest to master. Ball goes in net. Car flies through air. That's it. And yet ten years in, players are still discovering mechanics that push what's physically possible in a game where every movement is governed by precise physics. The clip culture that has grown around this game is unlike anything else in esports.</p>
 
@@ -149,6 +155,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Siege rewards information and preparation above all else. The clips that come from that design philosophy are some of the most satisfying in competitive gaming.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["valorant", "cs2", "apex-legends"],
     content: `
 <p>Rainbow Six Siege is a game that punishes carelessness and rewards patience — and the clips that come out of it reflect that. There's nothing flashy about a well-placed drone. There's nothing loud about a Vigil cancelling a drone scan at exactly the right moment. And yet, when those quiet preparations lead to a perfect five-kill, the payoff feels earned in a way that raw mechanical skill alone can't produce.</p>
 
@@ -173,6 +180,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "LoL's teamfights, mechanical outplays, and champion mastery moments make for some of the most exciting clips in competitive gaming.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["overwatch", "marvel-rivals", "valorant"],
     content: `
 <p>League of Legends has been producing highlight moments for over fifteen years, and it hasn't stopped. The game changes enough each season — new champions, item reworks, map updates — that the clip library never feels stale. A play that was considered impossible in Season 5 might be textbook in Season 15. And a new champion release always means a wave of discovery clips as players push the limits of what those abilities can do.</p>
 
@@ -197,6 +205,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Counter-Strike's round economy and clutch situations produce some of the most intense moments in competitive gaming. Here's what makes CS2 highlights timeless.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["valorant", "rainbow-six-siege", "rocket-league"],
     content: `
 <p>Counter-Strike has been the benchmark for competitive FPS for over two decades. CS2 continues that tradition with updated visuals and a refined engine — but the reason the clips are still compelling is the same reason they always were: the game is almost completely fair, and every highlight is therefore a statement about the person making it.</p>
 
@@ -221,6 +230,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Rust's survival loop creates high-stakes drama that no scripted game can match. Raids, rooftop defences, and naked-start victories — here's why Rust clips hit differently.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["gta-v", "minecraft", "the-finals"],
     content: `
 <p>Rust is a game where you can lose everything in sixty seconds and spend three days building it back. That risk profile — genuinely losing something you spent time creating — creates emotional investment that produces clips of a kind no other game can. When someone defends their base naked against a fully-geared raid group and wins, the clip isn't just gameplay. It's a story with real stakes.</p>
 
@@ -245,6 +255,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "GTA Online has produced some of the most creative and chaotic gaming moments of the last decade. Stunts, missions, trolling — here's why GTA clips never get old.",
     publishDate: "2025-06-01",
     readMinutes: 3,
+    relatedSlugs: ["rust", "minecraft", "apex-legends"],
     content: `
 <p>Grand Theft Auto V Online is over a decade old and still producing content that trends. That longevity comes from something most games can't replicate: a physics engine and open world that actively encourage improvisation. When Rockstar gave players the tools and the map, the community built a clip culture around finding every edge case the developers never anticipated.</p>
 
@@ -268,6 +279,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Minecraft's breadth is its greatest asset for clips. From crystal PvP clutches to redstone machines to builds that take months — here's why Minecraft content never gets stale.",
     publishDate: "2025-06-01",
     readMinutes: 4,
+    relatedSlugs: ["rust", "gta-v", "league-of-legends"],
     content: `
 <p>Minecraft is the best-selling game of all time, and its clip culture reflects the breadth that earned it that position. Where most games produce highlights in one register — competitive kills, mechanical plays — Minecraft produces highlights across a dozen: architecture, speedrunning, PvP, redstone engineering, survival moments, and the occasional physics exploit that sends a player into orbit. No single other game covers that range.</p>
 
@@ -291,6 +303,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "Overwatch invented 'Play of the Game' culture. Team ults, 1v6 clutches, and hero synergies that no one saw coming — here's why Overwatch highlights still hit.",
     publishDate: "2025-06-01",
     readMinutes: 3,
+    relatedSlugs: ["marvel-rivals", "league-of-legends", "valorant"],
     content: `
 <p>Overwatch put the highlight reel inside the game itself. "Play of the Game" — the system that automatically identified and showcased the most impressive moments from each match — trained an entire generation of players to think in terms of highlights. That instinct is now part of how people play: not just trying to win, but trying to create the moment worth remembering.</p>
 
@@ -315,6 +328,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     description: "ARC Raiders is building its clip culture in real time. Extraction tension, squad coordination under pressure, and the high stakes that define the genre.",
     publishDate: "2025-06-01",
     readMinutes: 3,
+    relatedSlugs: ["the-finals", "apex-legends", "rainbow-six-siege"],
     content: `
 <p>ARC Raiders arrived in a genre that knows how to produce tension — and then turned that tension up. As an extraction shooter set against a world invaded by ARC machines, it takes the core formula (gather loot, survive, extract) and adds cooperative squad dynamics and a threat that doesn't play by human rules. The clips that have emerged from its growing community show a game that understands what makes moments matter.</p>
 
