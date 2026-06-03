@@ -4,6 +4,7 @@ import type { Clip } from "@/lib/clips-shared";
 import { GAMES } from "@/lib/clips-shared";
 import { sendWatchEvent } from "@/lib/watch";
 import { trackClipView, trackClipShare } from "@/lib/analytics";
+import { markClipSeen } from "@/lib/seen-clips";
 
 interface Props {
   clips: Clip[];
@@ -154,6 +155,7 @@ export default function ClipPlayer({
           const video   = videoRefs.current.get(id);
           const bgVideo = bgVideoRefs.current.get(id);
           if (entry.isIntersecting) {
+            markClipSeen(id);
             playStartRef.current.set(id, Date.now());
             autoScrollDoneRef.current.delete(id);
             if (video) {

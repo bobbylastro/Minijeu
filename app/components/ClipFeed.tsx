@@ -8,6 +8,7 @@ import ClipSidebar from "@/components/ClipSidebar";
 import ClipComments from "@/components/ClipComments";
 import { useAuth } from "@/hooks/useAuth";
 import { trackClipLike, trackGameFilter } from "@/lib/analytics";
+import { getSeenClipIds, mergeSeenClipIds } from "@/lib/seen-clips";
 
 const AuthModal = dynamic(() => import("@/components/AuthModal"), { ssr: false });
 
@@ -36,6 +37,7 @@ export default function ClipFeed({ clips }: Props) {
   const [commentsOpen, setCommentsOpen] = useState(false);
   const [feedLoading,  setFeedLoading]  = useState(false);
   const [feedKey,      setFeedKey]      = useState(0);
+  const [seenIds,      setSeenIds]      = useState<Set<string>>(() => getSeenClipIds());
 
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -43,6 +45,19 @@ export default function ClipFeed({ clips }: Props) {
   useEffect(() => {
     setFeedClips(shuffle(clips));
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // Merge Supabase watch history for logged-in users (cross-device persistence)
+  useEffect(() => {
+    if (!user) return;
+    fetch("/api/clips/seen")
+      .then((r) => r.json())
+      .then((data: { ids?: string[] }) => {
+        if (!data.ids?.length) return;
+        mergeSeenClipIds(data.ids);
+        setSeenIds((prev) => new Set([...prev, ...data.ids!]));
+      })
+      .catch(() => {});
+  }, [user]);
 
   // Close overlays when switching layout mode (portrait mobile ↔ other)
   useEffect(() => {
@@ -176,7 +191,9 @@ export default function ClipFeed({ clips }: Props) {
 
         <ClipPlayer
           key={feedKey}
-          clips={feedClips}
+          clips={feedClips.filter((c) => !seenIds.has(c.id)).length > 0
+            ? feedClips.filter((c) => !seenIds.has(c.id))
+            : feedClips /* all seen → reset, show everything */}
           skipSplash={selectedGames.size > 0}
           likedClipIds={likedIds}
           onLikeToggle={handleLikeToggle}
