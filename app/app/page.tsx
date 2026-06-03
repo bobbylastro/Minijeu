@@ -68,17 +68,25 @@ export default function HomePage() {
 function EditorialContent() {
   return (
     <div className="gc-editorial__block">
-      <h2 className="gc-editorial__title">
-        The best gaming clips,{" "}
-        <span className="gc-editorial__accent">all in one place</span>
-      </h2>
+
+      <h1 className="gc-editorial__h1">
+        The Best Gaming Clips,{" "}
+        <span className="gc-editorial__accent">Right Now</span>
+      </h1>
       <p className="gc-editorial__desc">
-        Ultimate Playground automatically curates the best moments from the biggest games —
-        from <strong>Valorant</strong> to <strong>Minecraft</strong>, <strong>CS2</strong> to <strong>GTA V</strong>.
-        Fresh clips added every week.
+        Ultimate Playground curates the most impressive, funniest, and most-talked-about gaming
+        clips from the biggest titles. No algorithm tricks, no recycled content — just the
+        moments worth watching, reviewed and updated every week.
       </p>
-      <p className="gc-editorial__cta-text">
-        Create an account to like your favourite clips and join the conversation.
+
+      <div className="gc-editorial__divider" />
+
+      <h2 className="gc-editorial__h2">Highlights From Every Game That Matters</h2>
+      <p className="gc-editorial__desc">
+        From <strong>Valorant</strong> clutch rounds and <strong>Apex Legends</strong> movement
+        clips to <strong>Rocket League</strong> ceiling shots and <strong>CS2</strong> 1v5s —
+        we cover the full spectrum of competitive and casual gaming highlights. If the community
+        is playing it, we&apos;re pulling the best moments from it.
       </p>
 
       <div className="gc-editorial__games">
@@ -96,7 +104,6 @@ function EditorialContent() {
           { name: "Minecraft",          color: "#5b8c2a" },
           { name: "Overwatch",          color: "#f99e1a" },
           { name: "ARC Raiders",        color: "#00b4d8" },
-          { name: "TFT",                color: "#0ac8b9" },
         ].map((g) => (
           <span
             key={g.name}
@@ -107,6 +114,38 @@ function EditorialContent() {
           </span>
         ))}
       </div>
+
+      <div className="gc-editorial__divider" />
+
+      <h2 className="gc-editorial__h2">What Makes a Clip Worth Watching?</h2>
+      <p className="gc-editorial__desc">
+        The best gaming highlights share one quality: they capture something that couldn&apos;t
+        have been scripted. A <strong>1v5 clutch</strong> with ten seconds on the clock. An
+        aerial that had no right to connect. A Rust raid that turned in under a minute. A
+        building that collapses on the wrong team at exactly the right moment. That&apos;s what
+        we filter for — the clips you send immediately, the ones you rewatch three times.
+      </p>
+
+      <div className="gc-editorial__divider" />
+
+      <h2 className="gc-editorial__h2">Curated, Not Algorithmic</h2>
+      <p className="gc-editorial__desc">
+        Every clip on Ultimate Playground passes a human review before going live. Our pipeline
+        pulls new gaming highlights weekly from trusted sources across the community, and
+        nothing goes up without a check. No bots, no engagement farming, no clips from 2019
+        dressed up as new. Just relevant, recent moments from the games people are actually
+        playing right now.
+      </p>
+
+      <div className="gc-editorial__divider" />
+
+      <h2 className="gc-editorial__h2">Share Your Best Gaming Moments</h2>
+      <p className="gc-editorial__desc">
+        Had a game-winning play? Pulled off something your teammates still can&apos;t believe?{" "}
+        <a href="/submit" className="gc-editorial__link">Submit your clip</a> and join the
+        feed. We review every submission personally.
+      </p>
+
     </div>
   );
 }

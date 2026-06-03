@@ -21,7 +21,7 @@ export default function BlogPage() {
         <header className="blog-index__header">
           <h1 className="blog-index__title">Gaming Blog</h1>
           <p className="blog-index__subtitle">
-            Clip culture, game guides, and what makes each game's highlights special.
+            Clip culture, game guides, and what makes each game&apos;s highlights special.
           </p>
         </header>
 

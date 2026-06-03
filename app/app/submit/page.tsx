@@ -58,7 +58,7 @@ export default function SubmitPage() {
     setDragOver(false);
     const f = e.dataTransfer.files[0];
     if (f) pickFile(f);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [pickFile]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
