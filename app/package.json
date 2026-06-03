@@ -2,29 +2,38 @@
   "name": "ultimate-playground",
   "version": "0.1.0",
   "private": true,
-  "description": "Fun quiz games — sports, geography, culture and more.",
+  "description": "Ultimate Playground — the best gaming clips, curated.",
   "scripts": {
     "dev": "next dev",
-    "party": "partykit dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "prefetch-images": "node scripts/prefetch-images.mjs"
+  },
+  "browserslist": {
+    "production": [
+      "chrome >= 99",
+      "edge >= 99",
+      "firefox >= 97",
+      "safari >= 15.4",
+      "ios_saf >= 15.4",
+      "not dead"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1058.0",
     "@supabase/ssr": "^0.9.0",
     "@supabase/supabase-js": "^2.98.0",
     "@types/nodemailer": "^7.0.11",
-    "@types/topojson-client": "^3.1.5",
     "next": "15.5.14",
     "nodemailer": "^8.0.1",
-    "partykit": "^0.0.115",
-    "partysocket": "^1.1.16",
     "react": "19.2.3",
-    "react-dom": "19.2.3",
-    "react-simple-maps": "^3.0.0",
-    "topojson-client": "^3.1.0"
+    "react-dom": "19.2.3"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
