@@ -455,12 +455,15 @@ export default function ClipPlayer({
             </div>
           </div>
 
-          <div className="cp-splash__bottom-fade">
+          <div className="cp-splash__scroll">
             <div className="cp-scroll-mouse">
               <div className="cp-scroll-mouse__wheel" />
             </div>
             <span className="cp-splash__scroll-cta">Scroll down</span>
           </div>
+
+          {/* Bottom gradient fade */}
+          <div className="cp-splash__bottom-fade" />
         </div>
 
         {/* ── Clip items ───────────────────────────────────────── */}
