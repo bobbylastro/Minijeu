@@ -260,13 +260,6 @@ body {
   margin-top: 4px;
 }
 
-.gc-editorial__title {
-  font-family: var(--font-bebas), cursive;
-  font-size: clamp(28px, 4vw, 42px);
-  letter-spacing: 1px;
-  color: white;
-  line-height: 1.1;
-}
 
 .gc-editorial__accent {
   background: linear-gradient(135deg, #6366f1, #a855f7);

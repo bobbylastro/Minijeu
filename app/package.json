@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "prefetch-images": "node scripts/prefetch-images.mjs"
+    "ingest-r2": "node scripts/ingest-r2.mjs"
   },
   "browserslist": {
     "production": [

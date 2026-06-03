@@ -438,9 +438,9 @@ export default function ClipPlayer({
 
           <div className="cp-splash__content">
             <p className="cp-splash__eyebrow">Ultimate Playground</p>
-            <h2 className="cp-splash__headline">
+            <p className="cp-splash__headline">
               The best gaming clips,<br />curated for you
-            </h2>
+            </p>
             <p className="cp-splash__sub">
               Valorant · Apex · Marvel Rivals · The Finals · Rocket League · R6
             </p>

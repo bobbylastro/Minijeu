@@ -103,7 +103,7 @@ export default function ClipSidebar({ selected, onToggle, onClearAll, onSelectAl
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={`/images/games/${slug}.jpg`}
-                      alt=""
+                      alt={`${meta.name} logo`}
                       className="cs-item__logo"
                       onError={() => setLogoErrors((prev) => new Set([...prev, slug]))}
                     />

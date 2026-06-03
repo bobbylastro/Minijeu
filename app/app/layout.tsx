@@ -50,14 +50,14 @@ export const metadata: Metadata = {
     description:
       "The best Valorant, Apex, Marvel Rivals, The Finals, Rocket League and R6 Siege clips — curated automatically.",
     url: BASE_URL,
-    images: [{ url: "/og-gamingclips.png", width: 1200, height: 630, alt: "Ultimate Playground" }],
+    images: [{ url: "/api/og", width: 1200, height: 630, alt: "Ultimate Playground — The best gaming clips right now" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ultimate Playground — The best gaming clips right now",
     description:
       "Valorant, Apex, Marvel Rivals, The Finals, Rocket League, R6 Siege. The best clips, every week.",
-    images: ["/og-gamingclips.png"],
+    images: ["/api/og"],
   },
   robots: { index: true, follow: true },
 };
