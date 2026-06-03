@@ -7,6 +7,7 @@ import BodyScrollLock from "@/components/BodyScrollLock";
 
 export const metadata: Metadata = {
   title: "Ultimate Playground — The best gaming clips right now",
+  alternates: { canonical: "https://ultimate-playground.com" },
   description:
     "Watch the best Valorant, Apex Legends, Marvel Rivals, The Finals, Rocket League and Rainbow Six Siege clips. Curated automatically, fresh clips every week.",
   openGraph: {

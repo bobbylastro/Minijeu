@@ -15,7 +15,7 @@ export default function PrivacyPage() {
       <div className="legal-card">
         <span className="legal-card__badge">Legal</span>
         <h1 className="legal-card__title">Privacy Policy</h1>
-        <p className="legal-card__meta">Last updated: March 3, 2026</p>
+        <p className="legal-card__meta">Last updated: June 3, 2026</p>
 
         <div className="legal-section">
           <p className="legal-section__body">
@@ -39,7 +39,7 @@ export default function PrivacyPage() {
             <ul>
               <li>Email address</li>
               <li>Username</li>
-              <li>Game-related data (scores, progress)</li>
+              <li>Clip activity (liked clips, submitted clips)</li>
             </ul>
           </div>
         </div>
@@ -49,9 +49,9 @@ export default function PrivacyPage() {
           <div className="legal-section__body">
             <p>We use your data to:</p>
             <ul>
-              <li>Provide and improve our games and services</li>
+              <li>Provide and improve the clip platform and services</li>
               <li>Analyze website traffic and user behavior</li>
-              <li>Maintain user accounts and game progress</li>
+              <li>Maintain user accounts and activity history</li>
               <li>Display advertisements</li>
             </ul>
           </div>

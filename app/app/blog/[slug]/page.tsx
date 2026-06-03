@@ -3,6 +3,9 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { BLOG_ARTICLES, getArticle } from "@/lib/blog";
 import { GAMES } from "@/lib/clips-shared";
+import JsonLd from "@/components/JsonLd";
+
+const BASE = "https://ultimate-playground.com";
 
 export function generateStaticParams() {
   return BLOG_ARTICLES.map((a) => ({ slug: a.slug }));
@@ -16,14 +19,24 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
+  const ogImage = `/api/og?game=${article.game}`;
   return {
     title: article.metaTitle,
     description: article.description,
+    alternates: { canonical: `${BASE}/blog/${slug}` },
     openGraph: {
       title: article.metaTitle,
       description: article.description,
       type: "article",
       publishedTime: article.publishDate,
+      url: `${BASE}/blog/${slug}`,
+      images: [{ url: ogImage, width: 1200, height: 630, alt: article.metaTitle }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.metaTitle,
+      description: article.description,
+      images: [ogImage],
     },
   };
 }
@@ -38,9 +51,46 @@ export default async function BlogArticlePage({
   if (!article) notFound();
 
   const game = GAMES[article.game];
+  const pageUrl = `${BASE}/blog/${slug}`;
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.description,
+    url: pageUrl,
+    datePublished: article.publishDate,
+    dateModified: article.publishDate,
+    inLanguage: "en",
+    author: {
+      "@type": "Organization",
+      name: "Ultimate Playground",
+      url: BASE,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Ultimate Playground",
+      url: BASE,
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
+    image: `${BASE}/api/og?game=${article.game}`,
+    keywords: `${game.name} clips, ${game.name} highlights, best ${game.name} moments, gaming clips`,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home",  item: BASE },
+      { "@type": "ListItem", position: 2, name: "Blog",  item: `${BASE}/blog` },
+      { "@type": "ListItem", position: 3, name: article.metaTitle, item: pageUrl },
+    ],
+  };
 
   return (
     <main className="gc-main">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
+
       <article className="blog-article">
         <header className="blog-article__header">
           <Link href="/blog" className="blog-article__back">

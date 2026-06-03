@@ -2432,6 +2432,13 @@ kbd {
   margin-bottom: 12px;
 }
 
+.blog-index__title-accent {
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 .blog-index__subtitle {
   font-size: 16px;
   color: var(--color-muted);
@@ -2504,6 +2511,47 @@ kbd {
   color: rgba(255,255,255,0.3);
   margin-top: 4px;
 }
+
+/* ── Blog index editorial sections ───────────────────────────────────────── */
+.blog-index__editorial {
+  margin-top: 80px;
+  border-top: 1px solid var(--color-border);
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  max-width: 760px;
+}
+
+.blog-index__section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blog-index__section-title {
+  font-family: var(--font-bebas), cursive;
+  font-size: clamp(20px, 2.5vw, 28px);
+  letter-spacing: 1px;
+  color: #fff;
+  line-height: 1.1;
+}
+
+.blog-index__section-body {
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.65);
+}
+
+.blog-index__section-body strong { color: rgba(255,255,255,0.85); }
+
+.blog-index__link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.15s;
+}
+.blog-index__link:hover { opacity: 0.8; }
 
 /* ── Article page ─────────────────────────────────────────────────────────── */
 .blog-article {

@@ -15,7 +15,7 @@ export default function TermsPage() {
       <div className="legal-card">
         <span className="legal-card__badge">Legal</span>
         <h1 className="legal-card__title">Terms of Service</h1>
-        <p className="legal-card__meta">Last updated: March 3, 2026</p>
+        <p className="legal-card__meta">Last updated: June 3, 2026</p>
 
         <div className="legal-section">
           <p className="legal-section__body">
@@ -48,11 +48,12 @@ export default function TermsPage() {
         </div>
 
         <div className="legal-section">
-          <h2 className="legal-section__title">3. Game Data</h2>
+          <h2 className="legal-section__title">3. User Content &amp; Clips</h2>
           <div className="legal-section__body">
             <ul>
-              <li>Scores and rankings are for entertainment purposes only</li>
-              <li>We reserve the right to reset or remove any game data at any time</li>
+              <li>By submitting a clip, you confirm you own or have the right to share it</li>
+              <li>We reserve the right to remove any clip or user content at any time without notice</li>
+              <li>Submitted clips may be displayed publicly on the platform</li>
             </ul>
           </div>
         </div>
@@ -61,8 +62,9 @@ export default function TermsPage() {
           <h2 className="legal-section__title">4. Intellectual Property</h2>
           <div className="legal-section__body">
             <p>
-              All content, games, and design on this website belong to Ultimate Playground.
-              Unauthorized reproduction or redistribution is prohibited.
+              All content, clips, and design on this website belong to their respective owners.
+              Ultimate Playground&apos;s original content and design may not be reproduced or
+              redistributed without prior written consent.
             </p>
           </div>
         </div>
@@ -74,7 +76,7 @@ export default function TermsPage() {
             <ul>
               <li>Data loss</li>
               <li>Service interruptions</li>
-              <li>Inaccuracies in game data</li>
+              <li>Third-party content accuracy</li>
             </ul>
             <p>
               The service is provided &quot;as is&quot; without any warranty of any kind,

@@ -15,7 +15,7 @@ export default function LegalPage() {
       <div className="legal-card">
         <span className="legal-card__badge">Legal</span>
         <h1 className="legal-card__title">Legal Notice</h1>
-        <p className="legal-card__meta">Last updated: March 3, 2026</p>
+        <p className="legal-card__meta">Last updated: June 3, 2026</p>
 
         <hr className="legal-divider" />
 
@@ -49,9 +49,9 @@ export default function LegalPage() {
           <h2 className="legal-section__title">Intellectual Property</h2>
           <div className="legal-section__body">
             <p>
-              All content, games, and design on this website are the exclusive property of
-              Ultimate Playground. Any reproduction, distribution, or use without prior
-              written consent is prohibited.
+              All content, clips, and design on this website are the exclusive property of
+              their respective owners. Ultimate Playground&apos;s original content and design
+              may not be reproduced, distributed, or used without prior written consent.
             </p>
           </div>
         </div>
