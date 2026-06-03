@@ -715,7 +715,7 @@ kbd {
 /* Scroll indicator — flows between content and bottom */
 .cp-splash__scroll {
   margin-top: auto;
-  margin-bottom: 32px;
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
