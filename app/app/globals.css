@@ -15,19 +15,13 @@
   --header-h:      56px;
 }
 
-html {
-  scroll-behavior: smooth;
-  height: 100%;
-  overflow: hidden;
-}
+html { scroll-behavior: smooth; }
 
 body {
   background: var(--color-bg);
   color: var(--color-text);
   font-family: var(--font-sora), sans-serif;
   -webkit-font-smoothing: antialiased;
-  height: 100%;
-  overflow: hidden;
 }
 
 /* ── Scrollbar ────────────────────────────────────────────────────────────── */

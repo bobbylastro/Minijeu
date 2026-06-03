@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { getClips } from "@/lib/clips";
 import { createClient } from "@/lib/supabase/server";
 import ClipFeed from "@/components/ClipFeed";
+import BodyScrollLock from "@/components/BodyScrollLock";
 
 export const metadata: Metadata = {
   title: "Ultimate Playground — The best gaming clips right now",
@@ -48,6 +49,7 @@ function ClipFeedSkeleton() {
 export default function HomePage() {
   return (
     <main className="gc-main">
+      <BodyScrollLock />
       <section className="gc-player-zone">
         <Suspense fallback={<ClipFeedSkeleton />}>
           <ClipFeedLoader />
