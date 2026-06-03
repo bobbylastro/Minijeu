@@ -593,6 +593,7 @@ body {
   pointer-events: none;
 }
 
+
 /* Thumbnail/color overlay shown before video plays — sits above video, hidden on play */
 .cp-feed-preplay {
   position: absolute;

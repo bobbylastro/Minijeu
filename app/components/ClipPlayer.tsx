@@ -33,6 +33,7 @@ export default function ClipPlayer({
   const scrollRef          = useRef<HTMLDivElement>(null);
   const splashRef          = useRef<HTMLDivElement>(null);
   const videoRefs          = useRef<Map<string, HTMLVideoElement>>(new Map());
+  const isMobile           = typeof window !== "undefined" && window.innerWidth <= 768;
   const bgVideoRefs        = useRef<Map<string, HTMLVideoElement>>(new Map());
   const progressRefs       = useRef<Map<string, HTMLDivElement>>(new Map());
   const activeIdRef        = useRef<string | null>(null);
@@ -155,7 +156,13 @@ export default function ClipPlayer({
           if (entry.isIntersecting) {
             playStartRef.current.set(id, Date.now());
             autoScrollDoneRef.current.delete(id);
-            video?.play().catch(() => {});
+            if (video) {
+              video.play().catch(() => {
+                video.muted = true;
+                setMuted(true);
+                video.play().catch(() => {});
+              });
+            }
             bgVideo?.play().catch(() => {});
             setActiveId(id);
             const clip = clips.find((c) => c.id === id);
@@ -470,22 +477,24 @@ export default function ClipPlayer({
                 <div className="cp-speed-badge">2×</div>
               )}
 
-              {/* Blurred ambient background — fills letterbox areas on wide screens */}
-              <video
-                ref={(el) => {
-                  if (el) bgVideoRefs.current.set(clip.id, el);
-                  else bgVideoRefs.current.delete(clip.id);
-                }}
-                className="cp-feed-bg-blur"
-                muted
-                loop
-                playsInline
-                preload="none"
-                tabIndex={-1}
-                aria-hidden="true"
-              >
-                <source src={clip.videoUrl} />
-              </video>
+              {/* Blurred ambient background — desktop only (mobile: too GPU-intensive) */}
+              {!isMobile && (
+                <video
+                  ref={(el) => {
+                    if (el) bgVideoRefs.current.set(clip.id, el);
+                    else bgVideoRefs.current.delete(clip.id);
+                  }}
+                  className="cp-feed-bg-blur"
+                  muted
+                  loop
+                  playsInline
+                  preload="none"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                >
+                  <source src={clip.videoUrl} />
+                </video>
+              )}
 
               {/* Thumbnail/color overlay — visible before first play, hidden once video plays */}
               <div
@@ -505,7 +514,7 @@ export default function ClipPlayer({
                 className="cp-feed-video"
                 loop
                 playsInline
-                preload={index === 0 ? "auto" : "none"}
+                preload={index === 0 ? "metadata" : "none"}
                 poster={clip.thumbnailUrl ?? undefined}
                 onClick={() => togglePlay(clip.id)}
                 onPlay={() => {
