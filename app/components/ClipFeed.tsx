@@ -39,11 +39,17 @@ export default function ClipFeed({ clips }: Props) {
   const [feedKey,      setFeedKey]      = useState(0);
   const [seenIds,      setSeenIds]      = useState<Set<string>>(() => getSeenClipIds());
 
-  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const debounceRef    = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const resetCycleRef  = useRef(0);
+  const originalClips  = useRef(clips);
 
-  // Client-side shuffle after mount (avoids SSR hydration mismatch)
+  // Client-side shuffle after mount (avoids SSR hydration mismatch).
+  // Unseen clips first so fresh content appears at the top; already-seen clips trail behind.
   useEffect(() => {
-    setFeedClips(shuffle(clips));
+    const seen = getSeenClipIds();
+    const unseen     = shuffle(clips.filter(c => !seen.has(c.id)));
+    const alreadySeen = shuffle(clips.filter(c =>  seen.has(c.id)));
+    setFeedClips([...unseen, ...alreadySeen]);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   // Merge Supabase watch history for logged-in users (cross-device persistence)
@@ -111,6 +117,17 @@ export default function ClipFeed({ clips }: Props) {
       return next;
     });
   }, [refreshFeed]);
+
+  // Append a new shuffled cycle when the feed is exhausted (no page reload needed).
+  // Each reset uses synthetic IDs (clip.id + "__r<n>") so React keys stay unique.
+  const handleFeedExhausted = useCallback(() => {
+    const cycle = ++resetCycleRef.current;
+    setFeedClips(prev => [
+      ...prev,
+      ...shuffle(originalClips.current.filter(c => !likedIds.has(c.id)))
+        .map(c => ({ ...c, id: `${c.id}__r${cycle}` })),
+    ]);
+  }, [likedIds]);
 
   const handleClearAll = useCallback(() => {
     setSelectedGames(new Set());
@@ -191,12 +208,7 @@ export default function ClipFeed({ clips }: Props) {
 
         <ClipPlayer
           key={feedKey}
-          clips={(() => {
-            const unseen = feedClips.filter((c) => !seenIds.has(c.id));
-            if (unseen.length > 0) return unseen;
-            // All seen → reset, but always exclude liked clips
-            return feedClips.filter((c) => !likedIds.has(c.id));
-          })()}
+          clips={feedClips}
           skipSplash={selectedGames.size > 0}
           likedClipIds={likedIds}
           onLikeToggle={handleLikeToggle}
@@ -204,6 +216,7 @@ export default function ClipFeed({ clips }: Props) {
           isLoggedIn={!!user}
           onActiveClipChange={setActiveClip}
           onCommentClick={() => setCommentsOpen(true)}
+          onFeedExhausted={handleFeedExhausted}
         />
       </div>
 

@@ -17,6 +17,7 @@ interface Props {
   scrollToClipId?: string | null;
   onScrolledToClip?: () => void;
   skipSplash?: boolean;
+  onFeedExhausted?: () => void;
 }
 
 export default function ClipPlayer({
@@ -30,6 +31,7 @@ export default function ClipPlayer({
   scrollToClipId,
   onScrolledToClip,
   skipSplash,
+  onFeedExhausted,
 }: Props) {
   const scrollRef          = useRef<HTMLDivElement>(null);
   const splashRef          = useRef<HTMLDivElement>(null);
@@ -44,6 +46,10 @@ export default function ClipPlayer({
   const autoScrollCountRef = useRef(0); // consecutive auto-scrolls, resets on user interaction
   const splashPassedRef    = useRef(false);
   const isPeekingRef       = useRef(false);
+  const feedExhaustedRef   = useRef(false);
+
+  // Strip reset-cycle suffix so tracking/seen always use the canonical clip ID
+  const baseId = (id: string) => id.includes("__r") ? id.slice(0, id.lastIndexOf("__r")) : id;
 
   const [activeId,    setActiveId]    = useState<string | null>(clips[0]?.id ?? null);
   const [splashPassed, setSplashPassed] = useState(false);
@@ -58,6 +64,13 @@ export default function ClipPlayer({
 
   // Keep refs in sync for stable event listeners
   useEffect(() => { activeIdRef.current = activeId; }, [activeId]);
+
+  // Reset exhaustion guard when new clips are appended (feed grew)
+  const prevClipsLenRef = useRef(clips.length);
+  useEffect(() => {
+    if (clips.length > prevClipsLenRef.current) feedExhaustedRef.current = false;
+    prevClipsLenRef.current = clips.length;
+  }, [clips.length]);
 
   const resetAutoScrollCount = useCallback(() => {
     autoScrollCountRef.current = 0;
@@ -156,7 +169,7 @@ export default function ClipPlayer({
           const bgVideo = bgVideoRefs.current.get(id);
           if (entry.isIntersecting) {
             // Mark as seen immediately (any pixel visible, ratio ≥ 0)
-            markClipSeen(id);
+            markClipSeen(baseId(id));
 
             // Autoplay + tracking only at 70% visibility
             if (entry.intersectionRatio >= 0.7) {
@@ -172,7 +185,13 @@ export default function ClipPlayer({
               bgVideo?.play().catch(() => {});
               setActiveId(id);
               const clip = clips.find((c) => c.id === id);
-              if (clip) trackClipView(id, clip.game);
+              if (clip) trackClipView(baseId(id), clip.game);
+
+              // Trigger silent reset when the last clip in the feed is reached
+              if (onFeedExhausted && !feedExhaustedRef.current && id === clips[clips.length - 1]?.id) {
+                feedExhaustedRef.current = true;
+                onFeedExhausted();
+              }
 
               // Preload the next clip
               const idx = clips.findIndex((c) => c.id === id);
@@ -189,7 +208,7 @@ export default function ClipPlayer({
               const watchedSec = (Date.now() - startTs) / 1000;
               const ratio = video?.duration ? Math.min(watchedSec / video.duration, 1) : 0;
               playStartRef.current.delete(id);
-              sendWatchEvent(id, watchedSec, ratio);
+              sendWatchEvent(baseId(id), watchedSec, ratio);
             }
             if (video) { video.pause(); video.currentTime = 0; }
             if (bgVideo) { bgVideo.pause(); bgVideo.currentTime = 0; }
