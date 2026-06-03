@@ -21,6 +21,8 @@ export default function Header() {
             <span className="gc-header__logo-short">U<span className="site-header__logo-accent">P</span></span>
           </Link>
 
+          <Link href="/blog" className="gc-header__blog-link">Blog</Link>
+
           <Link href="/submit" className="gc-header__submit-btn">
             <span className="gc-header__submit-label">+ Submit a clip</span>
             <span className="gc-header__submit-short">+ Submit</span>

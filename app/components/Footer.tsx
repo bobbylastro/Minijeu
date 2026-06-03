@@ -6,6 +6,7 @@ export default function Footer() {
       <div className="gc-footer__inner">
         <span className="gc-footer__brand">Ultimate Playground</span>
         <nav className="gc-footer__links">
+          <Link href="/blog">Blog</Link>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
           <Link href="/cookies">Cookies</Link>

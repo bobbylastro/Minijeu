@@ -79,7 +79,6 @@ const nextConfig: NextConfig = {
     }));
     return [
       ...staticRedirects,
-      { source: "/blog/:path*", destination: "/", permanent: true },
     ];
   },
   async headers() {
