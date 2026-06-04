@@ -267,7 +267,14 @@ export default function ClipPlayer({
             // Pause instead of navigating — resumes when user interacts
             video.pause();
           } else {
-            navigateClip(1, id);
+            // Disable snap before scrolling — on Safari, scrollTo from scrollTop=0
+            // (first clip after splash) gets silently cancelled by the snap engine.
+            const c = scrollRef.current;
+            if (c) {
+              c.style.scrollSnapType = "none";
+              navigateClip(1, id);
+              setTimeout(() => { if (scrollRef.current) scrollRef.current.style.scrollSnapType = ""; }, 500);
+            }
           }
         }
       };
