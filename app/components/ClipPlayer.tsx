@@ -235,7 +235,9 @@ export default function ClipPlayer({
     // If not found (stale ref), default to splash (0) so ArrowDown goes to clip 1
     const from  = idx === -1 ? 0 : idx;
     const next  = items[from + dir];
-    if (next) next.scrollIntoView({ behavior: "smooth" });
+    // Scroll only within the feed container — never use scrollIntoView() which
+    // also scrolls ancestor containers (body) and breaks the page layout.
+    if (next) container.scrollTo({ top: next.offsetTop, behavior: "smooth" });
   }, []);
 
   // ── Progress bars + auto-scroll on timeupdate ────────────────────────────
@@ -346,9 +348,10 @@ export default function ClipPlayer({
   // ── External scroll-to (used by filter to skip non-matching clips) ─────────
   useEffect(() => {
     if (!scrollToClipId || !scrollRef.current) return;
-    const el = scrollRef.current.querySelector<HTMLElement>(`[data-clip-id="${scrollToClipId}"]`);
+    const container = scrollRef.current;
+    const el = container.querySelector<HTMLElement>(`[data-clip-id="${scrollToClipId}"]`);
     if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
+      container.scrollTo({ top: el.offsetTop, behavior: "smooth" });
       onScrolledToClip?.();
     }
   }, [scrollToClipId, onScrolledToClip]);
