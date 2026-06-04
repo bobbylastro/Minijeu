@@ -226,11 +226,11 @@ export default function ClipPlayer({
   }, [clips]);
 
   // ── Navigate between clips (used by keyboard + auto-scroll) ─────────────
-  const navigateClip = useCallback((dir: 1 | -1) => {
+  const navigateClip = useCallback((dir: 1 | -1, fromId?: string) => {
     const container = scrollRef.current;
     if (!container) return;
     const items = Array.from(container.querySelectorAll<HTMLElement>("[data-clip-id]"));
-    const cur   = activeIdRef.current ?? "__splash__";
+    const cur   = fromId ?? activeIdRef.current ?? "__splash__";
     const idx   = items.findIndex((el) => el.dataset.clipId === cur);
     // If not found (stale ref), default to splash (0) so ArrowDown goes to clip 1
     const from  = idx === -1 ? 0 : idx;
@@ -267,7 +267,7 @@ export default function ClipPlayer({
             // Pause instead of navigating — resumes when user interacts
             video.pause();
           } else {
-            navigateClip(1);
+            navigateClip(1, id);
           }
         }
       };
