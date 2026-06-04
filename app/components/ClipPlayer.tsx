@@ -235,9 +235,12 @@ export default function ClipPlayer({
     // If not found (stale ref), default to splash (0) so ArrowDown goes to clip 1
     const from  = idx === -1 ? 0 : idx;
     const next  = items[from + dir];
-    // Scroll only within the feed container — never use scrollIntoView() which
-    // also scrolls ancestor containers (body) and breaks the page layout.
-    if (next) container.scrollTo({ top: next.offsetTop, behavior: "smooth" });
+    // offsetTop is relative to offsetParent (not the scroll container), so use
+    // getBoundingClientRect to get the true position within the container.
+    if (next) {
+      const top = next.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
+      container.scrollTo({ top, behavior: "smooth" });
+    }
   }, []);
 
   // ── Progress bars + auto-scroll on timeupdate ────────────────────────────
@@ -351,7 +354,8 @@ export default function ClipPlayer({
     const container = scrollRef.current;
     const el = container.querySelector<HTMLElement>(`[data-clip-id="${scrollToClipId}"]`);
     if (el) {
-      container.scrollTo({ top: el.offsetTop, behavior: "smooth" });
+      const top = el.getBoundingClientRect().top - container.getBoundingClientRect().top + container.scrollTop;
+      container.scrollTo({ top, behavior: "smooth" });
       onScrolledToClip?.();
     }
   }, [scrollToClipId, onScrolledToClip]);
