@@ -263,15 +263,16 @@ export default function ClipPlayer({
         ) {
           autoScrollDoneRef.current.add(id);
           autoScrollCountRef.current += 1;
+          console.log("[autoscroll] fired for", id, "count=", autoScrollCountRef.current, "scrollTop=", scrollRef.current?.scrollTop, "clientHeight=", scrollRef.current?.clientHeight);
           if (autoScrollCountRef.current >= 10) {
-            // Pause instead of navigating — resumes when user interacts
             video.pause();
           } else {
-            // Simplest possible approach: move scrollTop by one clip height.
-            // CSS scroll-behavior:smooth (set on .cp-scroll-feed) provides the
-            // animation without any JS smooth / snap-stop interaction issues.
             const c = scrollRef.current;
-            if (c) c.scrollTop += c.clientHeight;
+            if (c) {
+              console.log("[autoscroll] before:", c.scrollTop, "adding:", c.clientHeight);
+              c.scrollTop += c.clientHeight;
+              console.log("[autoscroll] after:", c.scrollTop);
+            }
           }
         }
       };
