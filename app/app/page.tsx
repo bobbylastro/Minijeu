@@ -9,18 +9,18 @@ export const metadata: Metadata = {
   title: "Ultimate Playground — The best gaming clips right now",
   alternates: { canonical: "https://ultimate-playground.com" },
   description:
-    "Watch the best Valorant, Apex Legends, Marvel Rivals, The Finals, Rocket League and Rainbow Six Siege clips. Curated automatically, fresh clips every week.",
+    "Watch the best gaming clips from Valorant, Apex Legends, CS2, League of Legends, Marvel Rivals, Rocket League, Minecraft, Rust, GTA V, Overwatch and more. Curated highlights, updated every week.",
   openGraph: {
     title: "Ultimate Playground — The best gaming clips right now",
     description:
-      "The best Valorant, Apex, Marvel Rivals, The Finals, Rocket League and R6 Siege moments — curated automatically from Medal.tv and Twitch.",
+      "The best gaming clips from Valorant, Apex, CS2, LoL, Marvel Rivals, Rocket League, Minecraft, Rust, GTA V, Overwatch and more — curated and reviewed every week.",
     images: [{ url: "/og-gamingclips.png", width: 1200, height: 630, alt: "Ultimate Playground" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Ultimate Playground — The best gaming clips right now",
     description:
-      "Valorant, Apex, Marvel Rivals, The Finals, Rocket League, R6 Siege. The best clips, every week.",
+      "Valorant, Apex, CS2, LoL, Marvel Rivals, Rocket League, Minecraft, Rust, GTA V, Overwatch and more. The best clips, every week.",
   },
 };
 
