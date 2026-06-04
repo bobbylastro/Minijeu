@@ -558,6 +558,7 @@ body {
   height: 100%;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
   scrollbar-width: none;
 }
 .cp-scroll-feed::-webkit-scrollbar { display: none; }

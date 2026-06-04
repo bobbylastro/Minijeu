@@ -272,7 +272,13 @@ export default function ClipPlayer({
               const items = Array.from(c.querySelectorAll<HTMLElement>("[data-clip-id]"));
               const idx   = items.findIndex((el) => el.dataset.clipId === id);
               const next  = idx !== -1 ? items[idx + 1] : undefined;
-              if (next) next.scrollIntoView({ behavior: "smooth", block: "start" });
+              if (next) {
+                // scrollTo without behavior → CSS scroll-behavior:smooth drives the
+                // animation. Avoids the JS smooth + snap-stop:always interaction
+                // that silently cancels the scroll when starting from scrollTop=0.
+                const top = Math.round(next.getBoundingClientRect().top - c.getBoundingClientRect().top + c.scrollTop);
+                c.scrollTo({ top });
+              }
             }
           }
         }
@@ -331,7 +337,7 @@ export default function ClipPlayer({
     const container = scrollRef.current;
     requestAnimationFrame(() => {
       const splash = container.querySelector<HTMLElement>('[data-clip-id="__splash__"]');
-      if (splash) container.scrollTop = splash.offsetHeight;
+      if (splash) container.scrollTo({ top: splash.offsetHeight, behavior: "instant" });
     });
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
@@ -350,7 +356,7 @@ export default function ClipPlayer({
     splash.style.scrollSnapAlign = "none";
     splash.style.scrollSnapStop = "unset";
     // Compensate scrollTop so visual position stays on current clip
-    container.scrollTop -= splashHeight;
+    container.scrollTo({ top: Math.max(0, container.scrollTop - splashHeight), behavior: "instant" });
     container.style.overflowAnchor = "";
   }, [splashPassed]);
 
