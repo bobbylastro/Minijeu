@@ -269,17 +269,10 @@ export default function ClipPlayer({
           } else {
             const c = scrollRef.current;
             if (c) {
-              // Bypass getBoundingClientRect + scrollTo — use scrollBy so the
-              // browser never has to "start from 0". Disable snap first so the
-              // engine doesn't fight us (scroll-snap-stop:always on clip items).
-              c.style.scrollSnapType = "none";
-              c.scrollBy({ top: c.clientHeight, behavior: "smooth" });
-              const restoreSnap = () => { if (scrollRef.current) scrollRef.current.style.scrollSnapType = ""; };
-              if ("onscrollend" in c) {
-                c.addEventListener("scrollend", restoreSnap, { once: true });
-              } else {
-                setTimeout(restoreSnap, 600);
-              }
+              const items = Array.from(c.querySelectorAll<HTMLElement>("[data-clip-id]"));
+              const idx   = items.findIndex((el) => el.dataset.clipId === id);
+              const next  = idx !== -1 ? items[idx + 1] : undefined;
+              if (next) next.scrollIntoView({ behavior: "smooth", block: "start" });
             }
           }
         }
