@@ -267,19 +267,11 @@ export default function ClipPlayer({
             // Pause instead of navigating — resumes when user interacts
             video.pause();
           } else {
+            // Simplest possible approach: move scrollTop by one clip height.
+            // CSS scroll-behavior:smooth (set on .cp-scroll-feed) provides the
+            // animation without any JS smooth / snap-stop interaction issues.
             const c = scrollRef.current;
-            if (c) {
-              const items = Array.from(c.querySelectorAll<HTMLElement>("[data-clip-id]"));
-              const idx   = items.findIndex((el) => el.dataset.clipId === id);
-              const next  = idx !== -1 ? items[idx + 1] : undefined;
-              if (next) {
-                // scrollTo without behavior → CSS scroll-behavior:smooth drives the
-                // animation. Avoids the JS smooth + snap-stop:always interaction
-                // that silently cancels the scroll when starting from scrollTop=0.
-                const top = Math.round(next.getBoundingClientRect().top - c.getBoundingClientRect().top + c.scrollTop);
-                c.scrollTo({ top });
-              }
-            }
+            if (c) c.scrollTop += c.clientHeight;
           }
         }
       };
