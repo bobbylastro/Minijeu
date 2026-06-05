@@ -1,4 +1,4 @@
-import { S3Client, DeleteObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
 
 const r2Client = new S3Client({
   region: "auto",
@@ -8,6 +8,16 @@ const r2Client = new S3Client({
     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
   },
 });
+
+export async function uploadToR2(key: string, body: Blob, contentType: string): Promise<void> {
+  const buffer = Buffer.from(await body.arrayBuffer());
+  await r2Client.send(new PutObjectCommand({
+    Bucket:      process.env.R2_BUCKET_NAME!,
+    Key:         key,
+    Body:        buffer,
+    ContentType: contentType,
+  }));
+}
 
 export async function deleteR2Object(key: string): Promise<void> {
   await r2Client.send(new DeleteObjectCommand({

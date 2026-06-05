@@ -2,6 +2,7 @@ import { NextRequest } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/admin";
 import { isGameSlug } from "@/lib/clips-shared";
+import { uploadToR2, deleteR2Object } from "@/lib/r2";
 
 export async function POST(
   _req: NextRequest,
@@ -42,18 +43,15 @@ export async function POST(
     return Response.json({ error: "download_failed" }, { status: 500 });
   }
 
-  // Upload to public clips bucket
-  const { error: ulErr } = await supabase.storage
-    .from("clips")
-    .upload(destPath, fileData, { contentType: `video/${ext}`, upsert: false });
-
-  if (ulErr) {
-    console.error("Upload error:", ulErr);
+  // Upload to R2 (zero egress, same bucket as pipeline clips)
+  try {
+    await uploadToR2(destPath, fileData, `video/${ext}`);
+  } catch (err) {
+    console.error("R2 upload error:", err);
     return Response.json({ error: "upload_failed" }, { status: 500 });
   }
 
-  // Get public URL
-  const { data: { publicUrl } } = supabase.storage.from("clips").getPublicUrl(destPath);
+  const publicUrl = `${process.env.R2_PUBLIC_URL}/${destPath}`;
 
   // Insert into clips table
   const { error: insertErr } = await supabase.from("clips").insert({
@@ -62,14 +60,14 @@ export async function POST(
     game: sub.game,
     video_url: publicUrl,
     thumbnail_url: null,
-    source: "local",
+    source: "community",
     likes_count: 0,
+    status: "approved",
   });
 
   if (insertErr) {
     console.error("Insert error:", insertErr);
-    // Clean up the uploaded file
-    await supabase.storage.from("clips").remove([destPath]);
+    await deleteR2Object(destPath);
     return Response.json({ error: "db_error" }, { status: 500 });
   }
 
