@@ -9,7 +9,8 @@ import type { BlogArticle } from "@/lib/blog";
 const BASE = "https://ultimate-playground.com";
 
 export function generateStaticParams() {
-  return BLOG_ARTICLES.map((a) => ({ slug: a.slug }));
+  const today = new Date().toISOString().slice(0, 10);
+  return BLOG_ARTICLES.filter((a) => a.publishDate <= today).map((a) => ({ slug: a.slug }));
 }
 
 export async function generateMetadata({
@@ -20,7 +21,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) return {};
-  const ogImage = `/api/og?game=${article.game}`;
+  const ogImage = article.game ? `/api/og?game=${article.game}` : `/api/og`;
   return {
     title: article.metaTitle,
     description: article.description,
@@ -48,10 +49,11 @@ export default async function BlogArticlePage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const today = new Date().toISOString().slice(0, 10);
   const article = getArticle(slug);
-  if (!article) notFound();
+  if (!article || article.publishDate > today) notFound();
 
-  const game = GAMES[article.game];
+  const game = article.game ? GAMES[article.game] : null;
   const related = article.relatedSlugs
     .map((s) => BLOG_ARTICLES.find((a) => a.slug === s))
     .filter((a): a is BlogArticle => !!a);
@@ -77,8 +79,10 @@ export default async function BlogArticlePage({
       url: BASE,
     },
     mainEntityOfPage: { "@type": "WebPage", "@id": pageUrl },
-    image: `${BASE}/api/og?game=${article.game}`,
-    keywords: `${game.name} clips, ${game.name} highlights, best ${game.name} moments, gaming clips`,
+    image: article.game ? `${BASE}/api/og?game=${article.game}` : `${BASE}/api/og`,
+    keywords: game
+      ? `${game.name} clips, ${game.name} highlights, best ${game.name} moments, gaming clips`
+      : "gaming clips, gaming highlights, best gaming moments",
   };
 
   const breadcrumbSchema = {
@@ -100,12 +104,14 @@ export default async function BlogArticlePage({
           <Link href="/blog" className="blog-article__back">
             ← All articles
           </Link>
-          <span
-            className="blog-article__game-badge"
-            style={{ background: game.color, color: game.textColor }}
-          >
-            {game.name}
-          </span>
+          {game && (
+            <span
+              className="blog-article__game-badge"
+              style={{ background: game.color, color: game.textColor }}
+            >
+              {game.name}
+            </span>
+          )}
           <h1 className="blog-article__title">{article.title}</h1>
           <p className="blog-article__meta">{article.readMinutes} min read</p>
         </header>
@@ -120,15 +126,15 @@ export default async function BlogArticlePage({
             <h2 className="blog-related__title">Read next</h2>
             <div className="blog-related__grid">
               {related.map((rel) => {
-                const relGame = GAMES[rel.game];
+                const relGame = rel.game ? GAMES[rel.game] : null;
                 return (
                   <Link
                     key={rel.slug}
                     href={`/blog/${rel.slug}`}
                     className="blog-related__card"
-                    style={{ "--game-color": relGame.color } as React.CSSProperties}
+                    style={{ "--game-color": relGame ? relGame.color : "#6b7280" } as React.CSSProperties}
                   >
-                    <span className="blog-related__game">{relGame.name}</span>
+                    {relGame && <span className="blog-related__game">{relGame.name}</span>}
                     <span className="blog-related__card-title">{rel.metaTitle}</span>
                     <span className="blog-related__meta">{rel.readMinutes} min read →</span>
                   </Link>
@@ -140,7 +146,7 @@ export default async function BlogArticlePage({
 
         <footer className="blog-article__footer">
           <Link href="/" className="blog-article__cta">
-            Watch the best {game.name} clips →
+            {game ? `Watch the best ${game.name} clips →` : "Browse the best gaming clips →"}
           </Link>
           <Link href="/blog" className="blog-article__back-bottom">
             ← Back to blog

@@ -20,6 +20,9 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const today = new Date().toISOString().slice(0, 10);
+  const published = BLOG_ARTICLES.filter((a) => a.publishDate <= today);
+
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -45,18 +48,18 @@ export default function BlogPage() {
         </header>
 
         <div className="blog-index__grid">
-          {BLOG_ARTICLES.map((article) => {
-            const game = GAMES[article.game];
+          {published.map((article) => {
+            const game = article.game ? GAMES[article.game] : null;
             return (
               <Link
                 key={article.slug}
                 href={`/blog/${article.slug}`}
                 className="blog-card"
-                style={{ "--game-color": game.color } as React.CSSProperties}
+                style={{ "--game-color": game ? game.color : "#6b7280" } as React.CSSProperties}
               >
                 <div className="blog-card__accent" />
                 <div className="blog-card__body">
-                  <span className="blog-card__game">{game.name}</span>
+                  {game && <span className="blog-card__game">{game.name}</span>}
                   <h2 className="blog-card__title">{article.title}</h2>
                   <p className="blog-card__desc">{article.description}</p>
                   <span className="blog-card__meta">{article.readMinutes} min read</span>

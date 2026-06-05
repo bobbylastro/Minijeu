@@ -2,7 +2,7 @@ import type { GameSlug } from "@/lib/clips-shared";
 
 export interface BlogArticle {
   slug: string;
-  game: GameSlug;
+  game?: GameSlug;
   title: string;
   metaTitle: string;
   description: string;
@@ -123,7 +123,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     game: "rocket-league",
     title: "Rocket League Clips: Aerial Mastery, Impossible Saves & Pure Mechanical Skill",
     metaTitle: "Best Rocket League Clips & Highlights",
-    description: "Rocket League has one of the highest mechanical skill ceilings in competitive gaming. Ceiling shots, air dribbles, flip resets — here's why the clips are unmatched.",
+    description: "Rocket League has one of the highest mechanical skill ceilings in gaming. Ceiling shots, air dribbles, flip resets — here's why Rocket League clips are unmatched.",
     publishDate: "2025-06-01",
     readMinutes: 4,
     relatedSlugs: ["cs2", "valorant", "league-of-legends"],
@@ -227,7 +227,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     game: "rust",
     title: "Rust Clips: Survival Drama, Raids & the Emotional Chaos of the Wipe",
     metaTitle: "Best Rust Clips & Highlights",
-    description: "Rust's survival loop creates high-stakes drama that no scripted game can match. Raids, rooftop defences, and naked-start victories — here's why Rust clips hit differently.",
+    description: "Rust's survival loop creates high-stakes drama no scripted game can match. Raids, rooftop defences, naked-start victories — here's why Rust clips hit differently.",
     publishDate: "2025-06-01",
     readMinutes: 4,
     relatedSlugs: ["gta-v", "minecraft", "the-finals"],
@@ -252,7 +252,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     game: "gta-v",
     title: "GTA V Clips: Stunts, Chaos & the Best Moments from Los Santos",
     metaTitle: "Best GTA V Clips & Highlights",
-    description: "GTA Online has produced some of the most creative and chaotic gaming moments of the last decade. Stunts, missions, trolling — here's why GTA clips never get old.",
+    description: "GTA Online has produced some of the most creative and chaotic gaming moments of the last decade. Stunts, missions, chaos — here's why GTA clips never get old.",
     publishDate: "2025-06-01",
     readMinutes: 3,
     relatedSlugs: ["rust", "minecraft", "apex-legends"],
@@ -276,7 +276,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     game: "minecraft",
     title: "Minecraft Clips: PvP Clutches, Impossible Builds & Moments That Define a Game",
     metaTitle: "Best Minecraft Clips & Highlights",
-    description: "Minecraft's breadth is its greatest asset for clips. From crystal PvP clutches to redstone machines to builds that take months — here's why Minecraft content never gets stale.",
+    description: "Minecraft produces highlights across a dozen registers — PvP clutches, redstone machines, megabuilds, speedruns. Here's why Minecraft content never gets stale.",
     publishDate: "2025-06-01",
     readMinutes: 4,
     relatedSlugs: ["rust", "gta-v", "league-of-legends"],
@@ -342,6 +342,128 @@ export const BLOG_ARTICLES: BlogArticle[] = [
 <h2>A Meta Still Being Written</h2>
 <p>ARC Raiders is still early in its competitive life, which means the clip culture is forming in real time. Strategies that will be obvious in a year don't exist yet. Weapon combinations are being discovered. Map routes are being mapped and shared through videos rather than wikis. Being part of a game's clip culture in this phase — when everything is discovery — is a different experience from following an established title. Every week brings something new.</p>
 <p>Watch the best ARC Raiders clips on Ultimate Playground — extraction plays, squad moments, and highlights as they happen.</p>
+    `.trim(),
+  },
+  {
+    slug: "doomscroll-gaming",
+    title: "Why You Just Spent Two Hours Watching Gaming Clips Without Noticing",
+    metaTitle: "Doomscroll Gaming: Why We Can't Stop Watching Clips",
+    description: "The psychology of doomscrolling applied to gaming clips — why highlight feeds are so hard to stop, and how a curated platform changes the experience.",
+    publishDate: "2026-06-05",
+    readMinutes: 5,
+    relatedSlugs: ["why-clutch-moments-go-viral", "gaming-clips-vs-full-gameplay", "valorant"],
+    content: `
+<p>You opened the feed to watch one clip. Maybe two. An hour and a half later, you're watching a Rocket League ceiling shot at 1 AM and you have absolutely no explanation for where the time went. This isn't a personal failing. It's a design pattern — and understanding it is the first step to reclaiming your evening.</p>
+
+<h2>What Doomscrolling Actually Is</h2>
+<p>The term "doomscrolling" entered public vocabulary during the early 2020s, describing the compulsive consumption of negative news in social media feeds. But the underlying mechanism isn't about negativity — it's about variable reward. The same psychological loop that keeps people reading distressing news keeps them watching clip after clip of gaming highlights: the next one might be better. The next one might be the one you remember. The next one is always just about to start.</p>
+<p>Behavioral psychologists call this a variable ratio reinforcement schedule. Slot machines operate on the same principle. You don't know when the reward is coming, so you keep pulling the lever. In a gaming clip feed, the "reward" is that genuinely remarkable clip — the 1v5 that doesn't seem possible, the play that makes you stop and rewatch it immediately. They don't come on a schedule. That's precisely why you can't stop scrolling.</p>
+
+<h2>Gaming Clips Are Optimised for the Loop</h2>
+<p>Short-form gaming content is particularly effective at triggering this loop because each individual unit is short enough to feel low-commitment and high enough quality to justify the next one. A 30-second clip ends before your attention can lapse. There's no buffering, no loading screen, no ad to sit through. The transition from one highlight to the next is instant — which means the friction that would normally let your brain re-engage and decide to stop never appears.</p>
+<p>This is not an accident. The platforms that host gaming clips have optimised aggressively for session length. Autoplay, endless scroll, algorithmic sequencing designed to serve the clip most likely to keep you watching rather than the clip most likely to impress you. The result is that the quality of your clip diet becomes entirely subordinate to the platform's engagement metrics. You're not watching the best gaming moments. You're watching the most addictive ones.</p>
+
+<h2>The Attention Cost Nobody Calculates</h2>
+<p>There's a specific kind of exhaustion that comes from two hours of clip consumption that feels qualitatively different from two hours of watching a film or even two hours of playing a game. The film has a beginning, a middle, and an end. The game session has an arc — you improve, you win rounds, you progress. The clip feed has none of that. It's a flat line of perpetual novelty with no resolution, no narrative closure, no moment where it makes sense to stop.</p>
+<p>Neuroscience suggests that this kind of interrupted, attention-fragmenting consumption is more cognitively taxing than sustained focus on a single thing — even when it doesn't feel that way in the moment. The dopamine hits keep you alert. The attention switching keeps your brain active. But when the feed finally ends (or you finally close the tab), the deficit becomes apparent. You're tired and you haven't done anything.</p>
+
+<h2>What Curation Changes</h2>
+<p>The alternative to algorithmic clip feeding isn't willpower. It's design. A curated clip feed — where a human has reviewed each clip before it appears — changes the experience in a way that willpower alone can't. When every clip in the feed is genuinely worth watching, the variable reward schedule inverts: instead of scrolling through adequate content waiting for something great, you're watching great content and stopping when you've seen enough.</p>
+<p>That's the operating premise behind Ultimate Playground. Every clip in the feed has been reviewed before going live. Nothing is there because an algorithm decided it would maximise your session length. The result is a shorter, denser, more satisfying clip session — one that ends because you've actually seen the best moments from the week, not because you ran out of willingness to keep scrolling.</p>
+<p>Doomscrolling gaming isn't an inevitability. It's a product of how most clip platforms are built. The fix isn't discipline. It's a different kind of feed.</p>
+    `.trim(),
+  },
+  {
+    slug: "best-gaming-clips-june-2026",
+    title: "Best Gaming Clips of June 2026: Highlights From Every Major Game This Month",
+    metaTitle: "Best Gaming Clips June 2026 — Monthly Highlights",
+    description: "The best gaming highlights of June 2026 — standout moments from Valorant, Apex Legends, CS2, Marvel Rivals, Rocket League and more.",
+    publishDate: "2026-06-05",
+    readMinutes: 5,
+    relatedSlugs: ["doomscroll-gaming", "why-clutch-moments-go-viral", "valorant"],
+    content: `
+<p>June 2026 was a strong month across almost every major title. New patches, ranked season milestones, and a handful of moments that crossed beyond their games and made it into broader gaming conversation. Here's what stood out.</p>
+
+<h2>Valorant: The Mid-Season Shift</h2>
+<p>The Valorant competitive scene in June was defined by a quiet meta realignment that produced more unusual highlights than a typical month. With controller-heavy compositions gaining traction in high-ranked lobbies, the clip feed started reflecting it: more creative smokes, more unusual angles, more situations where unconventional agent picks paid off in ways that read exceptionally well on camera. The Jett-heavy flashplay clips that defined late 2025 have given way to something slower and more deliberate — and the clutches that come out of that style tend to be even more satisfying to watch.</p>
+<p>The community has also been revisiting some of the older agent kits following the rework discussions that started in May. Expect more Reyna and Phoenix clips as players experiment with builds before potential changes arrive.</p>
+
+<h2>Apex Legends: Season Momentum</h2>
+<p>Apex's current season has been generous to movement players, and June's clip culture reflected that. The standout moments this month came disproportionately from Octane and Pathfinder mains pushing the ceiling of what's achievable during active gunfights — not in practice modes, but in real ranked games where the pressure compounds every decision. The Apex community has a particular appreciation for clips where the movement isn't just impressive but tactically relevant: not a style flex, but the specific repositioning that wins a fight that would otherwise be lost.</p>
+<p>Third-party compilation clips have also been circulating widely this month — the kind that document multi-squad scenarios collapsing simultaneously in a ring that was too small for everyone. Apex at its most chaotic is Apex at its most clip-worthy.</p>
+
+<h2>CS2: Clutch Season</h2>
+<p>Counter-Strike had a particularly good month for clutch content. Something about the current ranked distribution seems to be producing more 1v3 and 1v4 scenarios that get recorded and shared — possibly a function of the squad-play meta encouraging more aggressive early-round plays that leave one player isolated. Whatever the cause, June delivered a notable number of clips where a single player navigated an impossible situation through timing, sound cue reading, and composure rather than mechanical superiority alone.</p>
+<p>AWP highlights also continued to dominate the shareable end of CS2 clips. A well-placed quick-scope in a pressure moment has a clarity to it that no other weapon in any other game quite replicates — you see the crosshair, you see the commitment, you see the result in the same half-second. That compactness makes for excellent short-form content.</p>
+
+<h2>Marvel Rivals: Discovery Continues</h2>
+<p>Marvel Rivals is still in what might be called its golden discovery window — the phase of a game's lifecycle where the meta is permeable enough that individual players regularly find angles, combos, or positioning strategies that feel genuinely new. June produced several clips in this category: team-up ability interactions that the broader community hadn't catalogued yet, hero matchups being explored for the first time at high rank, and a handful of moments where someone found a geometry angle that will probably be patched out within a few weeks.</p>
+<p>The result is a clip feed that feels alive in a way that established games rarely do. Watch Marvel Rivals highlights in June knowing that some of what you're seeing is being discovered in real time.</p>
+
+<h2>Rocket League: Mechanical Peaks</h2>
+<p>Rocket League's clip culture never really has quiet months — the mechanical ceiling is high enough that someone, somewhere, is always hitting something new. June was notable for a wave of flip reset content from the mid-rank range, suggesting that a technique previously associated only with the highest skill levels is being successfully absorbed further down the ranked ladder. When a mechanic democratises like that, the clips become more interesting, not less: seeing a Platinum execute a double flip reset that a Diamond would envy is its own kind of highlight.</p>
+<p>The community is also continuing to produce standout 0-second save clips, a format that never ages. The best ones from June involve situations where the save looked impossible not just mechanically but geometrically — the kind of clip that requires multiple rewatches before you believe the outcome was real.</p>
+
+<h2>Where to Find This Month's Best Moments</h2>
+<p>Every clip mentioned in this roundup and more from June 2026 is available on Ultimate Playground — curated, reviewed, and updated weekly. If you want the month's standout moments without scrolling through everything the algorithm thinks you should watch, the feed is the place to start.</p>
+    `.trim(),
+  },
+  {
+    slug: "why-clutch-moments-go-viral",
+    title: "Why 1v5 Clutch Moments Are the Most Shared Clips in Gaming",
+    metaTitle: "Why Clutch Moments Go Viral in Gaming",
+    description: "The psychology behind clutch gaming moments — why 1vX clips go viral, why viewers feel the pressure, and what makes a clutch different from every other highlight.",
+    publishDate: "2026-06-05",
+    readMinutes: 5,
+    relatedSlugs: ["doomscroll-gaming", "gaming-clips-vs-full-gameplay", "cs2"],
+    content: `
+<p>A 1v4 with the bomb planted, thirty seconds on the clock, and all four opponents alive and hunting. The player is alone, probably crouched behind cover, watching angles through a scope or waiting for audio cues. The viewer watching the clip is doing something remarkable: feeling genuine stress about an outcome they already know. The clip exists. The player survived. And yet the tension is real.</p>
+<p>Clutch moments are the most-shared category of gaming clips across almost every title, from Counter-Strike to Valorant to League of Legends. Understanding why tells you something interesting about the psychology of competitive spectatorship — and about what makes gaming content fundamentally different from every other kind of short-form video.</p>
+
+<h2>The Empathy Mechanism</h2>
+<p>Neuroscience has a fairly robust explanation for why watching someone under pressure makes you feel their pressure. Mirror neurons — the neural structures associated with observation and imitation — activate not just when you perform an action but when you watch someone else perform it. Athletes describe this as "playing along" when they watch sport. Viewers of gaming clips experience the same thing: the narrow corridor, the footstep sounds, the decision to peek or wait — these engage the same cognitive systems that would activate if you were in the situation yourself.</p>
+<p>Clutch moments amplify this effect because the stakes are explicit and legible. A Valorant 1v4 communicates its parameters instantly: four names on the scoreboard, one left. No context needed, no knowledge of the game's history required. The viewer understands immediately how difficult the situation is, and that understanding recruits the same stress response that the player is experiencing in real time. Watching passively, you are nonetheless involved.</p>
+
+<h2>Why Clutches Travel Further Than Other Clips</h2>
+<p>Not all impressive gaming clips go viral. Mechanical skill — ceiling shots, one-taps, air dribbles — earns respect within a game's community but often doesn't cross audiences. The reason is that mechanical excellence requires a shared vocabulary. To appreciate a flip reset in Rocket League at its proper value, you need to understand what a flip reset is. The same is true for a deep ward placement in League of Legends or a complex bhop pattern in CS2.</p>
+<p>Clutch moments require no such vocabulary. The outnumbered player, the timer, the impossible sequence of events that ends with everyone else dead — these communicate across game knowledge and even across gaming experience entirely. People who have never played Valorant share Valorant clutch clips. People who last played a video game in 2008 understand that one person killing five was not supposed to happen. The universality of "one versus many" is built into human storytelling at a level that predates video games entirely.</p>
+
+<h2>The Role of Composure</h2>
+<p>There's a specific component of clutch clips that distinguishes the best from the merely impressive: the visible composure of the player executing under pressure. A clutch that looks panicked — fast mouse movements, spray instead of aim, desperate repositioning — is exciting. A clutch that looks calm — deliberate crosshair placement, patient timing, the pause before the peek — is something else. It produces an almost uncomfortable feeling in the viewer, as if the player has access to information or certainty that they shouldn't have.</p>
+<p>This is what makes CS2 and Valorant clutch clips particularly compelling. Both games create the visible mechanics of composure: the crosshair that barely moves while waiting, the sound of carefully placed footsteps, the moment of stillness before the action. The viewer is watching someone manage a psychological state in real time — and that's a different kind of impressive than mechanical skill.</p>
+
+<h2>The Communal Moment</h2>
+<p>Clutch clips also carry a social function that other gaming highlights don't. When you share a clutch, you're not just sharing something impressive — you're inviting someone to experience the tension vicariously. The share is an invitation: watch this, feel what I felt. That emotional transfer creates a stronger bond around the content than a mechanical highlight creates. A flip reset earns admiration. A 1v5 clutch earns participation.</p>
+<p>This is why clutch moments remain the foundational content of gaming clip culture, regardless of which games dominate any given year. The format is older than any of the games that use it. At Ultimate Playground, clutch clips from every major game are in the feed — the moments that made one player's hands shake and made everyone watching feel it too.</p>
+    `.trim(),
+  },
+  {
+    slug: "gaming-clips-vs-full-gameplay",
+    title: "Gaming Clips vs Full Streams: Why 30 Seconds Beats 4 Hours",
+    metaTitle: "Gaming Clips vs Streams: Why Short-Form Won",
+    description: "Why gaming clips have overtaken full streams and long-form gameplay. The rise of short-form gaming content and how it changed how we consume gaming.",
+    publishDate: "2026-06-05",
+    readMinutes: 5,
+    relatedSlugs: ["doomscroll-gaming", "why-clutch-moments-go-viral", "best-gaming-clips-june-2026"],
+    content: `
+<p>In 2015, if you wanted to follow a game you weren't playing yourself, you watched a stream. You tuned in for hours, followed a specific personality, let the experience wash over you across an afternoon. That model is not gone — Twitch still has enormous audiences, YouTube live still fills up for major events — but it is no longer how most people consume gaming content. The clip won. Understanding why tells you something important about how attention works, and about what gaming content actually delivers.</p>
+
+<h2>The Compression of Value</h2>
+<p>A four-hour stream contains, on average, perhaps twelve to twenty minutes of genuinely exceptional gameplay. The rest is necessary context — the setup, the losses, the routine rounds that make the exceptional ones meaningful. For someone who plays the game and follows the streamer, that context is the product. The relationship with the creator, the commentary, the shared experience of watching in real time — these justify the hours.</p>
+<p>For someone who just wants the moments, the math is brutal. Twenty minutes of highlights, distributed across four hours, surrounded by content that requires investment to appreciate. Gaming clips solve this problem directly. They are the twenty minutes, without the four hours. That compression is not a degraded version of the stream experience — it's a different product entirely, designed for a different need.</p>
+
+<h2>The Attention Economy Shift</h2>
+<p>The rise of short-form video — YouTube Shorts, TikTok, Instagram Reels — has not just changed how gaming content is consumed. It has changed what people are capable of consuming. Extended exposure to short-form content restructures attention expectations: the brain adapts to the pace, and longer-form content starts to feel slow in comparison. This is a documented effect, not a moral judgement. People who consume primarily short-form video find it increasingly difficult to sustain engagement with long-form content — not because they've become worse viewers, but because the baseline of stimulation has shifted.</p>
+<p>Gaming streams were one of the last bastions of long-form engagement in online video, sustained by the interactive element: chat, live events, the shared experience of watching something unfold in real time. But even streams are now clipped and redistributed as their primary consumption mode. A significant portion of a streamer's audience watches the clips, not the stream. The streamer produces the source material; the clip is the product.</p>
+
+<h2>What Clips Can Do That Streams Can't</h2>
+<p>Clips are not a lesser version of streams. They do specific things that streams cannot. A clip is repeatable: you can watch a ceiling shot six times without feeling like you're stealing time. A stream is linear — rewinding creates friction, watching the same section twice feels strange. A clip is shareable without context: you can send a 1v4 clutch to someone who has never played Counter-Strike and they will understand it immediately. A stream requires investment to even begin to explain.</p>
+<p>Clips also democratise spectatorship. Following a stream requires knowing which streamer to follow, when they go live, and having enough context to appreciate their specific style and commentary. Watching clips requires none of that. You encounter a remarkable moment, you watch it, it either works for you or it doesn't. The barrier to entry is the clip itself — thirty seconds — and that barrier is low enough that almost anyone crosses it.</p>
+
+<h2>The Curation Problem</h2>
+<p>The efficiency of gaming clips comes with a cost that's easy to overlook. When streams were the primary mode of consumption, curation was implicit: you chose a streamer whose taste you trusted, and the stream itself was the filter. With clips distributed across algorithmic platforms, curation is replaced by engagement optimisation. You get the clips most likely to keep you watching, not the clips most worth watching. That distinction matters more than it seems.</p>
+<p>The best clip culture is one where someone — a human, with taste — has decided this is worth your time. Not because it will maximise your session length, but because the moment is genuinely exceptional. That's the operating principle behind Ultimate Playground: reviewed clips, no algorithm deciding what surfaces first, no recycled content dressed up as current. Just the moments from the week that were actually worth cutting out of four hours of gameplay and preserving.</p>
+<p>Short-form won because it's efficient. But efficiency and quality are not the same thing. The best gaming clips are both.</p>
     `.trim(),
   },
 ];
