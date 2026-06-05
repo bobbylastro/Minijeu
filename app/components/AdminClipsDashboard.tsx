@@ -25,7 +25,7 @@ interface LiveClip {
   created_at: string;
 }
 
-type Tab = "pending" | "approved" | "rejected" | "live";
+type Tab = "pipeline" | "live" | "pending" | "approved" | "rejected";
 type SortOrder = "newest" | "oldest";
 
 function timeAgo(iso: string): string {
@@ -39,7 +39,7 @@ function timeAgo(iso: string): string {
 }
 
 export default function AdminClipsDashboard() {
-  const [tab, setTab]             = useState<Tab>("live");
+  const [tab, setTab]             = useState<Tab>("pipeline");
   const [subs, setSubs]           = useState<Submission[]>([]);
   const [liveClips, setLiveClips] = useState<LiveClip[]>([]);
   const [loading, setLoading]     = useState(true);
@@ -70,7 +70,19 @@ export default function AdminClipsDashboard() {
   const loadLiveClips = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/admin/clips/live");
+      const res = await fetch("/api/admin/clips/live?status=approved");
+      if (!res.ok) throw new Error("forbidden");
+      const { clips } = await res.json();
+      setLiveClips(clips ?? []);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  const loadPipelineClips = useCallback(async () => {
+    setLoading(true);
+    try {
+      const res = await fetch("/api/admin/clips/live?status=pending");
       if (!res.ok) throw new Error("forbidden");
       const { clips } = await res.json();
       setLiveClips(clips ?? []);
@@ -83,8 +95,9 @@ export default function AdminClipsDashboard() {
     setSelectedIds(new Set());
     setGameFilter("all");
     if (tab === "live") loadLiveClips();
+    else if (tab === "pipeline") loadPipelineClips();
     else loadSubmissions(tab);
-  }, [tab, loadSubmissions, loadLiveClips]);
+  }, [tab, loadSubmissions, loadLiveClips, loadPipelineClips]);
 
   // Derived: available game filter options
   const availableGames = useMemo(() => {
@@ -149,6 +162,16 @@ export default function AdminClipsDashboard() {
     }
   }
 
+  async function publishClip(id: string) {
+    setActioning(id);
+    try {
+      const res = await fetch(`/api/admin/clips/${id}/publish`, { method: "POST" });
+      if (res.ok) setLiveClips((prev) => prev.filter((c) => c.id !== id));
+    } finally {
+      setActioning(null);
+    }
+  }
+
   async function bulkDelete() {
     setBulkDeleting(true);
     setConfirmBulk(false);
@@ -169,8 +192,9 @@ export default function AdminClipsDashboard() {
   }
 
   const tabs: { key: Tab; label: string }[] = [
+    { key: "pipeline", label: "🔴 Pipeline" },
     { key: "live",     label: "Live clips" },
-    { key: "pending",  label: "Pending" },
+    { key: "pending",  label: "Submissions" },
     { key: "approved", label: "Approved" },
     { key: "rejected", label: "Rejected" },
   ];
@@ -196,6 +220,68 @@ export default function AdminClipsDashboard() {
         <div className="adm-loading">
           <span className="waiting-dot" /><span className="waiting-dot" /><span className="waiting-dot" />
         </div>
+      ) : tab === "pipeline" ? (
+        liveClips.length === 0 ? (
+          <div className="adm-empty">No clips pending review. Pipeline is clear ✓</div>
+        ) : (
+          <div className="adm-grid">
+            {liveClips.map((clip) => {
+              const game = isGameSlug(clip.game) ? GAMES[clip.game] : null;
+              const busy = actioning === clip.id;
+              const confirming = confirmDelete === clip.id;
+              return (
+                <div key={clip.id} className="adm-card">
+                  <div className="adm-card__video-wrap">
+                    {clip.thumbnail_url ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={clip.thumbnail_url} alt={clip.title} className="adm-card__thumb" />
+                    ) : (
+                      <div
+                        className="adm-card__no-preview"
+                        style={{ background: game ? game.color + "33" : undefined }}
+                      >
+                        {game?.name ?? clip.game}
+                      </div>
+                    )}
+                  </div>
+                  <div className="adm-card__body">
+                    <div className="adm-card__badges">
+                      {game ? (
+                        <span className="adm-card__game-badge" style={{ background: game.color, color: game.textColor }}>
+                          {game.name}
+                        </span>
+                      ) : (
+                        <span className="adm-card__game-badge" style={{ background: "#555", color: "#fff" }}>{clip.game}</span>
+                      )}
+                      <span className="adm-card__time">{timeAgo(clip.created_at)}</span>
+                    </div>
+                    <p className="adm-card__title">{clip.title}</p>
+                    <p className="adm-card__ip">{clip.source}</p>
+                  </div>
+                  <div className="adm-card__actions">
+                    {confirming ? (
+                      <>
+                        <span className="adm-confirm-label">Reject & delete?</span>
+                        <button className="adm-btn adm-btn--reject" onClick={() => deleteClip(clip.id)} disabled={busy}>
+                          {busy ? "…" : "Yes, reject"}
+                        </button>
+                        <button className="adm-btn adm-btn--approve" onClick={() => setConfirmDelete(null)}>Cancel</button>
+                      </>
+                    ) : (
+                      <>
+                        <button className="adm-btn adm-btn--approve" onClick={() => setPreviewClip(clip)}>▶ Preview</button>
+                        <button className="adm-btn adm-btn--approve" onClick={() => publishClip(clip.id)} disabled={busy}>
+                          {busy ? "…" : "✓ Publish"}
+                        </button>
+                        <button className="adm-btn adm-btn--reject" onClick={() => setConfirmDelete(clip.id)} disabled={busy}>Reject</button>
+                      </>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        )
       ) : tab === "live" ? (
         liveClips.length === 0 ? (
           <div className="adm-empty">No live clips.</div>

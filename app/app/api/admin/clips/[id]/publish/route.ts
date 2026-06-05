@@ -1,24 +1,27 @@
+import { NextRequest } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/admin";
 
-export async function GET(req: Request) {
+export async function POST(
+  _req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
+
   const sessionClient = await createClient();
   const { data: { user } } = await sessionClient.auth.getUser();
   if (!isAdmin(user?.email)) {
     return Response.json({ error: "forbidden" }, { status: 403 });
   }
 
-  const { searchParams } = new URL(req.url);
-  const status = searchParams.get("status") ?? "approved";
-
   const supabase = createServiceClient();
-  const { data, error } = await supabase
+
+  const { error } = await supabase
     .from("clips")
-    .select("id, title, game, video_url, thumbnail_url, source, likes_count, created_at, status")
-    .eq("status", status)
-    .order("created_at", { ascending: false })
-    .limit(500);
+    .update({ status: "approved" })
+    .eq("id", id)
+    .eq("status", "pending");
 
   if (error) return Response.json({ error: "db_error" }, { status: 500 });
-  return Response.json({ clips: data ?? [] });
+  return Response.json({ ok: true });
 }

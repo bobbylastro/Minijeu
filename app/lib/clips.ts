@@ -84,6 +84,7 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
   let clipsQuery = supabase
     .from("clips")
     .select("id, title, game, video_url, thumbnail_url, source, likes_count, created_at")
+    .eq("status", "approved")
     .order("created_at", { ascending: false })
     .limit(opts.game ? 20 : 200);
   if (opts.game) clipsQuery = clipsQuery.eq("game", opts.game);

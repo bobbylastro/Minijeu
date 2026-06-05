@@ -42,6 +42,7 @@ export async function POST(req: NextRequest) {
     thumbnail_url: null,
     source,
     likes_count: 0,
+    status: "pending",
   }).select("id").single();
 
   if (error) {
