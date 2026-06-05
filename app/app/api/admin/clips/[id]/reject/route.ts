@@ -1,6 +1,7 @@
 import { NextRequest } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/admin";
+import { deleteR2Object } from "@/lib/r2";
 
 export async function POST(
   _req: NextRequest,
@@ -25,9 +26,9 @@ export async function POST(
 
   if (fetchErr || !sub) return Response.json({ error: "not_found" }, { status: 404 });
 
-  // Delete file from storage + mark as rejected
+  // Delete from R2 + mark as rejected
   await Promise.all([
-    supabase.storage.from("clip-submissions").remove([sub.storage_path]),
+    deleteR2Object(sub.storage_path),
     supabase
       .from("clip_submissions")
       .update({ status: "rejected", reviewed_at: new Date().toISOString() })

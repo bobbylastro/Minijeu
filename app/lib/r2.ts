@@ -1,4 +1,5 @@
 import { S3Client, DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
+import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const r2Client = new S3Client({
   region: "auto",
@@ -8,6 +9,15 @@ const r2Client = new S3Client({
     secretAccessKey: process.env.R2_SECRET_ACCESS_KEY!,
   },
 });
+
+// Generate a presigned URL so the client can PUT directly to R2 (15 min validity)
+export async function presignedUploadUrl(key: string, contentType: string): Promise<string> {
+  return getSignedUrl(
+    r2Client,
+    new PutObjectCommand({ Bucket: process.env.R2_BUCKET_NAME!, Key: key, ContentType: contentType }),
+    { expiresIn: 900 }
+  );
+}
 
 export async function uploadToR2(key: string, body: Blob, contentType: string): Promise<void> {
   const buffer = Buffer.from(await body.arrayBuffer());

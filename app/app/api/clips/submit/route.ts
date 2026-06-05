@@ -1,11 +1,12 @@
 import { NextRequest } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isGameSlug } from "@/lib/clips-shared";
+import { presignedUploadUrl } from "@/lib/r2";
 
 export const maxDuration = 30;
 
 const DAILY_LIMIT = 2;
-const MAX_SIZE = 200 * 1024 * 1024;
+const MAX_SIZE = 100 * 1024 * 1024; // 100 MB — compress before uploading
 const ALLOWED_TYPES = new Set([
   "video/mp4", "video/webm", "video/quicktime",
   "video/x-matroska", "video/avi", "video/x-msvideo",
@@ -90,16 +91,17 @@ export async function POST(req: NextRequest) {
 
   if ((count ?? 0) >= DAILY_LIMIT) return err("rate_limit", 429);
 
-  // Generate signed upload URL (client uploads directly to Supabase Storage)
+  // Generate a presigned R2 PUT URL — client uploads directly, no Supabase Storage quota used
   const ext = filename.split(".").pop()?.toLowerCase() ?? "mp4";
-  const storagePath = `${crypto.randomUUID()}.${ext}`;
+  const clipUuid = crypto.randomUUID();
+  const r2Key = `${game}/${clipUuid}.${ext}`;
+  const contentType = ALLOWED_TYPES.has(fileType) ? fileType : `video/${ext}`;
 
-  const { data: uploadData, error: urlError } = await supabase.storage
-    .from("clip-submissions")
-    .createSignedUploadUrl(storagePath);
-
-  if (urlError || !uploadData) {
-    console.error("Storage error:", urlError);
+  let signedUrl: string;
+  try {
+    signedUrl = await presignedUploadUrl(r2Key, contentType);
+  } catch (e) {
+    console.error("R2 presign error:", e);
     return err("storage_error", 500);
   }
 
@@ -112,7 +114,7 @@ export async function POST(req: NextRequest) {
       submitter_name: body.submitterName || null,
       submitter_ip: ip,
       user_id: user.id,
-      storage_path: storagePath,
+      storage_path: r2Key,   // now holds the R2 key, not a Supabase path
       status: "uploading",
     })
     .select("id")
@@ -125,6 +127,6 @@ export async function POST(req: NextRequest) {
 
   return Response.json({
     submissionId: submission.id,
-    signedUrl: uploadData.signedUrl,
+    signedUrl,
   });
 }

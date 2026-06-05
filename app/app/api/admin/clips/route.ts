@@ -22,15 +22,12 @@ export async function GET(req: NextRequest) {
 
   if (error) return Response.json({ error: "db_error" }, { status: 500 });
 
-  // Generate signed preview URLs (1hr validity)
-  const submissions = await Promise.all(
-    (data ?? []).map(async (row) => {
-      const { data: signed } = await supabase.storage
-        .from("clip-submissions")
-        .createSignedUrl(row.storage_path, 3600);
-      return { ...row, previewUrl: signed?.signedUrl ?? null };
-    })
-  );
+  // Preview URLs point directly to R2 (storage_path is now a R2 key)
+  const r2Base = process.env.R2_PUBLIC_URL ?? "";
+  const submissions = (data ?? []).map((row) => ({
+    ...row,
+    previewUrl: row.storage_path ? `${r2Base}/${row.storage_path}` : null,
+  }));
 
   return Response.json({ submissions });
 }
