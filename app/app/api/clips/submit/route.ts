@@ -94,7 +94,7 @@ export async function POST(req: NextRequest) {
   // Generate a presigned R2 PUT URL — client uploads directly, no Supabase Storage quota used
   const ext = filename.split(".").pop()?.toLowerCase() ?? "mp4";
   const clipUuid = crypto.randomUUID();
-  const r2Key = `${game}/${clipUuid}.${ext}`;
+  const r2Key = `pending-compression/${game}/${clipUuid}.${ext}`;
   const contentType = ALLOWED_TYPES.has(fileType) ? fileType : `video/${ext}`;
 
   let signedUrl: string;
