@@ -98,14 +98,19 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
     return opts.game ? fallback.filter((c) => c.game === opts.game) : fallback;
   }
 
-  // Cap at 5 clips per game to ensure diversity across all games
+  // Randomly sample up to 5 clips per game for diversity.
+  // Grouping + shuffling before the cap ensures we don't always pick the
+  // newest 5 — older quality clips get a fair chance to surface.
   let sampledData = clipsData;
   if (!opts.game) {
-    const perGame: Record<string, number> = {};
-    sampledData = clipsData.filter((c) => {
-      perGame[c.game] = (perGame[c.game] ?? 0) + 1;
-      return perGame[c.game] <= 5;
-    });
+    const byGame = new Map<string, typeof clipsData>();
+    for (const c of clipsData) {
+      if (!byGame.has(c.game)) byGame.set(c.game, []);
+      byGame.get(c.game)!.push(c);
+    }
+    sampledData = Array.from(byGame.values()).flatMap(
+      (gameClips) => shuffleArray(gameClips).slice(0, 5)
+    );
   }
 
   // Fetch scores (needs clip IDs)
@@ -127,8 +132,10 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
     return { clip: rowToClip(row), score: final };
   });
 
-  // Sort by score descending, shuffle ties slightly for freshness
-  scored.sort((a, b) => b.score - a.score + (Math.random() * 0.2 - 0.1));
+  // Sort by score descending with enough noise that recency alone can't lock
+  // a clip into the top spots — quality (watch ratio, popularity) still wins
+  // but older good clips can surface above newer mediocre ones.
+  scored.sort((a, b) => b.score - a.score + (Math.random() * 1.0 - 0.5));
 
   return scored.map((s) => s.clip);
 }

@@ -263,15 +263,31 @@ export default function ClipPlayer({
         ) {
           autoScrollDoneRef.current.add(id);
           autoScrollCountRef.current += 1;
-          console.log("[autoscroll] fired for", id, "count=", autoScrollCountRef.current, "scrollTop=", scrollRef.current?.scrollTop, "clientHeight=", scrollRef.current?.clientHeight);
           if (autoScrollCountRef.current >= 10) {
             video.pause();
           } else {
             const c = scrollRef.current;
             if (c) {
-              console.log("[autoscroll] before:", c.scrollTop, "adding:", c.clientHeight);
-              c.scrollTop += c.clientHeight;
-              console.log("[autoscroll] after:", c.scrollTop);
+              // If the splash is still in the DOM at full height, collapse it now
+              // before starting the smooth scroll. Without this, the CSS smooth-scroll
+              // animation races with the splash-collapse useLayoutEffect: that effect
+              // reads the stale mid-animation scrollTop and resets us back to clip 1.
+              // By collapsing first (instant, invisible to the user), the smooth scroll
+              // then runs uncontested from the correct base position.
+              const splash = splashRef.current;
+              if (splash && splash.offsetHeight > 0) {
+                const splashH = splash.offsetHeight;
+                c.style.overflowAnchor = "none";
+                splash.style.height = "0";
+                splash.style.minHeight = "0";
+                splash.style.overflow = "hidden";
+                splash.style.scrollSnapAlign = "none";
+                splash.style.scrollSnapStop = "unset";
+                c.scrollTo({ top: Math.max(0, c.scrollTop - splashH), behavior: "instant" });
+                c.style.overflowAnchor = "";
+                splashPassedRef.current = true;
+              }
+              c.scrollTo({ top: c.scrollTop + c.clientHeight, behavior: "smooth" });
             }
           }
         }
