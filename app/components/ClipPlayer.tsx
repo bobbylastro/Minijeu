@@ -223,7 +223,7 @@ export default function ClipPlayer({
 
     container.querySelectorAll("[data-clip-id]").forEach((el) => observer.observe(el));
     return () => observer.disconnect();
-  }, [clips]);
+  }, [clips, onFeedExhausted]);
 
   // ── Navigate between clips (used by keyboard + auto-scroll) ─────────────
   const navigateClip = useCallback((dir: 1 | -1, fromId?: string) => {

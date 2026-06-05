@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { createClient, createServiceClient } from "@/lib/supabase/server";
 import { isAdmin } from "@/lib/admin";
-import { deleteR2Object } from "@/lib/r2";
 
 export async function POST(
   _req: NextRequest,

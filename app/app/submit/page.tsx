@@ -40,7 +40,7 @@ export default function SubmitPage() {
   const [dragOver, setDragOver] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  const pickFile = (f: File) => {
+  const pickFile = useCallback((f: File) => {
     if (!ALLOWED_TYPES.has(f.type) && !ALLOWED_EXTS.test(f.name)) {
       setError("Unsupported file type. Use MP4, WebM, MOV or MKV.");
       return;
@@ -51,7 +51,7 @@ export default function SubmitPage() {
     }
     setError("");
     setFile(f);
-  };
+  }, []);
 
   const onDrop = useCallback((e: React.DragEvent) => {
     e.preventDefault();

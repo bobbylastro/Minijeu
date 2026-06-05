@@ -37,7 +37,7 @@ export default function ClipFeed({ clips }: Props) {
   const [commentsOpen, setCommentsOpen] = useState(false);
   const [feedLoading,  setFeedLoading]  = useState(false);
   const [feedKey,      setFeedKey]      = useState(0);
-  const [seenIds,      setSeenIds]      = useState<Set<string>>(() => getSeenClipIds());
+  const [_seenIds,     setSeenIds]      = useState<Set<string>>(() => getSeenClipIds());
 
   const debounceRef    = useRef<ReturnType<typeof setTimeout> | null>(null);
   const resetCycleRef  = useRef(0);
