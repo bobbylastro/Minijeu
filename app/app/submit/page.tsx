@@ -20,8 +20,10 @@ function errMsg(code: string): string {
     invalid_game:   "Please select a valid game.",
     invalid_title:  "Title must be between 3 and 80 characters.",
     invalid_file:   "Unsupported file type. Use MP4, WebM, MOV or MKV.",
-    file_too_large: "File exceeds the 200 MB limit.",
+    file_too_large: "File exceeds the 100 MB limit.",
     not_configured: "Submissions are temporarily unavailable. Try again later.",
+    storage_error:  "Could not prepare upload (storage error). Please try again.",
+    db_error:       "Could not save submission (server error). Please try again.",
     default:        "Something went wrong. Please try again.",
   };
   return map[code] ?? map.default;
