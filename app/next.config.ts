@@ -10,7 +10,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   `img-src 'self' data: blob: https://${supabaseHost} https://www.google-analytics.com https://www.googletagmanager.com`,
   "media-src 'self' https://clips.ultimate-playground.com",
-  `connect-src 'self' https://${supabaseHost} wss://${supabaseHost} https://clips.ultimate-playground.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`,
+  `connect-src 'self' https://${supabaseHost} wss://${supabaseHost} https://clips.ultimate-playground.com https://*.r2.cloudflarestorage.com https://www.google-analytics.com https://analytics.google.com https://stats.g.doubleclick.net`,
   "font-src 'self'",
   "frame-src 'none'",
   "frame-ancestors 'none'",
