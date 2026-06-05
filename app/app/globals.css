@@ -2016,7 +2016,7 @@ kbd {
 /* ══════════════════════════════════════════════════════════════════════════ */
 .adm-page {
   min-height: calc(100vh - var(--header-h));
-  padding: 36px 24px 80px;
+  padding: calc(var(--header-h) + 36px) 24px 80px;
   max-width: 1200px;
   margin: 0 auto;
 }
