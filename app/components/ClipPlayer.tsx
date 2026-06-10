@@ -47,6 +47,7 @@ export default function ClipPlayer({
   const splashPassedRef    = useRef(false);
   const isPeekingRef       = useRef(false);
   const feedExhaustedRef   = useRef(false);
+  const stallTimers        = useRef<Map<string, ReturnType<typeof setTimeout>>>(new Map());
 
   // Strip reset-cycle suffix so tracking/seen always use the canonical clip ID
   const baseId = (id: string) => id.includes("__r") ? id.slice(0, id.lastIndexOf("__r")) : id;
@@ -176,6 +177,7 @@ export default function ClipPlayer({
               playStartRef.current.set(id, Date.now());
               autoScrollDoneRef.current.delete(id);
               if (video) {
+                video.currentTime = 0;
                 video.play().catch(() => {
                   video.muted = true;
                   setMuted(true);
@@ -440,6 +442,13 @@ export default function ClipPlayer({
     const v  = videoRefs.current.get(id);
     const bg = bgVideoRefs.current.get(id);
     if (!v) return;
+    if (v.error) {
+      const preplay = scrollRef.current?.querySelector<HTMLElement>(`[data-clip-preplay="${id}"]`);
+      if (preplay) preplay.style.opacity = "1";
+      v.load();
+      v.play().catch(() => {});
+      return;
+    }
     if (v.paused) { v.play().catch(() => {}); bg?.play().catch(() => {}); }
     else          { v.pause(); bg?.pause(); }
   };
@@ -575,13 +584,42 @@ export default function ClipPlayer({
                 onPlay={() => {
                   const preplay = scrollRef.current?.querySelector<HTMLElement>(`[data-clip-preplay="${clip.id}"]`);
                   if (preplay) preplay.style.opacity = "0";
+                  const t = stallTimers.current.get(clip.id);
+                  if (t) { clearTimeout(t); stallTimers.current.delete(clip.id); }
+                }}
+                onStalled={() => {
+                  if (activeIdRef.current !== clip.id || stallTimers.current.has(clip.id)) return;
+                  const t = setTimeout(() => {
+                    stallTimers.current.delete(clip.id);
+                    const v = videoRefs.current.get(clip.id);
+                    if (!v || activeIdRef.current !== clip.id) return;
+                    v.load();
+                    v.play().catch(() => {});
+                  }, 4000);
+                  stallTimers.current.set(clip.id, t);
+                }}
+                onError={() => {
+                  const preplay = scrollRef.current?.querySelector<HTMLElement>(`[data-clip-preplay="${clip.id}"]`);
+                  if (preplay) preplay.style.opacity = "1";
+                  const v = videoRefs.current.get(clip.id);
+                  if (!v) return;
+                  v.load();
+                  if (activeIdRef.current === clip.id) v.play().catch(() => {});
                 }}
               >
                 <source src={clip.videoUrl} />
               </video>
 
               {/* Progress bar */}
-              <div className="cp-progress-track">
+              <div
+                className="cp-progress-track"
+                onClick={(e) => {
+                  const video = videoRefs.current.get(clip.id);
+                  if (!video?.duration) return;
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  video.currentTime = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width)) * video.duration;
+                }}
+              >
                 <div
                   className="cp-progress-fill"
                   ref={(el) => {

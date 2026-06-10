@@ -823,6 +823,10 @@ kbd {
   height: 3px;
   background: rgba(255,255,255,0.12);
   z-index: 3;
+  cursor: pointer;
+  /* Tall invisible touch target without changing visual height */
+  padding-top: 16px;
+  margin-top: -16px;
 }
 .cp-progress-fill {
   height: 100%;
