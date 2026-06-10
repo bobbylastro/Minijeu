@@ -820,16 +820,26 @@ kbd {
   bottom: 0;
   left: 0;
   right: 0;
-  height: 3px;
-  background: rgba(255,255,255,0.12);
+  height: 16px; /* tall touch target */
+  background: transparent;
   z-index: 3;
   cursor: pointer;
-  /* Tall invisible touch target without changing visual height */
-  padding-top: 16px;
-  margin-top: -16px;
+}
+/* Visual bar: only the bottom 3px */
+.cp-progress-track::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: rgba(255,255,255,0.12);
 }
 .cp-progress-fill {
-  height: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
   width: 0%;
   background: #fff;
   border-radius: 0 2px 2px 0;
