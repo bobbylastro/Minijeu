@@ -19,7 +19,7 @@ export async function POST(
   // Fetch submission
   const { data: sub, error: fetchErr } = await supabase
     .from("clip_submissions")
-    .select("id, title, game, storage_path, status")
+    .select("id, title, game, storage_path, status, submitter_name")
     .eq("id", id)
     .eq("status", "pending")
     .single();
@@ -37,6 +37,7 @@ export async function POST(
     video_url: publicUrl,
     thumbnail_url: null,
     source: "community",
+    submitter_name: sub.submitter_name ?? null,
     likes_count: 0,
     status: "approved",
   });

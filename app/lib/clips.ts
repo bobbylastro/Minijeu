@@ -83,7 +83,7 @@ export async function getClips(opts: GetClipsOptions = {}): Promise<Clip[]> {
   // Fetch recent clips, then cap per-game for diversity
   let clipsQuery = supabase
     .from("clips")
-    .select("id, title, game, video_url, thumbnail_url, source, likes_count, created_at")
+    .select("id, title, game, video_url, thumbnail_url, source, submitter_name, likes_count, created_at")
     .eq("status", "approved")
     .order("created_at", { ascending: false })
     .limit(opts.game ? 20 : 200);
@@ -178,7 +178,7 @@ export async function getClipById(id: string): Promise<Clip | null> {
   const supabase = createServiceClient();
   const { data, error } = await supabase
     .from("clips")
-    .select("id, title, game, video_url, thumbnail_url, source, likes_count, created_at")
+    .select("id, title, game, video_url, thumbnail_url, source, submitter_name, likes_count, created_at")
     .eq("id", id)
     .single();
 
@@ -247,6 +247,7 @@ function rowToClip(row: {
   video_url: string;
   thumbnail_url: string | null;
   source: string;
+  submitter_name?: string | null;
   likes_count: number;
   created_at: string;
 }): Clip {
@@ -257,6 +258,7 @@ function rowToClip(row: {
     videoUrl: row.video_url,
     thumbnailUrl: row.thumbnail_url,
     source: (row.source ?? "local") as Clip["source"],
+    submitterName: row.submitter_name ?? null,
     likesCount: row.likes_count ?? 0,
     createdAt: row.created_at,
   };

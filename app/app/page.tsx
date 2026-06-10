@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
+import Link from "next/link";
 import { getClips } from "@/lib/clips";
 import { createClient } from "@/lib/supabase/server";
+import { BLOG_ARTICLES } from "@/lib/blog";
 import ClipFeed from "@/components/ClipFeed";
 import BodyScrollLock from "@/components/BodyScrollLock";
 
@@ -67,6 +69,12 @@ export default function HomePage() {
 }
 
 function EditorialContent() {
+  const today = new Date().toISOString().slice(0, 10);
+  const recentArticles = BLOG_ARTICLES
+    .filter((a) => a.publishDate <= today)
+    .sort((a, b) => b.publishDate.localeCompare(a.publishDate))
+    .slice(0, 3);
+
   return (
     <div className="gc-editorial__block">
 
@@ -92,27 +100,28 @@ function EditorialContent() {
 
       <div className="gc-editorial__games">
         {[
-          { name: "Valorant",           color: "#ff4655" },
-          { name: "Apex Legends",       color: "#cd4a14" },
-          { name: "Marvel Rivals",      color: "#e62429" },
-          { name: "The Finals",         color: "#f5a623" },
-          { name: "Rocket League",      color: "#1e90ff" },
-          { name: "Rainbow Six Siege",  color: "#1c6eb5" },
-          { name: "League of Legends",  color: "#c89b3c" },
-          { name: "CS2",                color: "#e8a020" },
-          { name: "Rust",               color: "#b7431e" },
-          { name: "GTA V",              color: "#229954" },
-          { name: "Minecraft",          color: "#5b8c2a" },
-          { name: "Overwatch",          color: "#f99e1a" },
-          { name: "ARC Raiders",        color: "#00b4d8" },
+          { name: "Valorant",           slug: "valorant",           color: "#ff4655" },
+          { name: "Apex Legends",       slug: "apex-legends",       color: "#cd4a14" },
+          { name: "Marvel Rivals",      slug: "marvel-rivals",      color: "#e62429" },
+          { name: "The Finals",         slug: "the-finals",         color: "#f5a623" },
+          { name: "Rocket League",      slug: "rocket-league",      color: "#1e90ff" },
+          { name: "Rainbow Six Siege",  slug: "rainbow-six-siege",  color: "#1c6eb5" },
+          { name: "League of Legends",  slug: "league-of-legends",  color: "#c89b3c" },
+          { name: "CS2",                slug: "cs2",                color: "#e8a020" },
+          { name: "Rust",               slug: "rust",               color: "#b7431e" },
+          { name: "GTA V",              slug: "gta-v",              color: "#229954" },
+          { name: "Minecraft",          slug: "minecraft",          color: "#5b8c2a" },
+          { name: "Overwatch",          slug: "overwatch",          color: "#f99e1a" },
+          { name: "ARC Raiders",        slug: "arc-raiders",        color: "#00b4d8" },
         ].map((g) => (
-          <span
+          <Link
             key={g.name}
+            href={`/blog/${g.slug}`}
             className="gc-editorial__game-tag"
             style={{ borderColor: g.color, color: g.color }}
           >
             {g.name}
-          </span>
+          </Link>
         ))}
       </div>
 
@@ -137,6 +146,21 @@ function EditorialContent() {
         dressed up as new. Just relevant, recent moments from the games people are actually
         playing right now.
       </p>
+
+      <div className="gc-editorial__divider" />
+
+      <h2 className="gc-editorial__h2">Latest from the Blog</h2>
+      <div className="gc-editorial__blog-links">
+        {recentArticles.map((a) => (
+          <Link key={a.slug} href={`/blog/${a.slug}`} className="gc-editorial__blog-link">
+            <span className="gc-editorial__blog-link-title">{a.title}</span>
+            <span className="gc-editorial__blog-link-meta">{a.readMinutes} min read →</span>
+          </Link>
+        ))}
+      </div>
+      <Link href="/blog" className="gc-editorial__link" style={{ fontSize: "13px" }}>
+        Browse all articles →
+      </Link>
 
       <div className="gc-editorial__divider" />
 

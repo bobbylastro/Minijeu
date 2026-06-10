@@ -599,9 +599,16 @@ export default function ClipPlayer({
                 {game.name}
               </span>
 
-              {/* Bottom-left: title */}
+              {/* Bottom-left: title + community badge */}
               <div className="cp-feed-bottom">
                 <p className="cp-feed-title">{clip.title}</p>
+                {clip.source === "community" && (
+                  <p className="cp-community-badge">
+                    {clip.submitterName
+                      ? `Submitted by ${clip.submitterName}`
+                      : "Community clip"}
+                  </p>
+                )}
               </div>
 
               {/* Right column: comment (mobile) + like + share */}

@@ -1,0 +1,2 @@
+ALTER TABLE clips
+  ADD COLUMN IF NOT EXISTS submitter_name TEXT;

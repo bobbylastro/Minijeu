@@ -49,7 +49,8 @@ export interface Clip {
   game: GameSlug;
   videoUrl: string;
   thumbnailUrl: string | null;
-  source: "medal" | "twitch" | "local" | "r2" | "pipeline";
+  source: "medal" | "twitch" | "local" | "r2" | "pipeline" | "community";
+  submitterName?: string | null;
   likesCount: number;
   createdAt: string;
 }
